@@ -1,4 +1,4 @@
-<header align="center">
+<header>
     <img src=".github/logo_lmu.png" height="64" alt="Logo Le Mans Université">
 </header>
 <hr/>
@@ -32,6 +32,6 @@ Format de donnée :
 HEADER:TYPE:PAYLOAD
 ```
 
-Headers : `JOIN, LEAVE, CHAT, REVEAL, HINT`
-Types : `JSON, MSG, NULL`
+Headers : `JOIN, LEAVE, CHAT, REVEAL, HINT`<br/>
+Types : `JSON, MSG, NULL`<br/>
 Payload : `Données styucturé (json), un message textuel ou rien, en fonction du type`
