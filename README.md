@@ -1,6 +1,24 @@
+![Logo Le Mans Université](.github/logo_lmu.png)
+
 # Codenames
 
-Jeu codenames multijoueur en langage C
+Ce projet est un jeu codenames multijoueur en langage C.
+Il a été initié en groupe de 4 dans le cadre d'un projet de groupe universitaire.
+
+## TODO List
+
+### Client
+- Assets visuels
+- Interfaces (menus, jeu, options)
+- ~~Connexion TCP vers le serveur~~
+
+### Serveur
+- ~~Squelette de gestion d'une partie~~
+- ~~Serveur TCP~~
+- Parser de requetes TCP et action associé
+- Gestion du mot noir
+- Choix definitif du format de donnée pour la transmission du plateau
+- Gestion des connexions client, lobby
 
 ## Transmition client/serveur
 
@@ -11,6 +29,6 @@ Format de donnée :
 HEADER:TYPE:PAYLOAD
 ```
 
-Headers disponibles : `JOIN, LEAVE, MESSAGE, REVEAL, HINT`
-Types disponibles : `JSON, MSG, NULL`
+Headers : `JOIN, LEAVE, CHAT, REVEAL, HINT`
+Types : `JSON, MSG, NULL`
 Payload : `Données styucturé (json), un message textuel ou rien, en fonction du type`
