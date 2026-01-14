@@ -5,7 +5,7 @@
 #include <fcntl.h>
 #include <arpa/inet.h>
 #include <sys/select.h>
-#include "../include/tcp.h"
+#include "../lib/tcp.h"
 
 static void set_nonblocking(int socket) {
     fcntl(socket, F_SETFL, O_NONBLOCK);
