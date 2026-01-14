@@ -1,4 +1,6 @@
-<img src=".github/logo_lmu.png" height="64" alt="Logo Le Mans Université">
+<header align="center">
+    <img src=".github/logo_lmu.png" height="64" alt="Logo Le Mans Université">
+</header>
 <hr/>
 
 # Codenames
