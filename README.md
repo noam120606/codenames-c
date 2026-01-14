@@ -1,4 +1,5 @@
-![Logo Le Mans Université](.github/logo_lmu.png)
+<img src=".github/logo_lmu.png" height="64" alt="Logo Le Mans Université">
+<hr/>
 
 # Codenames
 
