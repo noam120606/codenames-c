@@ -2,9 +2,9 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdio.h>
-#include "../include/connection_manager.h"
-#include "../include/game_manager.h"
-#include "../include/tcp.h"
+#include "../lib/connection_manager.h"
+#include "../lib/game_manager.h"
+#include "../lib/tcp.h"
 
 int connection_manager_init(ConnectionManager* manager, int tcp_port) {
     if (!manager) return -1;

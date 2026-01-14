@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "../include/game_manager.h"
-#include "../include/utils.h"
+#include "../lib/game_manager.h"
+#include "../lib/utils.h"
 
 const int WORDCOUNT = 400;
 

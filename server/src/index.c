@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#include "../include/game_manager.h"
-#include "../include/tcp.h"
+#include "../lib/game_manager.h"
+#include "../lib/tcp.h"
 
 int main(int argc, char *argv[]) {
 
