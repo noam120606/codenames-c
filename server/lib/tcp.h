@@ -2,7 +2,6 @@
 #define TCP_H
 
 #include <netinet/in.h>
-#include "connection_manager.h"
 
 #define TCP_MAX_CLIENTS 128
 #define TCP_BUFFER_SIZE 1024

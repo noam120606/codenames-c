@@ -1,8 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#include "../lib/game_manager.h"
 #include "../lib/tcp.h"
+#include "../lib/game_manager.h"
+
+const int PORT = 4242;
 
 int main(int argc, char *argv[]) {
 
@@ -17,7 +19,7 @@ int main(int argc, char *argv[]) {
     }
 
     // Initialize TCP server
-    TcpServer* tcp = tcp_server_create(4242);
+    TcpServer* tcp = tcp_server_create(PORT);
     if (tcp == NULL) {
         perror("Failed to create TCP server");
         destroy_game_manager(game_manager);
