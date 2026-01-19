@@ -1,0 +1,10 @@
+
+# Executables
+server/server
+client/client
+
+# Libraries
+client/SDL
+
+# Object files
+*.o
