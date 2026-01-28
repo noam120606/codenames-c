@@ -10,7 +10,7 @@ if [ ! -d "client/SDL" ]; then
     cd build
     ../configure
     make
-    sudo make install
+    make install
     cd ../../../
 fi
 
