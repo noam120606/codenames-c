@@ -43,9 +43,16 @@ int tick_tcp(int sock) {
 
     int maxfd = sock > STDIN_FILENO ? sock : STDIN_FILENO;
 
-    if (select(maxfd + 1, &readfds, NULL, NULL, NULL) < 0) {
+    struct timeval timeout = {.tv_sec = 0, .tv_usec = 0};
+    int result = select(maxfd + 1, &readfds, NULL, NULL, &timeout); // Timeout pour avoir une boucle non bloquante
+    
+    if (result < 0) {
         perror("select");
         return -1;
+    }
+    
+    if (result == 0) {
+        return EXIT_SUCCESS; // No data available
     }
 
     /* Message venant du serveur */
@@ -67,7 +74,8 @@ int tick_tcp(int sock) {
 }
 
 int send_tcp(int sock, const char* message) {
-    return send(sock, message, strlen(message), 0);
+    // Flag dontwait pour ne pas bloquer si le buffer est plein
+    return send(sock, message, strlen(message), MSG_DONTWAIT);
 }
 
 int close_tcp(int sock) {

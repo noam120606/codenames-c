@@ -8,6 +8,10 @@
 Ce projet est un jeu codenames multijoueur en langage C.
 Il a été initié en groupe de 4 dans le cadre d'un projet de groupe universitaire.
 
+## Instalation
+
+Après avoir cloné le projet, il faut executer le script `./setup.sh` pour installer les differentes librairies requises
+
 ## TODO List
 
 ### Client
@@ -33,5 +37,7 @@ HEADER:TYPE:PAYLOAD
 ```
 
 Headers : `JOIN, LEAVE, CHAT, REVEAL, HINT`<br/>
-Types : `JSON, MSG, NULL`<br/>
 Payload : `Données styucturé (json), un message textuel ou rien, en fonction du type`
+
+
+LOGIN {"username":"noam"}
