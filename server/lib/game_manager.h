@@ -37,6 +37,7 @@ typedef struct {
 } Game;
 
 typedef struct {
+    int owner_id;
     int lobby_id;
     Player *players;
     Game game;
