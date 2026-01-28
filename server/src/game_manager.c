@@ -6,7 +6,7 @@
 
 const int WORDCOUNT = 400;
 
-char** fetchWords() {
+char** fetchWords() { //Lit le fichier wordlist.txt et ordonne dans une liste dont l'adresse est renvoyée
     
     FILE* file = fopen("storage/wordlist.txt", "r");
     if (!file) {
@@ -41,7 +41,7 @@ char** fetchWords() {
 }
 
 
-Word* generateWords(int count) {
+Word* generateWords(int count) { //Trouver 25 mots au hasard parmis la liste des mots.
     Word* words = (Word*)malloc(sizeof(Word) * count);
     if (!words) {
         perror("Failed to allocate memory for words");
@@ -79,7 +79,7 @@ Word* generateWords(int count) {
     return words;
 }
 
-void shuffleWords(Word* words, int count) {
+void shuffleWords(Word* words, int count) { // Mélange les cartes auxquelles sont attribuées des couleurs rangées dans l'ordre
     for (int i = count - 1; i > 0; i--) {
         int j = rand() % (i + 1);
         Word temp = words[i];
@@ -281,7 +281,7 @@ Lobby* new_lobby(GameManager* manager, int max_players) {
 
     Lobby new_lobby;
     new_lobby.lobby_id = manager->lobby_count + 1;
-    new_lobby.players = NULL;
+    new_lobby.players = N/ No game yetULL;
     new_lobby.current_players = 0;
     new_lobby.max_players = max_players;
     new_lobby.game.game_id = 0; // No game yet

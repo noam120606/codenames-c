@@ -6,6 +6,7 @@
 #include <arpa/inet.h>
 #include <sys/select.h>
 #include "../lib/tcp.h"
+#include "../lib/game_manager.h"
 
 static void set_nonblocking(int socket) {
     fcntl(socket, F_SETFL, O_NONBLOCK);
@@ -65,7 +66,7 @@ void tcp_server_destroy(TcpServer* server) {
     free(server);
 }
 
-static void add_client(TcpServer* server, int client_socket, struct sockaddr_in addr) {
+static void add_client(TcpServer* server, int client_socket, struct sockaddr_in addr, GameManager* game_manager) {
     for (int i = 0; i < TCP_MAX_CLIENTS; i++) {
         if (server->clients[i].socket == 0) {
             server->clients[i].socket = client_socket;
@@ -73,7 +74,7 @@ static void add_client(TcpServer* server, int client_socket, struct sockaddr_in 
             server->clients[i].id = server->next_client_id++;
 
             set_nonblocking(client_socket);
-            tcp_on_client_connect(server, &server->clients[i]);
+            tcp_on_client_connect(server, &server->clients[i], game_manager);
             return;
         }
     }
@@ -87,7 +88,7 @@ static void remove_client(TcpServer* server, TcpClient* client) {
     memset(client, 0, sizeof(TcpClient));
 }
 
-void tcp_server_tick(TcpServer* server) {
+void tcp_server_tick(TcpServer* server, GameManager* game_manager) {
     fd_set readfds;
     FD_ZERO(&readfds);
 
@@ -111,7 +112,7 @@ void tcp_server_tick(TcpServer* server) {
         socklen_t len = sizeof(addr);
         int client_socket = accept(server->server_socket, (struct sockaddr*)&addr, &len);
         if (client_socket >= 0) {
-            add_client(server, client_socket, addr);
+            add_client(server, client_socket, addr, game_manager);
         }
     }
 
@@ -142,10 +143,10 @@ int tcp_send_to_client(TcpServer* server, int client_id, const char* message) {
 
 /* Callbacks par défaut */
 
-void tcp_on_client_connect(TcpServer* server, TcpClient* client) {
+void tcp_on_client_connect(TcpServer* server, TcpClient* client, GameManager* game_manager) {
     printf("Client connected: ID=%d IP=%s\n",
            client->id, inet_ntoa(client->addr.sin_addr));
-    
+
     tcp_send_to_client(server, client->id, "Welcome to the server!\n");
 }
 

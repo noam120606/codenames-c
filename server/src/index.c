@@ -46,7 +46,7 @@ int main(int argc, char *argv[]) {
     /* Fin zone de tests */
 
     while(1) {
-        tcp_server_tick(tcp);
+        tcp_server_tick(tcp, game_manager);
     }
 
     // Cleanup
