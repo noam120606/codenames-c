@@ -55,7 +55,7 @@ Game* create_game(int game_id, int word_count);
 int destroy_game(Game* game);
 int reveal_word(Game* game, int word_id);
 int check_game_end(Game* game);
-char* game_to_json(Game* game);
+char* game_to_tcp(Game* game);
 void print_game(Game* game);
 GameManager* create_game_manager();
 int destroy_game_manager(GameManager* manager);

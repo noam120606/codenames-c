@@ -170,36 +170,34 @@ int check_game_end(Game* game) {
     return 0;
 }
 
-// Convert game to json string
-char* game_to_json(Game* game) {
+// Convert game to TCP string
+char* game_to_tcp(Game* game) {
     if (!game) {
         return NULL;
     }
 
-    // Estimate the size needed for the JSON string
-    int json_size = 256 + game->word_count * 64;
-    char* json_str = (char*)malloc(json_size);
-    if (!json_str) {
-        perror("Failed to allocate memory for JSON string");
+    // Estimate the size needed for the TCP string
+    int tcp_size = 256 + game->word_count * 64;
+    char* tcp_str = (char*)malloc(tcp_size);
+    if (!tcp_str) {
+        perror("Failed to allocate memory for TCP string");
         return NULL;
     }
 
-    snprintf(json_str, json_size,
-             "{\"game_id\":%d,\"status\":%d,\"red_words_remaining\":%d,\"blue_words_remaining\":%d,\"words\":[",
+    snprintf(tcp_str, tcp_size,
+             "%d %d %d %d ",
              game->game_id, game->status, game->red_words_remaining, game->blue_words_remaining);
 
     for (int i = 0; i < game->word_count; i++) {
-        char word_json[128];
-        snprintf(word_json, sizeof(word_json),
-                 "{\"word\":\"%s\",\"team\":%d,\"revealed\":%d}%s",
+        char word_tcp[128];
+        snprintf(word_tcp, sizeof(word_tcp),
+                 "%s %d %d%c",
                  game->words[i].word, game->words[i].team,
-                 game->words[i].revealed, (i < game->word_count - 1) ? "," : "");
-        strncat(json_str, word_json, json_size - strlen(json_str) - 1);
+                 game->words[i].revealed, (i < game->word_count - 1) ? ' ' : '\0');
+        strncat(tcp_str, word_tcp, tcp_size - strlen(tcp_str) - 1);
     }
 
-    strncat(json_str, "]}", json_size - strlen(json_str) - 1);
-
-    return json_str;
+    return tcp_str;
 }
 
 // Function to print game details (for debugging)
