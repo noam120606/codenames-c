@@ -26,8 +26,6 @@ int main(){
         return EXIT_FAILURE;
     }
 
-    printf("SDL Initialized successfully\n");
-
     SDL_Window* win = SDL_CreateWindow("Codenames Client", 100, 100, 800, 600, SDL_WINDOW_SHOWN);
     if (win == NULL) {
         printf("SDL_CreateWindow Error: %s\n", SDL_GetError());
@@ -36,12 +34,11 @@ int main(){
         return EXIT_FAILURE;
     }
 
-    printf("Window created successfully\n");
-
     send_tcp(sock, "Hello from client!");
 
+
     while (tick_tcp(sock) == 0) {
-        printf("Tick...\n");
+        //printf("Tick...\n");
 
     }
 

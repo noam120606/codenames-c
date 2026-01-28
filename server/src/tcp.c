@@ -73,7 +73,7 @@ static void add_client(TcpServer* server, int client_socket, struct sockaddr_in 
             server->clients[i].id = server->next_client_id++;
 
             set_nonblocking(client_socket);
-            tcp_on_client_connect(&server->clients[i]);
+            tcp_on_client_connect(server, &server->clients[i]);
             return;
         }
     }
@@ -81,8 +81,8 @@ static void add_client(TcpServer* server, int client_socket, struct sockaddr_in 
     close(client_socket);
 }
 
-static void remove_client(TcpClient* client) {
-    tcp_on_client_disconnect(client);
+static void remove_client(TcpServer* server, TcpClient* client) {
+    tcp_on_client_disconnect(server, client);
     close(client->socket);
     memset(client, 0, sizeof(TcpClient));
 }
@@ -122,10 +122,10 @@ void tcp_server_tick(TcpServer* server) {
         if (client->socket > 0 && FD_ISSET(client->socket, &readfds)) {
             int bytes = recv(client->socket, buffer, sizeof(buffer) - 1, 0);
             if (bytes <= 0) {
-                remove_client(client);
+                remove_client(server, client);
             } else {
                 buffer[bytes] = '\0';
-                tcp_on_client_message(client, buffer);
+                tcp_on_client_message(server, client, buffer);
             }
         }
     }
@@ -142,15 +142,17 @@ int tcp_send_to_client(TcpServer* server, int client_id, const char* message) {
 
 /* Callbacks par défaut */
 
-void tcp_on_client_connect(TcpClient* client) {
+void tcp_on_client_connect(TcpServer* server, TcpClient* client) {
     printf("Client connected: ID=%d IP=%s\n",
            client->id, inet_ntoa(client->addr.sin_addr));
+    
+    tcp_send_to_client(server, client->id, "Welcome to the server!\n");
 }
 
-void tcp_on_client_disconnect(TcpClient* client) {
+void tcp_on_client_disconnect(TcpServer* server, TcpClient* client) {
     printf("Client disconnected: ID=%d\n", client->id);
 }
 
-void tcp_on_client_message(TcpClient* client, const char* message) {
+void tcp_on_client_message(TcpServer* server, TcpClient* client, const char* message) {
     printf("Client %d says: %s\n", client->id, message);
 }

@@ -14,6 +14,9 @@ if [ ! -d "client/SDL" ]; then
     cd ../../../
 fi
 
+# Instalation cJSON
+
+
 # Compilation des fichiers
 make -C server
 make -C client

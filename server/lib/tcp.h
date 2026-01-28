@@ -30,8 +30,8 @@ void tcp_server_tick(TcpServer* server);
 int tcp_send_to_client(TcpServer* server, int client_id, const char* message);
 
 /* Callbacks (à override si besoin) */
-void tcp_on_client_connect(TcpClient* client);
-void tcp_on_client_disconnect(TcpClient* client);
-void tcp_on_client_message(TcpClient* client, const char* message);
+void tcp_on_client_connect(TcpServer* server, TcpClient* client);
+void tcp_on_client_disconnect(TcpServer* server, TcpClient* client);
+void tcp_on_client_message(TcpServer* server, TcpClient* client, const char* message);
 
 #endif
