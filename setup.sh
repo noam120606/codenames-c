@@ -3,7 +3,7 @@
 
 # Installation SDL2
 if [ ! -d "client/SDL" ]; then
-    cd client
+    cd client/lib
     git clone https://github.com/libsdl-org/SDL.git -b SDL2
     cd SDL
     mkdir build
@@ -31,7 +31,7 @@ if [ ! -d "client/SDL" ]; then
     ../configure
     make
     make install
-    cd ../../../
+    cd ../../../../
 fi
 
 # Instalation cJSON
