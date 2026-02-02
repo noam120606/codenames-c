@@ -5,6 +5,8 @@ client/client
 
 # Libraries
 client/SDL
+client/SDL_image
+client/SDL_ttf
 
 # Object files
 *.o
