@@ -4,9 +4,7 @@ server/build
 client/build
 
 # Libraries
-client/lib/SDL
-client/lib/SDL_image
-client/lib/SDL_ttf
+client/SDL2
 
 # Object files
 *.o
