@@ -42,4 +42,10 @@ int count_words(const char *filepath) {
 
     fclose(f);
     return count;
+<<<<<<< HEAD
 }
+=======
+}
+
+
+>>>>>>> 5d78cc0b55c6d43b83356479c2be6d86c5921087
