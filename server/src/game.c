@@ -6,7 +6,19 @@
 #include "../lib/tcp.h"
 #include "../lib/codenames.h"
 
-const int WORDCOUNT = 400;
+int WORDCOUNT = 0;
+
+/* initialise WORDCOUNT en comptant les mots dans storage/wordlist.txt.
+   retourne 0 si OK, -1 en cas d'erreur */
+int init_game_manager(void) {
+    int n = count_words("storage/wordlist.txt");
+    if (n < 0) {
+        fprintf(stderr, "game_manager: failed to count words in storage/wordlist.txt\n");
+        return -1;
+    }
+    WORDCOUNT = n;
+    return 0;
+}
 
 char** fetchWords() { // Lit le fichier wordlist.txt et ordonne dans une liste dont l'adresse est renvoyée
     

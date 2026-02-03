@@ -1,22 +1,36 @@
-# Executable principal
-server: game.o index.o utils.o tcp.o lobby.o user.o
-	gcc game.o index.o utils.o tcp.o lobby.o user.o -o server -I./lib
+# Build directory
+DIR = build
+# Create build directory if not exists
+$(shell mkdir -p $(DIR))
 
-# Bulding objets
-index.o:
-	gcc -c src/index.c -o index.o -I./lib
-lobby.o:
-	gcc -c src/lobby.c -o lobby.o -I./lib
-game.o:
-	gcc -c src/game.c -o game.o -I./lib
-user.o:
-	gcc -c src/user.c -o user.o -I./lib
-tcp.o:
-	gcc -c src/tcp.c -o tcp.o -I./lib
-utils.o:
-	gcc -c src/utils.c -o utils.o -I./lib
+# Executable principal
+$(DIR)/server: $(DIR)/game.o $(DIR)/index.o $(DIR)/utils.o $(DIR)/tcp.o $(DIR)/lobby.o $(DIR)/user.o $(DIR)/message.o
+	gcc $(DIR)/game.o $(DIR)/index.o $(DIR)/utils.o $(DIR)/tcp.o $(DIR)/lobby.o $(DIR)/user.o $(DIR)/message.o -o $(DIR)/server -I./lib
+
+# Building objets
+$(DIR)/index.o:
+	gcc -c src/index.c -o $(DIR)/index.o -I./lib
+
+$(DIR)/lobby.o:
+	gcc -c src/lobby.c -o $(DIR)/lobby.o -I./lib
+
+$(DIR)/message.o:
+	gcc -c src/message.c -o $(DIR)/message.o -I./lib
+
+$(DIR)/game.o:
+	gcc -c src/game.c -o $(DIR)/game.o -I./lib
+
+$(DIR)/user.o: src/user.c | $(DIR)
+	gcc -c src/user.c -o $(DIR)/user.o -I./lib
+
+$(DIR)/tcp.o:
+	gcc -c src/tcp.c -o $(DIR)/tcp.o -I./lib
+
+$(DIR)/utils.o:
+	gcc -c src/utils.c -o $(DIR)/utils.o -I./lib
+
 
 # Clean objects
 clean:
-	rm -f *.o
-	rm -rf server
+	rm -f $(DIR)/*.o
+	rm -rf $(DIR)/server

@@ -1,7 +1,7 @@
 
-# Executables
-server/server
-client/client
+# Projets compilés
+server/build
+client/build
 
 # Libraries
 client/lib/SDL
