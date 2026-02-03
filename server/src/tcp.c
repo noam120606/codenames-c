@@ -7,6 +7,7 @@
 #include <sys/select.h>
 
 #include "../lib/tcp.h"
+#include "../lib/message.h"
 
 static void set_nonblocking(int socket) {
     fcntl(socket, F_SETFL, O_NONBLOCK);
@@ -159,4 +160,5 @@ void tcp_on_client_disconnect(Codenames* codenames, TcpClient* client) {
 
 void tcp_on_client_message(Codenames* codenames, TcpClient* client, const char* message) {
     printf("Client %d says: %s\n", client->id, message);
+    on_message(codenames, message);
 }
