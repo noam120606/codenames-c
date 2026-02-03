@@ -5,8 +5,8 @@
 #include <fcntl.h>
 #include <arpa/inet.h>
 #include <sys/select.h>
+
 #include "../lib/tcp.h"
-#include "../lib/game_manager.h"
 
 static void set_nonblocking(int socket) {
     fcntl(socket, F_SETFL, O_NONBLOCK);
@@ -66,7 +66,8 @@ void tcp_server_destroy(TcpServer* server) {
     free(server);
 }
 
-static void add_client(TcpServer* server, int client_socket, struct sockaddr_in addr, GameManager* game_manager) {
+static void add_client(Codenames* codenames, int client_socket, struct sockaddr_in addr) {
+    TcpServer* server = codenames->tcp;
     for (int i = 0; i < TCP_MAX_CLIENTS; i++) {
         if (server->clients[i].socket == 0) {
             server->clients[i].socket = client_socket;
@@ -74,7 +75,7 @@ static void add_client(TcpServer* server, int client_socket, struct sockaddr_in 
             server->clients[i].id = server->next_client_id++;
 
             set_nonblocking(client_socket);
-            tcp_on_client_connect(server, &server->clients[i], game_manager);
+            tcp_on_client_connect(codenames, &server->clients[i]);
             return;
         }
     }
@@ -82,13 +83,15 @@ static void add_client(TcpServer* server, int client_socket, struct sockaddr_in 
     close(client_socket);
 }
 
-static void remove_client(TcpServer* server, TcpClient* client) {
-    tcp_on_client_disconnect(server, client);
+static void remove_client(Codenames* codenames, TcpClient* client) {
+    tcp_on_client_disconnect(codenames, client);
     close(client->socket);
     memset(client, 0, sizeof(TcpClient));
 }
 
-void tcp_server_tick(TcpServer* server, GameManager* game_manager) {
+void tcp_server_tick(Codenames* codenames) {
+    TcpServer* server = codenames->tcp;
+
     fd_set readfds;
     FD_ZERO(&readfds);
 
@@ -112,7 +115,7 @@ void tcp_server_tick(TcpServer* server, GameManager* game_manager) {
         socklen_t len = sizeof(addr);
         int client_socket = accept(server->server_socket, (struct sockaddr*)&addr, &len);
         if (client_socket >= 0) {
-            add_client(server, client_socket, addr, game_manager);
+            add_client(codenames, client_socket, addr);
         }
     }
 
@@ -123,37 +126,37 @@ void tcp_server_tick(TcpServer* server, GameManager* game_manager) {
         if (client->socket > 0 && FD_ISSET(client->socket, &readfds)) {
             int bytes = recv(client->socket, buffer, sizeof(buffer) - 1, 0);
             if (bytes <= 0) {
-                remove_client(server, client);
+                remove_client(codenames, client);
             } else {
                 buffer[bytes] = '\0';
-                tcp_on_client_message(server, client, buffer);
+                tcp_on_client_message(codenames, client, buffer);
             }
         }
     }
 }
 
-int tcp_send_to_client(TcpServer* server, int client_id, const char* message) {
+// Fonctions utilisables 
+
+int tcp_send_to_client(Codenames* codenames, int client_id, const char* message) {
     for (int i = 0; i < TCP_MAX_CLIENTS; i++) {
-        if (server->clients[i].id == client_id) {
-            return send(server->clients[i].socket, message, strlen(message), 0);
+        if (codenames->tcp->clients[i].id == client_id) {
+            return send(codenames->tcp->clients[i].socket, message, strlen(message), 0);
         }
     }
     return -1;
 }
 
-/* Callbacks par défaut */
-
-void tcp_on_client_connect(TcpServer* server, TcpClient* client, GameManager* game_manager) {
+void tcp_on_client_connect(Codenames* codenames, TcpClient* client) {
     printf("Client connected: ID=%d IP=%s\n",
            client->id, inet_ntoa(client->addr.sin_addr));
 
-    tcp_send_to_client(server, client->id, "Welcome to the server!\n");
+    tcp_send_to_client(codenames, client->id, "Welcome to the server!\n");
 }
 
-void tcp_on_client_disconnect(TcpServer* server, TcpClient* client) {
+void tcp_on_client_disconnect(Codenames* codenames, TcpClient* client) {
     printf("Client disconnected: ID=%d\n", client->id);
 }
 
-void tcp_on_client_message(TcpServer* server, TcpClient* client, const char* message) {
+void tcp_on_client_message(Codenames* codenames, TcpClient* client, const char* message) {
     printf("Client %d says: %s\n", client->id, message);
 }

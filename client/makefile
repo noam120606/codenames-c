@@ -6,7 +6,6 @@ SDL_LIB = $(SDL_BUILD)/build/.libs
 # Executable principal
 client: index.o tcp.o
 	gcc index.o tcp.o -o client -I./lib -I$(SDL_INCLUDE) -L$(SDL_LIB) -lSDL2 -lSDL2main -Wl,-rpath,$(SDL_LIB)
-	make clean
 
 # Bulding objets
 index.o:
@@ -17,3 +16,4 @@ tcp.o:
 # Clean objects
 clean:
 	rm -f *.o
+	rm -rf client
