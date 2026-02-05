@@ -3,6 +3,7 @@
 #include <SDL2/SDL.h>
 #include "../SDL2/include/SDL2/SDL_image.h"
 #include "../SDL2/include/SDL2/SDL_ttf.h"
+
 #include "../lib/tcp.h"
 #include "../lib/sdl.h"
 
@@ -47,6 +48,8 @@ SDL_Context init_sdl() {
         return context;
     }   
 
+    printf("All initialized successfully!\n");
+
     return context;
 }
 
@@ -69,9 +72,13 @@ int display_image(SDL_Renderer* renderer, SDL_Surface* image) {
         printf("Erreur de création de la texture : %s\n", SDL_GetError());
         return -1;
     }
+    int w, h;
+    SDL_QueryTexture(texture, NULL, NULL, &w, &h);
 
     SDL_RenderCopy(renderer, texture, NULL, NULL);
     SDL_DestroyTexture(texture);
+    SDL_RenderPresent(renderer);
+    
     return 0;
 }
 
