@@ -35,6 +35,8 @@ int main(){
     SDL_Event e;
     int running = 1;
 
+    SDL_Surface* img_quagmire = load_image("assets/quagmire.png");
+
     while (running && tick_tcp(sock) == 0) {
 
         while (SDL_PollEvent(&e)) {
@@ -43,8 +45,12 @@ int main(){
             }
         }
 
+        display_image(context.renderer, img_quagmire);
+
         SDL_Delay(16); 
     }
+
+    free_image(img_quagmire);
 
     printf("Exiting...\n");
 
