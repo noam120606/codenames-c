@@ -7,12 +7,14 @@
 #include "../lib/sdl.h"
 
 SDL_Context init_sdl() {
+
+    SDL_Context context;
+
     // Initialize SDL
     printf("Initializing SDL...\n");
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         printf("SDL_Init Error: %s\n", SDL_GetError());
-        close_tcp(sock);
-        return EXIT_FAILURE;
+        return context;
     }
 
     // Create SDL window
@@ -21,35 +23,29 @@ SDL_Context init_sdl() {
     if (win == NULL) {
         printf("SDL_CreateWindow Error: %s\n", SDL_GetError());
         SDL_Quit();
-        close_tcp(sock);
-        return EXIT_FAILURE;
+        return context;
     }
+
+    context.window = win;
 
     // Create SDL renderer
     printf("Creating SDL renderer...\n");
     SDL_Renderer* renderer = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
     if (renderer == NULL) {
         printf("SDL_CreateRenderer Error: %s\n", SDL_GetError());
-        SDL_DestroyWindow(win);
         SDL_Quit();
-        close_tcp(sock);
-        return EXIT_FAILURE;
+        return context;
     }
+
+    context.renderer = renderer;
 
     // Initialize IMG
     printf("Initializing IMG...\n");
     if (!(IMG_Init(IMG_INIT_JPG) & IMG_INIT_JPG)) {
         printf("IMG_Init Error: %s\n", IMG_GetError());
-        SDL_DestroyRenderer(renderer);
-        SDL_DestroyWindow(win);
-        SDL_Quit();#include <SDL2/SDL.h>
-        close_tcp(sock);
-        return EXIT_FAILURE;
+        SDL_Quit();
+        return context;
     }   
-
-    SDL_Context context;
-    context.window = win;
-    context.renderer = renderer;
 
     return context;
 }
