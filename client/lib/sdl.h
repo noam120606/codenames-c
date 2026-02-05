@@ -10,6 +10,7 @@ typedef struct {
     SDL_Renderer* renderer;
 } SDL_Context;
 
+// Fonctions
 SDL_Context init_sdl();
 SDL_Surface* load_image(const char* path);
 int display_image(SDL_Renderer* renderer, SDL_Surface* image);
