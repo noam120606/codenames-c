@@ -53,38 +53,45 @@ SDL_Context init_sdl() {
     return context;
 }
 
-SDL_Surface* load_image(const char* path) {
+SDL_Texture* load_image(SDL_Renderer* renderer, const char* path) {
     SDL_Surface* image = IMG_Load(path);
     if (!image) {
         printf("Erreur de chargement de l'image : %s\n", IMG_GetError());
         return NULL;
     }
-    return image;
-}
-
-int display_image(SDL_Renderer* renderer, SDL_Surface* image) {
-    if (!renderer || !image) {
-        return -1;
-    }
-
     SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, image);
     if (!texture) {
         printf("Erreur de création de la texture : %s\n", SDL_GetError());
+        return NULL;
+    }
+    return texture;
+}
+
+int display_image(SDL_Renderer* renderer, SDL_Texture* texture, int x, int y, int w, int h) {
+    if (!renderer || !texture) {
         return -1;
     }
-    int w, h;
-    SDL_QueryTexture(texture, NULL, NULL, &w, &h);
 
-    SDL_RenderCopy(renderer, texture, NULL, NULL);
-    SDL_DestroyTexture(texture);
-    SDL_RenderPresent(renderer);
-    
+    int tex_w = 0, tex_h = 0;
+    if (SDL_QueryTexture(texture, NULL, NULL, &tex_w, &tex_h) != 0) {
+        printf("SDL_QueryTexture Error: %s\n", SDL_GetError());
+        return -1;
+    }
+
+    SDL_Rect dstrect;
+    dstrect.x = x;
+    dstrect.y = y;
+    dstrect.w = (w > 0) ? w : tex_w;
+    dstrect.h = (h > 0) ? h : tex_h;
+
+    SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+
     return 0;
 }
 
-void free_image(SDL_Surface* image) {
-    if (image) {
-        SDL_FreeSurface(image);
+void free_image(SDL_Texture* texture) {
+    if (texture) {
+        SDL_DestroyTexture(texture);
     }
 }
 

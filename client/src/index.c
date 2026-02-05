@@ -5,6 +5,7 @@
 #include "../SDL2/include/SDL2/SDL_ttf.h"
 #include "../lib/tcp.h"
 #include "../lib/sdl.h"
+#include "../lib/menu.h"
 
 const int PORT = 4242;
 const char* SERVER_IP = "127.0.0.1";
@@ -30,32 +31,38 @@ int main(){
 
     printf("Connected to server at %s:%d\n", SERVER_IP, PORT);
 
-    send_tcp(sock, "Hello from client!");
+    menu_init(context);
 
     SDL_Event e;
     int running = 1;
 
-    SDL_Surface* img_quagmire = load_image("assets/quagmire.png");
-
     while (running && tick_tcp(sock) == 0) {
 
+        // Gestion events
         while (SDL_PollEvent(&e)) {
             if (e.type == SDL_QUIT) {
                 running = 0;
             }
         }
 
-        display_image(context.renderer, img_quagmire);
+        // Pré Rendu
+        SDL_SetRenderDrawColor(context.renderer, 0, 0, 0, 255);
+        SDL_RenderClear(context.renderer);
 
-        SDL_Delay(16); 
+        // Rendu et logique d'affichage
+        int action = menu_display(context);
+
+        // Post Rendu
+        SDL_RenderPresent(context.renderer);
+        SDL_Delay(16);
     }
-
-    free_image(img_quagmire);
 
     printf("Exiting...\n");
 
     close_tcp(sock);
+    menu_free(context);
     destroy_context(context);
+
     return EXIT_SUCCESS;
 } 
 
