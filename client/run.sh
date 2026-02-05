@@ -1,2 +1,3 @@
+make clean
 make
-./client
+./build/client
