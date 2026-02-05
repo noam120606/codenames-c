@@ -6,7 +6,7 @@
 
 typedef struct {
     TcpServer* tcp;
-    Lobby* lobby;
+    LobbyManager* lobby;
 } Codenames;
 
 #endif // CODENAMES_H
