@@ -1,19 +1,26 @@
-# Paths
-SDL_BUILD = ./SDL/build
-SDL_INCLUDE = $(SDL_BUILD)/include
-SDL_LIB = $(SDL_BUILD)/build/.libs
+# Build directory
+DIR = build
+# Create build directory if not exists
+$(shell mkdir -p $(DIR))
 
-# Executable principal
-client: index.o tcp.o
-	gcc index.o tcp.o -o client -I./lib -I$(SDL_INCLUDE) -L$(SDL_LIB) -lSDL2 -lSDL2main -Wl,-rpath,$(SDL_LIB)
+SDL_INCLUDE = ./SDL2/include/SDL2
+SDL_LIB = ./SDL2/lib
 
-# Bulding objets
-index.o:
-	gcc -c src/index.c -o index.o -I./lib -I$(SDL_INCLUDE)
-tcp.o:
-	gcc -c src/tcp.c -o tcp.o -I./lib -I$(SDL_INCLUDE)
+CFLAGS = -I./lib -I$(SDL_INCLUDE)
+LDFLAGS = -L$(SDL_LIB) -Wl,-rpath,$(SDL_LIB)
+LDLIBS = -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2main
 
-# Clean objects
+$(DIR)/client: $(DIR)/index.o $(DIR)/tcp.o
+	gcc $^ -o $@ $(LDFLAGS) $(LDLIBS)
+
+# Building objects
+$(DIR)/index.o:
+	gcc -c src/index.c -o $@ $(CFLAGS)
+
+$(DIR)/tcp.o:
+	gcc -c src/tcp.c -o $@ $(CFLAGS)
+
 clean:
-	rm -f *.o
-	rm -rf client
+	rm -rf build
+
+
