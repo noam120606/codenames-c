@@ -12,9 +12,9 @@ typedef struct {
 
 // Fonctions
 SDL_Context init_sdl();
-SDL_Surface* load_image(const char* path);
-int display_image(SDL_Renderer* renderer, SDL_Surface* image);
-void free_image(SDL_Surface* image);
+SDL_Texture* load_image(SDL_Renderer* renderer, const char* path);
+int display_image(SDL_Renderer* renderer, SDL_Texture* texture, int x, int y, int w, int h);
+void free_image(SDL_Texture* texture);
 void destroy_context(SDL_Context context);
 
 #endif // SDL_H

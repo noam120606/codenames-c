@@ -12,7 +12,7 @@ LDFLAGS = -L$(SDL_LIB) -Wl,-rpath,$(SDL_LIB)
 LDLIBS = -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2main
 
 
-$(DIR)/client: $(DIR)/index.o $(DIR)/tcp.o $(DIR)/sdl.o
+$(DIR)/client: $(DIR)/index.o $(DIR)/tcp.o $(DIR)/sdl.o $(DIR)/menu.o
 	gcc $^ -o $@ $(LDFLAGS) $(LDLIBS)
 $(DIR)/index.o:
 	gcc -c src/index.c -o $@ $(CFLAGS)
@@ -20,6 +20,8 @@ $(DIR)/tcp.o:
 	gcc -c src/tcp.c -o $@ $(CFLAGS)
 $(DIR)/sdl.o:
 	gcc -c src/sdl.c -o $@ $(CFLAGS)
+$(DIR)/menu.o:
+	gcc -c src/menu.c -o $@ $(CFLAGS)
 
 clean:
 	rm -rf build
