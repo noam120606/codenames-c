@@ -32,5 +32,4 @@ $(DIR)/utils.o:
 
 # Clean objects
 clean:
-	rm -f $(DIR)/*.o
-	rm -rf $(DIR)/server
+	rm -rf $(DIR)

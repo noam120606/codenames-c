@@ -25,6 +25,7 @@ typedef struct {
 } Game;
 
 // Fonctions
+int init_game_manager(void);
 char** fetchWords();
 Word* generateWords(int count);
 void shuffleWords(Word* words, int count);
