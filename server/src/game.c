@@ -8,21 +8,21 @@
 
 int WORDCOUNT = 0;
 
-/* initialise WORDCOUNT en comptant les mots dans storage/wordlist.txt.
-   retourne 0 si OK, -1 en cas d'erreur */
+/* initialise WORDCOUNT en comptant les mots dans assets/wordlist.txt.
+   retourne EXIT_SUCCESS si OK, EXIT_FAILURE en cas d'erreur */
 int init_game_manager(void) {
-    int n = count_words("storage/wordlist.txt");
+    int n = count_words("assets/wordlist.txt");
     if (n < 0) {
-        fprintf(stderr, "game_manager: failed to count words in storage/wordlist.txt\n");
-        return -1;
+        fprintf(stderr, "game_manager: failed to count words in assets/wordlist.txt\n");
+        return EXIT_FAILURE;
     }
     WORDCOUNT = n;
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 char** fetchWords() { // Lit le fichier wordlist.txt et ordonne dans une liste dont l'adresse est renvoyée
     
-    FILE* file = fopen("storage/wordlist.txt", "r");
+    FILE* file = fopen("assets/wordlist.txt", "r");
     if (!file) {
         perror("Failed to open words file");
         return NULL;

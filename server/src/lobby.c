@@ -28,7 +28,9 @@ Lobby* create_lobby(LobbyManager* manager) {
     lobby->status = LB_STATUS_WAITING;
     lobby->nb_players = 0;
     lobby->game = NULL;
+
     manager->lobbies[manager->nb_lobbies++] = lobby;
+    
     return lobby;
 }
 

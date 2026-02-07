@@ -53,12 +53,19 @@ int main(int argc, char* argv[]){
 
     printf("Connected to server at %s:%d\n", ip, port);
 
-    menu_init(context);
+    int menu_loading_fails = menu_init(context);
+    if (menu_loading_fails > 0) {
+        printf("Failed to load %d menu resource(s)\n", menu_loading_fails);
+        close_tcp(sock);
+        menu_free(context);
+        destroy_context(context);
+        return EXIT_FAILURE;
+    }
 
     SDL_Event e;
     int running = 1;
 
-    while (running && tick_tcp(sock) == 0) {
+    while (running && tick_tcp(sock) == EXIT_SUCCESS) {
 
         // Gestion events
         while (SDL_PollEvent(&e)) {
@@ -72,11 +79,12 @@ int main(int argc, char* argv[]){
         SDL_RenderClear(context.renderer);
 
         // Rendu et logique d'affichage
-        int action = menu_display(context);
+        MenuAction action = menu_display(context);
+        if (action == MENU_ACTION_QUIT || action == MENU_ERROR) running = 0;
 
         // Post Rendu
         SDL_RenderPresent(context.renderer);
-        SDL_Delay(16);
+        SDL_Delay(16); // environ 60 rendus par seconde
     }
 
     printf("Exiting...\n");
