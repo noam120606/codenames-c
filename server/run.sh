@@ -1,3 +1,5 @@
+PORT=4242
+
 make clean
 make
-./build/server
+./build/server -p $PORT

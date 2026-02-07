@@ -1,16 +1,33 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <getopt.h>
 #include "../lib/tcp.h"
 #include "../lib/game.h"
 #include "../lib/lobby.h"
 #include "../lib/codenames.h"
 
-const int PORT = 4242;
-
 int main(int argc, char *argv[]) {
 
-    printf("Starting the game server...\n");
+    int port = 0;
+    // Parse command line arguments
+    int opt;
+    while ((opt = getopt(argc, argv, "p:")) != -1) {
+        switch (opt) {
+            case 'p':
+                port = atoi(optarg);
+                break;
+            default:
+                fprintf(stderr, "Usage: %s [-p port]\n", argv[0]);
+                return EXIT_FAILURE;
+        }
+    }
+    if (port == 0) {
+        fprintf(stderr, "Port number is required. Usage: %s [-p port]\n", argv[0]);
+        return EXIT_FAILURE;
+    }
+
+    printf("Starting the game server on port %d...\n", port);
 
     // Initialisations diverses
     srand(time(NULL));
@@ -22,7 +39,7 @@ int main(int argc, char *argv[]) {
         return EXIT_FAILURE;
     }
 
-    codenames->tcp = tcp_server_create(PORT);
+    codenames->tcp = tcp_server_create(port);
     if (codenames->tcp == NULL) {
         free(codenames);
         perror("Failed to create TCP server");

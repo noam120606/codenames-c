@@ -11,7 +11,7 @@
 int main(int argc, char* argv[]){
 
     char ip[16] = "127.0.0.1";
-    int port = 4242;
+    int port = 0;
 
     // Parse command line arguments
     int opt;
@@ -29,13 +29,17 @@ int main(int argc, char* argv[]){
                 return EXIT_FAILURE;
         }
     }
+    if (port == 0) {
+        fprintf(stderr, "Port number is required. Usage: %s [-s server_ip] [-p port]\n", argv[0]);
+        return EXIT_FAILURE;
+    }
 
     printf("Starting Codenames Client...\n");
     
     // Initialize TCP connection to server
     int sock = init_tcp(ip, port);
     if (sock < 0) {
-        printf("Failed to connect to the server\n");
+        printf("Failed to connect to the server at %s:%d\n", ip, port);
         return EXIT_FAILURE;
     }
 
