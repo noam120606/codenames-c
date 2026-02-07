@@ -69,13 +69,13 @@ SDL_Texture* load_image(SDL_Renderer* renderer, const char* path) {
 
 int display_image(SDL_Renderer* renderer, SDL_Texture* texture, int x, int y, int w, int h) {
     if (!renderer || !texture) {
-        return -1;
+        return EXIT_FAILURE;
     }
 
     int tex_w = 0, tex_h = 0;
     if (SDL_QueryTexture(texture, NULL, NULL, &tex_w, &tex_h) != 0) {
         printf("SDL_QueryTexture Error: %s\n", SDL_GetError());
-        return -1;
+        return EXIT_FAILURE;
     }
 
     SDL_Rect dstrect;
@@ -86,7 +86,7 @@ int display_image(SDL_Renderer* renderer, SDL_Texture* texture, int x, int y, in
 
     SDL_RenderCopy(renderer, texture, NULL, &dstrect);
 
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 void free_image(SDL_Texture* texture) {

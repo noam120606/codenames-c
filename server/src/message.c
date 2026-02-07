@@ -5,15 +5,15 @@
 #include "../lib/codenames.h"
 #include "../lib/message.h"
 
-int fetch_header(const char* message) {
+MessageType fetch_header(const char* message) {
     // Extract the header from the message
-    int header;
-    sscanf(message, "%d", &header);
+    MessageType header;
+    sscanf(message, "%d", (int*)&header);
     return header;
 }
 
-int on_message(Codenames* codenames, const char* message) {
-    int header = fetch_header(message);
+int on_message(Codenames* codenames, TcpClient* client, const char* message) {
+    MessageType header = fetch_header(message);
     switch (header) {
         case MSG_CREATELOBBY:
             // Handle create lobby
@@ -28,5 +28,5 @@ int on_message(Codenames* codenames, const char* message) {
             // Unknown message
             break;
     }
-    return 0;
+    return EXIT_SUCCESS;
 }

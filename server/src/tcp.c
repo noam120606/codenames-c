@@ -160,5 +160,5 @@ void tcp_on_client_disconnect(Codenames* codenames, TcpClient* client) {
 
 void tcp_on_client_message(Codenames* codenames, TcpClient* client, const char* message) {
     printf("Client %d says: %s\n", client->id, message);
-    on_message(codenames, message);
+    on_message(codenames, client, message);
 }

@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 #include <sys/select.h>
+#include "../lib/tcp.h"
 
 #define BUFFER_SIZE 1024
 char buffer[BUFFER_SIZE];
@@ -13,7 +14,7 @@ int init_tcp(const char* server_ip, int port) {
     int sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock < 0) {
         perror("socket");
-        return EXIT_FAILURE;
+        return -1;
     }
 
     struct sockaddr_in server_addr = {0};
@@ -23,13 +24,13 @@ int init_tcp(const char* server_ip, int port) {
     if (inet_pton(AF_INET, server_ip, &server_addr.sin_addr) <= 0) {
         perror("inet_pton");
         close(sock);
-        return EXIT_FAILURE;
+        return -1;
     }
 
     if (connect(sock, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0) {
         perror("connect");
         close(sock);
-        return EXIT_FAILURE;
+        return -1;
     }
 
     return sock;
