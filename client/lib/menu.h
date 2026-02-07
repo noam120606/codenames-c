@@ -7,9 +7,17 @@
 
 #include "../lib/sdl.h"
 
+/**
+ * Actions possibles dans le menu principal.
+ * @param MENU_ERROR une erreur est survenue.
+ * @param MENU_ACTION_NONE aucune action choisie.
+ * @param MENU_ACTION_QUIT quitter le jeu.
+ * @param MENU_ACTION_CREATE_LOBBY créer un lobby.
+ * @param MENU_ACTION_JOIN_LOBBY rejoindre un lobby.
+ */
 typedef enum MenuAction {
     MENU_ERROR = -1,
-    MENU_ACTION_NONE,
+    MENU_ACTION_NONE = 0,
     MENU_ACTION_QUIT,
     MENU_ACTION_CREATE_LOBBY,
     MENU_ACTION_JOIN_LOBBY
