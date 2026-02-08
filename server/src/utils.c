@@ -3,6 +3,7 @@
 #include <time.h>
 #include <ctype.h>
 #include <string.h>
+#include "../lib/utils.h"
 
 int randint(int min, int max) {
     // Retourne un entier aléatoire entre min et max inclus
@@ -42,4 +43,24 @@ int count_words(const char *filepath) {
 
     fclose(f);
     return count;
+}
+
+int starts_with(const char *str, const char *prefix) {
+    if (!str || !prefix) return 0;
+    size_t len_prefix = strlen(prefix);
+    return strncmp(str, prefix, len_prefix) == 0;
+}
+
+int number_length(int n) {
+    if (n == 0) return 1;
+    int length = 0;
+    if (n < 0) {
+        length++; // signe negatif a ajouter
+        n = -n; // rendre n positif pour le calcul de la longueur des chiffres
+    }
+    while (n > 0) {
+        n /= 10;
+        length++;
+    }
+    return length;
 }

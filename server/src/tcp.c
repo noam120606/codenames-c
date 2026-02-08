@@ -8,6 +8,7 @@
 
 #include "../lib/tcp.h"
 #include "../lib/message.h"
+#include "../lib/utils.h"
 
 static void set_nonblocking(int socket) {
     fcntl(socket, F_SETFL, O_NONBLOCK);
@@ -148,17 +149,24 @@ int tcp_send_to_client(Codenames* codenames, int client_id, const char* message)
 }
 
 void tcp_on_client_connect(Codenames* codenames, TcpClient* client) {
-    printf("Client connected: ID=%d IP=%s\n",
-           client->id, inet_ntoa(client->addr.sin_addr));
-
-    tcp_send_to_client(codenames, client->id, "Welcome to the server!\n");
+    // printf("Client connected: ID=%d IP=%s\n", client->id, inet_ntoa(client->addr.sin_addr));
+    // tcp_send_to_client(codenames, client->id, "Welcome to the server!\n");
 }
 
 void tcp_on_client_disconnect(Codenames* codenames, TcpClient* client) {
-    printf("Client disconnected: ID=%d\n", client->id);
+    // printf("Client disconnected: ID=%d\n", client->id);
 }
 
-void tcp_on_client_message(Codenames* codenames, TcpClient* client, const char* message) {
-    printf("Client %d says: %s\n", client->id, message);
-    on_message(codenames, client, message);
+void tcp_on_client_message(Codenames* codenames, TcpClient* client, char* message) {
+
+    // Verifie que le message est bien envoyé par le client et pas un navigateur ou autre
+    if (!starts_with(message, "CODENAMES ")) {
+        tcp_send_to_client(codenames, client->id, "ERROR: Methode de connexion invalide\n");
+        remove_client(codenames, client);
+        return;
+    }
+
+    char* payload = message + strlen("CODENAMES ");
+
+    on_message(codenames, client, payload);
 }

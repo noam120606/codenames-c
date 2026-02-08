@@ -65,6 +65,8 @@ int main(int argc, char* argv[]){
     SDL_Event e;
     int running = 1;
 
+    send_tcp(sock, "0 test message from client\n");
+
     while (running && tick_tcp(sock) == EXIT_SUCCESS) {
 
         // Gestion events

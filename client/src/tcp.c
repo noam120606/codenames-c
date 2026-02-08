@@ -74,9 +74,19 @@ int tick_tcp(int sock) {
 
 }
 
-int send_tcp(int sock, const char* message) {
-    // Flag dontwait pour ne pas bloquer si le buffer est plein
-    return send(sock, message, strlen(message), MSG_DONTWAIT);
+int send_tcp(int sock, const char* payload) {
+    
+    char* message = malloc(strlen("CODENAMES ") + strlen(payload) + 1);
+    if (!message) {
+        perror("malloc");
+        return -1;
+    }
+
+    sprintf(message, "CODENAMES %s", payload);
+    int result = send(sock, message, strlen(message), MSG_DONTWAIT);
+    free((void*)message);
+
+    return result;
 }
 
 int close_tcp(int sock) {
