@@ -4,28 +4,31 @@
 #include "../lib/tcp.h"
 #include "../lib/codenames.h"
 #include "../lib/message.h"
+#include "../lib/utils.h"
 
-MessageType fetch_header(const char* message) {
-    // Extract the header from the message
+MessageType fetch_header(char* message) {
     MessageType header;
-    sscanf(message, "%d", (int*)&header);
+    if (!sscanf(message, "%d", (int*)&header)) return MSG_UNKNOWN;
     return header;
 }
 
-int on_message(Codenames* codenames, TcpClient* client, const char* message) {
+int on_message(Codenames* codenames, TcpClient* client, char* message) {
     MessageType header = fetch_header(message);
+    message += number_length((int)header) + 1; // Skip header et espace
+
     switch (header) {
+        case MSG_UNKNOWN: 
+            printf("Received unknown message header from client %d: \"%s\"\n", client->id, message);
+            break;
         case MSG_CREATELOBBY:
             // Handle create lobby
+            printf("%s", message);
             break;
         case MSG_JOINLOBBY:
             // Handle join lobby
             break;
         case MSG_STARTGAME:
             // Handle start game
-            break;
-        default:
-            // Unknown message
             break;
     }
     return EXIT_SUCCESS;

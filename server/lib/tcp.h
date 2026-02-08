@@ -68,6 +68,6 @@ int tcp_send_to_client(Codenames* codenames, int client_id, const char* message)
 
 void tcp_on_client_connect(Codenames* codenames, TcpClient* client);
 void tcp_on_client_disconnect(Codenames* codenames, TcpClient* client);
-void tcp_on_client_message(Codenames* codenames, TcpClient* client, const char* message);
+void tcp_on_client_message(Codenames* codenames, TcpClient* client, char* message);
 
 #endif // TCP_H

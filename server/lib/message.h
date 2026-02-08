@@ -8,6 +8,7 @@
  * @param MSG_STARTGAME message de démarrage de partie. 
  */
 typedef enum MessageType {
+    MSG_UNKNOWN = -1,
     MSG_CREATELOBBY,
     MSG_JOINLOBBY,
     MSG_STARTGAME
@@ -21,6 +22,6 @@ typedef enum MessageType {
  * @param client Client TCP ayant envoyé le message.
  * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur.
  */
-int on_message(Codenames* codenames, TcpClient* client, const char* message);
+int on_message(Codenames* codenames, TcpClient* client, char* message);
 
 #endif // MESSAGE_H
