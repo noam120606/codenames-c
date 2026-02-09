@@ -7,6 +7,13 @@
 #include "../lib/tcp.h"
 #include "../lib/sdl.h"
 #include "../lib/menu.h"
+#include "../lib/button.h"
+
+// Bouton test
+#define BTN_TEST 1
+void on_test_button_click(SDL_Context context, int button_id) {
+    printf("Bouton de test cliqué! (ID: %d)\n", button_id);
+}
 
 int main(int argc, char* argv[]){
 
@@ -62,6 +69,15 @@ int main(int argc, char* argv[]){
         return EXIT_FAILURE;
     }
 
+    // Initialiser le système de boutons
+    buttons_init();
+    
+    // Créer le bouton test
+    SDL_Texture* btn_texture = load_image(context.renderer, "assets/button.png");
+    if (btn_texture) {
+        button_create(BTN_TEST, 100, 100, 200, 50, btn_texture, on_test_button_click);
+    }
+
     SDL_Event e;
     int running = 1;
 
@@ -69,11 +85,13 @@ int main(int argc, char* argv[]){
 
     while (running && tick_tcp(sock) == EXIT_SUCCESS) {
 
-        // Gestion events
+        // Gestion events - BEAUCOUP PLUS SIMPLE !
         while (SDL_PollEvent(&e)) {
             if (e.type == SDL_QUIT) {
                 running = 0;
             }
+            // Les boutons gère tout en interne
+            buttons_handle_event(context, &e);
         }
 
         // Pré Rendu
@@ -84,6 +102,9 @@ int main(int argc, char* argv[]){
         MenuAction action = menu_display(context);
         if (action == MENU_ACTION_QUIT || action == MENU_ERROR) running = 0;
 
+        // Afficher les boutons
+        buttons_display(context.renderer);
+
         // Post Rendu
         SDL_RenderPresent(context.renderer);
         SDL_Delay(16); // environ 60 rendus par seconde
@@ -93,8 +114,8 @@ int main(int argc, char* argv[]){
 
     close_tcp(sock);
     menu_free(context);
+    buttons_free();
     destroy_context(context);
 
     return EXIT_SUCCESS;
-} 
-
+}

@@ -7,6 +7,8 @@
 #include "../lib/tcp.h"
 #include "../lib/sdl.h"
 
+
+
 SDL_Context init_sdl() {
 
     SDL_Context context;
