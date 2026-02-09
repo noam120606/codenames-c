@@ -1,0 +1,73 @@
+#ifndef BUTTON_H
+#define BUTTON_H
+
+#include <SDL2/SDL.h>
+#include "../lib/sdl.h"
+
+/**
+ * Typedef pour la fonction callback d'un bouton.
+ * @param button_id L'ID du bouton qui a été cliqué.
+ */
+typedef void (*ButtonCallback)(SDL_Context context, int button_id);
+
+/**
+ * Structure représentant un bouton avec callback.
+ * @param id Identifiant unique du bouton.
+ * @param rect Rectangle définissant la position et la taille.
+ * @param texture Texture du bouton.
+ * @param is_hovered Indique si le bouton est survolé.
+ * @param callback Fonction à exécuter lors du clic.
+ */
+typedef struct {
+    int id;
+    SDL_Rect rect;
+    SDL_Texture* texture;
+    int is_hovered;
+    int hidden;
+    ButtonCallback callback;
+} Button;
+
+/**
+ * Initialise le système de boutons.
+ * Doit être appelé une fois au démarrage.
+ */
+void buttons_init();
+
+/**
+ * Crée et ajoute un bouton au système.
+ * @param id Identifiant unique du bouton.
+ * @param x Position x du bouton.
+ * @param y Position y du bouton.
+ * @param w Largeur du bouton.
+ * @param h Hauteur du bouton.
+ * @param texture Texture du bouton.
+ * @param callback Fonction à exécuter lors du clic (peut être NULL).
+ * @return Pointeur vers le bouton créé, ou NULL en cas d'erreur.
+ */
+Button* button_create(int id, int x, int y, int w, int h, SDL_Texture* texture, ButtonCallback callback);
+
+/**
+ * Traite un événement SDL pour les boutons.
+ * @param event L'événement SDL à traiter.
+ */
+void buttons_handle_event(SDL_Context context, SDL_Event* event);
+
+/**
+ * Affiche tous les boutons.
+ * @param renderer Le renderer SDL.
+ */
+void buttons_display(SDL_Renderer* renderer);
+
+/**
+ * Récupère un bouton par son ID.
+ * @param id L'ID du bouton.
+ * @return Pointeur vers le bouton, ou NULL si non trouvé.
+ */
+Button* button_get(int id);
+
+/**
+ * Libère tous les boutons et le système.
+ */
+void buttons_free();
+
+#endif // BUTTON_H
