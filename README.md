@@ -12,32 +12,14 @@ Il a été initié en groupe de 4 dans le cadre d'un projet de groupe universita
 
 Après avoir cloné le projet, il faut executer le script `./setup.sh` pour installer les differentes librairies requises
 
-## TODO List
-
-### Client
-- Assets visuels
-- Interfaces (menus, jeu, options)
-- ~~Connexion TCP vers le serveur~~
-
-### Serveur
-- ~~Squelette de gestion d'une partie~~
-- ~~Serveur TCP~~
-- Parser de requetes TCP et action associé
-- Gestion du mot noir
-- Choix definitif du format de donnée pour la transmission du plateau
-- Gestion des connexions client, lobby
-
 ## Transmition client/serveur
 
 Tunnel TCP initié par le client.
 
 Format de donnée :
 ```
-HEADER:TYPE:PAYLOAD
+CODENAMES HEADER [...Données]
 ```
 
-Headers : `JOIN, LEAVE, CHAT, REVEAL, HINT`<br/>
-Payload : `Données styucturé (json), un message textuel ou rien, en fonction du type`
-
-
-LOGIN {"username":"noam"}
+Headers : entier<br/>
+Données : `Variables séparé par des espaces`
