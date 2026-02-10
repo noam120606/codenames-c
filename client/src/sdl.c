@@ -22,7 +22,8 @@ SDL_Context init_sdl() {
 
     // Create SDL window
     printf("Creating SDL window...\n");
-    SDL_Window* win = SDL_CreateWindow("Codenames Client", 100, 100, 800, 600, SDL_WINDOW_SHOWN);
+    // SDL_Window* win = SDL_CreateWindow("Codenames Client", 100, 100, 800, 600, SDL_WINDOW_SHOWN);
+    SDL_Window* win = SDL_CreateWindow("", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_FULLSCREEN | SDL_WINDOW_SHOWN);
     if (win == NULL) {
         printf("SDL_CreateWindow Error: %s\n", SDL_GetError());
         SDL_Quit();
@@ -50,6 +51,8 @@ SDL_Context init_sdl() {
         return context;
     }   
 
+    context.clock = 0;
+
     printf("All initialized successfully!\n");
 
     return context;
@@ -64,8 +67,10 @@ SDL_Texture* load_image(SDL_Renderer* renderer, const char* path) {
     SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, image);
     if (!texture) {
         printf("Erreur de création de la texture : %s\n", SDL_GetError());
+        SDL_FreeSurface(image);
         return NULL;
     }
+    SDL_FreeSurface(image);
     return texture;
 }
 

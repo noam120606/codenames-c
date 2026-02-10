@@ -5,14 +5,19 @@
 #include "../SDL2/include/SDL2/SDL_image.h"
 #include "../SDL2/include/SDL2/SDL_ttf.h"
 
+#define WIN_WIDTH 1920
+#define WIN_HEIGHT 1080
+
 /**
  * Contexte SDL contenant la fenêtre et le renderer.
  * @param window Fenêtre SDL.
  * @param renderer Renderer SDL associé à la fenêtre.
+ * @param clock Nombre de frame écoulé depuis le début de l'application.
  */
 typedef struct {
     SDL_Window* window;
     SDL_Renderer* renderer;
+    long clock;
 } SDL_Context;
 
 /**
