@@ -58,9 +58,9 @@ static int is_mouse_over_button(Button* button, int mouseX, int mouseY) {
             mouseY <= button->rect.y + button->rect.h);
 }
 
-void buttons_handle_event(SDL_Context context, SDL_Event* event) {
+ButtonReturn buttons_handle_event(SDL_Context context, SDL_Event* event) {
     if (!event) {
-        return;
+        return BTN_RET_NONE;
     }
 
     if (event->type == SDL_MOUSEMOTION) {
@@ -83,7 +83,7 @@ void buttons_handle_event(SDL_Context context, SDL_Event* event) {
         for (int i = 0; i < button_count; i++) {
             if (buttons[i] && !buttons[i]->hidden && is_mouse_over_button(buttons[i], mouseX, mouseY)) {
                 if (buttons[i]->callback) {
-                    buttons[i]->callback(context, buttons[i]->id);
+                    return buttons[i]->callback(context, buttons[i]->id);
                 }
             }
         }
@@ -97,19 +97,18 @@ void buttons_display(SDL_Renderer* renderer) {
 
     for (int i = 0; i < button_count; i++) {
         if (buttons[i] && !buttons[i]->hidden && buttons[i]->texture) {
-            // Si le bouton est survolé, afficher un contour
+
+            // Grandir le bouton au survol
+            SDL_Rect render_rect = buttons[i]->rect;
             if (buttons[i]->is_hovered) {
-                SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255); // Jaune
-                SDL_Rect outline = buttons[i]->rect;
-                outline.x -= 2;
-                outline.y -= 2;
-                outline.w += 4;
-                outline.h += 4;
-                SDL_RenderDrawRect(renderer, &outline);
+                render_rect.x -= 4;
+                render_rect.y -= 2;
+                render_rect.w += 8;
+                render_rect.h += 4;
             }
 
             // Afficher la texture
-            SDL_RenderCopy(renderer, buttons[i]->texture, NULL, &buttons[i]->rect);
+            SDL_RenderCopy(renderer, buttons[i]->texture, NULL, &render_rect);
         }
     }
 }
@@ -126,7 +125,7 @@ Button* button_get(int id) {
 void buttons_free() {
     for (int i = 0; i < button_count; i++) {
         if (buttons[i]) {
-            // Ne pas détruire la texture ici, c'est du ressort de l'appelant
+            SDL_DestroyTexture(buttons[i]->texture);
             free(buttons[i]);
             buttons[i] = NULL;
         }

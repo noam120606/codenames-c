@@ -11,8 +11,9 @@
 
 // Bouton test
 #define BTN_TEST 1
-void on_test_button_click(SDL_Context context, int button_id) {
+int on_test_button_click(SDL_Context context, int button_id) {
     printf("Bouton de test cliqué! (ID: %d)\n", button_id);
+    return 0;
 }
 
 int main(int argc, char* argv[]){
@@ -60,6 +61,9 @@ int main(int argc, char* argv[]){
 
     printf("Connected to server at %s:%d\n", ip, port);
 
+    // Initialiser le système de boutons
+    buttons_init();
+
     int menu_loading_fails = menu_init(context);
     if (menu_loading_fails > 0) {
         printf("Failed to load %d menu resource(s)\n", menu_loading_fails);
@@ -69,29 +73,22 @@ int main(int argc, char* argv[]){
         return EXIT_FAILURE;
     }
 
-    // Initialiser le système de boutons
-    buttons_init();
-    
-    // Créer le bouton test
-    SDL_Texture* btn_texture = load_image(context.renderer, "assets/button.png");
-    if (btn_texture) {
-        button_create(BTN_TEST, 100, 100, 200, 50, btn_texture, on_test_button_click);
-    }
-
     SDL_Event e;
     int running = 1;
 
-    send_tcp(sock, "0 test message from client\n");
-
     while (running && tick_tcp(sock) == EXIT_SUCCESS) {
 
-        // Gestion events - BEAUCOUP PLUS SIMPLE !
+        // Gestion events
         while (SDL_PollEvent(&e)) {
             if (e.type == SDL_QUIT) {
                 running = 0;
             }
-            // Les boutons gère tout en interne
-            buttons_handle_event(context, &e);
+            // Gestion bouttons
+            ButtonReturn result = buttons_handle_event(context, &e);
+            switch (result) {
+                case BTN_RET_QUIT: running = 0; break;
+                default: break;
+            }
         }
 
         // Pré Rendu
@@ -99,8 +96,7 @@ int main(int argc, char* argv[]){
         SDL_RenderClear(context.renderer);
 
         // Rendu et logique d'affichage
-        MenuAction action = menu_display(context);
-        if (action == MENU_ACTION_QUIT || action == MENU_ERROR) running = 0;
+        menu_display(context);
 
         // Afficher les boutons
         buttons_display(context.renderer);
@@ -108,6 +104,7 @@ int main(int argc, char* argv[]){
         // Post Rendu
         SDL_RenderPresent(context.renderer);
         SDL_Delay(16); // environ 60 rendus par seconde
+        context.clock++;
     }
 
     printf("Exiting...\n");
