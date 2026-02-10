@@ -8,6 +8,7 @@
 #include "../lib/sdl.h"
 #include "../lib/menu.h"
 #include "../lib/button.h"
+#include "../lib/background.h"
 
 // Bouton test
 #define BTN_TEST 1
@@ -68,8 +69,17 @@ int main(int argc, char* argv[]){
     if (menu_loading_fails > 0) {
         printf("Failed to load %d menu resource(s)\n", menu_loading_fails);
         close_tcp(sock);
-        menu_free(context);
+        menu_free();
         destroy_context(context);
+        return EXIT_FAILURE;
+    }
+    int background_loading_fails = init_background(context);
+    if (background_loading_fails > 0) {
+        printf("Failed to load %d background resource(s)\n", background_loading_fails);
+        close_tcp(sock);
+        menu_free();
+        destroy_context(context);
+        destroy_background();
         return EXIT_FAILURE;
     }
 
@@ -96,6 +106,7 @@ int main(int argc, char* argv[]){
         SDL_RenderClear(context.renderer);
 
         // Rendu et logique d'affichage
+        display_background(context);
         menu_display(context);
 
         // Afficher les boutons
@@ -110,7 +121,8 @@ int main(int argc, char* argv[]){
     printf("Exiting...\n");
 
     close_tcp(sock);
-    menu_free(context);
+    menu_free();
+    destroy_background();
     buttons_free();
     destroy_context(context);
 
