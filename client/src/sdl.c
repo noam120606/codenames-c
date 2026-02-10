@@ -88,8 +88,30 @@ int display_image(SDL_Renderer* renderer, SDL_Texture* texture, int x, int y, in
     SDL_Rect dstrect;
     dstrect.x = x;
     dstrect.y = y;
-    dstrect.w = (w > 0) ? w : tex_w;
-    dstrect.h = (h > 0) ? h : tex_h;
+
+    int final_w = w;
+    int final_h = h;
+
+    /* Si une seule dimension est fournie, calculer l'autre pour garder les proportions */
+    if (w > 0 && h <= 0) {
+        if (tex_w != 0) {
+            final_h = (int)((long long)w * tex_h / tex_w);
+        } else {
+            final_h = w; /* fallback */
+        }
+    } else if (h > 0 && w <= 0) {
+        if (tex_h != 0) {
+            final_w = (int)((long long)h * tex_w / tex_h);
+        } else {
+            final_w = h; /* fallback */
+        }
+    } else {
+        if (w <= 0) final_w = tex_w;
+        if (h <= 0) final_h = tex_h;
+    }
+
+    dstrect.w = (final_w > 0) ? final_w : tex_w;
+    dstrect.h = (final_h > 0) ? final_h : tex_h;
 
     SDL_RenderCopy(renderer, texture, NULL, &dstrect);
 

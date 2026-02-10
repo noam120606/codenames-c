@@ -44,6 +44,7 @@ SDL_Texture* load_image(SDL_Renderer* renderer, const char* path);
  * @param w La largeur de l'image (peut être `0` pour garder la valeur originale)
  * @param h La hauteur de l'image (peut être `0` pour garder la valeur originale)
  * @return `EXIT_SUCCESS` en cas de succès, `EXIT_FAILURE` en cas d'erreur
+ * Note : Si une seule dimension est fournie, l'autre sera calculée pour garder les proportions.
  */
 int display_image(SDL_Renderer* renderer, SDL_Texture* texture, int x, int y, int w, int h);
 

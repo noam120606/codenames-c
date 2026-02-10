@@ -22,9 +22,8 @@ void menu_display(SDL_Context context);
 
 /** 
  * Libère les ressources du menu.
- * @param context Contexte SDL.
  * @return `EXIT_SUCCESS` en cas de succès, `EXIT_FAILURE` en cas d'erreur.
  */
-int menu_free(SDL_Context context);
+int menu_free();
 
 #endif // MENU_H

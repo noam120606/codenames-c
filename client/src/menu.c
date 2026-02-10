@@ -48,21 +48,21 @@ int menu_init(SDL_Context context) {
     }
     
     if (img_btn_start) {
-        button_create(BTN_START, WIN_WIDTH/2-100, 500, 200, 50, img_btn_start, menu_button_click);
+        button_create(BTN_START, WIN_WIDTH/2-250, 550, 500, 125, img_btn_start, menu_button_click);
     }
     if (img_btn_quit) {
-        button_create(BTN_QUIT, WIN_WIDTH/2-100, 800, 200, 50, img_btn_quit, menu_button_click);
+        button_create(BTN_QUIT, WIN_WIDTH/2-150, 800, 300, 75, img_btn_quit, menu_button_click);
     }
 
     return loading_fails;
 }
 
 void menu_display(SDL_Context context) {
-    if (menu_logo) display_image(context.renderer, menu_logo, (WIN_WIDTH/2)-256, 128, 0, 0);
+    if (menu_logo) display_image(context.renderer, menu_logo, (WIN_WIDTH/2)-512, 128, 1024, 0);
     if (quagmire) display_image(context.renderer, quagmire, WIN_WIDTH-244, WIN_HEIGHT-357, 0, 0);
 }
 
-int menu_free(SDL_Context context) {
+int menu_free() {
     if (menu_logo) free_image(menu_logo);
     if (quagmire) free_image(quagmire);
 
