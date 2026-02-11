@@ -12,14 +12,17 @@ SDL_Texture* lens;
 
 int init_background(SDL_Context * context) {
     int loading_fails = 0;
+
+    // Force nearest neighbor scaling (préserver les détails lors de la réduction)
+    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "2"); // "0" = nearest, "1" = linear, "2" = best
     lens = load_image(context->renderer, "assets/img/background/lens.png");
     if (!lens) {
         printf("Failed to load lens image\n");
         loading_fails++;
     }
 
-    // Set opacity for the lens texture
-    SDL_SetTextureAlphaMod(lens, 128);
+    // Utiliser nearest neighbor pour éviter le lissage lors du rendu à plus petite taille
+    SDL_SetTextureScaleMode(lens, SDL_ScaleModeNearest);
 
     return loading_fails;
 }
@@ -35,7 +38,7 @@ void display_background(SDL_Context* context){
     const int SPACE_X = (int)(SYMBOL_W * SPACE_X_RATIO);
     const int SPACE_Y = (int)(SYMBOL_H * SPACE_Y_RATIO);
 
-    const float speed = 0.75;
+    const float speed = 0.60;
 
     const int TILE_W = SYMBOL_W + SPACE_X;
     const int TILE_H = SYMBOL_H + SPACE_Y;
@@ -61,7 +64,8 @@ void display_background(SDL_Context* context){
             const int x = base_x;
             const int y = j * TILE_H + time_y + row_offset;
 
-            display_image(context->renderer, lens, x, y, SYMBOL_W, SYMBOL_H);
+            SDL_RenderCopy(context->renderer, lens, NULL, &(SDL_Rect){x, y, SYMBOL_W, SYMBOL_H});
+            //display_image(context->renderer, lens, x, y, SYMBOL_W, SYMBOL_H);
         }
     }
 }

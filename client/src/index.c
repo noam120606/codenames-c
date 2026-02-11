@@ -102,7 +102,7 @@ int main(int argc, char* argv[]){
         }
 
         // Pré Rendu
-        SDL_SetRenderDrawColor(context.renderer, 85, 150, 255, 255);
+        SDL_SetRenderDrawColor(context.renderer, 60, 60, 60, 255);
         SDL_RenderClear(context.renderer);
 
         // Rendu et logique d'affichage
