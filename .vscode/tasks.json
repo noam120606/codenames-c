@@ -9,7 +9,9 @@
         "cwd": "${workspaceFolder}/server"
       },
       "presentation": {
-        "panel": "new"
+        "panel": "shared",
+        "group": "dev",
+        "clear": false
       }
     },
     {
@@ -20,16 +22,19 @@
         "cwd": "${workspaceFolder}/client"
       },
       "presentation": {
-        "panel": "new"
+        "panel": "shared",
+        "group": "dev",
+        "clear": false
       }
     },
     {
       "label": "Run All",
-      "dependsOn": [
-        "Run Server",
-        "Run Client"
-      ],
-      "dependsOrder": "parallel"
+      "dependsOn": ["Run Server", "Run Client"],
+      "dependsOrder": "parallel",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
     }
   ]
 }
