@@ -65,7 +65,7 @@ int main(int argc, char* argv[]){
     // Initialiser le système de boutons
     buttons_init();
 
-    int menu_loading_fails = menu_init(context);
+    int menu_loading_fails = menu_init(&context);
     if (menu_loading_fails > 0) {
         printf("Failed to load %d menu resource(s)\n", menu_loading_fails);
         close_tcp(sock);
@@ -107,7 +107,7 @@ int main(int argc, char* argv[]){
 
         // Rendu et logique d'affichage
         display_background(&context);
-        menu_display(context);
+        menu_display(&context);
 
         // Afficher les boutons
         buttons_display(context.renderer);
