@@ -1,8 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <SDL2/SDL.h>
-#include "../lib/button.h"
-#include "../lib/sdl.h"
+#include "../lib/all.h"
 
 #define MAX_BUTTONS 100
 
