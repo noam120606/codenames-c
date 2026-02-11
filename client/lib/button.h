@@ -30,6 +30,8 @@ typedef ButtonReturn (*ButtonCallback)(SDL_Context context, ButtonId button_id);
  * @param rect Rectangle définissant la position et la taille.
  * @param texture Texture du bouton.
  * @param is_hovered Indique si le bouton est survolé.
+ * @param is_text Indique si le bouton est un bouton de texte.
+ * @param text Texte à afficher sur le bouton (UTF-8) => Seulement si is_text est vrai.
  * @param callback Fonction à exécuter lors du clic.
  */
 typedef struct {
@@ -37,6 +39,9 @@ typedef struct {
     SDL_Rect rect;
     SDL_Texture* texture;
     int is_hovered;
+    int is_text;
+    SDL_Rect text_rect;
+    SDL_Texture* text_texture;
     int hidden;
     ButtonCallback callback;
 } Button;
@@ -59,6 +64,23 @@ void buttons_init();
  * @return Pointeur vers le bouton créé, ou NULL en cas d'erreur.
  */
 Button* button_create(int id, int x, int y, int w, int h, SDL_Texture* texture, ButtonCallback callback);
+
+/**
+ * Crée et ajoute un bouton au système à partir d'un texte (utilise SDL_ttf).
+ * @param renderer Renderer SDL utilisé pour créer la texture.
+ * @param id Identifiant unique du bouton.
+ * @param x Position x du bouton.
+ * @param y Position y du bouton.
+ * @param taille Taille du bouton (sa hauteur).
+ * @param text Texte à afficher sur le bouton (UTF-8).
+ * @param font_path Chemin vers le fichier .ttf.
+ * @param color Couleur du texte.
+ * @param callback Fonction à exécuter lors du clic (peut être NULL).
+ * @return Pointeur vers le bouton créé, ou NULL en cas d'erreur.
+ */
+Button* text_button_create(SDL_Renderer* renderer, int id, int x, int y, int taille,
+                               const char* text, const char* font_path, SDL_Color color,
+                               ButtonCallback callback);
 
 /**
  * Traite un événement SDL pour les boutons.
