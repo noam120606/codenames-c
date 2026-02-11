@@ -65,7 +65,7 @@ int main(int argc, char* argv[]){
     // Initialiser le système de boutons
     buttons_init();
 
-    int menu_loading_fails = menu_init(context);
+    int menu_loading_fails = menu_init(&context);
     if (menu_loading_fails > 0) {
         printf("Failed to load %d menu resource(s)\n", menu_loading_fails);
         close_tcp(sock);
@@ -73,7 +73,7 @@ int main(int argc, char* argv[]){
         destroy_context(context);
         return EXIT_FAILURE;
     }
-    int background_loading_fails = init_background(context);
+    int background_loading_fails = init_background(&context);
     if (background_loading_fails > 0) {
         printf("Failed to load %d background resource(s)\n", background_loading_fails);
         close_tcp(sock);
@@ -102,12 +102,12 @@ int main(int argc, char* argv[]){
         }
 
         // Pré Rendu
-        SDL_SetRenderDrawColor(context.renderer, 0, 0, 0, 255);
+        SDL_SetRenderDrawColor(context.renderer, 148, 189, 255, 255);
         SDL_RenderClear(context.renderer);
 
         // Rendu et logique d'affichage
-        display_background(context);
-        menu_display(context);
+        display_background(&context);
+        menu_display(&context);
 
         // Afficher les boutons
         buttons_display(context.renderer);
@@ -116,6 +116,7 @@ int main(int argc, char* argv[]){
         SDL_RenderPresent(context.renderer);
         SDL_Delay(16); // environ 60 rendus par seconde
         context.clock++;
+        
     }
 
     printf("Exiting...\n");
