@@ -40,7 +40,8 @@ typedef struct {
     SDL_Texture* texture;
     int is_hovered;
     int is_text;
-    SDL_Texture* text;
+    SDL_Rect text_rect;
+    SDL_Texture* text_texture;
     int hidden;
     ButtonCallback callback;
 } Button;
@@ -73,13 +74,12 @@ Button* button_create(int id, int x, int y, int w, int h, SDL_Texture* texture, 
  * @param taille Taille du bouton (sa hauteur).
  * @param text Texte à afficher sur le bouton (UTF-8).
  * @param font_path Chemin vers le fichier .ttf.
- * @param font_size Taille de la police.
  * @param color Couleur du texte.
  * @param callback Fonction à exécuter lors du clic (peut être NULL).
  * @return Pointeur vers le bouton créé, ou NULL en cas d'erreur.
  */
 Button* text_button_create(SDL_Renderer* renderer, int id, int x, int y, int taille,
-                               const char* text, const char* font_path, int font_size, SDL_Color color,
+                               const char* text, const char* font_path, SDL_Color color,
                                ButtonCallback callback);
 
 /**
