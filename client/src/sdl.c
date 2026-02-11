@@ -49,12 +49,21 @@ SDL_Context init_sdl() {
         printf("IMG_Init Error: %s\n", IMG_GetError());
         SDL_Quit();
         return context;
-    }   
+    }
 
+    // Initialize TTF
+    printf("Initializing TTF...\n");
+    if(TTF_Init() != 0) {
+        printf("TTF_Init Error: %s\n", TTF_GetError());
+        IMG_Quit();
+        SDL_Quit();
+        return context;
+    }
+    
     context.clock = 0;
-
+    
     printf("All initialized successfully!\n");
-
+    
     return context;
 }
 
@@ -131,6 +140,7 @@ void destroy_context(SDL_Context context) {
     if (context.window) {
         SDL_DestroyWindow(context.window);
     }
+    TTF_Quit();
     IMG_Quit();
     SDL_Quit();
 }
