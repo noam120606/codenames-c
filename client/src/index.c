@@ -1,14 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <getopt.h>
-#include <SDL2/SDL.h>
-#include "../SDL2/include/SDL2/SDL_image.h"
-#include "../SDL2/include/SDL2/SDL_ttf.h"
-#include "../lib/tcp.h"
-#include "../lib/sdl.h"
-#include "../lib/menu.h"
-#include "../lib/button.h"
-#include "../lib/background.h"
+#include "../lib/all.h"
 
 // Bouton test
 #define BTN_TEST 1
