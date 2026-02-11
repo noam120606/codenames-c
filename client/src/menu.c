@@ -46,10 +46,9 @@ int menu_init(SDL_Context * context) {
         printf("Failed to load quit button image\n");
         loading_fails++;
     }
-    
-    if (img_btn_start) {
-        button_create(BTN_START, WIN_WIDTH/2-250, 550, 500, 125, img_btn_start, menu_button_click);
-    }
+
+    text_button_create(context.renderer, BTN_START, WIN_WIDTH/2-250, 550, 125, "Start", "assets/fonts/larabiefont.otf", 24, (SDL_Color){255, 255, 255, 255}, menu_button_click);
+
     if (img_btn_quit) {
         button_create(BTN_QUIT, WIN_WIDTH/2-150, 800, 300, 75, img_btn_quit, menu_button_click);
     }
