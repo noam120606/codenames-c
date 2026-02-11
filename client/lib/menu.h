@@ -12,13 +12,13 @@
  * @param context Contexte SDL.
  * @return Nombre d'erreurs survenues lors du chargement (0 si tout s'est bien passé, >0 sinon).
  */
-int menu_init(SDL_Context context);
+int menu_init(SDL_Context * context);
 
 /**
  * Affiche le menu principal.
  * @param context Contexte SDL.
  */
-void menu_display(SDL_Context context);
+void menu_display(SDL_Context * context);
 
 /** 
  * Libère les ressources du menu.
