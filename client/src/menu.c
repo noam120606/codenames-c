@@ -12,6 +12,7 @@ SDL_Texture* menu_logo;
 SDL_Texture* quagmire;
 
 ButtonReturn menu_button_click(SDL_Context context, ButtonId button_id) {
+    printf("Button clicked: %d\n", button_id);
     switch (button_id) {
         case BTN_START: printf("Start button clicked\n"); break;
         case BTN_QUIT: return BTN_RET_QUIT; break;
@@ -36,24 +37,9 @@ int menu_init(SDL_Context * context) {
     }
 
     // Chargement bouton
-    SDL_Texture* img_btn_start = load_image(context->renderer, "assets/img/buttons/start.png");
-    if (!img_btn_start) {
-        printf("Failed to load start button image\n");
-        loading_fails++;
-    }
-    SDL_Texture* img_btn_quit = load_image(context->renderer, "assets/img/buttons/quit.png");
-    if (!img_btn_quit) {
-        printf("Failed to load quit button image\n");
-        loading_fails++;
-    }
+    text_button_create(context->renderer, BTN_START, WIN_WIDTH/2-200, 550, 100, "Start", "assets/fonts/larabiefont.otf", (SDL_Color){255, 255, 255, 255}, menu_button_click);
+    text_button_create(context->renderer, BTN_QUIT, WIN_WIDTH/2-200, 700, 100, "Quitter", "assets/fonts/larabiefont.otf", (SDL_Color){255, 255, 255, 255}, menu_button_click);
     
-    if (img_btn_start) {
-        button_create(BTN_START, WIN_WIDTH/2-250, 550, 500, 125, img_btn_start, menu_button_click);
-    }
-    if (img_btn_quit) {
-        button_create(BTN_QUIT, WIN_WIDTH/2-150, 800, 300, 75, img_btn_quit, menu_button_click);
-    }
-
     return loading_fails;
 }
 
