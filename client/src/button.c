@@ -41,7 +41,6 @@ Button* button_create(int id, int x, int y, int w, int h, SDL_Texture* texture, 
     button->texture = texture;
     button->is_hovered = 0;
     button->is_text = 0;
-    button->text = NULL;
     button->hidden = 0;
     button->callback = callback;
 
@@ -50,9 +49,8 @@ Button* button_create(int id, int x, int y, int w, int h, SDL_Texture* texture, 
     return button;
 }
 
-/* Crée un bouton à partir d'un texte en utilisant SDL_ttf */
 Button* text_button_create(SDL_Renderer* renderer, int id, int x, int y, int taille,
-                            const char* text, const char* font_path, int font_size, SDL_Color color,
+                            const char* text, const char* font_path, SDL_Color color,
                             ButtonCallback callback) {
 
     if (!renderer || !text || !font_path) {
@@ -60,7 +58,7 @@ Button* text_button_create(SDL_Renderer* renderer, int id, int x, int y, int tai
         return NULL;
     }
 
-    TTF_Font* font = TTF_OpenFont(font_path, font_size);
+    TTF_Font* font = TTF_OpenFont(font_path, 128);
     if (!font) {
         printf("TTF_OpenFont failed: %s\n", TTF_GetError());
         return NULL;
@@ -74,21 +72,23 @@ Button* text_button_create(SDL_Renderer* renderer, int id, int x, int y, int tai
     }
 
     SDL_Texture* text_texture = SDL_CreateTextureFromSurface(renderer, text_surf);
+    int text_tex_w = text_surf->w;
+    int text_tex_h = text_surf->h;
     SDL_FreeSurface(text_surf);
     if (!text_texture) {
         printf("SDL_CreateTextureFromSurface failed: %s\n", SDL_GetError());
         return NULL;
     }
 
-    SDL_Texture* background = load_image(renderer, "assets/img/buttons/back.png");
+    SDL_Texture* background = load_image(renderer, "assets/img/buttons/empty.png");
     if (!background) {
         printf("load_image failed: %s\n", SDL_GetError());
         SDL_DestroyTexture(text_texture);
         return NULL;
     }
 
-    int tex_w = 0, tex_h = 0;
-    if (SDL_QueryTexture(background, NULL, NULL, &tex_w, &tex_h) != 0) {
+    int bg_tex_w = 0, bg_tex_h = 0;
+    if (SDL_QueryTexture(background, NULL, NULL, &bg_tex_w, &bg_tex_h) != 0) {
         printf("SDL_QueryTexture Error: %s\n", SDL_GetError());
         SDL_DestroyTexture(background);
         SDL_DestroyTexture(text_texture);
@@ -102,20 +102,51 @@ Button* text_button_create(SDL_Renderer* renderer, int id, int x, int y, int tai
         return NULL;
     }
 
-    SDL_Rect rect;
-    rect.x = x;
-    rect.y = y;
-    rect.w = tex_w*taille/tex_h;
-    rect.h = taille;
+    int padding = 16;
+
+    /* Calculer la taille du bouton en conservant le ratio de l'image de fond */
+    int btn_h = taille;
+    int btn_w = (bg_tex_w * btn_h) / bg_tex_h;
+    if (btn_w <= 0) btn_w = btn_h; /* fallback */
+
+    /* Calculer la taille du rectangle de texte en fonction de la texture de texte
+       On adapte d'abord la hauteur disponible, puis on met à l'échelle la largeur.
+       Si la largeur dépasse l'espace disponible, on réduit la taille proportionnellement. */
+    SDL_Rect text_rect;
+    text_rect.h = btn_h - 2 * padding;
+    if (text_rect.h <= 0) text_rect.h = btn_h; /* fallback */
+
+    double scale = (text_tex_h > 0) ? ((double)text_rect.h / (double)text_tex_h) : 1.0;
+    text_rect.w = (int)(text_tex_w * scale);
+
+    int max_text_w = btn_w - 2 * padding;
+    if (text_rect.w > max_text_w) {
+        /* réduire pour tenir dans la largeur disponible */
+        if (text_tex_w > 0) {
+            double scale2 = (double)max_text_w / (double)text_tex_w;
+            text_rect.w = max_text_w;
+            text_rect.h = (int)(text_tex_h * scale2);
+            if (text_rect.h <= 0) text_rect.h = 1;
+        } else {
+            text_rect.w = max_text_w;
+        }
+    }
+
+    /* Centrer le texte dans le bouton */
+    text_rect.x = x + (btn_w - text_rect.w) / 2;
+    text_rect.y = y + (btn_h - text_rect.h) / 2;
 
     button->id = id;
-    button->rect = rect;
+    button->rect = (SDL_Rect){x, y, btn_w, btn_h};
     button->texture = background;
     button->is_hovered = 0;
     button->is_text = 1;
-    button->text = text_texture;
+    button->text_rect = text_rect;
+    button->text_texture = text_texture;
     button->hidden = 0;
     button->callback = callback;
+
+    buttons[button_count++] = button;
 
     return button;
 }
@@ -160,6 +191,8 @@ ButtonReturn buttons_handle_event(SDL_Context context, SDL_Event* event) {
             }
         }
     }
+    // Si aucun bouton n'a été cliqué, retourner BTN_RET_NONE (avec un oubli ça avait tout cassé)
+    return BTN_RET_NONE;
 }
 
 void buttons_display(SDL_Renderer* renderer) {
@@ -172,16 +205,23 @@ void buttons_display(SDL_Renderer* renderer) {
 
             // Grandir le bouton au survol
             SDL_Rect render_rect = buttons[i]->rect;
+            SDL_Rect text_rect = buttons[i]->text_rect;
             if (buttons[i]->is_hovered) {
                 render_rect.x -= 4;
                 render_rect.y -= 2;
                 render_rect.w += 8;
                 render_rect.h += 4;
+                if (buttons[i]->is_text) {
+                    text_rect.x -= 2;
+                    text_rect.y -= 1;
+                    text_rect.w += 4;
+                    text_rect.h += 2;
+                }
             }
 
             // Afficher la texture
             SDL_RenderCopy(renderer, buttons[i]->texture, NULL, &render_rect);
-            if (buttons[i]->is_text) SDL_RenderCopy(renderer, buttons[i]->text, NULL, &render_rect);
+            if (buttons[i]->is_text) SDL_RenderCopy(renderer, buttons[i]->text_texture, NULL, &text_rect);
         }
     }
 }
@@ -198,7 +238,7 @@ Button* button_get(int id) {
 void buttons_free() {
     for (int i = 0; i < button_count; i++) {
         if (buttons[i]) {
-            if (buttons[i]->is_text) SDL_DestroyTexture(buttons[i]->text);
+            if (buttons[i]->is_text) SDL_DestroyTexture(buttons[i]->text_texture);
             SDL_DestroyTexture(buttons[i]->texture);
             free(buttons[i]);
             buttons[i] = NULL;
