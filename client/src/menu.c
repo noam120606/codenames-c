@@ -44,7 +44,7 @@ int menu_init(SDL_Context * context) {
 }
 
 void menu_display(SDL_Context * context) {
-    if (menu_logo) display_image(context->renderer, menu_logo, (WIN_WIDTH/2)-512, 128, 1024, 0);
+    if (menu_logo) display_image(context->renderer, menu_logo, (WIN_WIDTH/2)-512, -32, 1024, 0);
     if (quagmire) display_image(context->renderer, quagmire, WIN_WIDTH-244, WIN_HEIGHT-357, 0, 0);
 }
 
