@@ -24,7 +24,7 @@ int menu_init(SDL_Context * context) {
     int loading_fails = 0;
 
     // Chargement image
-    menu_logo = load_image(context->renderer, "assets/img/placeholder/logo.png");
+    menu_logo = load_image(context->renderer, "assets/img/others/logo.png");
     if (!menu_logo) {
         printf("Failed to load menu logo image\n");
         loading_fails++;
@@ -58,7 +58,7 @@ int menu_init(SDL_Context * context) {
 }
 
 void menu_display(SDL_Context * context) {
-    if (menu_logo) display_image(context->renderer, menu_logo, (WIN_WIDTH/2)-512, 128, 1024, 0);
+    if (menu_logo) display_image(context->renderer, menu_logo, (WIN_WIDTH/2)-512, -32, 1024, 0);
     if (quagmire) display_image(context->renderer, quagmire, WIN_WIDTH-244, WIN_HEIGHT-357, 0, 0);
 }
 
