@@ -116,6 +116,7 @@ int main(int argc, char* argv[]){
         SDL_RenderPresent(context.renderer);
         SDL_Delay(16); // environ 60 rendus par seconde
         context.clock++;
+        
     }
 
     printf("Exiting...\n");
