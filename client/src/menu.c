@@ -25,7 +25,7 @@ int menu_init(SDL_Context * context) {
     int loading_fails = 0;
 
     // Chargement image
-    menu_logo = load_image(context->renderer, "assets/img/placeholder/logo.png");
+    menu_logo = load_image(context->renderer, "assets/img/others/logo.png");
     if (!menu_logo) {
         printf("Failed to load menu logo image\n");
         loading_fails++;
