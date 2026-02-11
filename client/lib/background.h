@@ -6,13 +6,13 @@
  * @param context The SDL context containing the renderer.
  * @return The number of loading failures (0 if successful).
  */
-int init_background(SDL_Context context);
+int init_background(SDL_Context * context);
 
 /**
  * Display the background.
  * @param context The SDL context containing the renderer.
  */
-void display_background(SDL_Context context);
+void display_background(SDL_Context * context);
 
 /**
  * Destroy the background.
