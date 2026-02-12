@@ -57,7 +57,6 @@ void display_background(SDL_Context* context){
             const int y = j * TILE_H + time_y + row_offset;
 
             SDL_RenderCopy(context->renderer, lens, NULL, &(SDL_Rect){x, y, SYMBOL_W, SYMBOL_H});
-            //display_image(context->renderer, lens, x, y, SYMBOL_W, SYMBOL_H);
         }
     }
 }

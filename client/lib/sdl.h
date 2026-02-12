@@ -39,14 +39,16 @@ SDL_Texture* load_image(SDL_Renderer* renderer, const char* path);
  * Affiche une texture à l'écran.
  * @param renderer Le renderer SDL
  * @param texture La texture à afficher
- * @param x La position x de l'image
- * @param y La position y de l'image
- * @param w La largeur de l'image (peut être `0` pour garder la valeur originale)
- * @param h La hauteur de l'image (peut être `0` pour garder la valeur originale)
+ * @param x La position x de l'image (`0` centre x)
+ * @param y La position y de l'image (`0` centre y)
+ * @param size_factor Facteur de taille (`1.0` taille originale)
+ * @param angle Angle de rotation en degrés (0 par défaut, sens horaire)
+ * @param flip Flags de flip: `SDL_FLIP_NONE` (défaut), `SDL_FLIP_HORIZONTAL`, `SDL_FLIP_VERTICAL`, ou combinaison
+ * @param ratio Ratio de l'image (largeur/hauteur, `1` pour garder le ratio original)
  * @return `EXIT_SUCCESS` en cas de succès, `EXIT_FAILURE` en cas d'erreur
- * Note : Si une seule dimension est fournie, l'autre sera calculée pour garder les proportions.
+ * Note : L'angle de rotation utilise un pivot au centre de l'image.
  */
-int display_image(SDL_Renderer* renderer, SDL_Texture* texture, int x, int y, int w, int h);
+int display_image(SDL_Renderer* renderer, SDL_Texture* texture, int x, int y, float size_factor, double angle, SDL_RendererFlip flip, float ratio);
 
 /**
  * Libère une texture de la mémoire.
