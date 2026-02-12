@@ -72,50 +72,44 @@ SDL_Texture* load_image(SDL_Renderer* renderer, const char* path) {
         SDL_FreeSurface(image);
         return NULL;
     }
+    int tex_w = 0, tex_h = 0;
+    SDL_QueryTexture(texture, NULL, NULL, &tex_w, &tex_h);
+    printf("Image '%s' chargée : %dx%d\n", path, tex_w, tex_h);
     SDL_FreeSurface(image);
     return texture;
 }
 
-int display_image(SDL_Renderer* renderer, SDL_Texture* texture, int x, int y, int w, int h) {
+int display_image(SDL_Renderer* renderer, SDL_Texture* texture, int x, int y, float size_factor, double angle, SDL_RendererFlip flip, float ratio) {
     if (!renderer || !texture) {
         return EXIT_FAILURE;
     }
 
-    int tex_w = 0, tex_h = 0;
-    if (SDL_QueryTexture(texture, NULL, NULL, &tex_w, &tex_h) != 0) {
+    int og_w = 0, og_h = 0;
+    if (SDL_QueryTexture(texture, NULL, NULL, &og_w, &og_h) != 0) {
         printf("SDL_QueryTexture Error: %s\n", SDL_GetError());
         return EXIT_FAILURE;
     }
 
     SDL_Rect dstrect;
-    dstrect.x = x;
-    dstrect.y = y;
+    dstrect.x = (WIN_WIDTH - og_w*size_factor)/2 + x;
+    dstrect.y = (WIN_HEIGHT - og_h*size_factor)/2 - y; /* Inversion de l'axe y (seulement)*/
 
-    int final_w = w;
-    int final_h = h;
+    int final_w = og_w;
+    int final_h = og_h;
 
-    /* Si une seule dimension est fournie, calculer l'autre pour garder les proportions */
-    if (w > 0 && h <= 0) {
-        if (tex_w != 0) {
-            final_h = (int)((long long)w * tex_h / tex_w);
-        } else {
-            final_h = w; /* fallback */
-        }
-    } else if (h > 0 && w <= 0) {
-        if (tex_h != 0) {
-            final_w = (int)((long long)h * tex_w / tex_h);
-        } else {
-            final_w = h; /* fallback */
-        }
-    } else {
-        if (w <= 0) final_w = tex_w;
-        if (h <= 0) final_h = tex_h;
+    /* Calcul des ratios si altérés */
+    if (ratio != 1) {
+        final_w = og_w * ratio;
+        dstrect.x = (WIN_WIDTH - final_w*size_factor)/2 + x;
     }
+    dstrect.w = (ratio != 1) ? final_w*size_factor : og_w*size_factor;
+    dstrect.h = (ratio != 1) ? final_h*size_factor : og_h*size_factor;
 
-    dstrect.w = (final_w > 0) ? final_w : tex_w;
-    dstrect.h = (final_h > 0) ? final_h : tex_h;
+    /* Point de pivot au centre de l'image */
+    SDL_Point center = {dstrect.w / 2, dstrect.h / 2};
 
-    SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+    /* Utiliser SDL_RenderCopyEx pour supporter la rotation et le flip */
+    SDL_RenderCopyEx(renderer, texture, NULL, &dstrect, angle, &center, flip);
 
     return EXIT_SUCCESS;
 }

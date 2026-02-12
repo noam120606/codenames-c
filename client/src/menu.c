@@ -38,8 +38,15 @@ int menu_init(SDL_Context * context) {
 }
 
 void menu_display(SDL_Context * context) {
-    if (menu_logo) display_image(context->renderer, menu_logo, (WIN_WIDTH/2)-512, -32, 1024, 0);
-    if (quagmire) display_image(context->renderer, quagmire, WIN_WIDTH-244, WIN_HEIGHT-357, 0, 0);
+    // Afficher le logo à sa taille d'origine
+    if (menu_logo) {
+        display_image(context->renderer, menu_logo, 0, 150, 0.75, 0, SDL_FLIP_NONE, 1);
+    }
+    
+    // Afficher quagmire à sa taille d'origine
+    if (quagmire) {
+        display_image(context->renderer, quagmire, 850, -350, 1.0, 0, SDL_FLIP_NONE, 1);
+    }
 }
 
 int menu_free() {
