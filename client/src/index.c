@@ -1,12 +1,5 @@
 #include "../lib/all.h"
 
-// Bouton test
-#define BTN_TEST 1
-int on_test_button_click(SDL_Context context, int button_id) {
-    printf("Bouton de test cliqué! (ID: %d)\n", button_id);
-    return 0;
-}
-
 int main(int argc, char* argv[]){
 
     char ip[16] = "127.0.0.1";
@@ -86,6 +79,7 @@ int main(int argc, char* argv[]){
             // Gestion bouttons
             ButtonReturn result = buttons_handle_event(context, &e);
             switch (result) {
+                case BTN_RET_NONE: break;
                 case BTN_RET_QUIT: running = 0; break;
                 default: break;
             }
