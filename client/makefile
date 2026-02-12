@@ -8,7 +8,7 @@ SDL_CFLAGS := $(shell pkg-config --cflags sdl2 SDL2_image SDL2_ttf 2>/dev/null |
 SDL_LDFLAGS := $(shell pkg-config --libs sdl2 SDL2_image SDL2_ttf 2>/dev/null || echo "-lSDL2 -lSDL2_image -lSDL2_ttf")
 
 CFLAGS = -I./lib $(SDL_CFLAGS)
-LDFLAGS = $(SDL_LDFLAGS)
+LDFLAGS = $(SDL_LDFLAGS) -lm
 
 
 $(DIR)/client: $(DIR)/index.o $(DIR)/tcp.o $(DIR)/sdl.o $(DIR)/menu.o $(DIR)/button.o $(DIR)/background.o
