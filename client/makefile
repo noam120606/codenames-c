@@ -3,17 +3,16 @@ DIR = build
 # Create build directory if not exists
 $(shell mkdir -p $(DIR))
 
-SDL_INCLUDE = ./SDL2/include/SDL2
-SDL_LIB = ./SDL2/lib
+# Use system SDL2 via pkg-config
+SDL_CFLAGS := $(shell pkg-config --cflags sdl2 SDL2_image SDL2_ttf 2>/dev/null || echo "-I/usr/include/SDL2")
+SDL_LDFLAGS := $(shell pkg-config --libs sdl2 SDL2_image SDL2_ttf 2>/dev/null || echo "-lSDL2 -lSDL2_image -lSDL2_ttf")
 
-
-CFLAGS = -I./lib -I$(SDL_INCLUDE)
-LDFLAGS = -L$(SDL_LIB) -Wl,-rpath,$(SDL_LIB)
-LDLIBS = -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2main
+CFLAGS = -I./lib $(SDL_CFLAGS)
+LDFLAGS = $(SDL_LDFLAGS)
 
 
 $(DIR)/client: $(DIR)/index.o $(DIR)/tcp.o $(DIR)/sdl.o $(DIR)/menu.o $(DIR)/button.o $(DIR)/background.o
-	gcc $^ -o $@ $(LDFLAGS) $(LDLIBS)
+	gcc $^ -o $@ $(LDFLAGS)
 $(DIR)/index.o:
 	gcc -c src/index.c -o $@ $(CFLAGS)
 $(DIR)/tcp.o:
