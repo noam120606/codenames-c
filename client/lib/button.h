@@ -31,7 +31,9 @@ typedef ButtonReturn (*ButtonCallback)(SDL_Context context, ButtonId button_id);
  * @param texture Texture du bouton.
  * @param is_hovered Indique si le bouton est survolé.
  * @param is_text Indique si le bouton est un bouton de texte.
- * @param text Texte à afficher sur le bouton (UTF-8) => Seulement si is_text est vrai.
+ * @param text_rect Rectangle définissant la position et la taille du texte (UTF-8) => Seulement si is_text est vrai.
+ * @param text_texture Texture du texte (UTF-8) => Seulement si is_text est vrai.
+ * @param hidden Indique si le bouton est caché (non affiché et non interact
  * @param callback Fonction à exécuter lors du clic.
  */
 typedef struct {
