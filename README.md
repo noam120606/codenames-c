@@ -12,6 +12,12 @@ Il a été initié en groupe de 4 dans le cadre d'un projet de groupe universita
 
 Après avoir cloné le projet, il faut executer le script `./setup.sh` pour installer les differentes librairies requises
 
+Avant lancement, installez les packages requis si ils ne sont pas présent sur votre systeme :
+```
+sudo apt install build-essential pkg-config libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev
+```
+
+
 ## Transmition client/serveur
 
 Tunnel TCP initié par le client.
