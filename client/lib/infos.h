@@ -12,6 +12,9 @@
  */
 int init_infos(SDL_Context* context);
 
+
+// OTHER INFOS
+
 /** 
  * Calcule les FPS (Frames Per Second) et met à jour le champ `fps` du contexte SDL.
  * @param context Contexte SDL contenant le temps écoulé depuis la dernière mise à jour.
@@ -19,6 +22,7 @@ int init_infos(SDL_Context* context);
  * Note : Cette fonction doit être appelée à chaque frame pour mettre à jour les FPS.
  */
 void calculate_fps(SDL_Context* context, Uint32 current_time);
+
 
 // DISPLAY INFOS
 

@@ -40,7 +40,7 @@ int menu_init(SDL_Context * context) {
 void menu_display(SDL_Context * context) {
     // Afficher le logo à sa taille d'origine
     if (menu_logo) {
-        display_image(context->renderer, menu_logo, 0, 150, 0.75, 0, SDL_FLIP_NONE, 1, 255);
+        display_image(context->renderer, menu_logo, 0, 200, 0.75, 0, SDL_FLIP_NONE, 1, 255);
     }
     
     // Afficher quagmire à sa taille d'origine

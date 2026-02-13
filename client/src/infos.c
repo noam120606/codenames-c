@@ -68,7 +68,7 @@ void fps_display(SDL_Context* context, int display_x) {
     // Positionner le texte relativement au display_x du placeholder
     int fps_x = display_x + 850;
     int fps_y = 525;
-    text_display(context->renderer, fps_text, "assets/fonts/larabiefont.otf", 18, white, fps_x, fps_y);
+    text_display(context->renderer, fps_text, "assets/fonts/larabiefont.otf", 18, white, fps_x, fps_y, 0, 255);
 }
 
 void infos_free() {
