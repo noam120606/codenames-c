@@ -71,7 +71,7 @@ void display_background(SDL_Context* context){
                 scale = 1.0f + (1.0f - (float)distance / INTERACT_RADIUS) * (MAX_SCALE - 1.0f);
             }
 
-            display_image(context->renderer, lens, x, y, size * scale, 0, row_offset == 0 ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL, 1);
+            display_image(context->renderer, lens, x, y, size * scale, 0, row_offset == 0 ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL, 1, 255);
         }
     }
 }

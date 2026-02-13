@@ -11,7 +11,7 @@ CFLAGS = -I./lib $(SDL_CFLAGS)
 LDFLAGS = $(SDL_LDFLAGS) -lm
 
 
-$(DIR)/client: $(DIR)/index.o $(DIR)/tcp.o $(DIR)/sdl.o $(DIR)/menu.o $(DIR)/button.o $(DIR)/background.o
+$(DIR)/client: $(DIR)/index.o $(DIR)/tcp.o $(DIR)/sdl.o $(DIR)/menu.o $(DIR)/button.o $(DIR)/background.o $(DIR)/infos.o $(DIR)/texts.o
 	gcc $^ -o $@ $(LDFLAGS)
 $(DIR)/index.o:
 	gcc -c src/index.c -o $@ $(CFLAGS)
@@ -25,6 +25,10 @@ $(DIR)/button.o:
 	gcc -c src/button.c -o $@ $(CFLAGS)
 $(DIR)/background.o:
 	gcc -c src/background.c -o $@ $(CFLAGS)
+$(DIR)/infos.o:
+	gcc -c src/infos.c -o $@ $(CFLAGS)
+$(DIR)/texts.o:
+	gcc -c src/texts.c -o $@ $(CFLAGS)
 
 clean:
 	rm -rf build

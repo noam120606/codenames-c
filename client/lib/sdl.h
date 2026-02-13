@@ -18,6 +18,7 @@ typedef struct {
     SDL_Window* window;
     SDL_Renderer* renderer;
     long clock;
+    float fps;
 } SDL_Context;
 
 /**
@@ -45,11 +46,11 @@ SDL_Texture* load_image(SDL_Renderer* renderer, const char* path);
  * @param angle Angle de rotation en degrés (0 par défaut, sens horaire)
  * @param flip Flags de flip: `SDL_FLIP_NONE` (défaut), `SDL_FLIP_HORIZONTAL`, `SDL_FLIP_VERTICAL`, ou combinaison
  * @param ratio Ratio de l'image (largeur/hauteur, `1` pour garder le ratio original)
+ * @param opacity Opacité de l'image (0-255, 255 par défaut)
  * @return `EXIT_SUCCESS` en cas de succès, `EXIT_FAILURE` en cas d'erreur
  * Note : L'angle de rotation utilise un pivot au centre de l'image.
  */
-int display_image(SDL_Renderer* renderer, SDL_Texture* texture, int x, int y, float size_factor, double angle, SDL_RendererFlip flip, float ratio);
-
+int display_image(SDL_Renderer* renderer, SDL_Texture* texture, int x, int y, float size_factor, double angle, SDL_RendererFlip flip, float ratio, Uint8 opacity);
 /**
  * Libère une texture de la mémoire.
  * @param texture La texture à libérer.

@@ -16,3 +16,5 @@
 #include "../lib/menu.h"
 #include "../lib/button.h"
 #include "../lib/background.h"
+#include "../lib/infos.h"
+#include "../lib/text.h"

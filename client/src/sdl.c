@@ -77,7 +77,7 @@ SDL_Texture* load_image(SDL_Renderer* renderer, const char* path) {
     return texture;
 }
 
-int display_image(SDL_Renderer* renderer, SDL_Texture* texture, int x, int y, float size_factor, double angle, SDL_RendererFlip flip, float ratio) {
+int display_image(SDL_Renderer* renderer, SDL_Texture* texture, int x, int y, float size_factor, double angle, SDL_RendererFlip flip, float ratio, Uint8 opacity) {
     if (!renderer || !texture) {
         return EXIT_FAILURE;
     }
@@ -105,6 +105,9 @@ int display_image(SDL_Renderer* renderer, SDL_Texture* texture, int x, int y, fl
 
     /* Point de pivot au centre de l'image */
     SDL_Point center = {dstrect.w / 2, dstrect.h / 2};
+
+    /* Appliquer l'opacité */
+    SDL_SetTextureAlphaMod(texture, opacity);
 
     /* Utiliser SDL_RenderCopyEx pour supporter la rotation et le flip */
     SDL_RenderCopyEx(renderer, texture, NULL, &dstrect, angle, &center, flip);
