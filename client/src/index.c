@@ -65,13 +65,22 @@ int main(int argc, char* argv[]){
         destroy_background();
         return EXIT_FAILURE;
     }
+    int infos_loading_fails = init_infos(&context);
+    if (infos_loading_fails > 0) {
+        printf("Failed to load %d infos resource(s)\n", infos_loading_fails);
+        close_tcp(sock);
+        menu_free();
+        destroy_context(context);
+        destroy_background();
+        infos_free();
+        return EXIT_FAILURE;
+    }
 
     SDL_Event e;
     int running = 1;
 
     while (running && tick_tcp(sock) == EXIT_SUCCESS) {
 
-        // Gestion events
         while (SDL_PollEvent(&e)) {
             if (e.type == SDL_QUIT) {
                 running = 0;
@@ -92,6 +101,7 @@ int main(int argc, char* argv[]){
         // Rendu et logique d'affichage
         display_background(&context);
         menu_display(&context);
+        infos_display(&context);
 
         // Afficher les boutons
         buttons_display(context.renderer);
@@ -99,6 +109,7 @@ int main(int argc, char* argv[]){
         // Post Rendu
         SDL_RenderPresent(context.renderer);
         SDL_Delay(16); // environ 60 rendus par seconde
+        
         context.clock++;
         
     }
@@ -108,6 +119,7 @@ int main(int argc, char* argv[]){
     close_tcp(sock);
     menu_free();
     destroy_background();
+    infos_free();
     buttons_free();
     destroy_context(context);
 
