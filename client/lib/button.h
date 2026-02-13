@@ -13,6 +13,9 @@ typedef enum ButtonId {
     BTN_QUIT
 } ButtonId;
 
+/**
+ * Valeurs de retour des callbacks de boutons.
+ */
 typedef enum ButtonReturn {
     BTN_RET_NONE,
     BTN_RET_QUIT

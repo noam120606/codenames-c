@@ -2,6 +2,7 @@
 
 int main(int argc, char* argv[]){
 
+    const float target_fps = 60.0f;
     char ip[16] = "127.0.0.1";
     int port = 0;
 
@@ -80,6 +81,8 @@ int main(int argc, char* argv[]){
     int running = 1;
 
     while (running && tick_tcp(sock) == EXIT_SUCCESS) {
+        // Enregistrer le début de la frame
+        context.frame_start_time = SDL_GetTicks();
 
         while (SDL_PollEvent(&e)) {
             if (e.type == SDL_QUIT) {
@@ -108,7 +111,15 @@ int main(int argc, char* argv[]){
 
         // Post Rendu
         SDL_RenderPresent(context.renderer);
-        SDL_Delay(16); // environ 60 rendus par seconde
+        
+        // Calculer le temps écoulé pour cette frame
+        Uint32 frame_end_time = SDL_GetTicks();
+        Uint32 frame_elapsed = frame_end_time - context.frame_start_time;
+        
+        // Calculer le délai nécessaire pour atteindre la durée cible
+        float frame_duration = 1000.0f / target_fps; // Cible de 60 FPS = 16.67ms par frame
+        int frame_delay = (int)(frame_duration - frame_elapsed);
+        if (frame_delay > 0) SDL_Delay(frame_delay);
         
         context.clock++;
         
