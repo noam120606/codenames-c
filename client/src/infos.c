@@ -2,6 +2,19 @@
 
 SDL_Texture* placeholder;
 
+// Animation state
+typedef enum {
+    INFOS_HIDDEN,
+    INFOS_SHOWING,
+    INFOS_VISIBLE,
+    INFOS_HIDING
+} InfosState;
+
+static InfosState infos_state = INFOS_HIDDEN;
+static Uint32 animation_start_time = 0;
+static const Uint32 ANIMATION_DURATION = 200; // Durée de l'animation en ms
+static int mouse_was_inside = 0; // Indique si la souris était dans la zone à la dernière vérification
+
 int init_infos(SDL_Context* context) {
     int loading_fails = 0;
 
@@ -12,6 +25,22 @@ int init_infos(SDL_Context* context) {
     }
     return loading_fails;
 }
+// Démarre l'animation d'apparition
+void infos_display_show_animation(SDL_Context* context) {
+    if (infos_state != INFOS_VISIBLE && infos_state != INFOS_SHOWING) {
+        infos_state = INFOS_SHOWING;
+        animation_start_time = SDL_GetTicks();
+    }
+}
+
+// Démarre l'animation de disparition
+void infos_display_hide_animation(SDL_Context* context) {
+    if (infos_state != INFOS_HIDDEN && infos_state != INFOS_HIDING) {
+        infos_state = INFOS_HIDING;
+        animation_start_time = SDL_GetTicks();
+    }
+}
+
 // Affiche les informations à l'écran
 void infos_display(SDL_Context* context) {
     if (placeholder) {
@@ -19,26 +48,66 @@ void infos_display(SDL_Context* context) {
         int mouse_x, mouse_y;
         SDL_GetMouseState(&mouse_x, &mouse_y);
         
-        // Constantes pour l'effet de révélation
-        const int REVEAL_DISTANCE = 200; // Distance du bord gauche pour commencer la révélation
-        const int BASE_X = -1700; // Position nominale du placeholder
-        const int HIDDEN_X = -1950; // Position hors écran (caché)
+        // Constantes pour le positionnement
+        const int TRIGGER_X = 200; // Seuil X pour déclencher l'animation
+        const int BASE_X = -1700; // Position visible du placeholder
+        const int HIDDEN_X = -1900; // Position hors écran (caché)
         
-        // Calculer le facteur de révélation (0 = caché, 1 = visible)
-        float reveal_factor = 1.0f - ((float)mouse_x / REVEAL_DISTANCE);
+        // Vérifier si la souris est dedans (au-dessus du seuil)
+        int mouse_inside = (mouse_x <= TRIGGER_X);
         
-        // Limiter entre 0 et 1
-        if (reveal_factor < 0.0f) reveal_factor = 0.0f;
-        if (reveal_factor > 1.0f) reveal_factor = 1.0f;
+        // Déterminer l'état actuel et les positions d'animation
+        Uint32 current_time = SDL_GetTicks();
+        float progress = 0.0f;
+        int display_x = HIDDEN_X;
+        int start_x, end_x;
         
-        // Calculer la position x avec interpolation
-        int display_x = HIDDEN_X + (BASE_X - HIDDEN_X) * reveal_factor;
+        // Gérer les transitions d'état basées sur la souris
+        if (mouse_inside && !mouse_was_inside) {
+            // La souris vient d'entrer : déclencher l'apparition
+            infos_state = INFOS_SHOWING;
+            animation_start_time = SDL_GetTicks();
+            mouse_was_inside = 1;
+        } 
+        else if (!mouse_inside && mouse_was_inside) {
+            // La souris vient de sortir : déclencher la disparition
+            infos_state = INFOS_HIDING;
+            animation_start_time = SDL_GetTicks();
+            mouse_was_inside = 0;
+        }
         
-        display_image(context->renderer, placeholder, display_x, 0, 1, 0, SDL_FLIP_NONE, 1, 64);
-        fps_display(context, display_x);
+        // Gérer les animations en cours
+        if (infos_state == INFOS_SHOWING) {
+            progress = (float)(current_time - animation_start_time) / ANIMATION_DURATION;
+            if (progress >= 1.0f) {
+                progress = 1.0f;
+                infos_state = INFOS_VISIBLE;
+            }
+            // Interpolation du sliding en apparition : HIDDEN_X -> BASE_X
+            display_x = HIDDEN_X + (BASE_X - HIDDEN_X) * progress;
+        } 
+        else if (infos_state == INFOS_HIDING) {
+            progress = (float)(current_time - animation_start_time) / ANIMATION_DURATION;
+            if (progress >= 1.0f) {
+                progress = 1.0f;
+                infos_state = INFOS_HIDDEN;
+            }
+            // Interpolation du sliding en disparition : BASE_X -> HIDDEN_X
+            display_x = BASE_X + (HIDDEN_X - BASE_X) * progress;
+        } 
+        else if (infos_state == INFOS_VISIBLE) {
+            // Reste visible à la position finale
+            display_x = BASE_X;
+        }
+        // Si INFOS_HIDDEN, display_x reste HIDDEN_X
+        
+        // N'afficher que si pas complètement caché
+        if (infos_state != INFOS_HIDDEN) {
+            display_image(context->renderer, placeholder, display_x, 0, 1, 0, SDL_FLIP_NONE, 1, 64);
+            fps_display(context, display_x);
+        }
     }
 }
-
 
 // FPS calculation
 void calculate_fps(SDL_Context* context, Uint32 current_time) {
