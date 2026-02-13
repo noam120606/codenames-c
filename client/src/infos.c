@@ -50,8 +50,8 @@ void infos_display(SDL_Context* context) {
         
         // Constantes pour le positionnement
         const int TRIGGER_X = 200; // Seuil X pour déclencher l'animation
-        const int BASE_X = -1700; // Position visible du placeholder
-        const int HIDDEN_X = -1900; // Position hors écran (caché)
+        const int BASE_X = -950; // Position visible du placeholder
+        const int HIDDEN_X = -1300; // Position hors écran (caché)
         
         // Vérifier si la souris est dedans (au-dessus du seuil)
         int mouse_inside = (mouse_x <= TRIGGER_X);
@@ -103,7 +103,7 @@ void infos_display(SDL_Context* context) {
         
         // N'afficher que si pas complètement caché
         if (infos_state != INFOS_HIDDEN) {
-            display_image(context->renderer, placeholder, display_x, 0, 1, 0, SDL_FLIP_NONE, 1, 64);
+            display_image(context->renderer, placeholder, display_x, 0, 0.75, 90, SDL_FLIP_NONE, 1, 192);
             fps_display(context, display_x);
         }
     }
@@ -132,12 +132,12 @@ void fps_display(SDL_Context* context, int display_x) {
     calculate_fps(context, SDL_GetTicks());
     // Affichage des FPS qui suit le placeholder
     char fps_text[20];
-    snprintf(fps_text, sizeof(fps_text), "FPS: %.2f", context->fps);
+    snprintf(fps_text, sizeof(fps_text), "FPS : %.2f", context->fps);
     SDL_Color white = {255, 255, 255, 255};
     // Positionner le texte relativement au display_x du placeholder
-    int fps_x = display_x + 850;
-    int fps_y = 525;
-    text_display(context->renderer, fps_text, "assets/fonts/larabiefont.otf", 18, white, fps_x, fps_y, 0, 255);
+    int fps_x = display_x + 100;
+    int fps_y = 450;
+    text_display(context->renderer, fps_text, "assets/fonts/larabiefont.otf", 22, white, fps_x, fps_y, 0, 255);
 }
 
 void infos_free() {

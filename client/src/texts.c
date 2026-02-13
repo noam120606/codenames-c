@@ -37,7 +37,7 @@ void text_display(SDL_Renderer* renderer, const char* text, const char* font_pat
     int final_y = (WIN_HEIGHT - tex_h) / 2 - y; /* Inversion de l'axe y (seulement)*/
 
     SDL_Rect dst_rect = { final_x, final_y, tex_w, tex_h };
-    SDL_RenderCopy(renderer, texture, NULL, &dst_rect);
+    SDL_RenderCopyEx(renderer, texture, NULL, &dst_rect, angle, &center, SDL_FLIP_NONE); // FLIP_NONE par défaut pour le moment
 
     // Nettoyage
     SDL_DestroyTexture(texture);
