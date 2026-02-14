@@ -18,9 +18,9 @@ static int mouse_was_inside = 0; // Indique si la souris était dans la zone à 
 int init_infos(SDL_Context* context) {
     int loading_fails = 0;
 
-    placeholder = load_image(context->renderer, "assets/img/others/placeholder_infos.png");
+    placeholder = load_image(context->renderer, "assets/img/others/bandeau_infos.png");
     if (!placeholder) {
-        printf("Failed to load placeholder image\n");
+        printf("Failed to load bandeau image\n");
         loading_fails++;
     }
     return loading_fails;
