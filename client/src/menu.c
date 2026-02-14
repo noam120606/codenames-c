@@ -14,6 +14,18 @@ ButtonReturn menu_button_click(SDL_Context context, ButtonId button_id) {
     return BTN_RET_NONE;
 }
 
+InputReturn menu_input_name_callback(SDL_Context context, InputId input_id) {
+    printf("Input callback triggered for input ID: %d\n", input_id);
+    switch (input_id) {
+        case INPUT_NAME: printf("Input name callback triggered\n"); break;
+        case INPUT_JOIN_CODE: printf("Input join code callback triggered\n"); break;
+        
+        default: printf("Unknown input clicked\n"); break;
+    }
+    // Vous pouvez ajouter une logique supplémentaire ici pour gérer le texte saisi
+    return INPUT_RET_NONE;
+}
+
 int menu_init(SDL_Context * context) {
     int loading_fails = 0;
 
@@ -33,6 +45,9 @@ int menu_init(SDL_Context * context) {
     text_button_create(context->renderer, BTN_CREATE, WIN_WIDTH/2-450, 700, 100, "Créer", "assets/fonts/larabiefont.otf", (SDL_Color){255, 255, 255, 255}, menu_button_click);
     text_button_create(context->renderer, BTN_JOIN, WIN_WIDTH/2+50, 700, 100, "Rejoindre", "assets/fonts/larabiefont.otf", (SDL_Color){255, 255, 255, 255}, menu_button_click);
     text_button_create(context->renderer, BTN_QUIT, WIN_WIDTH/2-200, 900, 100, "Quitter", "assets/fonts/larabiefont.otf", (SDL_Color){255, 255, 255, 255}, menu_button_click);
+
+    // Chargement input
+    text_input_create(context->renderer, INPUT_NAME, WIN_WIDTH/2-200, 300, 500, "Nom du joueur", "assets/fonts/larabiefont.otf", (SDL_Color){255, 255, 255, 255}, menu_input_name_callback);
     
     return loading_fails;
 }

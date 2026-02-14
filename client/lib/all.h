@@ -18,3 +18,4 @@
 #include "../lib/background.h"
 #include "../lib/infos.h"
 #include "../lib/text.h"
+#include "../lib/input.h"
