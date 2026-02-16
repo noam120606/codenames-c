@@ -1,8 +1,47 @@
 /* Input widget implementation */
 #include "../lib/all.h"
 #include "../lib/input.h"
+#include <ctype.h>
 
-Input* input_create(int x, int y, int w, int h, const char* font_path, int font_size, int maxlen) {
+static void input_clear_selection_internal(Input* in) {
+    if (!in) return;
+    in->sel_start = 0;
+    in->sel_len = 0;
+}
+
+static int input_has_selection(Input* in) {
+    return in && in->sel_len > 0;
+}
+
+static void input_delete_selection(Input* in) {
+    if (!in || in->sel_len <= 0) return;
+    int s = in->sel_start;
+    int l = in->sel_len;
+    memmove(in->text + s, in->text + s + l, in->len - (s + l) + 1);
+    in->len -= l;
+    if (in->len < 0) in->len = 0;
+    in->text[in->len] = '\0';
+    in->cursor_pos = s;
+    input_clear_selection_internal(in);
+}
+
+static int prev_word_pos(Input* in, int pos) {
+    if (!in) return 0;
+    int i = pos;
+    while (i > 0 && isspace((unsigned char)in->text[i-1])) i--;
+    while (i > 0 && !isspace((unsigned char)in->text[i-1])) i--;
+    return i;
+}
+
+static int next_word_pos(Input* in, int pos) {
+    if (!in) return 0;
+    int i = pos;
+    while (i < in->len && !isspace((unsigned char)in->text[i])) i++;
+    while (i < in->len && isspace((unsigned char)in->text[i])) i++;
+    return i;
+}
+
+Input* input_create(InputId id, int x, int y, int w, int h, const char* font_path, int font_size, int maxlen) {
     Input* in = (Input*)malloc(sizeof(Input));
     if (!in) return NULL;
     in->rect.x = x;
@@ -19,6 +58,9 @@ Input* input_create(int x, int y, int w, int h, const char* font_path, int font_
     in->border_color = (SDL_Color){0, 0, 0, 255};
     in->text_color = (SDL_Color){0, 0, 0, 255};
     in->bg_texture = NULL;
+    in->id = id;
+    in->sel_start = 0;
+    in->sel_len = 0;
     in->padding = 8;
     in->font_path = font_path;
     in->font_size = font_size;
@@ -62,6 +104,10 @@ void input_handle_event(Input* in, SDL_Event* e) {
         const char* txt = e->text.text;
         int add = strlen(txt);
         if (in->len + add > in->maxlen) return;
+        /* if there is a selection, replace it */
+        if (input_has_selection(in)) {
+            input_delete_selection(in);
+        }
         /* insert at cursor_pos */
         memmove(in->text + in->cursor_pos + add, in->text + in->cursor_pos, in->len - in->cursor_pos + 1);
         memcpy(in->text + in->cursor_pos, txt, add);
@@ -71,16 +117,86 @@ void input_handle_event(Input* in, SDL_Event* e) {
 
     if (e->type == SDL_KEYDOWN) {
         SDL_Keycode k = e->key.keysym.sym;
+        SDL_Keymod mod = e->key.keysym.mod;
+        /* Ctrl+A = select all */
+        if ((mod & KMOD_CTRL) && (k == SDLK_a)) {
+            in->sel_start = 0;
+            in->sel_len = in->len;
+            in->cursor_pos = in->len;
+            return;
+        }
+
         if (k == SDLK_BACKSPACE) {
-            if (in->cursor_pos > 0 && in->len > 0) {
-                memmove(in->text + in->cursor_pos - 1, in->text + in->cursor_pos, in->len - in->cursor_pos + 1);
-                in->cursor_pos--;
-                in->len--;
+            if (input_has_selection(in)) {
+                input_delete_selection(in);
+            } else if (mod & KMOD_CTRL) {
+                int np = prev_word_pos(in, in->cursor_pos);
+                int del = in->cursor_pos - np;
+                if (del > 0) {
+                    memmove(in->text + np, in->text + in->cursor_pos, in->len - in->cursor_pos + 1);
+                    in->len -= del;
+                    in->cursor_pos = np;
+                    in->text[in->len] = '\0';
+                }
+            } else {
+                if (in->cursor_pos > 0 && in->len > 0) {
+                    memmove(in->text + in->cursor_pos - 1, in->text + in->cursor_pos, in->len - in->cursor_pos + 1);
+                    in->cursor_pos--;
+                    in->len--;
+                }
             }
+            input_clear_selection_internal(in);
+        } else if (k == SDLK_DELETE) {
+            if (input_has_selection(in)) {
+                input_delete_selection(in);
+            } else if (mod & KMOD_CTRL) {
+                int np = next_word_pos(in, in->cursor_pos);
+                int del = np - in->cursor_pos;
+                if (del > 0) {
+                    memmove(in->text + in->cursor_pos, in->text + np, in->len - np + 1);
+                    in->len -= del;
+                    in->text[in->len] = '\0';
+                }
+            } else {
+                if (in->cursor_pos < in->len && in->len > 0) {
+                    memmove(in->text + in->cursor_pos, in->text + in->cursor_pos + 1, in->len - in->cursor_pos);
+                    in->len--;
+                    in->text[in->len] = '\0';
+                }
+            }
+            input_clear_selection_internal(in);
         } else if (k == SDLK_LEFT) {
-            if (in->cursor_pos > 0) in->cursor_pos--;
+            int newpos = in->cursor_pos;
+            if (mod & KMOD_CTRL) newpos = prev_word_pos(in, in->cursor_pos);
+            else if (in->cursor_pos > 0) newpos = in->cursor_pos - 1;
+
+            if (mod & KMOD_SHIFT) {
+                if (!input_has_selection(in)) in->sel_start = in->cursor_pos;
+                in->cursor_pos = newpos;
+                int s = in->sel_start;
+                int epos = in->cursor_pos;
+                if (epos < s) { in->sel_start = epos; in->sel_len = s - epos; }
+                else { in->sel_start = s; in->sel_len = epos - s; }
+            } else {
+                in->cursor_pos = newpos;
+                input_clear_selection_internal(in);
+            }
         } else if (k == SDLK_RIGHT) {
-            if (in->cursor_pos < in->len) in->cursor_pos++;
+            int newpos = in->cursor_pos;
+            if (mod & KMOD_CTRL) newpos = next_word_pos(in, in->cursor_pos);
+            else if (in->cursor_pos < in->len) newpos = in->cursor_pos + 1;
+
+            if (mod & KMOD_SHIFT) {
+                if (!input_has_selection(in)) in->sel_start = in->cursor_pos;
+                in->cursor_pos = newpos;
+                int s = in->sel_start;
+                int epos = in->cursor_pos;
+                if (epos < s) { in->sel_start = epos; in->sel_len = s - epos; }
+                else { in->sel_start = s; in->sel_len = epos - s; }
+            } else {
+                in->cursor_pos = newpos;
+                input_clear_selection_internal(in);
+            }
         } else if (k == SDLK_RETURN || k == SDLK_KP_ENTER) {
             in->submitted = 1;
             in->focused = 0;
@@ -124,6 +240,37 @@ void input_render(SDL_Renderer* renderer, Input* in) {
             int cx = 0, cy = 0;
             TTF_SizeText(font, before_cursor, &cx, &cy);
             int padding = in->padding;
+
+            /* draw selection highlight if any */
+            if (input_has_selection(in)) {
+                int s = in->sel_start;
+                int l = in->sel_len;
+                if (s < 0) s = 0;
+                if (s > in->len) s = in->len;
+                if (l < 0) l = 0;
+                if (s + l > in->len) l = in->len - s;
+                if (l > 0) {
+                    char* before_sel = (char*)malloc(s + 1);
+                    char* sel_text = (char*)malloc(l + 1);
+                    if (before_sel && sel_text) {
+                        if (s > 0) memcpy(before_sel, in->text, s);
+                        before_sel[s] = '\0';
+                        memcpy(sel_text, in->text + s, l);
+                        sel_text[l] = '\0';
+                        int bx = 0, by = 0, sw = 0, sh = 0;
+                        TTF_SizeText(font, before_sel, &bx, &by);
+                        TTF_SizeText(font, sel_text, &sw, &sh);
+                        SDL_Rect selrect = { in->rect.x + padding + bx, in->rect.y + (in->rect.h - sh) / 2, sw, sh };
+                        if (selrect.x < in->rect.x + padding) selrect.x = in->rect.x + padding;
+                        if (selrect.x + selrect.w > in->rect.x + in->rect.w - padding) selrect.w = (in->rect.x + in->rect.w - padding) - selrect.x;
+                        SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+                        SDL_SetRenderDrawColor(renderer, 51, 153, 255, 128);
+                        SDL_RenderFillRect(renderer, &selrect);
+                    }
+                    free(before_sel);
+                    free(sel_text);
+                }
+            }
 
             SDL_Surface* surf = NULL;
             SDL_Texture* tex = NULL;
