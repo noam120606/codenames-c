@@ -18,6 +18,8 @@ Input* input_create(int x, int y, int w, int h, const char* font_path, int font_
     in->bg_color = (SDL_Color){255, 255, 255, 255};
     in->border_color = (SDL_Color){0, 0, 0, 255};
     in->text_color = (SDL_Color){0, 0, 0, 255};
+    in->bg_texture = NULL;
+    in->padding = 8;
     in->font_path = font_path;
     in->font_size = font_size;
     in->on_submit = NULL;
@@ -27,6 +29,7 @@ Input* input_create(int x, int y, int w, int h, const char* font_path, int font_
 void input_destroy(Input* in) {
     if (!in) return;
     if (in->text) free(in->text);
+    if (in->bg_texture) free_image(in->bg_texture);
     free(in);
 }
 
@@ -90,25 +93,46 @@ void input_handle_event(Input* in, SDL_Event* e) {
 void input_render(SDL_Renderer* renderer, Input* in) {
     if (!renderer || !in) return;
 
-    /* background */
-    SDL_SetRenderDrawColor(renderer, in->bg_color.r, in->bg_color.g, in->bg_color.b, in->bg_color.a);
-    SDL_RenderFillRect(renderer, &in->rect);
+    /* background: image if present else color */
+    if (in->bg_texture) {
+        SDL_RenderCopy(renderer, in->bg_texture, NULL, &in->rect);
+    } else {
+        SDL_SetRenderDrawColor(renderer, in->bg_color.r, in->bg_color.g, in->bg_color.b, in->bg_color.a);
+        SDL_RenderFillRect(renderer, &in->rect);
+    }
 
-    /* border */
-    SDL_SetRenderDrawColor(renderer, in->border_color.r, in->border_color.g, in->border_color.b, in->border_color.a);
-    SDL_RenderDrawRect(renderer, &in->rect);
+    /* border: draw only when no background texture is set */
+    if (!in->bg_texture) {
+        SDL_SetRenderDrawColor(renderer, in->border_color.r, in->border_color.g, in->border_color.b, in->border_color.a);
+        SDL_RenderDrawRect(renderer, &in->rect);
+    }
 
     /* render text using TTF */
     if (in->font_path && in->font_size > 0) {
         TTF_Font* font = TTF_OpenFont(in->font_path, in->font_size);
         if (font) {
-            SDL_Surface* surf = TTF_RenderText_Blended(font, in->text, in->text_color);
+            /* compute width of text up to cursor so we can draw cursor even when no
+             * texture is created (empty string case) */
+            char before_cursor[512];
+            int n = in->cursor_pos;
+            if (n > 0) {
+                if (n >= (int)sizeof(before_cursor)) n = sizeof(before_cursor)-1;
+                memcpy(before_cursor, in->text, n);
+                before_cursor[n] = '\0';
+            } else before_cursor[0] = '\0';
+
+            int cx = 0, cy = 0;
+            TTF_SizeText(font, before_cursor, &cx, &cy);
+            int padding = in->padding;
+
+            SDL_Surface* surf = NULL;
+            SDL_Texture* tex = NULL;
+            surf = TTF_RenderText_Blended(font, in->text, in->text_color);
             if (surf) {
-                SDL_Texture* tex = SDL_CreateTextureFromSurface(renderer, surf);
+                tex = SDL_CreateTextureFromSurface(renderer, surf);
                 if (tex) {
                     int tw = 0, th = 0;
                     SDL_QueryTexture(tex, NULL, NULL, &tw, &th);
-                    int padding = 8;
                     SDL_Rect dst = { in->rect.x + padding, in->rect.y + (in->rect.h - th) / 2, tw, th };
 
                     /* If text wider than input, clip source width */
@@ -119,37 +143,26 @@ void input_render(SDL_Renderer* renderer, Input* in) {
                     }
 
                     SDL_RenderCopy(renderer, tex, &src, &dst);
-
-                    /* draw cursor if focused */
-                    if (in->focused) {
-                        /* compute width of text up to cursor */
-                        char before_cursor[512];
-                        int n = in->cursor_pos;
-                        if (n > 0) {
-                            if (n >= (int)sizeof(before_cursor)) n = sizeof(before_cursor)-1;
-                            memcpy(before_cursor, in->text, n);
-                            before_cursor[n] = '\0';
-                        } else before_cursor[0] = '\0';
-
-                        int cx = 0, cy = 0;
-                        TTF_SizeText(font, before_cursor, &cx, &cy);
-                        int cursor_x = in->rect.x + padding + cx;
-                        /* ensure cursor stays inside rect */
-                        if (cursor_x > in->rect.x + in->rect.w - padding) cursor_x = in->rect.x + in->rect.w - padding;
-
-                        /* blink */
-                        Uint32 t = SDL_GetTicks();
-                        if ((t / 500) % 2 == 0) {
-                            SDL_SetRenderDrawColor(renderer, in->text_color.r, in->text_color.g, in->text_color.b, in->text_color.a);
-                            SDL_Rect cur = { cursor_x, in->rect.y + 6, 2, in->rect.h - 12 };
-                            SDL_RenderFillRect(renderer, &cur);
-                        }
-                    }
-
-                    SDL_DestroyTexture(tex);
                 }
-                SDL_FreeSurface(surf);
             }
+
+            /* draw cursor if focused (draw regardless of surf/tex) */
+            if (in->focused) {
+                int cursor_x = in->rect.x + padding + cx;
+                /* ensure cursor stays inside rect */
+                if (cursor_x > in->rect.x + in->rect.w - padding) cursor_x = in->rect.x + in->rect.w - padding;
+
+                /* blink */
+                Uint32 t = SDL_GetTicks();
+                if ((t / 500) % 2 == 0) {
+                    SDL_SetRenderDrawColor(renderer, in->text_color.r, in->text_color.g, in->text_color.b, in->text_color.a);
+                    SDL_Rect cur = { cursor_x, in->rect.y + 6, 2, in->rect.h - 12 };
+                    SDL_RenderFillRect(renderer, &cur);
+                }
+            }
+
+            if (tex) SDL_DestroyTexture(tex);
+            if (surf) SDL_FreeSurface(surf);
             TTF_CloseFont(font);
         }
     }
@@ -181,4 +194,43 @@ void input_set_text(Input* in, const char* text) {
 void input_set_on_submit(Input* in, void (*cb)(const char*)) {
     if (!in) return;
     in->on_submit = cb;
+}
+
+int input_set_bg(Input* in, SDL_Renderer* renderer, const char* path, int padding) {
+    if (!in || !renderer || !path) return EXIT_FAILURE;
+    if (in->bg_texture) {
+        free_image(in->bg_texture);
+        in->bg_texture = NULL;
+    }
+    SDL_Texture* tex = load_image(renderer, path);
+    if (!tex) return EXIT_FAILURE;
+    /* If caller provided padding >= 0, use it; otherwise adapt to texture */
+    if (padding >= 0) {
+        in->padding = padding;
+    } else {
+        int tw = 0, th = 0;
+        if (SDL_QueryTexture(tex, NULL, NULL, &tw, &th) == 0) {
+            int p = in->rect.h / 3;
+            if (p < 6) p = 6;
+            if (tw > 0 && tw < in->rect.w) p += 4;
+            in->padding = p;
+        }
+    }
+    in->bg_texture = tex;
+    return EXIT_SUCCESS;
+}
+
+void input_clear_bg(Input* in) {
+    if (!in) return;
+    if (in->bg_texture) {
+        free_image(in->bg_texture);
+        in->bg_texture = NULL;
+    }
+    in->padding = 8;
+}
+
+void input_set_padding(Input* in, int padding) {
+    if (!in) return;
+    if (padding < 0) padding = 0;
+    in->padding = padding;
 }

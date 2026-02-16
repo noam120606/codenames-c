@@ -1,6 +1,6 @@
 #include "../lib/all.h"
 
-SDL_Texture* placeholder;
+SDL_Texture* bandeau;
 
 // Animation state
 typedef enum {
@@ -18,8 +18,8 @@ static int mouse_was_inside = 0; // Indique si la souris était dans la zone à 
 int init_infos(SDL_Context* context) {
     int loading_fails = 0;
 
-    placeholder = load_image(context->renderer, "assets/img/others/bandeau_infos.png");
-    if (!placeholder) {
+    bandeau = load_image(context->renderer, "assets/img/others/bandeau_infos.png");
+    if (!bandeau) {
         printf("Failed to load bandeau image\n");
         loading_fails++;
     }
@@ -43,14 +43,14 @@ void infos_display_hide_animation(SDL_Context* context) {
 
 // Affiche les informations à l'écran
 void infos_display(SDL_Context* context) {
-    if (placeholder) {
+    if (bandeau) {
         // Récupérer la position de la souris
         int mouse_x, mouse_y;
         SDL_GetMouseState(&mouse_x, &mouse_y);
         
         // Constantes pour le positionnement
         const int TRIGGER_X = 200; // Seuil X pour déclencher l'animation
-        const int BASE_X = -950; // Position visible du placeholder
+        const int BASE_X = -950; // Position visible du bandeau
         const int HIDDEN_X = -1300; // Position hors écran (caché)
         
         // Vérifier si la souris est dedans (au-dessus du seuil)
@@ -103,7 +103,7 @@ void infos_display(SDL_Context* context) {
         
         // N'afficher que si pas complètement caché
         if (infos_state != INFOS_HIDDEN) {
-            display_image(context->renderer, placeholder, display_x, 0, 0.75, 90, SDL_FLIP_NONE, 1, 192);
+            display_image(context->renderer, bandeau, display_x, 0, 0.75, 90, SDL_FLIP_NONE, 1, 192);
             fps_display(context, display_x);
         }
     }
@@ -130,19 +130,19 @@ void calculate_fps(SDL_Context* context, Uint32 current_time) {
 // FPS display
 void fps_display(SDL_Context* context, int display_x) {
     calculate_fps(context, SDL_GetTicks());
-    // Affichage des FPS qui suit le placeholder
+    // Affichage des FPS qui suit le bandeau
     char fps_text[20];
     snprintf(fps_text, sizeof(fps_text), "FPS : %.2f", context->fps);
     SDL_Color white = {255, 255, 255, 255};
-    // Positionner le texte relativement au display_x du placeholder
+    // Positionner le texte relativement au display_x du bandeau
     int fps_x = display_x + 100;
     int fps_y = 450;
     text_display(context->renderer, fps_text, "assets/fonts/larabiefont.otf", 22, white, fps_x, fps_y, 0, 255);
 }
 
 void infos_free() {
-    if (placeholder) {
-        SDL_DestroyTexture(placeholder);
-        placeholder = NULL;
+    if (bandeau) {
+        SDL_DestroyTexture(bandeau);
+        bandeau = NULL;
     }
 }

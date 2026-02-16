@@ -48,7 +48,10 @@ int menu_init(SDL_Context * context) {
 
     // Chargement input
         menu_input = input_create(WIN_WIDTH/2 - 200, 600, 400, 60, "assets/fonts/larabiefont.otf", 28, 128);
-        if (menu_input) input_set_on_submit(menu_input, menu_on_submit);
+        if (menu_input) {
+            input_set_on_submit(menu_input, menu_on_submit);
+            input_set_bg(menu_input, context->renderer, "assets/img/inputs/empty.png", 18);
+        }
     
     return loading_fails;
 }
