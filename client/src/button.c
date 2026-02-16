@@ -216,8 +216,8 @@ void buttons_display(SDL_Renderer* renderer) {
             }
 
             // Afficher la texture
-            SDL_RenderCopy(renderer, buttons[i]->texture, NULL, &render_rect);
-            if (buttons[i]->is_text) SDL_RenderCopy(renderer, buttons[i]->text_texture, NULL, &text_rect);
+            SDL_RenderCopyEx(renderer, buttons[i]->texture, NULL, &render_rect, 0, NULL, SDL_FLIP_NONE);
+            if (buttons[i]->is_text) SDL_RenderCopyEx(renderer, buttons[i]->text_texture, NULL, &text_rect, 0, NULL, SDL_FLIP_NONE);
         }
     }
 }
