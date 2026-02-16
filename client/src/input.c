@@ -1,258 +1,184 @@
+/* Input widget implementation */
 #include "../lib/all.h"
+#include "../lib/input.h"
 
-#define MAX_INPUTS 50
-
-static Input* inputs[MAX_INPUTS];
-static int input_count = 0;
-
-void inputs_init() {
-    for (int i = 0; i < MAX_INPUTS; i++) {
-        inputs[i] = NULL;
-    }
-    input_count = 0;
+Input* input_create(int x, int y, int w, int h, const char* font_path, int font_size, int maxlen) {
+    Input* in = (Input*)malloc(sizeof(Input));
+    if (!in) return NULL;
+    in->rect.x = x;
+    in->rect.y = y;
+    in->rect.w = w;
+    in->rect.h = h;
+    in->maxlen = (maxlen > 0) ? maxlen : INPUT_DEFAULT_MAX;
+    in->text = (char*)calloc(in->maxlen + 1, 1);
+    in->len = 0;
+    in->cursor_pos = 0;
+    in->focused = 0;
+    in->submitted = 0;
+    in->bg_color = (SDL_Color){255, 255, 255, 255};
+    in->border_color = (SDL_Color){0, 0, 0, 255};
+    in->text_color = (SDL_Color){0, 0, 0, 255};
+    in->font_path = font_path;
+    in->font_size = font_size;
+    in->on_submit = NULL;
+    return in;
 }
 
-
-Input* input_create(int id, int x, int y, int w, int h, SDL_Texture* texture, InputCallback callback) {
-    if (input_count >= MAX_INPUTS) {
-        printf("Erreur: nombre maximum d'inputs atteint (%d)\n", MAX_INPUTS);
-        return NULL;
-    }
-
-    if (!texture) {
-        printf("Erreur: texture NULL pour le bouton %d\n", id);
-        return NULL;
-    }
-
-    Input* input = (Input*)malloc(sizeof(Input));
-    if (!input) {
-        printf("Erreur: allocation mémoire échouée pour l'input %d\n", id);
-        return NULL;
-    }
-
-    input->id = id;
-    input->buffer[0] = '\0';
-    input->length = 0;
-    input->rect.x = x;
-    input->rect.y = y;
-    input->rect.w = w;
-    input->rect.h = h;
-    input->texture = texture;
-    input->is_hovered = 0;
-    input->is_text = 0;
-    input->hidden = 0;
-    input->callback = callback;
-
-    inputs[input_count++] = input;
-
-    return input;
+void input_destroy(Input* in) {
+    if (!in) return;
+    if (in->text) free(in->text);
+    free(in);
 }
 
-Input* text_input_create(SDL_Renderer* renderer, int id, int x, int y, int taille,
-                            const char* text, const char* font_path, SDL_Color color,
-                            InputCallback callback) {
+static int point_in_rect(int x, int y, SDL_Rect* r) {
+    return x >= r->x && x <= (r->x + r->w) && y >= r->y && y <= (r->y + r->h);
+}
 
-    if (!renderer || !text || !font_path) {
-        printf("text_input_create: invalid argument\n");
-        return NULL;
-    }
+void input_handle_event(Input* in, SDL_Event* e) {
+    if (!in || !e) return;
 
-    TTF_Font* font = TTF_OpenFont(font_path, 128);
-    if (!font) {
-        printf("TTF_OpenFont failed: %s\n", TTF_GetError());
-        return NULL;
-    }
-
-    SDL_Surface* text_surf = TTF_RenderUTF8_Blended(font, text, color);
-    TTF_CloseFont(font);
-    if (!text_surf) {
-        printf("TTF_RenderUTF8_Blended failed: %s\n", TTF_GetError());
-        return NULL;
-    }
-
-    SDL_Texture* text_texture = SDL_CreateTextureFromSurface(renderer, text_surf);
-    int text_tex_w = text_surf->w;
-    int text_tex_h = text_surf->h;
-    SDL_FreeSurface(text_surf);
-    if (!text_texture) {
-        printf("SDL_CreateTextureFromSurface failed: %s\n", SDL_GetError());
-        return NULL;
-    }
-
-    SDL_Texture* background = load_image(renderer, "assets/img/inputs/empty.png");
-    if (!background) {
-        printf("load_image failed: %s\n", SDL_GetError());
-        SDL_DestroyTexture(text_texture);
-        return NULL;
-    }
-
-    int bg_tex_w = 0, bg_tex_h = 0;
-    if (SDL_QueryTexture(background, NULL, NULL, &bg_tex_w, &bg_tex_h) != 0) {
-        printf("SDL_QueryTexture Error: %s\n", SDL_GetError());
-        SDL_DestroyTexture(background);
-        SDL_DestroyTexture(text_texture);
-        return NULL;
-    }
-
-    Input* input = (Input*)malloc(sizeof(Input));
-    if (!input) {
-        SDL_DestroyTexture(background);
-        SDL_DestroyTexture(text_texture);
-        return NULL;
-    }
-
-    int padding = 16;
-
-    /* Calculer la taille du bouton en conservant le ratio de l'image de fond */
-    int btn_h = taille;
-    int btn_w = (bg_tex_w * btn_h) / bg_tex_h;
-    if (btn_w <= 0) btn_w = btn_h; /* fallback */
-
-    /* Calculer la taille du rectangle de texte en fonction de la texture de texte
-       On adapte d'abord la hauteur disponible, puis on met à l'échelle la largeur.
-       Si la largeur dépasse l'espace disponible, on réduit la taille proportionnellement. */
-    SDL_Rect text_rect;
-    text_rect.h = btn_h - 2 * padding;
-    if (text_rect.h <= 0) text_rect.h = btn_h; /* fallback */
-
-    double scale = (text_tex_h > 0) ? ((double)text_rect.h / (double)text_tex_h) : 1.0;
-    text_rect.w = (int)(text_tex_w * scale);
-
-    int max_text_w = btn_w - 2 * padding;
-    if (text_rect.w > max_text_w) {
-        /* réduire pour tenir dans la largeur disponible */
-        if (text_tex_w > 0) {
-            double scale2 = (double)max_text_w / (double)text_tex_w;
-            text_rect.w = max_text_w;
-            text_rect.h = (int)(text_tex_h * scale2);
-            if (text_rect.h <= 0) text_rect.h = 1;
+    if (e->type == SDL_MOUSEBUTTONDOWN) {
+        int mx = e->button.x;
+        int my = e->button.y;
+        if (point_in_rect(mx, my, &in->rect)) {
+            in->focused = 1;
+            SDL_StartTextInput();
+            /* place cursor at end */
+            in->cursor_pos = in->len;
         } else {
-            text_rect.w = max_text_w;
-        }
-    }
-
-    /* Centrer le texte dans le bouton */
-    text_rect.x = x + (btn_w - text_rect.w) / 2;
-    text_rect.y = y + (btn_h - text_rect.h) / 2;
-
-    input->id = id;
-    input->rect = (SDL_Rect){x, y, btn_w, btn_h};
-    input->texture = background;
-    input->is_hovered = 0;
-    input->is_text = 1;
-    input->text_rect = text_rect;
-    input->text_texture = text_texture;
-    input->hidden = 0;
-    input->callback = callback;
-
-    inputs[input_count++] = input;
-
-    return input;
-}
-
-static int is_mouse_over_input(Input* input, int mouseX, int mouseY) {
-    if (!input) {
-        return 0;
-    }
-    return (mouseX >= input->rect.x && 
-            mouseX <= input->rect.x + input->rect.w &&
-            mouseY >= input->rect.y && 
-            mouseY <= input->rect.y + input->rect.h);
-}
-
-InputReturn input_handle_event(SDL_Context context, SDL_Event* event) {
-    if (!event) {
-        return INPUT_RET_NONE;
-    }
-
-    if (event->type == SDL_MOUSEMOTION) {
-        int mouseX = event->motion.x;
-        int mouseY = event->motion.y;
-
-        // Mettre à jour l'état de survol pour tous les inputs
-        for (int i = 0; i < input_count; i++) {
-            if (inputs[i] && !inputs[i]->hidden) {
-                inputs[i]->is_hovered = is_mouse_over_input(inputs[i], mouseX, mouseY);
-            } else if (inputs[i]) {
-                inputs[i]->is_hovered = 0; // Ne pas surligner les inputs cachés
+            if (in->focused) {
+                in->focused = 0;
+                SDL_StopTextInput();
             }
         }
-    } else if (event->type == SDL_MOUSEBUTTONDOWN && event->button.button == SDL_BUTTON_LEFT) {
-        int mouseX = event->button.x;
-        int mouseY = event->button.y;
+    }
 
-        // Vérifier et déclencher les callbacks des inputs cliqués
-        for (int i = 0; i < input_count; i++) {
+    if (!in->focused) return;
 
-            if (inputs[i] && !inputs[i]->hidden && is_mouse_over_input(inputs[i], mouseX, mouseY)) {
-                if (inputs[i]->callback) {
-                    return inputs[i]->callback(context, inputs[i]->id);
+    if (e->type == SDL_TEXTINPUT) {
+        const char* txt = e->text.text;
+        int add = strlen(txt);
+        if (in->len + add > in->maxlen) return;
+        /* insert at cursor_pos */
+        memmove(in->text + in->cursor_pos + add, in->text + in->cursor_pos, in->len - in->cursor_pos + 1);
+        memcpy(in->text + in->cursor_pos, txt, add);
+        in->cursor_pos += add;
+        in->len += add;
+    }
+
+    if (e->type == SDL_KEYDOWN) {
+        SDL_Keycode k = e->key.keysym.sym;
+        if (k == SDLK_BACKSPACE) {
+            if (in->cursor_pos > 0 && in->len > 0) {
+                memmove(in->text + in->cursor_pos - 1, in->text + in->cursor_pos, in->len - in->cursor_pos + 1);
+                in->cursor_pos--;
+                in->len--;
+            }
+        } else if (k == SDLK_LEFT) {
+            if (in->cursor_pos > 0) in->cursor_pos--;
+        } else if (k == SDLK_RIGHT) {
+            if (in->cursor_pos < in->len) in->cursor_pos++;
+        } else if (k == SDLK_RETURN || k == SDLK_KP_ENTER) {
+            in->submitted = 1;
+            in->focused = 0;
+            SDL_StopTextInput();
+            if (in->on_submit) in->on_submit(in->text);
+        }
+    }
+}
+
+void input_render(SDL_Renderer* renderer, Input* in) {
+    if (!renderer || !in) return;
+
+    /* background */
+    SDL_SetRenderDrawColor(renderer, in->bg_color.r, in->bg_color.g, in->bg_color.b, in->bg_color.a);
+    SDL_RenderFillRect(renderer, &in->rect);
+
+    /* border */
+    SDL_SetRenderDrawColor(renderer, in->border_color.r, in->border_color.g, in->border_color.b, in->border_color.a);
+    SDL_RenderDrawRect(renderer, &in->rect);
+
+    /* render text using TTF */
+    if (in->font_path && in->font_size > 0) {
+        TTF_Font* font = TTF_OpenFont(in->font_path, in->font_size);
+        if (font) {
+            SDL_Surface* surf = TTF_RenderText_Blended(font, in->text, in->text_color);
+            if (surf) {
+                SDL_Texture* tex = SDL_CreateTextureFromSurface(renderer, surf);
+                if (tex) {
+                    int tw = 0, th = 0;
+                    SDL_QueryTexture(tex, NULL, NULL, &tw, &th);
+                    int padding = 8;
+                    SDL_Rect dst = { in->rect.x + padding, in->rect.y + (in->rect.h - th) / 2, tw, th };
+
+                    /* If text wider than input, clip source width */
+                    SDL_Rect src = {0, 0, tw, th};
+                    if (dst.w > in->rect.w - padding*2) {
+                        src.w = (in->rect.w - padding*2) * ((float)tw / dst.w);
+                        dst.w = in->rect.w - padding*2;
+                    }
+
+                    SDL_RenderCopy(renderer, tex, &src, &dst);
+
+                    /* draw cursor if focused */
+                    if (in->focused) {
+                        /* compute width of text up to cursor */
+                        char before_cursor[512];
+                        int n = in->cursor_pos;
+                        if (n > 0) {
+                            if (n >= (int)sizeof(before_cursor)) n = sizeof(before_cursor)-1;
+                            memcpy(before_cursor, in->text, n);
+                            before_cursor[n] = '\0';
+                        } else before_cursor[0] = '\0';
+
+                        int cx = 0, cy = 0;
+                        TTF_SizeText(font, before_cursor, &cx, &cy);
+                        int cursor_x = in->rect.x + padding + cx;
+                        /* ensure cursor stays inside rect */
+                        if (cursor_x > in->rect.x + in->rect.w - padding) cursor_x = in->rect.x + in->rect.w - padding;
+
+                        /* blink */
+                        Uint32 t = SDL_GetTicks();
+                        if ((t / 500) % 2 == 0) {
+                            SDL_SetRenderDrawColor(renderer, in->text_color.r, in->text_color.g, in->text_color.b, in->text_color.a);
+                            SDL_Rect cur = { cursor_x, in->rect.y + 6, 2, in->rect.h - 12 };
+                            SDL_RenderFillRect(renderer, &cur);
+                        }
+                    }
+
+                    SDL_DestroyTexture(tex);
                 }
+                SDL_FreeSurface(surf);
             }
-        }
-    }
-    // Si aucun input n'a été cliqué, retourner INPUT_RET_NONE (avec un oubli ça avait tout cassé)
-    return INPUT_RET_NONE;
-}
-
-void inputs_display(SDL_Renderer* renderer) {
-    if (!renderer) {
-        return;
-    }
-
-    for (int i = 0; i < input_count; i++) {
-        if (inputs[i] && !inputs[i]->hidden && inputs[i]->texture) {
-
-            // Grandir l'input au survol
-            SDL_Rect render_rect = inputs[i]->rect;
-            SDL_Rect text_rect = inputs[i]->text_rect;
-            if (inputs[i]->is_hovered) {
-                render_rect.x -= 4;
-                render_rect.y -= 2;
-                render_rect.w += 8;
-                render_rect.h += 4;
-                if (inputs[i]->is_text) {
-                    text_rect.x -= 2;
-                    text_rect.y -= 1;
-                    text_rect.w += 4;
-                    text_rect.h += 2;
-                }
-            }
-
-            // Afficher la texture
-            SDL_RenderCopy(renderer, inputs[i]->texture, NULL, &render_rect);
-            if (inputs[i]->is_text) SDL_RenderCopy(renderer, inputs[i]->text_texture, NULL, &text_rect);
+            TTF_CloseFont(font);
         }
     }
 }
 
-Input* input_get(int id) {
-    for (int i = 0; i < input_count; i++) {
-        if (inputs[i] && inputs[i]->id == id) {
-            return inputs[i];
-        }
-    }
-    return NULL;
+const char* input_get_text(Input* in) {
+    if (!in) return NULL;
+    return in->text;
 }
 
-void inputs_free() {
-    for (int i = 0; i < input_count; i++) {
-        if (inputs[i]) {
-            if (inputs[i]->is_text) SDL_DestroyTexture(inputs[i]->text_texture);
-            SDL_DestroyTexture(inputs[i]->texture);
-            free(inputs[i]);
-            inputs[i] = NULL;
-        }
-    }
-    input_count = 0;
+int input_is_submitted(Input* in) {
+    if (!in) return 0;
+    return in->submitted;
 }
 
-void hide_input(int id) {
-    Input* input = input_get(id);
-    if (input) input->hidden = 1;
+void input_clear_submitted(Input* in) {
+    if (!in) return;
+    in->submitted = 0;
 }
 
-void show_input(int id) {
-    Input* input = input_get(id);
-    if (input) input->hidden = 0;
+void input_set_text(Input* in, const char* text) {
+    if (!in || !text) return;
+    strncpy(in->text, text, in->maxlen);
+    in->text[in->maxlen] = '\0';
+    in->len = strlen(in->text);
+    in->cursor_pos = in->len;
+}
+
+void input_set_on_submit(Input* in, void (*cb)(const char*)) {
+    if (!in) return;
+    in->on_submit = cb;
 }

@@ -1,8 +1,10 @@
 #include "../lib/all.h"
 
 SDL_Context init_sdl() {
+    SDL_Context context = {0}; // Initialisation sécurisée à zéro
 
-    SDL_Context context;
+    // Log dimensions
+    printf("WIN_WIDTH = %d, WIN_HEIGHT = %d\n", WIN_WIDTH, WIN_HEIGHT);
 
     // Initialize SDL
     printf("Initializing SDL...\n");
@@ -13,7 +15,7 @@ SDL_Context init_sdl() {
 
     // Create SDL window
     printf("Creating SDL window...\n");
-    // SDL_Window* win = SDL_CreateWindow("Codenames Client", 100, 100, 800, 600, SDL_WINDOW_SHOWN);
+    // SDL_Window* win = SDL_CreateWindow("Codenames", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_SHOWN);
     SDL_Window* win = SDL_CreateWindow("Codenames", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_FULLSCREEN | SDL_WINDOW_SHOWN);
     if (win == NULL) {
         printf("SDL_CreateWindow Error: %s\n", SDL_GetError());

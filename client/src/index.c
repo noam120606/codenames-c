@@ -95,6 +95,8 @@ int main(int argc, char* argv[]){
                 case BTN_RET_QUIT: running = 0; break;
                 default: break;
             }
+            // Menu events (inputs, etc.)
+            menu_handle_event(&context, &e);
         }
 
         // Pré Rendu

@@ -8,9 +8,9 @@
  * Identifiants des boutons.
  */
 typedef enum ButtonId {
+    BTN_CREATE = 1,
     BTN_JOIN,
-    BTN_CREATE,
-    BTN_QUIT
+    BTN_QUIT,
 } ButtonId;
 
 /**

@@ -20,6 +20,11 @@ int menu_init(SDL_Context * context);
  */
 void menu_display(SDL_Context * context);
 
+/**
+ * Handle SDL events for the menu (e.g., inputs)
+ */
+void menu_handle_event(SDL_Context* context, SDL_Event* e);
+
 /** 
  * Libère les ressources du menu.
  * @return `EXIT_SUCCESS` en cas de succès, `EXIT_FAILURE` en cas d'erreur.

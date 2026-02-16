@@ -2,6 +2,18 @@
 
 SDL_Texture* menu_logo;
 SDL_Texture* quagmire;
+Input* menu_input = NULL;
+static char menu_input_value[256] = "";
+
+static void menu_on_submit(const char* text) {
+    strncpy(menu_input_value, text, sizeof(menu_input_value) - 1);
+    menu_input_value[sizeof(menu_input_value) - 1] = '\0';
+    printf("Menu input submitted: %s\n", menu_input_value);
+}
+
+void menu_handle_event(SDL_Context* context, SDL_Event* e) {
+    if (menu_input) input_handle_event(menu_input, e);
+}
 
 ButtonReturn menu_button_click(SDL_Context context, ButtonId button_id) {
     printf("Button clicked: %d\n", button_id);
@@ -12,18 +24,6 @@ ButtonReturn menu_button_click(SDL_Context context, ButtonId button_id) {
         default: printf("Unknown button clicked\n"); break;
     }
     return BTN_RET_NONE;
-}
-
-InputReturn menu_input_name_callback(SDL_Context context, InputId input_id) {
-    printf("Input callback triggered for input ID: %d\n", input_id);
-    switch (input_id) {
-        case INPUT_NAME: printf("Input name callback triggered\n"); break;
-        case INPUT_JOIN_CODE: printf("Input join code callback triggered\n"); break;
-        
-        default: printf("Unknown input clicked\n"); break;
-    }
-    // Vous pouvez ajouter une logique supplémentaire ici pour gérer le texte saisi
-    return INPUT_RET_NONE;
 }
 
 int menu_init(SDL_Context * context) {
@@ -47,7 +47,8 @@ int menu_init(SDL_Context * context) {
     text_button_create(context->renderer, BTN_QUIT, WIN_WIDTH/2-200, 900, 100, "Quitter", "assets/fonts/larabiefont.otf", (SDL_Color){255, 255, 255, 255}, menu_button_click);
 
     // Chargement input
-    text_input_create(context->renderer, INPUT_NAME, WIN_WIDTH/2-200, 300, 500, "Nom du joueur", "assets/fonts/larabiefont.otf", (SDL_Color){255, 255, 255, 255}, menu_input_name_callback);
+        menu_input = input_create(WIN_WIDTH/2 - 200, 600, 400, 60, "assets/fonts/larabiefont.otf", 28, 128);
+        if (menu_input) input_set_on_submit(menu_input, menu_on_submit);
     
     return loading_fails;
 }
@@ -62,11 +63,23 @@ void menu_display(SDL_Context * context) {
     if (quagmire) {
         display_image(context->renderer, quagmire, 850, -350, 1.0, 0, SDL_FLIP_NONE, 1, 255);
     }
+
+    /* input is drawn by menu */
+    if (menu_input) input_render(context->renderer, menu_input);
+
+    /* afficher valeur soumise sous l'input */
+    if (menu_input_value[0] != '\0') {
+        text_display(context->renderer, menu_input_value, "assets/fonts/larabiefont.otf", 20, (SDL_Color){255,255,255,255}, 0, 520, 0, 255);
+    }
 }
 
 int menu_free() {
     if (menu_logo) free_image(menu_logo);
     if (quagmire) free_image(quagmire);
+    if (menu_input) {
+        input_destroy(menu_input);
+        menu_input = NULL;
+    }
 
     return EXIT_SUCCESS;
 }
