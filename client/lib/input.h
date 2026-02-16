@@ -28,6 +28,12 @@ typedef struct Input {
     InputId id;
     int sel_start;
     int sel_len;
+    char* submitted_text;
+    char* submitted_label;
+    char** placeholders;
+    int placeholder_count;
+    int placeholder_index;
+    Uint32 placeholder_last_tick;
     const char* font_path;
     int font_size;
     void (*on_submit)(const char*);
@@ -44,7 +50,7 @@ typedef struct Input {
  * @param maxlen Longueur maximale du texte (excluant le caractère nul). Si <= 0, une valeur par défaut est utilisée.
  * @return Pointeur vers l'input créé, ou NULL en cas d'erreur.
  */
-Input* input_create(InputId id, int x, int y, int w, int h, const char* font_path, int font_size, int maxlen);
+Input* input_create(InputId id, int x, int y, int w, int h, const char* font_path, int font_size, const char** placeholders, int placeholder_count, const char* submitted_label, int maxlen);
 
 /** Détruit un input. 
  * Libère la mémoire associée à l'input et ses ressources (texte, texture de fond).

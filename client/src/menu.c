@@ -2,17 +2,14 @@
 
 SDL_Texture* menu_logo;
 SDL_Texture* quagmire;
-Input* menu_input = NULL;
-static char menu_input_value[256] = "";
+Input* name_input = NULL;
 
-static void menu_on_submit(const char* text) {
-    strncpy(menu_input_value, text, sizeof(menu_input_value) - 1);
-    menu_input_value[sizeof(menu_input_value) - 1] = '\0';
-    printf("Menu input submitted: %s\n", menu_input_value);
+static void name_on_submit(const char* text) {
+    printf("Name input submitted: %s\n", text);
 }
 
 void menu_handle_event(SDL_Context* context, SDL_Event* e) {
-    if (menu_input) input_handle_event(menu_input, e);
+    if (name_input) input_handle_event(name_input, e);
 }
 
 ButtonReturn menu_button_click(SDL_Context context, ButtonId button_id) {
@@ -47,11 +44,12 @@ int menu_init(SDL_Context * context) {
     text_button_create(context->renderer, BTN_QUIT, WIN_WIDTH/2-200, 900, 100, "Quitter", "assets/fonts/larabiefont.otf", (SDL_Color){255, 255, 255, 255}, menu_button_click);
 
     // Chargement input
-        menu_input = input_create(INPUT_ID_NAME, WIN_WIDTH/2 - 200, 600, 400, 60, "assets/fonts/larabiefont.otf", 28, 128);
-        if (menu_input) {
-            input_set_on_submit(menu_input, menu_on_submit);
-            input_set_bg(menu_input, context->renderer, "assets/img/inputs/empty.png", 20);
-        }
+    const char* placeholders[] = {"Dédé", "Doudou", "Toto"};
+    name_input = input_create(INPUT_ID_NAME, WIN_WIDTH/2 + 650, 50, 250, 60, "assets/fonts/larabiefont.otf", 28, placeholders, 3, "Pseudo : ", 128);
+    if (name_input) {
+        input_set_on_submit(name_input, name_on_submit);
+        input_set_bg(name_input, context->renderer, "assets/img/inputs/empty.png", 14);
+    }
     
     return loading_fails;
 }
@@ -68,20 +66,17 @@ void menu_display(SDL_Context * context) {
     }
 
     /* input is drawn by menu */
-    if (menu_input) input_render(context->renderer, menu_input);
+    if (name_input) input_render(context->renderer, name_input);
 
-    /* afficher valeur soumise sous l'input */
-    if (menu_input_value[0] != '\0') {
-        text_display(context->renderer, menu_input_value, "assets/fonts/larabiefont.otf", 20, (SDL_Color){255,255,255,255}, 0, 520, 0, 255);
-    }
+    /* submitted text is drawn by input_render */
 }
 
 int menu_free() {
     if (menu_logo) free_image(menu_logo);
     if (quagmire) free_image(quagmire);
-    if (menu_input) {
-        input_destroy(menu_input);
-        menu_input = NULL;
+    if (name_input) {
+        input_destroy(name_input);
+        name_input = NULL;
     }
 
     return EXIT_SUCCESS;
