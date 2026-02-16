@@ -47,10 +47,10 @@ int menu_init(SDL_Context * context) {
     text_button_create(context->renderer, BTN_QUIT, WIN_WIDTH/2-200, 900, 100, "Quitter", "assets/fonts/larabiefont.otf", (SDL_Color){255, 255, 255, 255}, menu_button_click);
 
     // Chargement input
-        menu_input = input_create(WIN_WIDTH/2 - 200, 600, 400, 60, "assets/fonts/larabiefont.otf", 28, 128);
+        menu_input = input_create(INPUT_ID_NAME, WIN_WIDTH/2 - 200, 600, 400, 60, "assets/fonts/larabiefont.otf", 28, 128);
         if (menu_input) {
             input_set_on_submit(menu_input, menu_on_submit);
-            input_set_bg(menu_input, context->renderer, "assets/img/inputs/empty.png", 18);
+            input_set_bg(menu_input, context->renderer, "assets/img/inputs/empty.png", 20);
         }
     
     return loading_fails;

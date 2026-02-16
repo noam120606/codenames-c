@@ -5,6 +5,13 @@
 
 #define INPUT_DEFAULT_MAX 256
 
+typedef enum {
+    INPUT_ID_NONE = 0,
+    INPUT_ID_NAME,
+    INPUT_ID_JOIN_CODE,
+    INPUT_ID_TCHAT
+} InputId;
+
 typedef struct Input {
     SDL_Rect rect;
     char* text;
@@ -18,6 +25,9 @@ typedef struct Input {
     SDL_Color text_color;
     SDL_Texture* bg_texture;
     int padding;
+    InputId id;
+    int sel_start;
+    int sel_len;
     const char* font_path;
     int font_size;
     void (*on_submit)(const char*);
@@ -29,12 +39,12 @@ typedef struct Input {
  * @param y Position y de l'input.
  * @param w Largeur de l'input.
  * @param h Hauteur de l'input.
- * @param font_path Chemin vers le fichier de police (.ttf) pour le texte
+ * @param font_path Chemin vers le fichier de police (.otf/.ttf) pour le texte
  * @param font_size Taille de la police.
  * @param maxlen Longueur maximale du texte (excluant le caractère nul). Si <= 0, une valeur par défaut est utilisée.
  * @return Pointeur vers l'input créé, ou NULL en cas d'erreur.
  */
-Input* input_create(int x, int y, int w, int h, const char* font_path, int font_size, int maxlen);
+Input* input_create(InputId id, int x, int y, int w, int h, const char* font_path, int font_size, int maxlen);
 
 /** Détruit un input. 
  * Libère la mémoire associée à l'input et ses ressources (texte, texture de fond).
