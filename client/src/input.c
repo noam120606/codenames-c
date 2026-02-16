@@ -1,7 +1,5 @@
 /* Input widget implementation */
 #include "../lib/all.h"
-#include "../lib/input.h"
-#include <ctype.h>
 
 static void input_clear_selection_internal(Input* in) {
     if (!in) return;
@@ -41,7 +39,7 @@ static int next_word_pos(Input* in, int pos) {
     return i;
 }
 
-Input* input_create(InputId id, int x, int y, int w, int h, const char* font_path, int font_size, int maxlen) {
+Input* input_create(InputId id, int x, int y, int w, int h, const char* font_path, int font_size, const char** placeholders, int placeholder_count, const char* submitted_label, int maxlen) {
     Input* in = (Input*)malloc(sizeof(Input));
     if (!in) return NULL;
     in->rect.x = x;
@@ -65,6 +63,24 @@ Input* input_create(InputId id, int x, int y, int w, int h, const char* font_pat
     in->font_path = font_path;
     in->font_size = font_size;
     in->on_submit = NULL;
+    in->submitted_text = NULL;
+    in->submitted_label = NULL;
+    in->placeholders = NULL;
+    in->placeholder_count = 0;
+    in->placeholder_index = 0;
+    in->placeholder_last_tick = SDL_GetTicks();
+    if (placeholders && placeholder_count > 0) {
+        in->placeholders = (char**)malloc(sizeof(char*) * placeholder_count);
+        if (in->placeholders) {
+            for (int i = 0; i < placeholder_count; ++i) {
+                in->placeholders[i] = strdup(placeholders[i]);
+            }
+            in->placeholder_count = placeholder_count;
+        }
+    }
+    if (submitted_label) {
+        in->submitted_label = strdup(submitted_label);
+    }
     return in;
 }
 
@@ -72,6 +88,14 @@ void input_destroy(Input* in) {
     if (!in) return;
     if (in->text) free(in->text);
     if (in->bg_texture) free_image(in->bg_texture);
+    if (in->submitted_text) free(in->submitted_text);
+    if (in->submitted_label) free(in->submitted_label);
+    if (in->placeholders) {
+        for (int i = 0; i < in->placeholder_count; ++i) {
+            if (in->placeholders[i]) free(in->placeholders[i]);
+        }
+        free(in->placeholders);
+    }
     free(in);
 }
 
@@ -199,9 +223,28 @@ void input_handle_event(Input* in, SDL_Event* e) {
             }
         } else if (k == SDLK_RETURN || k == SDLK_KP_ENTER) {
             in->submitted = 1;
+            /* store submitted text inside input */
+            if (in->submitted_text) {
+                free(in->submitted_text);
+                in->submitted_text = NULL;
+            }
+            in->submitted_text = (char*)malloc(in->len + 1);
+            if (in->submitted_text) strncpy(in->submitted_text, in->text, in->len + 1);
+
+            /* call submit callback with the submitted text (use stored copy)
+             * then clear the input contents so it appears empty */
+            if (in->on_submit) in->on_submit(in->submitted_text);
+
+            /* clear current text */
+            if (in->text && in->maxlen > 0) {
+                in->text[0] = '\0';
+            }
+            in->len = 0;
+            in->cursor_pos = 0;
+            input_clear_selection_internal(in);
+
             in->focused = 0;
             SDL_StopTextInput();
-            if (in->on_submit) in->on_submit(in->text);
         }
     }
 }
@@ -223,6 +266,40 @@ void input_render(SDL_Renderer* renderer, Input* in) {
         SDL_RenderDrawRect(renderer, &in->rect);
     }
 
+        /* render submitted label (always if set) and submitted text (if present) above input */
+        if (in->font_path && in->submitted_label) {
+            int label_size = in->font_size > 12 ? in->font_size - 4 : in->font_size;
+            TTF_Font* label_font = TTF_OpenFont(in->font_path, label_size);
+            if (label_font) {
+                SDL_Color color = {255,255,255,255};
+                const char* lbl = in->submitted_label ? in->submitted_label : "";
+                const char* sub = in->submitted_text ? in->submitted_text : "";
+                size_t L = strlen(lbl);
+                size_t M = strlen(sub);
+                char* combined = (char*)malloc(L + M + 1);
+                if (combined) {
+                    memcpy(combined, lbl, L);
+                    memcpy(combined + L, sub, M + 1);
+                    SDL_Surface* surf_label = TTF_RenderUTF8_Blended(label_font, combined, color);
+                    if (surf_label) {
+                        SDL_Texture* tex_label = SDL_CreateTextureFromSurface(renderer, surf_label);
+                        if (tex_label) {
+                            int tw = 0, th = 0;
+                            SDL_QueryTexture(tex_label, NULL, NULL, &tw, &th);
+                            int dst_x = in->rect.x + in->padding;
+                            int dst_y = in->rect.y - th - 8;
+                            SDL_Rect dst = { dst_x, dst_y, tw, th };
+                            SDL_RenderCopy(renderer, tex_label, NULL, &dst);
+                            SDL_DestroyTexture(tex_label);
+                        }
+                        SDL_FreeSurface(surf_label);
+                    }
+                    free(combined);
+                }
+                TTF_CloseFont(label_font);
+            }
+        }
+
     /* render text using TTF */
     if (in->font_path && in->font_size > 0) {
         TTF_Font* font = TTF_OpenFont(in->font_path, in->font_size);
@@ -238,7 +315,7 @@ void input_render(SDL_Renderer* renderer, Input* in) {
             } else before_cursor[0] = '\0';
 
             int cx = 0, cy = 0;
-            TTF_SizeText(font, before_cursor, &cx, &cy);
+                TTF_SizeUTF8(font, before_cursor, &cx, &cy);
             int padding = in->padding;
 
             /* draw selection highlight if any */
@@ -258,8 +335,8 @@ void input_render(SDL_Renderer* renderer, Input* in) {
                         memcpy(sel_text, in->text + s, l);
                         sel_text[l] = '\0';
                         int bx = 0, by = 0, sw = 0, sh = 0;
-                        TTF_SizeText(font, before_sel, &bx, &by);
-                        TTF_SizeText(font, sel_text, &sw, &sh);
+                            TTF_SizeUTF8(font, before_sel, &bx, &by);
+                            TTF_SizeUTF8(font, sel_text, &sw, &sh);
                         SDL_Rect selrect = { in->rect.x + padding + bx, in->rect.y + (in->rect.h - sh) / 2, sw, sh };
                         if (selrect.x < in->rect.x + padding) selrect.x = in->rect.x + padding;
                         if (selrect.x + selrect.w > in->rect.x + in->rect.w - padding) selrect.w = (in->rect.x + in->rect.w - padding) - selrect.x;
@@ -274,7 +351,19 @@ void input_render(SDL_Renderer* renderer, Input* in) {
 
             SDL_Surface* surf = NULL;
             SDL_Texture* tex = NULL;
-            surf = TTF_RenderText_Blended(font, in->text, in->text_color);
+            /* If no text and placeholders exist, render current placeholder in gray */
+            if (in->len == 0 && in->placeholders && in->placeholder_count > 0) {
+                Uint32 now = SDL_GetTicks();
+                if (now - in->placeholder_last_tick >= 3000) { // switch placeholder every 3 seconds
+                    in->placeholder_last_tick = now;
+                    in->placeholder_index = (in->placeholder_index + 1) % in->placeholder_count;
+                }
+                const char* ph = in->placeholders[in->placeholder_index];
+                SDL_Color ph_color = {180, 180, 180, 255};
+                    surf = TTF_RenderUTF8_Blended(font, ph, ph_color);
+            } else {
+                    surf = TTF_RenderUTF8_Blended(font, in->text, in->text_color);
+            }
             if (surf) {
                 tex = SDL_CreateTextureFromSurface(renderer, surf);
                 if (tex) {

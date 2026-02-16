@@ -3,6 +3,7 @@
 #include <string.h>
 #include <math.h>
 #include <getopt.h>
+#include <ctype.h>
 #include <unistd.h>
 #include <arpa/inet.h>
 #include <sys/select.h>
