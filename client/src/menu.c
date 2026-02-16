@@ -74,10 +74,7 @@ void menu_display(SDL_Context * context) {
 int menu_free() {
     if (menu_logo) free_image(menu_logo);
     if (quagmire) free_image(quagmire);
-    if (name_input) {
-        input_destroy(name_input);
-        name_input = NULL;
-    }
+    if (name_input) input_destroy(name_input);
 
     return EXIT_SUCCESS;
 }
