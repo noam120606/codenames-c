@@ -30,7 +30,7 @@ int init_tcp(const char* server_ip, int port) {
     return sock;
 }
 
-int tick_tcp(int sock) {
+int tick_tcp(SDL_Context* context, int sock) {
     fd_set readfds;
     FD_ZERO(&readfds);
     FD_SET(STDIN_FILENO, &readfds);
@@ -60,8 +60,7 @@ int tick_tcp(int sock) {
         buffer[bytes] = '\0';
         printf("[SERVER] %s\n", buffer);
 
-        // condition fin de client eventuelle du serveur
-        // return 1; // Coupe le client
+        return on_message(context, buffer);
     }
 
     return EXIT_SUCCESS;

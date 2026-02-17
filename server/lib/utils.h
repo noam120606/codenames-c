@@ -1,6 +1,8 @@
 #ifndef UTILS_H
 #define UTILS_H
 
+#include <stddef.h>
+
 /** 
  * Génère un entier aléatoire entre min et max inclus.
  * @param min Valeur minimale.
@@ -30,5 +32,15 @@ int starts_with(const char *str, const char *prefix);
  * @return Nombre de chiffres nécessaires pour représenter n, ou 1 si n est 0.
  */
 int number_length(int n);
+
+/**
+ * Formate dans un buffer fourni sans allocation dynamique.
+ * @param buf Buffer de sortie.
+ * @param size Taille du buffer (en octets).
+ * @param fmt Chaîne de format (printf-like).
+ * @return Nombre de caractères écrits (sans le '\0'), ou -1 en cas d'erreur.
+ */
+int format_to(char *buf, size_t size, const char *fmt, ...);
+
 
 #endif // UTILS_H

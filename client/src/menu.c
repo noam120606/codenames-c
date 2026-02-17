@@ -32,7 +32,7 @@ ButtonReturn menu_button_click(SDL_Context* context, ButtonId button_id) {
 }
 
 void menu_join(SDL_Context* context, ButtonId button_id) {
-    char trame[50];
+    char trame[20];
     trame[0] = '0' + (button_id == BTN_JOIN ? MSG_JOINLOBBY : MSG_CREATELOBBY);
     trame[1] = ' ';
     int trame_length = 2;
@@ -65,13 +65,13 @@ int menu_init(SDL_Context * context) {
     }
 
     // Chargement bouton
-    text_button_create(context->renderer, BTN_CREATE, WIN_WIDTH/2-450, 700, 100, "Créer", "assets/fonts/larabiefont.otf", (SDL_Color){255, 255, 255, 255}, menu_button_click);
-    text_button_create(context->renderer, BTN_JOIN, WIN_WIDTH/2+50, 700, 100, "Rejoindre", "assets/fonts/larabiefont.otf", (SDL_Color){255, 255, 255, 255}, menu_button_click);
-    text_button_create(context->renderer, BTN_QUIT, WIN_WIDTH/2-200, 900, 100, "Quitter", "assets/fonts/larabiefont.otf", (SDL_Color){255, 255, 255, 255}, menu_button_click);
+    text_button_create(context->renderer, BTN_CREATE, WIN_WIDTH/2-450, 700, 100, "Créer", FONT_LARABIE, COL_WHITE, menu_button_click);
+    text_button_create(context->renderer, BTN_JOIN, WIN_WIDTH/2+50, 700, 100, "Rejoindre", FONT_LARABIE, COL_WHITE, menu_button_click);
+    text_button_create(context->renderer, BTN_QUIT, WIN_WIDTH/2-200, 900, 100, "Quitter", FONT_LARABIE, COL_WHITE, menu_button_click);
 
     // Chargement input
     const char* placeholders[] = {"Dédé", "Doudou", "Toto"};
-    name_input = input_create(INPUT_ID_NAME, WIN_WIDTH/2 + 650, 50, 250, 60, "assets/fonts/larabiefont.otf", 28, placeholders, 3, "Pseudo : ", 128);
+    name_input = input_create(INPUT_ID_NAME, WIN_WIDTH/2 + 650, 50, 250, 60, FONT_LARABIE, 28, placeholders, 3, "Pseudo : ", 16);
     if (name_input) {
         input_set_on_submit(name_input, name_on_submit);
         input_set_bg(name_input, context->renderer, "assets/img/inputs/empty.png", 14);
@@ -81,6 +81,23 @@ int menu_init(SDL_Context * context) {
 }
 
 void menu_display(SDL_Context * context) {
+
+    if (context->lobby_id != -1) {
+        hide_button(BTN_CREATE);
+        hide_button(BTN_JOIN);
+
+        char msg[64];
+        format_to(msg, sizeof(msg), "Bienvenue %s ! Tu es lobby %d.", name ? name : "invité", context->lobby_id);
+        int desired_screen_y = 700;
+        int rel_x = 0; // 0 = centré horizontalement
+        int rel_y = (WIN_HEIGHT/2) - desired_screen_y; // négatif si desired_screen_y > WIN_HEIGHT/2
+        text_display(context->renderer, msg, FONT_LARABIE, 24, COL_WHITE, rel_x, rel_y, 0, 255);
+        
+    } else {
+        show_button(BTN_CREATE);
+        show_button(BTN_JOIN);
+    }
+
     // Afficher le logo à sa taille d'origine
     if (menu_logo) {
         display_image(context->renderer, menu_logo, 0, 200, 0.75, 0, SDL_FLIP_NONE, 1, 255);

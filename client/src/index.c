@@ -81,7 +81,7 @@ int main(int argc, char* argv[]){
     SDL_Event e;
     int running = 1;
 
-    while (running && tick_tcp(sock) == EXIT_SUCCESS) {
+    while (running && tick_tcp(&context, sock) == EXIT_SUCCESS) {
         // Enregistrer le début de la frame
         context.frame_start_time = SDL_GetTicks();
 

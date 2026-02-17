@@ -133,11 +133,10 @@ void fps_display(SDL_Context* context, int display_x) {
     // Affichage des FPS qui suit le bandeau
     char fps_text[20];
     snprintf(fps_text, sizeof(fps_text), "FPS : %.2f", context->fps);
-    SDL_Color white = {255, 255, 255, 255};
     // Positionner le texte relativement au display_x du bandeau
     int fps_x = display_x + 100;
     int fps_y = 450;
-    text_display(context->renderer, fps_text, "assets/fonts/larabiefont.otf", 22, white, fps_x, fps_y, 0, 255);
+    text_display(context->renderer, fps_text, "assets/fonts/larabiefont.otf", 22, COL_WHITE, fps_x, fps_y, 0, 255);
 }
 
 void infos_free() {

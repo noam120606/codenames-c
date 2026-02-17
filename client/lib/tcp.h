@@ -1,6 +1,8 @@
 #ifndef TCP_H
 #define TCP_H
 
+#include "sdl.h"
+
 /**
  *  Initialise une connexion TCP vers le serveur.
  * @param server_ip Adresse IP du serveur.
@@ -14,7 +16,7 @@ int init_tcp(const char* server_ip, int port);
  * @param sock Descripteur de socket.
  * @return `EXIT_SUCCESS` en cas de succès, `EXIT_FAILURE` en cas d'erreur.
  */
-int tick_tcp(int sock);
+int tick_tcp(SDL_Context* context, int sock);
 
 /**
  * Envoie un message au serveur.

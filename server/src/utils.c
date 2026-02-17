@@ -59,3 +59,13 @@ int number_length(int n) {
     }
     return length;
 }
+
+int format_to(char *buf, size_t size, const char *fmt, ...) {
+    if (!buf || size == 0 || !fmt) return -1;
+    va_list args;
+    va_start(args, fmt);
+    int ret = vsnprintf(buf, size, fmt, args);
+    va_end(args);
+    if (ret < 0) return -1;
+    return ret;
+}
