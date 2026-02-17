@@ -61,7 +61,7 @@ typedef struct {
  * Initialise le gestionnaire de parties (structures internes, RNG, etc.).
  * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur.
  */
-int init_game_manager(void);
+int init_game_manager();
 
 /**
  * Récupère tous les mots dans assets/wordlist.txt.

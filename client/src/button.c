@@ -157,7 +157,7 @@ static int is_mouse_over_button(Button* button, int mouseX, int mouseY) {
             mouseY <= button->rect.y + button->rect.h);
 }
 
-ButtonReturn buttons_handle_event(SDL_Context context, SDL_Event* event) {
+ButtonReturn buttons_handle_event(SDL_Context* context, SDL_Event* event) {
     if (!event) {
         return BTN_RET_NONE;
     }

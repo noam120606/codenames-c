@@ -26,7 +26,7 @@ typedef enum ButtonReturn {
  * Typedef pour la fonction callback d'un bouton.
  * @param button_id L'ID du bouton qui a été cliqué.
  */
-typedef ButtonReturn (*ButtonCallback)(SDL_Context context, ButtonId button_id);
+typedef ButtonReturn (*ButtonCallback)(SDL_Context* context, ButtonId button_id);
 
 /**
  * Structure représentant un bouton avec callback.
@@ -92,7 +92,7 @@ Button* text_button_create(SDL_Renderer* renderer, int id, int x, int y, int tai
  * Traite un événement SDL pour les boutons.
  * @param event L'événement SDL à traiter.
  */
-ButtonReturn buttons_handle_event(SDL_Context context, SDL_Event* event);
+ButtonReturn buttons_handle_event(SDL_Context* context, SDL_Event* event);
 
 /**
  * Affiche tous les boutons.

@@ -1,11 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <time.h>
-#include <getopt.h>
-#include "../lib/tcp.h"
-#include "../lib/game.h"
-#include "../lib/lobby.h"
-#include "../lib/codenames.h"
+#include "../lib/all.h"
 
 int main(int argc, char *argv[]) {
 
@@ -32,6 +25,7 @@ int main(int argc, char *argv[]) {
     // Initialisations diverses
     srand(time(NULL));
     init_game_manager();
+    init_lobby_manager();
 
     Codenames* codenames = malloc(sizeof(Codenames));
     if (codenames == NULL) {
@@ -60,9 +54,11 @@ int main(int argc, char *argv[]) {
     }
 
     // Cleanup
+    destroy_lobby_manager(codenames, codenames->lobby);
     tcp_server_destroy(codenames->tcp);
-    destroy_lobby_manager(codenames->lobby);
     free(codenames);
+
     printf("Server shutting down.\n");
+
     return EXIT_SUCCESS;
 }

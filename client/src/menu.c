@@ -3,24 +3,50 @@
 SDL_Texture* menu_logo;
 SDL_Texture* quagmire;
 Input* name_input = NULL;
+char* name = NULL;
 
 static void name_on_submit(const char* text) {
     printf("Name input submitted: %s\n", text);
+    if (name) {
+        free(name);
+        name = NULL;
+    }
+    name = malloc(sizeof(char) * strlen(text));
+    strcpy(name, text);
 }
 
 void menu_handle_event(SDL_Context* context, SDL_Event* e) {
     if (name_input) input_handle_event(name_input, e);
 }
 
-ButtonReturn menu_button_click(SDL_Context context, ButtonId button_id) {
+ButtonReturn menu_button_click(SDL_Context* context, ButtonId button_id) {
     printf("Button clicked: %d\n", button_id);
     switch (button_id) {
-        case BTN_JOIN: printf("Join button clicked\n"); break;
-        case BTN_CREATE: printf("Create button clicked\n"); break;
+        case BTN_JOIN: case BTN_CREATE: 
+            menu_join(context, button_id);
+            break;
         case BTN_QUIT: return BTN_RET_QUIT; break;
         default: printf("Unknown button clicked\n"); break;
     }
     return BTN_RET_NONE;
+}
+
+void menu_join(SDL_Context* context, ButtonId button_id) {
+    char trame[50];
+    trame[0] = '0' + (button_id == BTN_JOIN ? MSG_JOINLOBBY : MSG_CREATELOBBY);
+    trame[1] = ' ';
+    int trame_length = 2;
+
+    if (!name) {
+        strcpy(trame+2, "NONE");
+        trame_length += 4;
+    } 
+    else {
+        strcpy(trame+2, name);
+        trame_length += strlen(name);
+    } 
+    trame[trame_length] = '\0';
+    send_tcp(context->sock, trame);
 }
 
 int menu_init(SDL_Context * context) {

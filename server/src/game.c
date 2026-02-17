@@ -1,16 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "../lib/game.h"
-#include "../lib/utils.h"
-#include "../lib/tcp.h"
-#include "../lib/codenames.h"
+#include "../lib/all.h"
 
 int WORDCOUNT = 0;
 
 /* initialise WORDCOUNT en comptant les mots dans assets/wordlist.txt.
    retourne EXIT_SUCCESS si OK, EXIT_FAILURE en cas d'erreur */
-int init_game_manager(void) {
+int init_game_manager() {
     int n = count_words("assets/wordlist.txt");
     if (n < 0) {
         fprintf(stderr, "game_manager: failed to count words in assets/wordlist.txt\n");
