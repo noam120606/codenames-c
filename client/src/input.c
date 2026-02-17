@@ -54,7 +54,7 @@ Input* input_create(InputId id, int x, int y, int w, int h, const char* font_pat
     in->submitted = 0;
     in->bg_color = (SDL_Color){255, 255, 255, 255};
     in->border_color = (SDL_Color){0, 0, 0, 255};
-    in->text_color = (SDL_Color){0, 0, 0, 255};
+    in->text_color = (SDL_Color){255, 255, 255, 255};
     in->bg_texture = NULL;
     in->id = id;
     in->sel_start = 0;

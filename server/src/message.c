@@ -55,6 +55,10 @@ int on_message(Codenames* codenames, TcpClient* client, char* message) {
                 return EXIT_FAILURE;
             }
             printf("create lobby %d\n", lobby->id);
+
+            char reponse[64];
+            format_to(reponse, sizeof(reponse), "%d %d", MSG_CREATELOBBY, lobby->id);
+            tcp_send_to_client(codenames, client->id, reponse);
             break;
 
         case MSG_JOINLOBBY:

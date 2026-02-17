@@ -112,4 +112,16 @@ Button* button_get(int id);
  */
 void buttons_free();
 
+/**
+ * Cache un bouton.
+ * @param id L'ID du bouton à cacher.
+ */
+void hide_button(int id);
+
+/**
+ * Affiche un bouton.
+ * @param id L'ID du bouton à afficher.
+ */
+void show_button(int id);
+
 #endif // BUTTON_H

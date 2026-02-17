@@ -56,6 +56,7 @@ SDL_Context init_sdl() {
     context.clock = 0;
     context.fps = 0.0f;
     context.sock = 0;
+    context.lobby_id = -1;
     context.frame_start_time = 0;
     
     printf("All initialized successfully!\n");

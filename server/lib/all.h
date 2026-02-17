@@ -9,6 +9,9 @@
 #include <arpa/inet.h>
 #include <sys/select.h>
 #include <ctype.h>
+#include <assert.h>
+#include <stdarg.h>
+#include <stddef.h>
 
 #include "../lib/tcp.h"
 #include "../lib/lobby.h"

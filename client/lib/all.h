@@ -21,3 +21,4 @@
 #include "../lib/text.h"
 #include "../lib/input.h"
 #include "../lib/message.h"
+#include "../lib/utils.h"
