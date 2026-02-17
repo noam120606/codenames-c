@@ -1,9 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <time.h>
-#include <ctype.h>
-#include <string.h>
-#include "../lib/utils.h"
+#include "../lib/all.h"
 
 int randint(int min, int max) {
     // Retourne un entier aléatoire entre min et max inclus

@@ -43,6 +43,7 @@ int main(int argc, char* argv[]){
         destroy_context(context);
         return EXIT_FAILURE;
     }
+    context.sock = sock;
 
     printf("Connected to server at %s:%d\n", ip, port);
 
@@ -89,7 +90,7 @@ int main(int argc, char* argv[]){
                 running = 0;
             }
             // Gestion bouttons
-            ButtonReturn result = buttons_handle_event(context, &e);
+            ButtonReturn result = buttons_handle_event(&context, &e);
             switch (result) {
                 case BTN_RET_NONE: break;
                 case BTN_RET_QUIT: running = 0; break;

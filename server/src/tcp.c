@@ -1,14 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <arpa/inet.h>
-#include <sys/select.h>
-
-#include "../lib/tcp.h"
-#include "../lib/message.h"
-#include "../lib/utils.h"
+#include "../lib/all.h"
 
 static void set_nonblocking(int socket) {
     fcntl(socket, F_SETFL, O_NONBLOCK);
@@ -155,6 +145,7 @@ void tcp_on_client_connect(Codenames* codenames, TcpClient* client) {
 
 void tcp_on_client_disconnect(Codenames* codenames, TcpClient* client) {
     // printf("Client disconnected: ID=%d\n", client->id);
+    on_leave(codenames, client);
 }
 
 void tcp_on_client_message(Codenames* codenames, TcpClient* client, char* message) {

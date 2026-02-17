@@ -20,3 +20,4 @@
 #include "../lib/infos.h"
 #include "../lib/text.h"
 #include "../lib/input.h"
+#include "../lib/message.h"

@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <getopt.h>
+#include <netinet/in.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <arpa/inet.h>
+#include <sys/select.h>
+#include <ctype.h>
+
+#include "../lib/tcp.h"
+#include "../lib/lobby.h"
+#include "../lib/message.h"
+#include "../lib/user.h"
+#include "../lib/game.h"
+#include "../lib/utils.h"
+#include "../lib/codenames.h"

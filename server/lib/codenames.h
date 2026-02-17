@@ -9,7 +9,7 @@
  * @param tcp gestionnaire du serveur TCP (sockets, clients, etc.).
  * @param lobby gestionnaire des lobbies (parties en attente, joueurs, etc.).
  */
-typedef struct {
+typedef struct Codenames {
     TcpServer* tcp;
     LobbyManager* lobby;
 } Codenames;

@@ -14,6 +14,7 @@
  * @param renderer Renderer SDL associé à la fenêtre.
  * @param clock Nombre de frame écoulé depuis le début de l'application.
  * @param fps Nombre de frames par seconde (calculé à partir du clock).
+ * @param sock Identifiant socket.  
  * @param frame_start_time Timestamp du début de la frame actuelle (en ms).
  */
 typedef struct {
@@ -21,6 +22,7 @@ typedef struct {
     SDL_Renderer* renderer;
     long clock;
     float fps;
+    int sock;
     Uint32 frame_start_time;
 } SDL_Context;
 
