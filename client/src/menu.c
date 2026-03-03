@@ -82,7 +82,7 @@ void menu_display(SDL_Context * context) {
         hide_button(BTN_JOIN);
 
         char msg[64];
-        format_to(msg, sizeof(msg), "Bienvenue %s ! Tu es lobby %d.", name ? name : "invité", context->lobby_id);
+        format_to(msg, sizeof(msg), "Bienvenue %s ! Tu es lobby %d. Code : %s", name ? name : "invité", context->lobby_id, context->lobby_code ? context->lobby_code : "AUCUN");
         int desired_screen_y = 700;
         int rel_x = 0; // 0 = centré horizontalement
         int rel_y = (WIN_HEIGHT/2) - desired_screen_y; // négatif si desired_screen_y > WIN_HEIGHT/2
