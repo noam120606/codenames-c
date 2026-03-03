@@ -6,13 +6,20 @@ Input* name_input = NULL;
 char* name = NULL;
 
 static void name_on_submit(const char* text) {
-    printf("Name input submitted: %s\n", text);
+    printf("Name input submitted: %s\n", text ? text : "");
     if (name) {
         free(name);
         name = NULL;
     }
-    name = malloc(sizeof(char) * strlen(text));
-    strcpy(name, text);
+    if (text) {
+        name = strdup(text);
+        if (!name) {
+            name = malloc(1);
+            if (name) name[0] = '\0';
+        }
+    } else {
+        name = NULL;
+    }
 }
 
 void menu_handle_event(SDL_Context* context, SDL_Event* e) {
