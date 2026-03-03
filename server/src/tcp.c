@@ -9,7 +9,6 @@ TcpServer* tcp_server_create(int port) {
     if (!server) return NULL;
 
     server->port = port;
-    server->next_client_id = 1;
 
     server->server_socket = socket(AF_INET, SOCK_STREAM, 0);
     if (server->server_socket < 0) {
@@ -64,7 +63,7 @@ static void add_client(Codenames* codenames, int client_socket, struct sockaddr_
         if (server->clients[i].socket == 0) {
             server->clients[i].socket = client_socket;
             server->clients[i].addr = addr;
-            server->clients[i].id = server->next_client_id++;
+            server->clients[i].id = i;
 
             set_nonblocking(client_socket);
             tcp_on_client_connect(codenames, &server->clients[i]);
