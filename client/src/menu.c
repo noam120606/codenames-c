@@ -3,7 +3,10 @@
 SDL_Texture* menu_logo;
 SDL_Texture* quagmire;
 Input* name_input = NULL;
+Input* code_input = NULL;
 char* name = NULL;
+char* code = NULL;
+int joining = 0;
 
 static void name_on_submit(const char* text) {
     printf("Name input submitted: %s\n", text ? text : "");
@@ -22,33 +25,34 @@ static void name_on_submit(const char* text) {
     }
 }
 
+static void code_on_submit(const char* text) {
+    printf("Code input submitted: %s\n", text);
+    if (code) {
+        free(code);
+        code = NULL;
+    }
+    code = malloc(sizeof(char) * strlen(text));
+    strcpy(code, text);
+}
+
 void menu_handle_event(SDL_Context* context, SDL_Event* e) {
     if (name_input) input_handle_event(name_input, e);
+    if (code_input) input_handle_event(code_input, e);
 }
 
 ButtonReturn menu_button_click(SDL_Context* context, ButtonId button_id) {
     printf("Button clicked: %d\n", button_id);
     switch (button_id) {
-        case BTN_JOIN: case BTN_CREATE: 
-            menu_join(context, button_id);
+        case BTN_JOIN: joining = 1; break;
+        case BTN_CREATE:
+            char trame[20];
+            format_to(trame, sizeof(trame), "%d %s", MSG_CREATELOBBY, name ? name : "NONE");
+            send_tcp(context->sock, trame);
             break;
         case BTN_QUIT: return BTN_RET_QUIT; break;
         default: printf("Unknown button clicked\n"); break;
     }
     return BTN_RET_NONE;
-}
-
-void menu_join(SDL_Context* context, ButtonId button_id) {
-
-    char trame[20];
-
-    if (button_id == BTN_CREATE) {
-        format_to(trame, sizeof(trame), "%d %s", MSG_CREATELOBBY, name ? name : "NONE");
-    } else {
-        format_to(trame, sizeof(trame), "%d %s %s", MSG_JOINLOBBY, name ? name : "NONE", "A");
-    }
-
-    send_tcp(context->sock, trame);
 }
 
 int menu_init(SDL_Context * context) {
@@ -72,13 +76,20 @@ int menu_init(SDL_Context * context) {
     text_button_create(context->renderer, BTN_QUIT, WIN_WIDTH/2-200, 900, 100, "Quitter", FONT_LARABIE, COL_WHITE, menu_button_click);
 
     // Chargement input
-    const char* placeholders[] = {"Peter", "Quagmire", "Tom", "Faz Faf"};
-    name_input = input_create(INPUT_ID_NAME, WIN_WIDTH/2 + 650, 50, 250, 60, FONT_LARABIE, 28, placeholders, 4, "Pseudo : ", 16);
+    const char* name_placeholders[] = {"Peter", "Quagmire", "Tom", "Faz Faf"};
+    name_input = input_create(INPUT_ID_NAME, WIN_WIDTH/2 + 650, 50, 250, 60, FONT_LARABIE, 28, name_placeholders, 4, "Pseudo : ", 16);
     if (name_input) {
         input_set_on_submit(name_input, name_on_submit);
         input_set_bg(name_input, context->renderer, "assets/img/inputs/empty.png", 14);
     }
-    
+
+    const char* code_placeholders[] = {"CODE"};
+    code_input = input_create(INPUT_ID_JOIN_CODE, 50, 360, 250, 100, FONT_LARABIE, 28, code_placeholders, 1, "Code : ", 16);
+    if (code_input) {
+        input_set_on_submit(code_input, code_on_submit);
+        input_set_bg(code_input, context->renderer, "assets/img/inputs/empty.png", 14);
+    }
+
     return loading_fails;
 }
 
@@ -94,7 +105,10 @@ void menu_display(SDL_Context * context) {
         int rel_x = 0; // 0 = centré horizontalement
         int rel_y = (WIN_HEIGHT/2) - desired_screen_y; // négatif si desired_screen_y > WIN_HEIGHT/2
         text_display(context->renderer, msg, FONT_LARABIE, 24, COL_WHITE, rel_x, rel_y, 0, 255);
-        
+
+    } else if (joining) {
+        show_button(BTN_CREATE);
+        hide_button(BTN_JOIN);
     } else {
         show_button(BTN_CREATE);
         show_button(BTN_JOIN);
