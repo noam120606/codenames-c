@@ -25,6 +25,8 @@ int on_message(Codenames* codenames, TcpClient* client, char* message) {
     MessageType header = fetch_header(message);
     message += number_length((int)header) + 1; // Skip header et espace
 
+    printf("[MSG] %d %s\n", header, message);
+
     Arguments args = parse_arguments(message);
 
     switch (header) {
@@ -32,7 +34,7 @@ int on_message(Codenames* codenames, TcpClient* client, char* message) {
             printf("Received unknown message header from client %d: \"%s\"\n", client->id, message);
             break;
 
-        case MSG_CREATELOBBY:
+        case MSG_CREATELOBBY: {
             // Handle create lobby
             if (args.argc < 1) {
                 printf("Invalid create lobby message from client %d: \"%s\"\n", client->id, message);
@@ -57,19 +59,41 @@ int on_message(Codenames* codenames, TcpClient* client, char* message) {
             printf("create lobby %d\n", lobby->id);
 
             char reponse[64];
-            format_to(reponse, sizeof(reponse), "%d %d", MSG_CREATELOBBY, lobby->id);
+            format_to(reponse, sizeof(reponse), "%d %d %s", MSG_CREATELOBBY, lobby->id, lobby->code);
             tcp_send_to_client(codenames, client->id, reponse);
             break;
+        }
 
-        case MSG_JOINLOBBY:
+        case MSG_JOINLOBBY: {
             // Handle join lobby
-            printf("join\n");
-            printf("%s\n", message);
+            if (args.argc < 2) {
+                printf("Invalid join lobby message from client %d: \"%s\"\n", client->id, message);
+                break;
+            }
+            int lobby_id = atoi(args.argv[1]);
+            Lobby* lobby = find_lobby_by_id(codenames->lobby, lobby_id);
+            if (!lobby) {
+                printf("Lobby %d not found for client %d\n", lobby_id, client->id);
+                break;
+            }
+            User* user = create_user(client->id, args.argv[0], client->socket);
+            if (!user) {
+                printf("Failed to create user for client %d\n", client->id);
+                break;
+            }
+            if (join_lobby(lobby, user) != EXIT_SUCCESS) {
+                printf("Failed to join lobby %d for client %d\n", lobby_id, client->id);
+                destroy_user(user);
+                break;
+            }
+            printf("Client %d joined lobby %d\n", client->id, lobby_id);
             break;
+        }
 
-        case MSG_STARTGAME:
+        case MSG_STARTGAME: {
             // Handle start game
             break;
+        }
     }
     return EXIT_SUCCESS;
 }

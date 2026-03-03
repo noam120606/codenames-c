@@ -23,3 +23,9 @@ int format_to(char *buf, size_t size, const char *fmt, ...) {
     if (ret < 0) return -1;
     return ret;
 }
+
+char* itoa(int value) {
+    static char buffer[20]; 
+    snprintf(buffer, sizeof(buffer), "%d", value);
+    return buffer;
+}

@@ -42,5 +42,11 @@ int number_length(int n);
  */
 int format_to(char *buf, size_t size, const char *fmt, ...);
 
+/**
+ * Génère un code aléatoire de 5 lettres majuscules.
+ * @return Pointeur vers le code généré, ou NULL en cas d'erreur.
+ */
+char* generate_code();
+
 
 #endif // UTILS_H

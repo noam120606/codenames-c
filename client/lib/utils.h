@@ -36,4 +36,11 @@ int number_length(int n);
  */
 int format_to(char *buf, size_t size, const char *fmt, ...);
 
+/**
+ * Convertit un entier en chaîne de caractères.
+ * @param value Entier à convertir.
+ * @return Chaîne de caractères représentant l'entier.
+ */
+char* itoa(int value);
+
 #endif // UTILS_H
