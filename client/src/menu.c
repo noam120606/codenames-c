@@ -80,14 +80,14 @@ int menu_init(SDL_Context * context) {
     name_input = input_create(INPUT_ID_NAME, WIN_WIDTH/2 + 650, 50, 250, 60, FONT_LARABIE, 28, name_placeholders, 4, "Pseudo : ", 16);
     if (name_input) {
         input_set_on_submit(name_input, name_on_submit);
-        input_set_bg(name_input, context->renderer, "assets/img/inputs/empty.png", 14);
+        input_set_bg(name_input, context->renderer, "assets/img/inputs/empty.png", 24);
     }
 
     const char* code_placeholders[] = {"CODE"};
-    code_input = input_create(INPUT_ID_JOIN_CODE, 50, 360, 250, 100, FONT_LARABIE, 28, code_placeholders, 1, "Code : ", 16);
+    code_input = input_create(INPUT_ID_JOIN_CODE, WIN_WIDTH/2+50, 700, 385, 100, FONT_LARABIE, 28, code_placeholders, 1, "", 16);
     if (code_input) {
         input_set_on_submit(code_input, code_on_submit);
-        input_set_bg(code_input, context->renderer, "assets/img/inputs/empty.png", 14);
+        input_set_bg(code_input, context->renderer, "assets/img/inputs/empty.png", 24);
     }
 
     return loading_fails;
@@ -109,6 +109,7 @@ void menu_display(SDL_Context * context) {
     } else if (joining) {
         show_button(BTN_CREATE);
         hide_button(BTN_JOIN);
+        if (code_input) input_render(context->renderer, code_input);
     } else {
         show_button(BTN_CREATE);
         show_button(BTN_JOIN);
