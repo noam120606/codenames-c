@@ -32,20 +32,15 @@ ButtonReturn menu_button_click(SDL_Context* context, ButtonId button_id) {
 }
 
 void menu_join(SDL_Context* context, ButtonId button_id) {
-    char trame[20];
-    trame[0] = '0' + (button_id == BTN_JOIN ? MSG_JOINLOBBY : MSG_CREATELOBBY);
-    trame[1] = ' ';
-    int trame_length = 2;
 
-    if (!name) {
-        strcpy(trame+2, "NONE");
-        trame_length += 4;
-    } 
-    else {
-        strcpy(trame+2, name);
-        trame_length += strlen(name);
-    } 
-    trame[trame_length] = '\0';
+    char trame[20];
+
+    if (button_id == BTN_CREATE) {
+        format_to(trame, sizeof(trame), "%d %s", MSG_CREATELOBBY, name ? name : "NONE");
+    } else {
+        format_to(trame, sizeof(trame), "%d %s %s", MSG_JOINLOBBY, name ? name : "NONE", "A");
+    }
+
     send_tcp(context->sock, trame);
 }
 
@@ -70,8 +65,8 @@ int menu_init(SDL_Context * context) {
     text_button_create(context->renderer, BTN_QUIT, WIN_WIDTH/2-200, 900, 100, "Quitter", FONT_LARABIE, COL_WHITE, menu_button_click);
 
     // Chargement input
-    const char* placeholders[] = {"Dédé", "Doudou", "Toto"};
-    name_input = input_create(INPUT_ID_NAME, WIN_WIDTH/2 + 650, 50, 250, 60, FONT_LARABIE, 28, placeholders, 3, "Pseudo : ", 16);
+    const char* placeholders[] = {"Peter", "Quagmire", "Tom", "Faz Faf"};
+    name_input = input_create(INPUT_ID_NAME, WIN_WIDTH/2 + 650, 50, 250, 60, FONT_LARABIE, 28, placeholders, 4, "Pseudo : ", 16);
     if (name_input) {
         input_set_on_submit(name_input, name_on_submit);
         input_set_bg(name_input, context->renderer, "assets/img/inputs/empty.png", 14);
@@ -87,7 +82,7 @@ void menu_display(SDL_Context * context) {
         hide_button(BTN_JOIN);
 
         char msg[64];
-        format_to(msg, sizeof(msg), "Bienvenue %s ! Tu es lobby %d.", name ? name : "invité", context->lobby_id);
+        format_to(msg, sizeof(msg), "Bienvenue %s ! Tu es lobby %d. Code : %s", name ? name : "invité", context->lobby_id, context->lobby_code ? context->lobby_code : "AUCUN");
         int desired_screen_y = 700;
         int rel_x = 0; // 0 = centré horizontalement
         int rel_y = (WIN_HEIGHT/2) - desired_screen_y; // négatif si desired_screen_y > WIN_HEIGHT/2

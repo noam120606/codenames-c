@@ -88,6 +88,7 @@ Lobby* create_lobby(LobbyManager* manager) {
     lobby->nb_players = 0;
     lobby->owner_id = -1;
     lobby->game = NULL;
+    strcpy(lobby->code, generate_code());
 
     manager->nb_lobbies++;
 
@@ -112,6 +113,14 @@ int join_lobby(Lobby* lobby, User* user) {
 Lobby* find_lobby_by_ownerid(LobbyManager* manager, int owner_id) {
     for (int i = 0; i < manager->nb_lobbies; i++) {
         if (manager->lobbies[i]->owner_id == owner_id) {
+            return manager->lobbies[i];
+        }
+    }
+    return NULL;
+}
+Lobby* find_lobby_by_id(LobbyManager* manager, int id) {
+    for (int i = 0; i < manager->nb_lobbies; i++) {
+        if (manager->lobbies[i]->id == id) {
             return manager->lobbies[i];
         }
     }
