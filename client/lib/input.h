@@ -34,6 +34,7 @@ typedef struct Input {
     InputId id;
     int sel_start;
     int sel_len;
+    int sel_anchor;
     char* submitted_text;
     char* submitted_label;
     char** placeholders;
