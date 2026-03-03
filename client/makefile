@@ -7,8 +7,8 @@ SRC_DIR  := src
 DIR      := build
 TARGET   := $(DIR)/client
 
-SDL_CFLAGS  := $(shell pkg-config --cflags sdl2 SDL2_image SDL2_ttf 2>/dev/null)
-SDL_LDFLAGS := $(shell pkg-config --libs   sdl2 SDL2_image SDL2_ttf 2>/dev/null)
+SDL_CFLAGS  := $(shell pkg-config --cflags sdl2 SDL2_image SDL2_ttf SDL2_mixer 2>/dev/null)
+SDL_LDFLAGS := $(shell pkg-config --libs   sdl2 SDL2_image SDL2_ttf SDL2_mixer 2>/dev/null)
 
 CPPFLAGS := -I./lib $(SDL_CFLAGS)
 CFLAGS   := -Wall -Wextra -O2 -MMD -MP

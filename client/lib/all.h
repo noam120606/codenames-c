@@ -11,6 +11,7 @@
 #include "../SDL2/include/SDL2/SDL.h"
 #include "../SDL2/include/SDL2/SDL_image.h"
 #include "../SDL2/include/SDL2/SDL_ttf.h"
+#include "../SDL2/include/SDL2/SDL_mixer.h"
 
 #include "../lib/tcp.h"
 #include "../lib/sdl.h"
@@ -20,5 +21,6 @@
 #include "../lib/infos.h"
 #include "../lib/text.h"
 #include "../lib/input.h"
+#include "../lib/audio.h"
 #include "../lib/message.h"
 #include "../lib/utils.h"
