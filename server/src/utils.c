@@ -69,3 +69,13 @@ int format_to(char *buf, size_t size, const char *fmt, ...) {
     if (ret < 0) return -1;
     return ret;
 }
+
+char* generate_code() {
+    char buffer[6];
+    for (int i = 0; i < 5; i++) {
+        buffer[i] = 'A' + rand() % 26;
+    }
+    buffer[5] = '\0';
+
+    return strdup(buffer);
+}
