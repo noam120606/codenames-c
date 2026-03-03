@@ -35,11 +35,12 @@ int on_message(SDL_Context* context, char* message) {
             break;
 
         case MSG_CREATELOBBY: // Confirmation de la création du lobby, avec l'id du lobby créé
-            if (args.argc < 1) {
+            if (args.argc < 2) {
                 printf("Invalid create lobby message from server: \"%s\"\n", message);
                 return EXIT_FAILURE;
             }
             context->lobby_id = atoi((char*)args.argv[0]);
+            context->lobby_code = strdup((char*)args.argv[1]);
 
         case MSG_JOINLOBBY:
             // Handle join lobby

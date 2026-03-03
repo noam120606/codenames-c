@@ -25,6 +25,7 @@ typedef struct {
     float fps;
     int sock;
     int lobby_id;
+    char* lobby_code;
     Uint32 frame_start_time;
 } SDL_Context;
 

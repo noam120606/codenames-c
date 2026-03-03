@@ -32,6 +32,7 @@ typedef enum LobbyStatus {
 typedef struct {
     int id;
     int owner_id;
+    char code[6];
     LobbyStatus status;
     User* users[MAX_USERS];
     int nb_players;
@@ -95,6 +96,13 @@ int join_lobby(Lobby* lobby, User* user);
  * @return Pointeur vers le Lobby trouvé, ou NULL si aucun lobby ne correspond.
  */
 Lobby* find_lobby_by_ownerid(LobbyManager* manager, int owner_id);
+
+/** Trouve un lobby par son identifiant.
+ * @param manager Gestionnaire de lobbies à rechercher.
+ * @param id Identifiant du lobby recherché.
+ * @return Pointeur vers le Lobby trouvé, ou NULL si aucun lobby ne correspond.
+ */
+Lobby* find_lobby_by_id(LobbyManager* manager, int id);
 
 /** Détruit un lobby et libère ses ressources.
  * @param codenames Contexte principal du serveur.
