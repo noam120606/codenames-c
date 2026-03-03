@@ -93,6 +93,10 @@ int menu_init(SDL_Context * context) {
 
 void menu_display(SDL_Context * context) {
 
+    if (!audio_is_playing(MUSIC_MENU)) {
+        audio_play(MUSIC_MENU, -1);
+    }
+
     if (context->lobby_id != -1) {
         hide_button(BTN_CREATE);
         hide_button(BTN_JOIN);

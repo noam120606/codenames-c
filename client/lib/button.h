@@ -4,6 +4,8 @@
 #include "../SDL2/include/SDL2/SDL.h"
 #include "../lib/sdl.h"
 
+#define MAX_BUTTONS 100
+
 /**
  * Identifiants des boutons.
  */
