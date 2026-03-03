@@ -5,6 +5,7 @@ static void input_clear_selection_internal(Input* in) {
     if (!in) return;
     in->sel_start = 0;
     in->sel_len = 0;
+    in->sel_anchor = 0;
 }
 
 static int input_has_selection(Input* in) {
@@ -59,6 +60,7 @@ Input* input_create(InputId id, int x, int y, int w, int h, const char* font_pat
     in->id = id;
     in->sel_start = 0;
     in->sel_len = 0;
+    in->sel_anchor = 0;
     in->padding = 8;
     in->font_path = font_path;
     in->font_size = font_size;
@@ -146,6 +148,7 @@ void input_handle_event(Input* in, SDL_Event* e) {
         if ((mod & KMOD_CTRL) && (k == SDLK_a)) {
             in->sel_start = 0;
             in->sel_len = in->len;
+            in->sel_anchor = 0;
             in->cursor_pos = in->len;
             return;
         }
@@ -195,9 +198,12 @@ void input_handle_event(Input* in, SDL_Event* e) {
             else if (in->cursor_pos > 0) newpos = in->cursor_pos - 1;
 
             if (mod & KMOD_SHIFT) {
-                if (!input_has_selection(in)) in->sel_start = in->cursor_pos;
+                if (!input_has_selection(in)) {
+                    in->sel_anchor = in->cursor_pos;
+                    in->sel_start = in->cursor_pos;
+                }
                 in->cursor_pos = newpos;
-                int s = in->sel_start;
+                int s = in->sel_anchor;
                 int epos = in->cursor_pos;
                 if (epos < s) { in->sel_start = epos; in->sel_len = s - epos; }
                 else { in->sel_start = s; in->sel_len = epos - s; }
@@ -211,9 +217,12 @@ void input_handle_event(Input* in, SDL_Event* e) {
             else if (in->cursor_pos < in->len) newpos = in->cursor_pos + 1;
 
             if (mod & KMOD_SHIFT) {
-                if (!input_has_selection(in)) in->sel_start = in->cursor_pos;
+                if (!input_has_selection(in)) {
+                    in->sel_anchor = in->cursor_pos;
+                    in->sel_start = in->cursor_pos;
+                }
                 in->cursor_pos = newpos;
-                int s = in->sel_start;
+                int s = in->sel_anchor;
                 int epos = in->cursor_pos;
                 if (epos < s) { in->sel_start = epos; in->sel_len = s - epos; }
                 else { in->sel_start = s; in->sel_len = epos - s; }
@@ -425,6 +434,8 @@ void input_set_text(Input* in, const char* text) {
     in->text[in->maxlen] = '\0';
     in->len = strlen(in->text);
     in->cursor_pos = in->len;
+    in->sel_anchor = 0;
+    input_clear_selection_internal(in);
 }
 
 void input_set_on_submit(Input* in, void (*cb)(const char*)) {
