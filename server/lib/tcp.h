@@ -27,7 +27,6 @@ typedef struct {
     int server_socket;
     int port;
     TcpClient clients[TCP_MAX_CLIENTS];
-    int next_client_id;
 } TcpServer;
 
 /* Initialisation / destruction */

@@ -5,6 +5,9 @@
 
 #define INPUT_DEFAULT_MAX 256
 
+/**
+ * Identifiants des différents types d'input.
+ */
 typedef enum {
     INPUT_ID_NONE = 0,
     INPUT_ID_NAME,
@@ -12,6 +15,9 @@ typedef enum {
     INPUT_ID_TCHAT
 } InputId;
 
+/**
+ * Structure d'input.
+ */
 typedef struct Input {
     SDL_Rect rect;
     char* text;
@@ -76,7 +82,7 @@ void input_render(SDL_Renderer* renderer, Input* in);
 /**
  * Récupère le texte actuel de l'input.
  * @param in Pointeur vers l'input.
- * @return Le texte actuel de l'input, ou NULL si l'input est NULL
+ * @return Le texte actuel de l'input, ou NULL si l'input est NULL.
  */
 const char* input_get_text(Input* in);
 
@@ -96,6 +102,7 @@ void input_clear_submitted(Input* in);
 /**
  * Définit le texte de l'input. Si le texte dépasse la longueur maximale, il sera tronqué.
  * @param in Pointeur vers l'input.
+ * @param text Nouveau texte à définir.
  */
 void input_set_text(Input* in, const char* text);
 

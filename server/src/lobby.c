@@ -89,9 +89,16 @@ Lobby* create_lobby(LobbyManager* manager) {
     lobby->owner_id = -1;
     lobby->game = NULL;
 
-    manager->lobbies[manager->nb_lobbies++] = lobby;
-    
-    return lobby;
+    manager->nb_lobbies++;
+
+    // Selection du premier emplacement vide dans la liste
+    for (int i = 0; i < MAX_LOBBIES; i++) {
+        if (manager->lobbies[i] == NULL) {
+            manager->lobbies[i] = lobby;
+            return lobby;
+        }
+    }
+    return NULL;
 }
 
 int join_lobby(Lobby* lobby, User* user) {
@@ -119,5 +126,6 @@ void destroy_lobby(Codenames* codenames, Lobby* lobby) {
             destroy_user(lobby->users[i]);
         }
         free(lobby);
+        codenames->lobby->nb_lobbies--;
     }
 }
