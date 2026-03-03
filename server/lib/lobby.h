@@ -102,7 +102,7 @@ Lobby* find_lobby_by_ownerid(LobbyManager* manager, int owner_id);
  * @param id Identifiant du lobby recherché.
  * @return Pointeur vers le Lobby trouvé, ou NULL si aucun lobby ne correspond.
  */
-Lobby* find_lobby_by_id(LobbyManager* manager, int id);
+Lobby* find_lobby_by_code(LobbyManager* manager, const char* code);
 
 /** Détruit un lobby et libère ses ressources.
  * @param codenames Contexte principal du serveur.

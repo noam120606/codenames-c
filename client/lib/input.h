@@ -43,7 +43,7 @@ typedef struct Input {
     Uint32 placeholder_last_tick;
     const char* font_path;
     int font_size;
-    void (*on_submit)(const char*);
+    void (*on_submit)(SDL_Context*, const char*);
 } Input;
 
 /**
@@ -71,7 +71,7 @@ void input_destroy(Input* in);
  * @param in Pointeur vers l'input à gérer.
  * @param e Pointeur vers l'événement SDL à traiter.
  */
-void input_handle_event(Input* in, SDL_Event* e);
+void input_handle_event(SDL_Context* context, Input* in, SDL_Event* e);
 
 /** Affiche l'input sur le renderer.
  * Doit être appelé à chaque frame dans la boucle de rendu.

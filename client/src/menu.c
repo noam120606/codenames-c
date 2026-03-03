@@ -5,10 +5,9 @@ SDL_Texture* quagmire;
 Input* name_input = NULL;
 Input* code_input = NULL;
 char* name = NULL;
-char* code = NULL;
 int joining = 0;
 
-static void name_on_submit(const char* text) {
+static void name_on_submit(SDL_Context* context, const char* text) {
     printf("Name input submitted: %s\n", text ? text : "");
     if (name) {
         free(name);
@@ -25,19 +24,18 @@ static void name_on_submit(const char* text) {
     }
 }
 
-static void code_on_submit(const char* text) {
-    printf("Code input submitted: %s\n", text);
-    if (code) {
-        free(code);
-        code = NULL;
+static void code_on_submit(SDL_Context* context, const char* text) {
+    printf("Code input submitted: %s\n", text ? text : "");
+    if (text) {
+        char trame[20];
+        format_to(trame, sizeof(trame), "%d %s %s", MSG_JOINLOBBY, text, name ? name : "NONE");
+        send_tcp(context->sock, trame);
     }
-    code = malloc(sizeof(char) * strlen(text));
-    strcpy(code, text);
 }
 
 void menu_handle_event(SDL_Context* context, SDL_Event* e) {
-    if (name_input) input_handle_event(name_input, e);
-    if (code_input) input_handle_event(code_input, e);
+    if (name_input) input_handle_event(context, name_input, e);
+    if (code_input) input_handle_event(context, code_input, e);
 }
 
 ButtonReturn menu_button_click(SDL_Context* context, ButtonId button_id) {

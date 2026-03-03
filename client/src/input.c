@@ -105,7 +105,7 @@ static int point_in_rect(int x, int y, SDL_Rect* r) {
     return x >= r->x && x <= (r->x + r->w) && y >= r->y && y <= (r->y + r->h);
 }
 
-void input_handle_event(Input* in, SDL_Event* e) {
+void input_handle_event(SDL_Context* context, Input* in, SDL_Event* e) {
     if (!in || !e) return;
 
     if (e->type == SDL_MOUSEBUTTONDOWN) {
@@ -242,7 +242,7 @@ void input_handle_event(Input* in, SDL_Event* e) {
 
             /* call submit callback with the submitted text (use stored copy)
              * then clear the input contents so it appears empty */
-            if (in->on_submit) in->on_submit(in->submitted_text);
+            if (in->on_submit) in->on_submit(context, in->submitted_text);
 
             /* clear current text */
             if (in->text && in->maxlen > 0) {
