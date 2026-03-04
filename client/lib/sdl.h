@@ -4,6 +4,7 @@
 #include "../SDL2/include/SDL2/SDL.h"
 #include "../SDL2/include/SDL2/SDL_image.h"
 #include "../SDL2/include/SDL2/SDL_ttf.h"
+#include "../SDL2/include/SDL2/SDL_mixer.h"
 
 #define WIN_WIDTH 1920
 #define WIN_HEIGHT 1080
