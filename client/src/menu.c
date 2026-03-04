@@ -75,14 +75,42 @@ int menu_init(SDL_Context * context) {
 
     // Chargement input
     const char* name_placeholders[] = {"Peter", "Quagmire", "Tom", "Faz Faf"};
-    name_input = input_create(INPUT_ID_NAME, WIN_WIDTH/2 + 650, 50, 250, 60, FONT_LARABIE, 28, name_placeholders, 4, "Pseudo : ", 16);
+    {
+        InputConfig cfg;
+        input_config_init(&cfg);
+        cfg.x = WIN_WIDTH/2 + 650;
+        cfg.y = 50;
+        cfg.w = 250;
+        cfg.h = 60;
+        cfg.font_path = FONT_LARABIE;
+        cfg.font_size = 28;
+        cfg.placeholders = name_placeholders;
+        cfg.placeholder_count = 4;
+        cfg.submitted_label = "Pseudo : ";
+        cfg.maxlen = 16;
+        name_input = input_create(INPUT_ID_NAME, &cfg);
+    }
     if (name_input) {
         input_set_on_submit(name_input, name_on_submit);
         input_set_bg(name_input, context->renderer, "assets/img/inputs/empty.png", 24);
     }
 
     const char* code_placeholders[] = {"CODE"};
-    code_input = input_create(INPUT_ID_JOIN_CODE, WIN_WIDTH/2+50, 700, 385, 100, FONT_LARABIE, 28, code_placeholders, 1, "", 16);
+    {
+        InputConfig cfg;
+        input_config_init(&cfg);
+        cfg.x = WIN_WIDTH/2+50;
+        cfg.y = 700;
+        cfg.w = 385;
+        cfg.h = 100;
+        cfg.font_path = FONT_LARABIE;
+        cfg.font_size = 28;
+        cfg.placeholders = code_placeholders;
+        cfg.placeholder_count = 1;
+        cfg.submitted_label = "";
+        cfg.maxlen = 16;
+        code_input = input_create(INPUT_ID_JOIN_CODE, &cfg);
+    }
     if (code_input) {
         input_set_on_submit(code_input, code_on_submit);
         input_set_bg(code_input, context->renderer, "assets/img/inputs/empty.png", 24);
