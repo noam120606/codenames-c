@@ -26,3 +26,5 @@
 #include "../lib/crossfader.h"
 #include "../lib/message.h"
 #include "../lib/utils.h"
+#include "../lib/game.h"
+#include "../lib/lobby.h"

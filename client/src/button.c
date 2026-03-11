@@ -246,6 +246,12 @@ void hide_button(int id) {
     if (button) button->hidden = 1;
 }
 
+void hide_all_buttons() {
+    for (int i = 0; i < button_count; i++) {
+        if (buttons[i]) buttons[i]->hidden = 1;
+    }
+}
+
 void show_button(int id) {
     Button* button = button_get(id);
     if (button) button->hidden = 0;
