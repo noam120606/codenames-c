@@ -68,6 +68,7 @@ SDL_Context init_sdl() {
     context.sock = 0;
     context.lobby_id = -1;
     context.frame_start_time = 0;
+    context.game_state = GAME_STATE_MENU;
 
     audio_init();
     
