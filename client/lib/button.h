@@ -13,6 +13,10 @@ typedef enum ButtonId {
     BTN_NONE,
     BTN_CREATE,
     BTN_JOIN,
+    BTN_AGENT,
+    BTN_SPY,
+    BTN_TEAM_RED,
+    BTN_TEAM_BLUE,
     BTN_QUIT,
 } ButtonId;
 

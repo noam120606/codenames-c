@@ -131,7 +131,8 @@ void menu_display(SDL_Context * context) {
         audio_play(MUSIC_MENU, -1);
     }
 
-    if (in_lobby) {
+    /*
+    if (context->game_state == GAME_STATE_MENU) {
         hide_button(BTN_CREATE);
         hide_button(BTN_JOIN);
 
@@ -142,7 +143,9 @@ void menu_display(SDL_Context * context) {
         int rel_y = (WIN_HEIGHT/2) - desired_screen_y; // négatif si desired_screen_y > WIN_HEIGHT/2
         text_display(context->renderer, msg, FONT_LARABIE, 24, COL_WHITE, rel_x, rel_y, 0, 255);
 
-    } else if (joining) {
+    } */
+   
+    if (joining) {
         show_button(BTN_CREATE);
         hide_button(BTN_JOIN);
         if (code_input) input_render(context->renderer, code_input);
