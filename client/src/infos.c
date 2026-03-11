@@ -2,6 +2,10 @@
 
 SDL_Texture* bandeau;
 
+// Crossfaders pour le volume
+static Crossfader* cf_music = NULL;
+static Crossfader* cf_sfx = NULL;
+
 // Animation state
 typedef enum {
     INFOS_HIDDEN,
@@ -15,6 +19,24 @@ static Uint32 animation_start_time = 0;
 static const Uint32 ANIMATION_DURATION = 200; // Durée de l'animation en ms
 static int mouse_was_inside = 0; // Indique si la souris était dans la zone à la dernière vérification
 
+// Position courante du bandeau (mise à jour chaque frame)
+static int current_display_x = -1300;
+
+/* Callback appelé quand le crossfader musique change */
+static void on_music_volume_change(SDL_Context* ctx, int new_value) {
+    if (ctx) ctx->music_volume = new_value;
+    Mix_VolumeMusic(new_value);
+    /* Appliquer aussi sur les channels musique si joués via Mix_PlayChannel */
+    /* Pour MUSIC_MENU qui est un chunk, on ajuste le volume du chunk */
+}
+
+/* Callback appelé quand le crossfader effets sonores change */
+static void on_sfx_volume_change(SDL_Context* ctx, int new_value) {
+    if (ctx) ctx->sound_effects_volume = new_value;
+    /* Le volume sera lu au moment de jouer les effets, ou on peut appliquer globalement */
+    Mix_Volume(-1, new_value); /* -1 = tous les channels */
+}
+
 int init_infos(SDL_Context* context) {
     int loading_fails = 0;
 
@@ -23,8 +45,47 @@ int init_infos(SDL_Context* context) {
         printf("Failed to load bandeau image\n");
         loading_fails++;
     }
+
+    /* Initialiser le sous-système crossfader */
+    crossfaders_init();
+
+    /* Crossfader musique */
+    CrossfaderConfig* cfg_music = crossfader_config_init();
+    cfg_music->x = 0;  /* sera repositionné à chaque frame */
+    cfg_music->y = 500;
+    cfg_music->w = 200;
+    cfg_music->h = 16;
+    cfg_music->min = 0;
+    cfg_music->max = MIX_MAX_VOLUME;
+    cfg_music->value = context->music_volume;
+    cfg_music->on_change = on_music_volume_change;
+    cf_music = crossfader_create(context->renderer, CROSSFADER_ID_MUSIC_VOLUME, cfg_music);
+    free(cfg_music);
+    if (!cf_music) {
+        printf("Failed to create music volume crossfader\n");
+        loading_fails++;
+    }
+
+    /* Crossfader effets sonores */
+    CrossfaderConfig* cfg_sfx = crossfader_config_init();
+    cfg_sfx->x = 0;  /* sera repositionné à chaque frame */
+    cfg_sfx->y = 570;
+    cfg_sfx->w = 200;
+    cfg_sfx->h = 16;
+    cfg_sfx->min = 0;
+    cfg_sfx->max = MIX_MAX_VOLUME;
+    cfg_sfx->value = context->sound_effects_volume;
+    cfg_sfx->on_change = on_sfx_volume_change;
+    cf_sfx = crossfader_create(context->renderer, CROSSFADER_ID_SFX_VOLUME, cfg_sfx);
+    free(cfg_sfx);
+    if (!cf_sfx) {
+        printf("Failed to create sfx volume crossfader\n");
+        loading_fails++;
+    }
+
     return loading_fails;
 }
+
 // Démarre l'animation d'apparition
 void infos_display_show_animation(SDL_Context* context) {
     if (infos_state != INFOS_VISIBLE && infos_state != INFOS_SHOWING) {
@@ -41,6 +102,40 @@ void infos_display_hide_animation(SDL_Context* context) {
     }
 }
 
+/* Convertit des coordonnées bandeau (même repère que display_image/text_display)
+   en coordonnées écran absolues pour un rectangle de taille (w, h). */
+static int bandeau_to_screen_x(int bx, int w) {
+    return (WIN_WIDTH - w) / 2 + bx;
+}
+static int bandeau_to_screen_y(int by, int h) {
+    return (WIN_HEIGHT - h) / 2 - by;
+}
+
+/* Met à jour la position des crossfaders pour qu'ils suivent le bandeau */
+static void update_crossfader_positions(int display_x) {
+    /* Même décalage X que le texte FPS */
+    int bx = display_x + 100;
+
+    if (cf_music && cf_music->cfg) {
+        int sx = bandeau_to_screen_x(bx, cf_music->cfg->w);
+        int sy = bandeau_to_screen_y(370, cf_music->cfg->h);  /* en dessous du FPS (y=450) */
+        cf_music->cfg->x = sx;
+        cf_music->cfg->y = sy;
+        cf_music->cfg->rect.x = sx;
+        cf_music->cfg->rect.y = sy;
+        cf_music->cfg->hidden = (infos_state == INFOS_HIDDEN);
+    }
+    if (cf_sfx && cf_sfx->cfg) {
+        int sx = bandeau_to_screen_x(bx, cf_sfx->cfg->w);
+        int sy = bandeau_to_screen_y(300, cf_sfx->cfg->h);  /* encore en dessous */
+        cf_sfx->cfg->x = sx;
+        cf_sfx->cfg->y = sy;
+        cf_sfx->cfg->rect.x = sx;
+        cf_sfx->cfg->rect.y = sy;
+        cf_sfx->cfg->hidden = (infos_state == INFOS_HIDDEN);
+    }
+}
+
 // Affiche les informations à l'écran
 void infos_display(SDL_Context* context) {
     if (bandeau) {
@@ -49,7 +144,7 @@ void infos_display(SDL_Context* context) {
         SDL_GetMouseState(&mouse_x, &mouse_y);
         
         // Constantes pour le positionnement
-        const int TRIGGER_X = 200; // Seuil X pour déclencher l'animation
+        const int TRIGGER_X = 300; // Seuil X pour déclencher l'animation
         const int BASE_X = -950; // Position visible du bandeau
         const int HIDDEN_X = -1300; // Position hors écran (caché)
         
@@ -100,13 +195,28 @@ void infos_display(SDL_Context* context) {
             display_x = BASE_X;
         }
         // Si INFOS_HIDDEN, display_x reste HIDDEN_X
+
+        current_display_x = display_x;
+        update_crossfader_positions(display_x);
         
         // N'afficher que si pas complètement caché
         if (infos_state != INFOS_HIDDEN) {
             display_image(context->renderer, bandeau, display_x, 0, 0.75, 90, SDL_FLIP_NONE, 1, 192);
             fps_display(context, display_x);
+
+            /* Labels des crossfaders (coordonnées bandeau, même repère que text_display) */
+            int label_x = display_x + 100;
+            text_display(context->renderer, "Musique", FONT_LARABIE, 18, COL_WHITE, label_x, 395, 0, 255);
+            text_display(context->renderer, "Effets", FONT_LARABIE, 18, COL_WHITE, label_x, 325, 0, 255);
+
+            /* Rendu des crossfaders */
+            crossfaders_render(context->renderer);
         }
     }
+}
+
+void infos_handle_event(SDL_Context* context, SDL_Event* event) {
+    crossfaders_handle_event(context, event);
 }
 
 // FPS calculation
@@ -144,4 +254,7 @@ void infos_free() {
         SDL_DestroyTexture(bandeau);
         bandeau = NULL;
     }
+    crossfaders_free();
+    cf_music = NULL;
+    cf_sfx = NULL;
 }

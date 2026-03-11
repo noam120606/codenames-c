@@ -5,25 +5,50 @@
 
 #define MAX_CROSSFADERS 32
 
-typedef struct {
-    int id;
-    SDL_Rect rect; /* full track rect */
+/**
+ * Configuration pour créer un `Crossfader`.
+ * Tous les champs ont des valeurs par défaut définies via `crossfader_config_init`.
+ * La structure peut être modifiée à tout moment et passée à `crossfader_create`.
+ */
+typedef struct CrossfaderConfig {
+    /* --- champs configurables par l'utilisateur --- */
+    int x;
+    int y;
+    int w;
+    int h;
     int min;
     int max;
     int value;
+    int hidden;
+    void (*on_change)(SDL_Context* ctx, int new_value);
+
+    /* --- champs d'état (runtime) --- */
+    SDL_Rect rect;             /* full track rect */
     int dragging;
     int hover;
-    int hidden;
     SDL_Texture* track_texture; /* optional */
     SDL_Texture* knob_texture;  /* optional */
-    void (*on_change)(SDL_Context* ctx, int new_value);
+} CrossfaderConfig;
+
+/**
+ * Structure de crossfader.
+ */
+typedef struct Crossfader {
+    int id;
+    CrossfaderConfig* cfg;
 } Crossfader;
+
+/** Initialise une `CrossfaderConfig` avec des valeurs par défaut. */
+CrossfaderConfig* crossfader_config_init(void);
 
 /* Initialize crossfader subsystem */
 void crossfaders_init(void);
 
-/* Create a crossfader and register it. Returns pointer or NULL on error. */
-Crossfader* crossfader_create(SDL_Renderer* renderer, int id, int x, int y, int w, int h, int min, int max, int value);
+/**
+ * Crée un crossfader à partir d'une configuration.
+ * Si `cfg` est NULL, les valeurs par défaut sont utilisées.
+ */
+Crossfader* crossfader_create(SDL_Renderer* renderer, int id, const CrossfaderConfig* cfg);
 
 /* Render all registered crossfaders */
 void crossfaders_render(SDL_Renderer* renderer);

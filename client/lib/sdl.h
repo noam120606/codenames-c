@@ -47,6 +47,8 @@ typedef struct {
     int player_role; /* ROLE_AGENT / ROLE_SPY */
     int player_team; /* TEAM_NEUTRAL / TEAM_RED / TEAM_BLUE */
     Uint32 frame_start_time;
+    int music_volume;          /**< Volume de la musique (0-128). */
+    int sound_effects_volume;  /**< Volume des effets sonores (0-128). */
 } SDL_Context;
 
 /**

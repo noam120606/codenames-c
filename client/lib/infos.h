@@ -3,6 +3,10 @@
 
 #include "sdl.h"
 
+/** Identifiants des crossfaders du bandeau infos. */
+#define CROSSFADER_ID_MUSIC_VOLUME    1
+#define CROSSFADER_ID_SFX_VOLUME      2
+
 // INIT INFOS
 
 /**
@@ -31,6 +35,13 @@ void calculate_fps(SDL_Context* context, Uint32 current_time);
  * @param context Contexte SDL contenant le renderer et les données nécessaires pour l'affichage.
  */
 void infos_display(SDL_Context* context);
+
+/**
+ * Gère les événements SDL pour le bandeau infos (crossfaders, etc.).
+ * @param context Contexte SDL.
+ * @param event Événement SDL à traiter.
+ */
+void infos_handle_event(SDL_Context* context, SDL_Event* event);
 
 /**
  * Affiche les FPS (Frames Per Second)
