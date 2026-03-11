@@ -14,7 +14,9 @@ int init_background(SDL_Context * context) {
     }
 
     // Utiliser nearest neighbor pour éviter le lissage lors du rendu à plus petite taille
-    SDL_SetTextureScaleMode(lens, SDL_ScaleModeNearest);
+    if (lens) {
+        SDL_SetTextureScaleMode(lens, SDL_ScaleModeNearest);
+    }
 
     return loading_fails;
 }
@@ -76,6 +78,10 @@ void display_background(SDL_Context* context){
     }
 }
 
-void destroy_background() {
-    if (lens) free_image(lens);
+int destroy_background() {
+    if (lens) {
+        free_image(lens);
+        lens = NULL;
+    }
+    return EXIT_SUCCESS;
 }

@@ -38,7 +38,7 @@ int main(int argc, char* argv[]){
     SDL_Context context = init_sdl();
     if (context.window == NULL || context.renderer == NULL) {
         printf("Failed to initialize SDL\n");
-        destroy_context(context);
+        destroy_context(&context);
         cleanup_resources(resources);
         return EXIT_FAILURE;
     }
@@ -46,7 +46,7 @@ int main(int argc, char* argv[]){
     // Register SDL context and cleanup function
     if (define_sdl_context(resources, &context, destroy_context) != EXIT_SUCCESS) {
         printf("Failed to define SDL context\n");
-        destroy_context(context);
+        destroy_context(&context);
         cleanup_resources(resources);
         return EXIT_FAILURE;
     }
@@ -123,6 +123,7 @@ int main(int argc, char* argv[]){
                 case GAME_STATE_MENU: menu_handle_event(&context, &e); break;
                 case GAME_STATE_LOBBY: lobby_handle_event(&context, &e); break;
                 case GAME_STATE_PLAYING: game_handle_event(&context, &e); break;
+                case GAME_STATE_PAUSED: break;
             }
 
             ButtonReturn bref = buttons_handle_event(&context, &e);

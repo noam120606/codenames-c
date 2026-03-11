@@ -116,7 +116,7 @@ Button* button_get(int id);
 /**
  * Libère tous les boutons et le système.
  */
-void buttons_free();
+int buttons_free();
 
 /**
  * Cache un bouton.

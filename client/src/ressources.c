@@ -2,8 +2,7 @@
 
 
 Resources* init_resources() {
-    Resources* res = (Resources*)malloc(sizeof(Resources));
-    res->nb_resources = 0;
+    Resources* res = (Resources*)calloc(1, sizeof(Resources));
     return res;
 }
 
@@ -23,6 +22,10 @@ int add_destroy_resource(Resources* res, DestroyFunction destroy) {
 }
 
 void cleanup_resources(Resources* res) {
+    if (!res) {
+        return;
+    }
+
     for (int i = 0; i < res->nb_resources; i++) {
         if (res->destroy_functions[i]) {
             res->destroy_functions[i]();

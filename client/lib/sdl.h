@@ -119,6 +119,6 @@ void free_image(SDL_Texture* texture);
  * Détruit la fenêtre et le renderer, et quitte SDL.
  * @param context Le SDL_Context à détruire.
  */
-void destroy_context(SDL_Context context);
+int destroy_context(SDL_Context* context);
 
 #endif // SDL_H
