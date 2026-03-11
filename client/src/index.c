@@ -90,6 +90,17 @@ int main(int argc, char* argv[]){
         buttons_free();
         return EXIT_FAILURE;
     }
+    int game_loading_fails = game_init(&context);
+    if (game_loading_fails > 0) {
+        printf("Failed to load %d game resource(s)\n", game_loading_fails);
+        close_tcp(sock);
+        menu_free();
+        destroy_context(context);
+        destroy_background();
+        infos_free();
+        buttons_free();
+        return EXIT_FAILURE;
+    }
 
     SDL_Event e;
     int running = 1;
@@ -121,7 +132,7 @@ int main(int argc, char* argv[]){
         SDL_RenderClear(context.renderer);
 
         // Rendu et logique d'affichage
-        switch (context.game_state) {
+        /*switch (context.game_state) {
             case GAME_STATE_MENU:
                 display_background(&context);
                 menu_display(&context);
@@ -137,11 +148,16 @@ int main(int argc, char* argv[]){
             case GAME_STATE_PAUSED:
                 // TODO: Implement paused state rendering
                 break;
-        }
+        }*/
+
+        game_display(&context);
+
+        // Onglet d'infos
         infos_display(&context);
 
         // Afficher les boutons
         buttons_display(context.renderer);
+        hide_all_buttons();
 
         // Post Rendu
         SDL_RenderPresent(context.renderer);
