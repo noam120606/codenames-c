@@ -27,7 +27,7 @@ typedef enum {
  * @param ROLE_AGENT devine les mots.
  */
 typedef enum UserRole {
-    ROLE_ESPION,
+    ROLE_SPY,
     ROLE_AGENT
 } UserRole;
 
@@ -45,6 +45,8 @@ typedef enum Team {
     TEAM_BLUE,
     TEAM_BLACK,
 } Team;
+
+typedef struct Card Card;
 
 /**
  * Contexte SDL contenant la fenêtre et le renderer.

@@ -117,17 +117,18 @@ int main(int argc, char* argv[]){
             }
             /* Le bandeau infos (crossfaders volume) est toujours actif */
             infos_handle_event(&context, &e);
+
             // Déléguer l'événement selon l'état courant
-            if (context.game_state == GAME_STATE_LOBBY) {
-                lobby_handle_event(&context, &e);
-            } else {
-                // Buttons + menu in other states
-                ButtonReturn bref = buttons_handle_event(&context, &e);
-                switch (bref) {
-                    case BTN_RET_QUIT: running = 0; break;
-                    default: break;
-                }
-                menu_handle_event(&context, &e);
+            switch (context.game_state) {
+                case GAME_STATE_MENU: menu_handle_event(&context, &e); break;
+                case GAME_STATE_LOBBY: lobby_handle_event(&context, &e); break;
+                case GAME_STATE_PLAYING: game_handle_event(&context, &e); break;
+            }
+
+            ButtonReturn bref = buttons_handle_event(&context, &e);
+            switch (bref) {
+                case BTN_RET_QUIT: running = 0; break;
+                default: break;
             }
         }
 
@@ -136,7 +137,7 @@ int main(int argc, char* argv[]){
         SDL_RenderClear(context.renderer);
 
         // Rendu et logique d'affichage
-        /*switch (context.game_state) {
+        switch (context.game_state) {
             case GAME_STATE_MENU:
                 display_background(&context);
                 menu_display(&context);
@@ -147,21 +148,18 @@ int main(int argc, char* argv[]){
                 lobby_display(&context);
                 break;
             case GAME_STATE_PLAYING:
-                // TODO: Implement playing state rendering
+                game_display(&context);
                 break;
             case GAME_STATE_PAUSED:
                 // TODO: Implement paused state rendering
                 break;
-        }*/
-
-        game_display(&context);
+        }
 
         // Onglet d'infos
         infos_display(&context);
 
         // Afficher les boutons
         buttons_display(context.renderer);
-        hide_all_buttons();
 
         // Post Rendu
         SDL_RenderPresent(context.renderer);
