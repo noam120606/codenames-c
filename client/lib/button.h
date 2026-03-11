@@ -125,6 +125,11 @@ void buttons_free();
 void hide_button(int id);
 
 /**
+ * Cache tous les boutons.
+ */
+void hide_all_buttons();
+
+/**
  * Affiche un bouton.
  * @param id L'ID du bouton à afficher.
  */
