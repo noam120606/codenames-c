@@ -121,7 +121,11 @@ int menu_init(SDL_Context * context) {
 
 void menu_display(SDL_Context * context) {
 
-    int in_lobby = context->lobby_id != -1;
+    if (context->lobby_id != -1) {
+        context->game_state = GAME_STATE_LOBBY;
+    } else {
+        context->game_state = GAME_STATE_MENU;
+    }
 
     if (!audio_is_playing(MUSIC_MENU)) {
         audio_play(MUSIC_MENU, -1);
