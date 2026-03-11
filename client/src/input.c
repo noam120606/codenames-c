@@ -1,6 +1,27 @@
 /* Input widget implementation */
 #include "../lib/all.h"
 
+/** Initialise une InputConfig avec des valeurs par défaut. */
+void input_config_init(InputConfig* cfg) {
+    if (!cfg) return;
+    cfg->x = 0;
+    cfg->y = 0;
+    cfg->w = 0;
+    cfg->h = 0;
+    cfg->font_path = NULL;
+    cfg->font_size = 16;
+    cfg->placeholders = NULL;
+    cfg->placeholder_count = 0;
+    cfg->submitted_label = NULL;
+    cfg->maxlen = INPUT_DEFAULT_MAX;
+    cfg->bg_color = (SDL_Color){255,255,255,255};
+    cfg->border_color = (SDL_Color){0,0,0,255};
+    cfg->text_color = (SDL_Color){255,255,255,255};
+    cfg->padding = 8;
+    cfg->init_text = NULL;
+    cfg->on_submit = NULL;
+}
+
 static void input_clear_selection_internal(Input* in) {
     if (!in) return;
     in->sel_start = 0;
@@ -40,48 +61,62 @@ static int next_word_pos(Input* in, int pos) {
     return i;
 }
 
-Input* input_create(InputId id, int x, int y, int w, int h, const char* font_path, int font_size, const char** placeholders, int placeholder_count, const char* submitted_label, int maxlen) {
+Input* input_create(InputId id, const InputConfig* cfg_in) {
+    InputConfig cfg_local;
+    const InputConfig* cfg = cfg_in;
+    if (!cfg) {
+        input_config_init(&cfg_local);
+        cfg = &cfg_local;
+    }
+
     Input* in = (Input*)malloc(sizeof(Input));
     if (!in) return NULL;
-    in->rect.x = x;
-    in->rect.y = y;
-    in->rect.w = w;
-    in->rect.h = h;
-    in->maxlen = (maxlen > 0) ? maxlen : INPUT_DEFAULT_MAX;
+    in->rect.x = cfg->x;
+    in->rect.y = cfg->y;
+    in->rect.w = cfg->w;
+    in->rect.h = cfg->h;
+    in->maxlen = (cfg->maxlen > 0) ? cfg->maxlen : INPUT_DEFAULT_MAX;
     in->text = (char*)calloc(in->maxlen + 1, 1);
     in->len = 0;
     in->cursor_pos = 0;
     in->focused = 0;
     in->submitted = 0;
-    in->bg_color = (SDL_Color){255, 255, 255, 255};
-    in->border_color = (SDL_Color){0, 0, 0, 255};
-    in->text_color = (SDL_Color){255, 255, 255, 255};
+    in->bg_color = cfg->bg_color;
+    in->border_color = cfg->border_color;
+    in->text_color = cfg->text_color;
     in->bg_texture = NULL;
     in->id = id;
     in->sel_start = 0;
     in->sel_len = 0;
     in->sel_anchor = 0;
-    in->padding = 8;
-    in->font_path = font_path;
-    in->font_size = font_size;
-    in->on_submit = NULL;
+    in->padding = cfg->padding;
+    in->font_path = cfg->font_path;
+    in->font_size = cfg->font_size;
+    in->on_submit = cfg->on_submit;
     in->submitted_text = NULL;
     in->submitted_label = NULL;
     in->placeholders = NULL;
     in->placeholder_count = 0;
     in->placeholder_index = 0;
     in->placeholder_last_tick = SDL_GetTicks();
-    if (placeholders && placeholder_count > 0) {
-        in->placeholders = (char**)malloc(sizeof(char*) * placeholder_count);
+
+    if (cfg->placeholders && cfg->placeholder_count > 0) {
+        in->placeholders = (char**)malloc(sizeof(char*) * cfg->placeholder_count);
         if (in->placeholders) {
-            for (int i = 0; i < placeholder_count; ++i) {
-                in->placeholders[i] = strdup(placeholders[i]);
+            for (int i = 0; i < cfg->placeholder_count; ++i) {
+                in->placeholders[i] = strdup(cfg->placeholders[i]);
             }
-            in->placeholder_count = placeholder_count;
+            in->placeholder_count = cfg->placeholder_count;
         }
     }
-    if (submitted_label) {
-        in->submitted_label = strdup(submitted_label);
+    if (cfg->submitted_label) {
+        in->submitted_label = strdup(cfg->submitted_label);
+    }
+    if (cfg->init_text && cfg->init_text[0] != '\0') {
+        strncpy(in->text, cfg->init_text, in->maxlen);
+        in->text[in->maxlen] = '\0';
+        in->len = strlen(in->text);
+        in->cursor_pos = in->len;
     }
     return in;
 }
@@ -105,7 +140,7 @@ static int point_in_rect(int x, int y, SDL_Rect* r) {
     return x >= r->x && x <= (r->x + r->w) && y >= r->y && y <= (r->y + r->h);
 }
 
-void input_handle_event(Input* in, SDL_Event* e) {
+void input_handle_event(SDL_Context* context, Input* in, SDL_Event* e) {
     if (!in || !e) return;
 
     if (e->type == SDL_MOUSEBUTTONDOWN) {
@@ -242,7 +277,7 @@ void input_handle_event(Input* in, SDL_Event* e) {
 
             /* call submit callback with the submitted text (use stored copy)
              * then clear the input contents so it appears empty */
-            if (in->on_submit) in->on_submit(in->submitted_text);
+            if (in->on_submit) in->on_submit(context, in->submitted_text);
 
             /* clear current text */
             if (in->text && in->maxlen > 0) {
@@ -438,7 +473,7 @@ void input_set_text(Input* in, const char* text) {
     input_clear_selection_internal(in);
 }
 
-void input_set_on_submit(Input* in, void (*cb)(const char*)) {
+void input_set_on_submit(Input* in, void (*cb)(SDL_Context*, const char*)) {
     if (!in) return;
     in->on_submit = cb;
 }

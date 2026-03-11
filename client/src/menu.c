@@ -5,10 +5,9 @@ SDL_Texture* quagmire;
 Input* name_input = NULL;
 Input* code_input = NULL;
 char* name = NULL;
-char* code = NULL;
 int joining = 0;
 
-static void name_on_submit(const char* text) {
+static void name_on_submit(SDL_Context* context, const char* text) {
     printf("Name input submitted: %s\n", text ? text : "");
     if (name) {
         free(name);
@@ -25,19 +24,18 @@ static void name_on_submit(const char* text) {
     }
 }
 
-static void code_on_submit(const char* text) {
-    printf("Code input submitted: %s\n", text);
-    if (code) {
-        free(code);
-        code = NULL;
+static void code_on_submit(SDL_Context* context, const char* text) {
+    printf("Code input submitted: %s\n", text ? text : "");
+    if (text) {
+        char trame[20];
+        format_to(trame, sizeof(trame), "%d %s %s", MSG_JOINLOBBY, text, name ? name : "NONE");
+        send_tcp(context->sock, trame);
     }
-    code = malloc(sizeof(char) * strlen(text));
-    strcpy(code, text);
 }
 
 void menu_handle_event(SDL_Context* context, SDL_Event* e) {
-    if (name_input) input_handle_event(name_input, e);
-    if (code_input) input_handle_event(code_input, e);
+    if (name_input) input_handle_event(context, name_input, e);
+    if (code_input) input_handle_event(context, code_input, e);
 }
 
 ButtonReturn menu_button_click(SDL_Context* context, ButtonId button_id) {
@@ -77,14 +75,42 @@ int menu_init(SDL_Context * context) {
 
     // Chargement input
     const char* name_placeholders[] = {"Peter", "Quagmire", "Tom", "Faz Faf"};
-    name_input = input_create(INPUT_ID_NAME, WIN_WIDTH/2 + 650, 50, 250, 60, FONT_LARABIE, 28, name_placeholders, 4, "Pseudo : ", 16);
+    {
+        InputConfig cfg;
+        input_config_init(&cfg);
+        cfg.x = WIN_WIDTH/2 + 650;
+        cfg.y = 50;
+        cfg.w = 250;
+        cfg.h = 60;
+        cfg.font_path = FONT_LARABIE;
+        cfg.font_size = 28;
+        cfg.placeholders = name_placeholders;
+        cfg.placeholder_count = 4;
+        cfg.submitted_label = "Pseudo : ";
+        cfg.maxlen = 16;
+        name_input = input_create(INPUT_ID_NAME, &cfg);
+    }
     if (name_input) {
         input_set_on_submit(name_input, name_on_submit);
         input_set_bg(name_input, context->renderer, "assets/img/inputs/empty.png", 24);
     }
 
     const char* code_placeholders[] = {"CODE"};
-    code_input = input_create(INPUT_ID_JOIN_CODE, WIN_WIDTH/2+50, 700, 385, 100, FONT_LARABIE, 28, code_placeholders, 1, "", 16);
+    {
+        InputConfig cfg;
+        input_config_init(&cfg);
+        cfg.x = WIN_WIDTH/2+50;
+        cfg.y = 700;
+        cfg.w = 385;
+        cfg.h = 100;
+        cfg.font_path = FONT_LARABIE;
+        cfg.font_size = 28;
+        cfg.placeholders = code_placeholders;
+        cfg.placeholder_count = 1;
+        cfg.submitted_label = "";
+        cfg.maxlen = 16;
+        code_input = input_create(INPUT_ID_JOIN_CODE, &cfg);
+    }
     if (code_input) {
         input_set_on_submit(code_input, code_on_submit);
         input_set_bg(code_input, context->renderer, "assets/img/inputs/empty.png", 24);
@@ -95,7 +121,13 @@ int menu_init(SDL_Context * context) {
 
 void menu_display(SDL_Context * context) {
 
-    if (context->lobby_id != -1) {
+    int in_lobby = context->lobby_id != -1;
+
+    if (!audio_is_playing(MUSIC_MENU)) {
+        audio_play(MUSIC_MENU, -1);
+    }
+
+    if (in_lobby) {
         hide_button(BTN_CREATE);
         hide_button(BTN_JOIN);
 

@@ -52,12 +52,24 @@ SDL_Context init_sdl() {
         SDL_Quit();
         return context;
     }
-    
+
+    // Initialize Mixer
+    printf("Initializing Mixer...\n");
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) != 0) {
+        printf("Mix_OpenAudio Error: %s\n", Mix_GetError());
+        TTF_Quit();
+        IMG_Quit();
+        SDL_Quit();
+        return context;
+    }
+
     context.clock = 0;
     context.fps = 0.0f;
     context.sock = 0;
     context.lobby_id = -1;
     context.frame_start_time = 0;
+
+    audio_init();
     
     printf("All initialized successfully!\n");
     
@@ -134,6 +146,7 @@ void destroy_context(SDL_Context context) {
     if (context.window) {
         SDL_DestroyWindow(context.window);
     }
+    audio_cleanup();
     TTF_Quit();
     IMG_Quit();
     SDL_Quit();

@@ -118,9 +118,9 @@ Lobby* find_lobby_by_ownerid(LobbyManager* manager, int owner_id) {
     }
     return NULL;
 }
-Lobby* find_lobby_by_id(LobbyManager* manager, int id) {
+Lobby* find_lobby_by_code(LobbyManager* manager, const char* code) {
     for (int i = 0; i < manager->nb_lobbies; i++) {
-        if (manager->lobbies[i]->id == id) {
+        if (strcmp(manager->lobbies[i]->code, code) == 0) {
             return manager->lobbies[i];
         }
     }
