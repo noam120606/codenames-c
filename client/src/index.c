@@ -28,84 +28,86 @@ int main(int argc, char* argv[]){
     }
 
     printf("Starting Codenames Client...\n");
-    
-    // Initialize TCP connection to server
-    int sock = init_tcp(ip, port);
-    if (sock < 0) {
-        printf("Failed to connect to the server at %s:%d\n", ip, port);
+
+    Resources* resources = init_resources();
+    if (!resources) {
+        printf("Failed to initialize resources\n");
         return EXIT_FAILURE;
     }
 
     SDL_Context context = init_sdl();
     if (context.window == NULL || context.renderer == NULL) {
         printf("Failed to initialize SDL\n");
-        close_tcp(sock);
         destroy_context(context);
+        cleanup_resources(resources);
         return EXIT_FAILURE;
     }
-    context.sock = sock;
+
+    // Register SDL context and cleanup function
+    if (define_sdl_context(resources, &context, destroy_context) != EXIT_SUCCESS) {
+        printf("Failed to define SDL context\n");
+        destroy_context(context);
+        cleanup_resources(resources);
+        return EXIT_FAILURE;
+    }
+
+    // Initialize TCP connection to server
+    context.sock = init_tcp(ip, port);
+    if (context.sock < 0) {
+        printf("Failed to connect to the server at %s:%d\n", ip, port);
+        cleanup_resources(resources);
+        return EXIT_FAILURE;
+    }
 
     printf("Connected to server at %s:%d\n", ip, port);
 
     // Initialiser le système de boutons
     buttons_init();
+    add_destroy_resource(resources, buttons_free);
 
     int menu_loading_fails = menu_init(&context);
     if (menu_loading_fails > 0) {
         printf("Failed to load %d menu resource(s)\n", menu_loading_fails);
-        close_tcp(sock);
         menu_free();
-        buttons_free();
-        destroy_context(context);
+        cleanup_resources(resources);
         return EXIT_FAILURE;
-    }
+    } else add_destroy_resource(resources, menu_free);
+
     int background_loading_fails = init_background(&context);
     if (background_loading_fails > 0) {
         printf("Failed to load %d background resource(s)\n", background_loading_fails);
-        close_tcp(sock);
-        menu_free();
-        destroy_context(context);
         destroy_background();
-        buttons_free();
+        cleanup_resources(resources);
         return EXIT_FAILURE;
-    }
+    } else add_destroy_resource(resources, destroy_background);
+
     int infos_loading_fails = init_infos(&context);
     if (infos_loading_fails > 0) {
         printf("Failed to load %d infos resource(s)\n", infos_loading_fails);
-        close_tcp(sock);
-        menu_free();
-        destroy_context(context);
-        destroy_background();
         infos_free();
+        cleanup_resources(resources);
         return EXIT_FAILURE;
-    }
+    } else add_destroy_resource(resources, infos_free);
+
     int lobby_loading_fails = lobby_init(&context);
     if (lobby_loading_fails > 0) {
         printf("Failed to load %d lobby resource(s)\n", lobby_loading_fails);
-        close_tcp(sock);
-        menu_free();
-        destroy_context(context);
-        destroy_background();
-        infos_free();
-        buttons_free();
+        lobby_free();
+        cleanup_resources(resources);
         return EXIT_FAILURE;
-    }
+    } else add_destroy_resource(resources, lobby_free);
     int game_loading_fails = game_init(&context);
     if (game_loading_fails > 0) {
         printf("Failed to load %d game resource(s)\n", game_loading_fails);
-        close_tcp(sock);
-        menu_free();
-        destroy_context(context);
-        destroy_background();
-        infos_free();
-        buttons_free();
+        game_free();
+        cleanup_resources(resources);
         return EXIT_FAILURE;
-    }
+    } else add_destroy_resource(resources, game_free);
 
     SDL_Event e;
     int running = 1;
 
-    while (running && tick_tcp(&context, sock) == EXIT_SUCCESS) {
+    while (running && tick_tcp(&context, context.sock) == EXIT_SUCCESS) {
         // Enregistrer le début de la frame
         context.frame_start_time = SDL_GetTicks();
 
@@ -177,13 +179,7 @@ int main(int argc, char* argv[]){
 
     printf("Exiting...\n");
 
-    close_tcp(sock);
-    menu_free();
-    lobby_free();
-    destroy_background();
-    infos_free();
-    buttons_free();
-    destroy_context(context);
+    cleanup_resources(resources);
 
     return EXIT_SUCCESS;
 }

@@ -16,37 +16,6 @@ typedef enum {
 } InputId;
 
 /**
- * Structure d'input.
- */
-typedef struct Input {
-    SDL_Rect rect;
-    char* text;
-    int maxlen;
-    int len;
-    int cursor_pos;
-    int focused;
-    int submitted;
-    SDL_Color bg_color;
-    SDL_Color border_color;
-    SDL_Color text_color;
-    SDL_Texture* bg_texture;
-    int padding;
-    InputId id;
-    int sel_start;
-    int sel_len;
-    int sel_anchor;
-    char* submitted_text;
-    char* submitted_label;
-    char** placeholders;
-    int placeholder_count;
-    int placeholder_index;
-    Uint32 placeholder_last_tick;
-    const char* font_path;
-    int font_size;
-    void (*on_submit)(SDL_Context*, const char*);
-} Input;
-
-/**
  * Configuration pour créer un `Input`.
  * Tous les champs ont des valeurs par défaut définies via `input_config_init`.
  * La structure peut être modifiée à tout moment et passée à `input_create`.
@@ -66,12 +35,39 @@ typedef struct InputConfig {
     SDL_Color border_color;
     SDL_Color text_color;
     int padding;
+    int centered;          /**< Si 1, le texte/placeholder et le curseur sont centrés horizontalement. */
+    const char* bg_path;   /**< Chemin vers l'image de fond (NULL = pas d'image, fond uni). Chargée automatiquement par input_create. */
+    int bg_padding;        /**< Padding à appliquer avec l'image de fond (>= 0). Ignoré si bg_path est NULL. -1 = auto. */
+    const char* allowed_pattern; /**< Regex POSIX étendue appliquée à chaque caractère saisi. NULL = tout accepter. Ex: "^[A-Za-z0-9]$" */
     const char* init_text;
+    SDL_Rect rect;
+    char* text;
+    int len;
+    int cursor_pos;
+    int focused;
+    int submitted;
+    SDL_Texture* bg_texture;
+    int sel_start;
+    int sel_len;
+    int sel_anchor;
+    char* submitted_text;
+    int placeholder_index;
+    Uint32 placeholder_last_tick;
     void (*on_submit)(SDL_Context*, const char*);
 } InputConfig;
 
+/**
+ * Structure d'input.
+ */
+typedef struct Input {
+    InputId id;
+    InputConfig* cfg;
+} Input;
+
+
+
 /** Initialise une `InputConfig` avec des valeurs par défaut. */
-void input_config_init(InputConfig* cfg);
+InputConfig* input_config_init();
 
 /**
  * Crée un nouvel input.
@@ -88,7 +84,7 @@ void input_config_init(InputConfig* cfg);
  * Crée un nouvel input à partir d'une configuration.
  * Si `cfg` est NULL, les valeurs par défaut sont utilisées.
  */
-Input* input_create(InputId id, const InputConfig* cfg);
+Input* input_create(SDL_Renderer* renderer, InputId id, const InputConfig* cfg);
 
 /** Détruit un input. 
  * Libère la mémoire associée à l'input et ses ressources (texte, texture de fond).
