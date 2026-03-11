@@ -124,34 +124,21 @@ int menu_init(SDL_Context * context) {
 
 void menu_display(SDL_Context * context) {
 
-    if (context->lobby_id != -1) {
-        context->game_state = GAME_STATE_LOBBY;
-    } else {
+    if (context->lobby_id == -1) {
         context->game_state = GAME_STATE_MENU;
-        /* s'assurer que les boutons de rôle restent cachés quand on est dans le menu */
-        hide_button(BTN_RED_AGENT);
-        hide_button(BTN_RED_SPY);
-        hide_button(BTN_BLUE_AGENT);
-        hide_button(BTN_BLUE_SPY);
+    } else {
+        context->game_state = GAME_STATE_LOBBY;
     }
+
+    hide_button(BTN_RED_AGENT);
+    hide_button(BTN_RED_SPY);
+    hide_button(BTN_BLUE_AGENT);
+    hide_button(BTN_BLUE_SPY);
+    show_button(BTN_QUIT);
 
     if (!audio_is_playing(MUSIC_MENU)) {
         audio_play(MUSIC_MENU, -1);
     }
-
-    /*
-    if (context->game_state == GAME_STATE_MENU) {
-        hide_button(BTN_CREATE);
-        hide_button(BTN_JOIN);
-
-        char msg[64];
-        format_to(msg, sizeof(msg), "Bienvenue %s ! Tu es lobby %d. Code : %s", name ? name : "invité", context->lobby_id, context->lobby_code ? context->lobby_code : "AUCUN");
-        int desired_screen_y = 700;
-        int rel_x = 0; // 0 = centré horizontalement
-        int rel_y = (WIN_HEIGHT/2) - desired_screen_y; // négatif si desired_screen_y > WIN_HEIGHT/2
-        text_display(context->renderer, msg, FONT_LARABIE, 24, COL_WHITE, rel_x, rel_y, 0, 255);
-
-    } */
    
     if (joining) {
         show_button(BTN_CREATE);

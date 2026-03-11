@@ -16,13 +16,19 @@
  * @param revealed 0 si caché, 1 si révélé.
  * @param gender genre du mot (0 pour masculin, 1 pour féminin).
  */
-typedef struct {
+typedef struct Card {
     char word[32];
     Team team;
     int revealed;
     int gender;
 } Card;
 
+/**
+ * Gère les événements du menu.
+ * @param context Contexte SDL.
+ * @param e Événement SDL à traiter.
+ */
+void game_handle_event(SDL_Context* context, SDL_Event* e);
 
 /**
  * Initialise le jeu.

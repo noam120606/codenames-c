@@ -44,15 +44,15 @@ int lobby_init(SDL_Context* context) {
 
     int load_errors = 0;
 
-    lobby_btn_red = IMG_LoadTexture(context->renderer, "assets/red.png");
+    lobby_btn_red = IMG_LoadTexture(context->renderer, "assets/img/buttons/red.png");
     if (!lobby_btn_red) {
-        fprintf(stderr, "lobby_init: failed to load assets/red.png: %s\n", IMG_GetError());
+        fprintf(stderr, "lobby_init: failed to load assets/img/buttons/red.png: %s\n", IMG_GetError());
         load_errors++;
     }
 
-    lobby_btn_blue = IMG_LoadTexture(context->renderer, "assets/blue.png");
+    lobby_btn_blue = IMG_LoadTexture(context->renderer, "assets/img/buttons/blue.png");
     if (!lobby_btn_blue) {
-        fprintf(stderr, "lobby_init: failed to load assets/blue.png: %s\n", IMG_GetError());
+        fprintf(stderr, "lobby_init: failed to load assets/img/buttons/blue.png: %s\n", IMG_GetError());
         load_errors++;
     }
 
@@ -131,6 +131,7 @@ void lobby_handle_event(SDL_Context* context, SDL_Event* e) {
 
 int lobby_free(){
     /* détruire textures d'assets chargées par lobby */
+
     if (lobby_btn_red) {
         SDL_DestroyTexture(lobby_btn_red);
         lobby_btn_red = NULL;

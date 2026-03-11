@@ -8,6 +8,10 @@ SDL_Texture* card_h_blue;
 SDL_Texture* card_f_blue;
 SDL_Texture* card_black;
 
+void game_handle_event(SDL_Context* context, SDL_Event* e) {
+    // gestion evenements sdl
+}
+
 int game_init(SDL_Context * context) {
     int loading_fails = 0;
 
@@ -48,11 +52,19 @@ int game_init(SDL_Context * context) {
         loading_fails++;
     }
 
+    return loading_fails;
+}
+
+void game_render_cards(SDL_Context * context) {
     int x=0;
     int y=0;
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
-            if(context->player_role == ROLE_ESPION && !context->cards[i*5 + j]->revealed) {
+            if (!context->cards[i*5 + j]) {
+                x += 100;
+                continue;
+            }
+            if(context->player_role == ROLE_SPY && !context->cards[i*5 + j]->revealed) {
                 switch (context->cards[i*5 + j]->team) {
                     case TEAM_NEUTRAL:
                         if (context->cards[i*5 + j]->gender) {
@@ -95,8 +107,6 @@ int game_init(SDL_Context * context) {
         x = 0;
         y += 100;
     }
-
-    return loading_fails;
 }
 
 void game_display(SDL_Context * context) {
@@ -104,7 +114,8 @@ void game_display(SDL_Context * context) {
     if (!audio_is_playing(MUSIC_MENU)) {
         audio_play(MUSIC_MENU, -1);
     }
-
+    game_render_cards(context);
+    
 }
 
 
