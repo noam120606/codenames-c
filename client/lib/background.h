@@ -17,6 +17,6 @@ void display_background(SDL_Context * context);
 /**
  * Destroy the background.
  */
-void destroy_background();
+int destroy_background();
 
 #endif // BACKGROUND_H

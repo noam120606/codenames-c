@@ -53,7 +53,7 @@ void fps_display(SDL_Context* context, int display_x);
 /**
  * Libère les ressources utilisées pour l'affichage des informations.
  */
-void infos_free();
+int infos_free();
 
 
 

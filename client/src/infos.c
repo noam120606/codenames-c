@@ -249,7 +249,7 @@ void fps_display(SDL_Context* context, int display_x) {
     text_display(context->renderer, fps_text, "assets/fonts/larabiefont.otf", 22, COL_WHITE, fps_x, fps_y, 0, 255);
 }
 
-void infos_free() {
+int infos_free() {
     if (bandeau) {
         SDL_DestroyTexture(bandeau);
         bandeau = NULL;
@@ -257,4 +257,5 @@ void infos_free() {
     crossfaders_free();
     cf_music = NULL;
     cf_sfx = NULL;
+    return EXIT_SUCCESS;
 }

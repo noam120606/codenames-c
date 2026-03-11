@@ -17,7 +17,7 @@ static const SDL_Color COL_PURPLE = (SDL_Color){128, 0, 128, 255};
 static const SDL_Color COL_CYAN = (SDL_Color){0, 255, 255, 255};
 static const SDL_Color COL_MAGENTA = (SDL_Color){255, 0, 255, 255};
 
-static const char* FONT_LARABIE = "assets/fonts/larabiefont.otf";
+#define FONT_LARABIE "assets/fonts/larabiefont.otf"
 
 
 

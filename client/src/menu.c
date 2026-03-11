@@ -97,7 +97,6 @@ int menu_init(SDL_Context * context) {
     cfg_in_name->bg_path = "assets/img/inputs/empty.png";
     cfg_in_name->bg_padding = 24;
     name_input = input_create(context->renderer, INPUT_ID_NAME, cfg_in_name);
-    free(cfg_in_name);
 
     static const char* code_placeholders[] = {"CODE"};
     InputConfig* cfg_in_code = input_config_init();
@@ -117,7 +116,6 @@ int menu_init(SDL_Context * context) {
     cfg_in_code->bg_path = "assets/img/inputs/empty.png";
     cfg_in_code->bg_padding = 24;
     code_input = input_create(context->renderer, INPUT_ID_JOIN_CODE, cfg_in_code);
-    free(cfg_in_code);
 
     return loading_fails;
 }
@@ -169,6 +167,7 @@ int menu_free() {
     if (menu_logo) free_image(menu_logo);
     if (quagmire) free_image(quagmire);
     if (name_input) input_destroy(name_input);
+    if (code_input) input_destroy(code_input);
 
     return EXIT_SUCCESS;
 }

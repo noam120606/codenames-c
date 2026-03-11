@@ -93,7 +93,9 @@ SDL_Texture* load_image(SDL_Renderer* renderer, const char* path) {
     }
     int tex_w = 0, tex_h = 0;
     SDL_QueryTexture(texture, NULL, NULL, &tex_w, &tex_h);
-    printf("Image '%s' chargée : %dx%d\n", path, tex_w, tex_h);
+    if (tex_w == 0 || tex_h == 0) {
+        printf("Image '%s' failed to load : %dx%d\n", path, tex_w, tex_h);
+    }
     SDL_FreeSurface(image);
     return texture;
 }
@@ -142,18 +144,27 @@ void free_image(SDL_Texture* texture) {
     }
 }
 
-void destroy_context(SDL_Context context) {
-    if (context.renderer) {
-        SDL_DestroyRenderer(context.renderer);
+int destroy_context(SDL_Context* context) {
+    if (!context) {
+        return EXIT_FAILURE;
     }
-    if (context.window) {
-        SDL_DestroyWindow(context.window);
+
+    if (context->renderer) {
+        SDL_DestroyRenderer(context->renderer);
+        context->renderer = NULL;
     }
-    if (context.sock > 0) {
-        close_tcp(context.sock);
+    if (context->window) {
+        SDL_DestroyWindow(context->window);
+        context->window = NULL;
+    }
+    if (context->sock > 0) {
+        close_tcp(context->sock);
+        context->sock = -1;
     }
     audio_cleanup();
     TTF_Quit();
     IMG_Quit();
     SDL_Quit();
+
+    return EXIT_SUCCESS;
 }

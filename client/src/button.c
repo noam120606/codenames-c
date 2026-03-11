@@ -229,7 +229,7 @@ Button* button_get(int id) {
     return NULL;
 }
 
-void buttons_free() {
+int buttons_free() {
     for (int i = 0; i < button_count; i++) {
         if (buttons[i]) {
             if (buttons[i]->is_text) SDL_DestroyTexture(buttons[i]->text_texture);
@@ -239,6 +239,7 @@ void buttons_free() {
         }
     }
     button_count = 0;
+    return EXIT_SUCCESS;
 }
 
 void hide_button(int id) {

@@ -19,6 +19,27 @@ typedef enum {
  * Configuration pour créer un `Input`.
  * Tous les champs ont des valeurs par défaut définies via `input_config_init`.
  * La structure peut être modifiée à tout moment et passée à `input_create`.
+ * Note : Certains champs sont gérés en interne par l'input (text, cursor_pos, textures, etc.) et ne doivent pas être modifiés directement après la création de l'input. Seuls les champs "configurables" (x, y, w, h, font_path, etc.) peuvent être modifiés pour changer l'apparence ou le comportement de l'input.
+ * @param x Position x de l'input.
+ * @param y Position y de l'input.
+ * @param w Largeur de l'input.
+ * @param h Hauteur de l'input.
+ * @param font_path Chemin vers la police à utiliser pour le texte de l'input.
+ * @param font_size Taille de la police.
+ * @param placeholders Tableau de chaînes de caractères utilisées comme placeholders cycliques lorsque l'input est vide. Peut être NULL si aucun placeholder n'est utilisé.
+ * @param placeholder_count Nombre de placeholders dans le tableau `placeholders`.
+ * @param submitted_label Texte à afficher avant le texte soumis (ex: "Pseudo : "). Peut être NULL pour ne rien afficher.
+ * @param maxlen Longueur maximale du texte saisi. Si le texte dépasse cette longueur, il sera tronqué.
+ * @param bg_color Couleur de fond de l'input (utilisée si `bg_path` est NULL).
+ * @param border_color Couleur de la bordure de l'input.
+ * @param text_color Couleur du texte saisi.
+ * @param padding Padding intérieur de l'input (espace entre le bord et le texte).
+ * @param centered Si 1, le texte/placeholder et le curseur sont centrés horizontalement. Si 0, ils sont alignés à gauche.
+ * @param bg_path Chemin vers l'image de fond de l'input. Si NULL, un fond uni de couleur `bg_color` est utilisé. L'image est chargée automatiquement par `input_create` et doit être libérée lors de la destruction de l'input.
+ * @param bg_padding Padding à appliquer avec l'image de fond (>= 0). Ignoré si `bg_path` est NULL. Si -1, le padding est calculé automatiquement pour centrer le contenu dans l'image de fond.
+ * @param allowed_pattern Regex POSIX étendue appliquée à chaque caractère saisi. Si NULL, tout caractère est accepté. Ex: "^[A-Za-z0-9]$"
+ * @param init_text Texte initial à afficher dans l'input. Si NULL ou chaîne vide, l'input commence vide.
+ * @param on_submit Fonction de rappel à appeler lorsque l'input est soumis (par exemple, en appuyant sur Entrée). La fonction doit prendre un `SDL_Context*` (contexte SDL) et un `const char*` (le texte soumis) et retourner void. Si NULL, aucune fonction ne sera appelée lors de la soumission.
  */
 typedef struct InputConfig {
     int x;
@@ -70,19 +91,13 @@ typedef struct Input {
 InputConfig* input_config_init();
 
 /**
- * Crée un nouvel input.
- * @param x Position x de l'input.
- * @param y Position y de l'input.
- * @param w Largeur de l'input.
- * @param h Hauteur de l'input.
- * @param font_path Chemin vers le fichier de police (.otf/.ttf) pour le texte
- * @param font_size Taille de la police.
- * @param maxlen Longueur maximale du texte (excluant le caractère nul). Si <= 0, une valeur par défaut est utilisée.
- * @return Pointeur vers l'input créé, ou NULL en cas d'erreur.
- */
-/**
  * Crée un nouvel input à partir d'une configuration.
  * Si `cfg` est NULL, les valeurs par défaut sont utilisées.
+ * L'input créé doit être détruit avec `input_destroy` pour éviter les fuites de mémoire.
+ * @param renderer Renderer SDL utilisé pour charger la texture de fond si `bg_path` est défini dans la configuration.
+ * @param id Identifiant de l'input (ex: INPUT_ID_NAME). Peut être utilisé pour différencier les inputs dans les callbacks.
+ * @param cfg_in Pointeur vers la configuration de l'input. Si NULL, les valeurs par défaut sont utilisées. La configuration est copiée, donc le pointeur peut être libéré ou modifié après l'appel sans affecter l'input créé.
+ * @return Pointeur vers l'input créé, ou NULL en cas d'erreur (par exemple, échec d'allocation mémoire ou de chargement de la texture de fond).
  */
 Input* input_create(SDL_Renderer* renderer, InputId id, const InputConfig* cfg);
 
@@ -95,6 +110,7 @@ void input_destroy(Input* in);
 /**
  * Gère les événements SDL pour l'input (clics, saisie de texte, etc.).
  * Doit être appelé à chaque événement SDL dans la boucle principale.
+ * @param context Contexte SDL, passé aux callbacks de soumission.
  * @param in Pointeur vers l'input à gérer.
  * @param e Pointeur vers l'événement SDL à traiter.
  */
