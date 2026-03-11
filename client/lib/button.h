@@ -13,6 +13,10 @@ typedef enum ButtonId {
     BTN_NONE,
     BTN_CREATE,
     BTN_JOIN,
+    BTN_AGENT,
+    BTN_SPY,
+    BTN_TEAM_RED,
+    BTN_TEAM_BLUE,
     BTN_QUIT,
 } ButtonId;
 
@@ -119,6 +123,11 @@ void buttons_free();
  * @param id L'ID du bouton à cacher.
  */
 void hide_button(int id);
+
+/**
+ * Cache tous les boutons.
+ */
+void hide_all_buttons();
 
 /**
  * Affiche un bouton.
