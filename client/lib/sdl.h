@@ -16,6 +16,14 @@ typedef enum {
     GAME_STATE_PAUSED
 } GameState;
 
+/* roles / teams locaux (valeurs simples si les enums partagés ne sont pas inclus) */
+#define ROLE_AGENT 0
+#define ROLE_SPY   1
+
+#define TEAM_NEUTRAL 0
+#define TEAM_RED     1
+#define TEAM_BLUE    2
+
 /**
  * Contexte SDL contenant la fenêtre et le renderer.
  * @param window Fenêtre SDL.
@@ -34,7 +42,10 @@ typedef struct {
     int sock;
     int lobby_id;
     char* lobby_code;
-    GameState game_state;
+    int game_state;
+    /* Player selection stored client-side */
+    int player_role; /* ROLE_AGENT / ROLE_SPY */
+    int player_team; /* TEAM_NEUTRAL / TEAM_RED / TEAM_BLUE */
     Uint32 frame_start_time;
 } SDL_Context;
 
