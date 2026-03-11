@@ -70,23 +70,27 @@ int on_message(Codenames* codenames, TcpClient* client, char* message) {
                 printf("Invalid join lobby message from client %d: \"%s\"\n", client->id, message);
                 break;
             }
-            int lobby_id = atoi(args.argv[1]);
-            Lobby* lobby = find_lobby_by_id(codenames->lobby, lobby_id);
+
+            Lobby* lobby = find_lobby_by_code(codenames->lobby, args.argv[0]);
             if (!lobby) {
-                printf("Lobby %d not found for client %d\n", lobby_id, client->id);
+                printf("Lobby not found for client %d\n", client->id);
                 break;
             }
-            User* user = create_user(client->id, args.argv[0], client->socket);
+
+            User* user = create_user(client->id, args.argv[1], client->socket);
             if (!user) {
                 printf("Failed to create user for client %d\n", client->id);
                 break;
             }
+
             if (join_lobby(lobby, user) != EXIT_SUCCESS) {
-                printf("Failed to join lobby %d for client %d\n", lobby_id, client->id);
+                printf("Failed to join lobby %d for client %d\n", lobby->id, client->id);
                 destroy_user(user);
                 break;
             }
-            printf("Client %d joined lobby %d\n", client->id, lobby_id);
+
+            printf("Client %d joined lobby %d\n", client->id, lobby->id);
+
             break;
         }
 

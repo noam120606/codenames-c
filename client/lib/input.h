@@ -43,8 +43,35 @@ typedef struct Input {
     Uint32 placeholder_last_tick;
     const char* font_path;
     int font_size;
-    void (*on_submit)(const char*);
+    void (*on_submit)(SDL_Context*, const char*);
 } Input;
+
+/**
+ * Configuration pour créer un `Input`.
+ * Tous les champs ont des valeurs par défaut définies via `input_config_init`.
+ * La structure peut être modifiée à tout moment et passée à `input_create`.
+ */
+typedef struct InputConfig {
+    int x;
+    int y;
+    int w;
+    int h;
+    const char* font_path;
+    int font_size;
+    const char** placeholders;
+    int placeholder_count;
+    const char* submitted_label;
+    int maxlen;
+    SDL_Color bg_color;
+    SDL_Color border_color;
+    SDL_Color text_color;
+    int padding;
+    const char* init_text;
+    void (*on_submit)(SDL_Context*, const char*);
+} InputConfig;
+
+/** Initialise une `InputConfig` avec des valeurs par défaut. */
+void input_config_init(InputConfig* cfg);
 
 /**
  * Crée un nouvel input.
@@ -57,7 +84,11 @@ typedef struct Input {
  * @param maxlen Longueur maximale du texte (excluant le caractère nul). Si <= 0, une valeur par défaut est utilisée.
  * @return Pointeur vers l'input créé, ou NULL en cas d'erreur.
  */
-Input* input_create(InputId id, int x, int y, int w, int h, const char* font_path, int font_size, const char** placeholders, int placeholder_count, const char* submitted_label, int maxlen);
+/**
+ * Crée un nouvel input à partir d'une configuration.
+ * Si `cfg` est NULL, les valeurs par défaut sont utilisées.
+ */
+Input* input_create(InputId id, const InputConfig* cfg);
 
 /** Détruit un input. 
  * Libère la mémoire associée à l'input et ses ressources (texte, texture de fond).
@@ -71,7 +102,7 @@ void input_destroy(Input* in);
  * @param in Pointeur vers l'input à gérer.
  * @param e Pointeur vers l'événement SDL à traiter.
  */
-void input_handle_event(Input* in, SDL_Event* e);
+void input_handle_event(SDL_Context* context, Input* in, SDL_Event* e);
 
 /** Affiche l'input sur le renderer.
  * Doit être appelé à chaque frame dans la boucle de rendu.
@@ -110,9 +141,9 @@ void input_set_text(Input* in, const char* text);
 /**
  * Définit une fonction de rappel à appeler lorsque l'input est soumis (par exemple, en appuyant sur Entrée).
  * @param in Pointeur vers l'input.
- * @param cb Pointeur vers la fonction de rappel à appeler lors de la soumission. La fonction doit prendre un const char* (le texte soumis) et retourner void. Si NULL, aucune fonction ne sera appelée.
+ * @param cb Pointeur vers la fonction de rappel à appeler lors de la soumission. La fonction doit prendre un `SDL_Context*` (contexte SDL) et un `const char*` (le texte soumis) et retourner void. Si NULL, aucune fonction ne sera appelée.
  */
-void input_set_on_submit(Input* in, void (*cb)(const char*));
+void input_set_on_submit(Input* in, void (*cb)(SDL_Context*, const char*));
 
 /**
  * Définit une texture de fond pour l'input à partir d'une image. Si une texture de fond existe déjà, elle sera remplacée.

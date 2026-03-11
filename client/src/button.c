@@ -1,7 +1,5 @@
 #include "../lib/all.h"
 
-#define MAX_BUTTONS 100
-
 static Button* buttons[MAX_BUTTONS];
 static int button_count = 0;
 
