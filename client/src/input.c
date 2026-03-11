@@ -2,8 +2,10 @@
 #include "../lib/all.h"
 
 /** Initialise une InputConfig avec des valeurs par défaut. */
-void input_config_init(InputConfig* cfg) {
-    if (!cfg) return;
+InputConfig* input_config_init() {
+    InputConfig* cfg = (InputConfig*)calloc(1, sizeof(InputConfig));
+    if (!cfg) return NULL;
+
     cfg->x = 0;
     cfg->y = 0;
     cfg->w = 0;
@@ -14,126 +16,164 @@ void input_config_init(InputConfig* cfg) {
     cfg->placeholder_count = 0;
     cfg->submitted_label = NULL;
     cfg->maxlen = INPUT_DEFAULT_MAX;
-    cfg->bg_color = (SDL_Color){255,255,255,255};
-    cfg->border_color = (SDL_Color){0,0,0,255};
-    cfg->text_color = (SDL_Color){255,255,255,255};
+    cfg->bg_color = (SDL_Color){255, 255, 255, 255};
+    cfg->border_color = (SDL_Color){0, 0, 0, 255};
+    cfg->text_color = (SDL_Color){255, 255, 255, 255};
     cfg->padding = 8;
+    cfg->centered = 0;
+    cfg->bg_path = NULL;
+    cfg->bg_padding = -1;
+    cfg->allowed_pattern = NULL;
     cfg->init_text = NULL;
     cfg->on_submit = NULL;
+
+    cfg->rect = (SDL_Rect){0, 0, 0, 0};
+    cfg->text = NULL;
+    cfg->len = 0;
+    cfg->cursor_pos = 0;
+    cfg->focused = 0;
+    cfg->submitted = 0;
+    cfg->bg_texture = NULL;
+    cfg->sel_start = 0;
+    cfg->sel_len = 0;
+    cfg->sel_anchor = 0;
+    cfg->submitted_text = NULL;
+    cfg->placeholder_index = 0;
+    cfg->placeholder_last_tick = 0;
+
+    return cfg;
 }
 
 static void input_clear_selection_internal(Input* in) {
     if (!in) return;
-    in->sel_start = 0;
-    in->sel_len = 0;
-    in->sel_anchor = 0;
+    in->cfg->sel_start = 0;
+    in->cfg->sel_len = 0;
+    in->cfg->sel_anchor = 0;
 }
 
 static int input_has_selection(Input* in) {
-    return in && in->sel_len > 0;
+    return in && in->cfg->sel_len > 0;
 }
 
 static void input_delete_selection(Input* in) {
-    if (!in || in->sel_len <= 0) return;
-    int s = in->sel_start;
-    int l = in->sel_len;
-    memmove(in->text + s, in->text + s + l, in->len - (s + l) + 1);
-    in->len -= l;
-    if (in->len < 0) in->len = 0;
-    in->text[in->len] = '\0';
-    in->cursor_pos = s;
+    if (!in || in->cfg->sel_len <= 0) return;
+    int s = in->cfg->sel_start;
+    int l = in->cfg->sel_len;
+    memmove(in->cfg->text + s, in->cfg->text + s + l, in->cfg->len - (s + l) + 1);
+    in->cfg->len -= l;
+    if (in->cfg->len < 0) in->cfg->len = 0;
+    in->cfg->text[in->cfg->len] = '\0';
+    in->cfg->cursor_pos = s;
     input_clear_selection_internal(in);
 }
 
 static int prev_word_pos(Input* in, int pos) {
     if (!in) return 0;
     int i = pos;
-    while (i > 0 && isspace((unsigned char)in->text[i-1])) i--;
-    while (i > 0 && !isspace((unsigned char)in->text[i-1])) i--;
+    while (i > 0 && isspace((unsigned char)in->cfg->text[i-1])) i--;
+    while (i > 0 && !isspace((unsigned char)in->cfg->text[i-1])) i--;
     return i;
 }
 
 static int next_word_pos(Input* in, int pos) {
     if (!in) return 0;
     int i = pos;
-    while (i < in->len && !isspace((unsigned char)in->text[i])) i++;
-    while (i < in->len && isspace((unsigned char)in->text[i])) i++;
+    while (i < in->cfg->len && !isspace((unsigned char)in->cfg->text[i])) i++;
+    while (i < in->cfg->len && isspace((unsigned char)in->cfg->text[i])) i++;
     return i;
 }
 
-Input* input_create(InputId id, const InputConfig* cfg_in) {
-    InputConfig cfg_local;
-    const InputConfig* cfg = cfg_in;
-    if (!cfg) {
-        input_config_init(&cfg_local);
-        cfg = &cfg_local;
-    }
-
+Input* input_create(SDL_Renderer* renderer, InputId id, const InputConfig* cfg_in) {
     Input* in = (Input*)malloc(sizeof(Input));
     if (!in) return NULL;
-    in->rect.x = cfg->x;
-    in->rect.y = cfg->y;
-    in->rect.w = cfg->w;
-    in->rect.h = cfg->h;
-    in->maxlen = (cfg->maxlen > 0) ? cfg->maxlen : INPUT_DEFAULT_MAX;
-    in->text = (char*)calloc(in->maxlen + 1, 1);
-    in->len = 0;
-    in->cursor_pos = 0;
-    in->focused = 0;
-    in->submitted = 0;
-    in->bg_color = cfg->bg_color;
-    in->border_color = cfg->border_color;
-    in->text_color = cfg->text_color;
-    in->bg_texture = NULL;
     in->id = id;
-    in->sel_start = 0;
-    in->sel_len = 0;
-    in->sel_anchor = 0;
-    in->padding = cfg->padding;
-    in->font_path = cfg->font_path;
-    in->font_size = cfg->font_size;
-    in->on_submit = cfg->on_submit;
-    in->submitted_text = NULL;
-    in->submitted_label = NULL;
-    in->placeholders = NULL;
-    in->placeholder_count = 0;
-    in->placeholder_index = 0;
-    in->placeholder_last_tick = SDL_GetTicks();
 
-    if (cfg->placeholders && cfg->placeholder_count > 0) {
-        in->placeholders = (char**)malloc(sizeof(char*) * cfg->placeholder_count);
-        if (in->placeholders) {
-            for (int i = 0; i < cfg->placeholder_count; ++i) {
-                in->placeholders[i] = strdup(cfg->placeholders[i]);
-            }
-            in->placeholder_count = cfg->placeholder_count;
-        }
+    /* Input owns its config. We copy cfg_in (or defaults) into a freshly allocated struct,
+     * then allocate runtime buffers (text) and reset pointers (textures). */
+    in->cfg = input_config_init();
+    if (!in->cfg) {
+        free(in);
+        return NULL;
     }
-    if (cfg->submitted_label) {
-        in->submitted_label = strdup(cfg->submitted_label);
+    if (cfg_in) {
+        /* Shallow copy first, then fix ownership-sensitive fields below. */
+        *in->cfg = *cfg_in;
     }
-    if (cfg->init_text && cfg->init_text[0] != '\0') {
-        strncpy(in->text, cfg->init_text, in->maxlen);
-        in->text[in->maxlen] = '\0';
-        in->len = strlen(in->text);
-        in->cursor_pos = in->len;
+
+    /* runtime-managed fields: always start from a clean state */
+    in->cfg->bg_texture = NULL;
+    in->cfg->submitted_text = NULL;
+    in->cfg->text = NULL;
+    in->cfg->len = 0;
+    in->cfg->cursor_pos = 0;
+    in->cfg->focused = 0;
+    in->cfg->submitted = 0;
+    in->cfg->sel_start = 0;
+    in->cfg->sel_len = 0;
+    in->cfg->sel_anchor = 0;
+    in->cfg->placeholder_index = 0;
+    in->cfg->placeholder_last_tick = SDL_GetTicks();
+
+    /* keep rect in sync */
+    in->cfg->rect = (SDL_Rect){in->cfg->x, in->cfg->y, in->cfg->w, in->cfg->h};
+
+    /* allocate text buffer */
+    if (in->cfg->maxlen <= 0) in->cfg->maxlen = INPUT_DEFAULT_MAX;
+    in->cfg->text = (char*)calloc((size_t)in->cfg->maxlen + 1, 1);
+    if (!in->cfg->text) {
+        input_destroy(in);
+        return NULL;
     }
+
+    /* placeholders: just reference caller-provided strings (do not strdup),
+     * so stack/const arrays are safe as long as they outlive the input.
+     * (This matches current usage in menu.c.) */
+    /* submitted_label is a const char*; no allocation here */
+
+    if (in->cfg->init_text && in->cfg->init_text[0] != '\0') {
+        strncpy(in->cfg->text, in->cfg->init_text, (size_t)in->cfg->maxlen);
+        in->cfg->text[in->cfg->maxlen] = '\0';
+        in->cfg->len = (int)strlen(in->cfg->text);
+        in->cfg->cursor_pos = in->cfg->len;
+    }
+
+    /* auto-load background image if bg_path was provided in config */
+    if (in->cfg->bg_path && renderer) {
+        input_set_bg(in, renderer, in->cfg->bg_path, in->cfg->bg_padding);
+    }
+
     return in;
 }
 
 void input_destroy(Input* in) {
     if (!in) return;
-    if (in->text) free(in->text);
-    if (in->bg_texture) free_image(in->bg_texture);
-    if (in->submitted_text) free(in->submitted_text);
-    if (in->submitted_label) free(in->submitted_label);
-    if (in->placeholders) {
-        for (int i = 0; i < in->placeholder_count; ++i) {
-            if (in->placeholders[i]) free(in->placeholders[i]);
-        }
-        free(in->placeholders);
+    if (in->cfg) {
+        if (in->cfg->text) free(in->cfg->text);
+        if (in->cfg->bg_texture) free_image(in->cfg->bg_texture);
+        if (in->cfg->submitted_text) free(in->cfg->submitted_text);
+        /* submitted_label and placeholders are not owned (const pointers) */
+        free(in->cfg);
     }
     free(in);
+}
+
+/** Vérifie si le texte `txt` correspond à la regex `allowed_pattern`.
+ *  Retourne 1 si le texte est accepté, 0 sinon. */
+static int input_text_allowed(const char* allowed_pattern, const char* txt) {
+    if (!allowed_pattern || !txt) return 1;
+    regex_t regex;
+    if (regcomp(&regex, allowed_pattern, REG_EXTENDED | REG_NOSUB) != 0) return 1; /* regex invalide → tout accepter */
+    int len = (int)strlen(txt);
+    /* tester chaque caractère individuellement */
+    for (int i = 0; i < len; i++) {
+        char ch[2] = { txt[i], '\0' };
+        if (regexec(&regex, ch, 0, NULL, 0) != 0) {
+            regfree(&regex);
+            return 0; /* caractère refusé */
+        }
+    }
+    regfree(&regex);
+    return 1;
 }
 
 static int point_in_rect(int x, int y, SDL_Rect* r) {
@@ -146,34 +186,36 @@ void input_handle_event(SDL_Context* context, Input* in, SDL_Event* e) {
     if (e->type == SDL_MOUSEBUTTONDOWN) {
         int mx = e->button.x;
         int my = e->button.y;
-        if (point_in_rect(mx, my, &in->rect)) {
-            in->focused = 1;
+        if (point_in_rect(mx, my, &in->cfg->rect)) {
+            in->cfg->focused = 1;
             SDL_StartTextInput();
             /* place cursor at end */
-            in->cursor_pos = in->len;
+            in->cfg->cursor_pos = in->cfg->len;
         } else {
-            if (in->focused) {
-                in->focused = 0;
+            if (in->cfg->focused) {
+                in->cfg->focused = 0;
                 SDL_StopTextInput();
             }
         }
     }
 
-    if (!in->focused) return;
+    if (!in->cfg->focused) return;
 
     if (e->type == SDL_TEXTINPUT) {
         const char* txt = e->text.text;
         int add = strlen(txt);
-        if (in->len + add > in->maxlen) return;
+        if (in->cfg->len + add > in->cfg->maxlen) return;
+        /* filter characters against allowed_pattern if set */
+        if (!input_text_allowed(in->cfg->allowed_pattern, txt)) return;
         /* if there is a selection, replace it */
         if (input_has_selection(in)) {
             input_delete_selection(in);
         }
         /* insert at cursor_pos */
-        memmove(in->text + in->cursor_pos + add, in->text + in->cursor_pos, in->len - in->cursor_pos + 1);
-        memcpy(in->text + in->cursor_pos, txt, add);
-        in->cursor_pos += add;
-        in->len += add;
+        memmove(in->cfg->text + in->cfg->cursor_pos + add, in->cfg->text + in->cfg->cursor_pos, in->cfg->len - in->cfg->cursor_pos + 1);
+        memcpy(in->cfg->text + in->cfg->cursor_pos, txt, add);
+        in->cfg->cursor_pos += add;
+        in->cfg->len += add;
     }
 
     if (e->type == SDL_KEYDOWN) {
@@ -181,10 +223,10 @@ void input_handle_event(SDL_Context* context, Input* in, SDL_Event* e) {
         SDL_Keymod mod = e->key.keysym.mod;
         /* Ctrl+A = select all */
         if ((mod & KMOD_CTRL) && (k == SDLK_a)) {
-            in->sel_start = 0;
-            in->sel_len = in->len;
-            in->sel_anchor = 0;
-            in->cursor_pos = in->len;
+            in->cfg->sel_start = 0;
+            in->cfg->sel_len = in->cfg->len;
+            in->cfg->sel_anchor = 0;
+            in->cfg->cursor_pos = in->cfg->len;
             return;
         }
 
@@ -192,19 +234,19 @@ void input_handle_event(SDL_Context* context, Input* in, SDL_Event* e) {
             if (input_has_selection(in)) {
                 input_delete_selection(in);
             } else if (mod & KMOD_CTRL) {
-                int np = prev_word_pos(in, in->cursor_pos);
-                int del = in->cursor_pos - np;
+                int np = prev_word_pos(in, in->cfg->cursor_pos);
+                int del = in->cfg->cursor_pos - np;
                 if (del > 0) {
-                    memmove(in->text + np, in->text + in->cursor_pos, in->len - in->cursor_pos + 1);
-                    in->len -= del;
-                    in->cursor_pos = np;
-                    in->text[in->len] = '\0';
+                    memmove(in->cfg->text + np, in->cfg->text + in->cfg->cursor_pos, in->cfg->len - in->cfg->cursor_pos + 1);
+                    in->cfg->len -= del;
+                    in->cfg->cursor_pos = np;
+                    in->cfg->text[in->cfg->len] = '\0';
                 }
             } else {
-                if (in->cursor_pos > 0 && in->len > 0) {
-                    memmove(in->text + in->cursor_pos - 1, in->text + in->cursor_pos, in->len - in->cursor_pos + 1);
-                    in->cursor_pos--;
-                    in->len--;
+                if (in->cfg->cursor_pos > 0 && in->cfg->len > 0) {
+                    memmove(in->cfg->text + in->cfg->cursor_pos - 1, in->cfg->text + in->cfg->cursor_pos, in->cfg->len - in->cfg->cursor_pos + 1);
+                    in->cfg->cursor_pos--;
+                    in->cfg->len--;
                 }
             }
             input_clear_selection_internal(in);
@@ -212,82 +254,82 @@ void input_handle_event(SDL_Context* context, Input* in, SDL_Event* e) {
             if (input_has_selection(in)) {
                 input_delete_selection(in);
             } else if (mod & KMOD_CTRL) {
-                int np = next_word_pos(in, in->cursor_pos);
-                int del = np - in->cursor_pos;
+                int np = next_word_pos(in, in->cfg->cursor_pos);
+                int del = np - in->cfg->cursor_pos;
                 if (del > 0) {
-                    memmove(in->text + in->cursor_pos, in->text + np, in->len - np + 1);
-                    in->len -= del;
-                    in->text[in->len] = '\0';
+                    memmove(in->cfg->text + in->cfg->cursor_pos, in->cfg->text + np, in->cfg->len - np + 1);
+                    in->cfg->len -= del;
+                    in->cfg->text[in->cfg->len] = '\0';
                 }
             } else {
-                if (in->cursor_pos < in->len && in->len > 0) {
-                    memmove(in->text + in->cursor_pos, in->text + in->cursor_pos + 1, in->len - in->cursor_pos);
-                    in->len--;
-                    in->text[in->len] = '\0';
+                if (in->cfg->cursor_pos < in->cfg->len && in->cfg->len > 0) {
+                    memmove(in->cfg->text + in->cfg->cursor_pos, in->cfg->text + in->cfg->cursor_pos + 1, in->cfg->len - in->cfg->cursor_pos);
+                    in->cfg->len--;
+                    in->cfg->text[in->cfg->len] = '\0';
                 }
             }
             input_clear_selection_internal(in);
         } else if (k == SDLK_LEFT) {
-            int newpos = in->cursor_pos;
-            if (mod & KMOD_CTRL) newpos = prev_word_pos(in, in->cursor_pos);
-            else if (in->cursor_pos > 0) newpos = in->cursor_pos - 1;
+            int newpos = in->cfg->cursor_pos;
+            if (mod & KMOD_CTRL) newpos = prev_word_pos(in, in->cfg->cursor_pos);
+            else if (in->cfg->cursor_pos > 0) newpos = in->cfg->cursor_pos - 1;
 
             if (mod & KMOD_SHIFT) {
                 if (!input_has_selection(in)) {
-                    in->sel_anchor = in->cursor_pos;
-                    in->sel_start = in->cursor_pos;
+                    in->cfg->sel_anchor = in->cfg->cursor_pos;
+                    in->cfg->sel_start = in->cfg->cursor_pos;
                 }
-                in->cursor_pos = newpos;
-                int s = in->sel_anchor;
-                int epos = in->cursor_pos;
-                if (epos < s) { in->sel_start = epos; in->sel_len = s - epos; }
-                else { in->sel_start = s; in->sel_len = epos - s; }
+                in->cfg->cursor_pos = newpos;
+                int s = in->cfg->sel_anchor;
+                int epos = in->cfg->cursor_pos;
+                if (epos < s) { in->cfg->sel_start = epos; in->cfg->sel_len = s - epos; }
+                else { in->cfg->sel_start = s; in->cfg->sel_len = epos - s; }
             } else {
-                in->cursor_pos = newpos;
+                in->cfg->cursor_pos = newpos;
                 input_clear_selection_internal(in);
             }
         } else if (k == SDLK_RIGHT) {
-            int newpos = in->cursor_pos;
-            if (mod & KMOD_CTRL) newpos = next_word_pos(in, in->cursor_pos);
-            else if (in->cursor_pos < in->len) newpos = in->cursor_pos + 1;
+            int newpos = in->cfg->cursor_pos;
+            if (mod & KMOD_CTRL) newpos = next_word_pos(in, in->cfg->cursor_pos);
+            else if (in->cfg->cursor_pos < in->cfg->len) newpos = in->cfg->cursor_pos + 1;
 
             if (mod & KMOD_SHIFT) {
                 if (!input_has_selection(in)) {
-                    in->sel_anchor = in->cursor_pos;
-                    in->sel_start = in->cursor_pos;
+                    in->cfg->sel_anchor = in->cfg->cursor_pos;
+                    in->cfg->sel_start = in->cfg->cursor_pos;
                 }
-                in->cursor_pos = newpos;
-                int s = in->sel_anchor;
-                int epos = in->cursor_pos;
-                if (epos < s) { in->sel_start = epos; in->sel_len = s - epos; }
-                else { in->sel_start = s; in->sel_len = epos - s; }
+                in->cfg->cursor_pos = newpos;
+                int s = in->cfg->sel_anchor;
+                int epos = in->cfg->cursor_pos;
+                if (epos < s) { in->cfg->sel_start = epos; in->cfg->sel_len = s - epos; }
+                else { in->cfg->sel_start = s; in->cfg->sel_len = epos - s; }
             } else {
-                in->cursor_pos = newpos;
+                in->cfg->cursor_pos = newpos;
                 input_clear_selection_internal(in);
             }
         } else if (k == SDLK_RETURN || k == SDLK_KP_ENTER) {
-            in->submitted = 1;
+            in->cfg->submitted = 1;
             /* store submitted text inside input */
-            if (in->submitted_text) {
-                free(in->submitted_text);
-                in->submitted_text = NULL;
+            if (in->cfg->submitted_text) {
+                free(in->cfg->submitted_text);
+                in->cfg->submitted_text = NULL;
             }
-            in->submitted_text = (char*)malloc(in->len + 1);
-            if (in->submitted_text) strncpy(in->submitted_text, in->text, in->len + 1);
+            in->cfg->submitted_text = (char*)malloc(in->cfg->len + 1);
+            if (in->cfg->submitted_text) strncpy(in->cfg->submitted_text, in->cfg->text, in->cfg->len + 1);
 
             /* call submit callback with the submitted text (use stored copy)
              * then clear the input contents so it appears empty */
-            if (in->on_submit) in->on_submit(context, in->submitted_text);
+            if (in->cfg->on_submit) in->cfg->on_submit(context, in->cfg->submitted_text);
 
             /* clear current text */
-            if (in->text && in->maxlen > 0) {
-                in->text[0] = '\0';
+            if (in->cfg->text && in->cfg->maxlen > 0) {
+                in->cfg->text[0] = '\0';
             }
-            in->len = 0;
-            in->cursor_pos = 0;
+            in->cfg->len = 0;
+            in->cfg->cursor_pos = 0;
             input_clear_selection_internal(in);
 
-            in->focused = 0;
+            in->cfg->focused = 0;
             SDL_StopTextInput();
         }
     }
@@ -295,29 +337,31 @@ void input_handle_event(SDL_Context* context, Input* in, SDL_Event* e) {
 
 void input_render(SDL_Renderer* renderer, Input* in) {
     if (!renderer || !in) return;
-
+    SDL_Rect rect = (SDL_Rect){ in->cfg->x, in->cfg->y, in->cfg->w, in->cfg->h };
+    in->cfg->rect = rect;
+    
     /* background: image if present else color */
-    if (in->bg_texture) {
-        SDL_RenderCopy(renderer, in->bg_texture, NULL, &in->rect);
+    if (in->cfg->bg_texture) {
+        SDL_RenderCopy(renderer, in->cfg->bg_texture, NULL, &rect);
     } else {
-        SDL_SetRenderDrawColor(renderer, in->bg_color.r, in->bg_color.g, in->bg_color.b, in->bg_color.a);
-        SDL_RenderFillRect(renderer, &in->rect);
+        SDL_SetRenderDrawColor(renderer, in->cfg->bg_color.r, in->cfg->bg_color.g, in->cfg->bg_color.b, in->cfg->bg_color.a);
+        SDL_RenderFillRect(renderer, &rect);
     }
 
     /* border: draw only when no background texture is set */
-    if (!in->bg_texture) {
-        SDL_SetRenderDrawColor(renderer, in->border_color.r, in->border_color.g, in->border_color.b, in->border_color.a);
-        SDL_RenderDrawRect(renderer, &in->rect);
+    if (!in->cfg->bg_texture) {
+        SDL_SetRenderDrawColor(renderer, in->cfg->border_color.r, in->cfg->border_color.g, in->cfg->border_color.b, in->cfg->border_color.a);
+        SDL_RenderDrawRect(renderer, &rect);
     }
 
         /* render submitted label (always if set) and submitted text (if present) above input */
-        if (in->font_path && in->submitted_label) {
-            int label_size = in->font_size > 12 ? in->font_size - 4 : in->font_size;
-            TTF_Font* label_font = TTF_OpenFont(in->font_path, label_size);
+        if (in->cfg->font_path && in->cfg->submitted_label) {
+            int label_size = in->cfg->font_size > 12 ? in->cfg->font_size - 4 : in->cfg->font_size;
+            TTF_Font* label_font = TTF_OpenFont(in->cfg->font_path, label_size);
             if (label_font) {
                 SDL_Color color = {255,255,255,255};
-                const char* lbl = in->submitted_label ? in->submitted_label : "";
-                const char* sub = in->submitted_text ? in->submitted_text : "";
+                const char* lbl = in->cfg->submitted_label ? in->cfg->submitted_label : "";
+                const char* sub = in->cfg->submitted_text ? in->cfg->submitted_text : "";
                 size_t L = strlen(lbl);
                 size_t M = strlen(sub);
                 char* combined = (char*)malloc(L + M + 1);
@@ -330,8 +374,8 @@ void input_render(SDL_Renderer* renderer, Input* in) {
                         if (tex_label) {
                             int tw = 0, th = 0;
                             SDL_QueryTexture(tex_label, NULL, NULL, &tw, &th);
-                            int dst_x = in->rect.x + in->padding;
-                            int dst_y = in->rect.y - th - 8;
+                            int dst_x = in->cfg->x + in->cfg->padding;
+                            int dst_y = in->cfg->y - th - 8;
                             SDL_Rect dst = { dst_x, dst_y, tw, th };
                             SDL_RenderCopy(renderer, tex_label, NULL, &dst);
                             SDL_DestroyTexture(tex_label);
@@ -345,45 +389,55 @@ void input_render(SDL_Renderer* renderer, Input* in) {
         }
 
     /* render text using TTF */
-    if (in->font_path && in->font_size > 0) {
-        TTF_Font* font = TTF_OpenFont(in->font_path, in->font_size);
+    if (in->cfg->font_path && in->cfg->font_size > 0) {
+        TTF_Font* font = TTF_OpenFont(in->cfg->font_path, in->cfg->font_size);
         if (font) {
             /* compute width of text up to cursor so we can draw cursor even when no
              * texture is created (empty string case) */
             char before_cursor[512];
-            int n = in->cursor_pos;
+            int n = in->cfg->cursor_pos;
             if (n > 0) {
                 if (n >= (int)sizeof(before_cursor)) n = sizeof(before_cursor)-1;
-                memcpy(before_cursor, in->text, n);
+                memcpy(before_cursor, in->cfg->text, n);
                 before_cursor[n] = '\0';
             } else before_cursor[0] = '\0';
 
             int cx = 0, cy = 0;
                 TTF_SizeUTF8(font, before_cursor, &cx, &cy);
-            int padding = in->padding;
+            int padding = in->cfg->padding;
+
+            /* compute full text width to determine centering offset */
+            int full_tw = 0, full_th = 0;
+            TTF_SizeUTF8(font, in->cfg->text, &full_tw, &full_th);
+            int text_offset_x = padding; /* default: left-aligned with padding */
+            if (in->cfg->centered) {
+                int center_off = (in->cfg->w - full_tw) / 2;
+                if (center_off < padding) center_off = padding;
+                text_offset_x = center_off;
+            }
 
             /* draw selection highlight if any */
             if (input_has_selection(in)) {
-                int s = in->sel_start;
-                int l = in->sel_len;
+                int s = in->cfg->sel_start;
+                int l = in->cfg->sel_len;
                 if (s < 0) s = 0;
-                if (s > in->len) s = in->len;
+                if (s > in->cfg->len) s = in->cfg->len;
                 if (l < 0) l = 0;
-                if (s + l > in->len) l = in->len - s;
+                if (s + l > in->cfg->len) l = in->cfg->len - s;
                 if (l > 0) {
                     char* before_sel = (char*)malloc(s + 1);
                     char* sel_text = (char*)malloc(l + 1);
                     if (before_sel && sel_text) {
-                        if (s > 0) memcpy(before_sel, in->text, s);
+                        if (s > 0) memcpy(before_sel, in->cfg->text, s);
                         before_sel[s] = '\0';
-                        memcpy(sel_text, in->text + s, l);
+                        memcpy(sel_text, in->cfg->text + s, l);
                         sel_text[l] = '\0';
                         int bx = 0, by = 0, sw = 0, sh = 0;
                             TTF_SizeUTF8(font, before_sel, &bx, &by);
                             TTF_SizeUTF8(font, sel_text, &sw, &sh);
-                        SDL_Rect selrect = { in->rect.x + padding + bx, in->rect.y + (in->rect.h - sh) / 2, sw, sh };
-                        if (selrect.x < in->rect.x + padding) selrect.x = in->rect.x + padding;
-                        if (selrect.x + selrect.w > in->rect.x + in->rect.w - padding) selrect.w = (in->rect.x + in->rect.w - padding) - selrect.x;
+                        SDL_Rect selrect = { in->cfg->x + text_offset_x + bx, in->cfg->y + (in->cfg->h - sh) / 2, sw, sh };
+                        if (selrect.x < in->cfg->x + padding) selrect.x = in->cfg->x + padding;
+                        if (selrect.x + selrect.w > in->cfg->x + in->cfg->w - padding) selrect.w = (in->cfg->x + in->cfg->w - padding) - selrect.x;
                         SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
                         SDL_SetRenderDrawColor(renderer, 51, 153, 255, 128);
                         SDL_RenderFillRect(renderer, &selrect);
@@ -396,30 +450,37 @@ void input_render(SDL_Renderer* renderer, Input* in) {
             SDL_Surface* surf = NULL;
             SDL_Texture* tex = NULL;
             /* If no text and placeholders exist, render current placeholder in gray */
-            if (in->len == 0 && in->placeholders && in->placeholder_count > 0) {
+            if (in->cfg->len == 0 && in->cfg->placeholders && in->cfg->placeholder_count > 0) {
                 Uint32 now = SDL_GetTicks();
-                if (now - in->placeholder_last_tick >= 3000) { // switch placeholder every 3 seconds
-                    in->placeholder_last_tick = now;
-                    in->placeholder_index = (in->placeholder_index + 1) % in->placeholder_count;
+                if (now - in->cfg->placeholder_last_tick >= 3000) { // switch placeholder every 3 seconds
+                    in->cfg->placeholder_last_tick = now;
+                    in->cfg->placeholder_index = (in->cfg->placeholder_index + 1) % in->cfg->placeholder_count;
                 }
-                const char* ph = in->placeholders[in->placeholder_index];
+                const char* ph = in->cfg->placeholders[in->cfg->placeholder_index];
                 SDL_Color ph_color = {180, 180, 180, 255};
                     surf = TTF_RenderUTF8_Blended(font, ph, ph_color);
             } else {
-                    surf = TTF_RenderUTF8_Blended(font, in->text, in->text_color);
+                    surf = TTF_RenderUTF8_Blended(font, in->cfg->text, in->cfg->text_color);
             }
             if (surf) {
                 tex = SDL_CreateTextureFromSurface(renderer, surf);
                 if (tex) {
                     int tw = 0, th = 0;
                     SDL_QueryTexture(tex, NULL, NULL, &tw, &th);
-                    SDL_Rect dst = { in->rect.x + padding, in->rect.y + (in->rect.h - th) / 2, tw, th };
+                    /* For placeholder centering, recompute offset based on placeholder width */
+                    int dst_x = in->cfg->x + text_offset_x;
+                    if (in->cfg->centered && in->cfg->len == 0 && in->cfg->placeholders && in->cfg->placeholder_count > 0) {
+                        int center_off = (in->cfg->w - tw) / 2;
+                        if (center_off < padding) center_off = padding;
+                        dst_x = in->cfg->x + center_off;
+                    }
+                    SDL_Rect dst = { dst_x, in->cfg->y + (in->cfg->h - th) / 2, tw, th };
 
                     /* If text wider than input, clip source width */
                     SDL_Rect src = {0, 0, tw, th};
-                    if (dst.w > in->rect.w - padding*2) {
-                        src.w = (in->rect.w - padding*2) * ((float)tw / dst.w);
-                        dst.w = in->rect.w - padding*2;
+                    if (dst.w > in->cfg->w - padding*2) {
+                        src.w = (in->cfg->w - padding*2) * ((float)tw / dst.w);
+                        dst.w = in->cfg->w - padding*2;
                     }
 
                     SDL_RenderCopy(renderer, tex, &src, &dst);
@@ -427,16 +488,16 @@ void input_render(SDL_Renderer* renderer, Input* in) {
             }
 
             /* draw cursor if focused (draw regardless of surf/tex) */
-            if (in->focused) {
-                int cursor_x = in->rect.x + padding + cx;
+            if (in->cfg->focused) {
+                int cursor_x = in->cfg->x + text_offset_x + cx;
                 /* ensure cursor stays inside rect */
-                if (cursor_x > in->rect.x + in->rect.w - padding) cursor_x = in->rect.x + in->rect.w - padding;
+                if (cursor_x > in->cfg->x + in->cfg->w - padding) cursor_x = in->cfg->x + in->cfg->w - padding;
 
                 /* blink */
                 Uint32 t = SDL_GetTicks();
                 if ((t / 500) % 2 == 0) {
-                    SDL_SetRenderDrawColor(renderer, in->text_color.r, in->text_color.g, in->text_color.b, in->text_color.a);
-                    SDL_Rect cur = { cursor_x, in->rect.y + 6, 2, in->rect.h - 12 };
+                    SDL_SetRenderDrawColor(renderer, in->cfg->text_color.r, in->cfg->text_color.g, in->cfg->text_color.b, in->cfg->text_color.a);
+                    SDL_Rect cur = { cursor_x, in->cfg->y + 6, 2, in->cfg->h - 12 };
                     SDL_RenderFillRect(renderer, &cur);
                 }
             }
@@ -450,69 +511,69 @@ void input_render(SDL_Renderer* renderer, Input* in) {
 
 const char* input_get_text(Input* in) {
     if (!in) return NULL;
-    return in->text;
+    return in->cfg->text;
 }
 
 int input_is_submitted(Input* in) {
     if (!in) return 0;
-    return in->submitted;
+    return in->cfg->submitted;
 }
 
 void input_clear_submitted(Input* in) {
     if (!in) return;
-    in->submitted = 0;
+    in->cfg->submitted = 0;
 }
 
 void input_set_text(Input* in, const char* text) {
     if (!in || !text) return;
-    strncpy(in->text, text, in->maxlen);
-    in->text[in->maxlen] = '\0';
-    in->len = strlen(in->text);
-    in->cursor_pos = in->len;
-    in->sel_anchor = 0;
+    strncpy(in->cfg->text, text, in->cfg->maxlen);
+    in->cfg->text[in->cfg->maxlen] = '\0';
+    in->cfg->len = strlen(in->cfg->text);
+    in->cfg->cursor_pos = in->cfg->len;
+    in->cfg->sel_anchor = 0;
     input_clear_selection_internal(in);
 }
 
 void input_set_on_submit(Input* in, void (*cb)(SDL_Context*, const char*)) {
     if (!in) return;
-    in->on_submit = cb;
+    in->cfg->on_submit = cb;
 }
 
 int input_set_bg(Input* in, SDL_Renderer* renderer, const char* path, int padding) {
     if (!in || !renderer || !path) return EXIT_FAILURE;
-    if (in->bg_texture) {
-        free_image(in->bg_texture);
-        in->bg_texture = NULL;
+    if (in->cfg->bg_texture) {
+        free_image(in->cfg->bg_texture);
+        in->cfg->bg_texture = NULL;
     }
     SDL_Texture* tex = load_image(renderer, path);
     if (!tex) return EXIT_FAILURE;
     /* If caller provided padding >= 0, use it; otherwise adapt to texture */
     if (padding >= 0) {
-        in->padding = padding;
+        in->cfg->padding = padding;
     } else {
         int tw = 0, th = 0;
         if (SDL_QueryTexture(tex, NULL, NULL, &tw, &th) == 0) {
-            int p = in->rect.h / 3;
+            int p = in->cfg->h / 3;
             if (p < 6) p = 6;
-            if (tw > 0 && tw < in->rect.w) p += 4;
-            in->padding = p;
+            if (tw > 0 && tw < in->cfg->w) p += 4;
+            in->cfg->padding = p;
         }
     }
-    in->bg_texture = tex;
+    in->cfg->bg_texture = tex;
     return EXIT_SUCCESS;
 }
 
 void input_clear_bg(Input* in) {
     if (!in) return;
-    if (in->bg_texture) {
-        free_image(in->bg_texture);
-        in->bg_texture = NULL;
+    if (in->cfg->bg_texture) {
+        free_image(in->cfg->bg_texture);
+        in->cfg->bg_texture = NULL;
     }
-    in->padding = 8;
+    in->cfg->padding = 8;
 }
 
 void input_set_padding(Input* in, int padding) {
     if (!in) return;
     if (padding < 0) padding = 0;
-    in->padding = padding;
+    in->cfg->padding = padding;
 }
