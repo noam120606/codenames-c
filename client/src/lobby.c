@@ -1,26 +1,31 @@
 #include "../lib/all.h"
 
-static int lobby_buttons_created = 0;
+static SDL_Texture* lobby_btn_red = NULL;
+static SDL_Texture* lobby_btn_blue = NULL;
 
 /* Callback pour boutons du lobby (choix de rôle / équipe) */
 static ButtonReturn lobby_button_click(SDL_Context* context, ButtonId button_id) {
     if (!context) return BTN_RET_NONE;
     switch (button_id) {
-        case BTN_AGENT:
+        case BTN_RED_AGENT:
             context->player_role = ROLE_AGENT;
-            printf("Selected role: AGENT\n");
-            break;
-        case BTN_SPY:
-            context->player_role = ROLE_SPY;
-            printf("Selected role: SPY\n");
-            break;
-        case BTN_TEAM_RED:
             context->player_team = TEAM_RED;
-            printf("Selected team: RED\n");
+            printf("Selected role: RED AGENT\n");
             break;
-        case BTN_TEAM_BLUE:
+        case BTN_RED_SPY:
+            context->player_role = ROLE_SPY;
+            context->player_team = TEAM_RED;
+            printf("Selected role: RED SPY\n");
+            break;
+        case BTN_BLUE_AGENT:
+            context->player_role = ROLE_AGENT;
             context->player_team = TEAM_BLUE;
-            printf("Selected team: BLUE\n");
+            printf("Selected team: BLUE AGENT\n");
+            break;
+        case BTN_BLUE_SPY:
+            context->player_role = ROLE_SPY;
+            context->player_team = TEAM_BLUE;
+            printf("Selected team: BLUE SPY\n");
             break;
         case BTN_QUIT:
             return BTN_RET_QUIT;
@@ -36,19 +41,38 @@ static ButtonReturn lobby_button_click(SDL_Context* context, ButtonId button_id)
 }
 
 int lobby_init(SDL_Context* context) {
-    (void)context;
-    if (lobby_buttons_created) return 0;
-    /* créer les boutons de rôle/équipe (text_button_create existe déjà dans ton projet) */
-    SDL_Color white = {255,255,255,255};
-    /* positions relatives — ajuste selon ton layout */
-    int cx = WIN_WIDTH/2;
-    text_button_create(context->renderer, BTN_AGENT, cx - 300, 400, 80, "Agent", FONT_LARABIE, white, lobby_button_click);
-    text_button_create(context->renderer, BTN_SPY,   cx - 120, 400, 80, "Espion", FONT_LARABIE, white, lobby_button_click);
-    text_button_create(context->renderer, BTN_TEAM_RED,  cx + 60, 400, 80, "Equipe Rouge", FONT_LARABIE, white, lobby_button_click);
-    text_button_create(context->renderer, BTN_TEAM_BLUE, cx + 260, 400, 80, "Equipe Bleue", FONT_LARABIE, white, lobby_button_click);
-    lobby_buttons_created = 1;
-    /* Pas de ressources supplémentaires à charger pour l'instant.
-       Si besoin : charger textures, sons, etc. ici. */
+
+    int load_errors = 0;
+
+    lobby_btn_red = IMG_LoadTexture(context->renderer, "assets/red.png");
+    if (!lobby_btn_red) {
+        fprintf(stderr, "lobby_init: failed to load assets/red.png: %s\n", IMG_GetError());
+        load_errors++;
+    }
+
+    lobby_btn_blue = IMG_LoadTexture(context->renderer, "assets/blue.png");
+    if (!lobby_btn_blue) {
+        fprintf(stderr, "lobby_init: failed to load assets/blue.png: %s\n", IMG_GetError());
+        load_errors++;
+    }
+
+    /* créer les boutons de rôle/équipe (text_button_create existe déjà dans ton projet)
+       Positionner centrés et espacés verticalement pour être visibles sur la plupart des écrans */
+    int cx = WIN_WIDTH / 2;
+    int left_x = cx - 360;   /* colonne gauche (rouge) */
+    int right_x = cx + 200;  /* colonne droite (bleu) */
+    int top_y = WIN_HEIGHT / 2 - 120;    /* agent (haut) */
+    int bottom_y = WIN_HEIGHT / 2 + 40;  /* espion (bas) */
+    int height = 64;
+
+    /* gauche = équipe rouge : Agent (haut) / Espion (bas) */
+    text_button_create(context->renderer, BTN_RED_AGENT,  left_x,  top_y, height, "Agent rouge",  FONT_LARABIE, COL_WHITE, lobby_button_click);
+    text_button_create(context->renderer, BTN_RED_SPY, left_x, bottom_y, height, "Espion rouge", FONT_LARABIE, COL_WHITE, lobby_button_click);
+
+    /* droite = équipe bleue : Agent (haut) / Espion (bas) */
+    text_button_create(context->renderer, BTN_BLUE_AGENT, right_x, top_y, height, "Agent bleu", FONT_LARABIE, COL_WHITE, lobby_button_click);
+    text_button_create(context->renderer, BTN_BLUE_SPY, right_x, bottom_y, height, "Espion bleu", FONT_LARABIE, COL_WHITE, lobby_button_click);
+
     return 0;
 }
 
@@ -63,10 +87,10 @@ void lobby_display(SDL_Context* context) {
     hide_button(BTN_JOIN);
     show_button(BTN_QUIT);
     /* afficher les boutons de rôle/équipe */
-    show_button(BTN_AGENT);
-    show_button(BTN_SPY);
-    show_button(BTN_TEAM_RED);
-    show_button(BTN_TEAM_BLUE);
+    show_button(BTN_RED_AGENT);
+    show_button(BTN_RED_SPY);
+    show_button(BTN_BLUE_AGENT);
+    show_button(BTN_BLUE_SPY);
 
     /* Afficher le code et l'id du lobby */
     char buf[128];
@@ -96,16 +120,25 @@ void lobby_handle_event(SDL_Context* context, SDL_Event* e) {
         }
         context->game_state = GAME_STATE_MENU;
         /* Masquer les boutons de rôle */
-        hide_button(BTN_AGENT);
-        hide_button(BTN_SPY);
-        hide_button(BTN_TEAM_RED);
-        hide_button(BTN_TEAM_BLUE);
+        hide_button(BTN_RED_AGENT);
+        hide_button(BTN_RED_SPY);
+        hide_button(BTN_BLUE_AGENT);
+        hide_button(BTN_BLUE_SPY);
 
         /* Optionnel : prévenir le serveur qu'on quitte le lobby (ajouter message si le protocole gère cela) */
     }
 }
 
 int lobby_free(){
+    /* détruire textures d'assets chargées par lobby */
+    if (lobby_btn_red) {
+        SDL_DestroyTexture(lobby_btn_red);
+        lobby_btn_red = NULL;
+    }
+    if (lobby_btn_blue) {
+        SDL_DestroyTexture(lobby_btn_blue);
+        lobby_btn_blue = NULL;
+    }
     buttons_free();
     return EXIT_SUCCESS;
 }

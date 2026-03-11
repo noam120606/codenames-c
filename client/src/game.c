@@ -2,6 +2,11 @@
 
 SDL_Texture* card_h_classic;
 SDL_Texture* card_f_classic;
+SDL_Texture* card_h_red;
+SDL_Texture* card_f_red;
+SDL_Texture* card_h_blue;
+SDL_Texture* card_f_blue;
+SDL_Texture* card_black;
 
 int game_init(SDL_Context * context) {
     int loading_fails = 0;
@@ -17,40 +22,99 @@ int game_init(SDL_Context * context) {
         printf("Failed to load card image\n");
         loading_fails++;
     }
+    card_h_red = load_image(context->renderer, "assets/img/cards/H_Red.png");
+    if (!card_h_red) {
+        printf("Failed to load card image\n");
+        loading_fails++;
+    }
+    card_f_red = load_image(context->renderer, "assets/img/cards/F_Red.png");
+    if (!card_f_red) {
+        printf("Failed to load card image\n");
+        loading_fails++;
+    }
+    card_h_blue = load_image(context->renderer, "assets/img/cards/H_Blue.png");
+    if (!card_h_blue) {
+        printf("Failed to load card image\n");
+        loading_fails++;
+    }
+    card_f_blue = load_image(context->renderer, "assets/img/cards/F_Blue.png");
+    if (!card_f_blue) {
+        printf("Failed to load card image\n");
+        loading_fails++;
+    }
+    card_black = load_image(context->renderer, "assets/img/cards/Black.png");
+    if (!card_black) {
+        printf("Failed to load card image\n");
+        loading_fails++;
+    }
+
+    int x=0;
+    int y=0;
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            if(context->player_role == ROLE_ESPION && !context->cards[i*5 + j]->revealed) {
+                switch (context->cards[i*5 + j]->team) {
+                    case TEAM_NEUTRAL:
+                        if (context->cards[i*5 + j]->gender) {
+                            display_image(context->renderer, card_f_classic, x, y, 0.05, 0, SDL_FLIP_NONE, 1, 255);
+                        }else{
+                            display_image(context->renderer, card_h_classic, x, y, 0.05, 0, SDL_FLIP_NONE, 1, 255);
+                        }
+                        break;
+                    case TEAM_RED:
+                        if (context->cards[i*5 + j]->gender) {
+                            display_image(context->renderer, card_f_red, x, y, 0.05, 0, SDL_FLIP_NONE, 1, 255);
+                        }else{
+                            display_image(context->renderer, card_h_red, x, y, 0.05, 0, SDL_FLIP_NONE, 1, 255);
+                        }
+                        break;
+                    case TEAM_BLUE:
+                        if (context->cards[i*5 + j]->gender) {
+                            display_image(context->renderer, card_f_blue, x, y, 0.05, 0, SDL_FLIP_NONE, 1, 255);
+                        }else{
+                            display_image(context->renderer, card_h_blue, x, y, 0.05, 0, SDL_FLIP_NONE, 1, 255);
+                        }
+                        break;
+                    case TEAM_BLACK:
+                        display_image(context->renderer, card_black, x, y, 0.05, 0, SDL_FLIP_NONE, 1, 255);
+                    default:
+                        break;
+                }
+            }else if (context->player_role == ROLE_AGENT && !context->cards[i*5 + j]->revealed) {
+                if (context->cards[i*5 + j]->gender) {
+                    display_image(context->renderer, card_f_classic, x, y, 0.05, 0, SDL_FLIP_NONE, 1, 255);
+                }else{
+                    display_image(context->renderer, card_h_classic, x, y, 0.05, 0, SDL_FLIP_NONE, 1, 255);
+                }
+            }
+            else if (context->cards[i*5 + j]->revealed) {
+                // Attente des images des cartes "révélées"
+            }
+            x += 100;
+        }
+        x = 0;
+        y += 100;
+    }
 
     return loading_fails;
 }
 
 void game_display(SDL_Context * context) {
-
-    if (context->game_state == GAME_STATE_PLAYING) {
-
-        
-        if (!audio_is_playing(MUSIC_MENU)) {
-            audio_play(MUSIC_MENU, -1);
-        }
-
-        // Afficher les cartes du jeu
-        int random_sexe = rand() % 2;
-        int x = 20;
-        int y = 25;
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (random_sexe == 0) {
-                    display_image(context->renderer, card_h_classic, x, y, 1.0, 0, SDL_FLIP_NONE, 1, 255);
-                } else {
-                    display_image(context->renderer, card_f_classic, x, y, 1.0, 0, SDL_FLIP_NONE, 1, 255);
-                }
-                x += 20;
-            }
-            y += 20;
-        }
-
+    
+    if (!audio_is_playing(MUSIC_MENU)) {
+        audio_play(MUSIC_MENU, -1);
     }
+
 }
 
 
 int game_free() {
-    
+    if (card_h_classic) free_image(card_h_classic);
+    if (card_f_classic) free_image(card_f_classic);
+    if (card_h_red) free_image(card_h_red);
+    if (card_f_red) free_image(card_f_red);
+    if (card_h_blue) free_image(card_h_blue);
+    if (card_f_blue) free_image(card_f_blue);
+    if (card_black) free_image(card_black);
     return EXIT_SUCCESS;
 }
