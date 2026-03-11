@@ -105,6 +105,7 @@ void lobby_handle_event(SDL_Context* context, SDL_Event* e) {
     }
 }
 
-void lobby_free(){
-    /* Rien à libérer pour l'instant; si on charge des ressources locales, les détruire ici. */
+int lobby_free(){
+    buttons_free();
+    return EXIT_SUCCESS;
 }
