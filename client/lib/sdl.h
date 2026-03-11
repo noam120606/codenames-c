@@ -9,6 +9,13 @@
 #define WIN_WIDTH 1920
 #define WIN_HEIGHT 1080
 
+typedef enum {
+    GAME_STATE_MENU,
+    GAME_STATE_LOBBY,
+    GAME_STATE_PLAYING,
+    GAME_STATE_PAUSED
+} GameState;
+
 /**
  * Contexte SDL contenant la fenêtre et le renderer.
  * @param window Fenêtre SDL.
@@ -27,6 +34,7 @@ typedef struct {
     int sock;
     int lobby_id;
     char* lobby_code;
+    GameState game_state;
     Uint32 frame_start_time;
 } SDL_Context;
 
