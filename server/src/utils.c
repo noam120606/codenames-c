@@ -73,7 +73,7 @@ int format_to(char *buf, size_t size, const char *fmt, ...) {
 char* generate_code() {
     char buffer[6];
     for (int i = 0; i < 5; i++) {
-        buffer[i] = 'A' + rand() % 26;
+        buffer[i] = '0' + rand() % 10;
     }
     buffer[5] = '\0';
 

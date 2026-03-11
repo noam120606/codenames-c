@@ -102,6 +102,8 @@ int main(int argc, char* argv[]){
             if (e.type == SDL_QUIT) {
                 running = 0;
             }
+            /* Le bandeau infos (crossfaders volume) est toujours actif */
+            infos_handle_event(&context, &e);
             // Déléguer l'événement selon l'état courant
             if (context.game_state == GAME_STATE_LOBBY) {
                 lobby_handle_event(&context, &e);

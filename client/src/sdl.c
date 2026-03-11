@@ -69,6 +69,8 @@ SDL_Context init_sdl() {
     context.lobby_id = -1;
     context.frame_start_time = 0;
     context.game_state = GAME_STATE_MENU;
+    context.music_volume = MIX_MAX_VOLUME;
+    context.sound_effects_volume = MIX_MAX_VOLUME;
 
     audio_init();
     
