@@ -1,53 +1,55 @@
 #include "../lib/all.h"
 
-void game_display(SDL_Context * context) {
+SDL_Texture* card_h_classic;
+SDL_Texture* card_f_classic;
 
-    int in_lobby = context->lobby_id != -1;
+int game_init(SDL_Context * context) {
+    int loading_fails = 0;
 
-    if (!audio_is_playing(MUSIC_MENU)) {
-        audio_play(MUSIC_MENU, -1);
+    // Chargement image
+    card_h_classic = load_image(context->renderer, "assets/img/cards/H_Classic.png");
+    if (!card_h_classic) {
+        printf("Failed to load card image\n");
+        loading_fails++;
+    }
+    card_f_classic = load_image(context->renderer, "assets/img/cards/F_Classic.png");
+    if (!card_f_classic) {
+        printf("Failed to load card image\n");
+        loading_fails++;
     }
 
-    if (in_lobby) {
-        hide_button(BTN_CREATE);
-        hide_button(BTN_JOIN);
-
-        char msg[64];
-        format_to(msg, sizeof(msg), "Bienvenue %s ! Tu es lobby %d. Code : %s", name ? name : "invité", context->lobby_id, context->lobby_code ? context->lobby_code : "AUCUN");
-        int desired_screen_y = 700;
-        int rel_x = 0; // 0 = centré horizontalement
-        int rel_y = (WIN_HEIGHT/2) - desired_screen_y; // négatif si desired_screen_y > WIN_HEIGHT/2
-        text_display(context->renderer, msg, FONT_LARABIE, 24, COL_WHITE, rel_x, rel_y, 0, 255);
-
-    } else if (joining) {
-        show_button(BTN_CREATE);
-        hide_button(BTN_JOIN);
-        if (code_input) input_render(context->renderer, code_input);
-    } else {
-        show_button(BTN_CREATE);
-        show_button(BTN_JOIN);
-    }
-
-    // Afficher le logo à sa taille d'origine
-    if (menu_logo) {
-        display_image(context->renderer, menu_logo, 0, 200, 1.00, 0, SDL_FLIP_NONE, 1, 255);
-    }
-    
-    // Afficher quagmire à sa taille d'origine
-    if (quagmire) {
-        display_image(context->renderer, quagmire, 850, -350, 1.0, 0, SDL_FLIP_NONE, 1, 255);
-    }
-
-    /* input is drawn by menu */
-    if (name_input) input_render(context->renderer, name_input);
-
-    /* submitted text is drawn by input_render */
+    return loading_fails;
 }
 
-int menu_free() {
-    if (menu_logo) free_image(menu_logo);
-    if (quagmire) free_image(quagmire);
-    if (name_input) input_destroy(name_input);
+void game_display(SDL_Context * context) {
 
+    if (context->game_state == GAME_STATE_PLAYING) {
+
+        
+        if (!audio_is_playing(MUSIC_MENU)) {
+            audio_play(MUSIC_MENU, -1);
+        }
+
+        // Afficher les cartes du jeu
+        int random_sexe = rand() % 2;
+        int x = 20;
+        int y = 25;
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                if (random_sexe == 0) {
+                    display_image(context->renderer, card_h_classic, x, y, 1.0, 0, SDL_FLIP_NONE, 1, 255);
+                } else {
+                    display_image(context->renderer, card_f_classic, x, y, 1.0, 0, SDL_FLIP_NONE, 1, 255);
+                }
+                x += 20;
+            }
+            y += 20;
+        }
+
+    }
+}
+
+int game_free() {
+    
     return EXIT_SUCCESS;
 }
