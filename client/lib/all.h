@@ -4,6 +4,7 @@
 #include <math.h>
 #include <getopt.h>
 #include <ctype.h>
+#include <regex.h>
 #include <unistd.h>
 #include <arpa/inet.h>
 #include <sys/select.h>
@@ -27,3 +28,4 @@
 #include "../lib/utils.h"
 #include "../lib/game.h"
 #include "../lib/lobby.h"
+#include "../lib/ressources.h"
