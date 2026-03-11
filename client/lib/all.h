@@ -25,3 +25,4 @@
 #include "../lib/crossfader.h"
 #include "../lib/message.h"
 #include "../lib/utils.h"
+#include "../lib/ressources.h"
