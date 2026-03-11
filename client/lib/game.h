@@ -8,6 +8,21 @@
 #include "../lib/sdl.h"
 #include "../lib/button.h"
 
+/**
+ * Représente un mot dans la grille de Codenames.
+ *
+ * @param word texte du mot (terminé par \0).
+ * @param team équipe à laquelle le mot appartient (TEAM_*).
+ * @param revealed 0 si caché, 1 si révélé.
+ * @param gender genre du mot (0 pour masculin, 1 pour féminin).
+ */
+typedef struct {
+    char word[32];
+    Team team;
+    int revealed;
+    int gender;
+} Card;
+
 
 /**
  * Initialise le jeu.
@@ -34,5 +49,6 @@ void game_handle_event(SDL_Context * context, SDL_Event * event);
  * @param context Contexte SDL.
  */
 void game_display(SDL_Context * context);
+
 
 #endif // GAME_H

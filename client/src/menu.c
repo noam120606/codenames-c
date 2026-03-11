@@ -80,47 +80,44 @@ int menu_init(SDL_Context * context) {
     hide_button(BTN_BLUE_SPY);
 
     // Chargement input
-    const char* name_placeholders[] = {"Peter", "Quagmire", "Tom", "Faz Faf"};
-    {
-        InputConfig cfg;
-        input_config_init(&cfg);
-        cfg.x = WIN_WIDTH/2 + 650;
-        cfg.y = 50;
-        cfg.w = 250;
-        cfg.h = 60;
-        cfg.font_path = FONT_LARABIE;
-        cfg.font_size = 28;
-        cfg.placeholders = name_placeholders;
-        cfg.placeholder_count = 4;
-        cfg.submitted_label = "Pseudo : ";
-        cfg.maxlen = 16;
-        name_input = input_create(INPUT_ID_NAME, &cfg);
-    }
-    if (name_input) {
-        input_set_on_submit(name_input, name_on_submit);
-        input_set_bg(name_input, context->renderer, "assets/img/inputs/empty.png", 24);
-    }
+    static const char* name_placeholders[] = {"Peter", "Quagmire", "Tom", "Faz Faf"};
 
-    const char* code_placeholders[] = {"CODE"};
-    {
-        InputConfig cfg;
-        input_config_init(&cfg);
-        cfg.x = WIN_WIDTH/2+50;
-        cfg.y = 700;
-        cfg.w = 385;
-        cfg.h = 100;
-        cfg.font_path = FONT_LARABIE;
-        cfg.font_size = 28;
-        cfg.placeholders = code_placeholders;
-        cfg.placeholder_count = 1;
-        cfg.submitted_label = "";
-        cfg.maxlen = 16;
-        code_input = input_create(INPUT_ID_JOIN_CODE, &cfg);
-    }
-    if (code_input) {
-        input_set_on_submit(code_input, code_on_submit);
-        input_set_bg(code_input, context->renderer, "assets/img/inputs/empty.png", 24);
-    }
+    InputConfig* cfg_in_name = input_config_init();
+    cfg_in_name->x = WIN_WIDTH/2 + 650;
+    cfg_in_name->y = 50;
+    cfg_in_name->w = 250;
+    cfg_in_name->h = 60;
+    cfg_in_name->font_path = FONT_LARABIE;
+    cfg_in_name->font_size = 28;
+    cfg_in_name->placeholders = name_placeholders;
+    cfg_in_name->placeholder_count = 4;
+    cfg_in_name->submitted_label = "Pseudo : ";
+    cfg_in_name->maxlen = 16;
+    cfg_in_name->on_submit = name_on_submit;
+    cfg_in_name->bg_path = "assets/img/inputs/empty.png";
+    cfg_in_name->bg_padding = 24;
+    name_input = input_create(context->renderer, INPUT_ID_NAME, cfg_in_name);
+    free(cfg_in_name);
+
+    static const char* code_placeholders[] = {"CODE"};
+    InputConfig* cfg_in_code = input_config_init();
+    cfg_in_code->x = WIN_WIDTH/2+50;
+    cfg_in_code->y = 700;
+    cfg_in_code->w = 385;
+    cfg_in_code->h = 100;
+    cfg_in_code->font_path = FONT_LARABIE;
+    cfg_in_code->font_size = 28;
+    cfg_in_code->placeholders = code_placeholders;
+    cfg_in_code->placeholder_count = 1;
+    cfg_in_code->submitted_label = "";
+    cfg_in_code->maxlen = 16;
+    cfg_in_code->centered = 1;
+    cfg_in_code->on_submit = code_on_submit;
+    cfg_in_code->allowed_pattern = "^[0-9]$";
+    cfg_in_code->bg_path = "assets/img/inputs/empty.png";
+    cfg_in_code->bg_padding = 24;
+    code_input = input_create(context->renderer, INPUT_ID_JOIN_CODE, cfg_in_code);
+    free(cfg_in_code);
 
     return loading_fails;
 }
