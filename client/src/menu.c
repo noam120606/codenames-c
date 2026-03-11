@@ -73,6 +73,12 @@ int menu_init(SDL_Context * context) {
     text_button_create(context->renderer, BTN_JOIN, WIN_WIDTH/2+50, 700, 100, "Rejoindre", FONT_LARABIE, COL_WHITE, menu_button_click);
     text_button_create(context->renderer, BTN_QUIT, WIN_WIDTH/2-200, 900, 100, "Quitter", FONT_LARABIE, COL_WHITE, menu_button_click);
 
+    /* Les boutons de rôle sont uniquement visibles dans le lobby -> les cacher par défaut */
+    hide_button(BTN_RED_AGENT);
+    hide_button(BTN_RED_SPY);
+    hide_button(BTN_BLUE_AGENT);
+    hide_button(BTN_BLUE_SPY);
+
     // Chargement input
     static const char* name_placeholders[] = {"Peter", "Quagmire", "Tom", "Faz Faf"};
 
@@ -122,6 +128,11 @@ void menu_display(SDL_Context * context) {
         context->game_state = GAME_STATE_LOBBY;
     } else {
         context->game_state = GAME_STATE_MENU;
+        /* s'assurer que les boutons de rôle restent cachés quand on est dans le menu */
+        hide_button(BTN_RED_AGENT);
+        hide_button(BTN_RED_SPY);
+        hide_button(BTN_BLUE_AGENT);
+        hide_button(BTN_BLUE_SPY);
     }
 
     if (!audio_is_playing(MUSIC_MENU)) {

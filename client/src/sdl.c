@@ -149,6 +149,9 @@ void destroy_context(SDL_Context context) {
     if (context.window) {
         SDL_DestroyWindow(context.window);
     }
+    if (context.sock > 0) {
+        close_tcp(context.sock);
+    }
     audio_cleanup();
     TTF_Quit();
     IMG_Quit();

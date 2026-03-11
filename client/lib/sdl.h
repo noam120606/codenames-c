@@ -9,6 +9,12 @@
 #define WIN_WIDTH 1920
 #define WIN_HEIGHT 1080
 
+/**
+ * États possibles du jeu.
+ * @param GAME_STATE_MENU État du menu principal.
+ * @param GAME_STATE_LOBBY État du lobby (attente des joueurs).
+ * @param GAME_STATE_PLAYING État de la partie en cours.
+ */
 typedef enum {
     GAME_STATE_MENU,
     GAME_STATE_LOBBY,
@@ -16,13 +22,29 @@ typedef enum {
     GAME_STATE_PAUSED
 } GameState;
 
-/* roles / teams locaux (valeurs simples si les enums partagés ne sont pas inclus) */
-#define ROLE_AGENT 0
-#define ROLE_SPY   1
+/** Rôles possibles d'un utilisateur.
+ * @param ROLE_ESPION donne des indices.
+ * @param ROLE_AGENT devine les mots.
+ */
+typedef enum UserRole {
+    ROLE_ESPION,
+    ROLE_AGENT
+} UserRole;
 
-#define TEAM_NEUTRAL 0
-#define TEAM_RED     1
-#define TEAM_BLUE    2
+/** 
+ * Catégories de mots dans la grille de Codenames.
+ * Les mots sont classés en 4 catégories :
+ * @param TEAM_NEUTRAL mot neutre (aucune équipe).
+ * @param TEAM_RED mot appartenant à l'équipe rouge.
+ * @param TEAM_BLUE mot appartenant à l'équipe bleue.
+ * @param TEAM_BLACK mot assassin (met fin à la partie si révélé).
+ */
+typedef enum Team {
+    TEAM_NEUTRAL,
+    TEAM_RED,
+    TEAM_BLUE,
+    TEAM_BLACK,
+} Team;
 
 /**
  * Contexte SDL contenant la fenêtre et le renderer.
@@ -32,6 +54,10 @@ typedef enum {
  * @param fps Nombre de frames par seconde (calculé à partir du clock).
  * @param sock Identifiant socket.  
  * @param lobby_id Identifiant du lobby auquel le client est connecté (-1 si aucun).
+ * @param lobby_code Code du lobby auquel le client est connecté (NULL si aucun).
+ * @param game_state État actuel du jeu (menu, lobby, partie, etc.).
+ * @param player_role Rôle du joueur (ROLE_AGENT ou ROLE_SPY).
+ * @param player_team Équipe du joueur (TEAM_RED, TEAM_BLUE, TEAM_NEUTRAL).
  * @param frame_start_time Timestamp du début de la frame actuelle (en ms).
  */
 typedef struct {
@@ -42,13 +68,13 @@ typedef struct {
     int sock;
     int lobby_id;
     char* lobby_code;
-    int game_state;
-    /* Player selection stored client-side */
-    int player_role; /* ROLE_AGENT / ROLE_SPY */
-    int player_team; /* TEAM_NEUTRAL / TEAM_RED / TEAM_BLUE */
+    GameState game_state;
+    UserRole player_role; 
+    Team player_team; 
     Uint32 frame_start_time;
     int music_volume;          /**< Volume de la musique (0-128). */
     int sound_effects_volume;  /**< Volume des effets sonores (0-128). */
+    Card* cards[25];
 } SDL_Context;
 
 /**
