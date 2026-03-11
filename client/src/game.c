@@ -49,6 +49,7 @@ void game_display(SDL_Context * context) {
     }
 }
 
+
 int game_free() {
     
     return EXIT_SUCCESS;

@@ -79,7 +79,7 @@ int main(int argc, char* argv[]){
         infos_free();
         return EXIT_FAILURE;
     }
-    int lobby_loading_fails = init_lobby(&context);
+    int lobby_loading_fails = lobby_init(&context);
     if (lobby_loading_fails > 0) {
         printf("Failed to load %d lobby resource(s)\n", lobby_loading_fails);
         close_tcp(sock);
