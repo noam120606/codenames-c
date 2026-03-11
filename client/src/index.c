@@ -89,6 +89,14 @@ int main(int argc, char* argv[]){
         return EXIT_FAILURE;
     } else add_destroy_resource(resources, infos_free);
 
+    int lobby_loading_fails = lobby_init(&context);
+    if (lobby_loading_fails > 0) {
+        printf("Failed to load %d lobby resource(s)\n", lobby_loading_fails);
+        lobby_free();
+        cleanup_resources(resources);
+        return EXIT_FAILURE;
+    } else add_destroy_resource(resources, lobby_free);
+
     SDL_Event e;
     int running = 1;
 
@@ -100,15 +108,18 @@ int main(int argc, char* argv[]){
             if (e.type == SDL_QUIT) {
                 running = 0;
             }
-            // Gestion bouttons
-            ButtonReturn result = buttons_handle_event(&context, &e);
-            switch (result) {
-                case BTN_RET_NONE: break;
-                case BTN_RET_QUIT: running = 0; break;
-                default: break;
+            // Déléguer l'événement selon l'état courant
+            if (context.game_state == GAME_STATE_LOBBY) {
+                lobby_handle_event(&context, &e);
+            } else {
+                // Buttons + menu in other states
+                ButtonReturn bref = buttons_handle_event(&context, &e);
+                switch (bref) {
+                    case BTN_RET_QUIT: running = 0; break;
+                    default: break;
+                }
+                menu_handle_event(&context, &e);
             }
-            // Menu events (inputs, etc.)
-            menu_handle_event(&context, &e);
         }
 
         // Pré Rendu
@@ -116,8 +127,23 @@ int main(int argc, char* argv[]){
         SDL_RenderClear(context.renderer);
 
         // Rendu et logique d'affichage
-        display_background(&context);
-        menu_display(&context);
+        switch (context.game_state) {
+            case GAME_STATE_MENU:
+                display_background(&context);
+                menu_display(&context);
+                
+                break;
+            case GAME_STATE_LOBBY:
+                display_background(&context);
+                lobby_display(&context);
+                break;
+            case GAME_STATE_PLAYING:
+                // TODO: Implement playing state rendering
+                break;
+            case GAME_STATE_PAUSED:
+                // TODO: Implement paused state rendering
+                break;
+        }
         infos_display(&context);
 
         // Afficher les boutons
