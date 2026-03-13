@@ -1,6 +1,166 @@
 /* Input widget implementation */
 #include "../lib/all.h"
 
+static const char* PLAYER_PROPERTIES_PATH = "datas/player.properties";
+
+static char* input_ltrim(char* s) {
+    while (*s && isspace((unsigned char)*s)) s++;
+    return s;
+}
+
+static void input_rtrim(char* s) {
+    size_t len = strlen(s);
+    while (len > 0 && isspace((unsigned char)s[len - 1])) {
+        s[len - 1] = '\0';
+        len--;
+    }
+}
+
+static void input_sanitize_property_value(const char* src, char* dst, size_t dst_size) {
+    if (!dst || dst_size == 0) return;
+    if (!src) {
+        dst[0] = '\0';
+        return;
+    }
+
+    size_t j = 0;
+    for (size_t i = 0; src[i] != '\0' && j + 1 < dst_size; ++i) {
+        char c = src[i];
+        if (c == '\n' || c == '\r') continue;
+        dst[j++] = c;
+    }
+    dst[j] = '\0';
+}
+
+static int input_read_player_name(char* out_name, size_t out_size) {
+    if (!out_name || out_size == 0) return 0;
+    out_name[0] = '\0';
+
+    FILE* file = fopen(PLAYER_PROPERTIES_PATH, "r");
+    if (!file) return 0;
+
+    char line[512];
+    int found = 0;
+    while (fgets(line, sizeof(line), file)) {
+        char key_buf[128] = {0};
+        char value_buf[384] = {0};
+        if (sscanf(line, " %127[^=]= %383[^\n]", key_buf, value_buf) == 2) {
+            char* key = input_ltrim(key_buf);
+            char* value = input_ltrim(value_buf);
+            input_rtrim(key);
+            input_rtrim(value);
+            if (strcmp(key, "PLAYER_NAME") == 0) {
+                snprintf(out_name, out_size, "%s", value);
+                found = 1;
+                break;
+            }
+        }
+    }
+
+    fclose(file);
+    return found;
+}
+
+static int input_write_player_name_property(const char* player_name) {
+    int music_volume = MIX_MAX_VOLUME;
+    int sound_effects_volume = MIX_MAX_VOLUME;
+    char name_value[INPUT_DEFAULT_MAX + 1] = "";
+
+    FILE* file = fopen(PLAYER_PROPERTIES_PATH, "r");
+    if (file) {
+        char line[512];
+        while (fgets(line, sizeof(line), file)) {
+            char key_buf[128] = {0};
+            char value_buf[384] = {0};
+            if (sscanf(line, " %127[^=]= %383[^\n]", key_buf, value_buf) == 2) {
+                char* key = input_ltrim(key_buf);
+                char* value = input_ltrim(value_buf);
+                input_rtrim(key);
+                input_rtrim(value);
+
+                if (strcmp(key, "MUSIC_VOLUME") == 0) {
+                    music_volume = atoi(value);
+                } else if (strcmp(key, "SOUND_EFFECTS_VOLUME") == 0) {
+                    sound_effects_volume = atoi(value);
+                } else if (strcmp(key, "PLAYER_NAME") == 0) {
+                    strncpy(name_value, value, sizeof(name_value) - 1);
+                    name_value[sizeof(name_value) - 1] = '\0';
+                }
+            }
+        }
+        fclose(file);
+    }
+
+    if (player_name) {
+        input_sanitize_property_value(player_name, name_value, sizeof(name_value));
+    }
+
+    file = fopen(PLAYER_PROPERTIES_PATH, "w");
+    if (!file) return EXIT_FAILURE;
+
+    fprintf(file, "MUSIC_VOLUME = %d\n", music_volume);
+    fprintf(file, "SOUND_EFFECTS_VOLUME = %d\n", sound_effects_volume);
+    fprintf(file, "PLAYER_NAME = %s\n", name_value);
+    fclose(file);
+    return EXIT_SUCCESS;
+}
+
+static int input_should_persist_player_data(const Input* in) {
+    if (!in || !in->cfg) return 0;
+    if (!in->cfg->save_player_data) return 0;
+    return in->id == INPUT_ID_NAME;
+}
+
+static void input_load_saved_player_data_if_enabled(Input* in) {
+    if (!input_should_persist_player_data(in)) return;
+
+    char saved_name[INPUT_DEFAULT_MAX + 1] = {0};
+    if (!input_read_player_name(saved_name, sizeof(saved_name))) return;
+
+    strncpy(in->cfg->text, saved_name, (size_t)in->cfg->maxlen);
+    in->cfg->text[in->cfg->maxlen] = '\0';
+    in->cfg->len = (int)strlen(in->cfg->text);
+    in->cfg->cursor_pos = in->cfg->len;
+}
+
+static void input_save_player_data_if_enabled(Input* in, const char* text) {
+    if (!input_should_persist_player_data(in)) return;
+    (void)input_write_player_name_property(text ? text : "");
+}
+
+static void input_clear_selection_internal(Input* in);
+
+static void input_submit_internal(SDL_Context* context, Input* in) {
+    if (!in || !in->cfg) return;
+
+    in->cfg->submitted = 1;
+
+    if (in->cfg->submitted_text) {
+        free(in->cfg->submitted_text);
+        in->cfg->submitted_text = NULL;
+    }
+
+    in->cfg->submitted_text = (char*)malloc((size_t)in->cfg->len + 1);
+    if (in->cfg->submitted_text) {
+        strncpy(in->cfg->submitted_text, in->cfg->text, (size_t)in->cfg->len + 1);
+    }
+
+    const char* submitted = in->cfg->submitted_text ? in->cfg->submitted_text : in->cfg->text;
+    input_save_player_data_if_enabled(in, submitted);
+
+    if (in->cfg->on_submit) in->cfg->on_submit(context, submitted);
+
+    if (in->cfg->text && in->cfg->maxlen > 0) {
+        in->cfg->text[0] = '\0';
+    }
+    in->cfg->len = 0;
+    in->cfg->cursor_pos = 0;
+    input_clear_selection_internal(in);
+
+    in->cfg->focused = 0;
+    SDL_StopTextInput();
+}
+
 /** Initialise une InputConfig avec des valeurs par défaut. */
 InputConfig* input_config_init() {
     InputConfig* cfg = (InputConfig*)calloc(1, sizeof(InputConfig));
@@ -16,6 +176,7 @@ InputConfig* input_config_init() {
     cfg->placeholder_count = 0;
     cfg->submitted_label = NULL;
     cfg->maxlen = INPUT_DEFAULT_MAX;
+    cfg->save_player_data = 0;
     cfg->bg_color = (SDL_Color){255, 255, 255, 255};
     cfg->border_color = (SDL_Color){0, 0, 0, 255};
     cfg->text_color = (SDL_Color){255, 255, 255, 255};
@@ -137,6 +298,8 @@ Input* input_create(SDL_Renderer* renderer, InputId id, const InputConfig* cfg_i
         in->cfg->cursor_pos = in->cfg->len;
     }
 
+    input_load_saved_player_data_if_enabled(in);
+
     /* auto-load background image if bg_path was provided in config */
     if (in->cfg->bg_path && renderer) {
         input_set_bg(in, renderer, in->cfg->bg_path, in->cfg->bg_padding);
@@ -216,6 +379,7 @@ void input_handle_event(SDL_Context* context, Input* in, SDL_Event* e) {
         memcpy(in->cfg->text + in->cfg->cursor_pos, txt, add);
         in->cfg->cursor_pos += add;
         in->cfg->len += add;
+        input_save_player_data_if_enabled(in, in->cfg->text);
     }
 
     if (e->type == SDL_KEYDOWN) {
@@ -250,6 +414,7 @@ void input_handle_event(SDL_Context* context, Input* in, SDL_Event* e) {
                 }
             }
             input_clear_selection_internal(in);
+            input_save_player_data_if_enabled(in, in->cfg->text);
         } else if (k == SDLK_DELETE) {
             if (input_has_selection(in)) {
                 input_delete_selection(in);
@@ -269,6 +434,7 @@ void input_handle_event(SDL_Context* context, Input* in, SDL_Event* e) {
                 }
             }
             input_clear_selection_internal(in);
+            input_save_player_data_if_enabled(in, in->cfg->text);
         } else if (k == SDLK_LEFT) {
             int newpos = in->cfg->cursor_pos;
             if (mod & KMOD_CTRL) newpos = prev_word_pos(in, in->cfg->cursor_pos);
@@ -308,29 +474,7 @@ void input_handle_event(SDL_Context* context, Input* in, SDL_Event* e) {
                 input_clear_selection_internal(in);
             }
         } else if (k == SDLK_RETURN || k == SDLK_KP_ENTER) {
-            in->cfg->submitted = 1;
-            /* store submitted text inside input */
-            if (in->cfg->submitted_text) {
-                free(in->cfg->submitted_text);
-                in->cfg->submitted_text = NULL;
-            }
-            in->cfg->submitted_text = (char*)malloc(in->cfg->len + 1);
-            if (in->cfg->submitted_text) strncpy(in->cfg->submitted_text, in->cfg->text, in->cfg->len + 1);
-
-            /* call submit callback with the submitted text (use stored copy)
-             * then clear the input contents so it appears empty */
-            if (in->cfg->on_submit) in->cfg->on_submit(context, in->cfg->submitted_text);
-
-            /* clear current text */
-            if (in->cfg->text && in->cfg->maxlen > 0) {
-                in->cfg->text[0] = '\0';
-            }
-            in->cfg->len = 0;
-            in->cfg->cursor_pos = 0;
-            input_clear_selection_internal(in);
-
-            in->cfg->focused = 0;
-            SDL_StopTextInput();
+            input_submit_internal(context, in);
         }
     }
 }
@@ -524,6 +668,10 @@ void input_clear_submitted(Input* in) {
     in->cfg->submitted = 0;
 }
 
+void input_submit(SDL_Context* context, Input* in) {
+    input_submit_internal(context, in);
+}
+
 void input_set_text(Input* in, const char* text) {
     if (!in || !text) return;
     strncpy(in->cfg->text, text, in->cfg->maxlen);
@@ -532,6 +680,7 @@ void input_set_text(Input* in, const char* text) {
     in->cfg->cursor_pos = in->cfg->len;
     in->cfg->sel_anchor = 0;
     input_clear_selection_internal(in);
+    input_save_player_data_if_enabled(in, in->cfg->text);
 }
 
 void input_set_on_submit(Input* in, void (*cb)(SDL_Context*, const char*)) {

@@ -7,6 +7,9 @@ Input* code_input = NULL;
 char* name = NULL;
 int joining = 0;
 
+static InputConfig* cfg_in_name = NULL;
+static InputConfig* cfg_in_code = NULL;
+
 static void name_on_submit(SDL_Context* context, const char* text) {
     printf("Name input submitted: %s\n", text ? text : "");
     if (name) {
@@ -93,10 +96,18 @@ int menu_init(SDL_Context * context) {
     cfg_in_name->placeholder_count = 4;
     cfg_in_name->submitted_label = "Pseudo : ";
     cfg_in_name->maxlen = 16;
+    cfg_in_name->save_player_data = 1;
     cfg_in_name->on_submit = name_on_submit;
     cfg_in_name->bg_path = "assets/img/inputs/empty.png";
     cfg_in_name->bg_padding = 24;
     name_input = input_create(context->renderer, INPUT_ID_NAME, cfg_in_name);
+
+    if (name_input) {
+        const char* loaded_name = input_get_text(name_input);
+        if (loaded_name && loaded_name[0] != '\0') {
+            input_submit(context, name_input);
+        }
+    }
 
     static const char* code_placeholders[] = {"CODE"};
     InputConfig* cfg_in_code = input_config_init();

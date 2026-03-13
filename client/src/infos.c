@@ -25,16 +25,13 @@ static int current_display_x = -1300;
 /* Callback appelé quand le crossfader musique change */
 static void on_music_volume_change(SDL_Context* ctx, int new_value) {
     if (ctx) ctx->music_volume = new_value;
-    Mix_VolumeMusic(new_value);
-    /* Appliquer aussi sur les channels musique si joués via Mix_PlayChannel */
-    /* Pour MUSIC_MENU qui est un chunk, on ajuste le volume du chunk */
+    audio_set_type_volume(AUDIO_SOUND_KIND_MUSIC, new_value);
 }
 
 /* Callback appelé quand le crossfader effets sonores change */
 static void on_sfx_volume_change(SDL_Context* ctx, int new_value) {
     if (ctx) ctx->sound_effects_volume = new_value;
-    /* Le volume sera lu au moment de jouer les effets, ou on peut appliquer globalement */
-    Mix_Volume(-1, new_value); /* -1 = tous les channels */
+    audio_set_type_volume(AUDIO_SOUND_KIND_SFX, new_value);
 }
 
 int init_infos(SDL_Context* context) {
@@ -58,12 +55,19 @@ int init_infos(SDL_Context* context) {
     cfg_music->min = 0;
     cfg_music->max = MIX_MAX_VOLUME;
     cfg_music->value = context->music_volume;
+    cfg_music->save_player_data = 1;
+    cfg_music->color_0_pct = (SDL_Color){90, 90, 200, 220};
+    cfg_music->color_100_pct = (SDL_Color){200, 110, 90, 220};
+    cfg_music->knob_color = (SDL_Color){0, 200, 220, 255};
+    cfg_music->hidden = 1;
     cfg_music->on_change = on_music_volume_change;
     cf_music = crossfader_create(context->renderer, CROSSFADER_ID_MUSIC_VOLUME, cfg_music);
     free(cfg_music);
     if (!cf_music) {
         printf("Failed to create music volume crossfader\n");
         loading_fails++;
+    } else if (context) {
+        context->music_volume = cf_music->cfg->value;
     }
 
     /* Crossfader effets sonores */
@@ -75,12 +79,24 @@ int init_infos(SDL_Context* context) {
     cfg_sfx->min = 0;
     cfg_sfx->max = MIX_MAX_VOLUME;
     cfg_sfx->value = context->sound_effects_volume;
+    cfg_sfx->save_player_data = 1;
+    cfg_sfx->color_0_pct = (SDL_Color){90, 90, 200, 220};
+    cfg_sfx->color_100_pct = (SDL_Color){200, 110, 90, 220};
+    cfg_sfx->knob_color = (SDL_Color){0, 200, 220, 255};
+    cfg_sfx->hidden = 1;
     cfg_sfx->on_change = on_sfx_volume_change;
     cf_sfx = crossfader_create(context->renderer, CROSSFADER_ID_SFX_VOLUME, cfg_sfx);
     free(cfg_sfx);
     if (!cf_sfx) {
         printf("Failed to create sfx volume crossfader\n");
         loading_fails++;
+    } else if (context) {
+        context->sound_effects_volume = cf_sfx->cfg->value;
+    }
+
+    if (context) {
+        audio_set_type_volume(AUDIO_SOUND_KIND_MUSIC, context->music_volume);
+        audio_set_type_volume(AUDIO_SOUND_KIND_SFX, context->sound_effects_volume);
     }
 
     return loading_fails;
@@ -207,7 +223,7 @@ void infos_display(SDL_Context* context) {
             /* Labels des crossfaders (coordonnées bandeau, même repère que text_display) */
             int label_x = display_x + 100;
             text_display(context->renderer, "Musique", FONT_LARABIE, 18, COL_WHITE, label_x, 395, 0, 255);
-            text_display(context->renderer, "Effets", FONT_LARABIE, 18, COL_WHITE, label_x, 325, 0, 255);
+            text_display(context->renderer, "Effets Sonores", FONT_LARABIE, 18, COL_WHITE, label_x, 325, 0, 255);
 
             /* Rendu des crossfaders */
             crossfaders_render(context->renderer);

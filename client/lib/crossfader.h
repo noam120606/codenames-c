@@ -20,6 +20,10 @@ typedef struct CrossfaderConfig {
     int max;
     int value;
     int hidden;
+    int save_player_data;     /* booléen: sauvegarde la valeur en temps réel */
+    SDL_Color color_0_pct;    /* couleur de la track à 0% */
+    SDL_Color color_100_pct;  /* couleur de la track à 100% */
+    SDL_Color knob_color;     /* couleur du noeud */
     void (*on_change)(SDL_Context* ctx, int new_value);
 
     /* --- champs d'état (runtime) --- */

@@ -20,12 +20,12 @@ static ButtonReturn lobby_button_click(SDL_Context* context, ButtonId button_id)
         case BTN_BLUE_AGENT:
             context->player_role = ROLE_AGENT;
             context->player_team = TEAM_BLUE;
-            printf("Selected team: BLUE AGENT\n");
+            printf("Selected role: BLUE AGENT\n");
             break;
         case BTN_BLUE_SPY:
             context->player_role = ROLE_SPY;
             context->player_team = TEAM_BLUE;
-            printf("Selected team: BLUE SPY\n");
+            printf("Selected role: BLUE SPY\n");
             break;
         case BTN_QUIT:
             return BTN_RET_QUIT;

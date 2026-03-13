@@ -3,6 +3,96 @@
 
 static Crossfader* crossfaders[MAX_CROSSFADERS];
 static int crossfader_count = 0;
+static const char* PLAYER_PROPERTIES_PATH = "datas/player.properties";
+
+static char* ltrim(char* s) {
+    while (*s && isspace((unsigned char)*s)) s++;
+    return s;
+}
+
+static void rtrim(char* s) {
+    size_t len = strlen(s);
+    while (len > 0 && isspace((unsigned char)s[len - 1])) {
+        s[len - 1] = '\0';
+        len--;
+    }
+}
+
+static const char* player_key_for_crossfader_id(int id) {
+    if (id == CROSSFADER_ID_MUSIC_VOLUME) return "MUSIC_VOLUME";
+    if (id == CROSSFADER_ID_SFX_VOLUME) return "SOUND_EFFECTS_VOLUME";
+    return NULL;
+}
+
+static int player_properties_read_value(const char* key, int* out_value) {
+    if (!key || !out_value) return 0;
+
+    FILE* file = fopen(PLAYER_PROPERTIES_PATH, "r");
+    if (!file) return 0;
+
+    char line[256];
+    int found = 0;
+    while (fgets(line, sizeof(line), file)) {
+        char key_buf[128] = {0};
+        int parsed_value = 0;
+        if (sscanf(line, " %127[^=]= %d", key_buf, &parsed_value) == 2) {
+            char* parsed_key = ltrim(key_buf);
+            rtrim(parsed_key);
+            if (strcmp(parsed_key, key) == 0) {
+                *out_value = parsed_value;
+                found = 1;
+                break;
+            }
+        }
+    }
+
+    fclose(file);
+    return found;
+}
+
+static int player_properties_write_volumes(int music_volume, int sound_effects_volume) {
+    FILE* file = fopen(PLAYER_PROPERTIES_PATH, "w");
+    if (!file) return EXIT_FAILURE;
+
+    fprintf(file, "MUSIC_VOLUME = %d\n", music_volume);
+    fprintf(file, "SOUND_EFFECTS_VOLUME = %d\n", sound_effects_volume);
+    fclose(file);
+    return EXIT_SUCCESS;
+}
+
+static void crossfader_load_saved_value_if_enabled(Crossfader* cf) {
+    if (!cf || !cf->cfg || !cf->cfg->save_player_data) return;
+
+    const char* key = player_key_for_crossfader_id(cf->id);
+    if (!key) return;
+
+    int saved_value = 0;
+    if (player_properties_read_value(key, &saved_value)) {
+        cf->cfg->value = saved_value;
+    }
+}
+
+static void crossfader_save_value_if_enabled(const Crossfader* cf) {
+    if (!cf || !cf->cfg || !cf->cfg->save_player_data) return;
+
+    const char* key = player_key_for_crossfader_id(cf->id);
+    if (!key) return;
+
+    int music_volume = MIX_MAX_VOLUME;
+    int sound_effects_volume = MIX_MAX_VOLUME;
+    int value = 0;
+
+    if (player_properties_read_value("MUSIC_VOLUME", &value)) music_volume = value;
+    if (player_properties_read_value("SOUND_EFFECTS_VOLUME", &value)) sound_effects_volume = value;
+
+    if (strcmp(key, "MUSIC_VOLUME") == 0) {
+        music_volume = cf->cfg->value;
+    } else if (strcmp(key, "SOUND_EFFECTS_VOLUME") == 0) {
+        sound_effects_volume = cf->cfg->value;
+    }
+
+    (void)player_properties_write_volumes(music_volume, sound_effects_volume);
+}
 
 /** Initialise une CrossfaderConfig avec des valeurs par défaut. */
 CrossfaderConfig* crossfader_config_init(void) {
@@ -17,6 +107,10 @@ CrossfaderConfig* crossfader_config_init(void) {
     cfg->max = 100;
     cfg->value = 50;
     cfg->hidden = 0;
+    cfg->save_player_data = 0;
+    cfg->color_0_pct = (SDL_Color){120, 120, 120, 200};
+    cfg->color_100_pct = (SDL_Color){200, 200, 200, 220};
+    cfg->knob_color = (SDL_Color){200, 200, 200, 255};
     cfg->on_change = NULL;
 
     cfg->rect = (SDL_Rect){0, 0, 0, 0};
@@ -64,6 +158,9 @@ Crossfader* crossfader_create(SDL_Renderer* renderer, int id, const CrossfaderCo
     cf->cfg->dragging = 0;
     cf->cfg->hover = 0;
 
+    /* optional persisted value */
+    crossfader_load_saved_value_if_enabled(cf);
+
     /* clamp value */
     if (cf->cfg->value < cf->cfg->min) cf->cfg->value = cf->cfg->min;
     if (cf->cfg->value > cf->cfg->max) cf->cfg->value = cf->cfg->max;
@@ -100,6 +197,7 @@ int crossfader_set_value(int id, int value) {
     if (cf->cfg->value != value) {
         cf->cfg->value = value;
         if (cf->cfg->on_change) cf->cfg->on_change(NULL, cf->cfg->value);
+        crossfader_save_value_if_enabled(cf);
     }
     return EXIT_SUCCESS;
 }
@@ -124,8 +222,39 @@ static int knob_x_for_value(Crossfader* cf, int knob_w) {
     return cf->cfg->rect.x + (int)(t * span) + knob_w/2;
 }
 
+static double value_percent_for_crossfader(const Crossfader* cf) {
+    int range = cf->cfg->max - cf->cfg->min;
+    if (range <= 0) return 0.0;
+    double t = (double)(cf->cfg->value - cf->cfg->min) / (double)range;
+    if (t < 0.0) t = 0.0;
+    if (t > 1.0) t = 1.0;
+    return t;
+}
+
+static SDL_Color lerp_color(SDL_Color c0, SDL_Color c1, double t) {
+    SDL_Color out;
+    out.r = (Uint8)round((1.0 - t) * c0.r + t * c1.r);
+    out.g = (Uint8)round((1.0 - t) * c0.g + t * c1.g);
+    out.b = (Uint8)round((1.0 - t) * c0.b + t * c1.b);
+    out.a = (Uint8)round((1.0 - t) * c0.a + t * c1.a);
+    return out;
+}
+
+static SDL_Color brighten_color(SDL_Color c, int delta) {
+    int r = (int)c.r + delta;
+    int g = (int)c.g + delta;
+    int b = (int)c.b + delta;
+    SDL_Color out = {
+        (Uint8)((r > 255) ? 255 : r),
+        (Uint8)((g > 255) ? 255 : g),
+        (Uint8)((b > 255) ? 255 : b),
+        c.a
+    };
+    return out;
+}
+
 /* Update value from pixel x coordinate */
-static void update_value_from_mouse(Crossfader* cf, int mouse_x) {
+static void update_value_from_mouse(Crossfader* cf, SDL_Context* ctx, int mouse_x) {
     int knob_w = cf->cfg->rect.h; /* use height as knob size */
     int left = cf->cfg->rect.x + knob_w/2;
     int right = cf->cfg->rect.x + cf->cfg->rect.w - knob_w/2;
@@ -137,7 +266,8 @@ static void update_value_from_mouse(Crossfader* cf, int mouse_x) {
     if (newv > cf->cfg->max) newv = cf->cfg->max;
     if (newv != cf->cfg->value) {
         cf->cfg->value = newv;
-        if (cf->cfg->on_change) cf->cfg->on_change(NULL, cf->cfg->value);
+        if (cf->cfg->on_change) cf->cfg->on_change(ctx, cf->cfg->value);
+        crossfader_save_value_if_enabled(cf);
     }
 }
 
@@ -150,7 +280,7 @@ void crossfaders_handle_event(SDL_Context* ctx, SDL_Event* event) {
             Crossfader* cf = crossfaders[i];
             if (!cf || cf->cfg->hidden) continue;
             cf->cfg->hover = point_in_rect(mx, my, &cf->cfg->rect);
-            if (cf->cfg->dragging) update_value_from_mouse(cf, mx);
+            if (cf->cfg->dragging) update_value_from_mouse(cf, ctx, mx);
         }
     } else if (event->type == SDL_MOUSEBUTTONDOWN && event->button.button == SDL_BUTTON_LEFT) {
         int mx = event->button.x;
@@ -160,7 +290,7 @@ void crossfaders_handle_event(SDL_Context* ctx, SDL_Event* event) {
             if (!cf || cf->cfg->hidden) continue;
             if (point_in_rect(mx, my, &cf->cfg->rect)) {
                 cf->cfg->dragging = 1;
-                update_value_from_mouse(cf, mx);
+                update_value_from_mouse(cf, ctx, mx);
             }
         }
     } else if (event->type == SDL_MOUSEBUTTONUP && event->button.button == SDL_BUTTON_LEFT) {
@@ -172,41 +302,154 @@ void crossfaders_handle_event(SDL_Context* ctx, SDL_Event* event) {
     }
 }
 
+/* --- Shape helpers -------------------------------------------------------- */
+
+static void render_filled_circle(SDL_Renderer* renderer, int cx, int cy, int r) {
+    if (r <= 0) return;
+    for (int dy = -r; dy <= r; dy++) {
+        int dx = (int)sqrt((double)(r * r - dy * dy));
+        SDL_RenderDrawLine(renderer, cx - dx, cy + dy, cx + dx, cy + dy);
+    }
+}
+
+static void render_circle_outline(SDL_Renderer* renderer, int cx, int cy, int r) {
+    if (r <= 0) return;
+    for (int dy = -r; dy <= r; dy++) {
+        int dx = (int)sqrt((double)(r * r - dy * dy));
+        SDL_RenderDrawPoint(renderer, cx - dx, cy + dy);
+        SDL_RenderDrawPoint(renderer, cx + dx, cy + dy);
+    }
+}
+
+static void render_filled_half_circle(SDL_Renderer* renderer, int cx, int cy, int r, int is_left) {
+    if (r <= 0) return;
+    for (int dy = -r; dy <= r; dy++) {
+        int dx = (int)sqrt((double)(r * r - dy * dy));
+        if (is_left) {
+            SDL_RenderDrawLine(renderer, cx - dx, cy + dy, cx, cy + dy);
+        } else {
+            SDL_RenderDrawLine(renderer, cx, cy + dy, cx + dx, cy + dy);
+        }
+    }
+}
+
+static void render_half_circle_outline(SDL_Renderer* renderer, int cx, int cy, int r, int is_left) {
+    if (r <= 0) return;
+    for (int dy = -r; dy <= r; dy++) {
+        int dx = (int)sqrt((double)(r * r - dy * dy));
+        if (is_left) {
+            SDL_RenderDrawPoint(renderer, cx - dx, cy + dy);
+        } else {
+            SDL_RenderDrawPoint(renderer, cx + dx, cy + dy);
+        }
+    }
+}
+
+/* Full pill (rounded both ends) */
+static void render_filled_capsule(SDL_Renderer* renderer, int x, int y, int w, int h) {
+    if (w <= 0 || h <= 0) return;
+    int r = h / 2;
+    int cx_left  = x + r;
+    int cx_right = x + w - r;
+    int cy = y + r;
+
+    if (w > 2 * r) {
+        SDL_Rect center = { x + r, y, w - 2 * r, h };
+        SDL_RenderFillRect(renderer, &center);
+    }
+
+    render_filled_half_circle(renderer, cx_left, cy, r, 1);
+    render_filled_half_circle(renderer, cx_right, cy, r, 0);
+}
+
+/* Left-capped pill: rounded on the left, straight on the right at x+w */
+static void render_filled_left_capsule(SDL_Renderer* renderer, int x, int y, int w, int h) {
+    if (w <= 0 || h <= 0) return;
+    int r = h / 2;
+    int cx_left = x + r;
+    int cy = y + r;
+
+    if (w > r) {
+        SDL_Rect center = { cx_left, y, w - r, h };
+        SDL_RenderFillRect(renderer, &center);
+    }
+
+    render_filled_half_circle(renderer, cx_left, cy, r, 1);
+}
+
+/* Capsule outline */
+static void render_capsule_outline(SDL_Renderer* renderer, int x, int y, int w, int h) {
+    if (w <= 0 || h <= 0) return;
+    int r = h / 2;
+    int cx_left  = x + r;
+    int cx_right = x + w - r;
+    int cy = y + r;
+
+    SDL_RenderDrawLine(renderer, cx_left, y,         cx_right, y);
+    SDL_RenderDrawLine(renderer, cx_left, y + h - 1, cx_right, y + h - 1);
+
+    render_half_circle_outline(renderer, cx_left, cy, r, 1);
+    render_half_circle_outline(renderer, cx_right, cy, r, 0);
+}
+
+/* -------------------------------------------------------------------------- */
+
 void crossfaders_render(SDL_Renderer* renderer) {
     if (!renderer) return;
     for (int i = 0; i < crossfader_count; ++i) {
         Crossfader* cf = crossfaders[i];
         if (!cf || cf->cfg->hidden) continue;
 
-        /* Draw track */
-        SDL_Rect track = cf->cfg->rect;
+        int knob_w = cf->cfg->rect.h; /* knob diameter == track height */
+        int r      = knob_w / 2;
+        int kx     = knob_x_for_value(cf, knob_w);
+        int cy     = cf->cfg->rect.y + r;
+        double t   = value_percent_for_crossfader(cf);
+
+        SDL_Color fill_color = lerp_color(cf->cfg->color_0_pct, cf->cfg->color_100_pct, t);
+        SDL_Color base_track_color = (SDL_Color){
+            (Uint8)(fill_color.r / 2),
+            (Uint8)(fill_color.g / 2),
+            (Uint8)(fill_color.b / 2),
+            (Uint8)((fill_color.a > 60) ? fill_color.a - 40 : fill_color.a)
+        };
+
         SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
-        SDL_SetRenderDrawColor(renderer, 80, 80, 80, 200);
-        SDL_RenderFillRect(renderer, &track);
 
-        /* Draw progress filled portion */
-        int knob_w = cf->cfg->rect.h; /* square knob */
-        int left = cf->cfg->rect.x + knob_w/2;
-        int right = cf->cfg->rect.x + cf->cfg->rect.w - knob_w/2;
-        int kx = knob_x_for_value(cf, knob_w);
-        SDL_Rect filled = { left, cf->cfg->rect.y, kx - left, cf->cfg->rect.h };
-        if (filled.w < 0) filled.w = 0;
-        SDL_SetRenderDrawColor(renderer, 180, 180, 180, 200);
-        SDL_RenderFillRect(renderer, &filled);
+        /* Draw track as full capsule */
+        SDL_SetRenderDrawColor(renderer,
+            base_track_color.r, base_track_color.g,
+            base_track_color.b, base_track_color.a);
+        render_filled_capsule(renderer,
+            cf->cfg->rect.x, cf->cfg->rect.y,
+            cf->cfg->rect.w, cf->cfg->rect.h);
 
-        /* Draw knob as rounded-ish rect */
-        SDL_Rect knob = { kx - knob_w/2, cf->cfg->rect.y, knob_w, cf->cfg->rect.h };
-        if (cf->cfg->hover || cf->cfg->dragging) {
-            SDL_SetRenderDrawColor(renderer, 230, 230, 230, 255);
-        } else {
-            SDL_SetRenderDrawColor(renderer, 200, 200, 200, 255);
+        /* Draw progress filled portion (left-capped pill up to knob center) */
+        int filled_w = kx - cf->cfg->rect.x;
+        if (filled_w > 0) {
+            SDL_SetRenderDrawColor(renderer,
+                fill_color.r, fill_color.g,
+                fill_color.b, fill_color.a);
+            render_filled_left_capsule(renderer,
+                cf->cfg->rect.x, cf->cfg->rect.y,
+                filled_w, cf->cfg->rect.h);
         }
-        SDL_RenderFillRect(renderer, &knob);
 
-        /* draw outline */
+        /* Draw round knob */
+        SDL_Color knob_color = cf->cfg->knob_color;
+        if (cf->cfg->hover || cf->cfg->dragging)
+            knob_color = brighten_color(knob_color, 30);
+        SDL_SetRenderDrawColor(renderer,
+            knob_color.r, knob_color.g,
+            knob_color.b, knob_color.a);
+        render_filled_circle(renderer, kx, cy, r);
+
+        /* Outlines */
         SDL_SetRenderDrawColor(renderer, 60, 60, 60, 255);
-        SDL_RenderDrawRect(renderer, &track);
-        SDL_RenderDrawRect(renderer, &knob);
+        render_capsule_outline(renderer,
+            cf->cfg->rect.x, cf->cfg->rect.y,
+            cf->cfg->rect.w, cf->cfg->rect.h);
+        render_circle_outline(renderer, kx, cy, r);
     }
 }
 

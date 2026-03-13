@@ -52,6 +52,7 @@ typedef struct InputConfig {
     int placeholder_count;
     const char* submitted_label;
     int maxlen;
+    int save_player_data; /**< Si 1, sauvegarde/charge la valeur de l'input dans datas/player.properties. */
     SDL_Color bg_color;
     SDL_Color border_color;
     SDL_Color text_color;
@@ -142,6 +143,15 @@ int input_is_submitted(Input* in);
  * @param in Pointeur vers l'input.
  */
 void input_clear_submitted(Input* in);
+
+/**
+ * Soumet le texte courant de l'input (même comportement qu'appuyer sur Entrée).
+ * Marque l'input comme soumis, appelle le callback `on_submit` si défini,
+ * puis vide le texte courant de l'input.
+ * @param context Contexte SDL passé au callback de soumission.
+ * @param in Pointeur vers l'input.
+ */
+void input_submit(SDL_Context* context, Input* in);
 
 /**
  * Définit le texte de l'input. Si le texte dépasse la longueur maximale, il sera tronqué.

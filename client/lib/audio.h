@@ -22,6 +22,24 @@ typedef enum {
 } SoundID;
 
 /**
+ * Logical type of a sound.
+ */
+typedef enum {
+    AUDIO_SOUND_KIND_MUSIC,
+    AUDIO_SOUND_KIND_SFX,
+} AudioSoundKind;
+
+/**
+ * Per-sound configuration.
+ */
+typedef struct {
+    AudioSoundKind kind;      /**< Music or sound effect. */
+    int volume;               /**< Sound base volume (0-128). */
+    int bypass_filter;        /**< 0 = no filter, 1 = enable low-pass filter. */
+    float filter_cutoff_hz;   /**< Low-pass cutoff frequency in Hz. */
+} SoundConfig;
+
+/**
  * Initialize the audio subsystem.
  * @return EXIT_SUCCESS on success, EXIT_FAILURE on failure.
  */
@@ -33,6 +51,45 @@ int audio_init();
  * @param loops The number of times to loop the sound effect (-1 for infinite).
  */
 void audio_play(SoundID id, int loops);
+
+/**
+ * Set all config fields for a sound.
+ * @param id The sound ID.
+ * @param cfg The new config.
+ * @return EXIT_SUCCESS on success, EXIT_FAILURE on failure.
+ */
+int audio_set_sound_config(SoundID id, const SoundConfig* cfg);
+
+/**
+ * Get all config fields for a sound.
+ * @param id The sound ID.
+ * @param out_cfg Output config pointer.
+ * @return EXIT_SUCCESS on success, EXIT_FAILURE on failure.
+ */
+int audio_get_sound_config(SoundID id, SoundConfig* out_cfg);
+
+/**
+ * Set a sound volume.
+ * @param id The sound ID.
+ * @param volume Volume in range 0..MIX_MAX_VOLUME.
+ * @return EXIT_SUCCESS on success, EXIT_FAILURE on failure.
+ */
+int audio_set_sound_volume(SoundID id, int volume);
+
+/**
+ * Enable/disable filter bypass for a sound.
+ * @param id The sound ID.
+ * @param bypass_filter 1 = bypass filter, 0 = apply filter.
+ * @return EXIT_SUCCESS on success, EXIT_FAILURE on failure.
+ */
+int audio_set_sound_bypass_filter(SoundID id, int bypass_filter);
+
+/**
+ * Set global volume for a sound kind (music or sfx).
+ * @param kind Audio sound kind.
+ * @param volume Volume in range 0..MIX_MAX_VOLUME.
+ */
+void audio_set_type_volume(AudioSoundKind kind, int volume);
 
 /**
  * Stop a sound effect.
