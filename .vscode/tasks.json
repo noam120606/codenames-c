@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Run Server",
+      "label": "codenames-c: Run Server",
       "type": "shell",
       "command": "./run.sh",
       "options": {
@@ -15,7 +15,7 @@
       }
     },
     {
-      "label": "Run Client",
+      "label": "codenames-c: Run Client",
       "type": "shell",
       "command": "./run.sh",
       "options": {
@@ -28,8 +28,8 @@
       }
     },
     {
-      "label": "Run All",
-      "dependsOn": ["Run Server", "Run Client"],
+      "label": "codenames-c: Run All",
+      "dependsOn": ["codenames-c: Run Server", "codenames-c: Run Client"],
       "dependsOrder": "parallel",
       "group": {
         "kind": "build",
