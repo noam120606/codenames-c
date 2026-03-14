@@ -24,6 +24,36 @@ static const char* player_key_for_crossfader_id(int id) {
     return NULL;
 }
 
+static int player_properties_read_name(char* out_name, size_t out_size) {
+    if (!out_name || out_size == 0) return 0;
+
+    out_name[0] = '\0';
+
+    FILE* file = fopen(PLAYER_PROPERTIES_PATH, "r");
+    if (!file) return 0;
+
+    char line[256];
+    int found = 0;
+    while (fgets(line, sizeof(line), file)) {
+        char key_buf[128] = {0};
+        char value_buf[128] = {0};
+        if (sscanf(line, " %127[^=]= %127[^\n]", key_buf, value_buf) == 2) {
+            char* parsed_key = ltrim(key_buf);
+            char* parsed_value = ltrim(value_buf);
+            rtrim(parsed_key);
+            rtrim(parsed_value);
+            if (strcmp(parsed_key, "PLAYER_NAME") == 0) {
+                snprintf(out_name, out_size, "%s", parsed_value);
+                found = 1;
+                break;
+            }
+        }
+    }
+
+    fclose(file);
+    return found;
+}
+
 static int player_properties_read_value(const char* key, int* out_value) {
     if (!key || !out_value) return 0;
 
@@ -51,11 +81,17 @@ static int player_properties_read_value(const char* key, int* out_value) {
 }
 
 static int player_properties_write_volumes(int music_volume, int sound_effects_volume) {
+    char player_name[128] = "";
+    int has_player_name = player_properties_read_name(player_name, sizeof(player_name));
+
     FILE* file = fopen(PLAYER_PROPERTIES_PATH, "w");
     if (!file) return EXIT_FAILURE;
 
     fprintf(file, "MUSIC_VOLUME = %d\n", music_volume);
     fprintf(file, "SOUND_EFFECTS_VOLUME = %d\n", sound_effects_volume);
+    if (has_player_name) {
+        fprintf(file, "PLAYER_NAME = %s\n", player_name);
+    }
     fclose(file);
     return EXIT_SUCCESS;
 }

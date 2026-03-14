@@ -118,6 +118,10 @@ int main(int argc, char* argv[]){
             /* Le bandeau infos (crossfaders volume) est toujours actif */
             infos_handle_event(&context, &e);
 
+            /* Fond interactif (clic sur un symbole) */
+            if (context.game_state == GAME_STATE_MENU || context.game_state == GAME_STATE_LOBBY)
+                background_handle_event(&context, &e);
+
             // Déléguer l'événement selon l'état courant
             switch (context.game_state) {
                 case GAME_STATE_MENU: menu_handle_event(&context, &e); break;
