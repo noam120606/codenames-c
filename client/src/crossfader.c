@@ -243,6 +243,93 @@ void crossfader_set_on_change(Crossfader* cf, void (*cb)(SDL_Context*, int)) {
     cf->cfg->on_change = cb;
 }
 
+int edit_crfd_cfg(int id, CrfdCfgKey key, intptr_t value) {
+    Crossfader* cf = find_by_id(id);
+    if (!cf || !cf->cfg) return EXIT_FAILURE;
+
+    switch (key) {
+        case CRFD_CFG_X:
+            cf->cfg->x = (int)value;
+            cf->cfg->rect.x = (int)value;
+            return EXIT_SUCCESS;
+        case CRFD_CFG_Y:
+            cf->cfg->y = (int)value;
+            cf->cfg->rect.y = (int)value;
+            return EXIT_SUCCESS;
+        case CRFD_CFG_W:
+            cf->cfg->w = (int)value;
+            cf->cfg->rect.w = (int)value;
+            return EXIT_SUCCESS;
+        case CRFD_CFG_H:
+            cf->cfg->h = (int)value;
+            cf->cfg->rect.h = (int)value;
+            return EXIT_SUCCESS;
+        case CRFD_CFG_MIN: {
+            int new_min = (int)value;
+            if (new_min >= cf->cfg->max) return EXIT_FAILURE;
+            cf->cfg->min = new_min;
+            if (cf->cfg->value < cf->cfg->min) return crossfader_set_value(id, cf->cfg->min);
+            return EXIT_SUCCESS;
+        }
+        case CRFD_CFG_MAX: {
+            int new_max = (int)value;
+            if (new_max <= cf->cfg->min) return EXIT_FAILURE;
+            cf->cfg->max = new_max;
+            if (cf->cfg->value > cf->cfg->max) return crossfader_set_value(id, cf->cfg->max);
+            return EXIT_SUCCESS;
+        }
+        case CRFD_CFG_VALUE:
+            return crossfader_set_value(id, (int)value);
+        case CRFD_CFG_HIDDEN:
+            cf->cfg->hidden = ((int)value != 0);
+            return EXIT_SUCCESS;
+        case CRFD_CFG_SAVE_PLAYER_DATA:
+            cf->cfg->save_player_data = ((int)value != 0);
+            return EXIT_SUCCESS;
+        case CRFD_CFG_COLOR_0_PCT:
+            if (!value) return EXIT_FAILURE;
+            cf->cfg->color_0_pct = *(const SDL_Color*)value;
+            return EXIT_SUCCESS;
+        case CRFD_CFG_COLOR_100_PCT:
+            if (!value) return EXIT_FAILURE;
+            cf->cfg->color_100_pct = *(const SDL_Color*)value;
+            return EXIT_SUCCESS;
+        case CRFD_CFG_KNOB_COLOR:
+            if (!value) return EXIT_FAILURE;
+            cf->cfg->knob_color = *(const SDL_Color*)value;
+            return EXIT_SUCCESS;
+        case CRFD_CFG_ON_CHANGE:
+            if (!value) {
+                cf->cfg->on_change = NULL;
+                return EXIT_SUCCESS;
+            }
+            cf->cfg->on_change = *(void (**)(SDL_Context*, int))value;
+            return EXIT_SUCCESS;
+        case CRFD_CFG_RECT:
+            if (!value) return EXIT_FAILURE;
+            cf->cfg->rect = *(const SDL_Rect*)value;
+            cf->cfg->x = cf->cfg->rect.x;
+            cf->cfg->y = cf->cfg->rect.y;
+            cf->cfg->w = cf->cfg->rect.w;
+            cf->cfg->h = cf->cfg->rect.h;
+            return EXIT_SUCCESS;
+        case CRFD_CFG_DRAGGING:
+            cf->cfg->dragging = ((int)value != 0);
+            return EXIT_SUCCESS;
+        case CRFD_CFG_HOVER:
+            cf->cfg->hover = ((int)value != 0);
+            return EXIT_SUCCESS;
+        case CRFD_CFG_TRACK_TEXTURE:
+            cf->cfg->track_texture = (SDL_Texture*)value;
+            return EXIT_SUCCESS;
+        case CRFD_CFG_KNOB_TEXTURE:
+            cf->cfg->knob_texture = (SDL_Texture*)value;
+            return EXIT_SUCCESS;
+        default:
+            return EXIT_FAILURE;
+    }
+}
+
 static int point_in_rect(int x, int y, SDL_Rect* r) {
     return x >= r->x && x <= (r->x + r->w) && y >= r->y && y <= (r->y + r->h);
 }

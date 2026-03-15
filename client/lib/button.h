@@ -1,6 +1,8 @@
+
 #ifndef BUTTON_H
 #define BUTTON_H
 
+#include <stdint.h>
 #include "../SDL2/include/SDL2/SDL.h"
 #include "../lib/sdl.h"
 
@@ -17,7 +19,8 @@ typedef enum ButtonId {
     BTN_RED_AGENT,
     BTN_RED_SPY,
     BTN_BLUE_AGENT,
-    BTN_BLUE_SPY
+    BTN_BLUE_SPY,
+    BTN_RETURN,
 } ButtonId;
 
 /**
@@ -25,7 +28,7 @@ typedef enum ButtonId {
  */
 typedef enum ButtonReturn {
     BTN_RET_NONE,
-    BTN_RET_QUIT
+    BTN_RET_QUIT,
 } ButtonReturn;
 
 /**
@@ -35,68 +38,117 @@ typedef enum ButtonReturn {
 typedef ButtonReturn (*ButtonCallback)(SDL_Context* context, ButtonId button_id);
 
 /**
- * Structure représentant un bouton avec callback.
- * @param id Identifiant unique du bouton.
- * @param rect Rectangle définissant la position et la taille.
- * @param texture Texture du bouton.
- * @param is_hovered Indique si le bouton est survolé.
- * @param is_text Indique si le bouton est un bouton de texte.
- * @param text_rect Rectangle définissant la position et la taille du texte (UTF-8) => Seulement si is_text est vrai.
- * @param text_texture Texture du texte (UTF-8) => Seulement si is_text est vrai.
- * @param hidden Indique si le bouton est caché (non affiché et non interact
- * @param callback Fonction à exécuter lors du clic.
- */
-typedef struct {
-    int id;
+ * Configuration pour créer un `Button`.
+ * Tous les champs ont des valeurs par défaut définies via `button_config_init`.
+ * La structure peut être modifiée à tout moment et passée à `button_create`.
+ *
+ * Champs configurables :
+ * @param x         Offset horizontal relatif au centre de la fenêtre (pixels).
+ *                  Positif → vers la droite, négatif → vers la gauche.
+ * @param y         Offset vertical relatif au centre de la fenêtre (pixels).
+ *                  Positif → vers le haut, négatif → vers le bas.
+ *                  Si x = 0 et y = 0, le centre du bouton est au centre de la fenêtre.
+ *                  Formules appliquées dans button_create :
+ *                    screen_x = WIN_WIDTH/2  + x - w/2
+ *                    screen_y = WIN_HEIGHT/2 - y - h/2
+ * @param w         Largeur du bouton. Si 0 et text != NULL, calculée automatiquement selon le ratio de l'image de fond.
+ * @param h         Hauteur du bouton (et hauteur cible pour le texte si is_text).
+ * @param text      Texte à afficher sur le bouton (UTF-8). NULL = bouton image sans texte.
+ * @param font_path Chemin vers le fichier .ttf utilisé pour rendre le texte. Ignoré si text est NULL.
+ * @param color     Couleur du texte. Ignorée si text est NULL.
+ * @param tex_path  Chemin vers l'image de fond (assets/img/…). NULL = pas de fond personnalisé (utilise "assets/img/buttons/empty.png" par défaut si text != NULL).
+ * @param hidden    Si 1, le bouton est caché (non affiché et non interactif).
+ * @param callback  Fonction appelée lors du clic. Peut être NULL.
+ *
+ * Champs d'état (runtime, gérés en interne — ne pas modifier directement) :
+ * @param rect         Rectangle de rendu calculé depuis x/y/w/h.
+ * @param texture      Texture de fond chargée depuis tex_path.
+ * @param is_hovered   Mis à jour automatiquement lors des événements souris.
+ * @param is_text      Mis à 1 automatiquement si text != NULL.
+ * @param text_rect    Rectangle de rendu du texte, calculé automatiquement.
+ * @param text_texture Texture du texte, générée automatiquement depuis text/font_path/color.
+*/
+typedef struct ButtonConfig {
+    /* --- champs configurables --- */
+    int x;
+    int y;
+    int w;
+    int h;
+    const char* text;
+    const char* font_path;
+    SDL_Color color;
+    const char* tex_path;
+    int hidden;
+    ButtonCallback callback;
+
+    /* --- champs d'état (runtime) --- */
     SDL_Rect rect;
     SDL_Texture* texture;
     int is_hovered;
     int is_text;
     SDL_Rect text_rect;
     SDL_Texture* text_texture;
-    int hidden;
-    ButtonCallback callback;
+} ButtonConfig;
+
+/**
+ * Clés de configuration modifiables via `edit_btn_cfg`.
+ */
+typedef enum ButtonCfgKey {
+    BTN_CFG_X = 100,
+    BTN_CFG_Y,
+    BTN_CFG_W,
+    BTN_CFG_H,
+    BTN_CFG_TEXT,
+    BTN_CFG_FONT_PATH,
+    BTN_CFG_COLOR,
+    BTN_CFG_TEX_PATH,
+    BTN_CFG_HIDDEN,
+    BTN_CFG_CALLBACK,
+    BTN_CFG_RECT,
+    BTN_CFG_TEXTURE,
+    BTN_CFG_IS_HOVERED,
+    BTN_CFG_IS_TEXT,
+    BTN_CFG_TEXT_RECT,
+    BTN_CFG_TEXT_TEXTURE,
+} ButtonCfgKey;
+
+/**
+ * Structure représentant un bouton.
+ * @param id  Identifiant unique du bouton.
+ * @param cfg Pointeur vers la configuration (possédée par le bouton, libérée par buttons_free).
+ */
+typedef struct {
+    int id;
+    ButtonConfig* cfg;
 } Button;
+
+/**
+ * Initialise une ButtonConfig avec des valeurs par défaut.
+ * @return Pointeur vers la config allouée, ou NULL en cas d'échec.
+ */
+ButtonConfig* button_config_init(void);
 
 /**
  * Initialise le système de boutons.
  * Doit être appelé une fois au démarrage.
  */
-void buttons_init();
+void buttons_init(void);
 
 /**
- * Crée et ajoute un bouton au système.
- * @param id Identifiant unique du bouton.
- * @param x Position x du bouton.
- * @param y Position y du bouton.
- * @param w Largeur du bouton.
- * @param h Hauteur du bouton.
- * @param texture Texture du bouton.
- * @param callback Fonction à exécuter lors du clic (peut être NULL).
+ * Crée et enregistre un bouton à partir d'une configuration.
+ * Si cfg est NULL, les valeurs par défaut sont utilisées.
+ * La configuration est copiée : le pointeur cfg peut être libéré après l'appel.
+ * @param renderer Renderer SDL utilisé pour charger les textures.
+ * @param id       Identifiant unique du bouton.
+ * @param cfg      Pointeur vers la configuration. NULL = valeurs par défaut.
  * @return Pointeur vers le bouton créé, ou NULL en cas d'erreur.
  */
-Button* button_create(int id, int x, int y, int w, int h, SDL_Texture* texture, ButtonCallback callback);
-
-/**
- * Crée et ajoute un bouton au système à partir d'un texte (utilise SDL_ttf).
- * @param renderer Renderer SDL utilisé pour créer la texture.
- * @param id Identifiant unique du bouton.
- * @param x Position x du bouton.
- * @param y Position y du bouton.
- * @param taille Taille du bouton (sa hauteur).
- * @param text Texte à afficher sur le bouton (UTF-8).
- * @param font_path Chemin vers le fichier .ttf.
- * @param color Couleur du texte.
- * @param callback Fonction à exécuter lors du clic (peut être NULL).
- * @return Pointeur vers le bouton créé, ou NULL en cas d'erreur.
- */
-Button* text_button_create(SDL_Renderer* renderer, int id, int x, int y, int taille,
-                               const char* text, const char* font_path, SDL_Color color,
-                               ButtonCallback callback);
+Button* button_create(SDL_Renderer* renderer, int id, const ButtonConfig* cfg);
 
 /**
  * Traite un événement SDL pour les boutons.
- * @param event L'événement SDL à traiter.
+ * @param context Contexte SDL.
+ * @param event   L'événement SDL à traiter.
  */
 ButtonReturn buttons_handle_event(SDL_Context* context, SDL_Event* event);
 
@@ -114,25 +166,17 @@ void buttons_display(SDL_Renderer* renderer);
 Button* button_get(int id);
 
 /**
- * Libère tous les boutons et le système.
+ * Libère tous les boutons et réinitialise le système.
  */
-int buttons_free();
+int buttons_free(void);
 
 /**
- * Cache un bouton.
- * @param id L'ID du bouton à cacher.
+ * Modifie une valeur de configuration d'un bouton.
+ * @param id    L'ID du bouton à modifier.
+ * @param key   Champ ciblé dans la configuration.
+ * @param value Valeur à appliquer (entier direct pour champs int/bool, pointeur casté en `intptr_t` pour les champs pointeurs, et adresse d'une structure pour `BTN_CFG_COLOR` / `BTN_CFG_RECT`).
+ * @return EXIT_SUCCESS si le bouton existe, sinon EXIT_FAILURE.
  */
-void hide_button(int id);
-
-/**
- * Cache tous les boutons.
- */
-void hide_all_buttons();
-
-/**
- * Affiche un bouton.
- * @param id L'ID du bouton à afficher.
- */
-void show_button(int id);
+int edit_btn_cfg(int id, ButtonCfgKey key, intptr_t value);
 
 #endif // BUTTON_H

@@ -3,6 +3,10 @@
 
 static const char* PLAYER_PROPERTIES_PATH = "datas/player.properties";
 
+#define MAX_INPUTS 32
+static Input* inputs[MAX_INPUTS];
+static int input_count = 0;
+
 static char* input_ltrim(char* s) {
     while (*s && isspace((unsigned char)*s)) s++;
     return s;
@@ -128,6 +132,13 @@ static void input_save_player_data_if_enabled(Input* in, const char* text) {
     (void)input_write_player_name_property(text ? text : "");
 }
 
+static Input* input_find_by_id(InputId id) {
+    for (int i = 0; i < input_count; ++i) {
+        if (inputs[i] && inputs[i]->id == id) return inputs[i];
+    }
+    return NULL;
+}
+
 static void input_clear_selection_internal(Input* in);
 
 static void input_submit_internal(SDL_Context* context, Input* in) {
@@ -245,6 +256,8 @@ static int next_word_pos(Input* in, int pos) {
 }
 
 Input* input_create(SDL_Renderer* renderer, InputId id, const InputConfig* cfg_in) {
+    if (input_count >= MAX_INPUTS) return NULL;
+
     Input* in = (Input*)malloc(sizeof(Input));
     if (!in) return NULL;
     in->id = id;
@@ -274,6 +287,17 @@ Input* input_create(SDL_Renderer* renderer, InputId id, const InputConfig* cfg_i
     in->cfg->sel_anchor = 0;
     in->cfg->placeholder_index = 0;
     in->cfg->placeholder_last_tick = SDL_GetTicks();
+
+    /* Conversion coordonnées relatives au centre -> écran.
+     * x positif = droite, y positif = haut.
+     * (x, y) représente le centre de l'input relatif au centre de la fenêtre. */
+    int rel_x = in->cfg->x;
+    int rel_y = in->cfg->y;
+    int screen_x = (WIN_WIDTH / 2) + rel_x - (in->cfg->w / 2);
+    int screen_y = (WIN_HEIGHT / 2) - rel_y - (in->cfg->h / 2);
+
+    in->cfg->x = screen_x;
+    in->cfg->y = screen_y;
 
     /* keep rect in sync */
     in->cfg->rect = (SDL_Rect){in->cfg->x, in->cfg->y, in->cfg->w, in->cfg->h};
@@ -305,11 +329,23 @@ Input* input_create(SDL_Renderer* renderer, InputId id, const InputConfig* cfg_i
         input_set_bg(in, renderer, in->cfg->bg_path, in->cfg->bg_padding);
     }
 
+    inputs[input_count++] = in;
+
     return in;
 }
 
 void input_destroy(Input* in) {
     if (!in) return;
+
+    for (int i = 0; i < input_count; ++i) {
+        if (inputs[i] == in) {
+            for (int j = i; j < input_count - 1; ++j) inputs[j] = inputs[j + 1];
+            inputs[input_count - 1] = NULL;
+            input_count--;
+            break;
+        }
+    }
+
     if (in->cfg) {
         if (in->cfg->text) free(in->cfg->text);
         if (in->cfg->bg_texture) free_image(in->cfg->bg_texture);
@@ -725,4 +761,177 @@ void input_set_padding(Input* in, int padding) {
     if (!in) return;
     if (padding < 0) padding = 0;
     in->cfg->padding = padding;
+}
+
+int edit_in_cfg(InputId id, InputCfgKey key, intptr_t value) {
+    Input* in = input_find_by_id(id);
+    if (!in || !in->cfg) return EXIT_FAILURE;
+
+    switch (key) {
+        case IN_CFG_X:
+            in->cfg->x = (int)value;
+            in->cfg->rect.x = (int)value;
+            return EXIT_SUCCESS;
+        case IN_CFG_Y:
+            in->cfg->y = (int)value;
+            in->cfg->rect.y = (int)value;
+            return EXIT_SUCCESS;
+        case IN_CFG_W:
+            in->cfg->w = (int)value;
+            in->cfg->rect.w = (int)value;
+            return EXIT_SUCCESS;
+        case IN_CFG_H:
+            in->cfg->h = (int)value;
+            in->cfg->rect.h = (int)value;
+            return EXIT_SUCCESS;
+        case IN_CFG_FONT_PATH:
+            in->cfg->font_path = (const char*)value;
+            return EXIT_SUCCESS;
+        case IN_CFG_FONT_SIZE:
+            in->cfg->font_size = (int)value;
+            return EXIT_SUCCESS;
+        case IN_CFG_PLACEHOLDERS:
+            in->cfg->placeholders = (const char**)value;
+            return EXIT_SUCCESS;
+        case IN_CFG_PLACEHOLDER_COUNT:
+            in->cfg->placeholder_count = (int)value;
+            return EXIT_SUCCESS;
+        case IN_CFG_SUBMITTED_LABEL:
+            in->cfg->submitted_label = (const char*)value;
+            return EXIT_SUCCESS;
+        case IN_CFG_MAXLEN: {
+            int new_maxlen = (int)value;
+            if (new_maxlen <= 0) return EXIT_FAILURE;
+
+            char* new_text = (char*)calloc((size_t)new_maxlen + 1, 1);
+            if (!new_text) return EXIT_FAILURE;
+
+            if (in->cfg->text) {
+                size_t old_len = strlen(in->cfg->text);
+                size_t copy_len = old_len;
+                if (copy_len > (size_t)new_maxlen) copy_len = (size_t)new_maxlen;
+                memcpy(new_text, in->cfg->text, copy_len);
+                new_text[copy_len] = '\0';
+                free(in->cfg->text);
+            }
+
+            in->cfg->text = new_text;
+            in->cfg->maxlen = new_maxlen;
+            in->cfg->len = (int)strlen(in->cfg->text);
+            if (in->cfg->cursor_pos > in->cfg->len) in->cfg->cursor_pos = in->cfg->len;
+            if (in->cfg->sel_start > in->cfg->len) in->cfg->sel_start = in->cfg->len;
+            if (in->cfg->sel_start + in->cfg->sel_len > in->cfg->len) {
+                in->cfg->sel_len = in->cfg->len - in->cfg->sel_start;
+                if (in->cfg->sel_len < 0) in->cfg->sel_len = 0;
+            }
+            return EXIT_SUCCESS;
+        }
+        case IN_CFG_SAVE_PLAYER_DATA:
+            in->cfg->save_player_data = ((int)value != 0);
+            return EXIT_SUCCESS;
+        case IN_CFG_BG_COLOR:
+            if (!value) return EXIT_FAILURE;
+            in->cfg->bg_color = *(const SDL_Color*)value;
+            return EXIT_SUCCESS;
+        case IN_CFG_BORDER_COLOR:
+            if (!value) return EXIT_FAILURE;
+            in->cfg->border_color = *(const SDL_Color*)value;
+            return EXIT_SUCCESS;
+        case IN_CFG_TEXT_COLOR:
+            if (!value) return EXIT_FAILURE;
+            in->cfg->text_color = *(const SDL_Color*)value;
+            return EXIT_SUCCESS;
+        case IN_CFG_PADDING:
+            in->cfg->padding = (int)value;
+            if (in->cfg->padding < 0) in->cfg->padding = 0;
+            return EXIT_SUCCESS;
+        case IN_CFG_CENTERED:
+            in->cfg->centered = ((int)value != 0);
+            return EXIT_SUCCESS;
+        case IN_CFG_BG_PATH:
+            in->cfg->bg_path = (const char*)value;
+            return EXIT_SUCCESS;
+        case IN_CFG_BG_PADDING:
+            in->cfg->bg_padding = (int)value;
+            return EXIT_SUCCESS;
+        case IN_CFG_ALLOWED_PATTERN:
+            in->cfg->allowed_pattern = (const char*)value;
+            return EXIT_SUCCESS;
+        case IN_CFG_INIT_TEXT:
+            in->cfg->init_text = (const char*)value;
+            return EXIT_SUCCESS;
+        case IN_CFG_RECT:
+            if (!value) return EXIT_FAILURE;
+            in->cfg->rect = *(const SDL_Rect*)value;
+            in->cfg->x = in->cfg->rect.x;
+            in->cfg->y = in->cfg->rect.y;
+            in->cfg->w = in->cfg->rect.w;
+            in->cfg->h = in->cfg->rect.h;
+            return EXIT_SUCCESS;
+        case IN_CFG_TEXT: {
+            const char* text_value = (const char*)value;
+            if (!text_value) text_value = "";
+            input_set_text(in, text_value);
+            return EXIT_SUCCESS;
+        }
+        case IN_CFG_LEN: {
+            int new_len = (int)value;
+            if (new_len < 0) new_len = 0;
+            int current_len = in->cfg->text ? (int)strlen(in->cfg->text) : 0;
+            if (new_len > current_len) new_len = current_len;
+            in->cfg->len = new_len;
+            if (in->cfg->text) in->cfg->text[new_len] = '\0';
+            if (in->cfg->cursor_pos > in->cfg->len) in->cfg->cursor_pos = in->cfg->len;
+            return EXIT_SUCCESS;
+        }
+        case IN_CFG_CURSOR_POS:
+            in->cfg->cursor_pos = (int)value;
+            if (in->cfg->cursor_pos < 0) in->cfg->cursor_pos = 0;
+            if (in->cfg->cursor_pos > in->cfg->len) in->cfg->cursor_pos = in->cfg->len;
+            return EXIT_SUCCESS;
+        case IN_CFG_FOCUSED:
+            in->cfg->focused = ((int)value != 0);
+            if (in->cfg->focused) SDL_StartTextInput();
+            else SDL_StopTextInput();
+            return EXIT_SUCCESS;
+        case IN_CFG_SUBMITTED:
+            in->cfg->submitted = ((int)value != 0);
+            return EXIT_SUCCESS;
+        case IN_CFG_BG_TEXTURE:
+            in->cfg->bg_texture = (SDL_Texture*)value;
+            return EXIT_SUCCESS;
+        case IN_CFG_SEL_START:
+            in->cfg->sel_start = (int)value;
+            return EXIT_SUCCESS;
+        case IN_CFG_SEL_LEN:
+            in->cfg->sel_len = (int)value;
+            return EXIT_SUCCESS;
+        case IN_CFG_SEL_ANCHOR:
+            in->cfg->sel_anchor = (int)value;
+            return EXIT_SUCCESS;
+        case IN_CFG_SUBMITTED_TEXT: {
+            const char* submitted_value = (const char*)value;
+            if (in->cfg->submitted_text) {
+                free(in->cfg->submitted_text);
+                in->cfg->submitted_text = NULL;
+            }
+            if (submitted_value) {
+                in->cfg->submitted_text = strdup(submitted_value);
+                if (!in->cfg->submitted_text) return EXIT_FAILURE;
+            }
+            return EXIT_SUCCESS;
+        }
+        case IN_CFG_PLACEHOLDER_INDEX:
+            in->cfg->placeholder_index = (int)value;
+            return EXIT_SUCCESS;
+        case IN_CFG_PLACEHOLDER_LAST_TICK:
+            in->cfg->placeholder_last_tick = (Uint32)value;
+            return EXIT_SUCCESS;
+        case IN_CFG_ON_SUBMIT:
+            if (!value) return EXIT_FAILURE;
+            in->cfg->on_submit = *(void (**)(SDL_Context*, const char*))value;
+            return EXIT_SUCCESS;
+        default:
+            return EXIT_FAILURE;
+    }
 }

@@ -1,6 +1,7 @@
 #ifndef CROSSFADER_H
 #define CROSSFADER_H
 
+#include <stdint.h>
 #include "../lib/sdl.h"
 
 #define MAX_CROSSFADERS 32
@@ -41,6 +42,30 @@ typedef struct Crossfader {
     int id;
     CrossfaderConfig* cfg;
 } Crossfader;
+
+/**
+ * Clés de configuration modifiables via `edit_crfd_cfg`.
+ */
+typedef enum CrfdCfgKey {
+    CRFD_CFG_X = 100,
+    CRFD_CFG_Y,
+    CRFD_CFG_W,
+    CRFD_CFG_H,
+    CRFD_CFG_MIN,
+    CRFD_CFG_MAX,
+    CRFD_CFG_VALUE,
+    CRFD_CFG_HIDDEN,
+    CRFD_CFG_SAVE_PLAYER_DATA,
+    CRFD_CFG_COLOR_0_PCT,
+    CRFD_CFG_COLOR_100_PCT,
+    CRFD_CFG_KNOB_COLOR,
+    CRFD_CFG_ON_CHANGE,
+    CRFD_CFG_RECT,
+    CRFD_CFG_DRAGGING,
+    CRFD_CFG_HOVER,
+    CRFD_CFG_TRACK_TEXTURE,
+    CRFD_CFG_KNOB_TEXTURE,
+} CrfdCfgKey;
 
 /** Initialise une `CrossfaderConfig` avec des valeurs par défaut. */
 CrossfaderConfig* crossfader_config_init(void);
@@ -96,5 +121,14 @@ void crossfader_set_on_change(Crossfader* cf, void (*cb)(SDL_Context*, int));
 /** Free all crossfaders.
  */
 void crossfaders_free(void);
+
+/**
+ * Modifie une valeur de configuration d'un crossfader identifié par son id.
+ * @param id    L'ID du crossfader à modifier.
+ * @param key   Champ ciblé dans la configuration.
+ * @param value Valeur à appliquer (entier direct pour champs int/bool, pointeur casté en `intptr_t` pour les champs pointeurs, et adresse d'une structure pour `CRFD_CFG_COLOR_0_PCT` / `CRFD_CFG_COLOR_100_PCT` / `CRFD_CFG_KNOB_COLOR` / `CRFD_CFG_RECT`).
+ * @return EXIT_SUCCESS si le crossfader existe, sinon EXIT_FAILURE.
+ */
+int edit_crfd_cfg(int id, CrfdCfgKey key, intptr_t value);
 
 #endif /* CROSSFADER_H */

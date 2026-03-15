@@ -62,7 +62,7 @@ int init_infos(SDL_Context* context) {
     cfg_music->hidden = 1;
     cfg_music->on_change = on_music_volume_change;
     cf_music = crossfader_create(context->renderer, CROSSFADER_ID_MUSIC_VOLUME, cfg_music);
-    free(cfg_music);
+
     if (!cf_music) {
         printf("Failed to create music volume crossfader\n");
         loading_fails++;
@@ -86,7 +86,7 @@ int init_infos(SDL_Context* context) {
     cfg_sfx->hidden = 1;
     cfg_sfx->on_change = on_sfx_volume_change;
     cf_sfx = crossfader_create(context->renderer, CROSSFADER_ID_SFX_VOLUME, cfg_sfx);
-    free(cfg_sfx);
+
     if (!cf_sfx) {
         printf("Failed to create sfx volume crossfader\n");
         loading_fails++;
@@ -271,7 +271,5 @@ int infos_free() {
         bandeau = NULL;
     }
     crossfaders_free();
-    cf_music = NULL;
-    cf_sfx = NULL;
     return EXIT_SUCCESS;
 }

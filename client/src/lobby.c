@@ -2,6 +2,11 @@
 
 static SDL_Texture* lobby_btn_red = NULL;
 static SDL_Texture* lobby_btn_blue = NULL;
+Button* btn_red_agent = NULL;
+Button* btn_red_spy = NULL;
+Button* btn_blue_agent = NULL;
+Button* btn_blue_spy = NULL;
+Button* btn_return = NULL;
 
 /* Callback pour boutons du lobby (choix de rôle / équipe) */
 static ButtonReturn lobby_button_click(SDL_Context* context, ButtonId button_id) {
@@ -27,8 +32,22 @@ static ButtonReturn lobby_button_click(SDL_Context* context, ButtonId button_id)
             context->player_team = TEAM_BLUE;
             printf("Selected role: BLUE SPY\n");
             break;
-        case BTN_QUIT:
-            return BTN_RET_QUIT;
+        case BTN_RETURN:
+            context->player_role = ROLE_NONE;
+            context->player_team = TEAM_NONE;
+            context->lobby_id = -1;
+            if (context->lobby_code) {
+                free(context->lobby_code);
+                context->lobby_code = NULL;
+            }
+            context->game_state = GAME_STATE_MENU;
+            edit_btn_cfg(BTN_RED_AGENT, BTN_CFG_HIDDEN, 1);
+            edit_btn_cfg(BTN_RED_SPY, BTN_CFG_HIDDEN, 1);
+            edit_btn_cfg(BTN_BLUE_AGENT, BTN_CFG_HIDDEN, 1);
+            edit_btn_cfg(BTN_BLUE_SPY, BTN_CFG_HIDDEN, 1);
+            edit_btn_cfg(BTN_RETURN, BTN_CFG_HIDDEN, 1);
+            printf("Returned to menu\n");
+            break;
         default:
             break;
     }
@@ -56,41 +75,93 @@ int lobby_init(SDL_Context* context) {
         load_errors++;
     }
 
-    /* créer les boutons de rôle/équipe (text_button_create existe déjà dans ton projet)
-       Positionner centrés et espacés verticalement pour être visibles sur la plupart des écrans */
-    int cx = WIN_WIDTH / 2;
-    int left_x = cx - 360;   /* colonne gauche (rouge) */
-    int right_x = cx + 200;  /* colonne droite (bleu) */
-    int top_y = WIN_HEIGHT / 2 - 120;    /* agent (haut) */
-    int bottom_y = WIN_HEIGHT / 2 + 40;  /* espion (bas) */
-    int height = 64;
+    /* Créer les boutons de rôle/équipe via ButtonConfig */
+    int height   = 64;
 
-    /* gauche = équipe rouge : Agent (haut) / Espion (bas) */
-    text_button_create(context->renderer, BTN_RED_AGENT,  left_x,  top_y, height, "Agent rouge",  FONT_LARABIE, COL_WHITE, lobby_button_click);
-    text_button_create(context->renderer, BTN_RED_SPY, left_x, bottom_y, height, "Espion rouge", FONT_LARABIE, COL_WHITE, lobby_button_click);
+    ButtonConfig* cfg_btn_red_agent = button_config_init();
+    if (cfg_btn_red_agent) {
+        cfg_btn_red_agent->x         = -360;
+        cfg_btn_red_agent->y         = 120;
+        cfg_btn_red_agent->h         = height;
+        cfg_btn_red_agent->hidden    = 1;
+        cfg_btn_red_agent->font_path = FONT_LARABIE;
+        cfg_btn_red_agent->color     = COL_WHITE;
+        cfg_btn_red_agent->text      = "Agent rouge";
+        cfg_btn_red_agent->callback  = lobby_button_click;
+        btn_red_agent = button_create(context->renderer, BTN_RED_AGENT, cfg_btn_red_agent);
+    }
 
-    /* droite = équipe bleue : Agent (haut) / Espion (bas) */
-    text_button_create(context->renderer, BTN_BLUE_AGENT, right_x, top_y, height, "Agent bleu", FONT_LARABIE, COL_WHITE, lobby_button_click);
-    text_button_create(context->renderer, BTN_BLUE_SPY, right_x, bottom_y, height, "Espion bleu", FONT_LARABIE, COL_WHITE, lobby_button_click);
+    ButtonConfig* cfg_btn_red_spy = button_config_init();
+    if (cfg_btn_red_spy) {
+        cfg_btn_red_spy->x         = -360;
+        cfg_btn_red_spy->y         = -120;
+        cfg_btn_red_spy->h         = height;
+        cfg_btn_red_spy->hidden    = 1;
+        cfg_btn_red_spy->font_path = FONT_LARABIE;
+        cfg_btn_red_spy->color     = COL_WHITE;
+        cfg_btn_red_spy->text      = "Espion rouge";
+        cfg_btn_red_spy->callback  = lobby_button_click;
+        btn_red_spy = button_create(context->renderer, BTN_RED_SPY, cfg_btn_red_spy);
+    }
 
-    return 0;
+    ButtonConfig* cfg_btn_blue_agent = button_config_init();
+    if (cfg_btn_blue_agent) {
+        cfg_btn_blue_agent->x         = 360;
+        cfg_btn_blue_agent->y         = 120;
+        cfg_btn_blue_agent->h         = height;
+        cfg_btn_blue_agent->hidden    = 1;
+        cfg_btn_blue_agent->font_path = FONT_LARABIE;
+        cfg_btn_blue_agent->color     = COL_WHITE;
+        cfg_btn_blue_agent->text      = "Agent bleu";
+        cfg_btn_blue_agent->callback  = lobby_button_click;
+        btn_blue_agent = button_create(context->renderer, BTN_BLUE_AGENT, cfg_btn_blue_agent);
+    }
+
+    ButtonConfig* cfg_btn_blue_spy = button_config_init();
+    if (cfg_btn_blue_spy) {
+        cfg_btn_blue_spy->x         = 360;
+        cfg_btn_blue_spy->y         = -120;
+        cfg_btn_blue_spy->h         = height;
+        cfg_btn_blue_spy->hidden    = 1;
+        cfg_btn_blue_spy->font_path = FONT_LARABIE;
+        cfg_btn_blue_spy->color     = COL_WHITE;
+        cfg_btn_blue_spy->text      = "Espion bleu";
+        cfg_btn_blue_spy->callback  = lobby_button_click;
+        btn_blue_spy = button_create(context->renderer, BTN_BLUE_SPY, cfg_btn_blue_spy);
+    }
+
+    ButtonConfig* cfg_btn_return = button_config_init();
+    if (cfg_btn_return) {
+        cfg_btn_return->x         = 0;
+        cfg_btn_return->y         = -400;
+        cfg_btn_return->h         = height;
+        cfg_btn_return->hidden    = 1;
+        cfg_btn_return->font_path = FONT_LARABIE;
+        cfg_btn_return->color     = COL_WHITE;
+        cfg_btn_return->text      = "Retour au menu";
+        cfg_btn_return->callback  = lobby_button_click;
+        btn_return = button_create(context->renderer, BTN_RETURN, cfg_btn_return);
+    }
+  
+    return load_errors;
 }
 
 void lobby_display(SDL_Context* context) {
     if (!context) return;
 
-    /* Si on n'est pas dans un lobby, rien à afficher ici */
-    if (context->lobby_id == -1) return;
-
-    /* Masquer / afficher les boutons pertinents */
-    hide_button(BTN_CREATE);
-    hide_button(BTN_JOIN);
-    show_button(BTN_QUIT);
-    /* afficher les boutons de rôle/équipe */
-    show_button(BTN_RED_AGENT);
-    show_button(BTN_RED_SPY);
-    show_button(BTN_BLUE_AGENT);
-    show_button(BTN_BLUE_SPY);
+    if (context->game_state == GAME_STATE_MENU) {
+        edit_btn_cfg(BTN_RED_AGENT, BTN_CFG_HIDDEN, 1);
+        edit_btn_cfg(BTN_RED_SPY, BTN_CFG_HIDDEN, 1);
+        edit_btn_cfg(BTN_BLUE_AGENT, BTN_CFG_HIDDEN, 1);
+        edit_btn_cfg(BTN_BLUE_SPY, BTN_CFG_HIDDEN, 1);
+        edit_btn_cfg(BTN_RETURN, BTN_CFG_HIDDEN, 1);
+    } else {
+        edit_btn_cfg(BTN_RED_AGENT, BTN_CFG_HIDDEN, 0);
+        edit_btn_cfg(BTN_RED_SPY, BTN_CFG_HIDDEN, 0);
+        edit_btn_cfg(BTN_BLUE_AGENT, BTN_CFG_HIDDEN, 0);
+        edit_btn_cfg(BTN_BLUE_SPY, BTN_CFG_HIDDEN, 0);
+        edit_btn_cfg(BTN_RETURN, BTN_CFG_HIDDEN, 0);
+    }
 
     /* Afficher le code et l'id du lobby */
     char buf[128];
@@ -99,7 +170,7 @@ void lobby_display(SDL_Context* context) {
               context->lobby_code ? context->lobby_code : "----");
 
     /* Affichage centré horizontalement, position verticale relative */
-    int rel_x = 0; /* 0 = centré (convention utilisée dans text_display) */
+    int rel_x = 0;
     int rel_y = -200;
     text_display(context->renderer, buf, FONT_LARABIE, 36, COL_WHITE, rel_x, rel_y, 0, 255);
 
@@ -108,29 +179,16 @@ void lobby_display(SDL_Context* context) {
 
 void lobby_handle_event(SDL_Context* context, SDL_Event* e) {
     if (!context || !e) return;
-
-    /* Laisser le système de boutons traiter l'événement */
-    ButtonReturn ret = buttons_handle_event(context, e);
-    if (ret == BTN_RET_QUIT) {
-        /* Quitter le lobby localement : repasser en menu et nettoyer le code */
-        context->lobby_id = -1;
-        if (context->lobby_code) {
-            free(context->lobby_code);
-            context->lobby_code = NULL;
-        }
-        context->game_state = GAME_STATE_MENU;
-        /* Masquer les boutons de rôle */
-        hide_button(BTN_RED_AGENT);
-        hide_button(BTN_RED_SPY);
-        hide_button(BTN_BLUE_AGENT);
-        hide_button(BTN_BLUE_SPY);
-
-        /* Optionnel : prévenir le serveur qu'on quitte le lobby (ajouter message si le protocole gère cela) */
-    }
 }
 
 int lobby_free(){
     /* détruire textures d'assets chargées par lobby */
+
+    btn_red_agent = NULL;
+    btn_red_spy = NULL;
+    btn_blue_agent = NULL;
+    btn_blue_spy = NULL;
+    btn_return = NULL;
 
     if (lobby_btn_red) {
         SDL_DestroyTexture(lobby_btn_red);
@@ -140,6 +198,6 @@ int lobby_free(){
         SDL_DestroyTexture(lobby_btn_blue);
         lobby_btn_blue = NULL;
     }
-    buttons_free();
+
     return EXIT_SUCCESS;
 }

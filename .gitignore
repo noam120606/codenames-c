@@ -7,7 +7,7 @@ client/build*
 client/SDL2
 
 # Private files
-client/datas*
+client/datas
 
 # Object files
 *.o
