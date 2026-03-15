@@ -79,7 +79,7 @@ Word* generateWords(int count) { //Trouver 25 mots au hasard parmis la liste des
         words[i].word[sizeof(words[i].word) - 1] = '\0';
         words[i].team = (i < red_count) ? TEAM_RED :
                         (i < red_count + blue_count) ? TEAM_BLUE :
-                        (i < red_count + blue_count + neutral_count) ? TEAM_NEUTRAL : TEAM_BLACK;
+                        (i < red_count + blue_count + neutral_count) ? TEAM_NONE : TEAM_BLACK;
         words[i].revealed = 0;
     }
 

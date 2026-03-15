@@ -62,6 +62,7 @@ typedef struct Card Card;
  * @param player_role Rôle du joueur (ROLE_AGENT ou ROLE_SPY).
  * @param player_team Équipe du joueur (TEAM_RED, TEAM_BLUE, TEAM_NONE).
  * @param frame_start_time Timestamp du début de la frame actuelle (en ms).
+ * @param ping_ms Ping TCP courant en millisecondes (-1 si indisponible).
  */
 typedef struct {
     SDL_Window* window;
@@ -75,6 +76,7 @@ typedef struct {
     UserRole player_role; 
     Team player_team; 
     Uint32 frame_start_time;
+    int ping_ms;
     int music_volume;          /**< Volume de la musique (0-128). */
     int sound_effects_volume;  /**< Volume des effets sonores (0-128). */
     Card* cards[25];

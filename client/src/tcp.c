@@ -1,4 +1,5 @@
 #include "../lib/all.h"
+#include <netinet/tcp.h>
 
 #define BUFFER_SIZE 1024
 char buffer[BUFFER_SIZE];
@@ -65,6 +66,41 @@ int tick_tcp(SDL_Context* context, int sock) {
 
     return EXIT_SUCCESS;
 
+}
+
+int get_tcp_ping_ms(int sock) {
+    if (sock < 0) {
+        return -1;
+    }
+
+#ifdef __linux__
+    struct tcp_info info;
+    socklen_t info_len = sizeof(info);
+    if (getsockopt(sock, IPPROTO_TCP, TCP_INFO, &info, &info_len) == 0) {
+        return (int)(info.tcpi_rtt / 1000U);
+    }
+#endif
+
+    return -1;
+}
+
+int is_tcp_local_server(int sock) {
+    if (sock < 0) {
+        return 0;
+    }
+
+    struct sockaddr_in peer_addr;
+    socklen_t peer_addr_len = sizeof(peer_addr);
+    if (getpeername(sock, (struct sockaddr*)&peer_addr, &peer_addr_len) != 0) {
+        return 0;
+    }
+
+    if (peer_addr.sin_family != AF_INET) {
+        return 0;
+    }
+
+    Uint32 addr = ntohl(peer_addr.sin_addr.s_addr);
+    return ((addr & 0xFF000000U) == 0x7F000000U) ? 1 : 0;
 }
 
 int send_tcp(int sock, const char* payload) {

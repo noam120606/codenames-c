@@ -48,8 +48,8 @@ int init_infos(SDL_Context* context) {
 
     /* Crossfader musique */
     CrossfaderConfig* cfg_music = crossfader_config_init();
-    cfg_music->x = 0;  /* sera repositionné à chaque frame */
-    cfg_music->y = 500;
+    cfg_music->x = 0;  /* repositionné à chaque frame */
+    cfg_music->y = 320;
     cfg_music->w = 200;
     cfg_music->h = 16;
     cfg_music->min = 0;
@@ -72,8 +72,8 @@ int init_infos(SDL_Context* context) {
 
     /* Crossfader effets sonores */
     CrossfaderConfig* cfg_sfx = crossfader_config_init();
-    cfg_sfx->x = 0;  /* sera repositionné à chaque frame */
-    cfg_sfx->y = 570;
+    cfg_sfx->x = 0;  /* repositionné à chaque frame */
+    cfg_sfx->y = 250;
     cfg_sfx->w = 200;
     cfg_sfx->h = 16;
     cfg_sfx->min = 0;
@@ -127,6 +127,34 @@ static int bandeau_to_screen_y(int by, int h) {
     return (WIN_HEIGHT - h) / 2 - by;
 }
 
+static float clamp01(float v) {
+    if (v < 0.0f) return 0.0f;
+    if (v > 1.0f) return 1.0f;
+    return v;
+}
+
+/* ratio=0 -> rouge, ratio=1 -> vert */
+static SDL_Color color_red_to_green(float ratio) {
+    float t = clamp01(ratio);
+    Uint8 r = (Uint8)(255.0f * (1.0f - t));
+    Uint8 g = (Uint8)(255.0f * t);
+    return (SDL_Color){r, g, 0, 255};
+}
+
+static SDL_Color color_for_fps(float fps) {
+    const float fps_min = 30.0f;
+    const float fps_max = 60.0f;
+    float ratio = (fps - fps_min) / (fps_max - fps_min);
+    return color_red_to_green(ratio);
+}
+
+static SDL_Color color_for_ping(int ping_ms) {
+    const float ping_good = 10.0f;
+    const float ping_bad = 150.0f;
+    float bad_ratio = ((float)ping_ms - ping_good) / (ping_bad - ping_good);
+    return color_red_to_green(1.0f - bad_ratio);
+}
+
 /* Met à jour la position des crossfaders pour qu'ils suivent le bandeau */
 static void update_crossfader_positions(int display_x) {
     /* Même décalage X que le texte FPS */
@@ -134,7 +162,7 @@ static void update_crossfader_positions(int display_x) {
 
     if (cf_music && cf_music->cfg) {
         int sx = bandeau_to_screen_x(bx, cf_music->cfg->w);
-        int sy = bandeau_to_screen_y(370, cf_music->cfg->h);  /* en dessous du FPS (y=450) */
+        int sy = bandeau_to_screen_y(320, cf_music->cfg->h);  /* en dessous du ping */
         cf_music->cfg->x = sx;
         cf_music->cfg->y = sy;
         cf_music->cfg->rect.x = sx;
@@ -143,7 +171,7 @@ static void update_crossfader_positions(int display_x) {
     }
     if (cf_sfx && cf_sfx->cfg) {
         int sx = bandeau_to_screen_x(bx, cf_sfx->cfg->w);
-        int sy = bandeau_to_screen_y(300, cf_sfx->cfg->h);  /* encore en dessous */
+        int sy = bandeau_to_screen_y(250, cf_sfx->cfg->h);  /* encore en dessous */
         cf_sfx->cfg->x = sx;
         cf_sfx->cfg->y = sy;
         cf_sfx->cfg->rect.x = sx;
@@ -171,7 +199,6 @@ void infos_display(SDL_Context* context) {
         Uint32 current_time = SDL_GetTicks();
         float progress = 0.0f;
         int display_x = HIDDEN_X;
-        int start_x, end_x;
         
         // Gérer les transitions d'état basées sur la souris
         if (mouse_inside && !mouse_was_inside) {
@@ -218,12 +245,12 @@ void infos_display(SDL_Context* context) {
         // N'afficher que si pas complètement caché
         if (infos_state != INFOS_HIDDEN) {
             display_image(context->renderer, bandeau, display_x, 0, 0.75, 90, SDL_FLIP_NONE, 1, 192);
-            fps_display(context, display_x);
+            fps_ping_display(context, display_x);
 
             /* Labels des crossfaders (coordonnées bandeau, même repère que text_display) */
             int label_x = display_x + 100;
-            text_display(context->renderer, "Musique", FONT_LARABIE, 18, COL_WHITE, label_x, 395, 0, 255);
-            text_display(context->renderer, "Effets Sonores", FONT_LARABIE, 18, COL_WHITE, label_x, 325, 0, 255);
+            text_display(context->renderer, "Musique", FONT_LARABIE, 18, COL_WHITE, label_x, 345, 0, 255);
+            text_display(context->renderer, "Effets Sonores", FONT_LARABIE, 18, COL_WHITE, label_x, 275, 0, 255);
 
             /* Rendu des crossfaders */
             crossfaders_render(context->renderer);
@@ -254,15 +281,52 @@ void calculate_fps(SDL_Context* context, Uint32 current_time) {
 
 
 // FPS display
-void fps_display(SDL_Context* context, int display_x) {
+void fps_ping_display(SDL_Context* context, int display_x) {
     calculate_fps(context, SDL_GetTicks());
+    context->ping_ms = get_tcp_ping_ms(context->sock);
+
     // Affichage des FPS qui suit le bandeau
     char fps_text[20];
     snprintf(fps_text, sizeof(fps_text), "FPS : %.2f", context->fps);
+    SDL_Color fps_color = color_for_fps(context->fps);
     // Positionner le texte relativement au display_x du bandeau
     int fps_x = display_x + 100;
     int fps_y = 450;
-    text_display(context->renderer, fps_text, "assets/fonts/larabiefont.otf", 22, COL_WHITE, fps_x, fps_y, 0, 255);
+    text_display(context->renderer, fps_text, "assets/fonts/larabiefont.otf", 22, fps_color, fps_x, fps_y, 0, 255);
+
+    char ping_text[32];
+    if (context->ping_ms >= 0) {
+        snprintf(ping_text, sizeof(ping_text), "Ping : %d ms", context->ping_ms);
+    } else {
+        snprintf(ping_text, sizeof(ping_text), "Ping : --");
+    }
+
+    SDL_Color ping_color = (context->ping_ms >= 0)
+        ? color_for_ping(context->ping_ms)
+        : COL_WHITE;
+
+    int ping_x = display_x + 100;
+    int ping_y = 410;
+    text_display(context->renderer, ping_text, "assets/fonts/larabiefont.otf", 22, ping_color, ping_x, ping_y, 0, 255);
+
+    /* Info sur le type de serveur (local/distant) à côté du ping */
+    if (is_tcp_local_server(context->sock)) {
+        int local_x = display_x + 100;
+        int local_y = 385;
+        text_display(context->renderer, "(serveur local)", "assets/fonts/larabiefont.otf", 14, COL_GREEN, local_x, local_y, 0, 220);
+    } else if (context->sock >= 0) {
+        int local_x = display_x + 100;
+        int local_y = 385;
+        /* La couleur est la même que celle du ping si le serveur est distant */
+        text_display(context->renderer, "(serveur distant)", "assets/fonts/larabiefont.otf", 14, ping_color, local_x, local_y, 0, 220);
+    }
+
+    /* Barre horizontale décorative sous les fps et ping */
+    char horizontal_bar_text[32];
+    snprintf(horizontal_bar_text, sizeof(horizontal_bar_text), "______________");
+    int horizontal_bar_x = display_x + 100;
+    int horizontal_bar_y = 370;
+    text_display(context->renderer, horizontal_bar_text, "assets/fonts/larabiefont.otf", 22, COL_WHITE, horizontal_bar_x, horizontal_bar_y, 0, 255);
 }
 
 int infos_free() {
