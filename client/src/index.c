@@ -126,6 +126,18 @@ int main(int argc, char* argv[]){
             if (e.type == SDL_QUIT) {
                 running = 0;
             }
+            if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_F11) {
+                toggle_fullscreen(&context);
+            }
+            if (e.type == SDL_WINDOWEVENT) {
+                if (e.window.event == SDL_WINDOWEVENT_MAXIMIZED) {
+                    toggle_fullscreen(&context);
+                } else if (e.window.event == SDL_WINDOWEVENT_RESTORED) {
+                    Uint32 wflags = SDL_GetWindowFlags(context.window);
+                    int is_fs = (wflags & SDL_WINDOW_FULLSCREEN_DESKTOP) || (wflags & SDL_WINDOW_FULLSCREEN);
+                    if (is_fs) toggle_fullscreen(&context);
+                }
+            }
             /* Le bandeau infos (crossfaders volume) est toujours actif */
             infos_handle_event(&context, &e);
 

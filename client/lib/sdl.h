@@ -8,6 +8,8 @@
 
 #define WIN_WIDTH 1920
 #define WIN_HEIGHT 1080
+#define WIN_MIN_WIDTH 960
+#define WIN_MIN_HEIGHT 540
 
 /**
  * États possibles du jeu.
@@ -117,6 +119,12 @@ int display_image(SDL_Renderer* renderer, SDL_Texture* texture, int x, int y, fl
  * @param texture La texture à libérer.
  */
 void free_image(SDL_Texture* texture);
+
+/**
+ * Bascule le mode plein écran / fenêtré de la fenêtre.
+ * @param context Le SDL_Context contenant la fenêtre.
+ */
+void toggle_fullscreen(SDL_Context* context);
 
 /**
  * Détruit la fenêtre et le renderer, et quitte SDL.
