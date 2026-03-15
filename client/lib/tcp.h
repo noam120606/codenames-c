@@ -19,6 +19,20 @@ int init_tcp(const char* server_ip, int port);
 int tick_tcp(SDL_Context* context, int sock);
 
 /**
+ * Lit le ping TCP (RTT) depuis la socket, en millisecondes.
+ * @param sock Descripteur de socket.
+ * @return Ping en ms, ou -1 si indisponible.
+ */
+int get_tcp_ping_ms(int sock);
+
+/**
+ * Indique si la socket est connectée à un serveur local (127.0.0.0/8).
+ * @param sock Descripteur de socket.
+ * @return 1 si local, 0 sinon.
+ */
+int is_tcp_local_server(int sock);
+
+/**
  * Envoie un message au serveur.
  * @param sock Descripteur de socket.
  * @param message Message à envoyer.

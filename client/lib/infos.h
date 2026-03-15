@@ -48,7 +48,7 @@ void infos_handle_event(SDL_Context* context, SDL_Event* event);
  * @param context Contexte SDL contenant le temps écoulé depuis la dernière mise à jour.
  * @param display_x La position x courante du placeholder pour que les FPS le suivent.
  */
-void fps_display(SDL_Context* context, int display_x);
+void fps_ping_display(SDL_Context* context, int display_x);
 
 /**
  * Libère les ressources utilisées pour l'affichage des informations.
