@@ -106,6 +106,22 @@ static int world_phase(int scaled_time, int tile_size) {
     return 2 * (scaled_time / (tile_size * 2));
 }
 
+static void window_to_logical(SDL_Context* context, int wx, int wy, int* lx, int* ly) {
+    if (!lx || !ly) return;
+
+    if (!context || !context->renderer) {
+        *lx = wx;
+        *ly = wy;
+        return;
+    }
+
+    float logical_x = (float)wx;
+    float logical_y = (float)wy;
+    SDL_RenderWindowToLogical(context->renderer, wx, wy, &logical_x, &logical_y);
+    *lx = (int)lroundf(logical_x);
+    *ly = (int)lroundf(logical_y);
+}
+
 
 int init_background(SDL_Context* context) {
     int fails = 0;
@@ -143,8 +159,11 @@ void display_background(SDL_Context* context) {
 
     int raw_mx, raw_my;
     SDL_GetMouseState(&raw_mx, &raw_my);
-    const int mouse_x =  raw_mx - WIN_WIDTH  / 2;
-    const int mouse_y = (WIN_HEIGHT / 2) - raw_my;
+    int logical_mx = raw_mx;
+    int logical_my = raw_my;
+    window_to_logical(context, raw_mx, raw_my, &logical_mx, &logical_my);
+    const int mouse_x =  logical_mx - WIN_WIDTH  / 2;
+    const int mouse_y = (WIN_HEIGHT / 2) - logical_my;
 
     for (int i = -BG_EXTRA; i < cols; i++) {
         const int row_offset = (i % 2) ? BG_TILE_H / 2 : 0;
@@ -210,9 +229,13 @@ void background_handle_event(SDL_Context* context, SDL_Event* e) {
     const int phase_x  = world_phase(scaled_time, BG_TILE_W);
     const int phase_y  = world_phase(scaled_time, BG_TILE_H);
 
+    int logical_click_x = e->button.x;
+    int logical_click_y = e->button.y;
+    window_to_logical(context, e->button.x, e->button.y, &logical_click_x, &logical_click_y);
+
     /* Coordonnées clic dans le repère centré de display_image */
-    const int click_x =  e->button.x - WIN_WIDTH  / 2;
-    const int click_y = (WIN_HEIGHT / 2) - e->button.y;
+    const int click_x =  logical_click_x - WIN_WIDTH  / 2;
+    const int click_y = (WIN_HEIGHT / 2) - logical_click_y;
 
     const int cols = (WIN_WIDTH  / BG_TILE_W) + BG_EXTRA;
     const int rows = (WIN_HEIGHT / BG_TILE_H) + BG_EXTRA;

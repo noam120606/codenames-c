@@ -133,6 +133,22 @@ static int bandeau_to_screen_y(int by, int h) {
     return (WIN_HEIGHT - h) / 2 - by;
 }
 
+static void window_to_logical(SDL_Context* context, int wx, int wy, int* lx, int* ly) {
+    if (!lx || !ly) return;
+
+    if (!context || !context->renderer) {
+        *lx = wx;
+        *ly = wy;
+        return;
+    }
+
+    float logical_x = (float)wx;
+    float logical_y = (float)wy;
+    SDL_RenderWindowToLogical(context->renderer, wx, wy, &logical_x, &logical_y);
+    *lx = (int)lroundf(logical_x);
+    *ly = (int)lroundf(logical_y);
+}
+
 static float clamp01(float v) {
     if (v < 0.0f) return 0.0f;
     if (v > 1.0f) return 1.0f;
@@ -192,6 +208,9 @@ void infos_display(SDL_Context* context) {
         // Récupérer la position de la souris
         int mouse_x, mouse_y;
         SDL_GetMouseState(&mouse_x, &mouse_y);
+        int logical_mouse_x = mouse_x;
+        int logical_mouse_y = mouse_y;
+        window_to_logical(context, mouse_x, mouse_y, &logical_mouse_x, &logical_mouse_y);
         
         // Constantes pour le positionnement
         const int TRIGGER_X = 300; // Seuil X pour déclencher l'animation
@@ -199,7 +218,7 @@ void infos_display(SDL_Context* context) {
         const int HIDDEN_X = -1300; // Position hors écran (caché)
         
         // Vérifier si la souris est dedans (au-dessus du seuil)
-        int mouse_inside = (mouse_x <= TRIGGER_X);
+        int mouse_inside = (logical_mouse_x <= TRIGGER_X);
         
         // Déterminer l'état actuel et les positions d'animation
         Uint32 current_time = SDL_GetTicks();

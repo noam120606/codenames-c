@@ -60,16 +60,15 @@ SDL_Context init_sdl() {
 
     // Create SDL window
     printf("Creating SDL window...\n");
-    Uint32 window_flags = SDL_WINDOW_SHOWN;
-    if (!is_running_under_valgrind() && !is_truthy_env(getenv("CODENAMES_WINDOWED"))) {
-        window_flags |= SDL_WINDOW_FULLSCREEN;
-    }
+    Uint32 window_flags = SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_FULLSCREEN_DESKTOP;
     SDL_Window* win = SDL_CreateWindow("Codenames", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIN_WIDTH, WIN_HEIGHT, window_flags);
     if (win == NULL) {
         printf("SDL_CreateWindow Error: %s\n", SDL_GetError());
         SDL_Quit();
         return context;
     }
+
+    SDL_SetWindowMinimumSize(win, WIN_MIN_WIDTH, WIN_MIN_HEIGHT);
 
     context.window = win;
 
@@ -90,6 +89,7 @@ SDL_Context init_sdl() {
     }
 
     context.renderer = renderer;
+    SDL_RenderSetLogicalSize(renderer, WIN_WIDTH, WIN_HEIGHT);
 
     // Initialize IMG
     printf("Initializing IMG...\n");
@@ -216,6 +216,17 @@ int display_image(SDL_Renderer* renderer, SDL_Texture* texture, int x, int y, fl
 void free_image(SDL_Texture* texture) {
     if (texture) {
         SDL_DestroyTexture(texture);
+    }
+}
+
+void toggle_fullscreen(SDL_Context* context) {
+    if (!context || !context->window) return;
+    Uint32 flags = SDL_GetWindowFlags(context->window);
+    int is_fullscreen = (flags & SDL_WINDOW_FULLSCREEN_DESKTOP) || (flags & SDL_WINDOW_FULLSCREEN);
+    SDL_SetWindowFullscreen(context->window, is_fullscreen ? 0 : SDL_WINDOW_FULLSCREEN_DESKTOP);
+    if (is_fullscreen) {
+        // Recentrer la fenêtre après être sorti du plein écran
+        SDL_SetWindowPosition(context->window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
     }
 }
 
