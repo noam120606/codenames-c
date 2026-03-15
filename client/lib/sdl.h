@@ -27,20 +27,21 @@ typedef enum {
  * @param ROLE_AGENT devine les mots.
  */
 typedef enum UserRole {
+    ROLE_NONE,
     ROLE_SPY,
-    ROLE_AGENT
+    ROLE_AGENT,
 } UserRole;
 
 /** 
  * Catégories de mots dans la grille de Codenames.
  * Les mots sont classés en 4 catégories :
- * @param TEAM_NEUTRAL mot neutre (aucune équipe).
+ * @param TEAM_NONE mot neutre (aucune équipe).
  * @param TEAM_RED mot appartenant à l'équipe rouge.
  * @param TEAM_BLUE mot appartenant à l'équipe bleue.
  * @param TEAM_BLACK mot assassin (met fin à la partie si révélé).
  */
 typedef enum Team {
-    TEAM_NEUTRAL,
+    TEAM_NONE,
     TEAM_RED,
     TEAM_BLUE,
     TEAM_BLACK,
@@ -59,7 +60,7 @@ typedef struct Card Card;
  * @param lobby_code Code du lobby auquel le client est connecté (NULL si aucun).
  * @param game_state État actuel du jeu (menu, lobby, partie, etc.).
  * @param player_role Rôle du joueur (ROLE_AGENT ou ROLE_SPY).
- * @param player_team Équipe du joueur (TEAM_RED, TEAM_BLUE, TEAM_NEUTRAL).
+ * @param player_team Équipe du joueur (TEAM_RED, TEAM_BLUE, TEAM_NONE).
  * @param frame_start_time Timestamp du début de la frame actuelle (en ms).
  */
 typedef struct {

@@ -17,7 +17,7 @@ static SDL_Texture* spyglasses;
 #define BG_ANIM_FRAMES 14
 #define BG_ANIM_POP    0.18f
 
-/* Table des états surchargés par clic */
+/* Table des états surchargés par clic.  */
 #define MAX_OVERRIDES 512
 typedef struct { int wi; int wj; int symbol; } TileOverride;
 static TileOverride overrides[MAX_OVERRIDES];
@@ -130,7 +130,7 @@ int init_background(SDL_Context* context) {
 
 void display_background(SDL_Context* context) {
     const int   INTERACT_RADIUS = 150;
-    const float MAX_SCALE       = 1.5f;
+    const float MAX_SCALE       = 1.4f;
 
     const int cols = (WIN_WIDTH  / BG_TILE_W) + BG_EXTRA;
     const int rows = (WIN_HEIGHT / BG_TILE_H) + BG_EXTRA;

@@ -4,13 +4,13 @@
 /** 
  * Catégories de mots dans la grille de Codenames.
  * Les mots sont classés en 4 catégories :
- * @param TEAM_NEUTRAL mot neutre (aucune équipe).
+ * @param TEAM_NONE mot neutre (aucune équipe).
  * @param TEAM_RED mot appartenant à l'équipe rouge.
  * @param TEAM_BLUE mot appartenant à l'équipe bleue.
  * @param TEAM_BLACK mot assassin (met fin à la partie si révélé).
  */
 typedef enum Team {
-    TEAM_NEUTRAL,
+    TEAM_NONE,
     TEAM_RED,
     TEAM_BLUE,
     TEAM_BLACK

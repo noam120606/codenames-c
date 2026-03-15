@@ -1,6 +1,7 @@
 #ifndef INPUT_H
 #define INPUT_H
 
+#include <stdint.h>
 #include "sdl.h"
 
 #define INPUT_DEFAULT_MAX 256
@@ -20,8 +21,14 @@ typedef enum {
  * Tous les champs ont des valeurs par défaut définies via `input_config_init`.
  * La structure peut être modifiée à tout moment et passée à `input_create`.
  * Note : Certains champs sont gérés en interne par l'input (text, cursor_pos, textures, etc.) et ne doivent pas être modifiés directement après la création de l'input. Seuls les champs "configurables" (x, y, w, h, font_path, etc.) peuvent être modifiés pour changer l'apparence ou le comportement de l'input.
- * @param x Position x de l'input.
- * @param y Position y de l'input.
+ * @param x Offset horizontal relatif au centre de la fenêtre (pixels).
+ *          Positif vers la droite, négatif vers la gauche.
+ * @param y Offset vertical relatif au centre de la fenêtre (pixels).
+ *          Positif vers le haut, négatif vers le bas.
+ *          Si x = 0 et y = 0, le centre de l'input est au centre de la fenêtre.
+ *          Formules appliquées dans input_create :
+ *            screen_x = WIN_WIDTH/2  + x - w/2
+ *            screen_y = WIN_HEIGHT/2 - y - h/2
  * @param w Largeur de l'input.
  * @param h Hauteur de l'input.
  * @param font_path Chemin vers la police à utiliser pour le texte de l'input.
@@ -85,6 +92,46 @@ typedef struct Input {
     InputId id;
     InputConfig* cfg;
 } Input;
+
+/**
+ * Clés de configuration modifiables via `edit_in_cfg`.
+ */
+typedef enum InputCfgKey {
+    IN_CFG_X = 100,
+    IN_CFG_Y,
+    IN_CFG_W,
+    IN_CFG_H,
+    IN_CFG_FONT_PATH,
+    IN_CFG_FONT_SIZE,
+    IN_CFG_PLACEHOLDERS,
+    IN_CFG_PLACEHOLDER_COUNT,
+    IN_CFG_SUBMITTED_LABEL,
+    IN_CFG_MAXLEN,
+    IN_CFG_SAVE_PLAYER_DATA,
+    IN_CFG_BG_COLOR,
+    IN_CFG_BORDER_COLOR,
+    IN_CFG_TEXT_COLOR,
+    IN_CFG_PADDING,
+    IN_CFG_CENTERED,
+    IN_CFG_BG_PATH,
+    IN_CFG_BG_PADDING,
+    IN_CFG_ALLOWED_PATTERN,
+    IN_CFG_INIT_TEXT,
+    IN_CFG_RECT,
+    IN_CFG_TEXT,
+    IN_CFG_LEN,
+    IN_CFG_CURSOR_POS,
+    IN_CFG_FOCUSED,
+    IN_CFG_SUBMITTED,
+    IN_CFG_BG_TEXTURE,
+    IN_CFG_SEL_START,
+    IN_CFG_SEL_LEN,
+    IN_CFG_SEL_ANCHOR,
+    IN_CFG_SUBMITTED_TEXT,
+    IN_CFG_PLACEHOLDER_INDEX,
+    IN_CFG_PLACEHOLDER_LAST_TICK,
+    IN_CFG_ON_SUBMIT,
+} InputCfgKey;
 
 
 
@@ -189,5 +236,14 @@ void input_clear_bg(Input* in);
  * @param padding Nouvelle valeur de padding en pixels. Si < 0, le padding sera défini à 0.
  */
 void input_set_padding(Input* in, int padding);
+
+/**
+ * Modifie une valeur de configuration d'un input identifié par son id.
+ * @param id    L'ID de l'input à modifier.
+ * @param key   Champ ciblé dans la configuration.
+ * @param value Valeur à appliquer (entier direct pour champs int/bool, pointeur casté en `intptr_t` pour les champs pointeurs, et adresse d'une structure pour `IN_CFG_BG_COLOR` / `IN_CFG_BORDER_COLOR` / `IN_CFG_TEXT_COLOR` / `IN_CFG_RECT`).
+ * @return EXIT_SUCCESS si l'input existe, sinon EXIT_FAILURE.
+ */
+int edit_in_cfg(InputId id, InputCfgKey key, intptr_t value);
 
 #endif /* INPUT_H */

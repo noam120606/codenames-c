@@ -66,7 +66,7 @@ void game_render_cards(SDL_Context * context) {
             }
             if(context->player_role == ROLE_SPY && !context->cards[i*5 + j]->revealed) {
                 switch (context->cards[i*5 + j]->team) {
-                    case TEAM_NEUTRAL:
+                    case TEAM_NONE:
                         if (context->cards[i*5 + j]->gender) {
                             display_image(context->renderer, card_f_classic, x, y, 0.05, 0, SDL_FLIP_NONE, 1, 255);
                         }else{
