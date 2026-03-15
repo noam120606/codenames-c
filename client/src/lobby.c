@@ -89,6 +89,7 @@ int lobby_init(SDL_Context* context) {
         cfg_btn_red_agent->text      = "Agent rouge";
         cfg_btn_red_agent->callback  = lobby_button_click;
         btn_red_agent = button_create(context->renderer, BTN_RED_AGENT, cfg_btn_red_agent);
+        free(cfg_btn_red_agent);
     }
 
     ButtonConfig* cfg_btn_red_spy = button_config_init();
@@ -102,6 +103,7 @@ int lobby_init(SDL_Context* context) {
         cfg_btn_red_spy->text      = "Espion rouge";
         cfg_btn_red_spy->callback  = lobby_button_click;
         btn_red_spy = button_create(context->renderer, BTN_RED_SPY, cfg_btn_red_spy);
+        free(cfg_btn_red_spy);
     }
 
     ButtonConfig* cfg_btn_blue_agent = button_config_init();
@@ -115,6 +117,7 @@ int lobby_init(SDL_Context* context) {
         cfg_btn_blue_agent->text      = "Agent bleu";
         cfg_btn_blue_agent->callback  = lobby_button_click;
         btn_blue_agent = button_create(context->renderer, BTN_BLUE_AGENT, cfg_btn_blue_agent);
+        free(cfg_btn_blue_agent);
     }
 
     ButtonConfig* cfg_btn_blue_spy = button_config_init();
@@ -128,6 +131,7 @@ int lobby_init(SDL_Context* context) {
         cfg_btn_blue_spy->text      = "Espion bleu";
         cfg_btn_blue_spy->callback  = lobby_button_click;
         btn_blue_spy = button_create(context->renderer, BTN_BLUE_SPY, cfg_btn_blue_spy);
+        free(cfg_btn_blue_spy);
     }
 
     ButtonConfig* cfg_btn_return = button_config_init();
@@ -141,6 +145,7 @@ int lobby_init(SDL_Context* context) {
         cfg_btn_return->text      = "Retour au menu";
         cfg_btn_return->callback  = lobby_button_click;
         btn_return = button_create(context->renderer, BTN_RETURN, cfg_btn_return);
+        free(cfg_btn_return);
     }
   
     return load_errors;

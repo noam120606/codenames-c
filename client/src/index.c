@@ -5,6 +5,17 @@ int main(int argc, char* argv[]){
     const float target_fps = 60.0f;
     char ip[16] = "127.0.0.1";
     int port = 0;
+    /* Nombre de frames avant fermeture automatique (0 pour désactiver)
+    * - peut être configuré via la variable d'environnement CODENAMES_AUTOCLOSE_FRAMES
+    * utile pour les tests de fuite mémoire afin de ne pas laisser la fenêtre ouverte indéfiniment.
+    */
+    int auto_close_frames = 0; 
+    const char* auto_close_env = getenv("CODENAMES_AUTOCLOSE_FRAMES");
+
+    if (auto_close_env) {
+        auto_close_frames = atoi(auto_close_env);
+        if (auto_close_frames < 0) auto_close_frames = 0;
+    }
 
     // Parse command line arguments
     int opt;
@@ -179,6 +190,10 @@ int main(int argc, char* argv[]){
         if (frame_delay > 0) SDL_Delay(frame_delay);
         
         context.clock++;
+
+        if (auto_close_frames > 0 && context.clock >= auto_close_frames) {
+            running = 0;
+        }
         
     }
 

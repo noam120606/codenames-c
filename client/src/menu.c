@@ -7,7 +7,7 @@ Button* btn_join;
 Button* btn_quit;
 Input* name_input = NULL;
 Input* code_input = NULL;
-char* name = NULL;
+char* name = NULL; // Le nom du joueur, à envoyer au serveur lors de la création ou du join d'un lobby. Peut être NULL ou chaîne vide si non défini.
 int joining = 0;
 
 static void name_on_submit(SDL_Context* context, const char* text) {
@@ -82,6 +82,7 @@ int menu_init(SDL_Context * context) {
         cfg_btn_create->text      = "Créer";
         cfg_btn_create->callback  = menu_button_click;
         btn_create = button_create(context->renderer, BTN_CREATE, cfg_btn_create);
+        free(cfg_btn_create);
     }
 
     ButtonConfig* cfg_btn_join = button_config_init();
@@ -94,6 +95,7 @@ int menu_init(SDL_Context * context) {
         cfg_btn_join->text      = "Rejoindre";
         cfg_btn_join->callback  = menu_button_click;
         btn_join = button_create(context->renderer, BTN_JOIN, cfg_btn_join);
+        free(cfg_btn_join);
     }
 
     ButtonConfig* cfg_btn_quit = button_config_init();
@@ -106,6 +108,7 @@ int menu_init(SDL_Context * context) {
         cfg_btn_quit->text      = "Quitter";
         cfg_btn_quit->callback  = menu_button_click;
         btn_quit = button_create(context->renderer, BTN_QUIT, cfg_btn_quit);
+        free(cfg_btn_quit);
     }
 
     // Chargement input
@@ -128,6 +131,7 @@ int menu_init(SDL_Context * context) {
         cfg_in_name->bg_path = "assets/img/inputs/empty.png";
         cfg_in_name->bg_padding = 24;
         name_input = input_create(context->renderer, INPUT_ID_NAME, cfg_in_name);
+        free(cfg_in_name);
     }
 
     if (name_input) {
@@ -156,6 +160,7 @@ int menu_init(SDL_Context * context) {
         cfg_in_code->bg_path = "assets/img/inputs/empty.png";
         cfg_in_code->bg_padding = 24;
         code_input = input_create(context->renderer, INPUT_ID_JOIN_CODE, cfg_in_code);
+        free(cfg_in_code);
     }
 
     return loading_fails;
@@ -221,6 +226,7 @@ int menu_free() {
     if (code_input) input_destroy(code_input);
     name_input = NULL;
     code_input = NULL;
+    if (name) { free(name); name = NULL; }
 
     return EXIT_SUCCESS;
 }

@@ -1,10 +1,55 @@
 #include "../lib/all.h"
 
+static int is_truthy_env(const char* value) {
+    return value && strcmp(value, "0") != 0 && value[0] != '\0';
+}
+
+static int is_running_under_valgrind(void) {
+    const char* ld_preload = getenv("LD_PRELOAD");
+    return getenv("VALGRIND_LIB") || (ld_preload && strstr(ld_preload, "valgrind"));
+}
+
+/* Détermine si l'audio factice doit être utilisé.
+ * Peut être activé via la variable d'environnement CODENAMES_AUDIO_DUMMY ou automatiquement
+ * si le programme est exécuté sous Valgrind. */
+static int should_use_dummy_audio(void) {
+    return is_truthy_env(getenv("CODENAMES_AUDIO_DUMMY")) || is_running_under_valgrind();
+}
+
+/* Configure des hints et variables d'environnement SDL pour améliorer l'expérience sous Valgrind
+   et éviter les popups d'erreur liés à l'IME ou D-Bus. */
+static void configure_diagnostic_sdl_environment(void) {
+    if (!is_running_under_valgrind()) {
+        return;
+    }
+
+    SDL_SetHint(SDL_HINT_SHUTDOWN_DBUS_ON_QUIT, "1");
+    SDL_SetHint(SDL_HINT_VIDEO_ALLOW_SCREENSAVER, "1");
+    SDL_SetHint(SDL_HINT_IME_SHOW_UI, "0");
+    SDL_setenv("SDL_IM_MODULE", "none", 1);
+    SDL_setenv("XMODIFIERS", "@im=none", 1);
+}
+
+static Uint32 get_renderer_flags(void) {
+    if (is_truthy_env(getenv("CODENAMES_RENDER_SOFTWARE")) || is_running_under_valgrind()) {
+        SDL_SetHint(SDL_HINT_RENDER_DRIVER, "software");
+        SDL_SetHint(SDL_HINT_FRAMEBUFFER_ACCELERATION, "0");
+        return SDL_RENDERER_SOFTWARE;
+    }
+    return SDL_RENDERER_ACCELERATED;
+}
+
 SDL_Context init_sdl() {
     SDL_Context context = {0}; // Initialisation sécurisée à zéro
 
     // Log dimensions
     printf("WIN_WIDTH = %d, WIN_HEIGHT = %d\n", WIN_WIDTH, WIN_HEIGHT);
+
+    configure_diagnostic_sdl_environment();
+
+    if (should_use_dummy_audio()) {
+        SDL_setenv("SDL_AUDIODRIVER", "dummy", 1);
+    }
 
     // Initialize SDL
     printf("Initializing SDL...\n");
@@ -15,8 +60,11 @@ SDL_Context init_sdl() {
 
     // Create SDL window
     printf("Creating SDL window...\n");
-    // SDL_Window* win = SDL_CreateWindow("Codenames", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_SHOWN);
-    SDL_Window* win = SDL_CreateWindow("Codenames", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_FULLSCREEN | SDL_WINDOW_SHOWN);
+    Uint32 window_flags = SDL_WINDOW_SHOWN;
+    if (!is_running_under_valgrind() && !is_truthy_env(getenv("CODENAMES_WINDOWED"))) {
+        window_flags |= SDL_WINDOW_FULLSCREEN;
+    }
+    SDL_Window* win = SDL_CreateWindow("Codenames", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIN_WIDTH, WIN_HEIGHT, window_flags);
     if (win == NULL) {
         printf("SDL_CreateWindow Error: %s\n", SDL_GetError());
         SDL_Quit();
@@ -27,9 +75,16 @@ SDL_Context init_sdl() {
 
     // Create SDL renderer
     printf("Creating SDL renderer...\n");
-    SDL_Renderer* renderer = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
+    Uint32 renderer_flags = get_renderer_flags();
+    SDL_Renderer* renderer = SDL_CreateRenderer(win, -1, renderer_flags);
+    if (renderer == NULL && renderer_flags != SDL_RENDERER_SOFTWARE) {
+        printf("SDL_CreateRenderer accelerated failed, fallback to software: %s\n", SDL_GetError());
+        SDL_SetHint(SDL_HINT_RENDER_DRIVER, "software");
+        renderer = SDL_CreateRenderer(win, -1, SDL_RENDERER_SOFTWARE);
+    }
     if (renderer == NULL) {
         printf("SDL_CreateRenderer Error: %s\n", SDL_GetError());
+        SDL_DestroyWindow(win);
         SDL_Quit();
         return context;
     }
@@ -38,8 +93,12 @@ SDL_Context init_sdl() {
 
     // Initialize IMG
     printf("Initializing IMG...\n");
-    if (!(IMG_Init(IMG_INIT_JPG) & IMG_INIT_JPG)) {
+    int img_flags = IMG_INIT_PNG | IMG_INIT_JPG;
+    int img_initialized = IMG_Init(img_flags);
+    if ((img_initialized & img_flags) != img_flags) {
         printf("IMG_Init Error: %s\n", IMG_GetError());
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(win);
         SDL_Quit();
         return context;
     }
@@ -49,6 +108,8 @@ SDL_Context init_sdl() {
     if(TTF_Init() != 0) {
         printf("TTF_Init Error: %s\n", TTF_GetError());
         IMG_Quit();
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(win);
         SDL_Quit();
         return context;
     }
@@ -59,6 +120,8 @@ SDL_Context init_sdl() {
         printf("Mix_OpenAudio Error: %s\n", Mix_GetError());
         TTF_Quit();
         IMG_Quit();
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(win);
         SDL_Quit();
         return context;
     }
@@ -73,7 +136,18 @@ SDL_Context init_sdl() {
     context.music_volume = MIX_MAX_VOLUME;
     context.sound_effects_volume = MIX_MAX_VOLUME;
 
-    audio_init();
+    if (audio_init() != EXIT_SUCCESS) {
+        printf("audio_init Error\n");
+        Mix_CloseAudio();
+        TTF_Quit();
+        IMG_Quit();
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(win);
+        SDL_Quit();
+        context.renderer = NULL;
+        context.window = NULL;
+        return context;
+    }
     
     printf("All initialized successfully!\n");
     
@@ -163,6 +237,7 @@ int destroy_context(SDL_Context* context) {
         context->sock = -1;
     }
     audio_cleanup();
+    Mix_Quit();
     TTF_Quit();
     IMG_Quit();
     SDL_Quit();
