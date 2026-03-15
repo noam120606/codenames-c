@@ -48,20 +48,23 @@ int init_infos(SDL_Context* context) {
 
     /* Crossfader musique */
     CrossfaderConfig* cfg_music = crossfader_config_init();
-    cfg_music->x = 0;  /* repositionné à chaque frame */
-    cfg_music->y = 320;
-    cfg_music->w = 200;
-    cfg_music->h = 16;
-    cfg_music->min = 0;
-    cfg_music->max = MIX_MAX_VOLUME;
-    cfg_music->value = context->music_volume;
-    cfg_music->save_player_data = 1;
-    cfg_music->color_0_pct = (SDL_Color){90, 90, 200, 220};
-    cfg_music->color_100_pct = (SDL_Color){200, 110, 90, 220};
-    cfg_music->knob_color = (SDL_Color){0, 200, 220, 255};
-    cfg_music->hidden = 1;
-    cfg_music->on_change = on_music_volume_change;
-    cf_music = crossfader_create(context->renderer, CROSSFADER_ID_MUSIC_VOLUME, cfg_music);
+    if (cfg_music) {
+        cfg_music->x = 0;  /* repositionné à chaque frame */
+        cfg_music->y = 320;
+        cfg_music->w = 200;
+        cfg_music->h = 16;
+        cfg_music->min = 0;
+        cfg_music->max = MIX_MAX_VOLUME;
+        cfg_music->value = context->music_volume;
+        cfg_music->save_player_data = 1;
+        cfg_music->color_0_pct = (SDL_Color){90, 90, 200, 220};
+        cfg_music->color_100_pct = (SDL_Color){200, 110, 90, 220};
+        cfg_music->knob_color = (SDL_Color){0, 200, 220, 255};
+        cfg_music->hidden = 1;
+        cfg_music->on_change = on_music_volume_change;
+        cf_music = crossfader_create(context->renderer, CROSSFADER_ID_MUSIC_VOLUME, cfg_music);
+        free(cfg_music);
+    }
 
     if (!cf_music) {
         printf("Failed to create music volume crossfader\n");
@@ -72,20 +75,23 @@ int init_infos(SDL_Context* context) {
 
     /* Crossfader effets sonores */
     CrossfaderConfig* cfg_sfx = crossfader_config_init();
-    cfg_sfx->x = 0;  /* repositionné à chaque frame */
-    cfg_sfx->y = 250;
-    cfg_sfx->w = 200;
-    cfg_sfx->h = 16;
-    cfg_sfx->min = 0;
-    cfg_sfx->max = MIX_MAX_VOLUME;
-    cfg_sfx->value = context->sound_effects_volume;
-    cfg_sfx->save_player_data = 1;
-    cfg_sfx->color_0_pct = (SDL_Color){90, 90, 200, 220};
-    cfg_sfx->color_100_pct = (SDL_Color){200, 110, 90, 220};
-    cfg_sfx->knob_color = (SDL_Color){0, 200, 220, 255};
-    cfg_sfx->hidden = 1;
-    cfg_sfx->on_change = on_sfx_volume_change;
-    cf_sfx = crossfader_create(context->renderer, CROSSFADER_ID_SFX_VOLUME, cfg_sfx);
+    if (cfg_sfx) {
+        cfg_sfx->x = 0;  /* repositionné à chaque frame */
+        cfg_sfx->y = 250;
+        cfg_sfx->w = 200;
+        cfg_sfx->h = 16;
+        cfg_sfx->min = 0;
+        cfg_sfx->max = MIX_MAX_VOLUME;
+        cfg_sfx->value = context->sound_effects_volume;
+        cfg_sfx->save_player_data = 1;
+        cfg_sfx->color_0_pct = (SDL_Color){90, 90, 200, 220};
+        cfg_sfx->color_100_pct = (SDL_Color){200, 110, 90, 220};
+        cfg_sfx->knob_color = (SDL_Color){0, 200, 220, 255};
+        cfg_sfx->hidden = 1;
+        cfg_sfx->on_change = on_sfx_volume_change;
+        cf_sfx = crossfader_create(context->renderer, CROSSFADER_ID_SFX_VOLUME, cfg_sfx);
+        free(cfg_sfx);
+    }
 
     if (!cf_sfx) {
         printf("Failed to create sfx volume crossfader\n");

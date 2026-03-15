@@ -1,0 +1,20 @@
+{
+   sdl2-dbus-init
+   Memcheck:Leak
+   match-leak-kinds: definite,indirect,reachable
+   ...
+   fun:SDL_DBus_Init_Spinlocked
+   fun:SDL_DBus_Init
+   ...
+}
+
+{
+   sdl2-x11-keyboard-init
+   Memcheck:Leak
+   match-leak-kinds: definite,indirect
+   ...
+   fun:X11_InitKeyboard
+   fun:X11_VideoInit
+   fun:SDL_VideoInit_REAL
+   ...
+}
