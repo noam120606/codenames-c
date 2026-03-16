@@ -2,6 +2,7 @@
 
 static SDL_Texture* lobby_btn_red = NULL;
 static SDL_Texture* lobby_btn_blue = NULL;
+static int lobby_filter_applied = 0;
 Button* btn_red_agent = NULL;
 Button* btn_red_spy = NULL;
 Button* btn_blue_agent = NULL;
@@ -35,6 +36,9 @@ static ButtonReturn lobby_button_click(SDL_Context* context, Button* button) {
             free(context->lobby_code);
             context->lobby_code = NULL;
         }
+        /* Retirer le filtre audio en quittant le lobby */
+        audio_set_filter(MUSIC_MENU_LOBBY, AUDIO_FILTER_NONE, 0);
+        lobby_filter_applied = 0;
         context->game_state = GAME_STATE_MENU;
         printf("Returned to menu\n");
     }
@@ -134,6 +138,12 @@ int lobby_init(SDL_Context* context) {
 }
 
 void lobby_display(SDL_Context* context) {
+
+    /* Application d'un filtre sur la musique du menu (une seule fois) */
+    if (!lobby_filter_applied) {
+        audio_set_filter(MUSIC_MENU_LOBBY, AUDIO_FILTER_LOW_PASS, 2200);
+        lobby_filter_applied = 1;
+    }
 
     /* Afficher le code et l'id du lobby */
     char buf[128];

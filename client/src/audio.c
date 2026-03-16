@@ -96,16 +96,30 @@ static void apply_channel_filter(int channel, SoundID id) {
         return;
     }
 
+    float new_alpha = compute_low_pass_alpha(sound_cfgs[id].filter_cutoff_hz);
+    int want_filter = !sound_cfgs[id].bypass_filter;
+
+    /* Si le filtre est déjà actif avec le même alpha, ne rien faire
+       pour ne pas réinitialiser l'état du filtre (previous_left/right). */
+    if (channel_filters[channel].active == want_filter) {
+        if (!want_filter) {
+            return; /* Pas de filtre demandé, pas de filtre actif → OK */
+        }
+        if (channel_filters[channel].alpha == new_alpha) {
+            return; /* Même filtre déjà appliqué → OK */
+        }
+    }
+
     Mix_UnregisterAllEffects(channel);
     channel_filters[channel].active = 0;
     channel_filters[channel].previous_left = 0.0f;
     channel_filters[channel].previous_right = 0.0f;
 
-    if (sound_cfgs[id].bypass_filter) {
+    if (!want_filter) {
         return;
     }
 
-    channel_filters[channel].alpha = compute_low_pass_alpha(sound_cfgs[id].filter_cutoff_hz);
+    channel_filters[channel].alpha = new_alpha;
     channel_filters[channel].active = 1;
 
     if (Mix_RegisterEffect(channel, low_pass_effect, NULL, &channel_filters[channel]) == 0) {
@@ -228,13 +242,21 @@ int audio_set_sound_volume(SoundID id, int volume) {
     return audio_set_sound_config(id, &cfg);
 }
 
-int audio_set_sound_bypass_filter(SoundID id, int bypass_filter) {
+int audio_set_filter(SoundID id, AudioFilterType filter_type, float cutoff_frequency) {
     SoundConfig cfg;
     if (audio_get_sound_config(id, &cfg) != EXIT_SUCCESS) {
         return EXIT_FAILURE;
     }
 
-    cfg.bypass_filter = bypass_filter ? 1 : 0;
+    if (filter_type == AUDIO_FILTER_LOW_PASS) {
+        cfg.filter_cutoff_hz = cutoff_frequency > 0.0f ? cutoff_frequency : FILTER_DEFAULT_CUTOFF_HZ;
+        cfg.bypass_filter = 0;
+    } else if (filter_type == AUDIO_FILTER_NONE) {
+        cfg.bypass_filter = 1;
+    } else {
+        return EXIT_FAILURE;
+    }
+
     return audio_set_sound_config(id, &cfg);
 }
 

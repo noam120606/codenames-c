@@ -31,12 +31,20 @@ typedef enum {
 } AudioSoundKind;
 
 /**
+ * Filter type for audio effects.
+ */
+typedef enum {
+    AUDIO_FILTER_NONE,
+    AUDIO_FILTER_LOW_PASS,
+} AudioFilterType;
+
+/**
  * Per-sound configuration.
  */
 typedef struct {
     AudioSoundKind kind;      /**< Music or sound effect. */
     int volume;               /**< Sound base volume (0-128). */
-    int bypass_filter;        /**< 0 = no filter, 1 = enable low-pass filter. */
+    int bypass_filter;        /**< 1 = bypass (no filter), 0 = apply low-pass filter. */
     float filter_cutoff_hz;   /**< Low-pass cutoff frequency in Hz. */
 } SoundConfig;
 
@@ -78,12 +86,13 @@ int audio_get_sound_config(SoundID id, SoundConfig* out_cfg);
 int audio_set_sound_volume(SoundID id, int volume);
 
 /**
- * Enable/disable filter bypass for a sound.
+ * Set a filter for a sound.
  * @param id The sound ID.
- * @param bypass_filter 1 = bypass filter, 0 = apply filter.
+ * @param filter_type The type of filter to apply.
+ * @param cutoff_frequency The cutoff frequency for the filter.
  * @return EXIT_SUCCESS on success, EXIT_FAILURE on failure.
  */
-int audio_set_sound_bypass_filter(SoundID id, int bypass_filter);
+int audio_set_filter(SoundID id, AudioFilterType filter_type, float cutoff_frequency);
 
 /**
  * Set global volume for a sound kind (music or sfx).

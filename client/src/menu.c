@@ -222,11 +222,11 @@ void menu_display(SDL_Context * context) {
         joining = 0;
     }
 
-    if (context->game_state == GAME_STATE_MENU || context->game_state == GAME_STATE_LOBBY) {
-        if (!audio_is_playing(MUSIC_MENU_LOBBY)) {
-            audio_play(MUSIC_MENU_LOBBY, 1);
-        }
+
+    if (!audio_is_playing(MUSIC_MENU_LOBBY)) {
+        audio_play(MUSIC_MENU_LOBBY, -1);
     }
+    
 
     // Afficher le logo à sa taille d'origine
     if (menu_logo) {
