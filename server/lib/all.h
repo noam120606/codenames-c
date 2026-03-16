@@ -13,6 +13,7 @@
 #include <stdarg.h>
 #include <stddef.h>
 
+#include "../lib/list.h"
 #include "../lib/tcp.h"
 #include "../lib/lobby.h"
 #include "../lib/message.h"

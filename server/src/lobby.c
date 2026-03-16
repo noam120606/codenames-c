@@ -65,41 +65,62 @@ char* getRandomUsername() {
 
 LobbyManager* create_lobby_manager() {
     LobbyManager* manager = malloc(sizeof(LobbyManager));
-    manager->nb_lobbies = 0;
+    if (!manager) return NULL;
+    manager->lobbies = list_create();
+    if (!manager->lobbies) {
+        free(manager);
+        return NULL;
+    }
     return manager;
+}
+
+/** Callback interne pour détruire chaque lobby lors de la destruction du manager. */
+static void destroy_lobby_callback(void* data, void* context) {
+    Codenames* codenames = (Codenames*)context;
+    Lobby* lobby = (Lobby*)data;
+    if (lobby) {
+        for (int i = 0; i < lobby->nb_players; i++) {
+            char msg[2] = {(char)('0' + MSG_LOBBYCLOSED), '\0'};
+            tcp_send_to_client(codenames, lobby->users[i]->socket_fd, msg);
+            destroy_user(lobby->users[i]);
+        }
+        free(lobby);
+    }
 }
 
 void destroy_lobby_manager(Codenames* codenames, LobbyManager* manager) {
     if (manager) {
-        for (int i = 0; i < manager->nb_lobbies; i++) {
-            destroy_lobby(codenames, manager->lobbies[i]);
-        }
+        list_foreach(manager->lobbies, destroy_lobby_callback, codenames);
+        list_destroy(manager->lobbies, NULL); // données déjà libérées par le callback
         free(manager);
     }
 }
 
+/** Extracteur d'ID pour list_next_available_id. */
+static int lobby_get_id(void* data) {
+    return ((Lobby*)data)->id;
+}
+
 Lobby* create_lobby(LobbyManager* manager) {
-    if (manager->nb_lobbies >= MAX_LOBBIES) {
+    if (list_size(manager->lobbies) >= MAX_LOBBIES) {
         return NULL;
     }
     Lobby* lobby = malloc(sizeof(Lobby));
+    if (!lobby) return NULL;
+
+    lobby->id = list_next_available_id(manager->lobbies, lobby_get_id);
     lobby->status = LB_STATUS_WAITING;
     lobby->nb_players = 0;
     lobby->owner_id = -1;
     lobby->game = NULL;
     strcpy(lobby->code, generate_code());
 
-    manager->nb_lobbies++;
-
-    // Selection du premier emplacement vide dans la liste
-    for (int i = 0; i < MAX_LOBBIES; i++) {
-        if (manager->lobbies[i] == NULL) {
-            manager->lobbies[i] = lobby;
-            lobby->id = i; // Assigner l'ID basé sur l'index dans la liste
-            return lobby;
-        }
+    if (list_add(manager->lobbies, lobby) != EXIT_SUCCESS) {
+        free(lobby);
+        return NULL;
     }
-    return NULL;
+
+    return lobby;
 }
 
 int join_lobby(Lobby* lobby, User* user) {
@@ -110,31 +131,39 @@ int join_lobby(Lobby* lobby, User* user) {
     return EXIT_SUCCESS;
 }
 
+/* Prédicats de recherche pour list_find */
+
+static int predicate_owner_id(void* data, void* context) {
+    Lobby* lobby = (Lobby*)data;
+    int owner_id = *(int*)context;
+    return lobby->owner_id == owner_id;
+}
+
+static int predicate_player_id(void* data, void* context) {
+    Lobby* lobby = (Lobby*)data;
+    int id = *(int*)context;
+    for (int j = 0; j < lobby->nb_players; j++) {
+        if (lobby->users[j]->id == id) return 1;
+    }
+    return 0;
+}
+
+static int predicate_code(void* data, void* context) {
+    Lobby* lobby = (Lobby*)data;
+    const char* code = (const char*)context;
+    return strcmp(lobby->code, code) == 0;
+}
+
 Lobby* find_lobby_by_ownerid(LobbyManager* manager, int owner_id) {
-    for (int i = 0; i < manager->nb_lobbies; i++) {
-        if (manager->lobbies[i]->owner_id == owner_id) {
-            return manager->lobbies[i];
-        }
-    }
-    return NULL;
+    return (Lobby*)list_find(manager->lobbies, predicate_owner_id, &owner_id);
 }
+
 Lobby* find_lobby_by_playerid(LobbyManager* manager, int id) {
-    for (int i = 0; i < manager->nb_lobbies; i++) {
-        for (int j = 0; j < manager->lobbies[i]->nb_players; j++) {
-            if (manager->lobbies[i]->users[j]->id == id) {
-                return manager->lobbies[i];
-            }
-        }
-    }
-    return NULL;
+    return (Lobby*)list_find(manager->lobbies, predicate_player_id, &id);
 }
+
 Lobby* find_lobby_by_code(LobbyManager* manager, const char* code) {
-    for (int i = 0; i < manager->nb_lobbies; i++) {
-        if (strcmp(manager->lobbies[i]->code, code) == 0) {
-            return manager->lobbies[i];
-        }
-    }
-    return NULL;
+    return (Lobby*)list_find(manager->lobbies, predicate_code, (void*)code);
 }
 
 void destroy_lobby(Codenames* codenames, Lobby* lobby) {
@@ -144,8 +173,8 @@ void destroy_lobby(Codenames* codenames, Lobby* lobby) {
             tcp_send_to_client(codenames, lobby->users[i]->socket_fd, msg);
             destroy_user(lobby->users[i]);
         }
+        list_remove(codenames->lobby->lobbies, lobby);
         free(lobby);
-        codenames->lobby->nb_lobbies--;
     }
 }
 
@@ -206,6 +235,50 @@ int request_join_lobby(Codenames* codenames, TcpClient* client, char* message, A
     }
 
     printf("Client %d joined lobby %d\n", client->id, lobby->id);
+
+    return EXIT_SUCCESS;
+}
+
+int request_leave_lobby(Codenames* codenames, TcpClient* client, char* message, Arguments args) {
+    (void)message; // unused
+    (void)args;    // unused
+
+    /* Trouver le lobby où se trouve le client */
+    Lobby* lobby = find_lobby_by_playerid(codenames->lobby, client->id);
+    if (!lobby) {
+        printf("Client %d tried to leave but is not in any lobby\n", client->id);
+        return EXIT_FAILURE;
+    }
+
+    int lobby_id = lobby->id;
+
+    /* Trouver et retirer l'utilisateur du lobby */
+    for (int i = 0; i < lobby->nb_players; i++) {
+        if (lobby->users[i]->id == client->id) {
+            destroy_user(lobby->users[i]);
+            /* Décaler les utilisateurs suivants */
+            for (int j = i; j < lobby->nb_players - 1; j++) {
+                lobby->users[j] = lobby->users[j + 1];
+            }
+            lobby->users[lobby->nb_players - 1] = NULL;
+            lobby->nb_players--;
+            break;
+        }
+    }
+
+    printf("Client %d left lobby %d\n", client->id, lobby_id);
+
+    /* Si le lobby est vide, le détruire */
+    if (lobby->nb_players == 0) {
+        list_remove(codenames->lobby->lobbies, lobby);
+        free(lobby);
+        printf("Lobby %d destroyed (empty)\n", lobby_id);
+    }
+    /* Si le owner a quitté, transférer au premier joueur restant */
+    else if (lobby->owner_id == client->id) {
+        lobby->owner_id = lobby->users[0]->id;
+        printf("Lobby %d ownership transferred to client %d\n", lobby_id, lobby->owner_id);
+    }
 
     return EXIT_SUCCESS;
 }

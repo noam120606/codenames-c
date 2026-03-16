@@ -36,10 +36,13 @@ int on_message(Codenames* codenames, TcpClient* client, char* message) {
 
         case MSG_CREATELOBBY: return request_create_lobby(codenames, client, message, args);
         case MSG_JOINLOBBY: return request_join_lobby(codenames, client, message, args);
+        case MSG_LEAVELOBBY: return request_leave_lobby(codenames, client, message, args);
 
         case MSG_STARTGAME: break; // Handle start game
         
         case MSG_REQUESTUUID: return request_uuid(codenames, client, message, args);
+
+        case MSG_LOBBYCLOSED: break; // Server -> Client only
         
     }
 

@@ -4,6 +4,7 @@
 #include "../lib/user.h"
 #include "../lib/game.h"
 #include "../lib/message.h"
+#include "../lib/list.h"
 
 /* Forward declaration to avoid circular include with codenames.h */
 typedef struct Codenames Codenames;
@@ -42,12 +43,10 @@ typedef struct {
 
 /** 
  * Gestionnaire de lobbies.
- * @param lobbies tableau de pointeurs vers les lobbies actifs.
- * @param nb_lobbies nombre de lobbies actuellement créés.
+ * @param lobbies liste chaînée de pointeurs vers les lobbies actifs.
  */
 typedef struct {
-    Lobby* lobbies[MAX_LOBBIES];
-    int nb_lobbies;
+    List* lobbies;
 } LobbyManager;
 
 /** Initialise le gestionnaire de lobbies.
@@ -140,5 +139,15 @@ int request_create_lobby(Codenames* codenames, TcpClient* client, char* message,
  * @return EXIT_SUCCESS si la demande est traitée avec succès, EXIT_FAILURE sinon.
  */
 int request_join_lobby(Codenames* codenames, TcpClient* client, char* message, Arguments args);
+
+/**
+ * Gère la demande de quitter un lobby.
+ * @param codenames Contexte principal du serveur.
+ * @param client Client à l'origine de la demande.
+ * @param message Message reçu du client.
+ * @param args Arguments extraits du message.
+ * @return EXIT_SUCCESS si la demande est traitée avec succès, EXIT_FAILURE sinon.
+ */
+int request_leave_lobby(Codenames* codenames, TcpClient* client, char* message, Arguments args);
 
 #endif // LOBBY_H

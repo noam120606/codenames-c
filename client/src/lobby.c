@@ -29,6 +29,12 @@ static ButtonReturn lobby_button_click(SDL_Context* context, Button* button) {
         context->player_team = TEAM_BLUE;
         printf("Selected role: BLUE SPY\n");
     } else if (button == btn_return) {
+        /* Informer le serveur qu'on quitte le lobby */
+        if (context->lobby_id >= 0 && context->sock >= 0) {
+            char msg[16];
+            format_to(msg, sizeof(msg), "%d", MSG_LEAVELOBBY);
+            send_tcp(context->sock, msg);
+        }
         context->player_role = ROLE_NONE;
         context->player_team = TEAM_NONE;
         context->lobby_id = -1;
