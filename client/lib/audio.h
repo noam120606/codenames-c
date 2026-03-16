@@ -11,7 +11,7 @@
 typedef enum {
     MUSIC_MENU_LOBBY, // Musique dans le menu et dans le lobby
     MUSIC_GAME,       // Musique pendant le jeu
-    SOUND_CLICKED_BUTTON,
+    SOUND_BUTTON_CLICKED,
     SOUND_TYPE_WRITING,
     SOUND_CARD_DISTRIBUTION,
     SOUND_CARD_GUESS,

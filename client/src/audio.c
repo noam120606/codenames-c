@@ -145,9 +145,8 @@ int audio_init() {
         channel_filters[i].previous_right = 0.0f;
     }
 
-    sound_cfgs[MUSIC_MENU_LOBBY].kind = AUDIO_SOUND_KIND_MUSIC;
-
     // Load menu music as a chunk so it can be played on a channel
+    sound_cfgs[MUSIC_MENU_LOBBY].kind = AUDIO_SOUND_KIND_MUSIC;
     sounds[MUSIC_MENU_LOBBY] = Mix_LoadWAV("assets/audio/music_menu_lobby.ogg");
     if (!sounds[MUSIC_MENU_LOBBY]) {
         printf("Erreur Mix_LoadWAV: %s\n", Mix_GetError());
@@ -156,6 +155,12 @@ int audio_init() {
     sound_cfgs[MUSIC_GAME].kind = AUDIO_SOUND_KIND_MUSIC;
     sounds[MUSIC_GAME] = Mix_LoadWAV("assets/audio/music_game.ogg");
     if (!sounds[MUSIC_GAME]) {
+        printf("Erreur Mix_LoadWAV: %s\n", Mix_GetError());
+    }
+
+    sound_cfgs[SOUND_BUTTON_CLICKED].kind = AUDIO_SOUND_KIND_SFX;
+    sounds[SOUND_BUTTON_CLICKED] = Mix_LoadWAV("assets/audio/sound_button_clicked.ogg");
+    if (!sounds[SOUND_BUTTON_CLICKED]) {
         printf("Erreur Mix_LoadWAV: %s\n", Mix_GetError());
     }
 

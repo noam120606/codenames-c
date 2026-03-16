@@ -35,7 +35,8 @@ typedef struct Arguments {
  */
 Arguments parse_arguments(char* message);
 
-#include "codenames.h"
+/* Forward declaration to avoid circular include with codenames.h */
+typedef struct Codenames Codenames;
 
 /**
  * Traite un message entrant côté serveur.

@@ -217,11 +217,14 @@ int menu_init(SDL_Context * context) {
 
 void menu_display(SDL_Context * context) {
 
-    if (context->lobby_id != -1) context->game_state = GAME_STATE_LOBBY;
+    if (context->lobby_id != -1) {
+        context->game_state = GAME_STATE_LOBBY;
+        joining = 0;
+    }
 
     if (context->game_state == GAME_STATE_MENU || context->game_state == GAME_STATE_LOBBY) {
         if (!audio_is_playing(MUSIC_MENU_LOBBY)) {
-            audio_play(MUSIC_MENU_LOBBY, -1);
+            audio_play(MUSIC_MENU_LOBBY, 1);
         }
     }
 
@@ -249,14 +252,15 @@ void menu_display(SDL_Context * context) {
 int menu_free() {
     if (menu_logo) free_image(menu_logo);
     if (quagmire) free_image(quagmire);
-    if (btn_create) { button_destroy(btn_create); btn_create = NULL; }
-    if (btn_join)   { button_destroy(btn_join);   btn_join = NULL; }
-    if (btn_quit)   { button_destroy(btn_quit);   btn_quit = NULL; }
+
+    if (btn_create) button_destroy(btn_create);
+    if (btn_join) button_destroy(btn_join);
+    if (btn_quit) button_destroy(btn_quit);
+
     if (name_input) input_destroy(name_input);
     if (code_input) input_destroy(code_input);
-    name_input = NULL;
-    code_input = NULL;
-    if (name) { free(name); name = NULL; }
+
+    if (name) free(name);
 
     return EXIT_SUCCESS;
 }

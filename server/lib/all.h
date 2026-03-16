@@ -20,3 +20,4 @@
 #include "../lib/game.h"
 #include "../lib/utils.h"
 #include "../lib/codenames.h"
+#include "../lib/uuid.h"

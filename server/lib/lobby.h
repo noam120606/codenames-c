@@ -1,8 +1,9 @@
 #ifndef LOBBY_H
 #define LOBBY_H
 
-#include "user.h"
-#include "game.h"
+#include "../lib/user.h"
+#include "../lib/game.h"
+#include "../lib/message.h"
 
 /* Forward declaration to avoid circular include with codenames.h */
 typedef struct Codenames Codenames;
@@ -97,6 +98,14 @@ int join_lobby(Lobby* lobby, User* user);
  */
 Lobby* find_lobby_by_ownerid(LobbyManager* manager, int owner_id);
 
+/**
+ * Trouve un lobby par l'identifiant d'un joueur.
+ * @param manager Gestionnaire de lobbies à rechercher.
+ * @param id Identifiant du joueur recherché.
+ * @return Pointeur vers le Lobby trouvé, ou NULL si aucun lobby ne correspond.
+ */
+Lobby* find_lobby_by_playerid(LobbyManager* manager, int id);
+
 /** Trouve un lobby par son identifiant.
  * @param manager Gestionnaire de lobbies à rechercher.
  * @param id Identifiant du lobby recherché.
@@ -109,5 +118,27 @@ Lobby* find_lobby_by_code(LobbyManager* manager, const char* code);
  * @param lobby Lobby à détruire.
  */
 void destroy_lobby(Codenames* codenames, Lobby* lobby);
+
+// interactions joueurs
+
+/**
+ * Gère la demande de création d'un lobby.
+ * @param codenames Contexte principal du serveur.
+ * @param client Client à l'origine de la demande.
+ * @param message Message reçu du client.
+ * @param args Arguments extraits du message.
+ * @return EXIT_SUCCESS si la demande est traitée avec succès, EXIT_FAILURE sinon.
+ */
+int request_create_lobby(Codenames* codenames, TcpClient* client, char* message, Arguments args);
+
+/**
+ * Gère la demande de rejoindre un lobby.
+ * @param codenames Contexte principal du serveur.
+ * @param client Client à l'origine de la demande.
+ * @param message Message reçu du client.
+ * @param args Arguments extraits du message.
+ * @return EXIT_SUCCESS si la demande est traitée avec succès, EXIT_FAILURE sinon.
+ */
+int request_join_lobby(Codenames* codenames, TcpClient* client, char* message, Arguments args);
 
 #endif // LOBBY_H

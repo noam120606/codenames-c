@@ -83,7 +83,6 @@ Lobby* create_lobby(LobbyManager* manager) {
         return NULL;
     }
     Lobby* lobby = malloc(sizeof(Lobby));
-    lobby->id = manager->nb_lobbies;
     lobby->status = LB_STATUS_WAITING;
     lobby->nb_players = 0;
     lobby->owner_id = -1;
@@ -96,6 +95,7 @@ Lobby* create_lobby(LobbyManager* manager) {
     for (int i = 0; i < MAX_LOBBIES; i++) {
         if (manager->lobbies[i] == NULL) {
             manager->lobbies[i] = lobby;
+            lobby->id = i; // Assigner l'ID basé sur l'index dans la liste
             return lobby;
         }
     }
@@ -114,6 +114,16 @@ Lobby* find_lobby_by_ownerid(LobbyManager* manager, int owner_id) {
     for (int i = 0; i < manager->nb_lobbies; i++) {
         if (manager->lobbies[i]->owner_id == owner_id) {
             return manager->lobbies[i];
+        }
+    }
+    return NULL;
+}
+Lobby* find_lobby_by_playerid(LobbyManager* manager, int id) {
+    for (int i = 0; i < manager->nb_lobbies; i++) {
+        for (int j = 0; j < manager->lobbies[i]->nb_players; j++) {
+            if (manager->lobbies[i]->users[j]->id == id) {
+                return manager->lobbies[i];
+            }
         }
     }
     return NULL;
@@ -137,4 +147,65 @@ void destroy_lobby(Codenames* codenames, Lobby* lobby) {
         free(lobby);
         codenames->lobby->nb_lobbies--;
     }
+}
+
+// interactions joueurs
+int request_create_lobby(Codenames* codenames, TcpClient* client, char* message, Arguments args) {
+    if (args.argc < 1) {
+        printf("Invalid create lobby message from client %d: \"%s\"\n", client->id, message);
+        return EXIT_FAILURE;
+    }
+    Lobby* lobby = create_lobby(codenames->lobby);
+    if (lobby == NULL) {
+        printf("Failed to create lobby\n");
+        return EXIT_FAILURE;
+    }
+    lobby->owner_id = client->id;
+    User* user = create_user(client->id, args.argv[0], client->socket);
+    if (user == NULL) {
+        printf("Failed to create user for client %d\n", client->id);
+        return EXIT_FAILURE;
+    }
+    if (join_lobby(lobby, user) != EXIT_SUCCESS) {
+        printf("Failed to join lobby for client %d\n", client->id);
+        destroy_user(user);
+        return EXIT_FAILURE;
+    }
+    printf("create lobby %d\n", lobby->id);
+
+    char reponse[64];
+    format_to(reponse, sizeof(reponse), "%d %d %s", MSG_CREATELOBBY, lobby->id, lobby->code);
+    tcp_send_to_client(codenames, client->id, reponse);
+
+    return EXIT_SUCCESS;
+}
+
+int request_join_lobby(Codenames* codenames, TcpClient* client, char* message, Arguments args) {
+    // Handle join lobby
+    if (args.argc < 2) {
+        printf("Invalid join lobby message from client %d: \"%s\"\n", client->id, message);
+        return EXIT_FAILURE;
+    }
+
+    Lobby* lobby = find_lobby_by_code(codenames->lobby, args.argv[0]);
+    if (!lobby) {
+        printf("Lobby not found for client %d\n", client->id);
+        return EXIT_FAILURE;
+    }
+
+    User* user = create_user(client->id, args.argv[1], client->socket);
+    if (!user) {
+        printf("Failed to create user for client %d\n", client->id);
+        return EXIT_FAILURE;
+    }
+
+    if (join_lobby(lobby, user) != EXIT_SUCCESS) {
+        printf("Failed to join lobby %d for client %d\n", lobby->id, client->id);
+        destroy_user(user);
+        return EXIT_FAILURE;
+    }
+
+    printf("Client %d joined lobby %d\n", client->id, lobby->id);
+
+    return EXIT_SUCCESS;
 }

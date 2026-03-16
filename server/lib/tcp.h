@@ -44,7 +44,8 @@ TcpServer* tcp_server_create(int port);
  */
 void tcp_server_destroy(TcpServer* server);
 
-#include "../lib/codenames.h"
+/* Forward declaration to avoid circular include with codenames.h */
+typedef struct Codenames Codenames;
 
 /** 
  * Tick à appeler dans la boucle principale du serveur pour gérer les événements réseau.

@@ -34,86 +34,15 @@ int on_message(Codenames* codenames, TcpClient* client, char* message) {
             printf("Received unknown message header from client %d: \"%s\"\n", client->id, message);
             break;
 
-        case MSG_CREATELOBBY: {
-            // Handle create lobby
-            if (args.argc < 1) {
-                printf("Invalid create lobby message from client %d: \"%s\"\n", client->id, message);
-                break;
-            }
-            Lobby* lobby = create_lobby(codenames->lobby);
-            if (lobby == NULL) {
-                printf("Failed to create lobby\n");
-                return EXIT_FAILURE;
-            }
-            lobby->owner_id = client->id;
-            User* user = create_user(client->id, args.argv[0], client->socket);
-            if (user == NULL) {
-                printf("Failed to create user for client %d\n", client->id);
-                return EXIT_FAILURE;
-            }
-            if (join_lobby(lobby, user) != EXIT_SUCCESS) {
-                printf("Failed to join lobby for client %d\n", client->id);
-                destroy_user(user);
-                return EXIT_FAILURE;
-            }
-            printf("create lobby %d\n", lobby->id);
+        case MSG_CREATELOBBY: return request_create_lobby(codenames, client, message, args);
+        case MSG_JOINLOBBY: return request_join_lobby(codenames, client, message, args);
 
-            char reponse[64];
-            format_to(reponse, sizeof(reponse), "%d %d %s", MSG_CREATELOBBY, lobby->id, lobby->code);
-            tcp_send_to_client(codenames, client->id, reponse);
-            break;
-        }
-
-        case MSG_JOINLOBBY: {
-            // Handle join lobby
-            if (args.argc < 2) {
-                printf("Invalid join lobby message from client %d: \"%s\"\n", client->id, message);
-                break;
-            }
-
-            Lobby* lobby = find_lobby_by_code(codenames->lobby, args.argv[0]);
-            if (!lobby) {
-                printf("Lobby not found for client %d\n", client->id);
-                break;
-            }
-
-            User* user = create_user(client->id, args.argv[1], client->socket);
-            if (!user) {
-                printf("Failed to create user for client %d\n", client->id);
-                break;
-            }
-
-            if (join_lobby(lobby, user) != EXIT_SUCCESS) {
-                printf("Failed to join lobby %d for client %d\n", lobby->id, client->id);
-                destroy_user(user);
-                break;
-            }
-
-            printf("Client %d joined lobby %d\n", client->id, lobby->id);
-
-            break;
-        }
-
-        case MSG_STARTGAME: {
-            // Handle start game
-            break;
-        }
-
-        case MSG_REQUESTUUID: {
-            // Générer un UUID unique et l'envoyer au client
-            char* uuid = generate_uuid("data/uuids");
-            if (uuid == NULL) {
-                printf("Failed to generate UUID for client %d\n", client->id);
-                return EXIT_FAILURE;
-            }
-            char reponse[128];
-            format_to(reponse, sizeof(reponse), "%d %s", MSG_REQUESTUUID, uuid);
-            tcp_send_to_client(codenames, client->id, reponse);
-            printf("Generated UUID %s for client %d\n", uuid, client->id);
-            free(uuid);
-            break;
-        }
+        case MSG_STARTGAME: break; // Handle start game
+        
+        case MSG_REQUESTUUID: return request_uuid(codenames, client, message, args);
+        
     }
+
     return EXIT_SUCCESS;
 }
 
@@ -124,7 +53,12 @@ int on_leave(Codenames* codenames, TcpClient* client) {
     Lobby* lobby = find_lobby_by_ownerid(codenames->lobby, client->id);
     if (lobby) {
         int id = lobby->id;
-        destroy_lobby(codenames, lobby);
+        /* S'il reste des joueurs dans le lobby, on ne le détruit pas et on passe l'owner à un des joueurs restants */
+        if (lobby->nb_players > 1) {
+            lobby->owner_id = lobby->users[0]->id;
+        } else {
+            destroy_lobby(codenames, lobby);
+        }
         printf("Destroyed lobby %d owned by client %d\n", id, client->id);
     }
 

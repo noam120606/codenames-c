@@ -215,6 +215,7 @@ ButtonReturn button_handle_event(SDL_Context* context, Button* button, SDL_Event
         int mouseY = event->button.y;
         if (is_mouse_over_button(button, mouseX, mouseY)) {
             if (button->cfg->callback) {
+                audio_play(SOUND_BUTTON_CLICKED, 0);
                 return button->cfg->callback(context, button);
             }
         }
