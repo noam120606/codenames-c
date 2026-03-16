@@ -60,13 +60,14 @@ int lobby_init(SDL_Context* context) {
 
     int load_errors = 0;
 
-    lobby_btn_red = IMG_LoadTexture(context->renderer, "assets/img/buttons/red.png");
+    
+    lobby_btn_red = load_image(context->renderer, "assets/img/buttons/red.png");
     if (!lobby_btn_red) {
         fprintf(stderr, "lobby_init: failed to load assets/img/buttons/red.png: %s\n", IMG_GetError());
         load_errors++;
     }
 
-    lobby_btn_blue = IMG_LoadTexture(context->renderer, "assets/img/buttons/blue.png");
+    lobby_btn_blue = load_image(context->renderer, "assets/img/buttons/blue.png");
     if (!lobby_btn_blue) {
         fprintf(stderr, "lobby_init: failed to load assets/img/buttons/blue.png: %s\n", IMG_GetError());
         load_errors++;
