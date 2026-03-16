@@ -238,41 +238,9 @@ ButtonReturn buttons_handle_event(SDL_Context* context, SDL_Event* event) {
     return BTN_RET_NONE;
 }
 
-void buttons_display(SDL_Renderer* renderer) {
-    if (!renderer) return;
-
-    for (int i = 0; i < button_count; i++) {
-        if (!buttons[i] || !buttons[i]->cfg) continue;
-        ButtonConfig* cfg = buttons[i]->cfg;
-        if (cfg->hidden || !cfg->texture) continue;
-
-        /* Grandir le bouton au survol */
-        SDL_Rect render_rect = cfg->rect;
-        SDL_Rect text_rect = cfg->text_rect;
-        if (cfg->is_hovered) {
-            render_rect.x -= 4;
-            render_rect.y -= 2;
-            render_rect.w += 8;
-            render_rect.h += 4;
-            if (cfg->is_text) {
-                text_rect.x -= 2;
-                text_rect.y -= 1;
-                text_rect.w += 4;
-                text_rect.h += 2;
-            }
-        }
-
-        SDL_RenderCopyEx(renderer, cfg->texture, NULL, &render_rect, 0, NULL, SDL_FLIP_NONE);
-        if (cfg->is_text) {
-            SDL_RenderCopyEx(renderer, cfg->text_texture, NULL, &text_rect, 0, NULL, SDL_FLIP_NONE);
-        }
-    }
-}
-
 int button_render(ButtonId id) {
 
     Button* button = button_get(id);
-    button->cfg->hidden = 0;
 
     if (!button || !button->cfg) return EXIT_FAILURE;
     ButtonConfig* cfg = button->cfg;

@@ -154,12 +154,6 @@ Button* button_create(SDL_Renderer* renderer, int id, const ButtonConfig* cfg);
 ButtonReturn buttons_handle_event(SDL_Context* context, SDL_Event* event);
 
 /**
- * Affiche tous les boutons.
- * @param renderer Le renderer SDL.
- */
-void buttons_display(SDL_Renderer* renderer);
-
-/**
  * Rendu d'un bouton.
  * @param id L'ID du bouton à rendre.
  * @return EXIT_SUCCESS si le rendu a réussi, sinon EXIT_FAILURE.
