@@ -1,9 +1,5 @@
 #include "../lib/all.h"
 
-static Button* buttons[MAX_BUTTONS];
-static int button_count = 0;
-static SDL_Renderer* button_renderer = NULL;
-
 ButtonConfig* button_config_init(void) {
     ButtonConfig* cfg = (ButtonConfig*)calloc(1, sizeof(ButtonConfig));
     if (!cfg) return NULL;
@@ -16,7 +12,6 @@ ButtonConfig* button_config_init(void) {
     cfg->font_path = NULL;
     cfg->color = (SDL_Color){255, 255, 255, 255};
     cfg->tex_path = NULL;
-    cfg->hidden = 0;
     cfg->callback = NULL;
 
     /* champs runtime */
@@ -30,19 +25,7 @@ ButtonConfig* button_config_init(void) {
     return cfg;
 }
 
-void buttons_init(SDL_Renderer* renderer) {
-    button_renderer = renderer;
-    for (int i = 0; i < MAX_BUTTONS; i++) {
-        buttons[i] = NULL;
-    }
-    button_count = 0;
-}
-
 Button* button_create(SDL_Renderer* renderer, int id, const ButtonConfig* cfg_in) {
-    if (button_count >= MAX_BUTTONS) {
-        printf("button_create: nombre maximum de boutons atteint (%d)\n", MAX_BUTTONS);
-        return NULL;
-    }
 
     Button* button = (Button*)malloc(sizeof(Button));
     if (!button) {
@@ -195,8 +178,21 @@ Button* button_create(SDL_Renderer* renderer, int id, const ButtonConfig* cfg_in
         button->cfg->text_rect.y = screen_y + (btn_h - button->cfg->text_rect.h) / 2;
     }
 
-    buttons[button_count++] = button;
     return button;
+}
+
+void button_destroy(Button* button) {
+    if (!button) return;
+    if (button->cfg) {
+        if (button->cfg->is_text && button->cfg->text_texture) {
+            SDL_DestroyTexture(button->cfg->text_texture);
+        }
+        if (button->cfg->texture) {
+            SDL_DestroyTexture(button->cfg->texture);
+        }
+        free(button->cfg);
+    }
+    free(button);
 }
 
 static int is_mouse_over_button(Button* button, int mouseX, int mouseY) {
@@ -207,44 +203,30 @@ static int is_mouse_over_button(Button* button, int mouseX, int mouseY) {
             mouseY <= button->cfg->rect.y + button->cfg->rect.h);
 }
 
-ButtonReturn buttons_handle_event(SDL_Context* context, SDL_Event* event) {
-    if (!event) return BTN_RET_NONE;
+ButtonReturn button_handle_event(SDL_Context* context, Button* button, SDL_Event* event) {
+    if (!button || !button->cfg || !event) return BTN_RET_NONE;
 
     if (event->type == SDL_MOUSEMOTION) {
         int mouseX = event->motion.x;
         int mouseY = event->motion.y;
-        for (int i = 0; i < button_count; i++) {
-            if (!buttons[i] || !buttons[i]->cfg) continue;
-            if (!buttons[i]->cfg->hidden) {
-                buttons[i]->cfg->is_hovered = is_mouse_over_button(buttons[i], mouseX, mouseY);
-            } else {
-                buttons[i]->cfg->is_hovered = 0;
-            }
-        }
+        button->cfg->is_hovered = is_mouse_over_button(button, mouseX, mouseY);
     } else if (event->type == SDL_MOUSEBUTTONDOWN && event->button.button == SDL_BUTTON_LEFT) {
         int mouseX = event->button.x;
         int mouseY = event->button.y;
-        for (int i = 0; i < button_count; i++) {
-            if (buttons[i] && buttons[i]->cfg &&
-                !buttons[i]->cfg->hidden &&
-                is_mouse_over_button(buttons[i], mouseX, mouseY)) {
-                if (buttons[i]->cfg->callback) {
-                    return buttons[i]->cfg->callback(context, buttons[i]->id);
-                }
+        if (is_mouse_over_button(button, mouseX, mouseY)) {
+            if (button->cfg->callback) {
+                return button->cfg->callback(context, button);
             }
         }
     }
-    /* Si aucun bouton n'a été cliqué, retourner BTN_RET_NONE */
     return BTN_RET_NONE;
 }
 
-int button_render(ButtonId id) {
+int button_render(SDL_Renderer* renderer, Button* button) {
 
-    Button* button = button_get(id);
-
-    if (!button || !button->cfg) return EXIT_FAILURE;
+    if (!renderer || !button || !button->cfg) return EXIT_FAILURE;
     ButtonConfig* cfg = button->cfg;
-    if (cfg->hidden || !cfg->texture) return EXIT_FAILURE;
+    if (!cfg->texture) return EXIT_FAILURE;
 
     /* Grandir le bouton au survol */
     SDL_Rect render_rect = cfg->rect;
@@ -262,107 +244,10 @@ int button_render(ButtonId id) {
         }
     }
 
-    SDL_RenderCopyEx(button_renderer, cfg->texture, NULL, &render_rect, 0, NULL, SDL_FLIP_NONE);
+    SDL_RenderCopyEx(renderer, cfg->texture, NULL, &render_rect, 0, NULL, SDL_FLIP_NONE);
     if (cfg->is_text) {
-        SDL_RenderCopyEx(button_renderer, cfg->text_texture, NULL, &text_rect, 0, NULL, SDL_FLIP_NONE);
+        SDL_RenderCopyEx(renderer, cfg->text_texture, NULL, &text_rect, 0, NULL, SDL_FLIP_NONE);
     }
 
     return EXIT_SUCCESS;
-}
-
-Button* button_get(int id) {
-    for (int i = 0; i < button_count; i++) {
-        if (buttons[i] && buttons[i]->id == id) return buttons[i];
-    }
-    return NULL;
-}
-
-int buttons_free(void) {
-    for (int i = 0; i < button_count; i++) {
-        if (buttons[i]) {
-            if (buttons[i]->cfg) {
-                if (buttons[i]->cfg->is_text && buttons[i]->cfg->text_texture) {
-                    SDL_DestroyTexture(buttons[i]->cfg->text_texture);
-                }
-                if (buttons[i]->cfg->texture) {
-                    SDL_DestroyTexture(buttons[i]->cfg->texture);
-                }
-                free(buttons[i]->cfg);
-            }
-            free(buttons[i]);
-            buttons[i] = NULL;
-        }
-    }
-    button_count = 0;
-    return EXIT_SUCCESS;
-}
-
-int edit_btn_cfg(int id, ButtonCfgKey key, intptr_t value) {
-    Button* button = button_get(id);
-    if (!button || !button->cfg) return EXIT_FAILURE;
-
-    switch (key) {
-        case BTN_CFG_X:
-            button->cfg->x = (int)value;
-            button->cfg->rect.x = (int)value;
-            return EXIT_SUCCESS;
-        case BTN_CFG_Y:
-            button->cfg->y = (int)value;
-            button->cfg->rect.y = (int)value;
-            return EXIT_SUCCESS;
-        case BTN_CFG_W:
-            button->cfg->w = (int)value;
-            button->cfg->rect.w = (int)value;
-            return EXIT_SUCCESS;
-        case BTN_CFG_H:
-            button->cfg->h = (int)value;
-            button->cfg->rect.h = (int)value;
-            return EXIT_SUCCESS;
-        case BTN_CFG_TEXT:
-            button->cfg->text = (const char*)value;
-            return EXIT_SUCCESS;
-        case BTN_CFG_FONT_PATH:
-            button->cfg->font_path = (const char*)value;
-            return EXIT_SUCCESS;
-        case BTN_CFG_COLOR:
-            if (!value) return EXIT_FAILURE;
-            button->cfg->color = *(const SDL_Color*)value;
-            return EXIT_SUCCESS;
-        case BTN_CFG_TEX_PATH:
-            button->cfg->tex_path = (const char*)value;
-            return EXIT_SUCCESS;
-        case BTN_CFG_HIDDEN:
-            button->cfg->hidden = ((int)value != 0);
-            return EXIT_SUCCESS;
-        case BTN_CFG_CALLBACK:
-            if (!value) return EXIT_FAILURE;
-            button->cfg->callback = *(ButtonCallback*)value;
-            return EXIT_SUCCESS;
-        case BTN_CFG_RECT:
-            if (!value) return EXIT_FAILURE;
-            button->cfg->rect = *(const SDL_Rect*)value;
-            button->cfg->x = button->cfg->rect.x;
-            button->cfg->y = button->cfg->rect.y;
-            button->cfg->w = button->cfg->rect.w;
-            button->cfg->h = button->cfg->rect.h;
-            return EXIT_SUCCESS;
-        case BTN_CFG_TEXTURE:
-            button->cfg->texture = (SDL_Texture*)value;
-            return EXIT_SUCCESS;
-        case BTN_CFG_IS_HOVERED:
-            button->cfg->is_hovered = ((int)value != 0);
-            return EXIT_SUCCESS;
-        case BTN_CFG_IS_TEXT:
-            button->cfg->is_text = ((int)value != 0);
-            return EXIT_SUCCESS;
-        case BTN_CFG_TEXT_RECT:
-            if (!value) return EXIT_FAILURE;
-            button->cfg->text_rect = *(const SDL_Rect*)value;
-            return EXIT_SUCCESS;
-        case BTN_CFG_TEXT_TEXTURE:
-            button->cfg->text_texture = (SDL_Texture*)value;
-            return EXIT_SUCCESS;
-        default:
-            return EXIT_FAILURE;
-    }
 }

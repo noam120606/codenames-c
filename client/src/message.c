@@ -59,15 +59,15 @@ int on_message(SDL_Context* context, char* message) {
             if (context->player_uuid) free(context->player_uuid);
             context->player_uuid = strdup((char*)args.argv[0]);
 
-            // Écrire le fichier datas/uuid
+            // Écrire le fichier data/uuid
             {
-                FILE* f = fopen("datas/uuid", "w");
+                FILE* f = fopen("data/uuid", "w");
                 if (f) {
                     fprintf(f, "NE PAS MODIFIER CE FICHIER !\n%s\n", context->player_uuid);
                     fclose(f);
-                    printf("UUID saved to datas/uuid: %s\n", context->player_uuid);
+                    printf("UUID saved to data/uuid: %s\n", context->player_uuid);
                 } else {
-                    perror("Failed to write datas/uuid");
+                    perror("Failed to write data/uuid");
                 }
             }
             break;

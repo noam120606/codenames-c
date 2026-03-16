@@ -21,11 +21,12 @@ int lobby_init(SDL_Context* context);
 int lobby_free();
 
 /**
- * Gère les événements du lobby.
+ * Gère les événements du lobby (boutons, etc.).
  * @param context Contexte SDL.
  * @param event Événement SDL à traiter.
+ * @return ButtonReturn (BTN_RET_QUIT to exit, BTN_RET_NONE otherwise).
  */
-void lobby_handle_event(SDL_Context* context, SDL_Event* event);
+ButtonReturn lobby_handle_event(SDL_Context* context, SDL_Event* event);
 
 /**
  * Affiche le lobby.

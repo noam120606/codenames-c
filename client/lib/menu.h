@@ -22,16 +22,10 @@ int menu_init(SDL_Context* context);
 void menu_display(SDL_Context* context);
 
 /**
- * Handle SDL events for the menu (e.g., inputs)
+ * Handle SDL events for the menu (inputs, buttons, etc.).
+ * @return ButtonReturn (BTN_RET_QUIT to exit, BTN_RET_NONE otherwise).
  */
-void menu_handle_event(SDL_Context* context, SDL_Event* e);
-
-
-/**
- * Gestion des boutons rejoindre / créer
- * @param button_id bouton utilisé pour trigger l'evenement.
- */
-void menu_join(SDL_Context* context, ButtonId button_id);
+ButtonReturn menu_handle_event(SDL_Context* context, SDL_Event* e);
 
 /** 
  * Libère les ressources du menu.

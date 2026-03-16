@@ -38,22 +38,27 @@ static void code_on_submit(SDL_Context* context, const char* text) {
     }
 }
 
-void menu_handle_event(SDL_Context* context, SDL_Event* e) {
+ButtonReturn menu_handle_event(SDL_Context* context, SDL_Event* e) {
     if (name_input) input_handle_event(context, name_input, e);
-    if (code_input) input_handle_event(context, code_input, e);
+    if (code_input && joining) input_handle_event(context, code_input, e);
+
+    ButtonReturn ret = BTN_RET_NONE;
+    ButtonReturn r;
+    if (btn_create) { r = button_handle_event(context, btn_create, e); if (r != BTN_RET_NONE) ret = r; }
+    if (btn_join && !joining) { r = button_handle_event(context, btn_join, e); if (r != BTN_RET_NONE) ret = r; }
+    if (btn_quit)   { r = button_handle_event(context, btn_quit, e);   if (r != BTN_RET_NONE) ret = r; }
+    return ret;
 }
 
-ButtonReturn menu_button_click(SDL_Context* context, ButtonId button_id) {
-    printf("Button clicked: %d\n", button_id);
-    switch (button_id) {
-        case BTN_JOIN: joining = 1; break;
-        case BTN_CREATE:
-            char trame[20];
-            format_to(trame, sizeof(trame), "%d %s", MSG_CREATELOBBY, name ? name : "NONE");
-            send_tcp(context->sock, trame);
-            break;
-        case BTN_QUIT: return BTN_RET_QUIT; break;
-        default: printf("Unknown button clicked\n"); break;
+ButtonReturn menu_button_click(SDL_Context* context, Button* button) {
+    if (button == btn_join) {
+        joining = 1;
+    } else if (button == btn_create) {
+        char trame[20];
+        format_to(trame, sizeof(trame), "%d %s", MSG_CREATELOBBY, name ? name : "NONE");
+        send_tcp(context->sock, trame);
+    } else if (button == btn_quit) {
+        return BTN_RET_QUIT;
     }
     return BTN_RET_NONE;
 }
@@ -83,7 +88,7 @@ int menu_init(SDL_Context * context) {
         cfg_btn_create->color     = COL_WHITE;
         cfg_btn_create->text      = "Créer";
         cfg_btn_create->callback  = menu_button_click;
-        btn_create = button_create(context->renderer, BTN_CREATE, cfg_btn_create);
+        btn_create = button_create(context->renderer, 0, cfg_btn_create);
         free(cfg_btn_create);
     }
 
@@ -96,7 +101,7 @@ int menu_init(SDL_Context * context) {
         cfg_btn_join->color     = COL_WHITE;
         cfg_btn_join->text      = "Rejoindre";
         cfg_btn_join->callback  = menu_button_click;
-        btn_join = button_create(context->renderer, BTN_JOIN, cfg_btn_join);
+        btn_join = button_create(context->renderer, 0, cfg_btn_join);
         free(cfg_btn_join);
     }
 
@@ -109,7 +114,7 @@ int menu_init(SDL_Context * context) {
         cfg_btn_quit->color     = COL_WHITE;
         cfg_btn_quit->text      = "Quitter";
         cfg_btn_quit->callback  = menu_button_click;
-        btn_quit = button_create(context->renderer, BTN_QUIT, cfg_btn_quit);
+        btn_quit = button_create(context->renderer, 0, cfg_btn_quit);
         free(cfg_btn_quit);
     }
 
@@ -140,6 +145,48 @@ int menu_init(SDL_Context * context) {
         const char* loaded_name = input_get_text(name_input);
         if (loaded_name && loaded_name[0] != '\0') {
             input_submit(context, name_input);
+        }
+    }
+
+    /* Si aucun nom n'a été chargé depuis la sauvegarde, en choisir un
+       aléatoirement dans assets/misc/usernames.txt et l'appliquer. */
+    if (!name || name[0] == '\0') {
+        char saved[INPUT_DEFAULT_MAX + 1] = {0};
+        int has_saved = (read_property(saved, "PLAYER_NAME") == EXIT_SUCCESS && saved[0] != '\0');
+        if (!has_saved) {
+            FILE* uf = fopen("assets/misc/usernames.txt", "r");
+            if (uf) {
+                /* Compter les lignes */
+                int line_count = 0;
+                char line_buf[128];
+                while (fgets(line_buf, sizeof(line_buf), uf)) line_count++;
+
+                if (line_count > 0) {
+                    srand((unsigned int)SDL_GetTicks());
+                    int chosen = rand() % line_count;
+
+                    rewind(uf);
+                    int cur = 0;
+                    while (fgets(line_buf, sizeof(line_buf), uf)) {
+                        if (cur == chosen) {
+                            /* Retirer le '\n' final */
+                            size_t len = strlen(line_buf);
+                            if (len > 0 && line_buf[len - 1] == '\n') line_buf[len - 1] = '\0';
+                            /* Appliquer le nom via name_on_submit */
+                            name_on_submit(context, line_buf);
+                            /* Mettre à jour l'input pour que le label "Pseudo : ..."
+                               s'affiche immédiatement au premier lancement. */
+                            if (name_input) {
+                                input_set_text(name_input, line_buf);
+                                input_submit(context, name_input);
+                            }
+                            break;
+                        }
+                        cur++;
+                    }
+                }
+                fclose(uf);
+            }
         }
     }
 
@@ -178,17 +225,6 @@ void menu_display(SDL_Context * context) {
         }
     }
 
-    if (context->game_state == GAME_STATE_MENU) {
-        if (joining) {
-            edit_btn_cfg(BTN_CREATE, BTN_CFG_HIDDEN, 0);
-            edit_btn_cfg(BTN_JOIN, BTN_CFG_HIDDEN, 1);
-            if (code_input) input_render(context->renderer, code_input);
-        } else {
-            edit_btn_cfg(BTN_CREATE, BTN_CFG_HIDDEN, 0);
-            edit_btn_cfg(BTN_JOIN, BTN_CFG_HIDDEN, 0);
-        }
-    }
-
     // Afficher le logo à sa taille d'origine
     if (menu_logo) {
         display_image(context->renderer, menu_logo, 0, 200, 1.00, 0, SDL_FLIP_NONE, 1, 255);
@@ -202,19 +238,20 @@ void menu_display(SDL_Context * context) {
     /* input is drawn by menu */
     if (name_input) input_render(context->renderer, name_input);
 
-    button_render(BTN_CREATE);
-    button_render(BTN_JOIN);
-    button_render(BTN_QUIT);
+    button_render(context->renderer, btn_create);
+    button_render(context->renderer, btn_quit);
 
-    /* submitted text is drawn by input_render */
+    if (joining) input_render(context->renderer, code_input);
+    else button_render(context->renderer, btn_join);
+
 }
 
 int menu_free() {
     if (menu_logo) free_image(menu_logo);
     if (quagmire) free_image(quagmire);
-    btn_create = NULL;
-    btn_join = NULL;
-    btn_quit = NULL;
+    if (btn_create) { button_destroy(btn_create); btn_create = NULL; }
+    if (btn_join)   { button_destroy(btn_join);   btn_join = NULL; }
+    if (btn_quit)   { button_destroy(btn_quit);   btn_quit = NULL; }
     if (name_input) input_destroy(name_input);
     if (code_input) input_destroy(code_input);
     name_input = NULL;

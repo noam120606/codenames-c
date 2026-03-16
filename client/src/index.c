@@ -116,10 +116,7 @@ int main(int argc, char* argv[]){
         }
     }
 
-    // Initialiser le système de boutons
-    buttons_init(context.renderer);
-    add_destroy_resource(resources, buttons_free);
-
+    // Initialiser les scènes
     int menu_loading_fails = menu_init(&context);
     if (menu_loading_fails > 0) {
         printf("Failed to load %d menu resource(s)\n", menu_loading_fails);
@@ -191,16 +188,18 @@ int main(int argc, char* argv[]){
 
             // Déléguer l'événement selon l'état courant
             switch (context.game_state) {
-                case GAME_STATE_MENU: menu_handle_event(&context, &e); break;
-                case GAME_STATE_LOBBY: lobby_handle_event(&context, &e); break;
+                case GAME_STATE_MENU: {
+                    ButtonReturn bref = menu_handle_event(&context, &e);
+                    if (bref == BTN_RET_QUIT) running = 0;
+                    break;
+                }
+                case GAME_STATE_LOBBY: {
+                    ButtonReturn bref = lobby_handle_event(&context, &e);
+                    if (bref == BTN_RET_QUIT) running = 0;
+                    break;
+                }
                 case GAME_STATE_PLAYING: game_handle_event(&context, &e); break;
                 case GAME_STATE_PAUSED: break;
-            }
-
-            ButtonReturn bref = buttons_handle_event(&context, &e);
-            switch (bref) {
-                case BTN_RET_QUIT: running = 0; break;
-                default: break;
             }
         }
 
