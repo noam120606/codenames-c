@@ -152,21 +152,6 @@ int lobby_init(SDL_Context* context) {
 }
 
 void lobby_display(SDL_Context* context) {
-    if (!context) return;
-
-    if (context->game_state == GAME_STATE_MENU) {
-        edit_btn_cfg(BTN_RED_AGENT, BTN_CFG_HIDDEN, 1);
-        edit_btn_cfg(BTN_RED_SPY, BTN_CFG_HIDDEN, 1);
-        edit_btn_cfg(BTN_BLUE_AGENT, BTN_CFG_HIDDEN, 1);
-        edit_btn_cfg(BTN_BLUE_SPY, BTN_CFG_HIDDEN, 1);
-        edit_btn_cfg(BTN_RETURN, BTN_CFG_HIDDEN, 1);
-    } else {
-        edit_btn_cfg(BTN_RED_AGENT, BTN_CFG_HIDDEN, 0);
-        edit_btn_cfg(BTN_RED_SPY, BTN_CFG_HIDDEN, 0);
-        edit_btn_cfg(BTN_BLUE_AGENT, BTN_CFG_HIDDEN, 0);
-        edit_btn_cfg(BTN_BLUE_SPY, BTN_CFG_HIDDEN, 0);
-        edit_btn_cfg(BTN_RETURN, BTN_CFG_HIDDEN, 0);
-    }
 
     /* Afficher le code et l'id du lobby */
     char buf[128];
@@ -179,7 +164,14 @@ void lobby_display(SDL_Context* context) {
     int rel_y = -200;
     text_display(context->renderer, buf, FONT_LARABIE, 36, COL_WHITE, rel_x, rel_y, 0, 255);
 
-    /* Si tu veux, afficher la liste des joueurs ici (nécessite que le client reçoive la liste du serveur). */
+    /* afficher la liste des joueurs ici (nécessite que le client reçoive la liste du serveur). */
+
+    button_render(BTN_RED_AGENT);
+    button_render(BTN_RED_SPY);
+    button_render(BTN_BLUE_AGENT);
+    button_render(BTN_BLUE_SPY);
+    button_render(BTN_RETURN);
+
 }
 
 void lobby_handle_event(SDL_Context* context, SDL_Event* e) {

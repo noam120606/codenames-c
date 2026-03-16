@@ -22,8 +22,10 @@ static void name_on_submit(SDL_Context* context, const char* text) {
             name = malloc(1);
             if (name) name[0] = '\0';
         }
+        write_property("PLAYER_NAME", text);
     } else {
         name = NULL;
+        write_property("PLAYER_NAME", "");
     }
 }
 
@@ -168,27 +170,14 @@ int menu_init(SDL_Context * context) {
 
 void menu_display(SDL_Context * context) {
 
-    if (context->lobby_id == -1) {
-        context->game_state = GAME_STATE_MENU;
-            edit_btn_cfg(BTN_CREATE, BTN_CFG_HIDDEN, 0);
-            edit_btn_cfg(BTN_JOIN, BTN_CFG_HIDDEN, 0);
-            edit_btn_cfg(BTN_QUIT, BTN_CFG_HIDDEN, 0);
-            edit_btn_cfg(BTN_RED_AGENT, BTN_CFG_HIDDEN, 1);
-            edit_btn_cfg(BTN_RED_SPY, BTN_CFG_HIDDEN, 1);
-            edit_btn_cfg(BTN_BLUE_AGENT, BTN_CFG_HIDDEN, 1);
-            edit_btn_cfg(BTN_BLUE_SPY, BTN_CFG_HIDDEN, 1);
-            edit_btn_cfg(BTN_RETURN, BTN_CFG_HIDDEN, 1);
-    } else {
-        context->game_state = GAME_STATE_LOBBY;
-            edit_btn_cfg(BTN_CREATE, BTN_CFG_HIDDEN, 1);
-            edit_btn_cfg(BTN_JOIN, BTN_CFG_HIDDEN, 1);
-            edit_btn_cfg(BTN_QUIT, BTN_CFG_HIDDEN, 1);
+    if (context->lobby_id != -1) context->game_state = GAME_STATE_LOBBY;
+
+    if (context->game_state == GAME_STATE_MENU || context->game_state == GAME_STATE_LOBBY) {
+        if (!audio_is_playing(MUSIC_MENU_LOBBY)) {
+            audio_play(MUSIC_MENU_LOBBY, -1);
+        }
     }
 
-    if (!audio_is_playing(MUSIC_MENU)) {
-        audio_play(MUSIC_MENU, -1);
-    }
-   
     if (context->game_state == GAME_STATE_MENU) {
         if (joining) {
             edit_btn_cfg(BTN_CREATE, BTN_CFG_HIDDEN, 0);
@@ -212,6 +201,10 @@ void menu_display(SDL_Context * context) {
 
     /* input is drawn by menu */
     if (name_input) input_render(context->renderer, name_input);
+
+    button_render(BTN_CREATE);
+    button_render(BTN_JOIN);
+    button_render(BTN_QUIT);
 
     /* submitted text is drawn by input_render */
 }

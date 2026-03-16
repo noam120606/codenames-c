@@ -1,0 +1,94 @@
+#include "../lib/all.h"
+
+FILE* open_properties(const char* mode) {
+    FILE* f = fopen("data/player.properties", mode);
+    if (!f) {
+        perror("Failed to open properties file");
+        return NULL;
+    }
+    return f;
+}
+
+int read_property(char* buf, const char* property) {
+    FILE* f = open_properties("r");
+    if (!f) return EXIT_FAILURE;
+
+    rewind(f);
+
+    char line[256];
+    while (fgets(line, sizeof(line), f)) {
+        char key_buf[128] = {0};
+        char val_buf[256] = {0};
+        if (sscanf(line, " %127[^=]= %255[^\n]", key_buf, val_buf) == 2) {
+            // Trim trailing spaces from key
+            size_t klen = strlen(key_buf);
+            while (klen > 0 && key_buf[klen - 1] == ' ') key_buf[--klen] = '\0';
+            // Trim leading spaces from value
+            char* vp = val_buf;
+            while (*vp == ' ') vp++;
+
+            if (strcmp(key_buf, property) == 0) {
+                strcpy(buf, vp);
+                fclose(f);
+                return EXIT_SUCCESS;
+            }
+        }
+    }
+    fclose(f);
+    return EXIT_FAILURE;
+}
+
+int write_property(const char* property, const char* value) {
+    // Read all existing properties into memory
+    typedef struct { char key[128]; char val[256]; } Entry;
+    Entry entries[64];
+    int count = 0;
+    int found = 0;
+
+    FILE* f = open_properties("r");
+    if (f) {
+        char line[256];
+        while (fgets(line, sizeof(line), f) && count < 64) {
+            char key_buf[128] = {0};
+            char val_buf[256] = {0};
+            if (sscanf(line, " %127[^=]= %255[^\n]", key_buf, val_buf) == 2) {
+                // Trim trailing spaces from key
+                size_t klen = strlen(key_buf);
+                while (klen > 0 && key_buf[klen - 1] == ' ') key_buf[--klen] = '\0';
+                // Trim leading spaces from value
+                char* vp = val_buf;
+                while (*vp == ' ') vp++;
+
+                if (strcmp(key_buf, property) == 0) {
+                    strncpy(entries[count].key, key_buf, sizeof(entries[count].key) - 1);
+                    strncpy(entries[count].val, value, sizeof(entries[count].val) - 1);
+                    found = 1;
+                } else {
+                    strncpy(entries[count].key, key_buf, sizeof(entries[count].key) - 1);
+                    strncpy(entries[count].val, vp, sizeof(entries[count].val) - 1);
+                }
+                count++;
+            }
+        }
+        fclose(f);
+    }
+
+    // If property was not found, add it
+    if (!found && count < 64) {
+        strncpy(entries[count].key, property, sizeof(entries[count].key) - 1);
+        strncpy(entries[count].val, value, sizeof(entries[count].val) - 1);
+        count++;
+    }
+
+    // Rewrite the file with all properties
+    f = open_properties("w");
+    if (!f) return EXIT_FAILURE;
+
+    for (int i = 0; i < count; i++) {
+        fprintf(f, "%s = %s\n", entries[i].key, entries[i].val);
+    }
+
+    fflush(f);
+    fclose(f);
+    return EXIT_SUCCESS;
+}

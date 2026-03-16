@@ -98,6 +98,21 @@ int on_message(Codenames* codenames, TcpClient* client, char* message) {
             // Handle start game
             break;
         }
+
+        case MSG_REQUESTUUID: {
+            // Générer un UUID unique et l'envoyer au client
+            char* uuid = generate_uuid("data/uuids");
+            if (uuid == NULL) {
+                printf("Failed to generate UUID for client %d\n", client->id);
+                return EXIT_FAILURE;
+            }
+            char reponse[128];
+            format_to(reponse, sizeof(reponse), "%d %s", MSG_REQUESTUUID, uuid);
+            tcp_send_to_client(codenames, client->id, reponse);
+            printf("Generated UUID %s for client %d\n", uuid, client->id);
+            free(uuid);
+            break;
+        }
     }
     return EXIT_SUCCESS;
 }

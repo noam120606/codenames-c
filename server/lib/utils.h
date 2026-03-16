@@ -48,5 +48,14 @@ int format_to(char *buf, size_t size, const char *fmt, ...);
  */
 char* generate_code();
 
+/**
+ * Génère un UUID unique (format : 8-4-4-4-12 hex) non présent dans le fichier uuids_path.
+ * Si le fichier n'existe pas, il est créé.
+ * Le nouvel UUID est ajouté au fichier.
+ * @param uuids_path Chemin du fichier contenant les UUIDs existants.
+ * @return Pointeur vers l'UUID généré (à libérer par l'appelant), ou NULL en cas d'erreur.
+ */
+char* generate_uuid(const char* uuids_path);
+
 
 #endif // UTILS_H

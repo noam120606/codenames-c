@@ -14,7 +14,8 @@ typedef enum MessageType {
     MSG_CREATELOBBY,
     MSG_JOINLOBBY,
     MSG_STARTGAME,
-    MSG_LOBBYCLOSED
+    MSG_LOBBYCLOSED,
+    MSG_REQUESTUUID
 } MessageType;
 
 /**
@@ -40,6 +41,7 @@ Arguments parse_arguments(char* message);
  * Traite un message entrant côté serveur.
  * @param codenames Contexte principal du serveur.
  * @param client Client TCP ayant envoyé le message.
+ * @param message Message brut reçu du client.
  * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur.
  */
 int on_message(Codenames* codenames, TcpClient* client, char* message);

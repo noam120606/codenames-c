@@ -1,4 +1,8 @@
 #include "../lib/all.h"
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <errno.h>
+#include <string.h>
 
 int main(int argc, char* argv[]){
 
@@ -6,15 +10,25 @@ int main(int argc, char* argv[]){
     char ip[16] = "127.0.0.1";
     int port = 0;
     /* Nombre de frames avant fermeture automatique (0 pour désactiver)
-    * - peut être configuré via la variable d'environnement CODENAMES_AUTOCLOSE_FRAMES
-    * utile pour les tests de fuite mémoire afin de ne pas laisser la fenêtre ouverte indéfiniment.
-    */
+     * - peut être configuré via la variable d'environnement CODENAMES_AUTOCLOSE_FRAMES
+     * utile pour les tests de fuite mémoire afin de ne pas laisser la fenêtre ouverte indéfiniment.
+     */
     int auto_close_frames = 0; 
     const char* auto_close_env = getenv("CODENAMES_AUTOCLOSE_FRAMES");
 
     if (auto_close_env) {
         auto_close_frames = atoi(auto_close_env);
         if (auto_close_frames < 0) auto_close_frames = 0;
+    }
+
+    /* Assure que le répertoire 'data' existe (non fatal) */
+    {
+        struct stat st = {0};
+        if (stat("data", &st) == -1) {
+            if (mkdir("data", 0755) != 0) {
+                fprintf(stderr, "Warning: could not create 'data' directory: %s\n", strerror(errno));
+            }
+        }
     }
 
     // Parse command line arguments
@@ -72,8 +86,38 @@ int main(int argc, char* argv[]){
 
     printf("Connected to server at %s:%d\n", ip, port);
 
+    // Gestion de l'UUID du joueur
+    context.player_uuid = NULL;
+    {
+        FILE* f = fopen("data/uuid", "r");
+        if (f) {
+            // Le fichier existe, lire l'UUID (deuxième ligne)
+            char line[256];
+            // Première ligne : "NE PAS MODIFIER CE FICHIER !"
+            if (fgets(line, sizeof(line), f)) {
+                // Deuxième ligne : l'UUID
+                if (fgets(line, sizeof(line), f)) {
+                    // Supprimer le '\n' en fin de ligne
+                    size_t len = strlen(line);
+                    if (len > 0 && line[len - 1] == '\n') line[len - 1] = '\0';
+                    context.player_uuid = strdup(line);
+                    printf("UUID loaded from file: %s\n", context.player_uuid);
+                }
+            }
+            fclose(f);
+        }
+
+        if (!context.player_uuid) {
+            // Le fichier n'existe pas ou est invalide, demander un UUID au serveur
+            char trame[16];
+            format_to(trame, sizeof(trame), "%d", MSG_REQUESTUUID);
+            send_tcp(context.sock, trame);
+            printf("Requesting UUID from server...\n");
+        }
+    }
+
     // Initialiser le système de boutons
-    buttons_init();
+    buttons_init(context.renderer);
     add_destroy_resource(resources, buttons_free);
 
     int menu_loading_fails = menu_init(&context);
@@ -185,9 +229,6 @@ int main(int argc, char* argv[]){
 
         // Onglet d'infos
         infos_display(&context);
-
-        // Afficher les boutons
-        buttons_display(context.renderer);
 
         // Post Rendu
         SDL_RenderPresent(context.renderer);

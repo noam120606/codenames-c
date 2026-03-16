@@ -65,6 +65,7 @@ typedef struct Card Card;
  * @param player_team Équipe du joueur (TEAM_RED, TEAM_BLUE, TEAM_NONE).
  * @param frame_start_time Timestamp du début de la frame actuelle (en ms).
  * @param ping_ms Ping TCP courant en millisecondes (-1 si indisponible).
+ * @param player_uuid UUID unique du joueur (persisté dans datas/uuid).
  */
 typedef struct {
     SDL_Window* window;
@@ -82,6 +83,7 @@ typedef struct {
     int music_volume;          /**< Volume de la musique (0-128). */
     int sound_effects_volume;  /**< Volume des effets sonores (0-128). */
     Card* cards[25];
+    char* player_uuid;         /**< UUID unique du joueur. */
 } SDL_Context;
 
 /**

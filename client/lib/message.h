@@ -14,7 +14,8 @@ typedef enum MessageType {
     MSG_CREATELOBBY,
     MSG_JOINLOBBY,
     MSG_STARTGAME,
-    MSG_LOBBYCLOSED
+    MSG_LOBBYCLOSED,
+    MSG_REQUESTUUID
 } MessageType;
 
 /**

@@ -9,7 +9,8 @@
  * Sound effect IDs.
  */
 typedef enum {
-    MUSIC_MENU,
+    MUSIC_MENU_LOBBY, // Musique dans le menu et dans le lobby
+    MUSIC_GAME,       // Musique pendant le jeu
     SOUND_CLICKED_BUTTON,
     SOUND_TYPE_WRITING,
     SOUND_CARD_DISTRIBUTION,

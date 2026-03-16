@@ -3,97 +3,11 @@
 
 static Crossfader* crossfaders[MAX_CROSSFADERS];
 static int crossfader_count = 0;
-static const char* PLAYER_PROPERTIES_PATH = "datas/player.properties";
-
-static char* ltrim(char* s) {
-    while (*s && isspace((unsigned char)*s)) s++;
-    return s;
-}
-
-static void rtrim(char* s) {
-    size_t len = strlen(s);
-    while (len > 0 && isspace((unsigned char)s[len - 1])) {
-        s[len - 1] = '\0';
-        len--;
-    }
-}
 
 static const char* player_key_for_crossfader_id(int id) {
     if (id == CROSSFADER_ID_MUSIC_VOLUME) return "MUSIC_VOLUME";
     if (id == CROSSFADER_ID_SFX_VOLUME) return "SOUND_EFFECTS_VOLUME";
     return NULL;
-}
-
-static int player_properties_read_name(char* out_name, size_t out_size) {
-    if (!out_name || out_size == 0) return 0;
-
-    out_name[0] = '\0';
-
-    FILE* file = fopen(PLAYER_PROPERTIES_PATH, "r");
-    if (!file) return 0;
-
-    char line[256];
-    int found = 0;
-    while (fgets(line, sizeof(line), file)) {
-        char key_buf[128] = {0};
-        char value_buf[128] = {0};
-        if (sscanf(line, " %127[^=]= %127[^\n]", key_buf, value_buf) == 2) {
-            char* parsed_key = ltrim(key_buf);
-            char* parsed_value = ltrim(value_buf);
-            rtrim(parsed_key);
-            rtrim(parsed_value);
-            if (strcmp(parsed_key, "PLAYER_NAME") == 0) {
-                snprintf(out_name, out_size, "%s", parsed_value);
-                found = 1;
-                break;
-            }
-        }
-    }
-
-    fclose(file);
-    return found;
-}
-
-static int player_properties_read_value(const char* key, int* out_value) {
-    if (!key || !out_value) return 0;
-
-    FILE* file = fopen(PLAYER_PROPERTIES_PATH, "r");
-    if (!file) return 0;
-
-    char line[256];
-    int found = 0;
-    while (fgets(line, sizeof(line), file)) {
-        char key_buf[128] = {0};
-        int parsed_value = 0;
-        if (sscanf(line, " %127[^=]= %d", key_buf, &parsed_value) == 2) {
-            char* parsed_key = ltrim(key_buf);
-            rtrim(parsed_key);
-            if (strcmp(parsed_key, key) == 0) {
-                *out_value = parsed_value;
-                found = 1;
-                break;
-            }
-        }
-    }
-
-    fclose(file);
-    return found;
-}
-
-static int player_properties_write_volumes(int music_volume, int sound_effects_volume) {
-    char player_name[128] = "";
-    int has_player_name = player_properties_read_name(player_name, sizeof(player_name));
-
-    FILE* file = fopen(PLAYER_PROPERTIES_PATH, "w");
-    if (!file) return EXIT_FAILURE;
-
-    fprintf(file, "MUSIC_VOLUME = %d\n", music_volume);
-    fprintf(file, "SOUND_EFFECTS_VOLUME = %d\n", sound_effects_volume);
-    if (has_player_name) {
-        fprintf(file, "PLAYER_NAME = %s\n", player_name);
-    }
-    fclose(file);
-    return EXIT_SUCCESS;
 }
 
 static void crossfader_load_saved_value_if_enabled(Crossfader* cf) {
@@ -102,9 +16,9 @@ static void crossfader_load_saved_value_if_enabled(Crossfader* cf) {
     const char* key = player_key_for_crossfader_id(cf->id);
     if (!key) return;
 
-    int saved_value = 0;
-    if (player_properties_read_value(key, &saved_value)) {
-        cf->cfg->value = saved_value;
+    char buf[256] = {0};
+    if (read_property(buf, key) == EXIT_SUCCESS) {
+        cf->cfg->value = atoi(buf);
     }
 }
 
@@ -114,20 +28,9 @@ static void crossfader_save_value_if_enabled(const Crossfader* cf) {
     const char* key = player_key_for_crossfader_id(cf->id);
     if (!key) return;
 
-    int music_volume = MIX_MAX_VOLUME;
-    int sound_effects_volume = MIX_MAX_VOLUME;
-    int value = 0;
-
-    if (player_properties_read_value("MUSIC_VOLUME", &value)) music_volume = value;
-    if (player_properties_read_value("SOUND_EFFECTS_VOLUME", &value)) sound_effects_volume = value;
-
-    if (strcmp(key, "MUSIC_VOLUME") == 0) {
-        music_volume = cf->cfg->value;
-    } else if (strcmp(key, "SOUND_EFFECTS_VOLUME") == 0) {
-        sound_effects_volume = cf->cfg->value;
-    }
-
-    (void)player_properties_write_volumes(music_volume, sound_effects_volume);
+    char buf[16];
+    snprintf(buf, sizeof(buf), "%d", cf->cfg->value);
+    write_property(key, buf);
 }
 
 /** Initialise une CrossfaderConfig avec des valeurs par défaut. */

@@ -1,6 +1,6 @@
 #include "../lib/all.h"
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
 
     int port = 0;
     // Parse command line arguments

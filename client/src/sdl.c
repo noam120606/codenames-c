@@ -247,6 +247,14 @@ int destroy_context(SDL_Context* context) {
         close_tcp(context->sock);
         context->sock = -1;
     }
+    if (context->player_uuid) {
+        free(context->player_uuid);
+        context->player_uuid = NULL;
+    }
+    if (context->lobby_code) {
+        free(context->lobby_code);
+        context->lobby_code = NULL;
+    }
     audio_cleanup();
     Mix_Quit();
     TTF_Quit();

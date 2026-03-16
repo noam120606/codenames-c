@@ -110,9 +110,9 @@ void game_render_cards(SDL_Context * context) {
 }
 
 void game_display(SDL_Context * context) {
-    
-    if (!audio_is_playing(MUSIC_MENU)) {
-        audio_play(MUSIC_MENU, -1);
+
+    if (!audio_is_playing(MUSIC_GAME)) {
+        audio_play(MUSIC_GAME, -1);
     }
     game_render_cards(context);
     

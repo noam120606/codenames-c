@@ -131,8 +131,9 @@ ButtonConfig* button_config_init(void);
 /**
  * Initialise le système de boutons.
  * Doit être appelé une fois au démarrage.
+ * @param renderer Le renderer SDL.
  */
-void buttons_init(void);
+void buttons_init(SDL_Renderer* renderer);
 
 /**
  * Crée et enregistre un bouton à partir d'une configuration.
@@ -157,6 +158,13 @@ ButtonReturn buttons_handle_event(SDL_Context* context, SDL_Event* event);
  * @param renderer Le renderer SDL.
  */
 void buttons_display(SDL_Renderer* renderer);
+
+/**
+ * Rendu d'un bouton.
+ * @param id L'ID du bouton à rendre.
+ * @return EXIT_SUCCESS si le rendu a réussi, sinon EXIT_FAILURE.
+ */
+int button_render(ButtonId id);
 
 /**
  * Récupère un bouton par son ID.
