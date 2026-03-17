@@ -4,11 +4,13 @@
 #include "game.h"
 
 /** Rôles possibles d'un utilisateur.
- * @param ROLE_ESPION donne des indices.
+ * @param ROLE_NONE aucun rôle choisi.
+ * @param ROLE_SPY donne des indices.
  * @param ROLE_AGENT devine les mots.
  */
 typedef enum UserRole {
-    ROLE_ESPION,
+    ROLE_NONE,
+    ROLE_SPY,
     ROLE_AGENT
 } UserRole;
 
@@ -16,7 +18,7 @@ typedef enum UserRole {
  * @param id identifiant unique de l'utilisateur.
  * @param name nom du joueur.
  * @param socket_fd id de socket associée au joueur.
- * @param role rôle (ROLE_ESPION ou ROLE_AGENT).
+ * @param role rôle (ROLE_SPY ou ROLE_AGENT).
  * @param team équipe (TEAM_*).
  */
 typedef struct {

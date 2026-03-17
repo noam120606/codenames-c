@@ -1,7 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
 
-/** 
+/**
+ * TEAM est utilisé à la fois pour catégoriser les mots dans la grille et pour assigner les joueurs à une équipe.
  * Catégories de mots dans la grille de Codenames.
  * Les mots sont classés en 4 catégories :
  * @param TEAM_NONE mot neutre (aucune équipe).

@@ -131,6 +131,36 @@ int join_lobby(Lobby* lobby, User* user) {
     return EXIT_SUCCESS;
 }
 
+int leave_lobby(Lobby* lobby, User* user) {
+    int index = -1;
+    for (int i = 0; i < lobby->nb_players; i++) {
+        if (lobby->users[i]->id == user->id) {
+            index = i;
+            break;
+        }
+    }
+    if (index == -1) {
+        return EXIT_FAILURE;
+    }
+    destroy_user(lobby->users[index]);
+    for (int j = index; j < lobby->nb_players - 1; j++) {
+        lobby->users[j] = lobby->users[j + 1];
+    }
+    lobby->nb_players--;
+    return EXIT_SUCCESS;
+}
+
+int choose_role(Lobby* lobby, User* user, int role, int team) {
+    for (int i = 0; i < lobby->nb_players; i++) {
+        if (lobby->users[i]->id == user->id) {
+            lobby->users[i]->role = role;
+            lobby->users[i]->team = team;
+            return EXIT_SUCCESS;
+        }
+    }
+    return EXIT_FAILURE;
+}
+
 /* Prédicats de recherche pour list_find */
 
 static int predicate_owner_id(void* data, void* context) {
@@ -152,6 +182,15 @@ static int predicate_code(void* data, void* context) {
     Lobby* lobby = (Lobby*)data;
     const char* code = (const char*)context;
     return strcmp(lobby->code, code) == 0;
+}
+
+User* find_user_by_id(Lobby* lobby, int id) {
+    for (int i = 0; i < lobby->nb_players; i++) {
+        if (lobby->users[i]->id == id) {
+            return lobby->users[i];
+        }
+    }
+    return NULL;
 }
 
 Lobby* find_lobby_by_ownerid(LobbyManager* manager, int owner_id) {
@@ -189,6 +228,7 @@ int request_create_lobby(Codenames* codenames, TcpClient* client, char* message,
         printf("Failed to create lobby\n");
         return EXIT_FAILURE;
     }
+    // Le client qui crée le lobby en devient automatiquement le propriétaire et rejoint le lobby
     lobby->owner_id = client->id;
     User* user = create_user(client->id, args.argv[0], client->socket);
     if (user == NULL) {
@@ -200,8 +240,9 @@ int request_create_lobby(Codenames* codenames, TcpClient* client, char* message,
         destroy_user(user);
         return EXIT_FAILURE;
     }
-    printf("create lobby %d\n", lobby->id);
+    printf("Client %d (%s) created lobby %d\n", client->id, user->name, lobby->id);
 
+    // Informer le client de la création du lobby avec son id et son code
     char reponse[64];
     format_to(reponse, sizeof(reponse), "%d %d %s", MSG_CREATELOBBY, lobby->id, lobby->code);
     tcp_send_to_client(codenames, client->id, reponse);
@@ -234,7 +275,7 @@ int request_join_lobby(Codenames* codenames, TcpClient* client, char* message, A
         return EXIT_FAILURE;
     }
 
-    printf("Client %d joined lobby %d\n", client->id, lobby->id);
+    printf("Client %d (%s) joined lobby %d\n", client->id, user->name, lobby->id);
 
     return EXIT_SUCCESS;
 }
@@ -250,35 +291,76 @@ int request_leave_lobby(Codenames* codenames, TcpClient* client, char* message, 
         return EXIT_FAILURE;
     }
 
-    int lobby_id = lobby->id;
-
-    /* Trouver et retirer l'utilisateur du lobby */
+    User* user = find_user_by_id(lobby, client->id);
+    if (!user) {
+        printf("Client %d not found in lobby %d\n", client->id, lobby->id);
+        return EXIT_FAILURE;
+    }
+    /* Décaler les utilisateurs suivants */
+    int index = -1;
     for (int i = 0; i < lobby->nb_players; i++) {
         if (lobby->users[i]->id == client->id) {
-            destroy_user(lobby->users[i]);
-            /* Décaler les utilisateurs suivants */
-            for (int j = i; j < lobby->nb_players - 1; j++) {
-                lobby->users[j] = lobby->users[j + 1];
-            }
-            lobby->users[lobby->nb_players - 1] = NULL;
-            lobby->nb_players--;
+            index = i;
             break;
         }
     }
+    for (int j = index; j < lobby->nb_players - 1; j++) {
+        lobby->users[j] = lobby->users[j + 1];
+    }
+    lobby->nb_players--;
 
-    printf("Client %d left lobby %d\n", client->id, lobby_id);
+    printf("Client %d (%s) left lobby %d\n", client->id, user->name, lobby->id);
+    destroy_user(user); // Libérer les ressources associées à l'utilisateur avant de le retirer du lobby
 
     /* Si le lobby est vide, le détruire */
     if (lobby->nb_players == 0) {
         list_remove(codenames->lobby->lobbies, lobby);
         free(lobby);
-        printf("Lobby %d destroyed (empty)\n", lobby_id);
+        printf("Lobby %d destroyed (empty)\n", lobby->id);
     }
     /* Si le owner a quitté, transférer au premier joueur restant */
     else if (lobby->owner_id == client->id) {
         lobby->owner_id = lobby->users[0]->id;
-        printf("Lobby %d ownership transferred to client %d\n", lobby_id, lobby->owner_id);
+        printf("Lobby %d ownership transferred to client %d\n", lobby->id, lobby->owner_id);
     }
 
+    return EXIT_SUCCESS;
+}
+
+int request_choose_role(Codenames* codenames, TcpClient* client, char* message, Arguments args) {
+    // Handle choose role
+    if (args.argc < 2) {
+        printf("Invalid choose role message from client %d: \"%s\"\n", client->id, message);
+        return EXIT_FAILURE;
+    }
+
+    Lobby* lobby = find_lobby_by_playerid(codenames->lobby, client->id);
+    if (!lobby) {
+        printf("Lobby not found for client %d\n", client->id);
+        return EXIT_FAILURE;
+    }
+
+    User* user = find_user_by_id(lobby, client->id);
+    if (!user) {
+        printf("User not found for client %d\n", client->id);
+        return EXIT_FAILURE;
+    }
+
+    // Affecter le rôle et l'équipe à l'utilisateur
+    if (choose_role(lobby, user, atoi((char*)args.argv[0]), atoi((char*)args.argv[1])) != EXIT_SUCCESS) {
+        printf("Failed to choose role for client %d\n", client->id);
+        return EXIT_FAILURE;
+    }
+    printf("Client %d (%s) chose role %d team %d in lobby %d\n", client->id, user->name, user->role, user->team, lobby->id);
+    
+    // On informe les autres joueurs du lobby du choix de rôle/équipe de ce joueur
+    char reponse[64];
+    format_to(reponse, sizeof(reponse), "%d %d %d %d", MSG_CHOOSE_ROLE, user->id, user->role, user->team);
+    for (int i = 0; i < lobby->nb_players; i++) {
+        if (lobby->users[i]->id != client->id) { // Pas besoin de s'envoyer à soi-même
+            tcp_send_to_client(codenames, lobby->users[i]->socket_fd, reponse);
+        }
+    }
+    
     return EXIT_SUCCESS;
 }

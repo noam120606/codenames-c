@@ -17,6 +17,15 @@ static void input_clear_selection_internal(Input* in);
 static void input_submit_internal(SDL_Context* context, Input* in) {
     if (!in || !in->cfg) return;
 
+    if (in->cfg->submit_pattern && in->cfg->text) {
+        regex_t regex;
+        if (regcomp(&regex, in->cfg->submit_pattern, REG_EXTENDED | REG_NOSUB) == 0) {
+            int invalid_submit = (regexec(&regex, in->cfg->text, 0, NULL, 0) != 0);
+            regfree(&regex);
+            if (invalid_submit) return;
+        }
+    }
+
     in->cfg->submitted = 1;
 
     if (in->cfg->submitted_text) {
@@ -68,6 +77,7 @@ InputConfig* input_config_init() {
     cfg->bg_path = NULL;
     cfg->bg_padding = -1;
     cfg->allowed_pattern = NULL;
+    cfg->submit_pattern = NULL;
     cfg->init_text = NULL;
     cfg->on_submit = NULL;
 
@@ -733,6 +743,9 @@ int edit_in_cfg(InputId id, InputCfgKey key, intptr_t value) {
             return EXIT_SUCCESS;
         case IN_CFG_ALLOWED_PATTERN:
             in->cfg->allowed_pattern = (const char*)value;
+            return EXIT_SUCCESS;
+        case IN_CFG_SUBMIT_PATTERN:
+            in->cfg->submit_pattern = (const char*)value;
             return EXIT_SUCCESS;
         case IN_CFG_INIT_TEXT:
             in->cfg->init_text = (const char*)value;

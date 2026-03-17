@@ -37,12 +37,12 @@ int on_message(Codenames* codenames, TcpClient* client, char* message) {
         case MSG_CREATELOBBY: return request_create_lobby(codenames, client, message, args);
         case MSG_JOINLOBBY: return request_join_lobby(codenames, client, message, args);
         case MSG_LEAVELOBBY: return request_leave_lobby(codenames, client, message, args);
-
+        case MSG_LOBBYCLOSED: break; // Server -> Client only
+        case MSG_CHOOSE_ROLE: return request_choose_role(codenames, client, message, args);
         case MSG_STARTGAME: break; // Handle start game
         
         case MSG_REQUESTUUID: return request_uuid(codenames, client, message, args);
 
-        case MSG_LOBBYCLOSED: break; // Server -> Client only
         
     }
 
@@ -51,9 +51,11 @@ int on_message(Codenames* codenames, TcpClient* client, char* message) {
 
 int on_leave(Codenames* codenames, TcpClient* client) {
     // Handle client disconnection
-    printf("Client %d disconnected\n", client->id);
-
     Lobby* lobby = find_lobby_by_ownerid(codenames->lobby, client->id);
+    // User* user = find_user_by_id(lobby, client->id);
+
+    // printf("Client %d (%s) disconnected\n", client->id, user ? user->name : "Unknown");
+
     if (lobby) {
         int id = lobby->id;
         /* S'il reste des joueurs dans le lobby, on ne le détruit pas et on passe l'owner à un des joueurs restants */

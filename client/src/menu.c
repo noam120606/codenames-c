@@ -5,6 +5,7 @@ SDL_Texture* quagmire;
 Button* btn_create;
 Button* btn_join;
 Button* btn_quit;
+Button* btn_social;
 Input* name_input = NULL;
 Input* code_input = NULL;
 char* name = NULL; // Le nom du joueur, à envoyer au serveur lors de la création ou du join d'un lobby. Peut être NULL ou chaîne vide si non défini.
@@ -72,11 +73,6 @@ int menu_init(SDL_Context * context) {
         printf("Failed to load menu logo image\n");
         loading_fails++;
     }
-    quagmire = load_image(context->renderer, "assets/img/others/quagmire.png");
-    if (!quagmire) {
-        printf("Failed to load quagmire image\n");
-        loading_fails++;
-    }
 
     // Chargement boutons
     ButtonConfig* cfg_btn_create = button_config_init();
@@ -116,6 +112,19 @@ int menu_init(SDL_Context * context) {
         cfg_btn_quit->callback  = menu_button_click;
         btn_quit = button_create(context->renderer, 0, cfg_btn_quit);
         free(cfg_btn_quit);
+    }
+
+    ButtonConfig* cfg_btn_social = button_config_init();
+    if (cfg_btn_social) {
+        cfg_btn_social->x         = 0;
+        cfg_btn_social->y         = -200;
+        cfg_btn_social->h         = 100;
+        cfg_btn_social->font_path = FONT_LARABIE;
+        cfg_btn_social->color     = COL_WHITE;
+        cfg_btn_social->text      = "Social";
+        cfg_btn_social->callback  = menu_button_click;
+        btn_social = button_create(context->renderer, 0, cfg_btn_social);
+        free(cfg_btn_social);
     }
 
     // Chargement input
@@ -201,11 +210,12 @@ int menu_init(SDL_Context * context) {
         cfg_in_code->font_size = 28;
         cfg_in_code->placeholders = code_placeholders;
         cfg_in_code->placeholder_count = 1;
-        cfg_in_code->submitted_label = "";
-        cfg_in_code->maxlen = 16;
+        cfg_in_code->submitted_label = "Rejoindre : ";
+        cfg_in_code->maxlen = 5;
         cfg_in_code->centered = 1;
         cfg_in_code->on_submit = code_on_submit;
         cfg_in_code->allowed_pattern = "^[0-9]$";
+        cfg_in_code->submit_pattern = "^[0-9]{5}$";
         cfg_in_code->bg_path = "assets/img/inputs/empty.png";
         cfg_in_code->bg_padding = 24;
         code_input = input_create(context->renderer, INPUT_ID_JOIN_CODE, cfg_in_code);
@@ -256,6 +266,7 @@ int menu_free() {
     if (btn_create) button_destroy(btn_create);
     if (btn_join) button_destroy(btn_join);
     if (btn_quit) button_destroy(btn_quit);
+    if (btn_social) button_destroy(btn_social);
 
     if (name_input) input_destroy(name_input);
     if (code_input) input_destroy(code_input);

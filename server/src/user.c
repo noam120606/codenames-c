@@ -7,7 +7,7 @@ User* create_user(int id, const char* name, int socket_fd) {
     user->id = id;
     user->name = strdup(name);
     user->socket_fd = socket_fd;
-    user->role = ROLE_AGENT;
+    user->role = ROLE_NONE;
     user->team = TEAM_NONE;
 
     if (strcmp(user->name, "NONE") == 0) {

@@ -48,6 +48,24 @@ int on_message(SDL_Context* context, char* message) {
             // Handle join lobby
             break;
 
+        case MSG_LEAVELOBBY:
+            // Handle leave lobby
+            break;
+
+        case MSG_LOBBYCLOSED:
+            // Handle lobby closed
+            break;
+        
+        case MSG_CHOOSE_ROLE:
+            if (args.argc < 3) {
+                printf("Invalid choose role message from server : \"%s\"\n", message);
+                if (args.argv) free(args.argv);
+                return EXIT_FAILURE;
+            }
+            printf("Player %s chose role %s team %s\n", (char*)args.argv[0], (char*)args.argv[1], (char*)args.argv[2]);
+            break;
+
+
         case MSG_REQUESTUUID:
             // Réception de l'UUID généré par le serveur
             if (args.argc < 1) {

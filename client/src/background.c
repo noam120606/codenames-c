@@ -229,9 +229,10 @@ void background_handle_event(SDL_Context* context, SDL_Event* e) {
     const int phase_x  = world_phase(scaled_time, BG_TILE_W);
     const int phase_y  = world_phase(scaled_time, BG_TILE_H);
 
-    int logical_click_x = e->button.x;
-    int logical_click_y = e->button.y;
-    window_to_logical(context, e->button.x, e->button.y, &logical_click_x, &logical_click_y);
+     /* Avec SDL_RenderSetLogicalSize, les coordonnées d'événement souris sont déjà logiques.
+         Les reconvertir ici introduit un décalage en plein écran (double scaling). */
+     const int logical_click_x = e->button.x;
+     const int logical_click_y = e->button.y;
 
     /* Coordonnées clic dans le repère centré de display_image */
     const int click_x =  logical_click_x - WIN_WIDTH  / 2;

@@ -45,6 +45,7 @@ typedef enum {
  * @param bg_path Chemin vers l'image de fond de l'input. Si NULL, un fond uni de couleur `bg_color` est utilisé. L'image est chargée automatiquement par `input_create` et doit être libérée lors de la destruction de l'input.
  * @param bg_padding Padding à appliquer avec l'image de fond (>= 0). Ignoré si `bg_path` est NULL. Si -1, le padding est calculé automatiquement pour centrer le contenu dans l'image de fond.
  * @param allowed_pattern Regex POSIX étendue appliquée à chaque caractère saisi. Si NULL, tout caractère est accepté. Ex: "^[A-Za-z0-9]$"
+ * @param submit_pattern Regex POSIX étendue appliquée au texte complet au moment de la soumission. Si définie et non satisfaite, la soumission est ignorée. Ex: "^[0-9]{5}$"
  * @param init_text Texte initial à afficher dans l'input. Si NULL ou chaîne vide, l'input commence vide.
  * @param on_submit Fonction de rappel à appeler lorsque l'input est soumis (par exemple, en appuyant sur Entrée). La fonction doit prendre un `SDL_Context*` (contexte SDL) et un `const char*` (le texte soumis) et retourner void. Si NULL, aucune fonction ne sera appelée lors de la soumission.
  */
@@ -68,6 +69,7 @@ typedef struct InputConfig {
     const char* bg_path;   /**< Chemin vers l'image de fond (NULL = pas d'image, fond uni). Chargée automatiquement par input_create. */
     int bg_padding;        /**< Padding à appliquer avec l'image de fond (>= 0). Ignoré si bg_path est NULL. -1 = auto. */
     const char* allowed_pattern; /**< Regex POSIX étendue appliquée à chaque caractère saisi. NULL = tout accepter. Ex: "^[A-Za-z0-9]$" */
+    const char* submit_pattern;  /**< Regex POSIX étendue appliquée au texte complet au submit. NULL = pas de validation de soumission. Ex: "^[0-9]{5}$" */
     const char* init_text;
     SDL_Rect rect;
     char* text;
@@ -116,6 +118,7 @@ typedef enum InputCfgKey {
     IN_CFG_BG_PATH,
     IN_CFG_BG_PADDING,
     IN_CFG_ALLOWED_PATTERN,
+    IN_CFG_SUBMIT_PATTERN,
     IN_CFG_INIT_TEXT,
     IN_CFG_RECT,
     IN_CFG_TEXT,

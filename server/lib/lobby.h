@@ -23,11 +23,24 @@ typedef enum LobbyStatus {
 } LobbyStatus;
 
 /**
+ * Conteneurs de rôles pour faciliter la gestion des rôles/équipes dans le lobby.
+ * Chaque conteneur correspond à un rôle/équipe spécifique (ex: RED_AGENT, BLUE_SPY, etc.) et contient les utilisateurs qui ont choisi ce rôle/équipe.
+ * @param users tableau de pointeurs vers les utilisateurs ayant choisi ce rôle/équipe.
+ * @param count_users nombre d'utilisateurs dans ce conteneur.
+ */
+typedef struct {
+    User* users[MAX_USERS]; // Les utilisateurs ayant choisi ce rôle/équipe (au maximum MAX_USERS pour ne pas avoir à gérer des soucis de places dans les conteneurs de rôles)
+    int count_users;
+} LobbyRoleContainers;
+
+/**
  * Représente un lobby de jeu.
  * @param id identifiant unique du lobby.
  * @param owner_id identifiant du joueur propriétaire du lobby.
+ * @param code code d'accès au lobby (généré aléatoirement).
  * @param status état courant du lobby (LB_STATUS_*).
  * @param users tableau de pointeurs vers les joueurs présents.
+ * @param role_containers conteneurs de rôles pour faciliter la gestion des rôles/équipes dans le lobby.
  * @param nb_players nombre de joueurs actuellement connectés.
  * @param game partie associée au lobby (NULL si aucune partie).
  */
@@ -37,6 +50,7 @@ typedef struct {
     char code[6];
     LobbyStatus status;
     User* users[MAX_USERS];
+    LobbyRoleContainers role_containers[5]; // Les NONE, RED_AGENT, RED_SPY, BLUE_AGENT, BLUE_SPY
     int nb_players;
     Game* game;
 } Lobby;
@@ -89,6 +103,13 @@ Lobby* create_lobby(LobbyManager* manager);
  * @return EXIT_SUCCESS si l'utilisateur a rejoint avec succès, EXIT_FAILURE si le lobby est plein.
  */
 int join_lobby(Lobby* lobby, User* user);
+
+/** Permet à un utilisateur de quitter un lobby.
+ * @param lobby Lobby à quitter.
+ * @param user Utilisateur qui souhaite quitter le lobby.
+ * @return EXIT_SUCCESS si l'utilisateur a quitté avec succès, EXIT_FAILURE si une erreur est survenue (ex: utilisateur non trouvé dans le lobby).
+ */
+int leave_lobby(Lobby* lobby, User* user);
 
 /** Trouve un lobby par l'identifiant de son propriétaire.
  * @param manager Gestionnaire de lobbies à rechercher.
@@ -149,5 +170,25 @@ int request_join_lobby(Codenames* codenames, TcpClient* client, char* message, A
  * @return EXIT_SUCCESS si la demande est traitée avec succès, EXIT_FAILURE sinon.
  */
 int request_leave_lobby(Codenames* codenames, TcpClient* client, char* message, Arguments args);
+
+/**
+ * Gère la demande de choix de rôle/équipe dans le lobby.
+ * @param codenames Contexte principal du serveur.
+ * @param client Client à l'origine de la demande.
+ * @param message Message reçu du client.
+ * @param args Arguments extraits du message.
+ * @return EXIT_SUCCESS si la demande est traitée avec succès, EXIT_FAILURE sinon.
+ */
+int request_choose_role(Codenames* codenames, TcpClient* client, char* message, Arguments args);
+
+/**
+ * Gère la demande d'UUID d'un client.
+ * @param codenames Contexte principal du serveur.
+ * @param client Client à l'origine de la demande.
+ * @param message Message reçu du client.
+ * @param args Arguments extraits du message.
+ * @return EXIT_SUCCESS si la demande est traitée avec succès, EXIT_FAILURE sinon.
+ */
+int request_uuid(Codenames* codenames, TcpClient* client, char* message, Arguments args);
 
 #endif // LOBBY_H
