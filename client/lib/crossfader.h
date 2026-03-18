@@ -2,7 +2,11 @@
 #define CROSSFADER_H
 
 #include <stdint.h>
-#include "../lib/sdl.h"
+#include "../SDL2/include/SDL2/SDL.h"
+#include "../SDL2/include/SDL2/SDL_image.h"
+#include "../SDL2/include/SDL2/SDL_ttf.h"
+
+typedef struct SDL_Context SDL_Context;
 
 #define MAX_CROSSFADERS 32
 

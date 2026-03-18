@@ -1,3 +1,6 @@
+#ifndef ALL_H
+#define ALL_H
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -26,7 +29,11 @@
 #include "../lib/crossfader.h"
 #include "../lib/message.h"
 #include "../lib/utils.h"
+#include "../lib/list.h"
 #include "../lib/game.h"
+#include "../lib/user.h"
 #include "../lib/lobby.h"
 #include "../lib/ressources.h"
 #include "../lib/save.h"
+
+#endif // ALL_H

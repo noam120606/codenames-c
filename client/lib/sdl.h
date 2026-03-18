@@ -6,48 +6,15 @@
 #include "../SDL2/include/SDL2/SDL_ttf.h"
 #include "../SDL2/include/SDL2/SDL_mixer.h"
 
+#include "../lib/game.h"
+#include "../lib/user.h"
+#include "../lib/list.h"
+#include "../lib/lobby.h"
+
 #define WIN_WIDTH 1920
 #define WIN_HEIGHT 1080
 #define WIN_MIN_WIDTH 960
 #define WIN_MIN_HEIGHT 540
-
-/**
- * États possibles du jeu.
- * @param GAME_STATE_MENU État du menu principal.
- * @param GAME_STATE_LOBBY État du lobby (attente des joueurs).
- * @param GAME_STATE_PLAYING État de la partie en cours.
- */
-typedef enum {
-    GAME_STATE_MENU,
-    GAME_STATE_LOBBY,
-    GAME_STATE_PLAYING,
-    GAME_STATE_PAUSED
-} GameState;
-
-/** Rôles possibles d'un utilisateur.
- * @param ROLE_ESPION donne des indices.
- * @param ROLE_AGENT devine les mots.
- */
-typedef enum UserRole {
-    ROLE_NONE,
-    ROLE_SPY,
-    ROLE_AGENT,
-} UserRole;
-
-/** 
- * Catégories de mots dans la grille de Codenames.
- * Les mots sont classés en 4 catégories :
- * @param TEAM_NONE mot neutre (aucune équipe).
- * @param TEAM_RED mot appartenant à l'équipe rouge.
- * @param TEAM_BLUE mot appartenant à l'équipe bleue.
- * @param TEAM_BLACK mot assassin (met fin à la partie si révélé).
- */
-typedef enum Team {
-    TEAM_NONE,
-    TEAM_RED,
-    TEAM_BLUE,
-    TEAM_BLACK,
-} Team;
 
 typedef struct Card Card;
 
@@ -67,7 +34,7 @@ typedef struct Card Card;
  * @param ping_ms Ping TCP courant en millisecondes (-1 si indisponible).
  * @param player_uuid UUID unique du joueur (persisté dans datas/uuid).
  */
-typedef struct {
+typedef struct SDL_Context {
     SDL_Window* window;
     SDL_Renderer* renderer;
     long clock;
@@ -75,7 +42,7 @@ typedef struct {
     int sock;
     int lobby_id;
     char* lobby_code;
-    GameState game_state;
+    AppState game_state;
     UserRole player_role; 
     Team player_team; 
     Uint32 frame_start_time;

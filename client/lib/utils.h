@@ -43,4 +43,10 @@ int format_to(char *buf, size_t size, const char *fmt, ...);
  */
 char* itoa(int value);
 
+/**
+ * Retourne un nom d'utilisateur aléatoire (alloué, doit être free()).
+ * Lit le fichier `assets/misc/usernames.txt`.
+ */
+char* getRandomUsername(void);
+
 #endif // UTILS_H

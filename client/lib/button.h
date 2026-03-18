@@ -4,7 +4,7 @@
 
 #include <stdint.h>
 #include "../SDL2/include/SDL2/SDL.h"
-#include "../lib/sdl.h"
+typedef struct SDL_Context SDL_Context;
 
 /**
  * Valeurs de retour des callbacks de boutons.

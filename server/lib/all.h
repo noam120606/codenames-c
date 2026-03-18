@@ -1,3 +1,6 @@
+#ifndef ALL_H
+#define ALL_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -22,3 +25,5 @@
 #include "../lib/utils.h"
 #include "../lib/codenames.h"
 #include "../lib/uuid.h"
+
+#endif // ALL_H

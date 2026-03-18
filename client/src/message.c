@@ -63,6 +63,7 @@ int on_message(SDL_Context* context, char* message) {
                 return EXIT_FAILURE;
             }
             printf("Player %s chose role %s team %s\n", (char*)args.argv[0], (char*)args.argv[1], (char*)args.argv[2]);
+            // 
             break;
 
 

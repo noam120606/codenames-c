@@ -5,7 +5,7 @@
 #include "../SDL2/include/SDL2/SDL_image.h"
 #include "../SDL2/include/SDL2/SDL_ttf.h"
 
-#include "../lib/sdl.h"
+typedef struct SDL_Context SDL_Context;
 #include "../lib/button.h"
 
 /**

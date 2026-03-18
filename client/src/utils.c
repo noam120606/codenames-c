@@ -29,3 +29,46 @@ char* itoa(int value) {
     snprintf(buffer, sizeof(buffer), "%d", value);
     return buffer;
 }
+
+char* getRandomUsername(void) {
+    FILE* f = fopen("assets/misc/usernames.txt", "r");
+    if (!f) return NULL;
+    char* line = NULL;
+    size_t len = 0;
+    ssize_t read;
+    char** names = NULL;
+    size_t count = 0;
+    while ((read = getline(&line, &len, f)) != -1) {
+        if (read > 0 && line[read - 1] == '\n') line[read - 1] = '\0';
+        char* s = strdup(line);
+        if (!s) {
+            free(line);
+            for (size_t i = 0; i < count; i++) free(names[i]);
+            free(names);
+            fclose(f);
+            return NULL;
+        }
+        char** tmp = realloc(names, sizeof(char*) * (count + 1));
+        if (!tmp) {
+            free(s);
+            free(line);
+            for (size_t i = 0; i < count; i++) free(names[i]);
+            free(names);
+            fclose(f);
+            return NULL;
+        }
+        names = tmp;
+        names[count++] = s;
+    }
+    free(line);
+    fclose(f);
+    if (count == 0) {
+        free(names);
+        return NULL;
+    }
+    int idx = rand() % count;
+    char* result = strdup(names[idx]);
+    for (size_t i = 0; i < count; i++) free(names[i]);
+    free(names);
+    return result;
+}

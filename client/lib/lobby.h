@@ -5,8 +5,55 @@
 #include "../SDL2/include/SDL2/SDL_image.h"
 #include "../SDL2/include/SDL2/SDL_ttf.h"
 
-#include "../lib/sdl.h"
+typedef struct SDL_Context SDL_Context;
 #include "../lib/button.h"
+
+
+#define MAX_LOBBIES 50
+#define MAX_USERS 8
+
+/**
+ * États possibles d'un lobby.
+ * @param LB_STATUS_WAITING lobby en attente (pas encore en partie).
+ * @param LB_STATUS_IN_GAME lobby actuellement en partie.
+ */
+typedef enum LobbyStatus {
+    LB_STATUS_WAITING,
+    LB_STATUS_IN_GAME
+} LobbyStatus;
+
+/**
+ * Conteneurs de rôles pour faciliter la gestion des rôles/équipes dans le lobby.
+ * Chaque conteneur correspond à un rôle/équipe spécifique (ex: RED_AGENT, BLUE_SPY, etc.) et contient les utilisateurs qui ont choisi ce rôle/équipe.
+ * @param users tableau de pointeurs vers les utilisateurs ayant choisi ce rôle/équipe.
+ * @param count_users nombre d'utilisateurs dans ce conteneur.
+ */
+typedef struct LobbyRoleContainers {
+    List users[MAX_USERS]; // Les utilisateurs ayant choisi ce rôle/équipe (au maximum MAX_USERS pour ne pas avoir à gérer des soucis de places dans les conteneurs de rôles)
+    int count_users;
+} LobbyRoleContainers;
+
+/**
+ * Représente un lobby de jeu.
+ * @param id identifiant unique du lobby.
+ * @param owner_id identifiant du joueur propriétaire du lobby.
+ * @param code code d'accès au lobby (généré aléatoirement).
+ * @param status état courant du lobby (LB_STATUS_*).
+ * @param users tableau de pointeurs vers les joueurs présents.
+ * @param role_containers conteneurs de rôles pour faciliter la gestion des rôles/équipes dans le lobby.
+ * @param nb_players nombre de joueurs actuellement connectés.
+ * @param game partie associée au lobby (NULL si aucune partie).
+ */
+typedef struct Lobby {
+    int id;
+    int owner_id;
+    char code[6];
+    LobbyStatus status;
+    User* users[MAX_USERS];
+    LobbyRoleContainers role_containers[5]; // Les NONE, RED_AGENT, RED_SPY, BLUE_AGENT, BLUE_SPY
+    int nb_players;
+    Game* game;
+} Lobby;
 
 /**
  * Initialise le lobby.

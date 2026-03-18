@@ -28,8 +28,8 @@ typedef enum LobbyStatus {
  * @param users tableau de pointeurs vers les utilisateurs ayant choisi ce rôle/équipe.
  * @param count_users nombre d'utilisateurs dans ce conteneur.
  */
-typedef struct {
-    User* users[MAX_USERS]; // Les utilisateurs ayant choisi ce rôle/équipe (au maximum MAX_USERS pour ne pas avoir à gérer des soucis de places dans les conteneurs de rôles)
+typedef struct LobbyRoleContainers {
+    List users[MAX_USERS]; // Les utilisateurs ayant choisi ce rôle/équipe (au maximum MAX_USERS pour ne pas avoir à gérer des soucis de places dans les conteneurs de rôles)
     int count_users;
 } LobbyRoleContainers;
 
@@ -40,11 +40,11 @@ typedef struct {
  * @param code code d'accès au lobby (généré aléatoirement).
  * @param status état courant du lobby (LB_STATUS_*).
  * @param users tableau de pointeurs vers les joueurs présents.
- * @param role_containers conteneurs de rôles pour faciliter la gestion des rôles/équipes dans le lobby.
+ * @param role_containers liste de rôles pour faciliter la gestion des rôles/équipes dans le lobby.
  * @param nb_players nombre de joueurs actuellement connectés.
  * @param game partie associée au lobby (NULL si aucune partie).
  */
-typedef struct {
+typedef struct Lobby {
     int id;
     int owner_id;
     char code[6];
@@ -59,7 +59,7 @@ typedef struct {
  * Gestionnaire de lobbies.
  * @param lobbies liste chaînée de pointeurs vers les lobbies actifs.
  */
-typedef struct {
+typedef struct LobbyManager {
     List* lobbies;
 } LobbyManager;
 
@@ -70,7 +70,7 @@ int init_lobby_manager();
 
 /**
  * Lit les noms d'utilisateur possibles depuis assets/usernames.txt et les stocke dans un tableau.
- * @return Tableau de chaînes de caractères contenant les noms d'utilisateur, ou NULL en cas d
+ * @return Tableau de chaînes de caractères contenant les noms d'utilisateur, ou NULL en cas d'erreur.
  */
 char** fetchUsernames();
 
