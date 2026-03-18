@@ -3,11 +3,15 @@
 server/build*
 client/build*
 
+# Docs
+docs/
+
 # Libraries
-client/SDL2
+client/SDL2/
 
 # Private files
-client/data
+client/data/
+server/data/
 
 # Object files
 *.o
