@@ -43,7 +43,7 @@ Le jeu permet à jusqu'à **8 joueurs** de s'affronter en équipes (Rouge vs Ble
 
 ---
 
-## 🏗️ Architecture du Projet
+## Architecture du Projet
 
 ```
 codenames-c/
@@ -223,7 +223,7 @@ Consultez le fichier [TODO.md](TODO.md) pour la liste des fonctionnalités à ve
 
 ---
 
-## 👥 Contributeurs
+## Contributeurs
 
 <table>
   <tr>
