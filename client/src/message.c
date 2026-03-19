@@ -27,8 +27,6 @@ int on_message(SDL_Context* context, char* message) {
 
     Arguments args = parse_arguments(message);
 
-    printf("%s\n", message);
-
     switch (header) {
         case MSG_UNKNOWN: 
             printf("Received unknown message from server: \"%s\"\n", message);
@@ -62,6 +60,15 @@ int on_message(SDL_Context* context, char* message) {
             context->lobby->id = -1;
             break;
         
+        case MSG_PLAYERJOINED:
+            if (args.argc < 4) {
+                printf("Invalid player joined message from server: \"%s\"\n", message);
+                if (args.argv) free(args.argv);
+                return EXIT_FAILURE;
+            }
+            printf("Player %s joined the lobby with role %s and team %s\n", (char*)args.argv[0], (char*)args.argv[1], (char*)args.argv[2]);
+            break;
+
         case MSG_CHOOSE_ROLE:
             if (args.argc < 3) {
                 printf("Invalid choose role message from server : \"%s\"\n", message);
