@@ -61,14 +61,20 @@ int tick_tcp(AppContext* context, int sock) {
         buffer[bytes] = '\0';
 
         // Traiter chaque message séparé par '\n'
-        char* line = strtok(buffer, "\n");
+        char* saveptr;
+        char* line = strtok_r(buffer, "\n", &saveptr);
         while (line != NULL) {
-            printf("[SERVER] %s\n", line);
-            int ret = on_message(context, line);
-            if (ret != EXIT_SUCCESS) {
-                return ret;
+            // Copier la ligne car on_message utilise strtok qui écraserait notre état
+            char* line_copy = strdup(line);
+            if (line_copy) {
+                printf("[SERVER] %s\n", line_copy);
+                int ret = on_message(context, line_copy);
+                free(line_copy);
+                if (ret != EXIT_SUCCESS) {
+                    return ret;
+                }
             }
-            line = strtok(NULL, "\n");
+            line = strtok_r(NULL, "\n", &saveptr);
         }
 
         return EXIT_SUCCESS;
