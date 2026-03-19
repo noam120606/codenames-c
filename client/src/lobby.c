@@ -239,10 +239,18 @@ void lobby_display(AppContext* context) {
     button_render(context->renderer, btn_return);
 
     /* Afficher les icônes des joueurs */
+    int nb_none = 0;
+    int nb_red = 0;
+    int nb_blue = 0;
     for (int i = 0; i < MAX_USERS; i++) {
         User* user = context->lobby->users[i];
         if (user) {
-            player_icon_display(context, user);
+            switch(user->team) {
+                case TEAM_RED: nb_red++; break;
+                case TEAM_BLUE: nb_blue++; break;
+                default: nb_none++; break;
+            }
+            player_icon_display(context, user, nb_none, nb_red, nb_blue);
         }
     }
 }
@@ -261,8 +269,30 @@ ButtonReturn lobby_handle_event(AppContext* context, SDL_Event* e) {
     return ret;
 }
 
-void player_icon_display(AppContext* context, User* user) {
+void player_icon_display(AppContext* context, User* user, int nb_none, int nb_red, int nb_blue) {
     if (!context || !user) return;
+
+    if (!user->name) return;
+
+    /* Determine column (x) and vertical index (y) based on team and counts.
+       nb_* are 1-based counts because caller increments before calling. */
+    int base_x = 0;
+    int index = 0; /* zero-based index in the column */
+    if (user->team == TEAM_RED) {
+        base_x = -360; /* left column for red team */
+        index = nb_red - 1;
+    } else if (user->team == TEAM_BLUE) {
+        base_x = 360;  /* right column for blue team */
+        index = nb_blue - 1;
+    } else {
+        base_x = 0;    /* center column for unassigned */
+        index = nb_none - 1;
+    }
+
+    /* Layout tuning */
+    const int start_y = 160;   /* first row vertical offset (positive is down) */
+    const int spacing = 56;    /* space between stacked players */
+    int y = start_y + index * spacing;
 
     SDL_Texture* icon = NULL;
     if (user->team == TEAM_RED) {
@@ -273,12 +303,13 @@ void player_icon_display(AppContext* context, User* user) {
         icon = player_icon_none;
     }
 
-    if (icon) {
-        /* Afficher l'icône à la position souhaitée (ex: à gauche du nom du joueur) */
-        int x = -300; // Position X relative
-        int y = 0;    // Position Y relative (à ajuster selon la position du nom)
-        SDL_Rect dst_rect = { x, y, 32, 32 }; // Taille de l'icône
-        SDL_RenderCopy(context->renderer, icon, NULL, &dst_rect);
+    if (icon && context->renderer) {
+        /* Draw icon then draw the player's name to the right of the icon */
+        const int icon_x = base_x - 24; /* shift icon slightly left so name sits comfortably */
+        const int icon_y = y - 16;      /* center icon vertically relative to text */
+        display_image(context->renderer, icon, icon_x, icon_y, 1, 0, SDL_FLIP_NONE, 1, 255);
+        /* Name displayed beside icon */
+        text_display(context->renderer, user->name, FONT_LARABIE, 24, COL_WHITE, icon_x + 56, y - 8, 0, 255);
     }
 }
 
@@ -292,9 +323,9 @@ int lobby_free(){
     if (btn_launch_game) { button_destroy(btn_launch_game); btn_launch_game = NULL; }
     if (btn_return)     { button_destroy(btn_return);     btn_return = NULL; }
 
-    if (player_icon_none) { SDL_DestroyTexture(player_icon_none); player_icon_none = NULL; }
-    if (player_icon_red)  { SDL_DestroyTexture(player_icon_red);  player_icon_red = NULL; }
-    if (player_icon_blue) { SDL_DestroyTexture(player_icon_blue); player_icon_blue = NULL; }
+    if (player_icon_none) { free_image(player_icon_none); player_icon_none = NULL; }
+    if (player_icon_red)  { free_image(player_icon_red);  player_icon_red = NULL; }
+    if (player_icon_blue) { free_image(player_icon_blue); player_icon_blue = NULL; }
 
     return EXIT_SUCCESS;
 }
