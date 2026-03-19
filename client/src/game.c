@@ -8,6 +8,11 @@ SDL_Texture* card_h_blue;
 SDL_Texture* card_f_blue;
 SDL_Texture* card_black;
 
+/* Couleurs pour les panneaux d'équipe */
+static const SDL_Color TEAM_BLUE_COLOR = {50, 80, 150, 200};
+static const SDL_Color TEAM_RED_COLOR = {150, 50, 50, 200};
+static const SDL_Color PANEL_BG_COLOR = {30, 30, 30, 180};
+
 void game_handle_event(AppContext* context, SDL_Event* e) {
     // gestion evenements sdl
 }
@@ -53,6 +58,86 @@ int game_init(AppContext * context) {
     }
 
     return loading_fails;
+}
+
+/* Dessine un rectangle avec transparence */
+static void draw_filled_rect(SDL_Renderer* renderer, int x, int y, int w, int h, SDL_Color color) {
+    SDL_Rect rect;
+    rect.x = x + WIN_WIDTH / 2;
+    rect.y = WIN_HEIGHT / 2 - y;
+    rect.w = w;
+    rect.h = h;
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+    SDL_RenderFillRect(renderer, &rect);
+}
+
+/* Affiche les panneaux des équipes avec les joueurs */
+void game_render_team_panels(AppContext* context) {
+    const int PANEL_W = 220;
+    const int PANEL_H = 400;
+    const int PANEL_Y = 200;
+    const int PANEL_MARGIN = 30;
+    
+    /* Panel équipe bleue (gauche) */
+    int blue_x = -WIN_WIDTH/2 + PANEL_MARGIN;
+    draw_filled_rect(context->renderer, blue_x, PANEL_Y, PANEL_W, PANEL_H, PANEL_BG_COLOR);
+    draw_filled_rect(context->renderer, blue_x, PANEL_Y, PANEL_W, 40, TEAM_BLUE_COLOR);
+    text_display(context->renderer, "EQUIPE BLEUE", FONT_LARABIE, 18, COL_WHITE, blue_x + PANEL_W/2 - WIN_WIDTH/2, PANEL_Y - 20, 0, 255);
+    
+    /* Espion bleu */
+    text_display(context->renderer, "Espion:", FONT_LARABIE, 14, (SDL_Color){100, 150, 255, 255}, blue_x + PANEL_W/2 - WIN_WIDTH/2, PANEL_Y - 60, 0, 255);
+    
+    /* Agents bleus */
+    text_display(context->renderer, "Agents:", FONT_LARABIE, 14, (SDL_Color){100, 150, 255, 255}, blue_x + PANEL_W/2 - WIN_WIDTH/2, PANEL_Y - 160, 0, 255);
+    
+    /* Afficher les joueurs bleus du lobby */
+    if (context->lobby) {
+        int spy_y = PANEL_Y - 90;
+        int agent_y = PANEL_Y - 190;
+        for (int i = 0; i < context->lobby->nb_players && i < MAX_USERS; i++) {
+            User* u = context->lobby->users[i];
+            if (u && u->team == TEAM_BLUE) {
+                if (u->role == ROLE_SPY) {
+                    text_display(context->renderer, u->name ? u->name : "???", FONT_LARABIE, 16, COL_WHITE, blue_x + PANEL_W/2 - WIN_WIDTH/2, spy_y, 0, 255);
+                    spy_y -= 25;
+                } else if (u->role == ROLE_AGENT) {
+                    text_display(context->renderer, u->name ? u->name : "???", FONT_LARABIE, 16, COL_WHITE, blue_x + PANEL_W/2 - WIN_WIDTH/2, agent_y, 0, 255);
+                    agent_y -= 25;
+                }
+            }
+        }
+    }
+    
+    /* Panel équipe rouge (droite) */
+    int red_x = WIN_WIDTH/2 - PANEL_W - PANEL_MARGIN;
+    draw_filled_rect(context->renderer, red_x, PANEL_Y, PANEL_W, PANEL_H, PANEL_BG_COLOR);
+    draw_filled_rect(context->renderer, red_x, PANEL_Y, PANEL_W, 40, TEAM_RED_COLOR);
+    text_display(context->renderer, "EQUIPE ROUGE", FONT_LARABIE, 18, COL_WHITE, red_x + PANEL_W/2 - WIN_WIDTH/2, PANEL_Y - 20, 0, 255);
+    
+    /* Espion rouge */
+    text_display(context->renderer, "Espion:", FONT_LARABIE, 14, (SDL_Color){255, 100, 100, 255}, red_x + PANEL_W/2 - WIN_WIDTH/2, PANEL_Y - 60, 0, 255);
+    
+    /* Agents rouges */
+    text_display(context->renderer, "Agents:", FONT_LARABIE, 14, (SDL_Color){255, 100, 100, 255}, red_x + PANEL_W/2 - WIN_WIDTH/2, PANEL_Y - 160, 0, 255);
+    
+    /* Afficher les joueurs rouges du lobby */
+    if (context->lobby) {
+        int spy_y = PANEL_Y - 90;
+        int agent_y = PANEL_Y - 190;
+        for (int i = 0; i < context->lobby->nb_players && i < MAX_USERS; i++) {
+            User* u = context->lobby->users[i];
+            if (u && u->team == TEAM_RED) {
+                if (u->role == ROLE_SPY) {
+                    text_display(context->renderer, u->name ? u->name : "???", FONT_LARABIE, 16, COL_WHITE, red_x + PANEL_W/2 - WIN_WIDTH/2, spy_y, 0, 255);
+                    spy_y -= 25;
+                } else if (u->role == ROLE_AGENT) {
+                    text_display(context->renderer, u->name ? u->name : "???", FONT_LARABIE, 16, COL_WHITE, red_x + PANEL_W/2 - WIN_WIDTH/2, agent_y, 0, 255);
+                    agent_y -= 25;
+                }
+            }
+        }
+    }
 }
 
 void game_render_cards(AppContext * context) {
@@ -114,6 +199,7 @@ void game_display(AppContext * context) {
     if (!audio_is_playing(MUSIC_GAME)) {
         audio_play(MUSIC_GAME, -1);
     }
+    game_render_team_panels(context);
     game_render_cards(context);
     
 }
