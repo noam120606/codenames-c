@@ -281,10 +281,20 @@ int request_join_lobby(Codenames* codenames, TcpClient* client, char* message, A
     format_to(trame, sizeof(trame), "%d %d %s", MSG_JOINLOBBY, lobby->id, lobby->code);
     tcp_send_to_client(codenames, client->id, trame);
 
+    // Envoyer au nouveau joueur la liste des joueurs déjà présents dans le lobby
     for (int i = 0; i < lobby->nb_players; i++) {
         if (lobby->users[i]->id != client->id) {
             char msg[64];
             format_to(msg, sizeof(msg), "%d %s %d %d", MSG_PLAYERJOINED, lobby->users[i]->name, lobby->users[i]->role, lobby->users[i]->team);
+            tcp_send_to_client(codenames, client->id, msg);
+        }
+    }
+
+    // Notifier les autres joueurs du lobby qu'un nouveau joueur a rejoint
+    for (int i = 0; i < lobby->nb_players; i++) {
+        if (lobby->users[i]->id != client->id) {
+            char msg[64];
+            format_to(msg, sizeof(msg), "%d %s %d %d", MSG_PLAYERJOINED, user->name, user->role, user->team);
             tcp_send_to_client(codenames, lobby->users[i]->id, msg);
         }
     }
