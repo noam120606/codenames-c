@@ -61,7 +61,7 @@ int on_message(AppContext* context, char* message) {
             break;
         
         case MSG_PLAYERJOINED:
-            if (args.argc < 4) {
+            if (args.argc < 3) {
                 printf("Invalid player joined message from server: \"%s\"\n", message);
                 if (args.argv) free(args.argv);
                 return EXIT_FAILURE;
