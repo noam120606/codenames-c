@@ -40,8 +40,8 @@ int on_message(SDL_Context* context, char* message) {
                 if (args.argv) free(args.argv);
                 return EXIT_FAILURE;
             }
-            context->lobby_id = atoi((char*)args.argv[0]);
-            context->lobby_code = strdup((char*)args.argv[1]);
+            context->lobby->id = atoi((char*)args.argv[0]);
+            strcpy(context->lobby->code, (char*)args.argv[1]);
             break;
 
         case MSG_JOINLOBBY:

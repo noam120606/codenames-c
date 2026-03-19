@@ -38,6 +38,20 @@ typedef struct {
 } Word;
 
 /**
+ * État de l'application.
+ * @param APP_STATE_MENU État du menu principal.
+ * @param APP_STATE_LOBBY État du lobby.
+ * @param APP_STATE_PLAYING État de la partie en cours.
+ * @param APP_STATE_PAUSED État de la partie en pause.
+ */
+typedef enum AppState {
+    APP_STATE_MENU,
+    APP_STATE_LOBBY,
+    APP_STATE_PLAYING,
+    APP_STATE_PAUSED
+} AppState;
+
+/**
  * États possibles d'une partie.
  * @param GAMESTATE_WAITING en attente de joueurs / démarrage.
  * @param GAMESTATE_TURN_RED tour de l'équipe rouge.
@@ -50,14 +64,6 @@ typedef enum GameState {
     GAMESTATE_TURN_BLUE,
     GAMESTATE_ENDED
 } GameState;
-
-/* Application-level states used by the client UI */
-typedef enum AppState {
-    GAME_STATE_MENU,
-    GAME_STATE_LOBBY,
-    GAME_STATE_PLAYING,
-    GAME_STATE_PAUSED
-} AppState;
 
 /**
  * Représente une partie de Codenames.

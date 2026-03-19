@@ -315,8 +315,8 @@ int request_leave_lobby(Codenames* codenames, TcpClient* client, char* message, 
     /* Si le lobby est vide, le détruire */
     if (lobby->nb_players == 0) {
         list_remove(codenames->lobby->lobbies, lobby);
-        free(lobby);
         printf("Lobby %d destroyed (empty)\n", lobby->id);
+        free(lobby);
     }
     /* Si le owner a quitté, transférer au premier joueur restant */
     else if (lobby->owner_id == client->id) {

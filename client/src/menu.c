@@ -227,8 +227,8 @@ int menu_init(SDL_Context * context) {
 
 void menu_display(SDL_Context * context) {
 
-    if (context->lobby_id != -1) {
-        context->game_state = GAME_STATE_LOBBY;
+    if (context->lobby->id != -1) {
+        context->app_state = APP_STATE_LOBBY;
         joining = 0;
     }
 
