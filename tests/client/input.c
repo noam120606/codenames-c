@@ -46,52 +46,26 @@ int main(int argc, char* argv[]) {
         return EXIT_FAILURE;
     }
 
-    /* Initialisation des boutons pour les tests */
-    #define NB_BUTTONS 4
-    Button* buttons[NB_BUTTONS] = { NULL, NULL, NULL, NULL };
+    /* Initialisation des inputs pour les tests */
+    #define NB_INPUTS 1
+    Input* inputs[NB_INPUTS] = { NULL };
 
+    InputConfig* cfg_input = input_config_init();
+    if (cfg_input) {
+        cfg_input->x = -500;
+        cfg_input->y = 500;
+        cfg_input->w = 250;
+        cfg_input->h = 60;
+        cfg_input->font_path = FONT_LARABIE;
+        cfg_input->font_size = 28;
+        cfg_input->submitted_label = "Input 1 : ";
+        cfg_input->maxlen = 16;
+        cfg_input->bg_path = "assets/img/inputs/empty.png";
+        cfg_input->bg_padding = 24;
+        inputs[0] = input_create(context.renderer, INPUT_ID_NAME, cfg_input);
+        free(cfg_input);
+    }
 
-    // Chargement boutons
-    ButtonConfig* cfg_button_basic = button_config_init();
-    if (cfg_button_basic) {
-        cfg_button_basic->x = -500;
-        cfg_button_basic->y = 300;
-        cfg_button_basic->font_path = FONT_LARABIE;
-        cfg_button_basic->color     = COL_WHITE;
-        cfg_button_basic->text      = "Test basic";
-        buttons[0] = button_create(context.renderer, 0, cfg_button_basic);
-        free(cfg_button_basic);
-    }
-    ButtonConfig* cfg_button_red = button_config_init();
-    if (cfg_button_red) {
-        cfg_button_red->y = 300;
-        cfg_button_red->font_path = FONT_LARABIE;
-        cfg_button_red->color     = COL_RED;
-        cfg_button_red->text      = "Test rouge";
-        buttons[1] = button_create(context.renderer, 0, cfg_button_red);
-        free(cfg_button_red);
-    }
-    ButtonConfig* cfg_button_blue = button_config_init();
-    if (cfg_button_blue) {
-        cfg_button_blue->x = 500;
-        cfg_button_blue->y = 300;
-        cfg_button_blue->font_path = FONT_LARABIE;
-        cfg_button_blue->color     = COL_BLUE;
-        cfg_button_blue->text      = "Test bleu";
-        buttons[2] = button_create(context.renderer, 0, cfg_button_blue);
-        free(cfg_button_blue);
-    }
-    ButtonConfig* cfg_button_big = button_config_init();
-    if (cfg_button_big) {
-        cfg_button_big->y = -100;
-        cfg_button_big->w = 1500;
-        cfg_button_big->h = 500;
-        cfg_button_big->font_path = FONT_LARABIE;
-        cfg_button_big->color     = COL_WHITE;
-        cfg_button_big->text      = "Test grand";
-        buttons[3] = button_create(context.renderer, 0, cfg_button_big);
-        free(cfg_button_big);
-    }
 
     SDL_Event e;
     int running = 1;
@@ -116,16 +90,13 @@ int main(int argc, char* argv[]) {
                     if (is_fs) toggle_fullscreen(&context);
                 }
             }
-            for (int i = 0; i < NB_BUTTONS; i++) {
-                if (buttons[i]) button_handle_event(&context, buttons[i], &e);
-            }
         }
 
         SDL_SetRenderDrawColor(context.renderer, 50, 50, 50, 255);
         SDL_RenderClear(context.renderer);
 
-        for (int i = 0; i < NB_BUTTONS; i++) {
-            if (buttons[i]) button_render(context.renderer, buttons[i]);
+        for (int i = 0; i < NB_INPUTS; i++) {
+            if (inputs[i]) input_render(&context, inputs[i]);
         }
 
         // Post Rendu
@@ -148,8 +119,8 @@ int main(int argc, char* argv[]) {
         
     }
 
-    for (int i = 0; i < NB_BUTTONS; i++) {
-        if (buttons[i]) button_destroy(buttons[i]);
+    for (int i = 0; i < NB_INPUTS; i++) {
+        if (inputs[i]) input_destroy(inputs[i]);
     }
 
     return EXIT_SUCCESS;
