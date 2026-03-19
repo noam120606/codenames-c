@@ -131,7 +131,15 @@ void tcp_server_tick(Codenames* codenames) {
 int tcp_send_to_client(Codenames* codenames, int client_id, const char* message) {
     for (int i = 0; i < TCP_MAX_CLIENTS; i++) {
         if (codenames->tcp->clients[i].id == client_id) {
-            return send(codenames->tcp->clients[i].socket, message, strlen(message), 0);
+            size_t len = strlen(message);
+            char* msg_with_newline = malloc(len + 2);
+            if (!msg_with_newline) return -1;
+            memcpy(msg_with_newline, message, len);
+            msg_with_newline[len] = '\n';
+            msg_with_newline[len + 1] = '\0';
+            int result = send(codenames->tcp->clients[i].socket, msg_with_newline, len + 1, 0);
+            free(msg_with_newline);
+            return result;
         }
     }
     return -1;
