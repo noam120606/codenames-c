@@ -47,7 +47,7 @@ typedef enum {
  * @param allowed_pattern Regex POSIX étendue appliquée à chaque caractère saisi. Si NULL, tout caractère est accepté. Ex: "^[A-Za-z0-9]$"
  * @param submit_pattern Regex POSIX étendue appliquée au texte complet au moment de la soumission. Si définie et non satisfaite, la soumission est ignorée. Ex: "^[0-9]{5}$"
  * @param init_text Texte initial à afficher dans l'input. Si NULL ou chaîne vide, l'input commence vide.
- * @param on_submit Fonction de rappel à appeler lorsque l'input est soumis (par exemple, en appuyant sur Entrée). La fonction doit prendre un `SDL_Context*` (contexte SDL) et un `const char*` (le texte soumis) et retourner void. Si NULL, aucune fonction ne sera appelée lors de la soumission.
+ * @param on_submit Fonction de rappel à appeler lorsque l'input est soumis (par exemple, en appuyant sur Entrée). La fonction doit prendre un `AppContext*` (contexte SDL) et un `const char*` (le texte soumis) et retourner void. Si NULL, aucune fonction ne sera appelée lors de la soumission.
  */
 typedef struct InputConfig {
     int x;
@@ -84,7 +84,7 @@ typedef struct InputConfig {
     char* submitted_text;
     int placeholder_index;
     Uint32 placeholder_last_tick;
-    void (*on_submit)(SDL_Context*, const char*);
+    void (*on_submit)(AppContext*, const char*);
 } InputConfig;
 
 /**
@@ -165,7 +165,7 @@ void input_destroy(Input* in);
  * @param in Pointeur vers l'input à gérer.
  * @param e Pointeur vers l'événement SDL à traiter.
  */
-void input_handle_event(SDL_Context* context, Input* in, SDL_Event* e);
+void input_handle_event(AppContext* context, Input* in, SDL_Event* e);
 
 /** Affiche l'input sur le renderer.
  * Doit être appelé à chaque frame dans la boucle de rendu.
@@ -201,7 +201,7 @@ void input_clear_submitted(Input* in);
  * @param context Contexte SDL passé au callback de soumission.
  * @param in Pointeur vers l'input.
  */
-void input_submit(SDL_Context* context, Input* in);
+void input_submit(AppContext* context, Input* in);
 
 /**
  * Définit le texte de l'input. Si le texte dépasse la longueur maximale, il sera tronqué.
@@ -213,9 +213,9 @@ void input_set_text(Input* in, const char* text);
 /**
  * Définit une fonction de rappel à appeler lorsque l'input est soumis (par exemple, en appuyant sur Entrée).
  * @param in Pointeur vers l'input.
- * @param cb Pointeur vers la fonction de rappel à appeler lors de la soumission. La fonction doit prendre un `SDL_Context*` (contexte SDL) et un `const char*` (le texte soumis) et retourner void. Si NULL, aucune fonction ne sera appelée.
+ * @param cb Pointeur vers la fonction de rappel à appeler lors de la soumission. La fonction doit prendre un `AppContext*` (contexte SDL) et un `const char*` (le texte soumis) et retourner void. Si NULL, aucune fonction ne sera appelée.
  */
-void input_set_on_submit(Input* in, void (*cb)(SDL_Context*, const char*));
+void input_set_on_submit(Input* in, void (*cb)(AppContext*, const char*));
 
 /**
  * Définit une texture de fond pour l'input à partir d'une image. Si une texture de fond existe déjà, elle sera remplacée.

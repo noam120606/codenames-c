@@ -21,7 +21,7 @@ Arguments parse_arguments(char* message) {
     return args;
 }
 
-int on_message(SDL_Context* context, char* message) {
+int on_message(AppContext* context, char* message) {
     MessageType header = fetch_header(message);
     message += number_length((int)header) + 1; // Skip header et espace
 

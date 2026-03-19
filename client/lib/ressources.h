@@ -15,17 +15,17 @@ typedef int(*DestroyFunction)(void);
  * Typedef pour la fonction callback de destruction du contexte SDL.
  * @param context Le contexte SDL à détruire.
  */
-typedef int(*DestroyContext)(SDL_Context*);
+typedef int(*DestroyContext)(AppContext*);
 
 /**
  * Structure pour gérer les ressources.
- * @param sdl_context Le contexte SDL associé aux ressources.
+ * @param context Le contexte SDL associé aux ressources.
  * @param destroy_context La fonction de destruction du contexte SDL.
  * @param destroy_functions Les fonctions de destruction des ressources.
  * @param nb_resources Le nombre de ressources gérées.
  */
 typedef struct {
-    SDL_Context* sdl_context;
+    AppContext* context;
     DestroyContext destroy_context;
     DestroyFunction destroy_functions[MAX_RESOURCES];
     int nb_resources;
@@ -44,7 +44,7 @@ Resources* init_resources();
  * @param destroy_context La fonction de destruction du contexte SDL.
  * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE sinon.
  */
-int define_sdl_context(Resources* res, SDL_Context* context, DestroyContext destroy_context);
+int define_app_context(Resources* res, AppContext* context, DestroyContext destroy_context);
 
 /**
  * Ajoute une fonction de destruction à la liste des ressources.

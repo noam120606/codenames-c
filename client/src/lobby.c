@@ -9,7 +9,7 @@ Button* btn_launch_game = NULL;
 Button* btn_return = NULL;
 
 /* Callback pour boutons du lobby (choix de rôle / équipe) */
-static ButtonReturn lobby_button_click(SDL_Context* context, Button* button) {
+static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
     if (!context || !button) return BTN_RET_NONE;
     if (button == btn_red_agent) {
         context->player_role = ROLE_AGENT;
@@ -65,7 +65,7 @@ static ButtonReturn lobby_button_click(SDL_Context* context, Button* button) {
     return BTN_RET_NONE;
 }
 
-int lobby_init(SDL_Context* context) {
+int lobby_init(AppContext* context) {
 
     int loading_fails = 0;
 
@@ -165,7 +165,7 @@ int lobby_init(SDL_Context* context) {
     
 }
 
-void lobby_display(SDL_Context* context) {
+void lobby_display(AppContext* context) {
 
     /* Application d'un filtre sur la musique du menu (une seule fois) */
     if (!lobby_filter_applied) {
@@ -194,7 +194,7 @@ void lobby_display(SDL_Context* context) {
     button_render(context->renderer, btn_return);
 }
 
-ButtonReturn lobby_handle_event(SDL_Context* context, SDL_Event* e) {
+ButtonReturn lobby_handle_event(AppContext* context, SDL_Event* e) {
     if (!context || !e) return BTN_RET_NONE;
 
     ButtonReturn ret = BTN_RET_NONE;

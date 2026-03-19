@@ -14,7 +14,7 @@ static Input* input_find_by_id(InputId id) {
 
 static void input_clear_selection_internal(Input* in);
 
-static void input_submit_internal(SDL_Context* context, Input* in) {
+static void input_submit_internal(AppContext* context, Input* in) {
     if (!in || !in->cfg) return;
 
     if (in->cfg->submit_pattern && in->cfg->text) {
@@ -270,7 +270,7 @@ static int point_in_rect(int x, int y, SDL_Rect* r) {
     return x >= r->x && x <= (r->x + r->w) && y >= r->y && y <= (r->y + r->h);
 }
 
-void input_handle_event(SDL_Context* context, Input* in, SDL_Event* e) {
+void input_handle_event(AppContext* context, Input* in, SDL_Event* e) {
     if (!in || !e) return;
 
     if (e->type == SDL_MOUSEBUTTONDOWN) {
@@ -592,7 +592,7 @@ void input_clear_submitted(Input* in) {
     in->cfg->submitted = 0;
 }
 
-void input_submit(SDL_Context* context, Input* in) {
+void input_submit(AppContext* context, Input* in) {
     input_submit_internal(context, in);
 }
 
@@ -606,7 +606,7 @@ void input_set_text(Input* in, const char* text) {
     input_clear_selection_internal(in);
 }
 
-void input_set_on_submit(Input* in, void (*cb)(SDL_Context*, const char*)) {
+void input_set_on_submit(Input* in, void (*cb)(AppContext*, const char*)) {
     if (!in) return;
     in->cfg->on_submit = cb;
 }
@@ -819,7 +819,7 @@ int edit_in_cfg(InputId id, InputCfgKey key, intptr_t value) {
             return EXIT_SUCCESS;
         case IN_CFG_ON_SUBMIT:
             if (!value) return EXIT_FAILURE;
-            in->cfg->on_submit = *(void (**)(SDL_Context*, const char*))value;
+            in->cfg->on_submit = *(void (**)(AppContext*, const char*))value;
             return EXIT_SUCCESS;
         default:
             return EXIT_FAILURE;

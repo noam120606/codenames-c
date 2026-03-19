@@ -11,7 +11,7 @@ Input* code_input = NULL;
 char* name = NULL; // Le nom du joueur, à envoyer au serveur lors de la création ou du join d'un lobby. Peut être NULL ou chaîne vide si non défini.
 int joining = 0;
 
-static void name_on_submit(SDL_Context* context, const char* text) {
+static void name_on_submit(AppContext* context, const char* text) {
     printf("Name input submitted: %s\n", text ? text : "");
     if (name) {
         free(name);
@@ -30,7 +30,7 @@ static void name_on_submit(SDL_Context* context, const char* text) {
     }
 }
 
-static void code_on_submit(SDL_Context* context, const char* text) {
+static void code_on_submit(AppContext* context, const char* text) {
     printf("Code input submitted: %s\n", text ? text : "");
     if (text) {
         char trame[20];
@@ -39,7 +39,7 @@ static void code_on_submit(SDL_Context* context, const char* text) {
     }
 }
 
-ButtonReturn menu_handle_event(SDL_Context* context, SDL_Event* e) {
+ButtonReturn menu_handle_event(AppContext* context, SDL_Event* e) {
     if (name_input) input_handle_event(context, name_input, e);
     if (code_input && joining) input_handle_event(context, code_input, e);
 
@@ -51,7 +51,7 @@ ButtonReturn menu_handle_event(SDL_Context* context, SDL_Event* e) {
     return ret;
 }
 
-ButtonReturn menu_button_click(SDL_Context* context, Button* button) {
+ButtonReturn menu_button_click(AppContext* context, Button* button) {
     if (button == btn_join) {
         joining = 1;
     } else if (button == btn_create) {
@@ -64,7 +64,7 @@ ButtonReturn menu_button_click(SDL_Context* context, Button* button) {
     return BTN_RET_NONE;
 }
 
-int menu_init(SDL_Context * context) {
+int menu_init(AppContext * context) {
     int loading_fails = 0;
 
     // Chargement image
@@ -225,7 +225,7 @@ int menu_init(SDL_Context * context) {
     return loading_fails;
 }
 
-void menu_display(SDL_Context * context) {
+void menu_display(AppContext * context) {
 
     if (context->lobby->id != -1) {
         context->app_state = APP_STATE_LOBBY;

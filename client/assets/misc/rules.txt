@@ -1,15 +1,20 @@
-25 cartes sont disposees",
-    "sur le plateau de jeu.",
-    "",
-    "Chaque equipe a un Maitre-Espion",
-    "qui connait les couleurs",
-    "des cartes.",
-    "",
-    "Le Maitre-Espion donne un",
-    "indice : UN mot et UN chiffre.",
-    "",
-    "Son equipe doit deviner",
-    "les cartes correspondantes.",
-    "",
-    "Attention a l'Assassin !",
-    "Le toucher = defaite immediate."
+25 cartes sont
+disposées sur le 
+plateau de jeu.
+
+Chaque equipe a un 
+Espion qui connait
+les couleurs
+des cartes.
+
+L'Espion donne
+un indice :
+UN mot et UN chiffre.
+
+Son equipe doit 
+deviner les cartes
+correspondantes.
+
+Attention au mot Noir !
+Si il est trouvé
+c'est terminé :(

@@ -6,26 +6,10 @@ SDL_Texture* bandeau;
 static Crossfader* cf_music = NULL;
 static Crossfader* cf_sfx = NULL;
 
-// Texte des règles dans le bandeau
+// Texte des règles dans le bandeau (chargé depuis rules.txt)
 static const char* rules_title = "REGLES DU JEU";
-static const char* rules_lines[] = {
-    "25 cartes sont disposees",
-    "sur le plateau de jeu.",
-    "",
-    "Chaque equipe a un Maitre-Espion",
-    "qui connait les couleurs",
-    "des cartes.",
-    "",
-    "Le Maitre-Espion donne un",
-    "indice : UN mot et UN chiffre.",
-    "",
-    "Son equipe doit deviner",
-    "les cartes correspondantes.",
-    "",
-    "Attention a l'Assassin !",
-    "Le toucher = defaite immediate."
-};
-static const int rules_line_count = 15;
+static char** rules_lines = NULL;
+static int rules_line_count = 0;
 
 // Animation state
 typedef enum {
@@ -44,19 +28,66 @@ static int mouse_was_inside = 0; // Indique si la souris était dans la zone à 
 static int current_display_x = -1300;
 
 /* Callback appelé quand le crossfader musique change */
-static void on_music_volume_change(SDL_Context* ctx, int new_value) {
+static void on_music_volume_change(AppContext* ctx, int new_value) {
     if (ctx) ctx->music_volume = new_value;
     audio_set_type_volume(AUDIO_SOUND_KIND_MUSIC, new_value);
 }
 
 /* Callback appelé quand le crossfader effets sonores change */
-static void on_sfx_volume_change(SDL_Context* ctx, int new_value) {
+static void on_sfx_volume_change(AppContext* ctx, int new_value) {
     if (ctx) ctx->sound_effects_volume = new_value;
     audio_set_type_volume(AUDIO_SOUND_KIND_SFX, new_value);
 }
 
-int init_infos(SDL_Context* context) {
+/* Charge les règles depuis le fichier rules.txt */
+static void load_rules() {
+    FILE* f = fopen("assets/misc/rules.txt", "r");
+    if (!f) {
+        printf("Failed to open rules.txt\n");
+        return;
+    }
+
+    char line_buf[256];
+    while (fgets(line_buf, sizeof(line_buf), f)) {
+        // Retirer le '\n' final
+        size_t len = strlen(line_buf);
+        if (len > 0 && line_buf[len - 1] == '\n') line_buf[len - 1] = '\0';
+
+        // Allouer et copier la ligne
+        char* line_copy = strdup(line_buf);
+        if (!line_copy) continue;
+
+        // Agrandir le tableau
+        char** tmp = realloc(rules_lines, sizeof(char*) * (rules_line_count + 1));
+        if (!tmp) {
+            free(line_copy);
+            continue;
+        }
+        rules_lines = tmp;
+        rules_lines[rules_line_count] = line_copy;
+        rules_line_count++;
+    }
+
+    fclose(f);
+}
+
+/* Libère la mémoire des règles */
+static void free_rules() {
+    if (rules_lines) {
+        for (int i = 0; i < rules_line_count; i++) {
+            free(rules_lines[i]);
+        }
+        free(rules_lines);
+        rules_lines = NULL;
+    }
+    rules_line_count = 0;
+}
+
+int init_infos(AppContext* context) {
     int loading_fails = 0;
+
+    /* Charger les règles depuis le fichier */
+    load_rules();
 
     bandeau = load_image(context->renderer, "assets/img/others/bandeau_infos.png");
     if (!bandeau) {
@@ -130,7 +161,7 @@ int init_infos(SDL_Context* context) {
 }
 
 // Démarre l'animation d'apparition
-void infos_display_show_animation(SDL_Context* context) {
+void infos_display_show_animation(AppContext* context) {
     if (infos_state != INFOS_VISIBLE && infos_state != INFOS_SHOWING) {
         infos_state = INFOS_SHOWING;
         animation_start_time = SDL_GetTicks();
@@ -138,7 +169,7 @@ void infos_display_show_animation(SDL_Context* context) {
 }
 
 // Démarre l'animation de disparition
-void infos_display_hide_animation(SDL_Context* context) {
+void infos_display_hide_animation(AppContext* context) {
     if (infos_state != INFOS_HIDDEN && infos_state != INFOS_HIDING) {
         infos_state = INFOS_HIDING;
         animation_start_time = SDL_GetTicks();
@@ -154,7 +185,7 @@ static int bandeau_to_screen_y(int by, int h) {
     return (WIN_HEIGHT - h) / 2 - by;
 }
 
-static void window_to_logical(SDL_Context* context, int wx, int wy, int* lx, int* ly) {
+static void window_to_logical(AppContext* context, int wx, int wy, int* lx, int* ly) {
     if (!lx || !ly) return;
 
     if (!context || !context->renderer) {
@@ -224,7 +255,7 @@ static void update_crossfader_positions(int display_x) {
 }
 
 // Affiche les informations à l'écran
-void infos_display(SDL_Context* context) {
+void infos_display(AppContext* context) {
     if (bandeau) {
         // Récupérer la position de la souris
         int mouse_x, mouse_y;
@@ -316,12 +347,12 @@ void infos_display(SDL_Context* context) {
     }
 }
 
-void infos_handle_event(SDL_Context* context, SDL_Event* event) {
+void infos_handle_event(AppContext* context, SDL_Event* event) {
     crossfaders_handle_event(context, event);
 }
 
 // FPS calculation
-void calculate_fps(SDL_Context* context, Uint32 current_time) {
+void calculate_fps(AppContext* context, Uint32 current_time) {
     static Uint32 last_time = 0;
     static int frame_count = 0;
     
@@ -339,7 +370,7 @@ void calculate_fps(SDL_Context* context, Uint32 current_time) {
 
 
 // FPS display
-void fps_ping_display(SDL_Context* context, int display_x) {
+void fps_ping_display(AppContext* context, int display_x) {
     calculate_fps(context, SDL_GetTicks());
     context->ping_ms = get_tcp_ping_ms(context->sock);
 
@@ -393,5 +424,6 @@ int infos_free() {
         bandeau = NULL;
     }
     crossfaders_free();
+    free_rules();
     return EXIT_SUCCESS;
 }

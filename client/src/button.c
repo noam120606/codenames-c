@@ -203,7 +203,7 @@ static int is_mouse_over_button(Button* button, int mouseX, int mouseY) {
             mouseY <= button->cfg->rect.y + button->cfg->rect.h);
 }
 
-ButtonReturn button_handle_event(SDL_Context* context, Button* button, SDL_Event* event) {
+ButtonReturn button_handle_event(AppContext* context, Button* button, SDL_Event* event) {
     if (!button || !button->cfg || !event) return BTN_RET_NONE;
 
     if (event->type == SDL_MOUSEMOTION) {
