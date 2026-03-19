@@ -59,9 +59,19 @@ int tick_tcp(AppContext* context, int sock) {
             return EXIT_FAILURE;
         }
         buffer[bytes] = '\0';
-        printf("[SERVER] %s\n", buffer);
 
-        return on_message(context, buffer);
+        // Traiter chaque message séparé par '\n'
+        char* line = strtok(buffer, "\n");
+        while (line != NULL) {
+            printf("[SERVER] %s\n", line);
+            int ret = on_message(context, line);
+            if (ret != EXIT_SUCCESS) {
+                return ret;
+            }
+            line = strtok(NULL, "\n");
+        }
+
+        return EXIT_SUCCESS;
     }
 
     return EXIT_SUCCESS;
