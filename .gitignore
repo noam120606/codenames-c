@@ -2,6 +2,8 @@
 # Projets compilés
 server/build*
 client/build*
+tests/server/build*
+tests/client/build*
 
 # Libraries
 client/SDL2/

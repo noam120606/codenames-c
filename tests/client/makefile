@@ -21,41 +21,45 @@ SRCS := $(filter-out $(SRC_DIR)/index.c,$(ALL_SRCS))
 OBJ_DIR := build
 OBJS := $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
 
-TEST_SRC := game.c
-TEST_OBJ := $(OBJ_DIR)/test_game.o
 
-TARGET := ./game
+# Tests présents dans ce dossier
+TEST_SRCS := $(wildcard ./*.c)
+TEST_NAMES := $(patsubst %.c,%, $(notdir $(TEST_SRCS)))
+TEST_OBJS := $(patsubst %, $(OBJ_DIR)/test_%.o, $(TEST_NAMES))
 
-DEPS := $(OBJS:.o=.d) $(TEST_OBJ:.o=.d)
+DEPS := $(OBJS:.o=.d) $(TEST_OBJS:.o=.d)
 
 LDFLAGS := $(SDL_LDFLAGS) -lm -Wl,-rpath,'$$ORIGIN/../../../client/SDL2/lib'
 
 .PHONY: all clean run
 
-all: $(TARGET)
 
-$(TARGET): $(OBJS) $(TEST_OBJ)
+all: $(patsubst %, $(OBJ_DIR)/%,$(TEST_NAMES))
+
+# construire build/<name> pour chaque <name.c>
+$(OBJ_DIR)/%: $(OBJ_DIR)/test_%.o $(OBJS) | $(OBJ_DIR)
 	$(CC) $^ -o $@ $(LDFLAGS)
 
 # Compile les .c du client
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	$(CC) -c $< -o $@ $(CPPFLAGS) $(CFLAGS)
 
-# Compile le fichier de test local
-$(TEST_OBJ): $(TEST_SRC) | $(OBJ_DIR)
+# Compile les fichiers de test locaux
+$(OBJ_DIR)/test_%.o: ./%.c | $(OBJ_DIR)
 	$(CC) -c $< -o $@ $(CPPFLAGS) $(CFLAGS)
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
-# Le binaire est placé à la racine du dossier tests/client (TARGET = ./game)
+# Le binaire est placé dans $(OBJ_DIR) (TARGET = $(OBJ_DIR)/game)
+
 
 clean:
-	rm -rf $(OBJ_DIR) $(TARGET)
+	rm -rf $(OBJ_DIR)
 
 -include $(DEPS)
 
 run: all
-	# Exécute ./game depuis tests/client ; rpath est défini pour trouver les libs SDL embarquées.
-	./game
+	# Exécute build/game si présent
+	if [ -x $(OBJ_DIR)/game ]; then $(OBJ_DIR)/game; else echo "No $(OBJ_DIR)/game executable"; fi
 

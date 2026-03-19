@@ -102,6 +102,7 @@ void game_render_cards(AppContext * context) {
             else if (context->cards[i*5 + j]->revealed) {
                 // Attente des images des cartes "révélées"
             }
+            text_display(context->renderer, context->cards[i*5 + j]->word, FONT_LARABIE, 18, COL_BLACK, x, y-22, 0, 255);
             x += 200;
         }
         x = -400;

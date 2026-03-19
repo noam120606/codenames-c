@@ -46,50 +46,24 @@ int main(int argc, char* argv[]) {
         return EXIT_FAILURE;
     }
 
-    int game_loading_fails = game_init(&context);
-    if (game_loading_fails > 0) {
-        printf("Failed to load %d game resource(s)\n", game_loading_fails);
-        game_free();
-        cleanup_resources(resources);
-        return EXIT_FAILURE;
-    } else add_destroy_resource(resources, game_free);
+    /* Initialisation des boutons pour les tests */
+    Button* button;
+
+    // Chargement boutons
+    ButtonConfig* cfg_button = button_config_init();
+    if (cfg_button) {
+        cfg_button->x         = -300;
+        cfg_button->y         = -180;
+        cfg_button->h         = 100;
+        cfg_button->font_path = FONT_LARABIE;
+        cfg_button->color     = COL_WHITE;
+        cfg_button->text      = "Test";
+        button = button_create(context.renderer, 0, cfg_button);
+        free(cfg_button);
+    }
 
     SDL_Event e;
     int running = 1;
-
-    // Initialisation des valeurs de context pour les tests de l'affichage des cartes
-    context.player_role = ROLE_SPY;
-
-    int gender = 0, i = 0;
-
-    context.cards[i] = malloc(sizeof(Card));
-    context.cards[i]->revealed = 0;
-    context.cards[i]->gender = (gender++)%2==0 ? 0 : 1;
-    context.cards[i]->team = TEAM_BLACK;
-    strcpy(context.cards[i]->word, "Test noir");
-
-    for (i = 1; i < 9; i++) {
-        context.cards[i] = malloc(sizeof(Card));
-        context.cards[i]->revealed = 0;
-        context.cards[i]->gender = (gender++)%2==0 ? 0 : 1;
-        context.cards[i]->team = TEAM_RED;
-        strcpy(context.cards[i]->word, "Test rouge");
-    }
-    for (i = 9; i < 17; i++) {
-        context.cards[i] = malloc(sizeof(Card));
-        context.cards[i]->revealed = 0;
-        context.cards[i]->gender = (gender++)%2==0 ? 0 : 1;
-        context.cards[i]->team = TEAM_BLUE;
-        strcpy(context.cards[i]->word, "Test bleu");
-    }
-    for (i = 17; i < 25; i++) {
-        context.cards[i] = malloc(sizeof(Card));
-        context.cards[i]->revealed = 0;
-        context.cards[i]->gender = (gender++)%2==0 ? 0 : 1;
-        context.cards[i]->team = TEAM_NONE;
-        strcpy(context.cards[i]->word, "Test neutre");
-    }
-
 
     while (running && tick_tcp(&context, context.sock) == EXIT_SUCCESS) {
         // Enregistrer le début de la frame
@@ -111,13 +85,13 @@ int main(int argc, char* argv[]) {
                     if (is_fs) toggle_fullscreen(&context);
                 }
             }
-            game_handle_event(&context, &e);
+            button_handle_event(&context, button, &e);
         }
 
         SDL_SetRenderDrawColor(context.renderer, 50, 50, 50, 255);
         SDL_RenderClear(context.renderer);
 
-        game_display(&context);
+        button_render(context.renderer, button);
 
         // Post Rendu
         SDL_RenderPresent(context.renderer);
