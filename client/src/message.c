@@ -48,27 +48,18 @@ int on_message(SDL_Context* context, char* message) {
             // Handle join lobby
             if (args.argc >= 2) {
                 context->lobby->id = atoi((char*)args.argv[0]);
-                if (context->lobby->code) free(context->lobby->code);
-                context->lobby->code = strdup((char*)args.argv[1]);
+                strcpy(context->lobby->code, (char*)args.argv[1]);
             }
             break;
 
         case MSG_LEAVELOBBY:
             // Handle leave lobby
             context->lobby->id = -1;
-            if (context->lobby->code) {
-                free(context->lobby->code);
-                context->lobby->code = NULL;
-            }
             break;
 
         case MSG_LOBBYCLOSED:
             // Handle lobby closed
             context->lobby->id = -1;
-            if (context->lobby->code) {
-                free(context->lobby->code);
-                context->lobby->code = NULL;
-            }
             break;
         
         case MSG_CHOOSE_ROLE:
