@@ -47,27 +47,27 @@ int on_message(SDL_Context* context, char* message) {
         case MSG_JOINLOBBY:
             // Handle join lobby
             if (args.argc >= 2) {
-                context->lobby_id = atoi((char*)args.argv[0]);
-                if (context->lobby_code) free(context->lobby_code);
-                context->lobby_code = strdup((char*)args.argv[1]);
+                context->lobby->id = atoi((char*)args.argv[0]);
+                if (context->lobby->code) free(context->lobby->code);
+                context->lobby->code = strdup((char*)args.argv[1]);
             }
             break;
 
         case MSG_LEAVELOBBY:
             // Handle leave lobby
-            context->lobby_id = -1;
-            if (context->lobby_code) {
-                free(context->lobby_code);
-                context->lobby_code = NULL;
+            context->lobby->id = -1;
+            if (context->lobby->code) {
+                free(context->lobby->code);
+                context->lobby->code = NULL;
             }
             break;
 
         case MSG_LOBBYCLOSED:
             // Handle lobby closed
-            context->lobby_id = -1;
-            if (context->lobby_code) {
-                free(context->lobby_code);
-                context->lobby_code = NULL;
+            context->lobby->id = -1;
+            if (context->lobby->code) {
+                free(context->lobby->code);
+                context->lobby->code = NULL;
             }
             break;
         
