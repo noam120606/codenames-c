@@ -2,7 +2,7 @@
 set -e
 
 PORT=4242
-SERVER_IP="${SERVER_IP:-172.18.41.125}"
+SERVER_IP="${SERVER_IP:-172.18.41.124}"
 
 SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
 cd "$SCRIPT_DIR"

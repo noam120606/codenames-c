@@ -12,6 +12,7 @@ ShadowHunter
 LightBringer
 CodeMaster
 PixelPirate
+Asterion
 ByteBandit
 EchoRunner
 WindStrider
@@ -25,6 +26,7 @@ EmberKnight
 SilverHawk
 GoldenEagle
 CopperWolf
+Glenn_Quagmire
 IronLion
 BronzeBear
 MysticCat
@@ -40,6 +42,7 @@ ArcticFox
 JungleCat
 MountainGoat
 SeaSprite
+NoamSql
 ForestSprite
 Skyward
 NightShade
@@ -60,6 +63,12 @@ StarSinger
 MelodyMaker
 RhythmRogue
 TempoTamer
+WolfGangPRoxa
+Kaptaine_Pirate
+CloCloSahur
+Oni_Zurka67
+SkimatNoob
+AzayimMiner
 FrostFang
 BlazeFury
 ThunderBolt
@@ -78,6 +87,7 @@ BrightMind
 CleverFox
 CunningCrow
 HonestHare
+BricoBepo
 LoyalOtter
 FriendlyFrog
 JollyGiant
