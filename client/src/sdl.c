@@ -114,16 +114,20 @@ SDL_Context init_sdl() {
         return context;
     }
 
-    // Initialize Mixer
+    // Initialize Mixer (skip if audio disabled/dummy)
     printf("Initializing Mixer...\n");
-    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) != 0) {
-        printf("Mix_OpenAudio Error: %s\n", Mix_GetError());
-        TTF_Quit();
-        IMG_Quit();
-        SDL_DestroyRenderer(renderer);
-        SDL_DestroyWindow(win);
-        SDL_Quit();
-        return context;
+    if (is_truthy_env(getenv("CODENAMES_AUDIO_DISABLED")) || is_truthy_env(getenv("CODENAMES_AUDIO_DUMMY"))) {
+        printf("Audio initialization skipped (CODENAMES_AUDIO_DISABLED or CODENAMES_AUDIO_DUMMY set)\n");
+    } else {
+        if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) != 0) {
+            printf("Mix_OpenAudio Error: %s\n", Mix_GetError());
+            TTF_Quit();
+            IMG_Quit();
+            SDL_DestroyRenderer(renderer);
+            SDL_DestroyWindow(win);
+            SDL_Quit();
+            return context;
+        }
     }
 
     context.clock = 0;

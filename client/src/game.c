@@ -61,7 +61,7 @@ void game_render_cards(SDL_Context * context) {
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
             if (!context->cards[i*5 + j]) {
-                x += 100;
+                x += 50;
                 continue;
             }
             if(context->player_role == ROLE_SPY && !context->cards[i*5 + j]->revealed) {
@@ -102,10 +102,10 @@ void game_render_cards(SDL_Context * context) {
             else if (context->cards[i*5 + j]->revealed) {
                 // Attente des images des cartes "révélées"
             }
-            x += 100;
+            x += 250;
         }
         x = 0;
-        y += 100;
+        y += 150;
     }
 }
 
