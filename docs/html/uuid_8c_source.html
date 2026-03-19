@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Codenames:  Fichier source de server/src/uuid.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Codenames<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Jeu Codenames multijoueur en C - Client SDL2 et Serveur TCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('uuid_8c_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">uuid.c</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="uuid_8c.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="server_2lib_2all_8h.html">../lib/all.h</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="foldopen" id="foldopen00003" data-start="{" data-end="}">
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="uuid_8c.html#acfa6091f39f10c04e90dde2b56214043">    3</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="uuid_8c.html#acfa6091f39f10c04e90dde2b56214043">request_uuid</a>(<a class="code hl_struct" href="structCodenames.html">Codenames</a>* codenames, <a class="code hl_struct" href="structTcpClient.html">TcpClient</a>* client, <span class="keywordtype">char</span>* message, <a class="code hl_struct" href="structArguments.html">Arguments</a> args) {</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>    </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>    <span class="comment">// Générer un UUID unique et l&#39;envoyer au client</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    <span class="keywordtype">char</span>* uuid = <a class="code hl_function" href="server_2src_2utils_8c.html#a1bc1ea2e733f473085328b271e459fe4">generate_uuid</a>(<span class="stringliteral">&quot;data/uuids&quot;</span>);</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keywordflow">if</span> (uuid == NULL) {</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>        printf(<span class="stringliteral">&quot;Failed to generate UUID for client %d\n&quot;</span>, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>);</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    }</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keywordtype">char</span> reponse[128];</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <a class="code hl_function" href="client_2src_2utils_8c.html#ade6960f663c739637ee1beaf757c5f24">format_to</a>(reponse, <span class="keyword">sizeof</span>(reponse), <span class="stringliteral">&quot;%d %s&quot;</span>, <a class="code hl_enumvalue" href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a48572e5982fd99f6677484f5090fa795">MSG_REQUESTUUID</a>, uuid);</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <a class="code hl_function" href="server_2src_2tcp_8c.html#ae3efc44467ee08b4d29bcc4ef7886119">tcp_send_to_client</a>(codenames, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>, reponse);</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    printf(<span class="stringliteral">&quot;Generated UUID %s for client %d\n&quot;</span>, uuid, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    free(uuid);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>}</div>
+</div>
+<div class="ttc" id="aclient_2lib_2message_8h_html_ac6606ebe91c8ac66a2c314c79f5ab013a48572e5982fd99f6677484f5090fa795"><div class="ttname"><a href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a48572e5982fd99f6677484f5090fa795">MSG_REQUESTUUID</a></div><div class="ttdeci">@ MSG_REQUESTUUID</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00027">message.h:27</a></div></div>
+<div class="ttc" id="aclient_2src_2utils_8c_html_ade6960f663c739637ee1beaf757c5f24"><div class="ttname"><a href="client_2src_2utils_8c.html#ade6960f663c739637ee1beaf757c5f24">format_to</a></div><div class="ttdeci">int format_to(char *buf, size_t size, const char *fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2utils_8c_source.html#l00017">utils.c:17</a></div></div>
+<div class="ttc" id="aserver_2lib_2all_8h_html"><div class="ttname"><a href="server_2lib_2all_8h.html">all.h</a></div></div>
+<div class="ttc" id="aserver_2src_2tcp_8c_html_ae3efc44467ee08b4d29bcc4ef7886119"><div class="ttname"><a href="server_2src_2tcp_8c.html#ae3efc44467ee08b4d29bcc4ef7886119">tcp_send_to_client</a></div><div class="ttdeci">int tcp_send_to_client(Codenames *codenames, int client_id, const char *message)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2tcp_8c_source.html#l00131">tcp.c:131</a></div></div>
+<div class="ttc" id="aserver_2src_2utils_8c_html_a1bc1ea2e733f473085328b271e459fe4"><div class="ttname"><a href="server_2src_2utils_8c.html#a1bc1ea2e733f473085328b271e459fe4">generate_uuid</a></div><div class="ttdeci">char * generate_uuid(const char *uuids_path)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2utils_8c_source.html#l00124">utils.c:124</a></div></div>
+<div class="ttc" id="astructArguments_html"><div class="ttname"><a href="structArguments.html">Arguments</a></div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00035">message.h:35</a></div></div>
+<div class="ttc" id="astructCodenames_html"><div class="ttname"><a href="structCodenames.html">Codenames</a></div><div class="ttdef"><b>Definition</b> <a href="codenames_8h_source.html#l00012">codenames.h:12</a></div></div>
+<div class="ttc" id="astructTcpClient_html"><div class="ttname"><a href="structTcpClient.html">TcpClient</a></div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2tcp_8h_source.html#l00014">tcp.h:14</a></div></div>
+<div class="ttc" id="astructTcpClient_html_a28a40517fae053778f34c4c8498b83b6"><div class="ttname"><a href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">TcpClient::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2tcp_8h_source.html#l00015">tcp.h:15</a></div></div>
+<div class="ttc" id="auuid_8c_html_acfa6091f39f10c04e90dde2b56214043"><div class="ttname"><a href="uuid_8c.html#acfa6091f39f10c04e90dde2b56214043">request_uuid</a></div><div class="ttdeci">int request_uuid(Codenames *codenames, TcpClient *client, char *message, Arguments args)</div><div class="ttdef"><b>Definition</b> <a href="#l00003">uuid.c:3</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a href="dir_a063914ab482288b7b0e1b2fca86158c.html">src</a></li><li class="navelem"><a href="uuid_8c.html">uuid.c</a></li>
+    <li class="footer">Généré le Jeudi 19 Mars 2026 15:31:45 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

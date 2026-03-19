@@ -1,0 +1,411 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Codenames: Référence du fichier server/src/utils.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Codenames<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Jeu Codenames multijoueur en C - Client SDL2 et Serveur TCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('server_2src_2utils_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Référence du fichier utils.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="server_2lib_2all_8h_source.html">../lib/all.h</a>&quot;</code><br />
+<code>#include &lt;sys/stat.h&gt;</code><br />
+<code>#include &lt;sys/types.h&gt;</code><br />
+<code>#include &lt;errno.h&gt;</code><br />
+</div>
+<p><a href="server_2src_2utils_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ae2550f9b6ba95e9ea93c5c85d1c396fe" id="r_ae2550f9b6ba95e9ea93c5c85d1c396fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2550f9b6ba95e9ea93c5c85d1c396fe">randint</a> (int min, int max)</td></tr>
+<tr class="memitem:ad93ebcf9b51100e8925bd85aabf977bc" id="r_ad93ebcf9b51100e8925bd85aabf977bc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad93ebcf9b51100e8925bd85aabf977bc">count_words</a> (const char *filepath)</td></tr>
+<tr class="memitem:a09d83a1fb790017dd6af6e33d48c4cec" id="r_a09d83a1fb790017dd6af6e33d48c4cec"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09d83a1fb790017dd6af6e33d48c4cec">starts_with</a> (const char *str, const char *prefix)</td></tr>
+<tr class="memitem:acf06ac69f86a58e43477083d3930a4ca" id="r_acf06ac69f86a58e43477083d3930a4ca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf06ac69f86a58e43477083d3930a4ca">number_length</a> (int n)</td></tr>
+<tr class="memitem:ade6960f663c739637ee1beaf757c5f24" id="r_ade6960f663c739637ee1beaf757c5f24"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade6960f663c739637ee1beaf757c5f24">format_to</a> (char *buf, size_t size, const char *fmt,...)</td></tr>
+<tr class="memitem:abeaa3b934bab9c3d990dde11d4dc5d64" id="r_abeaa3b934bab9c3d990dde11d4dc5d64"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abeaa3b934bab9c3d990dde11d4dc5d64">generate_code</a> ()</td></tr>
+<tr class="memitem:a182e3fe2f75024e0a8ccc2712d95ae13" id="r_a182e3fe2f75024e0a8ccc2712d95ae13"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a182e3fe2f75024e0a8ccc2712d95ae13">random_uuid_string</a> (char *out, size_t size)</td></tr>
+<tr class="memitem:acb6f19153f3e8729295ae8f1af0fc3bd" id="r_acb6f19153f3e8729295ae8f1af0fc3bd"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb6f19153f3e8729295ae8f1af0fc3bd">uuid_exists_in_file</a> (const char *filepath, const char *uuid)</td></tr>
+<tr class="memitem:a1bc1ea2e733f473085328b271e459fe4" id="r_a1bc1ea2e733f473085328b271e459fe4"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1bc1ea2e733f473085328b271e459fe4">generate_uuid</a> (const char *uuids_path)</td></tr>
+</table>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a id="ad93ebcf9b51100e8925bd85aabf977bc" name="ad93ebcf9b51100e8925bd85aabf977bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad93ebcf9b51100e8925bd85aabf977bc">&#9670;&#160;</a></span>count_words()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int count_words </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>filepath</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Retourne le nombre de mots (lignes non vides) dans le fichier filepath. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filepath</td><td>Chemin du fichier à analyser. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Nombre de lignes non vides, ou -1 en cas d'erreur. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2utils_8c_source.html#l00013">13</a> du fichier <a class="el" href="server_2src_2utils_8c_source.html">utils.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="server_2src_2game_8c_source.html#l00007">init_game_manager()</a>, et <a class="el" href="server_2src_2lobby_8c_source.html#l00008">init_lobby_manager()</a>.</p>
+
+</div>
+</div>
+<a id="ade6960f663c739637ee1beaf757c5f24" name="ade6960f663c739637ee1beaf757c5f24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade6960f663c739637ee1beaf757c5f24">&#9670;&#160;</a></span>format_to()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int format_to </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>buf</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>fmt</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>...</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Formate dans un buffer fourni sans allocation dynamique. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>Buffer de sortie. </td></tr>
+    <tr><td class="paramname">size</td><td>Taille du buffer (en octets). </td></tr>
+    <tr><td class="paramname">fmt</td><td>Chaîne de format (printf-like). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Nombre de caractères écrits (sans le '\0'), ou -1 en cas d'erreur. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2utils_8c_source.html#l00066">66</a> du fichier <a class="el" href="server_2src_2utils_8c_source.html">utils.c</a>.</p>
+
+</div>
+</div>
+<a id="abeaa3b934bab9c3d990dde11d4dc5d64" name="abeaa3b934bab9c3d990dde11d4dc5d64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abeaa3b934bab9c3d990dde11d4dc5d64">&#9670;&#160;</a></span>generate_code()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * generate_code </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Génère un code aléatoire de 5 lettres majuscules. </p><dl class="section return"><dt>Renvoie</dt><dd>Pointeur vers le code généré, ou NULL en cas d'erreur. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2utils_8c_source.html#l00076">76</a> du fichier <a class="el" href="server_2src_2utils_8c_source.html">utils.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2src_2tcp_8c_source.html#l00005">buffer</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00104">create_lobby()</a>.</p>
+
+</div>
+</div>
+<a id="a1bc1ea2e733f473085328b271e459fe4" name="a1bc1ea2e733f473085328b271e459fe4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bc1ea2e733f473085328b271e459fe4">&#9670;&#160;</a></span>generate_uuid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * generate_uuid </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>uuids_path</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Génère un UUID unique (format : 8-4-4-4-12 hex) non présent dans le fichier uuids_path. Si le fichier n'existe pas, il est créé. Le nouvel UUID est ajouté au fichier. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uuids_path</td><td>Chemin du fichier contenant les UUIDs existants. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Pointeur vers l'UUID généré (à libérer par l'appelant), ou NULL en cas d'erreur. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2utils_8c_source.html#l00124">124</a> du fichier <a class="el" href="server_2src_2utils_8c_source.html">utils.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="server_2src_2utils_8c_source.html#l00089">random_uuid_string()</a>, et <a class="el" href="server_2src_2utils_8c_source.html#l00107">uuid_exists_in_file()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="uuid_8c_source.html#l00003">request_uuid()</a>.</p>
+
+</div>
+</div>
+<a id="acf06ac69f86a58e43477083d3930a4ca" name="acf06ac69f86a58e43477083d3930a4ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf06ac69f86a58e43477083d3930a4ca">&#9670;&#160;</a></span>number_length()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int number_length </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Calcule la longueur d'un entier en nombre de chiffres. </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2utils_8c_source.html#l00052">52</a> du fichier <a class="el" href="server_2src_2utils_8c_source.html">utils.c</a>.</p>
+
+</div>
+</div>
+<a id="ae2550f9b6ba95e9ea93c5c85d1c396fe" name="ae2550f9b6ba95e9ea93c5c85d1c396fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2550f9b6ba95e9ea93c5c85d1c396fe">&#9670;&#160;</a></span>randint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int randint </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>min</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>max</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Génère un entier aléatoire entre min et max inclus. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">min</td><td>Valeur minimale. </td></tr>
+    <tr><td class="paramname">max</td><td>Valeur maximale. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Valeur aléatoire comprise entre min et max. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2utils_8c_source.html#l00006">6</a> du fichier <a class="el" href="server_2src_2utils_8c_source.html">utils.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="server_2src_2game_8c_source.html#l00051">generateWords()</a>.</p>
+
+</div>
+</div>
+<a id="a182e3fe2f75024e0a8ccc2712d95ae13" name="a182e3fe2f75024e0a8ccc2712d95ae13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a182e3fe2f75024e0a8ccc2712d95ae13">&#9670;&#160;</a></span>random_uuid_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void random_uuid_string </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Génère une chaîne UUID v4-like aléatoire (format 8-4-4-4-12). </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2utils_8c_source.html#l00089">89</a> du fichier <a class="el" href="server_2src_2utils_8c_source.html">utils.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="server_2src_2utils_8c_source.html#l00124">generate_uuid()</a>.</p>
+
+</div>
+</div>
+<a id="a09d83a1fb790017dd6af6e33d48c4cec" name="a09d83a1fb790017dd6af6e33d48c4cec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09d83a1fb790017dd6af6e33d48c4cec">&#9670;&#160;</a></span>starts_with()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int starts_with </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>prefix</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Vérifie si la chaîne str commence par le préfixe prefix. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>Chaîne à vérifier. </td></tr>
+    <tr><td class="paramname">prefix</td><td>Préfixe à rechercher. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>1 si str commence par prefix, 0 sinon. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2utils_8c_source.html#l00046">46</a> du fichier <a class="el" href="server_2src_2utils_8c_source.html">utils.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="server_2src_2tcp_8c_source.html#l00150">tcp_on_client_message()</a>.</p>
+
+</div>
+</div>
+<a id="acb6f19153f3e8729295ae8f1af0fc3bd" name="acb6f19153f3e8729295ae8f1af0fc3bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb6f19153f3e8729295ae8f1af0fc3bd">&#9670;&#160;</a></span>uuid_exists_in_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int uuid_exists_in_file </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>filepath</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>uuid</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Vérifie si un UUID existe déjà dans le fichier. </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2utils_8c_source.html#l00107">107</a> du fichier <a class="el" href="server_2src_2utils_8c_source.html">utils.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="server_2src_2utils_8c_source.html#l00124">generate_uuid()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a href="dir_a063914ab482288b7b0e1b2fca86158c.html">src</a></li><li class="navelem"><a href="server_2src_2utils_8c.html">utils.c</a></li>
+    <li class="footer">Généré le Jeudi 19 Mars 2026 15:31:46 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

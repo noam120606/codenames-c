@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Codenames:  Fichier source de client/src/utils.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Codenames<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Jeu Codenames multijoueur en C - Client SDL2 et Serveur TCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('client_2src_2utils_8c_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">utils.c</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="client_2src_2utils_8c.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="client_2lib_2all_8h.html">../lib/all.h</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="foldopen" id="foldopen00003" data-start="{" data-end="}">
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="client_2src_2utils_8c.html#acf06ac69f86a58e43477083d3930a4ca">    3</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="client_2src_2utils_8c.html#acf06ac69f86a58e43477083d3930a4ca">number_length</a>(<span class="keywordtype">int</span> n) {</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>    <span class="keywordflow">if</span> (n == 0) <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>    <span class="keywordtype">int</span> length = 0;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    <span class="keywordflow">if</span> (n &lt; 0) {</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>        length++; <span class="comment">// signe negatif a ajouter</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>        n = -n; <span class="comment">// rendre n positif pour le calcul de la longueur des chiffres</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    }</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keywordflow">while</span> (n &gt; 0) {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        n /= 10;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        length++;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    }</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordflow">return</span> length;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>}</div>
+</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="}">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="client_2src_2utils_8c.html#ade6960f663c739637ee1beaf757c5f24">   17</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="client_2src_2utils_8c.html#ade6960f663c739637ee1beaf757c5f24">format_to</a>(<span class="keywordtype">char</span> *buf, <span class="keywordtype">size_t</span> size, <span class="keyword">const</span> <span class="keywordtype">char</span> *fmt, ...) {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordflow">if</span> (!buf || size == 0 || !fmt) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    va_list args;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    va_start(args, fmt);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordtype">int</span> ret = vsnprintf(buf, size, fmt, args);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    va_end(args);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordflow">if</span> (ret &lt; 0) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>}</div>
+</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="}">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="client_2src_2utils_8c.html#a4421b3b56ef0c8d301e35e23ba17f9d5">   27</a></span><span class="keywordtype">char</span>* <a class="code hl_function" href="client_2src_2utils_8c.html#a4421b3b56ef0c8d301e35e23ba17f9d5">itoa</a>(<span class="keywordtype">int</span> value) {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">static</span> <span class="keywordtype">char</span> <a class="code hl_variable" href="client_2src_2tcp_8c.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a>[20]; </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    snprintf(<a class="code hl_variable" href="client_2src_2tcp_8c.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a>, <span class="keyword">sizeof</span>(<a class="code hl_variable" href="client_2src_2tcp_8c.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a>), <span class="stringliteral">&quot;%d&quot;</span>, value);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="client_2src_2tcp_8c.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>}</div>
+</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="foldopen" id="foldopen00033" data-start="{" data-end="}">
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="client_2src_2utils_8c.html#aead8640545d5f567606f56f8248d1b35">   33</a></span><span class="keywordtype">char</span>* <a class="code hl_function" href="client_2src_2utils_8c.html#aead8640545d5f567606f56f8248d1b35">getRandomUsername</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    FILE* f = fopen(<span class="stringliteral">&quot;assets/misc/usernames.txt&quot;</span>, <span class="stringliteral">&quot;r&quot;</span>);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordflow">if</span> (!f) <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">char</span>* line = NULL;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">size_t</span> len = 0;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    ssize_t read;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">char</span>** names = NULL;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">size_t</span> count = 0;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordflow">while</span> ((read = getline(&amp;line, &amp;len, f)) != -1) {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordflow">if</span> (read &gt; 0 &amp;&amp; line[read - 1] == <span class="charliteral">&#39;\n&#39;</span>) line[read - 1] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordtype">char</span>* s = strdup(line);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordflow">if</span> (!s) {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            free(line);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; count; i++) free(names[i]);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            free(names);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            fclose(f);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        }</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordtype">char</span>** tmp = realloc(names, <span class="keyword">sizeof</span>(<span class="keywordtype">char</span>*) * (count + 1));</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keywordflow">if</span> (!tmp) {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            free(s);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            free(line);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; count; i++) free(names[i]);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            free(names);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            fclose(f);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        }</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        names = tmp;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        names[count++] = s;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    free(line);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    fclose(f);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordflow">if</span> (count == 0) {</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        free(names);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    }</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordtype">int</span> idx = rand() % count;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">char</span>* result = strdup(names[idx]);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; count; i++) free(names[i]);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    free(names);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}</div>
+</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span></div>
+<div class="foldopen" id="foldopen00082" data-start="{" data-end="}">
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="client_2src_2utils_8c.html#ac85a2fa057900ac7d0c0dcac2a47d843">   82</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="client_2src_2utils_8c.html#ac85a2fa057900ac7d0c0dcac2a47d843">levenshtein</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* s1, <span class="keyword">const</span> <span class="keywordtype">char</span>* s2) {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordflow">if</span> (!s1 || !s2) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordtype">size_t</span> len1 = strlen(s1);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordtype">size_t</span> len2 = strlen(s2);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="comment">// Cas triviaux</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordflow">if</span> (len1 == 0) <span class="keywordflow">return</span> (<span class="keywordtype">int</span>)len2;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordflow">if</span> (len2 == 0) <span class="keywordflow">return</span> (<span class="keywordtype">int</span>)len1;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="comment">// Allouer la matrice de distances</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordtype">int</span>** matrix = malloc((len1 + 1) * <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>*));</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keywordflow">if</span> (!matrix) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt;= len1; i++) {</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        matrix[i] = malloc((len2 + 1) * <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>));</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="keywordflow">if</span> (!matrix[i]) {</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; i; j++) free(matrix[j]);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            free(matrix);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    }</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="comment">// Initialiser la première colonne et ligne</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt;= len1; i++) matrix[i][0] = (<span class="keywordtype">int</span>)i;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt;= len2; j++) matrix[0][j] = (<span class="keywordtype">int</span>)j;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="comment">// Remplir la matrice</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 1; i &lt;= len1; i++) {</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 1; j &lt;= len2; j++) {</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            <span class="comment">// Comparaison insensible à la casse</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            <span class="keywordtype">int</span> cost = (tolower((<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)s1[i-1]) == tolower((<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)s2[j-1])) ? 0 : 1;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            <span class="keywordtype">int</span> del = matrix[i-1][j] + 1;       <span class="comment">// Suppression</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>            <span class="keywordtype">int</span> ins = matrix[i][j-1] + 1;       <span class="comment">// Insertion</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>            <span class="keywordtype">int</span> sub = matrix[i-1][j-1] + cost;  <span class="comment">// Substitution</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>            </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>            <span class="comment">// Minimum des trois opérations</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>            <span class="keywordtype">int</span> min = del;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>            <span class="keywordflow">if</span> (ins &lt; min) min = ins;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>            <span class="keywordflow">if</span> (sub &lt; min) min = sub;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>            matrix[i][j] = min;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        }</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    }</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keywordtype">int</span> result = matrix[len1][len2];</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="comment">// Libérer la mémoire</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt;= len1; i++) free(matrix[i]);</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    free(matrix);</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>}</div>
+</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span></div>
+<div class="foldopen" id="foldopen00144" data-start="{" data-end="}">
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno"><a class="line" href="client_2src_2utils_8c.html#a2d814e171e88c474251ab3e778c99d13">  144</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="client_2src_2utils_8c.html#a2d814e171e88c474251ab3e778c99d13">is_word_too_close</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* input, <span class="keyword">const</span> <span class="keywordtype">char</span>* card_word, <span class="keywordtype">int</span> threshold) {</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keywordflow">if</span> (!input || !card_word) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keywordtype">int</span> distance = <a class="code hl_function" href="client_2src_2utils_8c.html#ac85a2fa057900ac7d0c0dcac2a47d843">levenshtein</a>(input, card_word);</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keywordflow">if</span> (distance &lt; 0) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    </div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keywordflow">return</span> distance &lt;= threshold;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>}</div>
+</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span></div>
+<div class="foldopen" id="foldopen00159" data-start="{" data-end="}">
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno"><a class="line" href="client_2src_2utils_8c.html#abe64ca50f79e62a1be14590abf7ecd6a">  159</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="client_2src_2utils_8c.html#abe64ca50f79e62a1be14590abf7ecd6a">word_contains</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* input, <span class="keyword">const</span> <span class="keywordtype">char</span>* card_word) {</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="keywordflow">if</span> (!input || !card_word) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="keywordtype">size_t</span> len1 = strlen(input);</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keywordtype">size_t</span> len2 = strlen(card_word);</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    <span class="comment">// Créer des copies en minuscules</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <span class="keywordtype">char</span>* lower1 = malloc(len1 + 1);</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <span class="keywordtype">char</span>* lower2 = malloc(len2 + 1);</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keywordflow">if</span> (!lower1 || !lower2) {</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        free(lower1);</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        free(lower2);</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    }</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt;= len1; i++) lower1[i] = tolower((<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)input[i]);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt;= len2; i++) lower2[i] = tolower((<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)card_word[i]);</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    </div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="keywordtype">int</span> result = (strstr(lower1, lower2) != NULL) || (strstr(lower2, lower1) != NULL);</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    </div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    free(lower1);</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    free(lower2);</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    </div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>}</div>
+</div>
+<div class="ttc" id="aclient_2lib_2all_8h_html"><div class="ttname"><a href="client_2lib_2all_8h.html">all.h</a></div></div>
+<div class="ttc" id="aclient_2src_2tcp_8c_html_af00b615ca097c43dbb02ae3a00ea3a62"><div class="ttname"><a href="client_2src_2tcp_8c.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a></div><div class="ttdeci">char buffer[BUFFER_SIZE]</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2tcp_8c_source.html#l00005">tcp.c:5</a></div></div>
+<div class="ttc" id="aclient_2src_2utils_8c_html_a2d814e171e88c474251ab3e778c99d13"><div class="ttname"><a href="client_2src_2utils_8c.html#a2d814e171e88c474251ab3e778c99d13">is_word_too_close</a></div><div class="ttdeci">int is_word_too_close(const char *input, const char *card_word, int threshold)</div><div class="ttdef"><b>Definition</b> <a href="#l00144">utils.c:144</a></div></div>
+<div class="ttc" id="aclient_2src_2utils_8c_html_a4421b3b56ef0c8d301e35e23ba17f9d5"><div class="ttname"><a href="client_2src_2utils_8c.html#a4421b3b56ef0c8d301e35e23ba17f9d5">itoa</a></div><div class="ttdeci">char * itoa(int value)</div><div class="ttdef"><b>Definition</b> <a href="#l00027">utils.c:27</a></div></div>
+<div class="ttc" id="aclient_2src_2utils_8c_html_abe64ca50f79e62a1be14590abf7ecd6a"><div class="ttname"><a href="client_2src_2utils_8c.html#abe64ca50f79e62a1be14590abf7ecd6a">word_contains</a></div><div class="ttdeci">int word_contains(const char *input, const char *card_word)</div><div class="ttdef"><b>Definition</b> <a href="#l00159">utils.c:159</a></div></div>
+<div class="ttc" id="aclient_2src_2utils_8c_html_ac85a2fa057900ac7d0c0dcac2a47d843"><div class="ttname"><a href="client_2src_2utils_8c.html#ac85a2fa057900ac7d0c0dcac2a47d843">levenshtein</a></div><div class="ttdeci">int levenshtein(const char *s1, const char *s2)</div><div class="ttdef"><b>Definition</b> <a href="#l00082">utils.c:82</a></div></div>
+<div class="ttc" id="aclient_2src_2utils_8c_html_acf06ac69f86a58e43477083d3930a4ca"><div class="ttname"><a href="client_2src_2utils_8c.html#acf06ac69f86a58e43477083d3930a4ca">number_length</a></div><div class="ttdeci">int number_length(int n)</div><div class="ttdef"><b>Definition</b> <a href="#l00003">utils.c:3</a></div></div>
+<div class="ttc" id="aclient_2src_2utils_8c_html_ade6960f663c739637ee1beaf757c5f24"><div class="ttname"><a href="client_2src_2utils_8c.html#ade6960f663c739637ee1beaf757c5f24">format_to</a></div><div class="ttdeci">int format_to(char *buf, size_t size, const char *fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="#l00017">utils.c:17</a></div></div>
+<div class="ttc" id="aclient_2src_2utils_8c_html_aead8640545d5f567606f56f8248d1b35"><div class="ttname"><a href="client_2src_2utils_8c.html#aead8640545d5f567606f56f8248d1b35">getRandomUsername</a></div><div class="ttdeci">char * getRandomUsername(void)</div><div class="ttdef"><b>Definition</b> <a href="#l00033">utils.c:33</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a href="client_2src_2utils_8c.html">utils.c</a></li>
+    <li class="footer">Généré le Jeudi 19 Mars 2026 15:31:45 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

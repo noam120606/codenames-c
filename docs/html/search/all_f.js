@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['padding_0',['padding',['../structInputConfig.html#a85c28f2890a20b03ae04c058853e25a0',1,'InputConfig']]],
+  ['parse_5farguments_1',['parse_arguments',['../client_2src_2message_8c.html#a9af23a584f59d6ef943508172a8284f5',1,'parse_arguments(char *message):&#160;message.c'],['../client_2lib_2message_8h.html#a9af23a584f59d6ef943508172a8284f5',1,'parse_arguments(char *message):&#160;message.c'],['../server_2src_2message_8c.html#a9af23a584f59d6ef943508172a8284f5',1,'parse_arguments(char *message):&#160;message.c'],['../server_2lib_2message_8h.html#a9af23a584f59d6ef943508172a8284f5',1,'parse_arguments(char *message):&#160;message.c']]],
+  ['partie_2',['Déroulement d&apos;une partie',['../index.html#autotoc_md16',1,'']]],
+  ['ping_5fms_3',['ping_ms',['../structSDL__Context.html#a98d0f3df7a8a0020d6e3d82cc4c16046',1,'SDL_Context']]],
+  ['placeholder_5fcount_4',['placeholder_count',['../structInputConfig.html#ac17ddf41b8e88038bed346eadb8c9321',1,'InputConfig']]],
+  ['placeholder_5findex_5',['placeholder_index',['../structInputConfig.html#a6eff2f134d1d30fb36e347f88a9ac84e',1,'InputConfig']]],
+  ['placeholder_5flast_5ftick_6',['placeholder_last_tick',['../structInputConfig.html#a47271977e3f1a71cb725cfd41f2f9fe8',1,'InputConfig']]],
+  ['placeholders_7',['placeholders',['../structInputConfig.html#aa5ea97e0fdc070fa6395f53866ab8c18',1,'InputConfig']]],
+  ['player_5fkey_5ffor_5fcrossfader_5fid_8',['player_key_for_crossfader_id',['../crossfader_8c.html#aaa2df932d20d2a8d281ccce344de2579',1,'crossfader.c']]],
+  ['player_5frole_9',['player_role',['../structSDL__Context.html#ac00011e59631c6f636f766841c19f098',1,'SDL_Context']]],
+  ['player_5fteam_10',['player_team',['../structSDL__Context.html#aa95a549d6d47dca06804d82015508367',1,'SDL_Context']]],
+  ['player_5fuuid_11',['player_uuid',['../structSDL__Context.html#aa94ff41de0e52203cb63d21d5cd902b5',1,'SDL_Context']]],
+  ['point_5fin_5frect_12',['point_in_rect',['../crossfader_8c.html#a1749bca0f8782d5876577e90481bfdef',1,'point_in_rect(int x, int y, SDL_Rect *r):&#160;crossfader.c'],['../input_8c.html#a1749bca0f8782d5876577e90481bfdef',1,'point_in_rect(int x, int y, SDL_Rect *r):&#160;input.c']]],
+  ['port_13',['port',['../structTcpServer.html#a95fc31ff59f7a0bc013b942e68d07e37',1,'TcpServer']]],
+  ['prérequis_20système_14',['Prérequis système',['../index.html#autotoc_md10',1,'']]],
+  ['prévues_15',['Fonctionalitées prévues',['../index.html#autotoc_md31',1,'']]],
+  ['predicate_5fcode_16',['predicate_code',['../server_2src_2lobby_8c.html#a969f400f36a01da706e7826a085eb8a1',1,'lobby.c']]],
+  ['predicate_5fowner_5fid_17',['predicate_owner_id',['../server_2src_2lobby_8c.html#a0e14f36deb0a104096160456cc43dc3c',1,'lobby.c']]],
+  ['predicate_5fplayer_5fid_18',['predicate_player_id',['../server_2src_2lobby_8c.html#a2aa6bdfaf517ad38036ca53f3c729ee3',1,'lobby.c']]],
+  ['prev_5fword_5fpos_19',['prev_word_pos',['../input_8c.html#a7e231c1574642376cefafd5ee753739e',1,'input.c']]],
+  ['previous_5fleft_20',['previous_left',['../structChannelFilterState.html#a71196200158d1e0e66e0341bd0205bac',1,'ChannelFilterState']]],
+  ['previous_5fright_21',['previous_right',['../structChannelFilterState.html#ab4f0ae94ff9eac0f48dc4ab65d08a51f',1,'ChannelFilterState']]],
+  ['projet_22',['Architecture du Projet',['../index.html#autotoc_md7',1,'']]],
+  ['protocole_20de_20communication_20client_20serveur_23',['Protocole de Communication Client/Serveur',['../index.html#autotoc_md22',1,'']]]
+];

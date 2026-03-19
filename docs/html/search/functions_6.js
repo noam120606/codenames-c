@@ -1,0 +1,14 @@
+var searchData=
+[
+  ['game_5fdisplay_0',['game_display',['../client_2src_2game_8c.html#acf6c59afbe8597329d4e7afcd035a720',1,'game_display(SDL_Context *context):&#160;game.c'],['../client_2lib_2game_8h.html#acf6c59afbe8597329d4e7afcd035a720',1,'game_display(SDL_Context *context):&#160;game.c']]],
+  ['game_5ffree_1',['game_free',['../client_2src_2game_8c.html#ae52f5479f34f39bb3de7703f7ba412d6',1,'game_free():&#160;game.c'],['../client_2lib_2game_8h.html#ae52f5479f34f39bb3de7703f7ba412d6',1,'game_free():&#160;game.c']]],
+  ['game_5fhandle_5fevent_2',['game_handle_event',['../client_2src_2game_8c.html#a5c2f0264b179bcc232a8230e24f0d427',1,'game_handle_event(SDL_Context *context, SDL_Event *e):&#160;game.c'],['../client_2lib_2game_8h.html#a5c2f0264b179bcc232a8230e24f0d427',1,'game_handle_event(SDL_Context *context, SDL_Event *e):&#160;game.c']]],
+  ['game_5finit_3',['game_init',['../client_2src_2game_8c.html#a1ddd310c60a78ea4f1932f525cdf1aba',1,'game_init(SDL_Context *context):&#160;game.c'],['../client_2lib_2game_8h.html#a1ddd310c60a78ea4f1932f525cdf1aba',1,'game_init(SDL_Context *context):&#160;game.c']]],
+  ['game_5frender_5fcards_4',['game_render_cards',['../client_2src_2game_8c.html#a9ebdb5d610a26f0b634cf50aa57e34bb',1,'game.c']]],
+  ['generate_5fcode_5',['generate_code',['../server_2src_2utils_8c.html#abeaa3b934bab9c3d990dde11d4dc5d64',1,'generate_code():&#160;utils.c'],['../server_2lib_2utils_8h.html#abeaa3b934bab9c3d990dde11d4dc5d64',1,'generate_code():&#160;utils.c']]],
+  ['generate_5fuuid_6',['generate_uuid',['../server_2src_2utils_8c.html#a1bc1ea2e733f473085328b271e459fe4',1,'generate_uuid(const char *uuids_path):&#160;utils.c'],['../server_2lib_2utils_8h.html#a1bc1ea2e733f473085328b271e459fe4',1,'generate_uuid(const char *uuids_path):&#160;utils.c']]],
+  ['generatewords_7',['generateWords',['../server_2src_2game_8c.html#a2de0000a7223c09218cc302fd073b3cf',1,'generateWords(int count):&#160;game.c'],['../server_2lib_2game_8h.html#a2de0000a7223c09218cc302fd073b3cf',1,'generateWords(int count):&#160;game.c']]],
+  ['get_5frenderer_5fflags_8',['get_renderer_flags',['../sdl_8c.html#a2e763410ffb5ad175dd5d5ae86556c35',1,'sdl.c']]],
+  ['get_5ftcp_5fping_5fms_9',['get_tcp_ping_ms',['../client_2src_2tcp_8c.html#a1b734946fd4dfcb3d7816a02f8efdbbb',1,'get_tcp_ping_ms(int sock):&#160;tcp.c'],['../client_2lib_2tcp_8h.html#a1b734946fd4dfcb3d7816a02f8efdbbb',1,'get_tcp_ping_ms(int sock):&#160;tcp.c']]],
+  ['getrandomusername_10',['getRandomUsername',['../client_2src_2utils_8c.html#aead8640545d5f567606f56f8248d1b35',1,'getRandomUsername(void):&#160;utils.c'],['../client_2lib_2utils_8h.html#aead8640545d5f567606f56f8248d1b35',1,'getRandomUsername(void):&#160;utils.c'],['../server_2src_2lobby_8c.html#aad728c7047f2a0533bf4e9aca60894f9',1,'getRandomUsername():&#160;lobby.c'],['../server_2lib_2lobby_8h.html#aad728c7047f2a0533bf4e9aca60894f9',1,'getRandomUsername():&#160;utils.c']]]
+];

@@ -67,16 +67,17 @@ build/test_game.o: game.c ../../client/lib/all.h \
  ../../client/lib/../lib/../lib/user.h \
  ../../client/lib/../lib/../lib/game.h \
  ../../client/lib/../lib/../lib/list.h \
- ../../client/lib/../lib/../lib/lobby.h ../../client/lib/../lib/sdl.h \
- ../../client/lib/../lib/menu.h ../../client/lib/../lib/../lib/button.h \
- ../../client/lib/../lib/button.h ../../client/lib/../lib/background.h \
- ../../client/lib/../lib/infos.h ../../client/lib/../lib/text.h \
- ../../client/lib/../lib/input.h ../../client/lib/../lib/audio.h \
- ../../client/lib/../lib/crossfader.h ../../client/lib/../lib/message.h \
- ../../client/lib/../lib/utils.h ../../client/lib/../lib/list.h \
- ../../client/lib/../lib/game.h ../../client/lib/../lib/user.h \
- ../../client/lib/../lib/lobby.h ../../client/lib/../lib/ressources.h \
- ../../client/lib/../lib/save.h
+ ../../client/lib/../lib/../lib/lobby.h \
+ ../../client/lib/../lib/../lib/../lib/user.h \
+ ../../client/lib/../lib/sdl.h ../../client/lib/../lib/menu.h \
+ ../../client/lib/../lib/../lib/button.h ../../client/lib/../lib/button.h \
+ ../../client/lib/../lib/background.h ../../client/lib/../lib/infos.h \
+ ../../client/lib/../lib/text.h ../../client/lib/../lib/input.h \
+ ../../client/lib/../lib/audio.h ../../client/lib/../lib/crossfader.h \
+ ../../client/lib/../lib/message.h ../../client/lib/../lib/utils.h \
+ ../../client/lib/../lib/list.h ../../client/lib/../lib/game.h \
+ ../../client/lib/../lib/user.h ../../client/lib/../lib/lobby.h \
+ ../../client/lib/../lib/ressources.h ../../client/lib/../lib/save.h
 ../../client/lib/all.h:
 ../../client/lib/../SDL2/include/SDL2/SDL.h:
 ../../client/lib/../SDL2/include/SDL2/SDL_main.h:
@@ -148,6 +149,7 @@ build/test_game.o: game.c ../../client/lib/all.h \
 ../../client/lib/../lib/../lib/game.h:
 ../../client/lib/../lib/../lib/list.h:
 ../../client/lib/../lib/../lib/lobby.h:
+../../client/lib/../lib/../lib/../lib/user.h:
 ../../client/lib/../lib/sdl.h:
 ../../client/lib/../lib/menu.h:
 ../../client/lib/../lib/../lib/button.h:

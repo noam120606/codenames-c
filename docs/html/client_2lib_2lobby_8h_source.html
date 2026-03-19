@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Codenames:  Fichier source de client/lib/lobby.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Codenames<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Jeu Codenames multijoueur en C - Client SDL2 et Serveur TCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('client_2lib_2lobby_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">lobby.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="client_2lib_2lobby_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef LOBBY_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define LOBBY_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;../SDL2/include/SDL2/SDL.h&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;../SDL2/include/SDL2/SDL_image.h&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;../SDL2/include/SDL2/SDL_ttf.h&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structSDL__Context.html">SDL_Context</a> <a class="code hl_struct" href="structSDL__Context.html">SDL_Context</a>;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="button_8h.html">../lib/button.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="client_2lib_2user_8h.html">../lib/user.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="client_2lib_2lobby_8h.html#a67fee069fc4be0b17f7a3a8d185f4416">   13</a></span><span class="preprocessor">#define MAX_LOBBIES 50</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="client_2lib_2lobby_8h.html#a2c2a303621f66761529e598758d7ef34">   14</a></span><span class="preprocessor">#define MAX_USERS 8</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span></div>
+<div class="foldopen" id="foldopen00021" data-start="{" data-end="};">
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="client_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83">   21</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="client_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83">LobbyStatus</a> {</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="client_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83a715a5fc1dd102e417ed4fc5b81477ba4">   22</a></span>    <a class="code hl_enumvalue" href="client_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83a715a5fc1dd102e417ed4fc5b81477ba4">LB_STATUS_WAITING</a>,</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="client_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83ac5cf08a357894a8e0f8b340d97ff14b9">   23</a></span>    <a class="code hl_enumvalue" href="client_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83ac5cf08a357894a8e0f8b340d97ff14b9">LB_STATUS_IN_GAME</a></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="client_2lib_2lobby_8h.html#a66b59b004a9832d09c7c6ebf763eec32">   24</a></span>} <a class="code hl_enumeration" href="client_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83">LobbyStatus</a>;</div>
+</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span></div>
+<div class="foldopen" id="foldopen00036" data-start="{" data-end="};">
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="structLobby.html">   36</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structLobby.html">Lobby</a> {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structLobby.html#aa61b45b961a54b3f1bb20c926c389e5f">   37</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structLobby.html#aa61b45b961a54b3f1bb20c926c389e5f">id</a>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="structLobby.html#a201a3357be821cc9646c8588855c663f">   38</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structLobby.html#a201a3357be821cc9646c8588855c663f">owner_id</a>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structLobby.html#a92b6139484380e05dac8bf3fc0a2455a">   39</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="structLobby.html#a92b6139484380e05dac8bf3fc0a2455a">code</a>[6];</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="structLobby.html#a56a7ba822aefe25cb28c9b1d680c6525">   40</a></span>    <a class="code hl_enumeration" href="server_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83">LobbyStatus</a> <a class="code hl_variable" href="structLobby.html#a56a7ba822aefe25cb28c9b1d680c6525">status</a>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">   41</a></span>    <a class="code hl_struct" href="structUser.html">User</a>* <a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[<a class="code hl_define" href="server_2lib_2lobby_8h.html#a2c2a303621f66761529e598758d7ef34">MAX_USERS</a>];</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">   42</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">nb_players</a>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="structLobby.html#a1567c92b89bc67d97ae4cbbf7034836e">   43</a></span>    <a class="code hl_struct" href="structGame.html">Game</a>* <a class="code hl_variable" href="structLobby.html#a1567c92b89bc67d97ae4cbbf7034836e">game</a>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="client_2lib_2lobby_8h.html#a229c875e4f4c628685491500cddaae31">   44</a></span>} <a class="code hl_struct" href="structLobby.html">Lobby</a>;</div>
+</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keywordtype">int</span> <a class="code hl_function" href="client_2lib_2lobby_8h.html#a8f031495a6850c8a2790ef59d9f0922a">lobby_init</a>(<a class="code hl_struct" href="structSDL__Context.html">SDL_Context</a>* context);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keywordtype">int</span> <a class="code hl_function" href="client_2lib_2lobby_8h.html#a2a81a21e07b85e6018556a3704f0a9ca">lobby_free</a>();</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><a class="code hl_enumeration" href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17">ButtonReturn</a> <a class="code hl_function" href="client_2lib_2lobby_8h.html#a0fcb8259c9cccd15ee76c4f10a9fa498">lobby_handle_event</a>(<a class="code hl_struct" href="structSDL__Context.html">SDL_Context</a>* context, SDL_Event* event);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="keywordtype">void</span> <a class="code hl_function" href="client_2lib_2lobby_8h.html#a30b33afe9cf3ad3ec5f450fc45cb3a14">lobby_display</a>(<a class="code hl_struct" href="structSDL__Context.html">SDL_Context</a>* context);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#endif </span><span class="comment">// LOBBY_H</span></div>
+<div class="ttc" id="abutton_8h_html"><div class="ttname"><a href="button_8h.html">button.h</a></div></div>
+<div class="ttc" id="abutton_8h_html_a2e359d08d4b6ceb3ec6cd5c41addde17"><div class="ttname"><a href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17">ButtonReturn</a></div><div class="ttdeci">ButtonReturn</div><div class="ttdef"><b>Definition</b> <a href="button_8h_source.html#l00012">button.h:12</a></div></div>
+<div class="ttc" id="aclient_2lib_2lobby_8h_html_a02f4e343ea570764cb2390b12ad37d83"><div class="ttname"><a href="client_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83">LobbyStatus</a></div><div class="ttdeci">LobbyStatus</div><div class="ttdef"><b>Definition</b> <a href="#l00021">lobby.h:21</a></div></div>
+<div class="ttc" id="aclient_2lib_2lobby_8h_html_a02f4e343ea570764cb2390b12ad37d83a715a5fc1dd102e417ed4fc5b81477ba4"><div class="ttname"><a href="client_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83a715a5fc1dd102e417ed4fc5b81477ba4">LB_STATUS_WAITING</a></div><div class="ttdeci">@ LB_STATUS_WAITING</div><div class="ttdef"><b>Definition</b> <a href="#l00022">lobby.h:22</a></div></div>
+<div class="ttc" id="aclient_2lib_2lobby_8h_html_a02f4e343ea570764cb2390b12ad37d83ac5cf08a357894a8e0f8b340d97ff14b9"><div class="ttname"><a href="client_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83ac5cf08a357894a8e0f8b340d97ff14b9">LB_STATUS_IN_GAME</a></div><div class="ttdeci">@ LB_STATUS_IN_GAME</div><div class="ttdef"><b>Definition</b> <a href="#l00023">lobby.h:23</a></div></div>
+<div class="ttc" id="aclient_2lib_2lobby_8h_html_a0fcb8259c9cccd15ee76c4f10a9fa498"><div class="ttname"><a href="client_2lib_2lobby_8h.html#a0fcb8259c9cccd15ee76c4f10a9fa498">lobby_handle_event</a></div><div class="ttdeci">ButtonReturn lobby_handle_event(SDL_Context *context, SDL_Event *event)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2lobby_8c_source.html#l00197">lobby.c:197</a></div></div>
+<div class="ttc" id="aclient_2lib_2lobby_8h_html_a2a81a21e07b85e6018556a3704f0a9ca"><div class="ttname"><a href="client_2lib_2lobby_8h.html#a2a81a21e07b85e6018556a3704f0a9ca">lobby_free</a></div><div class="ttdeci">int lobby_free()</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2lobby_8c_source.html#l00210">lobby.c:210</a></div></div>
+<div class="ttc" id="aclient_2lib_2lobby_8h_html_a30b33afe9cf3ad3ec5f450fc45cb3a14"><div class="ttname"><a href="client_2lib_2lobby_8h.html#a30b33afe9cf3ad3ec5f450fc45cb3a14">lobby_display</a></div><div class="ttdeci">void lobby_display(SDL_Context *context)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2lobby_8c_source.html#l00168">lobby.c:168</a></div></div>
+<div class="ttc" id="aclient_2lib_2lobby_8h_html_a8f031495a6850c8a2790ef59d9f0922a"><div class="ttname"><a href="client_2lib_2lobby_8h.html#a8f031495a6850c8a2790ef59d9f0922a">lobby_init</a></div><div class="ttdeci">int lobby_init(SDL_Context *context)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2lobby_8c_source.html#l00068">lobby.c:68</a></div></div>
+<div class="ttc" id="aclient_2lib_2user_8h_html"><div class="ttname"><a href="client_2lib_2user_8h.html">user.h</a></div></div>
+<div class="ttc" id="aserver_2lib_2lobby_8h_html_a02f4e343ea570764cb2390b12ad37d83"><div class="ttname"><a href="server_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83">LobbyStatus</a></div><div class="ttdeci">LobbyStatus</div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2lobby_8h_source.html#l00020">lobby.h:20</a></div></div>
+<div class="ttc" id="aserver_2lib_2lobby_8h_html_a2c2a303621f66761529e598758d7ef34"><div class="ttname"><a href="server_2lib_2lobby_8h.html#a2c2a303621f66761529e598758d7ef34">MAX_USERS</a></div><div class="ttdeci">#define MAX_USERS</div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2lobby_8h_source.html#l00013">lobby.h:13</a></div></div>
+<div class="ttc" id="astructGame_html"><div class="ttname"><a href="structGame.html">Game</a></div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2game_8h_source.html#l00075">game.h:75</a></div></div>
+<div class="ttc" id="astructLobby_html"><div class="ttname"><a href="structLobby.html">Lobby</a></div><div class="ttdef"><b>Definition</b> <a href="#l00036">lobby.h:36</a></div></div>
+<div class="ttc" id="astructLobby_html_a1567c92b89bc67d97ae4cbbf7034836e"><div class="ttname"><a href="structLobby.html#a1567c92b89bc67d97ae4cbbf7034836e">Lobby::game</a></div><div class="ttdeci">Game * game</div><div class="ttdef"><b>Definition</b> <a href="#l00043">lobby.h:43</a></div></div>
+<div class="ttc" id="astructLobby_html_a201a3357be821cc9646c8588855c663f"><div class="ttname"><a href="structLobby.html#a201a3357be821cc9646c8588855c663f">Lobby::owner_id</a></div><div class="ttdeci">int owner_id</div><div class="ttdef"><b>Definition</b> <a href="#l00038">lobby.h:38</a></div></div>
+<div class="ttc" id="astructLobby_html_a56a7ba822aefe25cb28c9b1d680c6525"><div class="ttname"><a href="structLobby.html#a56a7ba822aefe25cb28c9b1d680c6525">Lobby::status</a></div><div class="ttdeci">LobbyStatus status</div><div class="ttdef"><b>Definition</b> <a href="#l00040">lobby.h:40</a></div></div>
+<div class="ttc" id="astructLobby_html_a92b6139484380e05dac8bf3fc0a2455a"><div class="ttname"><a href="structLobby.html#a92b6139484380e05dac8bf3fc0a2455a">Lobby::code</a></div><div class="ttdeci">char code[6]</div><div class="ttdef"><b>Definition</b> <a href="#l00039">lobby.h:39</a></div></div>
+<div class="ttc" id="astructLobby_html_aa61b45b961a54b3f1bb20c926c389e5f"><div class="ttname"><a href="structLobby.html#aa61b45b961a54b3f1bb20c926c389e5f">Lobby::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition</b> <a href="#l00037">lobby.h:37</a></div></div>
+<div class="ttc" id="astructLobby_html_ab0f8cc375b1895eb33d40d68acd2f965"><div class="ttname"><a href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">Lobby::users</a></div><div class="ttdeci">User * users[MAX_USERS]</div><div class="ttdef"><b>Definition</b> <a href="#l00041">lobby.h:41</a></div></div>
+<div class="ttc" id="astructLobby_html_ad1fa4c8d5c1943c1d6ab2d04914dd7f1"><div class="ttname"><a href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">Lobby::nb_players</a></div><div class="ttdeci">int nb_players</div><div class="ttdef"><b>Definition</b> <a href="#l00042">lobby.h:42</a></div></div>
+<div class="ttc" id="astructSDL__Context_html"><div class="ttname"><a href="structSDL__Context.html">SDL_Context</a></div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00036">sdl.h:36</a></div></div>
+<div class="ttc" id="astructUser_html"><div class="ttname"><a href="structUser.html">User</a></div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2user_8h_source.html#l00024">user.h:24</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a href="client_2lib_2lobby_8h.html">lobby.h</a></li>
+    <li class="footer">Généré le Jeudi 19 Mars 2026 15:31:45 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+var annotated_dup =
+[
+    [ "Arguments", "structArguments.html", "structArguments" ],
+    [ "Button", "structButton.html", "structButton" ],
+    [ "ButtonConfig", "structButtonConfig.html", "structButtonConfig" ],
+    [ "Card", "structCard.html", "structCard" ],
+    [ "ChannelFilterState", "structChannelFilterState.html", "structChannelFilterState" ],
+    [ "Codenames", "structCodenames.html", "structCodenames" ],
+    [ "Crossfader", "structCrossfader.html", "structCrossfader" ],
+    [ "CrossfaderConfig", "structCrossfaderConfig.html", "structCrossfaderConfig" ],
+    [ "Game", "structGame.html", "structGame" ],
+    [ "Input", "structInput.html", "structInput" ],
+    [ "InputConfig", "structInputConfig.html", "structInputConfig" ],
+    [ "List", "structList.html", "structList" ],
+    [ "ListNode", "structListNode.html", "structListNode" ],
+    [ "Lobby", "structLobby.html", "structLobby" ],
+    [ "LobbyManager", "structLobbyManager.html", "structLobbyManager" ],
+    [ "Resources", "structResources.html", "structResources" ],
+    [ "SDL_Context", "structSDL__Context.html", "structSDL__Context" ],
+    [ "SoundConfig", "structSoundConfig.html", "structSoundConfig" ],
+    [ "TcpClient", "structTcpClient.html", "structTcpClient" ],
+    [ "TcpServer", "structTcpServer.html", "structTcpServer" ],
+    [ "TileAnimation", "structTileAnimation.html", "structTileAnimation" ],
+    [ "TileOverride", "structTileOverride.html", "structTileOverride" ],
+    [ "User", "structUser.html", "structUser" ],
+    [ "Word", "structWord.html", "structWord" ]
+];

@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Codenames:  Fichier source de server/src/index.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Codenames<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Jeu Codenames multijoueur en C - Client SDL2 et Serveur TCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('server_2src_2index_8c_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">index.c</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="server_2src_2index_8c.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="server_2lib_2all_8h.html">../lib/all.h</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="foldopen" id="foldopen00003" data-start="{" data-end="}">
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="server_2src_2index_8c.html#a0ddf1224851353fc92bfbff6f499fa97">    3</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="client_2src_2index_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[]) {</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>    <span class="keywordtype">int</span> port = 0;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    <span class="comment">// Parse command line arguments</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keywordtype">int</span> opt;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <span class="keywordflow">while</span> ((opt = getopt(argc, argv, <span class="stringliteral">&quot;p:&quot;</span>)) != -1) {</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>        <span class="keywordflow">switch</span> (opt) {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>            <span class="keywordflow">case</span> <span class="charliteral">&#39;p&#39;</span>:</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>                port = atoi(optarg);</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>            <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>                fprintf(stderr, <span class="stringliteral">&quot;Usage: %s [-p port]\n&quot;</span>, argv[0]);</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>                <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        }</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    }</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordflow">if</span> (port == 0) {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        fprintf(stderr, <span class="stringliteral">&quot;Port number is required. Usage: %s [-p port]\n&quot;</span>, argv[0]);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    }</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    printf(<span class="stringliteral">&quot;Starting the game server on port %d...\n&quot;</span>, port);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="comment">// Initialisations diverses</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    srand(time(NULL));</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <a class="code hl_function" href="server_2src_2game_8c.html#a61f5b946e5a9ea7baac132dd624c0c02">init_game_manager</a>();</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <a class="code hl_function" href="server_2src_2lobby_8c.html#a5b4a01b92da39d13659424154af47ec9">init_lobby_manager</a>();</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <a class="code hl_struct" href="structCodenames.html">Codenames</a>* codenames = malloc(<span class="keyword">sizeof</span>(<a class="code hl_struct" href="structCodenames.html">Codenames</a>));</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">if</span> (codenames == NULL) {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        perror(<span class="stringliteral">&quot;Failed to create Codenames&quot;</span>);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    }</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    codenames-&gt;<a class="code hl_variable" href="structCodenames.html#a9b446405ee95a45f8c4bb68033e7119d">tcp</a> = <a class="code hl_function" href="server_2src_2tcp_8c.html#a391f747d7efe0143c7379257b4ef11e6">tcp_server_create</a>(port);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordflow">if</span> (codenames-&gt;<a class="code hl_variable" href="structCodenames.html#a9b446405ee95a45f8c4bb68033e7119d">tcp</a> == NULL) {</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        free(codenames);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        perror(<span class="stringliteral">&quot;Failed to create TCP server&quot;</span>);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    }</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    codenames-&gt;<a class="code hl_variable" href="structCodenames.html#a60e595ede4c21bb5ab8aeead6009726a">lobby</a> = <a class="code hl_function" href="server_2src_2lobby_8c.html#a95d0cf6c24388e7600fecdf9207fcb72">create_lobby_manager</a>();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordflow">if</span> (codenames-&gt;<a class="code hl_variable" href="structCodenames.html#a60e595ede4c21bb5ab8aeead6009726a">lobby</a> == NULL) {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <a class="code hl_function" href="server_2src_2tcp_8c.html#a87ee33923925e6b9e2a68d31affb96cc">tcp_server_destroy</a>(codenames-&gt;<a class="code hl_variable" href="structCodenames.html#a9b446405ee95a45f8c4bb68033e7119d">tcp</a>);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        free(codenames);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        perror(<span class="stringliteral">&quot;Failed to create LobbyManager&quot;</span>);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    }</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">// Boucle d&#39;execution</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordflow">while</span>(1) {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <a class="code hl_function" href="server_2src_2tcp_8c.html#a5a0faa5148ca1f09b46e80d27c318542">tcp_server_tick</a>(codenames);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    }</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="comment">// Cleanup</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <a class="code hl_function" href="server_2src_2lobby_8c.html#a1f8c73963ebfb36ee377a21fe636d1e3">destroy_lobby_manager</a>(codenames, codenames-&gt;<a class="code hl_variable" href="structCodenames.html#a60e595ede4c21bb5ab8aeead6009726a">lobby</a>);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <a class="code hl_function" href="server_2src_2tcp_8c.html#a87ee33923925e6b9e2a68d31affb96cc">tcp_server_destroy</a>(codenames-&gt;<a class="code hl_variable" href="structCodenames.html#a9b446405ee95a45f8c4bb68033e7119d">tcp</a>);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    free(codenames);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    printf(<span class="stringliteral">&quot;Server shutting down.\n&quot;</span>);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}</div>
+</div>
+<div class="ttc" id="aclient_2src_2index_8c_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="client_2src_2index_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2index_8c_source.html#l00007">index.c:7</a></div></div>
+<div class="ttc" id="aserver_2lib_2all_8h_html"><div class="ttname"><a href="server_2lib_2all_8h.html">all.h</a></div></div>
+<div class="ttc" id="aserver_2src_2game_8c_html_a61f5b946e5a9ea7baac132dd624c0c02"><div class="ttname"><a href="server_2src_2game_8c.html#a61f5b946e5a9ea7baac132dd624c0c02">init_game_manager</a></div><div class="ttdeci">int init_game_manager()</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2game_8c_source.html#l00007">game.c:7</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a1f8c73963ebfb36ee377a21fe636d1e3"><div class="ttname"><a href="server_2src_2lobby_8c.html#a1f8c73963ebfb36ee377a21fe636d1e3">destroy_lobby_manager</a></div><div class="ttdeci">void destroy_lobby_manager(Codenames *codenames, LobbyManager *manager)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00091">lobby.c:91</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a5b4a01b92da39d13659424154af47ec9"><div class="ttname"><a href="server_2src_2lobby_8c.html#a5b4a01b92da39d13659424154af47ec9">init_lobby_manager</a></div><div class="ttdeci">int init_lobby_manager()</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00008">lobby.c:8</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a95d0cf6c24388e7600fecdf9207fcb72"><div class="ttname"><a href="server_2src_2lobby_8c.html#a95d0cf6c24388e7600fecdf9207fcb72">create_lobby_manager</a></div><div class="ttdeci">LobbyManager * create_lobby_manager()</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00066">lobby.c:66</a></div></div>
+<div class="ttc" id="aserver_2src_2tcp_8c_html_a391f747d7efe0143c7379257b4ef11e6"><div class="ttname"><a href="server_2src_2tcp_8c.html#a391f747d7efe0143c7379257b4ef11e6">tcp_server_create</a></div><div class="ttdeci">TcpServer * tcp_server_create(int port)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2tcp_8c_source.html#l00007">tcp.c:7</a></div></div>
+<div class="ttc" id="aserver_2src_2tcp_8c_html_a5a0faa5148ca1f09b46e80d27c318542"><div class="ttname"><a href="server_2src_2tcp_8c.html#a5a0faa5148ca1f09b46e80d27c318542">tcp_server_tick</a></div><div class="ttdeci">void tcp_server_tick(Codenames *codenames)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2tcp_8c_source.html#l00083">tcp.c:83</a></div></div>
+<div class="ttc" id="aserver_2src_2tcp_8c_html_a87ee33923925e6b9e2a68d31affb96cc"><div class="ttname"><a href="server_2src_2tcp_8c.html#a87ee33923925e6b9e2a68d31affb96cc">tcp_server_destroy</a></div><div class="ttdeci">void tcp_server_destroy(TcpServer *server)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2tcp_8c_source.html#l00048">tcp.c:48</a></div></div>
+<div class="ttc" id="astructCodenames_html"><div class="ttname"><a href="structCodenames.html">Codenames</a></div><div class="ttdef"><b>Definition</b> <a href="codenames_8h_source.html#l00012">codenames.h:12</a></div></div>
+<div class="ttc" id="astructCodenames_html_a60e595ede4c21bb5ab8aeead6009726a"><div class="ttname"><a href="structCodenames.html#a60e595ede4c21bb5ab8aeead6009726a">Codenames::lobby</a></div><div class="ttdeci">LobbyManager * lobby</div><div class="ttdef"><b>Definition</b> <a href="codenames_8h_source.html#l00014">codenames.h:14</a></div></div>
+<div class="ttc" id="astructCodenames_html_a9b446405ee95a45f8c4bb68033e7119d"><div class="ttname"><a href="structCodenames.html#a9b446405ee95a45f8c4bb68033e7119d">Codenames::tcp</a></div><div class="ttdeci">TcpServer * tcp</div><div class="ttdef"><b>Definition</b> <a href="codenames_8h_source.html#l00013">codenames.h:13</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a href="dir_a063914ab482288b7b0e1b2fca86158c.html">src</a></li><li class="navelem"><a href="server_2src_2index_8c.html">index.c</a></li>
+    <li class="footer">Généré le Jeudi 19 Mars 2026 15:31:45 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

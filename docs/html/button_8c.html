@@ -1,0 +1,337 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Codenames: Référence du fichier client/src/button.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Codenames<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Jeu Codenames multijoueur en C - Client SDL2 et Serveur TCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('button_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Référence du fichier button.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="client_2lib_2all_8h_source.html">../lib/all.h</a>&quot;</code><br />
+</div>
+<p><a href="button_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a1f45d9bcf2da7f2cb6453203368ddc3e" id="r_a1f45d9bcf2da7f2cb6453203368ddc3e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structButtonConfig.html">ButtonConfig</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f45d9bcf2da7f2cb6453203368ddc3e">button_config_init</a> (void)</td></tr>
+<tr class="memitem:ac28a9566f76321cc505a3476008bd580" id="r_ac28a9566f76321cc505a3476008bd580"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structButton.html">Button</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac28a9566f76321cc505a3476008bd580">button_create</a> (SDL_Renderer *renderer, int id, const <a class="el" href="structButtonConfig.html">ButtonConfig</a> *cfg_in)</td></tr>
+<tr class="memitem:a33807b4ef26731344fb1f074dcf26ca3" id="r_a33807b4ef26731344fb1f074dcf26ca3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a33807b4ef26731344fb1f074dcf26ca3">button_destroy</a> (<a class="el" href="structButton.html">Button</a> *button)</td></tr>
+<tr class="memitem:ace8b088f383de42ff5a48d85dbf4e9c4" id="r_ace8b088f383de42ff5a48d85dbf4e9c4"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace8b088f383de42ff5a48d85dbf4e9c4">is_mouse_over_button</a> (<a class="el" href="structButton.html">Button</a> *button, int mouseX, int mouseY)</td></tr>
+<tr class="memitem:ac2d1d27cd9fef35e947778ef8c509c1f" id="r_ac2d1d27cd9fef35e947778ef8c509c1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17">ButtonReturn</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2d1d27cd9fef35e947778ef8c509c1f">button_handle_event</a> (<a class="el" href="structSDL__Context.html">SDL_Context</a> *context, <a class="el" href="structButton.html">Button</a> *button, SDL_Event *event)</td></tr>
+<tr class="memitem:a139ca44cb372ff6cfdfe3597aa89b6e6" id="r_a139ca44cb372ff6cfdfe3597aa89b6e6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a139ca44cb372ff6cfdfe3597aa89b6e6">button_render</a> (SDL_Renderer *renderer, <a class="el" href="structButton.html">Button</a> *button)</td></tr>
+</table>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a id="a1f45d9bcf2da7f2cb6453203368ddc3e" name="a1f45d9bcf2da7f2cb6453203368ddc3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f45d9bcf2da7f2cb6453203368ddc3e">&#9670;&#160;</a></span>button_config_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structButtonConfig.html">ButtonConfig</a> * button_config_init </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Initialise une <a class="el" href="structButtonConfig.html">ButtonConfig</a> avec des valeurs par défaut. </p><dl class="section return"><dt>Renvoie</dt><dd>Pointeur vers la config allouée, ou NULL en cas d'échec. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="button_8c_source.html#l00003">3</a> du fichier <a class="el" href="button_8c_source.html">button.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="button_8h_source.html#l00067">ButtonConfig::callback</a>, <a class="el" href="button_8h_source.html#l00065">ButtonConfig::color</a>, <a class="el" href="button_8h_source.html#l00064">ButtonConfig::font_path</a>, <a class="el" href="button_8h_source.html#l00062">ButtonConfig::h</a>, <a class="el" href="button_8h_source.html#l00072">ButtonConfig::is_hovered</a>, <a class="el" href="button_8h_source.html#l00073">ButtonConfig::is_text</a>, <a class="el" href="button_8h_source.html#l00070">ButtonConfig::rect</a>, <a class="el" href="button_8h_source.html#l00066">ButtonConfig::tex_path</a>, <a class="el" href="button_8h_source.html#l00063">ButtonConfig::text</a>, <a class="el" href="button_8h_source.html#l00074">ButtonConfig::text_rect</a>, <a class="el" href="button_8h_source.html#l00075">ButtonConfig::text_texture</a>, <a class="el" href="button_8h_source.html#l00071">ButtonConfig::texture</a>, <a class="el" href="button_8h_source.html#l00061">ButtonConfig::w</a>, <a class="el" href="button_8h_source.html#l00059">ButtonConfig::x</a>, et <a class="el" href="button_8h_source.html#l00060">ButtonConfig::y</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="button_8c_source.html#l00028">button_create()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00068">lobby_init()</a>, et <a class="el" href="menu_8c_source.html#l00067">menu_init()</a>.</p>
+
+</div>
+</div>
+<a id="ac28a9566f76321cc505a3476008bd580" name="ac28a9566f76321cc505a3476008bd580"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac28a9566f76321cc505a3476008bd580">&#9670;&#160;</a></span>button_create()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structButton.html">Button</a> * button_create </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structButtonConfig.html">ButtonConfig</a> *</td>          <td class="paramname"><span class="paramname"><em>cfg</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Crée un bouton à partir d'une configuration. Si cfg est NULL, les valeurs par défaut sont utilisées. La configuration est copiée : le pointeur cfg peut être libéré après l'appel. Le bouton créé doit être détruit avec <span class="tt">button_destroy</span> pour éviter les fuites mémoire. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>Renderer SDL utilisé pour charger les textures. </td></tr>
+    <tr><td class="paramname">id</td><td>Identifiant libre du bouton (pour usage dans les callbacks). </td></tr>
+    <tr><td class="paramname">cfg</td><td>Pointeur vers la configuration. NULL = valeurs par défaut. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Pointeur vers le bouton créé, ou NULL en cas d'erreur. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="button_8c_source.html#l00028">28</a> du fichier <a class="el" href="button_8c_source.html">button.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="button_8c_source.html#l00003">button_config_init()</a>, <a class="el" href="button_8h_source.html#l00085">Button::cfg</a>, <a class="el" href="button_8h_source.html#l00065">ButtonConfig::color</a>, <a class="el" href="button_8h_source.html#l00064">ButtonConfig::font_path</a>, <a class="el" href="button_8h_source.html#l00062">ButtonConfig::h</a>, <a class="el" href="button_8h_source.html#l00084">Button::id</a>, <a class="el" href="button_8h_source.html#l00072">ButtonConfig::is_hovered</a>, <a class="el" href="button_8h_source.html#l00073">ButtonConfig::is_text</a>, <a class="el" href="sdl_8c_source.html#l00169">load_image()</a>, <a class="el" href="button_8h_source.html#l00070">ButtonConfig::rect</a>, <a class="el" href="button_8h_source.html#l00066">ButtonConfig::tex_path</a>, <a class="el" href="button_8h_source.html#l00063">ButtonConfig::text</a>, <a class="el" href="button_8h_source.html#l00074">ButtonConfig::text_rect</a>, <a class="el" href="button_8h_source.html#l00075">ButtonConfig::text_texture</a>, <a class="el" href="button_8h_source.html#l00071">ButtonConfig::texture</a>, <a class="el" href="button_8h_source.html#l00061">ButtonConfig::w</a>, <a class="el" href="sdl_8h_source.html#l00015">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00014">WIN_WIDTH</a>, <a class="el" href="button_8h_source.html#l00059">ButtonConfig::x</a>, et <a class="el" href="button_8h_source.html#l00060">ButtonConfig::y</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2lobby_8c_source.html#l00068">lobby_init()</a>, et <a class="el" href="menu_8c_source.html#l00067">menu_init()</a>.</p>
+
+</div>
+</div>
+<a id="a33807b4ef26731344fb1f074dcf26ca3" name="a33807b4ef26731344fb1f074dcf26ca3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33807b4ef26731344fb1f074dcf26ca3">&#9670;&#160;</a></span>button_destroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void button_destroy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structButton.html">Button</a> *</td>          <td class="paramname"><span class="paramname"><em>button</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Détruit un bouton et libère ses ressources (textures, config). </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">button</td><td>Pointeur vers le bouton à détruire. Si NULL, ne fait rien. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="button_8c_source.html#l00184">184</a> du fichier <a class="el" href="button_8c_source.html">button.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="button_8h_source.html#l00085">Button::cfg</a>, <a class="el" href="button_8h_source.html#l00073">ButtonConfig::is_text</a>, <a class="el" href="button_8h_source.html#l00075">ButtonConfig::text_texture</a>, et <a class="el" href="button_8h_source.html#l00071">ButtonConfig::texture</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2lobby_8c_source.html#l00210">lobby_free()</a>, et <a class="el" href="menu_8c_source.html#l00262">menu_free()</a>.</p>
+
+</div>
+</div>
+<a id="ac2d1d27cd9fef35e947778ef8c509c1f" name="ac2d1d27cd9fef35e947778ef8c509c1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2d1d27cd9fef35e947778ef8c509c1f">&#9670;&#160;</a></span>button_handle_event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17">ButtonReturn</a> button_handle_event </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structSDL__Context.html">SDL_Context</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structButton.html">Button</a> *</td>          <td class="paramname"><span class="paramname"><em>button</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Event *</td>          <td class="paramname"><span class="paramname"><em>event</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Traite un événement SDL pour un bouton donné. Gère le survol (hover) et le clic (appel du callback). </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>Contexte SDL. </td></tr>
+    <tr><td class="paramname">button</td><td>Pointeur vers le bouton à traiter. </td></tr>
+    <tr><td class="paramname">event</td><td>L'événement SDL à traiter. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>La valeur de retour du callback si le bouton a été cliqué, sinon BTN_RET_NONE. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="button_8c_source.html#l00206">206</a> du fichier <a class="el" href="button_8c_source.html">button.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="audio_8c_source.html#l00219">audio_play()</a>, <a class="el" href="button_8h_source.html#l00013">BTN_RET_NONE</a>, <a class="el" href="button_8h_source.html#l00067">ButtonConfig::callback</a>, <a class="el" href="button_8h_source.html#l00085">Button::cfg</a>, <a class="el" href="button_8h_source.html#l00072">ButtonConfig::is_hovered</a>, <a class="el" href="button_8c_source.html#l00198">is_mouse_over_button()</a>, et <a class="el" href="audio_8h_source.html#l00014">SOUND_BUTTON_CLICKED</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2lobby_8c_source.html#l00197">lobby_handle_event()</a>, et <a class="el" href="menu_8c_source.html#l00042">menu_handle_event()</a>.</p>
+
+</div>
+</div>
+<a id="a139ca44cb372ff6cfdfe3597aa89b6e6" name="a139ca44cb372ff6cfdfe3597aa89b6e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a139ca44cb372ff6cfdfe3597aa89b6e6">&#9670;&#160;</a></span>button_render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int button_render </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structButton.html">Button</a> *</td>          <td class="paramname"><span class="paramname"><em>button</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Rendu d'un bouton à l'écran. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>Renderer SDL. </td></tr>
+    <tr><td class="paramname">button</td><td>Pointeur vers le bouton à afficher. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS si le rendu a réussi, sinon EXIT_FAILURE. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="button_8c_source.html#l00226">226</a> du fichier <a class="el" href="button_8c_source.html">button.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="button_8h_source.html#l00085">Button::cfg</a>, <a class="el" href="button_8h_source.html#l00072">ButtonConfig::is_hovered</a>, <a class="el" href="button_8h_source.html#l00073">ButtonConfig::is_text</a>, <a class="el" href="button_8h_source.html#l00070">ButtonConfig::rect</a>, <a class="el" href="button_8h_source.html#l00074">ButtonConfig::text_rect</a>, <a class="el" href="button_8h_source.html#l00075">ButtonConfig::text_texture</a>, et <a class="el" href="button_8h_source.html#l00071">ButtonConfig::texture</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2lobby_8c_source.html#l00168">lobby_display()</a>, et <a class="el" href="menu_8c_source.html#l00228">menu_display()</a>.</p>
+
+</div>
+</div>
+<a id="ace8b088f383de42ff5a48d85dbf4e9c4" name="ace8b088f383de42ff5a48d85dbf4e9c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace8b088f383de42ff5a48d85dbf4e9c4">&#9670;&#160;</a></span>is_mouse_over_button()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int is_mouse_over_button </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structButton.html">Button</a> *</td>          <td class="paramname"><span class="paramname"><em>button</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>mouseX</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>mouseY</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="button_8c_source.html#l00198">198</a> du fichier <a class="el" href="button_8c_source.html">button.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="button_8h_source.html#l00085">Button::cfg</a>, et <a class="el" href="button_8h_source.html#l00070">ButtonConfig::rect</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="button_8c_source.html#l00206">button_handle_event()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a href="button_8c.html">button.c</a></li>
+    <li class="footer">Généré le Jeudi 19 Mars 2026 15:31:46 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

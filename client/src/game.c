@@ -56,56 +56,56 @@ int game_init(SDL_Context * context) {
 }
 
 void game_render_cards(SDL_Context * context) {
-    int x=0;
-    int y=0;
+    int x=-400;
+    int y=-250;
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
             if (!context->cards[i*5 + j]) {
-                x += 50;
+                x += 200;
                 continue;
             }
             if(context->player_role == ROLE_SPY && !context->cards[i*5 + j]->revealed) {
                 switch (context->cards[i*5 + j]->team) {
                     case TEAM_NONE:
                         if (context->cards[i*5 + j]->gender) {
-                            display_image(context->renderer, card_f_classic, x, y, 0.05, 0, SDL_FLIP_NONE, 1, 255);
+                            display_image(context->renderer, card_f_classic, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
                         }else{
-                            display_image(context->renderer, card_h_classic, x, y, 0.05, 0, SDL_FLIP_NONE, 1, 255);
+                            display_image(context->renderer, card_h_classic, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
                         }
                         break;
                     case TEAM_RED:
                         if (context->cards[i*5 + j]->gender) {
-                            display_image(context->renderer, card_f_red, x, y, 0.05, 0, SDL_FLIP_NONE, 1, 255);
+                            display_image(context->renderer, card_f_red, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
                         }else{
-                            display_image(context->renderer, card_h_red, x, y, 0.05, 0, SDL_FLIP_NONE, 1, 255);
+                            display_image(context->renderer, card_h_red, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
                         }
                         break;
                     case TEAM_BLUE:
                         if (context->cards[i*5 + j]->gender) {
-                            display_image(context->renderer, card_f_blue, x, y, 0.05, 0, SDL_FLIP_NONE, 1, 255);
+                            display_image(context->renderer, card_f_blue, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
                         }else{
-                            display_image(context->renderer, card_h_blue, x, y, 0.05, 0, SDL_FLIP_NONE, 1, 255);
+                            display_image(context->renderer, card_h_blue, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
                         }
                         break;
                     case TEAM_BLACK:
-                        display_image(context->renderer, card_black, x, y, 0.05, 0, SDL_FLIP_NONE, 1, 255);
+                        display_image(context->renderer, card_black, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
                     default:
                         break;
                 }
             }else if (context->player_role == ROLE_AGENT && !context->cards[i*5 + j]->revealed) {
                 if (context->cards[i*5 + j]->gender) {
-                    display_image(context->renderer, card_f_classic, x, y, 0.05, 0, SDL_FLIP_NONE, 1, 255);
+                    display_image(context->renderer, card_f_classic, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
                 }else{
-                    display_image(context->renderer, card_h_classic, x, y, 0.05, 0, SDL_FLIP_NONE, 1, 255);
+                    display_image(context->renderer, card_h_classic, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
                 }
             }
             else if (context->cards[i*5 + j]->revealed) {
                 // Attente des images des cartes "révélées"
             }
-            x += 250;
+            x += 200;
         }
-        x = 0;
-        y += 150;
+        x = -400;
+        y += 125;
     }
 }
 

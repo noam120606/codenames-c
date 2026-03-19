@@ -57,13 +57,32 @@ int main(int argc, char* argv[]) {
     SDL_Event e;
     int running = 1;
 
-    // Initialisation des valeurs de context pour les tests
+    // Initialisation des valeurs de context pour les tests de l'affichage des cartes
     context.player_role = ROLE_SPY;
 
-    for (int i = 0; i < 25; i++) {
+    int gender = 0, i = 0;
+
+    context.cards[i] = malloc(sizeof(Card));
+    context.cards[i]->revealed = 0;
+    context.cards[i]->gender = (gender++)%2==0 ? 0 : 1;
+    context.cards[i]->team = TEAM_BLACK;
+
+    for (i = 1; i < 9; i++) {
         context.cards[i] = malloc(sizeof(Card));
         context.cards[i]->revealed = 0;
-        context.cards[i]->gender = 0;
+        context.cards[i]->gender = (gender++)%2==0 ? 0 : 1;
+        context.cards[i]->team = TEAM_RED;
+    }
+    for (i = 9; i < 17; i++) {
+        context.cards[i] = malloc(sizeof(Card));
+        context.cards[i]->revealed = 0;
+        context.cards[i]->gender = (gender++)%2==0 ? 0 : 1;
+        context.cards[i]->team = TEAM_BLUE;
+    }
+    for (i = 17; i < 25; i++) {
+        context.cards[i] = malloc(sizeof(Card));
+        context.cards[i]->revealed = 0;
+        context.cards[i]->gender = (gender++)%2==0 ? 0 : 1;
         context.cards[i]->team = TEAM_NONE;
     }
 

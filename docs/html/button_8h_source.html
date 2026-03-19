@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Codenames:  Fichier source de client/lib/button.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Codenames<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Jeu Codenames multijoueur en C - Client SDL2 et Serveur TCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('button_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">button.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="button_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#ifndef BUTTON_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#define BUTTON_H</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;../SDL2/include/SDL2/SDL.h&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="button_8h.html#acd98f47343cc59c6701056950ce8ffb5">    7</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structSDL__Context.html">SDL_Context</a> <a class="code hl_struct" href="structSDL__Context.html">SDL_Context</a>;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span></div>
+<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17">   12</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17">ButtonReturn</a> {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17acbdf0acf6fb3b610b59b850df657ac6a">   13</a></span>    <a class="code hl_enumvalue" href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17acbdf0acf6fb3b610b59b850df657ac6a">BTN_RET_NONE</a>,</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17aa83f4496144feedf49390ca8cc9481bd">   14</a></span>    <a class="code hl_enumvalue" href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17aa83f4496144feedf49390ca8cc9481bd">BTN_RET_QUIT</a>,</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="button_8h.html#afcb5a0884f26f5732d8765a224088c71">   15</a></span>} <a class="code hl_enumeration" href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17">ButtonReturn</a>;</div>
+</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">/* Déclaration anticipée pour le typedef de callback. */</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="button_8h.html#aabbec029df4131b530b45fc227cfddcc">   18</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structButton.html">Button</a> <a class="code hl_struct" href="structButton.html">Button</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="button_8h.html#abf9a622a6f13eca6eb57b4b9849f3f48">   25</a></span><span class="keyword">typedef</span> <a class="code hl_enumeration" href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17">ButtonReturn</a> (*<a class="code hl_typedef" href="button_8h.html#abf9a622a6f13eca6eb57b4b9849f3f48">ButtonCallback</a>)(<a class="code hl_struct" href="structSDL__Context.html">SDL_Context</a>* context, <a class="code hl_struct" href="structButton.html">Button</a>* button);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span></div>
+<div class="foldopen" id="foldopen00057" data-start="{" data-end="};">
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="structButtonConfig.html">   57</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structButtonConfig.html">ButtonConfig</a> {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment">/* --- champs configurables --- */</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="structButtonConfig.html#afc5488e3a5f6149b74875c3b56bc8096">   59</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structButtonConfig.html#afc5488e3a5f6149b74875c3b56bc8096">x</a>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="structButtonConfig.html#a615d40fe4dca5be9ba798637e52cf626">   60</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structButtonConfig.html#a615d40fe4dca5be9ba798637e52cf626">y</a>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="structButtonConfig.html#a925b352aab804ad5839bc6696fba69a7">   61</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structButtonConfig.html#a925b352aab804ad5839bc6696fba69a7">w</a>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="structButtonConfig.html#a580d55f023e7e8956cf92843aed9dfdd">   62</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structButtonConfig.html#a580d55f023e7e8956cf92843aed9dfdd">h</a>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="structButtonConfig.html#a5b33c0d3edf46628fdff0dfef319dc6e">   63</a></span>    <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_variable" href="structButtonConfig.html#a5b33c0d3edf46628fdff0dfef319dc6e">text</a>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="structButtonConfig.html#ae32f49c4d3e22b68a69c14ae999d91eb">   64</a></span>    <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_variable" href="structButtonConfig.html#ae32f49c4d3e22b68a69c14ae999d91eb">font_path</a>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="structButtonConfig.html#a7a5a83893ccaef0194773a4d81a70b9e">   65</a></span>    SDL_Color <a class="code hl_variable" href="structButtonConfig.html#a7a5a83893ccaef0194773a4d81a70b9e">color</a>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="structButtonConfig.html#a327b253ead22320578675d9934faad44">   66</a></span>    <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_variable" href="structButtonConfig.html#a327b253ead22320578675d9934faad44">tex_path</a>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="structButtonConfig.html#a382f0ce4134b46aa26562b63c81fee14">   67</a></span>    <a class="code hl_typedef" href="button_8h.html#abf9a622a6f13eca6eb57b4b9849f3f48">ButtonCallback</a> <a class="code hl_variable" href="structButtonConfig.html#a382f0ce4134b46aa26562b63c81fee14">callback</a>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">/* --- champs d&#39;état (runtime) --- */</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="structButtonConfig.html#a499e2e5ebe13589dff7967201b77038c">   70</a></span>    SDL_Rect <a class="code hl_variable" href="structButtonConfig.html#a499e2e5ebe13589dff7967201b77038c">rect</a>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="structButtonConfig.html#ab98fb7f9c481107f80ce96e120611c5d">   71</a></span>    SDL_Texture* <a class="code hl_variable" href="structButtonConfig.html#ab98fb7f9c481107f80ce96e120611c5d">texture</a>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="structButtonConfig.html#a880e0e6159d5a0849a4595c82f3afb4d">   72</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structButtonConfig.html#a880e0e6159d5a0849a4595c82f3afb4d">is_hovered</a>;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="structButtonConfig.html#aa9d18f2d56d0a538d77cf9eb1a23e7fe">   73</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structButtonConfig.html#aa9d18f2d56d0a538d77cf9eb1a23e7fe">is_text</a>;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="structButtonConfig.html#a6eebce80895720b6eabed51dbae7a626">   74</a></span>    SDL_Rect <a class="code hl_variable" href="structButtonConfig.html#a6eebce80895720b6eabed51dbae7a626">text_rect</a>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="structButtonConfig.html#a6d447cb700f5d3eaf2d4eb49898f3ddf">   75</a></span>    SDL_Texture* <a class="code hl_variable" href="structButtonConfig.html#a6d447cb700f5d3eaf2d4eb49898f3ddf">text_texture</a>;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="button_8h.html#a6ac20ec088991ffad32c6bbb748af4e2">   76</a></span>} <a class="code hl_struct" href="structButtonConfig.html">ButtonConfig</a>;</div>
+</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span></div>
+<div class="foldopen" id="foldopen00083" data-start="{" data-end="};">
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="structButton.html">   83</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structButton.html">Button</a> {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="structButton.html#ac5a33b0d2f5306780146a85c24cf5219">   84</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structButton.html#ac5a33b0d2f5306780146a85c24cf5219">id</a>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="structButton.html#a4cedb00efaa8bdad5cbc04193482f499">   85</a></span>    <a class="code hl_struct" href="structButtonConfig.html">ButtonConfig</a>* <a class="code hl_variable" href="structButton.html#a4cedb00efaa8bdad5cbc04193482f499">cfg</a>;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>};</div>
+</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><a class="code hl_struct" href="structButtonConfig.html">ButtonConfig</a>* <a class="code hl_function" href="button_8h.html#a1f45d9bcf2da7f2cb6453203368ddc3e">button_config_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><a class="code hl_struct" href="structButton.html">Button</a>* <a class="code hl_function" href="button_8h.html#ae460369be163aa7d325ccd658192470d">button_create</a>(SDL_Renderer* renderer, <span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keyword">const</span> <a class="code hl_struct" href="structButtonConfig.html">ButtonConfig</a>* cfg);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="keywordtype">void</span> <a class="code hl_function" href="button_8h.html#a33807b4ef26731344fb1f074dcf26ca3">button_destroy</a>(<a class="code hl_struct" href="structButton.html">Button</a>* button);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><a class="code hl_enumeration" href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17">ButtonReturn</a> <a class="code hl_function" href="button_8h.html#ac2d1d27cd9fef35e947778ef8c509c1f">button_handle_event</a>(<a class="code hl_struct" href="structSDL__Context.html">SDL_Context</a>* context, <a class="code hl_struct" href="structButton.html">Button</a>* button, SDL_Event* event);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="keywordtype">int</span> <a class="code hl_function" href="button_8h.html#a139ca44cb372ff6cfdfe3597aa89b6e6">button_render</a>(SDL_Renderer* renderer, <a class="code hl_struct" href="structButton.html">Button</a>* button);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="preprocessor">#endif </span><span class="comment">// BUTTON_H</span></div>
+<div class="ttc" id="abutton_8h_html_a139ca44cb372ff6cfdfe3597aa89b6e6"><div class="ttname"><a href="button_8h.html#a139ca44cb372ff6cfdfe3597aa89b6e6">button_render</a></div><div class="ttdeci">int button_render(SDL_Renderer *renderer, Button *button)</div><div class="ttdef"><b>Definition</b> <a href="button_8c_source.html#l00226">button.c:226</a></div></div>
+<div class="ttc" id="abutton_8h_html_a1f45d9bcf2da7f2cb6453203368ddc3e"><div class="ttname"><a href="button_8h.html#a1f45d9bcf2da7f2cb6453203368ddc3e">button_config_init</a></div><div class="ttdeci">ButtonConfig * button_config_init(void)</div><div class="ttdef"><b>Definition</b> <a href="button_8c_source.html#l00003">button.c:3</a></div></div>
+<div class="ttc" id="abutton_8h_html_a2e359d08d4b6ceb3ec6cd5c41addde17"><div class="ttname"><a href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17">ButtonReturn</a></div><div class="ttdeci">ButtonReturn</div><div class="ttdef"><b>Definition</b> <a href="#l00012">button.h:12</a></div></div>
+<div class="ttc" id="abutton_8h_html_a2e359d08d4b6ceb3ec6cd5c41addde17aa83f4496144feedf49390ca8cc9481bd"><div class="ttname"><a href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17aa83f4496144feedf49390ca8cc9481bd">BTN_RET_QUIT</a></div><div class="ttdeci">@ BTN_RET_QUIT</div><div class="ttdef"><b>Definition</b> <a href="#l00014">button.h:14</a></div></div>
+<div class="ttc" id="abutton_8h_html_a2e359d08d4b6ceb3ec6cd5c41addde17acbdf0acf6fb3b610b59b850df657ac6a"><div class="ttname"><a href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17acbdf0acf6fb3b610b59b850df657ac6a">BTN_RET_NONE</a></div><div class="ttdeci">@ BTN_RET_NONE</div><div class="ttdef"><b>Definition</b> <a href="#l00013">button.h:13</a></div></div>
+<div class="ttc" id="abutton_8h_html_a33807b4ef26731344fb1f074dcf26ca3"><div class="ttname"><a href="button_8h.html#a33807b4ef26731344fb1f074dcf26ca3">button_destroy</a></div><div class="ttdeci">void button_destroy(Button *button)</div><div class="ttdef"><b>Definition</b> <a href="button_8c_source.html#l00184">button.c:184</a></div></div>
+<div class="ttc" id="abutton_8h_html_abf9a622a6f13eca6eb57b4b9849f3f48"><div class="ttname"><a href="button_8h.html#abf9a622a6f13eca6eb57b4b9849f3f48">ButtonCallback</a></div><div class="ttdeci">ButtonReturn(* ButtonCallback)(SDL_Context *context, Button *button)</div><div class="ttdef"><b>Definition</b> <a href="#l00025">button.h:25</a></div></div>
+<div class="ttc" id="abutton_8h_html_ac2d1d27cd9fef35e947778ef8c509c1f"><div class="ttname"><a href="button_8h.html#ac2d1d27cd9fef35e947778ef8c509c1f">button_handle_event</a></div><div class="ttdeci">ButtonReturn button_handle_event(SDL_Context *context, Button *button, SDL_Event *event)</div><div class="ttdef"><b>Definition</b> <a href="button_8c_source.html#l00206">button.c:206</a></div></div>
+<div class="ttc" id="abutton_8h_html_ae460369be163aa7d325ccd658192470d"><div class="ttname"><a href="button_8h.html#ae460369be163aa7d325ccd658192470d">button_create</a></div><div class="ttdeci">Button * button_create(SDL_Renderer *renderer, int id, const ButtonConfig *cfg)</div><div class="ttdef"><b>Definition</b> <a href="button_8c_source.html#l00028">button.c:28</a></div></div>
+<div class="ttc" id="astructButtonConfig_html"><div class="ttname"><a href="structButtonConfig.html">ButtonConfig</a></div><div class="ttdef"><b>Definition</b> <a href="#l00057">button.h:57</a></div></div>
+<div class="ttc" id="astructButtonConfig_html_a327b253ead22320578675d9934faad44"><div class="ttname"><a href="structButtonConfig.html#a327b253ead22320578675d9934faad44">ButtonConfig::tex_path</a></div><div class="ttdeci">const char * tex_path</div><div class="ttdef"><b>Definition</b> <a href="#l00066">button.h:66</a></div></div>
+<div class="ttc" id="astructButtonConfig_html_a382f0ce4134b46aa26562b63c81fee14"><div class="ttname"><a href="structButtonConfig.html#a382f0ce4134b46aa26562b63c81fee14">ButtonConfig::callback</a></div><div class="ttdeci">ButtonCallback callback</div><div class="ttdef"><b>Definition</b> <a href="#l00067">button.h:67</a></div></div>
+<div class="ttc" id="astructButtonConfig_html_a499e2e5ebe13589dff7967201b77038c"><div class="ttname"><a href="structButtonConfig.html#a499e2e5ebe13589dff7967201b77038c">ButtonConfig::rect</a></div><div class="ttdeci">SDL_Rect rect</div><div class="ttdef"><b>Definition</b> <a href="#l00070">button.h:70</a></div></div>
+<div class="ttc" id="astructButtonConfig_html_a580d55f023e7e8956cf92843aed9dfdd"><div class="ttname"><a href="structButtonConfig.html#a580d55f023e7e8956cf92843aed9dfdd">ButtonConfig::h</a></div><div class="ttdeci">int h</div><div class="ttdef"><b>Definition</b> <a href="#l00062">button.h:62</a></div></div>
+<div class="ttc" id="astructButtonConfig_html_a5b33c0d3edf46628fdff0dfef319dc6e"><div class="ttname"><a href="structButtonConfig.html#a5b33c0d3edf46628fdff0dfef319dc6e">ButtonConfig::text</a></div><div class="ttdeci">const char * text</div><div class="ttdef"><b>Definition</b> <a href="#l00063">button.h:63</a></div></div>
+<div class="ttc" id="astructButtonConfig_html_a615d40fe4dca5be9ba798637e52cf626"><div class="ttname"><a href="structButtonConfig.html#a615d40fe4dca5be9ba798637e52cf626">ButtonConfig::y</a></div><div class="ttdeci">int y</div><div class="ttdef"><b>Definition</b> <a href="#l00060">button.h:60</a></div></div>
+<div class="ttc" id="astructButtonConfig_html_a6d447cb700f5d3eaf2d4eb49898f3ddf"><div class="ttname"><a href="structButtonConfig.html#a6d447cb700f5d3eaf2d4eb49898f3ddf">ButtonConfig::text_texture</a></div><div class="ttdeci">SDL_Texture * text_texture</div><div class="ttdef"><b>Definition</b> <a href="#l00075">button.h:75</a></div></div>
+<div class="ttc" id="astructButtonConfig_html_a6eebce80895720b6eabed51dbae7a626"><div class="ttname"><a href="structButtonConfig.html#a6eebce80895720b6eabed51dbae7a626">ButtonConfig::text_rect</a></div><div class="ttdeci">SDL_Rect text_rect</div><div class="ttdef"><b>Definition</b> <a href="#l00074">button.h:74</a></div></div>
+<div class="ttc" id="astructButtonConfig_html_a7a5a83893ccaef0194773a4d81a70b9e"><div class="ttname"><a href="structButtonConfig.html#a7a5a83893ccaef0194773a4d81a70b9e">ButtonConfig::color</a></div><div class="ttdeci">SDL_Color color</div><div class="ttdef"><b>Definition</b> <a href="#l00065">button.h:65</a></div></div>
+<div class="ttc" id="astructButtonConfig_html_a880e0e6159d5a0849a4595c82f3afb4d"><div class="ttname"><a href="structButtonConfig.html#a880e0e6159d5a0849a4595c82f3afb4d">ButtonConfig::is_hovered</a></div><div class="ttdeci">int is_hovered</div><div class="ttdef"><b>Definition</b> <a href="#l00072">button.h:72</a></div></div>
+<div class="ttc" id="astructButtonConfig_html_a925b352aab804ad5839bc6696fba69a7"><div class="ttname"><a href="structButtonConfig.html#a925b352aab804ad5839bc6696fba69a7">ButtonConfig::w</a></div><div class="ttdeci">int w</div><div class="ttdef"><b>Definition</b> <a href="#l00061">button.h:61</a></div></div>
+<div class="ttc" id="astructButtonConfig_html_aa9d18f2d56d0a538d77cf9eb1a23e7fe"><div class="ttname"><a href="structButtonConfig.html#aa9d18f2d56d0a538d77cf9eb1a23e7fe">ButtonConfig::is_text</a></div><div class="ttdeci">int is_text</div><div class="ttdef"><b>Definition</b> <a href="#l00073">button.h:73</a></div></div>
+<div class="ttc" id="astructButtonConfig_html_ab98fb7f9c481107f80ce96e120611c5d"><div class="ttname"><a href="structButtonConfig.html#ab98fb7f9c481107f80ce96e120611c5d">ButtonConfig::texture</a></div><div class="ttdeci">SDL_Texture * texture</div><div class="ttdef"><b>Definition</b> <a href="#l00071">button.h:71</a></div></div>
+<div class="ttc" id="astructButtonConfig_html_ae32f49c4d3e22b68a69c14ae999d91eb"><div class="ttname"><a href="structButtonConfig.html#ae32f49c4d3e22b68a69c14ae999d91eb">ButtonConfig::font_path</a></div><div class="ttdeci">const char * font_path</div><div class="ttdef"><b>Definition</b> <a href="#l00064">button.h:64</a></div></div>
+<div class="ttc" id="astructButtonConfig_html_afc5488e3a5f6149b74875c3b56bc8096"><div class="ttname"><a href="structButtonConfig.html#afc5488e3a5f6149b74875c3b56bc8096">ButtonConfig::x</a></div><div class="ttdeci">int x</div><div class="ttdef"><b>Definition</b> <a href="#l00059">button.h:59</a></div></div>
+<div class="ttc" id="astructButton_html"><div class="ttname"><a href="structButton.html">Button</a></div><div class="ttdef"><b>Definition</b> <a href="#l00083">button.h:83</a></div></div>
+<div class="ttc" id="astructButton_html_a4cedb00efaa8bdad5cbc04193482f499"><div class="ttname"><a href="structButton.html#a4cedb00efaa8bdad5cbc04193482f499">Button::cfg</a></div><div class="ttdeci">ButtonConfig * cfg</div><div class="ttdef"><b>Definition</b> <a href="#l00085">button.h:85</a></div></div>
+<div class="ttc" id="astructButton_html_ac5a33b0d2f5306780146a85c24cf5219"><div class="ttname"><a href="structButton.html#ac5a33b0d2f5306780146a85c24cf5219">Button::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition</b> <a href="#l00084">button.h:84</a></div></div>
+<div class="ttc" id="astructSDL__Context_html"><div class="ttname"><a href="structSDL__Context.html">SDL_Context</a></div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00036">sdl.h:36</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a href="button_8h.html">button.h</a></li>
+    <li class="footer">Généré le Jeudi 19 Mars 2026 15:31:45 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

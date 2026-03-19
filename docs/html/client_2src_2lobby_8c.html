@@ -1,0 +1,424 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Codenames: Référence du fichier client/src/lobby.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Codenames<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Jeu Codenames multijoueur en C - Client SDL2 et Serveur TCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('client_2src_2lobby_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Référence du fichier lobby.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="client_2lib_2all_8h_source.html">../lib/all.h</a>&quot;</code><br />
+</div>
+<p><a href="client_2src_2lobby_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a999cfcade0878af0e86c98db415483fe" id="r_a999cfcade0878af0e86c98db415483fe"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17">ButtonReturn</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a999cfcade0878af0e86c98db415483fe">lobby_button_click</a> (<a class="el" href="structSDL__Context.html">SDL_Context</a> *context, <a class="el" href="structButton.html">Button</a> *button)</td></tr>
+<tr class="memitem:a8f031495a6850c8a2790ef59d9f0922a" id="r_a8f031495a6850c8a2790ef59d9f0922a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f031495a6850c8a2790ef59d9f0922a">lobby_init</a> (<a class="el" href="structSDL__Context.html">SDL_Context</a> *context)</td></tr>
+<tr class="memitem:a30b33afe9cf3ad3ec5f450fc45cb3a14" id="r_a30b33afe9cf3ad3ec5f450fc45cb3a14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30b33afe9cf3ad3ec5f450fc45cb3a14">lobby_display</a> (<a class="el" href="structSDL__Context.html">SDL_Context</a> *context)</td></tr>
+<tr class="memitem:a7492c9d90fcc1ebfcc02889c6ebc9571" id="r_a7492c9d90fcc1ebfcc02889c6ebc9571"><td class="memItemLeft" align="right" valign="top"><a class="el" href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17">ButtonReturn</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7492c9d90fcc1ebfcc02889c6ebc9571">lobby_handle_event</a> (<a class="el" href="structSDL__Context.html">SDL_Context</a> *context, SDL_Event *e)</td></tr>
+<tr class="memitem:a2a81a21e07b85e6018556a3704f0a9ca" id="r_a2a81a21e07b85e6018556a3704f0a9ca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a81a21e07b85e6018556a3704f0a9ca">lobby_free</a> ()</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a53848c36d7d2c5d1cb42684a92ea2148" id="r_a53848c36d7d2c5d1cb42684a92ea2148"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53848c36d7d2c5d1cb42684a92ea2148">lobby_filter_applied</a> = 0</td></tr>
+<tr class="memitem:aeebab5be76f845b399acdef246e5696d" id="r_aeebab5be76f845b399acdef246e5696d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structButton.html">Button</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeebab5be76f845b399acdef246e5696d">btn_red_agent</a> = NULL</td></tr>
+<tr class="memitem:a826bed728c3ac0d6c29a1b585bc93e96" id="r_a826bed728c3ac0d6c29a1b585bc93e96"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structButton.html">Button</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a826bed728c3ac0d6c29a1b585bc93e96">btn_red_spy</a> = NULL</td></tr>
+<tr class="memitem:a3c02aef4e03fcadf55fc7f3805de926d" id="r_a3c02aef4e03fcadf55fc7f3805de926d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structButton.html">Button</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c02aef4e03fcadf55fc7f3805de926d">btn_blue_agent</a> = NULL</td></tr>
+<tr class="memitem:af984841ed04d0340346e3537553dfe61" id="r_af984841ed04d0340346e3537553dfe61"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structButton.html">Button</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af984841ed04d0340346e3537553dfe61">btn_blue_spy</a> = NULL</td></tr>
+<tr class="memitem:afc3e06e31db024eaabe4157e0b248fa8" id="r_afc3e06e31db024eaabe4157e0b248fa8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structButton.html">Button</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc3e06e31db024eaabe4157e0b248fa8">btn_launch_game</a> = NULL</td></tr>
+<tr class="memitem:ab5d9550c4b6ee353d280eedb9456a0ee" id="r_ab5d9550c4b6ee353d280eedb9456a0ee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structButton.html">Button</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5d9550c4b6ee353d280eedb9456a0ee">btn_return</a> = NULL</td></tr>
+</table>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a id="a999cfcade0878af0e86c98db415483fe" name="a999cfcade0878af0e86c98db415483fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a999cfcade0878af0e86c98db415483fe">&#9670;&#160;</a></span>lobby_button_click()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17">ButtonReturn</a> lobby_button_click </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structSDL__Context.html">SDL_Context</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structButton.html">Button</a> *</td>          <td class="paramname"><span class="paramname"><em>button</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00012">12</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00043">SDL_Context::app_state</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00048">APP_STATE_MENU</a>, <a class="el" href="audio_8h_source.html#l00037">AUDIO_FILTER_NONE</a>, <a class="el" href="audio_8c_source.html#l00280">audio_set_filter()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00006">btn_blue_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00007">btn_blue_spy</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00008">btn_launch_game</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00004">btn_red_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00005">btn_red_spy</a>, <a class="el" href="button_8h_source.html#l00013">BTN_RET_NONE</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00009">btn_return</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00017">format_to()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00037">Lobby::id</a>, <a class="el" href="sdl_8h_source.html#l00042">SDL_Context::lobby</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00003">lobby_filter_applied</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00025">MSG_CHOOSE_ROLE</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00022">MSG_LEAVELOBBY</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00026">MSG_STARTGAME</a>, <a class="el" href="audio_8h_source.html#l00012">MUSIC_MENU_LOBBY</a>, <a class="el" href="sdl_8h_source.html#l00044">SDL_Context::player_role</a>, <a class="el" href="sdl_8h_source.html#l00045">SDL_Context::player_team</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00014">ROLE_AGENT</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00012">ROLE_NONE</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00013">ROLE_SPY</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00117">send_tcp()</a>, <a class="el" href="sdl_8h_source.html#l00041">SDL_Context::sock</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00023">TEAM_BLUE</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00021">TEAM_NONE</a>, et <a class="el" href="client_2lib_2game_8h_source.html#l00022">TEAM_RED</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2lobby_8c_source.html#l00068">lobby_init()</a>.</p>
+
+</div>
+</div>
+<a id="a30b33afe9cf3ad3ec5f450fc45cb3a14" name="a30b33afe9cf3ad3ec5f450fc45cb3a14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30b33afe9cf3ad3ec5f450fc45cb3a14">&#9670;&#160;</a></span>lobby_display()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lobby_display </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structSDL__Context.html">SDL_Context</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Affiche le lobby. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>Contexte SDL. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00168">168</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="audio_8h_source.html#l00038">AUDIO_FILTER_LOW_PASS</a>, <a class="el" href="audio_8c_source.html#l00280">audio_set_filter()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00006">btn_blue_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00007">btn_blue_spy</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00008">btn_launch_game</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00004">btn_red_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00005">btn_red_spy</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00009">btn_return</a>, <a class="el" href="button_8c_source.html#l00226">button_render()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00039">Lobby::code</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00009">COL_WHITE</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00020">FONT_LARABIE</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00017">format_to()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00037">Lobby::id</a>, <a class="el" href="sdl_8h_source.html#l00042">SDL_Context::lobby</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00003">lobby_filter_applied</a>, <a class="el" href="audio_8h_source.html#l00012">MUSIC_MENU_LOBBY</a>, <a class="el" href="sdl_8h_source.html#l00038">SDL_Context::renderer</a>, et <a class="el" href="text_8c_source.html#l00003">text_display()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>.</p>
+
+</div>
+</div>
+<a id="a2a81a21e07b85e6018556a3704f0a9ca" name="a2a81a21e07b85e6018556a3704f0a9ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a81a21e07b85e6018556a3704f0a9ca">&#9670;&#160;</a></span>lobby_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int lobby_free </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Libère les ressources utilisées par le lobby. </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00210">210</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2src_2lobby_8c_source.html#l00006">btn_blue_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00007">btn_blue_spy</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00008">btn_launch_game</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00004">btn_red_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00005">btn_red_spy</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00009">btn_return</a>, et <a class="el" href="button_8c_source.html#l00184">button_destroy()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>.</p>
+
+</div>
+</div>
+<a id="a7492c9d90fcc1ebfcc02889c6ebc9571" name="a7492c9d90fcc1ebfcc02889c6ebc9571"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7492c9d90fcc1ebfcc02889c6ebc9571">&#9670;&#160;</a></span>lobby_handle_event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17">ButtonReturn</a> lobby_handle_event </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structSDL__Context.html">SDL_Context</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Event *</td>          <td class="paramname"><span class="paramname"><em>event</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Gère les événements du lobby (boutons, etc.). </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>Contexte SDL. </td></tr>
+    <tr><td class="paramname">event</td><td>Événement SDL à traiter. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd><a class="el" href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17">ButtonReturn</a> (BTN_RET_QUIT to exit, BTN_RET_NONE otherwise). </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00197">197</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2src_2lobby_8c_source.html#l00006">btn_blue_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00007">btn_blue_spy</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00004">btn_red_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00005">btn_red_spy</a>, <a class="el" href="button_8h_source.html#l00013">BTN_RET_NONE</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00009">btn_return</a>, et <a class="el" href="button_8c_source.html#l00206">button_handle_event()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>.</p>
+
+</div>
+</div>
+<a id="a8f031495a6850c8a2790ef59d9f0922a" name="a8f031495a6850c8a2790ef59d9f0922a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f031495a6850c8a2790ef59d9f0922a">&#9670;&#160;</a></span>lobby_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int lobby_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structSDL__Context.html">SDL_Context</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Initialise le lobby. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>Contexte SDL. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, un code d'erreur sinon. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00068">68</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2src_2lobby_8c_source.html#l00006">btn_blue_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00007">btn_blue_spy</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00008">btn_launch_game</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00004">btn_red_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00005">btn_red_spy</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00009">btn_return</a>, <a class="el" href="button_8c_source.html#l00003">button_config_init()</a>, <a class="el" href="button_8c_source.html#l00028">button_create()</a>, <a class="el" href="button_8h_source.html#l00067">ButtonConfig::callback</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00009">COL_WHITE</a>, <a class="el" href="button_8h_source.html#l00065">ButtonConfig::color</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00020">FONT_LARABIE</a>, <a class="el" href="button_8h_source.html#l00064">ButtonConfig::font_path</a>, <a class="el" href="button_8h_source.html#l00062">ButtonConfig::h</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00012">lobby_button_click()</a>, <a class="el" href="sdl_8h_source.html#l00038">SDL_Context::renderer</a>, <a class="el" href="button_8h_source.html#l00066">ButtonConfig::tex_path</a>, <a class="el" href="button_8h_source.html#l00063">ButtonConfig::text</a>, <a class="el" href="button_8h_source.html#l00059">ButtonConfig::x</a>, et <a class="el" href="button_8h_source.html#l00060">ButtonConfig::y</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Documentation des variables</h2>
+<a id="a3c02aef4e03fcadf55fc7f3805de926d" name="a3c02aef4e03fcadf55fc7f3805de926d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c02aef4e03fcadf55fc7f3805de926d">&#9670;&#160;</a></span>btn_blue_agent</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structButton.html">Button</a>* btn_blue_agent = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00006">6</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2lobby_8c_source.html#l00012">lobby_button_click()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00168">lobby_display()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00210">lobby_free()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00197">lobby_handle_event()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00068">lobby_init()</a>.</p>
+
+</div>
+</div>
+<a id="af984841ed04d0340346e3537553dfe61" name="af984841ed04d0340346e3537553dfe61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af984841ed04d0340346e3537553dfe61">&#9670;&#160;</a></span>btn_blue_spy</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structButton.html">Button</a>* btn_blue_spy = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00007">7</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2lobby_8c_source.html#l00012">lobby_button_click()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00168">lobby_display()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00210">lobby_free()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00197">lobby_handle_event()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00068">lobby_init()</a>.</p>
+
+</div>
+</div>
+<a id="afc3e06e31db024eaabe4157e0b248fa8" name="afc3e06e31db024eaabe4157e0b248fa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc3e06e31db024eaabe4157e0b248fa8">&#9670;&#160;</a></span>btn_launch_game</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structButton.html">Button</a>* btn_launch_game = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00008">8</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2lobby_8c_source.html#l00012">lobby_button_click()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00168">lobby_display()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00210">lobby_free()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00068">lobby_init()</a>.</p>
+
+</div>
+</div>
+<a id="aeebab5be76f845b399acdef246e5696d" name="aeebab5be76f845b399acdef246e5696d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeebab5be76f845b399acdef246e5696d">&#9670;&#160;</a></span>btn_red_agent</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structButton.html">Button</a>* btn_red_agent = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00004">4</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2lobby_8c_source.html#l00012">lobby_button_click()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00168">lobby_display()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00210">lobby_free()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00197">lobby_handle_event()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00068">lobby_init()</a>.</p>
+
+</div>
+</div>
+<a id="a826bed728c3ac0d6c29a1b585bc93e96" name="a826bed728c3ac0d6c29a1b585bc93e96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a826bed728c3ac0d6c29a1b585bc93e96">&#9670;&#160;</a></span>btn_red_spy</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structButton.html">Button</a>* btn_red_spy = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00005">5</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2lobby_8c_source.html#l00012">lobby_button_click()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00168">lobby_display()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00210">lobby_free()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00197">lobby_handle_event()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00068">lobby_init()</a>.</p>
+
+</div>
+</div>
+<a id="ab5d9550c4b6ee353d280eedb9456a0ee" name="ab5d9550c4b6ee353d280eedb9456a0ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5d9550c4b6ee353d280eedb9456a0ee">&#9670;&#160;</a></span>btn_return</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structButton.html">Button</a>* btn_return = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00009">9</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2lobby_8c_source.html#l00012">lobby_button_click()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00168">lobby_display()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00210">lobby_free()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00197">lobby_handle_event()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00068">lobby_init()</a>.</p>
+
+</div>
+</div>
+<a id="a53848c36d7d2c5d1cb42684a92ea2148" name="a53848c36d7d2c5d1cb42684a92ea2148"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53848c36d7d2c5d1cb42684a92ea2148">&#9670;&#160;</a></span>lobby_filter_applied</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int lobby_filter_applied = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00003">3</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2lobby_8c_source.html#l00012">lobby_button_click()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00168">lobby_display()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a href="client_2src_2lobby_8c.html">lobby.c</a></li>
+    <li class="footer">Généré le Jeudi 19 Mars 2026 15:31:46 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

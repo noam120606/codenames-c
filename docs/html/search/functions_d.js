@@ -1,0 +1,8 @@
+var searchData=
+[
+  ['on_5fleave_0',['on_leave',['../server_2src_2message_8c.html#add27fff7d2eeb6c5c76aa14d3b06f756',1,'on_leave(Codenames *codenames, TcpClient *client):&#160;message.c'],['../server_2lib_2message_8h.html#add27fff7d2eeb6c5c76aa14d3b06f756',1,'on_leave(Codenames *codenames, TcpClient *client):&#160;message.c']]],
+  ['on_5fmessage_1',['on_message',['../client_2src_2message_8c.html#a409ae377c978ad54e2e2438a5edb4bf1',1,'on_message(SDL_Context *context, char *message):&#160;message.c'],['../client_2lib_2message_8h.html#a409ae377c978ad54e2e2438a5edb4bf1',1,'on_message(SDL_Context *context, char *message):&#160;message.c'],['../server_2src_2message_8c.html#a10a7a0258afe719e66a8ee30cba9c34a',1,'on_message(Codenames *codenames, TcpClient *client, char *message):&#160;message.c'],['../server_2lib_2message_8h.html#a10a7a0258afe719e66a8ee30cba9c34a',1,'on_message(Codenames *codenames, TcpClient *client, char *message):&#160;message.c']]],
+  ['on_5fmusic_5fvolume_5fchange_2',['on_music_volume_change',['../infos_8c.html#aaf16ca688e742f4d4dc13dd3b1715554',1,'infos.c']]],
+  ['on_5fsfx_5fvolume_5fchange_3',['on_sfx_volume_change',['../infos_8c.html#a47a0369ccab8e07a17e2116c2fb01b43',1,'infos.c']]],
+  ['open_5fproperties_4',['open_properties',['../save_8c.html#af5a603b5dc27a37ff0d96d890f2041e3',1,'open_properties(const char *mode):&#160;save.c'],['../save_8h.html#af5a603b5dc27a37ff0d96d890f2041e3',1,'open_properties(const char *mode):&#160;save.c']]]
+];

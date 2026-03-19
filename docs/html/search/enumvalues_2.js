@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['crfd_5fcfg_5fcolor_5f0_5fpct_0',['CRFD_CFG_COLOR_0_PCT',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6a494409af326f01a5e9afe94d5c1d62b9',1,'crossfader.h']]],
+  ['crfd_5fcfg_5fcolor_5f100_5fpct_1',['CRFD_CFG_COLOR_100_PCT',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6aac073e7b1f1d16bd1abb477364cf8fd1',1,'crossfader.h']]],
+  ['crfd_5fcfg_5fdragging_2',['CRFD_CFG_DRAGGING',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6aa671d49e547f767dae3c352cc3c443ec',1,'crossfader.h']]],
+  ['crfd_5fcfg_5fh_3',['CRFD_CFG_H',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6a8e2dc5f6d2961b50fe4d44c161e3cb35',1,'crossfader.h']]],
+  ['crfd_5fcfg_5fhidden_4',['CRFD_CFG_HIDDEN',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6a6f3092261bbfb825fa1f4fac38a1e9a4',1,'crossfader.h']]],
+  ['crfd_5fcfg_5fhover_5',['CRFD_CFG_HOVER',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6ad9d65d47a61369e67f95cb2f02867d8e',1,'crossfader.h']]],
+  ['crfd_5fcfg_5fknob_5fcolor_6',['CRFD_CFG_KNOB_COLOR',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6ad602b4e80a48f3b11145f0908c7f93df',1,'crossfader.h']]],
+  ['crfd_5fcfg_5fknob_5ftexture_7',['CRFD_CFG_KNOB_TEXTURE',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6aad27082639893b31a46b0d8c996fb793',1,'crossfader.h']]],
+  ['crfd_5fcfg_5fmax_8',['CRFD_CFG_MAX',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6af8a12c07f052b15fa867578088091bc9',1,'crossfader.h']]],
+  ['crfd_5fcfg_5fmin_9',['CRFD_CFG_MIN',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6adfb618c543de1be59aec8453f757631d',1,'crossfader.h']]],
+  ['crfd_5fcfg_5fon_5fchange_10',['CRFD_CFG_ON_CHANGE',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6a974ea54bdc9fda2bd35854460c95f6e1',1,'crossfader.h']]],
+  ['crfd_5fcfg_5frect_11',['CRFD_CFG_RECT',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6a154e58384c3b476c8ba72e25b286c868',1,'crossfader.h']]],
+  ['crfd_5fcfg_5fsave_5fplayer_5fdata_12',['CRFD_CFG_SAVE_PLAYER_DATA',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6a2660c4374cd3f72e6882acf2490a657d',1,'crossfader.h']]],
+  ['crfd_5fcfg_5ftrack_5ftexture_13',['CRFD_CFG_TRACK_TEXTURE',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6ad18fa8ea2a95e56b2773019bdc054050',1,'crossfader.h']]],
+  ['crfd_5fcfg_5fvalue_14',['CRFD_CFG_VALUE',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6aefa19fffd931d63331e75e8aa0b189b3',1,'crossfader.h']]],
+  ['crfd_5fcfg_5fw_15',['CRFD_CFG_W',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6a8c47c3f63bae70eed66a78edde4962d5',1,'crossfader.h']]],
+  ['crfd_5fcfg_5fx_16',['CRFD_CFG_X',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6a070fa40aec610c680335bad37aa4f266',1,'crossfader.h']]],
+  ['crfd_5fcfg_5fy_17',['CRFD_CFG_Y',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6aa79acfb22d0f21e2e2a12c0ebd26cc18',1,'crossfader.h']]]
+];

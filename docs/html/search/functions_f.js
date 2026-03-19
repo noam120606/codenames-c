@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['randint_0',['randint',['../server_2src_2utils_8c.html#ae2550f9b6ba95e9ea93c5c85d1c396fe',1,'randint(int min, int max):&#160;utils.c'],['../server_2lib_2utils_8h.html#ae2550f9b6ba95e9ea93c5c85d1c396fe',1,'randint(int min, int max):&#160;utils.c']]],
+  ['random_5fuuid_5fstring_1',['random_uuid_string',['../server_2src_2utils_8c.html#a182e3fe2f75024e0a8ccc2712d95ae13',1,'utils.c']]],
+  ['read_5fproperty_2',['read_property',['../save_8c.html#a32484d87b11c9bd0b177bb221f4dc627',1,'read_property(char *buf, const char *property):&#160;save.c'],['../save_8h.html#a32484d87b11c9bd0b177bb221f4dc627',1,'read_property(char *buf, const char *property):&#160;save.c']]],
+  ['remove_5fclient_3',['remove_client',['../server_2src_2tcp_8c.html#a841ceb2f029aa0c11c7cf4062cbc87bf',1,'tcp.c']]],
+  ['render_5fcapsule_5foutline_4',['render_capsule_outline',['../crossfader_8c.html#a27ac312f5595c1acc7032b0cd61416a2',1,'crossfader.c']]],
+  ['render_5fcircle_5foutline_5',['render_circle_outline',['../crossfader_8c.html#af645753a7990e90dfee1a40a00f403f3',1,'crossfader.c']]],
+  ['render_5ffilled_5fcapsule_6',['render_filled_capsule',['../crossfader_8c.html#aaed6fcc09513d856ab82ae783e354fb2',1,'crossfader.c']]],
+  ['render_5ffilled_5fcircle_7',['render_filled_circle',['../crossfader_8c.html#af8d0f56307671bc2f3cd6a89c344e35c',1,'crossfader.c']]],
+  ['render_5ffilled_5fhalf_5fcircle_8',['render_filled_half_circle',['../crossfader_8c.html#a5be5d1721ae14b1d3aaa6776866ad940',1,'crossfader.c']]],
+  ['render_5ffilled_5fleft_5fcapsule_9',['render_filled_left_capsule',['../crossfader_8c.html#a15b7d3bde6a99a3f1b8407d9a79cd2bf',1,'crossfader.c']]],
+  ['render_5fhalf_5fcircle_5foutline_10',['render_half_circle_outline',['../crossfader_8c.html#ab7d69ae3368690642e3d9b21a0b43ba2',1,'crossfader.c']]],
+  ['request_5fchoose_5frole_11',['request_choose_role',['../server_2src_2lobby_8c.html#a76b3acb0d15109a3dbe5969f25992b26',1,'request_choose_role(Codenames *codenames, TcpClient *client, char *message, Arguments args):&#160;lobby.c'],['../server_2lib_2lobby_8h.html#a76b3acb0d15109a3dbe5969f25992b26',1,'request_choose_role(Codenames *codenames, TcpClient *client, char *message, Arguments args):&#160;lobby.c']]],
+  ['request_5fcreate_5flobby_12',['request_create_lobby',['../server_2src_2lobby_8c.html#a1e46ad30b12b838c13c44f55629d0fca',1,'request_create_lobby(Codenames *codenames, TcpClient *client, char *message, Arguments args):&#160;lobby.c'],['../server_2lib_2lobby_8h.html#a1e46ad30b12b838c13c44f55629d0fca',1,'request_create_lobby(Codenames *codenames, TcpClient *client, char *message, Arguments args):&#160;lobby.c']]],
+  ['request_5fjoin_5flobby_13',['request_join_lobby',['../server_2src_2lobby_8c.html#afaedceed157f9f521ace2eaf1b173bc5',1,'request_join_lobby(Codenames *codenames, TcpClient *client, char *message, Arguments args):&#160;lobby.c'],['../server_2lib_2lobby_8h.html#afaedceed157f9f521ace2eaf1b173bc5',1,'request_join_lobby(Codenames *codenames, TcpClient *client, char *message, Arguments args):&#160;lobby.c']]],
+  ['request_5fleave_5flobby_14',['request_leave_lobby',['../server_2src_2lobby_8c.html#a2db08c1d26473428f71d46b6e87c06f8',1,'request_leave_lobby(Codenames *codenames, TcpClient *client, char *message, Arguments args):&#160;lobby.c'],['../server_2lib_2lobby_8h.html#a2db08c1d26473428f71d46b6e87c06f8',1,'request_leave_lobby(Codenames *codenames, TcpClient *client, char *message, Arguments args):&#160;lobby.c']]],
+  ['request_5fuuid_15',['request_uuid',['../uuid_8c.html#acfa6091f39f10c04e90dde2b56214043',1,'request_uuid(Codenames *codenames, TcpClient *client, char *message, Arguments args):&#160;uuid.c'],['../server_2lib_2lobby_8h.html#acfa6091f39f10c04e90dde2b56214043',1,'request_uuid(Codenames *codenames, TcpClient *client, char *message, Arguments args):&#160;uuid.c'],['../uuid_8h.html#acfa6091f39f10c04e90dde2b56214043',1,'request_uuid(Codenames *codenames, TcpClient *client, char *message, Arguments args):&#160;uuid.c']]],
+  ['reset_5fchannel_5fstate_16',['reset_channel_state',['../audio_8c.html#a3c5a6a082cd81527e126c588602c74fe',1,'audio.c']]]
+];

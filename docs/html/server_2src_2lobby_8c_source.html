@@ -1,0 +1,601 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Codenames:  Fichier source de server/src/lobby.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Codenames<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Jeu Codenames multijoueur en C - Client SDL2 et Serveur TCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('server_2src_2lobby_8c_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">lobby.c</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="server_2src_2lobby_8c.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="server_2lib_2all_8h.html">../lib/all.h</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#a168a2dc85ad0faf1041bb752b59d87a7">    4</a></span><span class="keywordtype">int</span> <a class="code hl_variable" href="server_2src_2lobby_8c.html#a168a2dc85ad0faf1041bb752b59d87a7">USERNAMESCOUNT</a> = 0;</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">/* initialise USERNAMESCOUNT en comptant les mots dans assets/usernames.txt.</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">   retourne EXIT_SUCCESS si OK, EXIT_FAILURE en cas d&#39;erreur */</span></div>
+<div class="foldopen" id="foldopen00008" data-start="{" data-end="}">
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#a5b4a01b92da39d13659424154af47ec9">    8</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="server_2src_2lobby_8c.html#a5b4a01b92da39d13659424154af47ec9">init_lobby_manager</a>() {</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="keywordtype">int</span> n = <a class="code hl_function" href="server_2src_2utils_8c.html#ad93ebcf9b51100e8925bd85aabf977bc">count_words</a>(<span class="stringliteral">&quot;assets/usernames.txt&quot;</span>);</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keywordflow">if</span> (n &lt; 0) {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        fprintf(stderr, <span class="stringliteral">&quot;lobby_manager: failed to count words in assets/usernames.txt\n&quot;</span>);</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    }</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <a class="code hl_variable" href="server_2src_2lobby_8c.html#a168a2dc85ad0faf1041bb752b59d87a7">USERNAMESCOUNT</a> = n;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>}</div>
+</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#a0573481bcb614626f62b5ca74d77da04">   18</a></span><span class="keywordtype">char</span>** <a class="code hl_function" href="server_2src_2lobby_8c.html#a0573481bcb614626f62b5ca74d77da04">fetchUsernames</a>() { <span class="comment">// Lit le fichier wordlist.txt et ordonne dans une liste dont l&#39;adresse est renvoyée</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    FILE* file = fopen(<span class="stringliteral">&quot;assets/usernames.txt&quot;</span>, <span class="stringliteral">&quot;r&quot;</span>);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordflow">if</span> (!file) {</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        perror(<span class="stringliteral">&quot;Failed to open usernames file&quot;</span>);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    }</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">char</span>** usernames = (<span class="keywordtype">char</span>**)malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">char</span>*) * <a class="code hl_variable" href="server_2src_2lobby_8c.html#a168a2dc85ad0faf1041bb752b59d87a7">USERNAMESCOUNT</a>);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordflow">if</span> (!usernames) {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        perror(<span class="stringliteral">&quot;Failed to allocate memory for usernames&quot;</span>);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        fclose(file);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    }</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="client_2src_2tcp_8c.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a>[32];</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">int</span> count = 0;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordflow">while</span> (fgets(<a class="code hl_variable" href="client_2src_2tcp_8c.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a>, <span class="keyword">sizeof</span>(<a class="code hl_variable" href="client_2src_2tcp_8c.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a>), file) &amp;&amp; count &lt; <a class="code hl_variable" href="server_2src_2lobby_8c.html#a168a2dc85ad0faf1041bb752b59d87a7">USERNAMESCOUNT</a>) {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <a class="code hl_variable" href="client_2src_2tcp_8c.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a>[strcspn(<a class="code hl_variable" href="client_2src_2tcp_8c.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a>, <span class="stringliteral">&quot;\n&quot;</span>)] = 0; <span class="comment">// Remove newline character</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        usernames[count] = (<span class="keywordtype">char</span>*)malloc(strlen(<a class="code hl_variable" href="client_2src_2tcp_8c.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a>) + 1);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordflow">if</span> (!usernames[count]) {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            perror(<span class="stringliteral">&quot;Failed to allocate memory for a username&quot;</span>);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; count; j++) {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                free(usernames[j]);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            }</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            free(usernames);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            fclose(file);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        }</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        strcpy(usernames[count], <a class="code hl_variable" href="client_2src_2tcp_8c.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a>);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        count++;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    }</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    fclose(file);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordflow">return</span> usernames;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>}</div>
+</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="foldopen" id="foldopen00052" data-start="{" data-end="}">
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#aad728c7047f2a0533bf4e9aca60894f9">   52</a></span><span class="keywordtype">char</span>* <a class="code hl_function" href="server_2src_2lobby_8c.html#aad728c7047f2a0533bf4e9aca60894f9">getRandomUsername</a>() {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">char</span>** usernames = <a class="code hl_function" href="server_2src_2lobby_8c.html#a0573481bcb614626f62b5ca74d77da04">fetchUsernames</a>();</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordflow">if</span> (!usernames) {</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    }</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">int</span> index = rand() % <a class="code hl_variable" href="server_2src_2lobby_8c.html#a168a2dc85ad0faf1041bb752b59d87a7">USERNAMESCOUNT</a>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">char</span>* username = strdup(usernames[index]);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="server_2src_2lobby_8c.html#a168a2dc85ad0faf1041bb752b59d87a7">USERNAMESCOUNT</a>; i++) {</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        free(usernames[i]);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    free(usernames);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordflow">return</span> username;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}</div>
+</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="foldopen" id="foldopen00066" data-start="{" data-end="}">
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#a95d0cf6c24388e7600fecdf9207fcb72">   66</a></span><a class="code hl_struct" href="structLobbyManager.html">LobbyManager</a>* <a class="code hl_function" href="server_2src_2lobby_8c.html#a95d0cf6c24388e7600fecdf9207fcb72">create_lobby_manager</a>() {</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_struct" href="structLobbyManager.html">LobbyManager</a>* manager = malloc(<span class="keyword">sizeof</span>(<a class="code hl_struct" href="structLobbyManager.html">LobbyManager</a>));</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordflow">if</span> (!manager) <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    manager-&gt;<a class="code hl_variable" href="structLobbyManager.html#a57abea84d03dd0beb00fa4295b9be5ce">lobbies</a> = <a class="code hl_function" href="client_2src_2list_8c.html#a50a6d26faf5a6f4c65eb98feaf2430b5">list_create</a>();</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordflow">if</span> (!manager-&gt;<a class="code hl_variable" href="structLobbyManager.html#a57abea84d03dd0beb00fa4295b9be5ce">lobbies</a>) {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        free(manager);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    }</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordflow">return</span> manager;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>}</div>
+</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span></div>
+<div class="foldopen" id="foldopen00078" data-start="{" data-end="}">
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#a14e512d3eb1682633b932273dc4e4e01">   78</a></span><span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="server_2src_2lobby_8c.html#a14e512d3eb1682633b932273dc4e4e01">destroy_lobby_callback</a>(<span class="keywordtype">void</span>* data, <span class="keywordtype">void</span>* context) {</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <a class="code hl_struct" href="structCodenames.html">Codenames</a>* codenames = (<a class="code hl_struct" href="structCodenames.html">Codenames</a>*)context;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <a class="code hl_struct" href="structLobby.html">Lobby</a>* lobby = (<a class="code hl_struct" href="structLobby.html">Lobby</a>*)data;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordflow">if</span> (lobby) {</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; lobby-&gt;<a class="code hl_variable" href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">nb_players</a>; i++) {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            <span class="keywordtype">char</span> msg[2] = {(char)(<span class="charliteral">&#39;0&#39;</span> + <a class="code hl_enumvalue" href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013ad241e6a214ef89fed912835259455f8b">MSG_LOBBYCLOSED</a>), <span class="charliteral">&#39;\0&#39;</span>};</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            <a class="code hl_function" href="server_2src_2tcp_8c.html#ae3efc44467ee08b4d29bcc4ef7886119">tcp_send_to_client</a>(codenames, lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[i]-&gt;<a class="code hl_variable" href="structUser.html#aaaf5d2f7495a0381ff5111ef56016ea6">socket_fd</a>, msg);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            <a class="code hl_function" href="client_2src_2user_8c.html#a2479a5c30e476b2f3312e542e9fc7089">destroy_user</a>(lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[i]);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        }</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        free(lobby);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    }</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>}</div>
+</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="foldopen" id="foldopen00091" data-start="{" data-end="}">
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#a1f8c73963ebfb36ee377a21fe636d1e3">   91</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="server_2src_2lobby_8c.html#a1f8c73963ebfb36ee377a21fe636d1e3">destroy_lobby_manager</a>(<a class="code hl_struct" href="structCodenames.html">Codenames</a>* codenames, <a class="code hl_struct" href="structLobbyManager.html">LobbyManager</a>* manager) {</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordflow">if</span> (manager) {</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <a class="code hl_function" href="client_2src_2list_8c.html#ab7f699854df7ed988c068dc6048ca789">list_foreach</a>(manager-&gt;<a class="code hl_variable" href="structLobbyManager.html#a57abea84d03dd0beb00fa4295b9be5ce">lobbies</a>, <a class="code hl_function" href="server_2src_2lobby_8c.html#a14e512d3eb1682633b932273dc4e4e01">destroy_lobby_callback</a>, codenames);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <a class="code hl_function" href="client_2src_2list_8c.html#a769aba1f6d36778101fcb047890a26fd">list_destroy</a>(manager-&gt;<a class="code hl_variable" href="structLobbyManager.html#a57abea84d03dd0beb00fa4295b9be5ce">lobbies</a>, NULL); <span class="comment">// données déjà libérées par le callback</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        free(manager);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    }</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>}</div>
+</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span></div>
+<div class="foldopen" id="foldopen00100" data-start="{" data-end="}">
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#ae4d65bf167ca0197b9597951ed83354e">  100</a></span><span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_function" href="server_2src_2lobby_8c.html#ae4d65bf167ca0197b9597951ed83354e">lobby_get_id</a>(<span class="keywordtype">void</span>* data) {</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordflow">return</span> ((<a class="code hl_struct" href="structLobby.html">Lobby</a>*)data)-&gt;<a class="code hl_variable" href="structLobby.html#aa61b45b961a54b3f1bb20c926c389e5f">id</a>;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>}</div>
+</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="foldopen" id="foldopen00104" data-start="{" data-end="}">
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#a44d2d1f1a9577918a430c3d184438383">  104</a></span><a class="code hl_struct" href="structLobby.html">Lobby</a>* <a class="code hl_function" href="server_2src_2lobby_8c.html#a44d2d1f1a9577918a430c3d184438383">create_lobby</a>(<a class="code hl_struct" href="structLobbyManager.html">LobbyManager</a>* manager) {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="client_2src_2list_8c.html#a2e0b573f5ab9221c82af4a5eb5a48379">list_size</a>(manager-&gt;<a class="code hl_variable" href="structLobbyManager.html#a57abea84d03dd0beb00fa4295b9be5ce">lobbies</a>) &gt;= <a class="code hl_define" href="client_2lib_2lobby_8h.html#a67fee069fc4be0b17f7a3a8d185f4416">MAX_LOBBIES</a>) {</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    }</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <a class="code hl_struct" href="structLobby.html">Lobby</a>* lobby = malloc(<span class="keyword">sizeof</span>(<a class="code hl_struct" href="structLobby.html">Lobby</a>));</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordflow">if</span> (!lobby) <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    lobby-&gt;<a class="code hl_variable" href="structLobby.html#aa61b45b961a54b3f1bb20c926c389e5f">id</a> = <a class="code hl_function" href="client_2src_2list_8c.html#a98ea9df4ed883d333d98d7b00aaf82a2">list_next_available_id</a>(manager-&gt;<a class="code hl_variable" href="structLobbyManager.html#a57abea84d03dd0beb00fa4295b9be5ce">lobbies</a>, <a class="code hl_function" href="server_2src_2lobby_8c.html#ae4d65bf167ca0197b9597951ed83354e">lobby_get_id</a>);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    lobby-&gt;<a class="code hl_variable" href="structLobby.html#a56a7ba822aefe25cb28c9b1d680c6525">status</a> = <a class="code hl_enumvalue" href="client_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83a715a5fc1dd102e417ed4fc5b81477ba4">LB_STATUS_WAITING</a>;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    lobby-&gt;<a class="code hl_variable" href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">nb_players</a> = 0;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    lobby-&gt;<a class="code hl_variable" href="structLobby.html#a201a3357be821cc9646c8588855c663f">owner_id</a> = -1;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    lobby-&gt;<a class="code hl_variable" href="structLobby.html#a1567c92b89bc67d97ae4cbbf7034836e">game</a> = NULL;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    strcpy(lobby-&gt;<a class="code hl_variable" href="structLobby.html#a92b6139484380e05dac8bf3fc0a2455a">code</a>, <a class="code hl_function" href="server_2src_2utils_8c.html#abeaa3b934bab9c3d990dde11d4dc5d64">generate_code</a>());</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="client_2src_2list_8c.html#a18f87d88930c7be4d848c4db76e6fe76">list_add</a>(manager-&gt;<a class="code hl_variable" href="structLobbyManager.html#a57abea84d03dd0beb00fa4295b9be5ce">lobbies</a>, lobby) != EXIT_SUCCESS) {</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        free(lobby);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    }</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordflow">return</span> lobby;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>}</div>
+</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="foldopen" id="foldopen00126" data-start="{" data-end="}">
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#a3f3f826b2ed73b99d1f5b51ff9bb5fd5">  126</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="server_2src_2lobby_8c.html#a3f3f826b2ed73b99d1f5b51ff9bb5fd5">join_lobby</a>(<a class="code hl_struct" href="structLobby.html">Lobby</a>* lobby, <a class="code hl_struct" href="structUser.html">User</a>* user) {</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keywordflow">if</span> (lobby-&gt;<a class="code hl_variable" href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">nb_players</a> &gt;= <a class="code hl_define" href="client_2lib_2lobby_8h.html#a2c2a303621f66761529e598758d7ef34">MAX_USERS</a>) {</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    }</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[lobby-&gt;<a class="code hl_variable" href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">nb_players</a>++] = user;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>}</div>
+</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="foldopen" id="foldopen00134" data-start="{" data-end="}">
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#ab54b2e902c3070efb2feb5f75699ccef">  134</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="server_2src_2lobby_8c.html#ab54b2e902c3070efb2feb5f75699ccef">leave_lobby</a>(<a class="code hl_struct" href="structLobby.html">Lobby</a>* lobby, <a class="code hl_struct" href="structUser.html">User</a>* user) {</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keywordtype">int</span> index = -1;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; lobby-&gt;<a class="code hl_variable" href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">nb_players</a>; i++) {</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <span class="keywordflow">if</span> (lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[i]-&gt;<a class="code hl_variable" href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">id</a> == user-&gt;<a class="code hl_variable" href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">id</a>) {</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>            index = i;</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        }</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    }</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="keywordflow">if</span> (index == -1) {</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    }</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <a class="code hl_function" href="client_2src_2user_8c.html#a2479a5c30e476b2f3312e542e9fc7089">destroy_user</a>(lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[index]);</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = index; j &lt; lobby-&gt;<a class="code hl_variable" href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">nb_players</a> - 1; j++) {</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[j] = lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[j + 1];</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    }</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    lobby-&gt;<a class="code hl_variable" href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">nb_players</a>--;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>}</div>
+</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="foldopen" id="foldopen00153" data-start="{" data-end="}">
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#af844d1079e019dab0a618c378178fe75">  153</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="server_2src_2lobby_8c.html#af844d1079e019dab0a618c378178fe75">choose_role</a>(<a class="code hl_struct" href="structLobby.html">Lobby</a>* lobby, <a class="code hl_struct" href="structUser.html">User</a>* user, <span class="keywordtype">int</span> role, <span class="keywordtype">int</span> team) {</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; lobby-&gt;<a class="code hl_variable" href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">nb_players</a>; i++) {</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        <span class="keywordflow">if</span> (lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[i]-&gt;<a class="code hl_variable" href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">id</a> == user-&gt;<a class="code hl_variable" href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">id</a>) {</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[i]-&gt;<a class="code hl_variable" href="structUser.html#ab91e66ddd08d2a0a76790374c2861fb8">role</a> = role;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>            lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[i]-&gt;<a class="code hl_variable" href="structUser.html#ad9940d1242bd89368f6e328179931464">team</a> = team;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>            <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        }</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    }</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>}</div>
+</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="comment">/* Prédicats de recherche pour list_find */</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="foldopen" id="foldopen00166" data-start="{" data-end="}">
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#a0e14f36deb0a104096160456cc43dc3c">  166</a></span><span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_function" href="server_2src_2lobby_8c.html#a0e14f36deb0a104096160456cc43dc3c">predicate_owner_id</a>(<span class="keywordtype">void</span>* data, <span class="keywordtype">void</span>* context) {</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <a class="code hl_struct" href="structLobby.html">Lobby</a>* lobby = (<a class="code hl_struct" href="structLobby.html">Lobby</a>*)data;</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keywordtype">int</span> owner_id = *(<span class="keywordtype">int</span>*)context;</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="keywordflow">return</span> lobby-&gt;<a class="code hl_variable" href="structLobby.html#a201a3357be821cc9646c8588855c663f">owner_id</a> == owner_id;</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>}</div>
+</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
+<div class="foldopen" id="foldopen00172" data-start="{" data-end="}">
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#a2aa6bdfaf517ad38036ca53f3c729ee3">  172</a></span><span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_function" href="server_2src_2lobby_8c.html#a2aa6bdfaf517ad38036ca53f3c729ee3">predicate_player_id</a>(<span class="keywordtype">void</span>* data, <span class="keywordtype">void</span>* context) {</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <a class="code hl_struct" href="structLobby.html">Lobby</a>* lobby = (<a class="code hl_struct" href="structLobby.html">Lobby</a>*)data;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    <span class="keywordtype">int</span> <span class="keywordtype">id</span> = *(<span class="keywordtype">int</span>*)context;</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; lobby-&gt;<a class="code hl_variable" href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">nb_players</a>; j++) {</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        <span class="keywordflow">if</span> (lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[j]-&gt;<a class="code hl_variable" href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">id</a> == <span class="keywordtype">id</span>) <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    }</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>}</div>
+</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
+<div class="foldopen" id="foldopen00181" data-start="{" data-end="}">
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#a969f400f36a01da706e7826a085eb8a1">  181</a></span><span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_function" href="server_2src_2lobby_8c.html#a969f400f36a01da706e7826a085eb8a1">predicate_code</a>(<span class="keywordtype">void</span>* data, <span class="keywordtype">void</span>* context) {</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    <a class="code hl_struct" href="structLobby.html">Lobby</a>* lobby = (<a class="code hl_struct" href="structLobby.html">Lobby</a>*)data;</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <span class="keyword">const</span> <span class="keywordtype">char</span>* code = (<span class="keyword">const</span> <span class="keywordtype">char</span>*)context;</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <span class="keywordflow">return</span> strcmp(lobby-&gt;<a class="code hl_variable" href="structLobby.html#a92b6139484380e05dac8bf3fc0a2455a">code</a>, code) == 0;</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>}</div>
+</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="foldopen" id="foldopen00187" data-start="{" data-end="}">
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#a09e92c0051506ed8b2ab1d8c3de28ac1">  187</a></span><a class="code hl_struct" href="structUser.html">User</a>* <a class="code hl_function" href="server_2src_2lobby_8c.html#a09e92c0051506ed8b2ab1d8c3de28ac1">find_user_by_id</a>(<a class="code hl_struct" href="structLobby.html">Lobby</a>* lobby, <span class="keywordtype">int</span> <span class="keywordtype">id</span>) {</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; lobby-&gt;<a class="code hl_variable" href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">nb_players</a>; i++) {</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        <span class="keywordflow">if</span> (lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[i]-&gt;<a class="code hl_variable" href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">id</a> == <span class="keywordtype">id</span>) {</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>            <span class="keywordflow">return</span> lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[i];</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        }</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    }</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>}</div>
+</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
+<div class="foldopen" id="foldopen00196" data-start="{" data-end="}">
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#a70ab64da857b6aa300fbf07629e64ed4">  196</a></span><a class="code hl_struct" href="structLobby.html">Lobby</a>* <a class="code hl_function" href="server_2src_2lobby_8c.html#a70ab64da857b6aa300fbf07629e64ed4">find_lobby_by_ownerid</a>(<a class="code hl_struct" href="structLobbyManager.html">LobbyManager</a>* manager, <span class="keywordtype">int</span> owner_id) {</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    <span class="keywordflow">return</span> (<a class="code hl_struct" href="structLobby.html">Lobby</a>*)<a class="code hl_function" href="client_2src_2list_8c.html#ab5ca2956cad41e6608e8e2cc42827180">list_find</a>(manager-&gt;<a class="code hl_variable" href="structLobbyManager.html#a57abea84d03dd0beb00fa4295b9be5ce">lobbies</a>, <a class="code hl_function" href="server_2src_2lobby_8c.html#a0e14f36deb0a104096160456cc43dc3c">predicate_owner_id</a>, &amp;owner_id);</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>}</div>
+</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
+<div class="foldopen" id="foldopen00200" data-start="{" data-end="}">
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#ab200dca231db3c7405e5242cd1d580e1">  200</a></span><a class="code hl_struct" href="structLobby.html">Lobby</a>* <a class="code hl_function" href="server_2src_2lobby_8c.html#ab200dca231db3c7405e5242cd1d580e1">find_lobby_by_playerid</a>(<a class="code hl_struct" href="structLobbyManager.html">LobbyManager</a>* manager, <span class="keywordtype">int</span> <span class="keywordtype">id</span>) {</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keywordflow">return</span> (<a class="code hl_struct" href="structLobby.html">Lobby</a>*)<a class="code hl_function" href="client_2src_2list_8c.html#ab5ca2956cad41e6608e8e2cc42827180">list_find</a>(manager-&gt;<a class="code hl_variable" href="structLobbyManager.html#a57abea84d03dd0beb00fa4295b9be5ce">lobbies</a>, <a class="code hl_function" href="server_2src_2lobby_8c.html#a2aa6bdfaf517ad38036ca53f3c729ee3">predicate_player_id</a>, &amp;<span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>}</div>
+</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
+<div class="foldopen" id="foldopen00204" data-start="{" data-end="}">
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#a34b870bac73ec966edab28acc4be717a">  204</a></span><a class="code hl_struct" href="structLobby.html">Lobby</a>* <a class="code hl_function" href="server_2src_2lobby_8c.html#a34b870bac73ec966edab28acc4be717a">find_lobby_by_code</a>(<a class="code hl_struct" href="structLobbyManager.html">LobbyManager</a>* manager, <span class="keyword">const</span> <span class="keywordtype">char</span>* code) {</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    <span class="keywordflow">return</span> (<a class="code hl_struct" href="structLobby.html">Lobby</a>*)<a class="code hl_function" href="client_2src_2list_8c.html#ab5ca2956cad41e6608e8e2cc42827180">list_find</a>(manager-&gt;<a class="code hl_variable" href="structLobbyManager.html#a57abea84d03dd0beb00fa4295b9be5ce">lobbies</a>, <a class="code hl_function" href="server_2src_2lobby_8c.html#a969f400f36a01da706e7826a085eb8a1">predicate_code</a>, (<span class="keywordtype">void</span>*)code);</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>}</div>
+</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span> </div>
+<div class="foldopen" id="foldopen00208" data-start="{" data-end="}">
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#a2bb4ca514adcafddefb6759e2b5b69a7">  208</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="server_2src_2lobby_8c.html#a2bb4ca514adcafddefb6759e2b5b69a7">destroy_lobby</a>(<a class="code hl_struct" href="structCodenames.html">Codenames</a>* codenames, <a class="code hl_struct" href="structLobby.html">Lobby</a>* lobby) {</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    <span class="keywordflow">if</span> (lobby) {</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; lobby-&gt;<a class="code hl_variable" href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">nb_players</a>; i++) {</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>            <span class="keywordtype">char</span> msg[2] = {(char)(<span class="charliteral">&#39;0&#39;</span> + <a class="code hl_enumvalue" href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013ad241e6a214ef89fed912835259455f8b">MSG_LOBBYCLOSED</a>), <span class="charliteral">&#39;\0&#39;</span>};</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>            <a class="code hl_function" href="server_2src_2tcp_8c.html#ae3efc44467ee08b4d29bcc4ef7886119">tcp_send_to_client</a>(codenames, lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[i]-&gt;<a class="code hl_variable" href="structUser.html#aaaf5d2f7495a0381ff5111ef56016ea6">socket_fd</a>, msg);</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>            <a class="code hl_function" href="client_2src_2user_8c.html#a2479a5c30e476b2f3312e542e9fc7089">destroy_user</a>(lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[i]);</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        }</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        <a class="code hl_function" href="client_2src_2list_8c.html#af20bc7624ee624752ed51867be6944fe">list_remove</a>(codenames-&gt;<a class="code hl_variable" href="structCodenames.html#a60e595ede4c21bb5ab8aeead6009726a">lobby</a>-&gt;<a class="code hl_variable" href="structLobbyManager.html#a57abea84d03dd0beb00fa4295b9be5ce">lobbies</a>, lobby);</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        free(lobby);</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    }</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>}</div>
+</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="comment">// interactions joueurs</span></div>
+<div class="foldopen" id="foldopen00221" data-start="{" data-end="}">
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#a1e46ad30b12b838c13c44f55629d0fca">  221</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="server_2src_2lobby_8c.html#a1e46ad30b12b838c13c44f55629d0fca">request_create_lobby</a>(<a class="code hl_struct" href="structCodenames.html">Codenames</a>* codenames, <a class="code hl_struct" href="structTcpClient.html">TcpClient</a>* client, <span class="keywordtype">char</span>* message, <a class="code hl_struct" href="structArguments.html">Arguments</a> args) {</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    <span class="keywordflow">if</span> (args.<a class="code hl_variable" href="structArguments.html#ad7e02331365bd54d9d3abdef6b81dc30">argc</a> &lt; 1) {</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        printf(<span class="stringliteral">&quot;Invalid create lobby message from client %d: \&quot;%s\&quot;\n&quot;</span>, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>, message);</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    }</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <a class="code hl_struct" href="structLobby.html">Lobby</a>* lobby = <a class="code hl_function" href="server_2src_2lobby_8c.html#a44d2d1f1a9577918a430c3d184438383">create_lobby</a>(codenames-&gt;<a class="code hl_variable" href="structCodenames.html#a60e595ede4c21bb5ab8aeead6009726a">lobby</a>);</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    <span class="keywordflow">if</span> (lobby == NULL) {</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        printf(<span class="stringliteral">&quot;Failed to create lobby\n&quot;</span>);</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    }</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    <span class="comment">// Le client qui crée le lobby en devient automatiquement le propriétaire et rejoint le lobby</span></div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    lobby-&gt;<a class="code hl_variable" href="structLobby.html#a201a3357be821cc9646c8588855c663f">owner_id</a> = client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>;</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    <a class="code hl_struct" href="structUser.html">User</a>* user = <a class="code hl_function" href="client_2src_2user_8c.html#a0710dca1ff61cdf7517bbe57803f1fec">create_user</a>(client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>, args.<a class="code hl_variable" href="structArguments.html#a29e8dac2f7b3adc32cbd95e9a4162194">argv</a>[0], client-&gt;<a class="code hl_variable" href="structTcpClient.html#a65f3c371110f630616b3b459972753b1">socket</a>);</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    <span class="keywordflow">if</span> (user == NULL) {</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        printf(<span class="stringliteral">&quot;Failed to create user for client %d\n&quot;</span>, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>);</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    }</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="server_2src_2lobby_8c.html#a3f3f826b2ed73b99d1f5b51ff9bb5fd5">join_lobby</a>(lobby, user) != EXIT_SUCCESS) {</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        printf(<span class="stringliteral">&quot;Failed to join lobby for client %d\n&quot;</span>, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>);</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>        <a class="code hl_function" href="client_2src_2user_8c.html#a2479a5c30e476b2f3312e542e9fc7089">destroy_user</a>(user);</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    }</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    printf(<span class="stringliteral">&quot;Client %d (%s) created lobby %d\n&quot;</span>, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>, user-&gt;<a class="code hl_variable" href="structUser.html#ae1faef3d602da4c65e7571e751f775f2">name</a>, lobby-&gt;<a class="code hl_variable" href="structLobby.html#aa61b45b961a54b3f1bb20c926c389e5f">id</a>);</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    <span class="comment">// Informer le client de la création du lobby avec son id et son code</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    <span class="keywordtype">char</span> reponse[64];</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    <a class="code hl_function" href="client_2src_2utils_8c.html#ade6960f663c739637ee1beaf757c5f24">format_to</a>(reponse, <span class="keyword">sizeof</span>(reponse), <span class="stringliteral">&quot;%d %d %s&quot;</span>, <a class="code hl_enumvalue" href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a0bf951f6070633557526081ff9c09126">MSG_CREATELOBBY</a>, lobby-&gt;<a class="code hl_variable" href="structLobby.html#aa61b45b961a54b3f1bb20c926c389e5f">id</a>, lobby-&gt;<a class="code hl_variable" href="structLobby.html#a92b6139484380e05dac8bf3fc0a2455a">code</a>);</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    <a class="code hl_function" href="server_2src_2tcp_8c.html#ae3efc44467ee08b4d29bcc4ef7886119">tcp_send_to_client</a>(codenames, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>, reponse);</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span> </div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>}</div>
+</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span> </div>
+<div class="foldopen" id="foldopen00253" data-start="{" data-end="}">
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#afaedceed157f9f521ace2eaf1b173bc5">  253</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="server_2src_2lobby_8c.html#afaedceed157f9f521ace2eaf1b173bc5">request_join_lobby</a>(<a class="code hl_struct" href="structCodenames.html">Codenames</a>* codenames, <a class="code hl_struct" href="structTcpClient.html">TcpClient</a>* client, <span class="keywordtype">char</span>* message, <a class="code hl_struct" href="structArguments.html">Arguments</a> args) {</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    <span class="comment">// Handle join lobby</span></div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    <span class="keywordflow">if</span> (args.<a class="code hl_variable" href="structArguments.html#ad7e02331365bd54d9d3abdef6b81dc30">argc</a> &lt; 2) {</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        printf(<span class="stringliteral">&quot;Invalid join lobby message from client %d: \&quot;%s\&quot;\n&quot;</span>, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>, message);</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    }</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    <a class="code hl_struct" href="structLobby.html">Lobby</a>* lobby = <a class="code hl_function" href="server_2src_2lobby_8c.html#a34b870bac73ec966edab28acc4be717a">find_lobby_by_code</a>(codenames-&gt;<a class="code hl_variable" href="structCodenames.html#a60e595ede4c21bb5ab8aeead6009726a">lobby</a>, args.<a class="code hl_variable" href="structArguments.html#a29e8dac2f7b3adc32cbd95e9a4162194">argv</a>[0]);</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    <span class="keywordflow">if</span> (!lobby) {</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        printf(<span class="stringliteral">&quot;Lobby not found for client %d\n&quot;</span>, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>);</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    }</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span> </div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    <a class="code hl_struct" href="structUser.html">User</a>* user = <a class="code hl_function" href="client_2src_2user_8c.html#a0710dca1ff61cdf7517bbe57803f1fec">create_user</a>(client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>, args.<a class="code hl_variable" href="structArguments.html#a29e8dac2f7b3adc32cbd95e9a4162194">argv</a>[1], client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>);</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    <span class="keywordflow">if</span> (!user) {</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        printf(<span class="stringliteral">&quot;Failed to create user for client %d\n&quot;</span>, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>);</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>    }</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span> </div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="server_2src_2lobby_8c.html#a3f3f826b2ed73b99d1f5b51ff9bb5fd5">join_lobby</a>(lobby, user) != EXIT_SUCCESS) {</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        printf(<span class="stringliteral">&quot;Failed to join lobby %d for client %d\n&quot;</span>, lobby-&gt;<a class="code hl_variable" href="structLobby.html#aa61b45b961a54b3f1bb20c926c389e5f">id</a>, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>);</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        <a class="code hl_function" href="client_2src_2user_8c.html#a2479a5c30e476b2f3312e542e9fc7089">destroy_user</a>(user);</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    }</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span> </div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    printf(<span class="stringliteral">&quot;Client %d (%s) joined lobby %d\n&quot;</span>, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>, user-&gt;<a class="code hl_variable" href="structUser.html#ae1faef3d602da4c65e7571e751f775f2">name</a>, lobby-&gt;<a class="code hl_variable" href="structLobby.html#aa61b45b961a54b3f1bb20c926c389e5f">id</a>);</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>    <span class="keywordtype">char</span> trame[64];</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>    <a class="code hl_function" href="client_2src_2utils_8c.html#ade6960f663c739637ee1beaf757c5f24">format_to</a>(trame, <span class="keyword">sizeof</span>(trame), <span class="stringliteral">&quot;%d %d %s&quot;</span>, <a class="code hl_enumvalue" href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013ab050c6c555efefa0665c624be338b2e5">MSG_JOINLOBBY</a>, lobby-&gt;<a class="code hl_variable" href="structLobby.html#aa61b45b961a54b3f1bb20c926c389e5f">id</a>, lobby-&gt;<a class="code hl_variable" href="structLobby.html#a92b6139484380e05dac8bf3fc0a2455a">code</a>);</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>    <a class="code hl_function" href="server_2src_2tcp_8c.html#ae3efc44467ee08b4d29bcc4ef7886119">tcp_send_to_client</a>(codenames, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>, trame);</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span> </div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; lobby-&gt;<a class="code hl_variable" href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">nb_players</a>; i++) {</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>        <span class="keywordflow">if</span> (lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[i]-&gt;<a class="code hl_variable" href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">id</a> != client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>) {</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>            <span class="keywordtype">char</span> msg[64];</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>            <a class="code hl_function" href="client_2src_2utils_8c.html#ade6960f663c739637ee1beaf757c5f24">format_to</a>(msg, <span class="keyword">sizeof</span>(msg), <span class="stringliteral">&quot;%d %s %d %d&quot;</span>, <a class="code hl_enumvalue" href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a780e0c0675c808873eb7553b183f25c6">MSG_PLAYERJOINED</a>, lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[i]-&gt;<a class="code hl_variable" href="structUser.html#ae1faef3d602da4c65e7571e751f775f2">name</a>, lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[i]-&gt;<a class="code hl_variable" href="structUser.html#ab91e66ddd08d2a0a76790374c2861fb8">role</a>, lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[i]-&gt;<a class="code hl_variable" href="structUser.html#ad9940d1242bd89368f6e328179931464">team</a>);</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>            <a class="code hl_function" href="server_2src_2tcp_8c.html#ae3efc44467ee08b4d29bcc4ef7886119">tcp_send_to_client</a>(codenames, lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[i]-&gt;<a class="code hl_variable" href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">id</a>, msg);</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>        }</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    }</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span> </div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>}</div>
+</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span> </div>
+<div class="foldopen" id="foldopen00295" data-start="{" data-end="}">
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#a2db08c1d26473428f71d46b6e87c06f8">  295</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="server_2src_2lobby_8c.html#a2db08c1d26473428f71d46b6e87c06f8">request_leave_lobby</a>(<a class="code hl_struct" href="structCodenames.html">Codenames</a>* codenames, <a class="code hl_struct" href="structTcpClient.html">TcpClient</a>* client, <span class="keywordtype">char</span>* message, <a class="code hl_struct" href="structArguments.html">Arguments</a> args) {</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>    (void)message; <span class="comment">// unused</span></div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>    (void)args;    <span class="comment">// unused</span></div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span> </div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>    <span class="comment">/* Trouver le lobby où se trouve le client */</span></div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>    <a class="code hl_struct" href="structLobby.html">Lobby</a>* lobby = <a class="code hl_function" href="server_2src_2lobby_8c.html#ab200dca231db3c7405e5242cd1d580e1">find_lobby_by_playerid</a>(codenames-&gt;<a class="code hl_variable" href="structCodenames.html#a60e595ede4c21bb5ab8aeead6009726a">lobby</a>, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>);</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    <span class="keywordflow">if</span> (!lobby) {</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>        printf(<span class="stringliteral">&quot;Client %d tried to leave but is not in any lobby\n&quot;</span>, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>);</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>    }</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span> </div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    <a class="code hl_struct" href="structUser.html">User</a>* user = <a class="code hl_function" href="server_2src_2lobby_8c.html#a09e92c0051506ed8b2ab1d8c3de28ac1">find_user_by_id</a>(lobby, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>);</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    <span class="keywordflow">if</span> (!user) {</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>        printf(<span class="stringliteral">&quot;Client %d not found in lobby %d\n&quot;</span>, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>, lobby-&gt;<a class="code hl_variable" href="structLobby.html#aa61b45b961a54b3f1bb20c926c389e5f">id</a>);</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>    }</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>    <span class="comment">/* Décaler les utilisateurs suivants */</span></div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>    <span class="keywordtype">int</span> index = -1;</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; lobby-&gt;<a class="code hl_variable" href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">nb_players</a>; i++) {</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>        <span class="keywordflow">if</span> (lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[i]-&gt;<a class="code hl_variable" href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">id</a> == client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>) {</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>            index = i;</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>        }</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>    }</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = index; j &lt; lobby-&gt;<a class="code hl_variable" href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">nb_players</a> - 1; j++) {</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>        lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[j] = lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[j + 1];</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    }</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>    lobby-&gt;<a class="code hl_variable" href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">nb_players</a>--;</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span> </div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>    printf(<span class="stringliteral">&quot;Client %d (%s) left lobby %d\n&quot;</span>, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>, user-&gt;<a class="code hl_variable" href="structUser.html#ae1faef3d602da4c65e7571e751f775f2">name</a>, lobby-&gt;<a class="code hl_variable" href="structLobby.html#aa61b45b961a54b3f1bb20c926c389e5f">id</a>);</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>    <a class="code hl_function" href="client_2src_2user_8c.html#a2479a5c30e476b2f3312e542e9fc7089">destroy_user</a>(user); <span class="comment">// Libérer les ressources associées à l&#39;utilisateur avant de le retirer du lobby</span></div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span> </div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>    <span class="comment">/* Si le lobby est vide, le détruire */</span></div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>    <span class="keywordflow">if</span> (lobby-&gt;<a class="code hl_variable" href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">nb_players</a> == 0) {</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>        <a class="code hl_function" href="client_2src_2list_8c.html#af20bc7624ee624752ed51867be6944fe">list_remove</a>(codenames-&gt;<a class="code hl_variable" href="structCodenames.html#a60e595ede4c21bb5ab8aeead6009726a">lobby</a>-&gt;<a class="code hl_variable" href="structLobbyManager.html#a57abea84d03dd0beb00fa4295b9be5ce">lobbies</a>, lobby);</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>        printf(<span class="stringliteral">&quot;Lobby %d destroyed (empty)\n&quot;</span>, lobby-&gt;<a class="code hl_variable" href="structLobby.html#aa61b45b961a54b3f1bb20c926c389e5f">id</a>);</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>        free(lobby);</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>    }</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>    <span class="comment">/* Si le owner a quitté, transférer au premier joueur restant */</span></div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (lobby-&gt;<a class="code hl_variable" href="structLobby.html#a201a3357be821cc9646c8588855c663f">owner_id</a> == client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>) {</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>        lobby-&gt;<a class="code hl_variable" href="structLobby.html#a201a3357be821cc9646c8588855c663f">owner_id</a> = lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[0]-&gt;<a class="code hl_variable" href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">id</a>;</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>        printf(<span class="stringliteral">&quot;Lobby %d ownership transferred to client %d\n&quot;</span>, lobby-&gt;<a class="code hl_variable" href="structLobby.html#aa61b45b961a54b3f1bb20c926c389e5f">id</a>, lobby-&gt;<a class="code hl_variable" href="structLobby.html#a201a3357be821cc9646c8588855c663f">owner_id</a>);</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    }</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span> </div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>}</div>
+</div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span> </div>
+<div class="foldopen" id="foldopen00342" data-start="{" data-end="}">
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#a76b3acb0d15109a3dbe5969f25992b26">  342</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="server_2src_2lobby_8c.html#a76b3acb0d15109a3dbe5969f25992b26">request_choose_role</a>(<a class="code hl_struct" href="structCodenames.html">Codenames</a>* codenames, <a class="code hl_struct" href="structTcpClient.html">TcpClient</a>* client, <span class="keywordtype">char</span>* message, <a class="code hl_struct" href="structArguments.html">Arguments</a> args) {</div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>    <span class="comment">// Handle choose role</span></div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>    <span class="keywordflow">if</span> (args.<a class="code hl_variable" href="structArguments.html#ad7e02331365bd54d9d3abdef6b81dc30">argc</a> &lt; 2) {</div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>        printf(<span class="stringliteral">&quot;Invalid choose role message from client %d: \&quot;%s\&quot;\n&quot;</span>, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>, message);</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>    }</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span> </div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>    <a class="code hl_struct" href="structLobby.html">Lobby</a>* lobby = <a class="code hl_function" href="server_2src_2lobby_8c.html#ab200dca231db3c7405e5242cd1d580e1">find_lobby_by_playerid</a>(codenames-&gt;<a class="code hl_variable" href="structCodenames.html#a60e595ede4c21bb5ab8aeead6009726a">lobby</a>, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>);</div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>    <span class="keywordflow">if</span> (!lobby) {</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>        printf(<span class="stringliteral">&quot;Lobby not found for client %d\n&quot;</span>, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>);</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>    }</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span> </div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>    <a class="code hl_struct" href="structUser.html">User</a>* user = <a class="code hl_function" href="server_2src_2lobby_8c.html#a09e92c0051506ed8b2ab1d8c3de28ac1">find_user_by_id</a>(lobby, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>);</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>    <span class="keywordflow">if</span> (!user) {</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>        printf(<span class="stringliteral">&quot;User not found for client %d\n&quot;</span>, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>);</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>    }</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span> </div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>    <span class="comment">// Affecter le rôle et l&#39;équipe à l&#39;utilisateur</span></div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="server_2src_2lobby_8c.html#af844d1079e019dab0a618c378178fe75">choose_role</a>(lobby, user, atoi((<span class="keywordtype">char</span>*)args.<a class="code hl_variable" href="structArguments.html#a29e8dac2f7b3adc32cbd95e9a4162194">argv</a>[0]), atoi((<span class="keywordtype">char</span>*)args.<a class="code hl_variable" href="structArguments.html#a29e8dac2f7b3adc32cbd95e9a4162194">argv</a>[1])) != EXIT_SUCCESS) {</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>        printf(<span class="stringliteral">&quot;Failed to choose role for client %d\n&quot;</span>, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>);</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>    }</div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>    printf(<span class="stringliteral">&quot;Client %d (%s) chose role %d team %d in lobby %d\n&quot;</span>, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>, user-&gt;<a class="code hl_variable" href="structUser.html#ae1faef3d602da4c65e7571e751f775f2">name</a>, user-&gt;<a class="code hl_variable" href="structUser.html#ab91e66ddd08d2a0a76790374c2861fb8">role</a>, user-&gt;<a class="code hl_variable" href="structUser.html#ad9940d1242bd89368f6e328179931464">team</a>, lobby-&gt;<a class="code hl_variable" href="structLobby.html#aa61b45b961a54b3f1bb20c926c389e5f">id</a>);</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>    </div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>    <span class="comment">// On informe les autres joueurs du lobby du choix de rôle/équipe de ce joueur</span></div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>    <span class="keywordtype">char</span> reponse[64];</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>    <a class="code hl_function" href="client_2src_2utils_8c.html#ade6960f663c739637ee1beaf757c5f24">format_to</a>(reponse, <span class="keyword">sizeof</span>(reponse), <span class="stringliteral">&quot;%d %d %d %d&quot;</span>, <a class="code hl_enumvalue" href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a165d64b96149e42ee6d282a2f6149edd">MSG_CHOOSE_ROLE</a>, user-&gt;<a class="code hl_variable" href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">id</a>, user-&gt;<a class="code hl_variable" href="structUser.html#ab91e66ddd08d2a0a76790374c2861fb8">role</a>, user-&gt;<a class="code hl_variable" href="structUser.html#ad9940d1242bd89368f6e328179931464">team</a>);</div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; lobby-&gt;<a class="code hl_variable" href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">nb_players</a>; i++) {</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>        <span class="keywordflow">if</span> (lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[i]-&gt;<a class="code hl_variable" href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">id</a> != client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>) { <span class="comment">// Pas besoin de s&#39;envoyer à soi-même</span></div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>            printf(<span class="stringliteral">&quot;Sending role choice to client %d: %s\n&quot;</span>, lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[i]-&gt;<a class="code hl_variable" href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">id</a>, reponse);</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>            <a class="code hl_function" href="server_2src_2tcp_8c.html#ae3efc44467ee08b4d29bcc4ef7886119">tcp_send_to_client</a>(codenames, lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[i]-&gt;<a class="code hl_variable" href="structUser.html#aaaf5d2f7495a0381ff5111ef56016ea6">socket_fd</a>, reponse);</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>        }</div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>    }</div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>    </div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>}</div>
+</div>
+<div class="ttc" id="aclient_2lib_2lobby_8h_html_a02f4e343ea570764cb2390b12ad37d83a715a5fc1dd102e417ed4fc5b81477ba4"><div class="ttname"><a href="client_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83a715a5fc1dd102e417ed4fc5b81477ba4">LB_STATUS_WAITING</a></div><div class="ttdeci">@ LB_STATUS_WAITING</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00022">lobby.h:22</a></div></div>
+<div class="ttc" id="aclient_2lib_2lobby_8h_html_a2c2a303621f66761529e598758d7ef34"><div class="ttname"><a href="client_2lib_2lobby_8h.html#a2c2a303621f66761529e598758d7ef34">MAX_USERS</a></div><div class="ttdeci">#define MAX_USERS</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00014">lobby.h:14</a></div></div>
+<div class="ttc" id="aclient_2lib_2lobby_8h_html_a67fee069fc4be0b17f7a3a8d185f4416"><div class="ttname"><a href="client_2lib_2lobby_8h.html#a67fee069fc4be0b17f7a3a8d185f4416">MAX_LOBBIES</a></div><div class="ttdeci">#define MAX_LOBBIES</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00013">lobby.h:13</a></div></div>
+<div class="ttc" id="aclient_2lib_2message_8h_html_ac6606ebe91c8ac66a2c314c79f5ab013a0bf951f6070633557526081ff9c09126"><div class="ttname"><a href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a0bf951f6070633557526081ff9c09126">MSG_CREATELOBBY</a></div><div class="ttdeci">@ MSG_CREATELOBBY</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00020">message.h:20</a></div></div>
+<div class="ttc" id="aclient_2lib_2message_8h_html_ac6606ebe91c8ac66a2c314c79f5ab013a165d64b96149e42ee6d282a2f6149edd"><div class="ttname"><a href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a165d64b96149e42ee6d282a2f6149edd">MSG_CHOOSE_ROLE</a></div><div class="ttdeci">@ MSG_CHOOSE_ROLE</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00025">message.h:25</a></div></div>
+<div class="ttc" id="aclient_2lib_2message_8h_html_ac6606ebe91c8ac66a2c314c79f5ab013a780e0c0675c808873eb7553b183f25c6"><div class="ttname"><a href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a780e0c0675c808873eb7553b183f25c6">MSG_PLAYERJOINED</a></div><div class="ttdeci">@ MSG_PLAYERJOINED</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00024">message.h:24</a></div></div>
+<div class="ttc" id="aclient_2lib_2message_8h_html_ac6606ebe91c8ac66a2c314c79f5ab013ab050c6c555efefa0665c624be338b2e5"><div class="ttname"><a href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013ab050c6c555efefa0665c624be338b2e5">MSG_JOINLOBBY</a></div><div class="ttdeci">@ MSG_JOINLOBBY</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00021">message.h:21</a></div></div>
+<div class="ttc" id="aclient_2lib_2message_8h_html_ac6606ebe91c8ac66a2c314c79f5ab013ad241e6a214ef89fed912835259455f8b"><div class="ttname"><a href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013ad241e6a214ef89fed912835259455f8b">MSG_LOBBYCLOSED</a></div><div class="ttdeci">@ MSG_LOBBYCLOSED</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00023">message.h:23</a></div></div>
+<div class="ttc" id="aclient_2src_2list_8c_html_a18f87d88930c7be4d848c4db76e6fe76"><div class="ttname"><a href="client_2src_2list_8c.html#a18f87d88930c7be4d848c4db76e6fe76">list_add</a></div><div class="ttdeci">int list_add(List *list, void *data)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2list_8c_source.html#l00034">list.c:34</a></div></div>
+<div class="ttc" id="aclient_2src_2list_8c_html_a2e0b573f5ab9221c82af4a5eb5a48379"><div class="ttname"><a href="client_2src_2list_8c.html#a2e0b573f5ab9221c82af4a5eb5a48379">list_size</a></div><div class="ttdeci">int list_size(List *list)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2list_8c_source.html#l00104">list.c:104</a></div></div>
+<div class="ttc" id="aclient_2src_2list_8c_html_a50a6d26faf5a6f4c65eb98feaf2430b5"><div class="ttname"><a href="client_2src_2list_8c.html#a50a6d26faf5a6f4c65eb98feaf2430b5">list_create</a></div><div class="ttdeci">List * list_create()</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2list_8c_source.html#l00008">list.c:8</a></div></div>
+<div class="ttc" id="aclient_2src_2list_8c_html_a769aba1f6d36778101fcb047890a26fd"><div class="ttname"><a href="client_2src_2list_8c.html#a769aba1f6d36778101fcb047890a26fd">list_destroy</a></div><div class="ttdeci">void list_destroy(List *list, void(*free_data)(void *))</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2list_8c_source.html#l00020">list.c:20</a></div></div>
+<div class="ttc" id="aclient_2src_2list_8c_html_a98ea9df4ed883d333d98d7b00aaf82a2"><div class="ttname"><a href="client_2src_2list_8c.html#a98ea9df4ed883d333d98d7b00aaf82a2">list_next_available_id</a></div><div class="ttdeci">int list_next_available_id(List *list, int(*get_id)(void *))</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2list_8c_source.html#l00120">list.c:120</a></div></div>
+<div class="ttc" id="aclient_2src_2list_8c_html_ab5ca2956cad41e6608e8e2cc42827180"><div class="ttname"><a href="client_2src_2list_8c.html#ab5ca2956cad41e6608e8e2cc42827180">list_find</a></div><div class="ttdeci">void * list_find(List *list, int(*predicate)(void *, void *), void *context)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2list_8c_source.html#l00091">list.c:91</a></div></div>
+<div class="ttc" id="aclient_2src_2list_8c_html_ab7f699854df7ed988c068dc6048ca789"><div class="ttname"><a href="client_2src_2list_8c.html#ab7f699854df7ed988c068dc6048ca789">list_foreach</a></div><div class="ttdeci">void list_foreach(List *list, void(*callback)(void *, void *), void *context)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2list_8c_source.html#l00109">list.c:109</a></div></div>
+<div class="ttc" id="aclient_2src_2list_8c_html_af20bc7624ee624752ed51867be6944fe"><div class="ttname"><a href="client_2src_2list_8c.html#af20bc7624ee624752ed51867be6944fe">list_remove</a></div><div class="ttdeci">int list_remove(List *list, void *data)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2list_8c_source.html#l00058">list.c:58</a></div></div>
+<div class="ttc" id="aclient_2src_2tcp_8c_html_af00b615ca097c43dbb02ae3a00ea3a62"><div class="ttname"><a href="client_2src_2tcp_8c.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a></div><div class="ttdeci">char buffer[BUFFER_SIZE]</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2tcp_8c_source.html#l00005">tcp.c:5</a></div></div>
+<div class="ttc" id="aclient_2src_2user_8c_html_a0710dca1ff61cdf7517bbe57803f1fec"><div class="ttname"><a href="client_2src_2user_8c.html#a0710dca1ff61cdf7517bbe57803f1fec">create_user</a></div><div class="ttdeci">User * create_user(int id, const char *name, int socket_fd)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2user_8c_source.html#l00003">user.c:3</a></div></div>
+<div class="ttc" id="aclient_2src_2user_8c_html_a2479a5c30e476b2f3312e542e9fc7089"><div class="ttname"><a href="client_2src_2user_8c.html#a2479a5c30e476b2f3312e542e9fc7089">destroy_user</a></div><div class="ttdeci">void destroy_user(User *user)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2user_8c_source.html#l00025">user.c:25</a></div></div>
+<div class="ttc" id="aclient_2src_2utils_8c_html_ade6960f663c739637ee1beaf757c5f24"><div class="ttname"><a href="client_2src_2utils_8c.html#ade6960f663c739637ee1beaf757c5f24">format_to</a></div><div class="ttdeci">int format_to(char *buf, size_t size, const char *fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2utils_8c_source.html#l00017">utils.c:17</a></div></div>
+<div class="ttc" id="aserver_2lib_2all_8h_html"><div class="ttname"><a href="server_2lib_2all_8h.html">all.h</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a0573481bcb614626f62b5ca74d77da04"><div class="ttname"><a href="server_2src_2lobby_8c.html#a0573481bcb614626f62b5ca74d77da04">fetchUsernames</a></div><div class="ttdeci">char ** fetchUsernames()</div><div class="ttdef"><b>Definition</b> <a href="#l00018">lobby.c:18</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a09e92c0051506ed8b2ab1d8c3de28ac1"><div class="ttname"><a href="server_2src_2lobby_8c.html#a09e92c0051506ed8b2ab1d8c3de28ac1">find_user_by_id</a></div><div class="ttdeci">User * find_user_by_id(Lobby *lobby, int id)</div><div class="ttdef"><b>Definition</b> <a href="#l00187">lobby.c:187</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a0e14f36deb0a104096160456cc43dc3c"><div class="ttname"><a href="server_2src_2lobby_8c.html#a0e14f36deb0a104096160456cc43dc3c">predicate_owner_id</a></div><div class="ttdeci">static int predicate_owner_id(void *data, void *context)</div><div class="ttdef"><b>Definition</b> <a href="#l00166">lobby.c:166</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a14e512d3eb1682633b932273dc4e4e01"><div class="ttname"><a href="server_2src_2lobby_8c.html#a14e512d3eb1682633b932273dc4e4e01">destroy_lobby_callback</a></div><div class="ttdeci">static void destroy_lobby_callback(void *data, void *context)</div><div class="ttdef"><b>Definition</b> <a href="#l00078">lobby.c:78</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a168a2dc85ad0faf1041bb752b59d87a7"><div class="ttname"><a href="server_2src_2lobby_8c.html#a168a2dc85ad0faf1041bb752b59d87a7">USERNAMESCOUNT</a></div><div class="ttdeci">int USERNAMESCOUNT</div><div class="ttdef"><b>Definition</b> <a href="#l00004">lobby.c:4</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a1e46ad30b12b838c13c44f55629d0fca"><div class="ttname"><a href="server_2src_2lobby_8c.html#a1e46ad30b12b838c13c44f55629d0fca">request_create_lobby</a></div><div class="ttdeci">int request_create_lobby(Codenames *codenames, TcpClient *client, char *message, Arguments args)</div><div class="ttdef"><b>Definition</b> <a href="#l00221">lobby.c:221</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a1f8c73963ebfb36ee377a21fe636d1e3"><div class="ttname"><a href="server_2src_2lobby_8c.html#a1f8c73963ebfb36ee377a21fe636d1e3">destroy_lobby_manager</a></div><div class="ttdeci">void destroy_lobby_manager(Codenames *codenames, LobbyManager *manager)</div><div class="ttdef"><b>Definition</b> <a href="#l00091">lobby.c:91</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a2aa6bdfaf517ad38036ca53f3c729ee3"><div class="ttname"><a href="server_2src_2lobby_8c.html#a2aa6bdfaf517ad38036ca53f3c729ee3">predicate_player_id</a></div><div class="ttdeci">static int predicate_player_id(void *data, void *context)</div><div class="ttdef"><b>Definition</b> <a href="#l00172">lobby.c:172</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a2bb4ca514adcafddefb6759e2b5b69a7"><div class="ttname"><a href="server_2src_2lobby_8c.html#a2bb4ca514adcafddefb6759e2b5b69a7">destroy_lobby</a></div><div class="ttdeci">void destroy_lobby(Codenames *codenames, Lobby *lobby)</div><div class="ttdef"><b>Definition</b> <a href="#l00208">lobby.c:208</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a2db08c1d26473428f71d46b6e87c06f8"><div class="ttname"><a href="server_2src_2lobby_8c.html#a2db08c1d26473428f71d46b6e87c06f8">request_leave_lobby</a></div><div class="ttdeci">int request_leave_lobby(Codenames *codenames, TcpClient *client, char *message, Arguments args)</div><div class="ttdef"><b>Definition</b> <a href="#l00295">lobby.c:295</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a34b870bac73ec966edab28acc4be717a"><div class="ttname"><a href="server_2src_2lobby_8c.html#a34b870bac73ec966edab28acc4be717a">find_lobby_by_code</a></div><div class="ttdeci">Lobby * find_lobby_by_code(LobbyManager *manager, const char *code)</div><div class="ttdef"><b>Definition</b> <a href="#l00204">lobby.c:204</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a3f3f826b2ed73b99d1f5b51ff9bb5fd5"><div class="ttname"><a href="server_2src_2lobby_8c.html#a3f3f826b2ed73b99d1f5b51ff9bb5fd5">join_lobby</a></div><div class="ttdeci">int join_lobby(Lobby *lobby, User *user)</div><div class="ttdef"><b>Definition</b> <a href="#l00126">lobby.c:126</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a44d2d1f1a9577918a430c3d184438383"><div class="ttname"><a href="server_2src_2lobby_8c.html#a44d2d1f1a9577918a430c3d184438383">create_lobby</a></div><div class="ttdeci">Lobby * create_lobby(LobbyManager *manager)</div><div class="ttdef"><b>Definition</b> <a href="#l00104">lobby.c:104</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a5b4a01b92da39d13659424154af47ec9"><div class="ttname"><a href="server_2src_2lobby_8c.html#a5b4a01b92da39d13659424154af47ec9">init_lobby_manager</a></div><div class="ttdeci">int init_lobby_manager()</div><div class="ttdef"><b>Definition</b> <a href="#l00008">lobby.c:8</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a70ab64da857b6aa300fbf07629e64ed4"><div class="ttname"><a href="server_2src_2lobby_8c.html#a70ab64da857b6aa300fbf07629e64ed4">find_lobby_by_ownerid</a></div><div class="ttdeci">Lobby * find_lobby_by_ownerid(LobbyManager *manager, int owner_id)</div><div class="ttdef"><b>Definition</b> <a href="#l00196">lobby.c:196</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a76b3acb0d15109a3dbe5969f25992b26"><div class="ttname"><a href="server_2src_2lobby_8c.html#a76b3acb0d15109a3dbe5969f25992b26">request_choose_role</a></div><div class="ttdeci">int request_choose_role(Codenames *codenames, TcpClient *client, char *message, Arguments args)</div><div class="ttdef"><b>Definition</b> <a href="#l00342">lobby.c:342</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a95d0cf6c24388e7600fecdf9207fcb72"><div class="ttname"><a href="server_2src_2lobby_8c.html#a95d0cf6c24388e7600fecdf9207fcb72">create_lobby_manager</a></div><div class="ttdeci">LobbyManager * create_lobby_manager()</div><div class="ttdef"><b>Definition</b> <a href="#l00066">lobby.c:66</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a969f400f36a01da706e7826a085eb8a1"><div class="ttname"><a href="server_2src_2lobby_8c.html#a969f400f36a01da706e7826a085eb8a1">predicate_code</a></div><div class="ttdeci">static int predicate_code(void *data, void *context)</div><div class="ttdef"><b>Definition</b> <a href="#l00181">lobby.c:181</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_aad728c7047f2a0533bf4e9aca60894f9"><div class="ttname"><a href="server_2src_2lobby_8c.html#aad728c7047f2a0533bf4e9aca60894f9">getRandomUsername</a></div><div class="ttdeci">char * getRandomUsername()</div><div class="ttdef"><b>Definition</b> <a href="#l00052">lobby.c:52</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_ab200dca231db3c7405e5242cd1d580e1"><div class="ttname"><a href="server_2src_2lobby_8c.html#ab200dca231db3c7405e5242cd1d580e1">find_lobby_by_playerid</a></div><div class="ttdeci">Lobby * find_lobby_by_playerid(LobbyManager *manager, int id)</div><div class="ttdef"><b>Definition</b> <a href="#l00200">lobby.c:200</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_ab54b2e902c3070efb2feb5f75699ccef"><div class="ttname"><a href="server_2src_2lobby_8c.html#ab54b2e902c3070efb2feb5f75699ccef">leave_lobby</a></div><div class="ttdeci">int leave_lobby(Lobby *lobby, User *user)</div><div class="ttdef"><b>Definition</b> <a href="#l00134">lobby.c:134</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_ae4d65bf167ca0197b9597951ed83354e"><div class="ttname"><a href="server_2src_2lobby_8c.html#ae4d65bf167ca0197b9597951ed83354e">lobby_get_id</a></div><div class="ttdeci">static int lobby_get_id(void *data)</div><div class="ttdef"><b>Definition</b> <a href="#l00100">lobby.c:100</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_af844d1079e019dab0a618c378178fe75"><div class="ttname"><a href="server_2src_2lobby_8c.html#af844d1079e019dab0a618c378178fe75">choose_role</a></div><div class="ttdeci">int choose_role(Lobby *lobby, User *user, int role, int team)</div><div class="ttdef"><b>Definition</b> <a href="#l00153">lobby.c:153</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_afaedceed157f9f521ace2eaf1b173bc5"><div class="ttname"><a href="server_2src_2lobby_8c.html#afaedceed157f9f521ace2eaf1b173bc5">request_join_lobby</a></div><div class="ttdeci">int request_join_lobby(Codenames *codenames, TcpClient *client, char *message, Arguments args)</div><div class="ttdef"><b>Definition</b> <a href="#l00253">lobby.c:253</a></div></div>
+<div class="ttc" id="aserver_2src_2tcp_8c_html_ae3efc44467ee08b4d29bcc4ef7886119"><div class="ttname"><a href="server_2src_2tcp_8c.html#ae3efc44467ee08b4d29bcc4ef7886119">tcp_send_to_client</a></div><div class="ttdeci">int tcp_send_to_client(Codenames *codenames, int client_id, const char *message)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2tcp_8c_source.html#l00131">tcp.c:131</a></div></div>
+<div class="ttc" id="aserver_2src_2utils_8c_html_abeaa3b934bab9c3d990dde11d4dc5d64"><div class="ttname"><a href="server_2src_2utils_8c.html#abeaa3b934bab9c3d990dde11d4dc5d64">generate_code</a></div><div class="ttdeci">char * generate_code()</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2utils_8c_source.html#l00076">utils.c:76</a></div></div>
+<div class="ttc" id="aserver_2src_2utils_8c_html_ad93ebcf9b51100e8925bd85aabf977bc"><div class="ttname"><a href="server_2src_2utils_8c.html#ad93ebcf9b51100e8925bd85aabf977bc">count_words</a></div><div class="ttdeci">int count_words(const char *filepath)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2utils_8c_source.html#l00013">utils.c:13</a></div></div>
+<div class="ttc" id="astructArguments_html"><div class="ttname"><a href="structArguments.html">Arguments</a></div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00035">message.h:35</a></div></div>
+<div class="ttc" id="astructArguments_html_a29e8dac2f7b3adc32cbd95e9a4162194"><div class="ttname"><a href="structArguments.html#a29e8dac2f7b3adc32cbd95e9a4162194">Arguments::argv</a></div><div class="ttdeci">char ** argv</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00037">message.h:37</a></div></div>
+<div class="ttc" id="astructArguments_html_ad7e02331365bd54d9d3abdef6b81dc30"><div class="ttname"><a href="structArguments.html#ad7e02331365bd54d9d3abdef6b81dc30">Arguments::argc</a></div><div class="ttdeci">int argc</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00036">message.h:36</a></div></div>
+<div class="ttc" id="astructCodenames_html"><div class="ttname"><a href="structCodenames.html">Codenames</a></div><div class="ttdef"><b>Definition</b> <a href="codenames_8h_source.html#l00012">codenames.h:12</a></div></div>
+<div class="ttc" id="astructCodenames_html_a60e595ede4c21bb5ab8aeead6009726a"><div class="ttname"><a href="structCodenames.html#a60e595ede4c21bb5ab8aeead6009726a">Codenames::lobby</a></div><div class="ttdeci">LobbyManager * lobby</div><div class="ttdef"><b>Definition</b> <a href="codenames_8h_source.html#l00014">codenames.h:14</a></div></div>
+<div class="ttc" id="astructLobbyManager_html"><div class="ttname"><a href="structLobbyManager.html">LobbyManager</a></div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2lobby_8h_source.html#l00049">lobby.h:49</a></div></div>
+<div class="ttc" id="astructLobbyManager_html_a57abea84d03dd0beb00fa4295b9be5ce"><div class="ttname"><a href="structLobbyManager.html#a57abea84d03dd0beb00fa4295b9be5ce">LobbyManager::lobbies</a></div><div class="ttdeci">List * lobbies</div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2lobby_8h_source.html#l00050">lobby.h:50</a></div></div>
+<div class="ttc" id="astructLobby_html"><div class="ttname"><a href="structLobby.html">Lobby</a></div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00036">lobby.h:36</a></div></div>
+<div class="ttc" id="astructLobby_html_a1567c92b89bc67d97ae4cbbf7034836e"><div class="ttname"><a href="structLobby.html#a1567c92b89bc67d97ae4cbbf7034836e">Lobby::game</a></div><div class="ttdeci">Game * game</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00043">lobby.h:43</a></div></div>
+<div class="ttc" id="astructLobby_html_a201a3357be821cc9646c8588855c663f"><div class="ttname"><a href="structLobby.html#a201a3357be821cc9646c8588855c663f">Lobby::owner_id</a></div><div class="ttdeci">int owner_id</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00038">lobby.h:38</a></div></div>
+<div class="ttc" id="astructLobby_html_a56a7ba822aefe25cb28c9b1d680c6525"><div class="ttname"><a href="structLobby.html#a56a7ba822aefe25cb28c9b1d680c6525">Lobby::status</a></div><div class="ttdeci">LobbyStatus status</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00040">lobby.h:40</a></div></div>
+<div class="ttc" id="astructLobby_html_a92b6139484380e05dac8bf3fc0a2455a"><div class="ttname"><a href="structLobby.html#a92b6139484380e05dac8bf3fc0a2455a">Lobby::code</a></div><div class="ttdeci">char code[6]</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00039">lobby.h:39</a></div></div>
+<div class="ttc" id="astructLobby_html_aa61b45b961a54b3f1bb20c926c389e5f"><div class="ttname"><a href="structLobby.html#aa61b45b961a54b3f1bb20c926c389e5f">Lobby::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00037">lobby.h:37</a></div></div>
+<div class="ttc" id="astructLobby_html_ab0f8cc375b1895eb33d40d68acd2f965"><div class="ttname"><a href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">Lobby::users</a></div><div class="ttdeci">User * users[MAX_USERS]</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00041">lobby.h:41</a></div></div>
+<div class="ttc" id="astructLobby_html_ad1fa4c8d5c1943c1d6ab2d04914dd7f1"><div class="ttname"><a href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">Lobby::nb_players</a></div><div class="ttdeci">int nb_players</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00042">lobby.h:42</a></div></div>
+<div class="ttc" id="astructTcpClient_html"><div class="ttname"><a href="structTcpClient.html">TcpClient</a></div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2tcp_8h_source.html#l00014">tcp.h:14</a></div></div>
+<div class="ttc" id="astructTcpClient_html_a28a40517fae053778f34c4c8498b83b6"><div class="ttname"><a href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">TcpClient::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2tcp_8h_source.html#l00015">tcp.h:15</a></div></div>
+<div class="ttc" id="astructTcpClient_html_a65f3c371110f630616b3b459972753b1"><div class="ttname"><a href="structTcpClient.html#a65f3c371110f630616b3b459972753b1">TcpClient::socket</a></div><div class="ttdeci">int socket</div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2tcp_8h_source.html#l00016">tcp.h:16</a></div></div>
+<div class="ttc" id="astructUser_html"><div class="ttname"><a href="structUser.html">User</a></div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2user_8h_source.html#l00024">user.h:24</a></div></div>
+<div class="ttc" id="astructUser_html_aa7e6e39b43020bbe9c3a196b3689b0f7"><div class="ttname"><a href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">User::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2user_8h_source.html#l00025">user.h:25</a></div></div>
+<div class="ttc" id="astructUser_html_aaaf5d2f7495a0381ff5111ef56016ea6"><div class="ttname"><a href="structUser.html#aaaf5d2f7495a0381ff5111ef56016ea6">User::socket_fd</a></div><div class="ttdeci">int socket_fd</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2user_8h_source.html#l00027">user.h:27</a></div></div>
+<div class="ttc" id="astructUser_html_ab91e66ddd08d2a0a76790374c2861fb8"><div class="ttname"><a href="structUser.html#ab91e66ddd08d2a0a76790374c2861fb8">User::role</a></div><div class="ttdeci">UserRole role</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2user_8h_source.html#l00028">user.h:28</a></div></div>
+<div class="ttc" id="astructUser_html_ad9940d1242bd89368f6e328179931464"><div class="ttname"><a href="structUser.html#ad9940d1242bd89368f6e328179931464">User::team</a></div><div class="ttdeci">Team team</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2user_8h_source.html#l00029">user.h:29</a></div></div>
+<div class="ttc" id="astructUser_html_ae1faef3d602da4c65e7571e751f775f2"><div class="ttname"><a href="structUser.html#ae1faef3d602da4c65e7571e751f775f2">User::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2user_8h_source.html#l00026">user.h:26</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a href="dir_a063914ab482288b7b0e1b2fca86158c.html">src</a></li><li class="navelem"><a href="server_2src_2lobby_8c.html">lobby.c</a></li>
+    <li class="footer">Généré le Jeudi 19 Mars 2026 15:31:45 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

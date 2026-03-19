@@ -1,0 +1,613 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Codenames: Référence du fichier client/lib/crossfader.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Codenames<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Jeu Codenames multijoueur en C - Client SDL2 et Serveur TCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('crossfader_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Référence du fichier crossfader.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;../SDL2/include/SDL2/SDL.h&quot;</code><br />
+<code>#include &quot;../SDL2/include/SDL2/SDL_image.h&quot;</code><br />
+<code>#include &quot;../SDL2/include/SDL2/SDL_ttf.h&quot;</code><br />
+</div>
+<p><a href="crossfader_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:CrossfaderConfig" id="r_CrossfaderConfig"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCrossfaderConfig.html">CrossfaderConfig</a></td></tr>
+<tr class="memitem:Crossfader" id="r_Crossfader"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCrossfader.html">Crossfader</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a21018c4b39fc408ee095a7ee6ca9f09d" id="r_a21018c4b39fc408ee095a7ee6ca9f09d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21018c4b39fc408ee095a7ee6ca9f09d">MAX_CROSSFADERS</a>&#160;&#160;&#160;32</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:a29100e9db07ce4018bf39cfe06eb47bf" id="r_a29100e9db07ce4018bf39cfe06eb47bf"><td class="memItemLeft" align="right" valign="top">typedef struct CrossfaderConfig&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29100e9db07ce4018bf39cfe06eb47bf">CrossfaderConfig</a></td></tr>
+<tr class="memitem:a8cb153a970d35495ffb273e1f02dbd33" id="r_a8cb153a970d35495ffb273e1f02dbd33"><td class="memItemLeft" align="right" valign="top">typedef struct Crossfader&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8cb153a970d35495ffb273e1f02dbd33">Crossfader</a></td></tr>
+<tr class="memitem:aeca92bb9bd14fb41274e9dd76f190255" id="r_aeca92bb9bd14fb41274e9dd76f190255"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6">CrfdCfgKey</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeca92bb9bd14fb41274e9dd76f190255">CrfdCfgKey</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:afe46759d0a90580e13d099a69c6fc9f6" id="r_afe46759d0a90580e13d099a69c6fc9f6"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6">CrfdCfgKey</a> { <br />
+&#160;&#160;<a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6a070fa40aec610c680335bad37aa4f266">CRFD_CFG_X</a> = 100
+, <a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6aa79acfb22d0f21e2e2a12c0ebd26cc18">CRFD_CFG_Y</a>
+, <a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6a8c47c3f63bae70eed66a78edde4962d5">CRFD_CFG_W</a>
+, <a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6a8e2dc5f6d2961b50fe4d44c161e3cb35">CRFD_CFG_H</a>
+, <br />
+&#160;&#160;<a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6adfb618c543de1be59aec8453f757631d">CRFD_CFG_MIN</a>
+, <a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6af8a12c07f052b15fa867578088091bc9">CRFD_CFG_MAX</a>
+, <a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6aefa19fffd931d63331e75e8aa0b189b3">CRFD_CFG_VALUE</a>
+, <a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6a6f3092261bbfb825fa1f4fac38a1e9a4">CRFD_CFG_HIDDEN</a>
+, <br />
+&#160;&#160;<a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6a2660c4374cd3f72e6882acf2490a657d">CRFD_CFG_SAVE_PLAYER_DATA</a>
+, <a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6a494409af326f01a5e9afe94d5c1d62b9">CRFD_CFG_COLOR_0_PCT</a>
+, <a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6aac073e7b1f1d16bd1abb477364cf8fd1">CRFD_CFG_COLOR_100_PCT</a>
+, <a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6ad602b4e80a48f3b11145f0908c7f93df">CRFD_CFG_KNOB_COLOR</a>
+, <br />
+&#160;&#160;<a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6a974ea54bdc9fda2bd35854460c95f6e1">CRFD_CFG_ON_CHANGE</a>
+, <a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6a154e58384c3b476c8ba72e25b286c868">CRFD_CFG_RECT</a>
+, <a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6aa671d49e547f767dae3c352cc3c443ec">CRFD_CFG_DRAGGING</a>
+, <a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6ad9d65d47a61369e67f95cb2f02867d8e">CRFD_CFG_HOVER</a>
+, <br />
+&#160;&#160;<a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6ad18fa8ea2a95e56b2773019bdc054050">CRFD_CFG_TRACK_TEXTURE</a>
+, <a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6aad27082639893b31a46b0d8c996fb793">CRFD_CFG_KNOB_TEXTURE</a>
+<br />
+ }</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a521dcc82f98f78679b9b0c15528b04c6" id="r_a521dcc82f98f78679b9b0c15528b04c6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCrossfaderConfig.html">CrossfaderConfig</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a521dcc82f98f78679b9b0c15528b04c6">crossfader_config_init</a> (void)</td></tr>
+<tr class="memitem:ad474b93da0891997c452368c5b9a3604" id="r_ad474b93da0891997c452368c5b9a3604"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad474b93da0891997c452368c5b9a3604">crossfaders_init</a> (void)</td></tr>
+<tr class="memitem:ad88a14929edf0a596db17799ac96b3d9" id="r_ad88a14929edf0a596db17799ac96b3d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCrossfader.html">Crossfader</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad88a14929edf0a596db17799ac96b3d9">crossfader_create</a> (SDL_Renderer *renderer, int id, const <a class="el" href="structCrossfaderConfig.html">CrossfaderConfig</a> *cfg)</td></tr>
+<tr class="memitem:a4b968aa69e95c0594b0f075b0c07363d" id="r_a4b968aa69e95c0594b0f075b0c07363d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b968aa69e95c0594b0f075b0c07363d">crossfaders_render</a> (SDL_Renderer *renderer)</td></tr>
+<tr class="memitem:ad75c50dc09517491d53f760bea0fb894" id="r_ad75c50dc09517491d53f760bea0fb894"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad75c50dc09517491d53f760bea0fb894">crossfaders_handle_event</a> (<a class="el" href="structSDL__Context.html">SDL_Context</a> *ctx, SDL_Event *event)</td></tr>
+<tr class="memitem:a0bed147822b42417aefeea1541272501" id="r_a0bed147822b42417aefeea1541272501"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCrossfader.html">Crossfader</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0bed147822b42417aefeea1541272501">crossfader_get</a> (int id)</td></tr>
+<tr class="memitem:abc2d08f47e64af39655f95b7c07f68f1" id="r_abc2d08f47e64af39655f95b7c07f68f1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc2d08f47e64af39655f95b7c07f68f1">crossfader_get_value</a> (int id)</td></tr>
+<tr class="memitem:aa12b0bd0cbcf2b7137b73c9eacc59a9f" id="r_aa12b0bd0cbcf2b7137b73c9eacc59a9f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa12b0bd0cbcf2b7137b73c9eacc59a9f">crossfader_set_value</a> (int id, int value)</td></tr>
+<tr class="memitem:a9fbc240d80a9b442ae978e38f43b7e03" id="r_a9fbc240d80a9b442ae978e38f43b7e03"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9fbc240d80a9b442ae978e38f43b7e03">crossfader_set_on_change</a> (<a class="el" href="structCrossfader.html">Crossfader</a> *cf, void(*cb)(<a class="el" href="structSDL__Context.html">SDL_Context</a> *, int))</td></tr>
+<tr class="memitem:a44ded336e9ff59db3be4ec0f350d6939" id="r_a44ded336e9ff59db3be4ec0f350d6939"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44ded336e9ff59db3be4ec0f350d6939">crossfaders_free</a> (void)</td></tr>
+<tr class="memitem:ac997af9b7522ae44c8e8406f364caf33" id="r_ac997af9b7522ae44c8e8406f364caf33"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac997af9b7522ae44c8e8406f364caf33">edit_crfd_cfg</a> (int id, <a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6">CrfdCfgKey</a> key, intptr_t value)</td></tr>
+</table>
+<a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentation des macros</h2>
+<a id="a21018c4b39fc408ee095a7ee6ca9f09d" name="a21018c4b39fc408ee095a7ee6ca9f09d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21018c4b39fc408ee095a7ee6ca9f09d">&#9670;&#160;</a></span>MAX_CROSSFADERS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_CROSSFADERS&#160;&#160;&#160;32</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="crossfader_8h_source.html#l00011">11</a> du fichier <a class="el" href="crossfader_8h_source.html">crossfader.h</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="crossfader_8c_source.html#l00069">crossfader_create()</a>, et <a class="el" href="crossfader_8c_source.html#l00064">crossfaders_init()</a>.</p>
+
+</div>
+</div>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Documentation des définitions de type</h2>
+<a id="aeca92bb9bd14fb41274e9dd76f190255" name="aeca92bb9bd14fb41274e9dd76f190255"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeca92bb9bd14fb41274e9dd76f190255">&#9670;&#160;</a></span>CrfdCfgKey</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6">CrfdCfgKey</a> <a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6">CrfdCfgKey</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Clés de configuration modifiables via <span class="tt">edit_crfd_cfg</span>. </p>
+
+</div>
+</div>
+<a id="a8cb153a970d35495ffb273e1f02dbd33" name="a8cb153a970d35495ffb273e1f02dbd33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cb153a970d35495ffb273e1f02dbd33">&#9670;&#160;</a></span>Crossfader</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct Crossfader Crossfader</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Structure de crossfader. </p>
+
+</div>
+</div>
+<a id="a29100e9db07ce4018bf39cfe06eb47bf" name="a29100e9db07ce4018bf39cfe06eb47bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29100e9db07ce4018bf39cfe06eb47bf">&#9670;&#160;</a></span>CrossfaderConfig</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct CrossfaderConfig CrossfaderConfig</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Configuration pour créer un <span class="tt"><a class="el" href="structCrossfader.html">Crossfader</a></span>. Tous les champs ont des valeurs par défaut définies via <span class="tt">crossfader_config_init</span>. La structure peut être modifiée à tout moment et passée à <span class="tt">crossfader_create</span>. </p>
+
+</div>
+</div>
+<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Documentation du type de l'énumération</h2>
+<a id="afe46759d0a90580e13d099a69c6fc9f6" name="afe46759d0a90580e13d099a69c6fc9f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe46759d0a90580e13d099a69c6fc9f6">&#9670;&#160;</a></span>CrfdCfgKey</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6">CrfdCfgKey</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Clés de configuration modifiables via <span class="tt">edit_crfd_cfg</span>. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="afe46759d0a90580e13d099a69c6fc9f6a070fa40aec610c680335bad37aa4f266" name="afe46759d0a90580e13d099a69c6fc9f6a070fa40aec610c680335bad37aa4f266"></a>CRFD_CFG_X&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afe46759d0a90580e13d099a69c6fc9f6aa79acfb22d0f21e2e2a12c0ebd26cc18" name="afe46759d0a90580e13d099a69c6fc9f6aa79acfb22d0f21e2e2a12c0ebd26cc18"></a>CRFD_CFG_Y&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afe46759d0a90580e13d099a69c6fc9f6a8c47c3f63bae70eed66a78edde4962d5" name="afe46759d0a90580e13d099a69c6fc9f6a8c47c3f63bae70eed66a78edde4962d5"></a>CRFD_CFG_W&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afe46759d0a90580e13d099a69c6fc9f6a8e2dc5f6d2961b50fe4d44c161e3cb35" name="afe46759d0a90580e13d099a69c6fc9f6a8e2dc5f6d2961b50fe4d44c161e3cb35"></a>CRFD_CFG_H&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afe46759d0a90580e13d099a69c6fc9f6adfb618c543de1be59aec8453f757631d" name="afe46759d0a90580e13d099a69c6fc9f6adfb618c543de1be59aec8453f757631d"></a>CRFD_CFG_MIN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afe46759d0a90580e13d099a69c6fc9f6af8a12c07f052b15fa867578088091bc9" name="afe46759d0a90580e13d099a69c6fc9f6af8a12c07f052b15fa867578088091bc9"></a>CRFD_CFG_MAX&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afe46759d0a90580e13d099a69c6fc9f6aefa19fffd931d63331e75e8aa0b189b3" name="afe46759d0a90580e13d099a69c6fc9f6aefa19fffd931d63331e75e8aa0b189b3"></a>CRFD_CFG_VALUE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afe46759d0a90580e13d099a69c6fc9f6a6f3092261bbfb825fa1f4fac38a1e9a4" name="afe46759d0a90580e13d099a69c6fc9f6a6f3092261bbfb825fa1f4fac38a1e9a4"></a>CRFD_CFG_HIDDEN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afe46759d0a90580e13d099a69c6fc9f6a2660c4374cd3f72e6882acf2490a657d" name="afe46759d0a90580e13d099a69c6fc9f6a2660c4374cd3f72e6882acf2490a657d"></a>CRFD_CFG_SAVE_PLAYER_DATA&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afe46759d0a90580e13d099a69c6fc9f6a494409af326f01a5e9afe94d5c1d62b9" name="afe46759d0a90580e13d099a69c6fc9f6a494409af326f01a5e9afe94d5c1d62b9"></a>CRFD_CFG_COLOR_0_PCT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afe46759d0a90580e13d099a69c6fc9f6aac073e7b1f1d16bd1abb477364cf8fd1" name="afe46759d0a90580e13d099a69c6fc9f6aac073e7b1f1d16bd1abb477364cf8fd1"></a>CRFD_CFG_COLOR_100_PCT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afe46759d0a90580e13d099a69c6fc9f6ad602b4e80a48f3b11145f0908c7f93df" name="afe46759d0a90580e13d099a69c6fc9f6ad602b4e80a48f3b11145f0908c7f93df"></a>CRFD_CFG_KNOB_COLOR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afe46759d0a90580e13d099a69c6fc9f6a974ea54bdc9fda2bd35854460c95f6e1" name="afe46759d0a90580e13d099a69c6fc9f6a974ea54bdc9fda2bd35854460c95f6e1"></a>CRFD_CFG_ON_CHANGE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afe46759d0a90580e13d099a69c6fc9f6a154e58384c3b476c8ba72e25b286c868" name="afe46759d0a90580e13d099a69c6fc9f6a154e58384c3b476c8ba72e25b286c868"></a>CRFD_CFG_RECT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afe46759d0a90580e13d099a69c6fc9f6aa671d49e547f767dae3c352cc3c443ec" name="afe46759d0a90580e13d099a69c6fc9f6aa671d49e547f767dae3c352cc3c443ec"></a>CRFD_CFG_DRAGGING&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afe46759d0a90580e13d099a69c6fc9f6ad9d65d47a61369e67f95cb2f02867d8e" name="afe46759d0a90580e13d099a69c6fc9f6ad9d65d47a61369e67f95cb2f02867d8e"></a>CRFD_CFG_HOVER&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afe46759d0a90580e13d099a69c6fc9f6ad18fa8ea2a95e56b2773019bdc054050" name="afe46759d0a90580e13d099a69c6fc9f6ad18fa8ea2a95e56b2773019bdc054050"></a>CRFD_CFG_TRACK_TEXTURE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afe46759d0a90580e13d099a69c6fc9f6aad27082639893b31a46b0d8c996fb793" name="afe46759d0a90580e13d099a69c6fc9f6aad27082639893b31a46b0d8c996fb793"></a>CRFD_CFG_KNOB_TEXTURE&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Définition à la ligne <a class="el" href="crossfader_8h_source.html#l00053">53</a> du fichier <a class="el" href="crossfader_8h_source.html">crossfader.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a id="a521dcc82f98f78679b9b0c15528b04c6" name="a521dcc82f98f78679b9b0c15528b04c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a521dcc82f98f78679b9b0c15528b04c6">&#9670;&#160;</a></span>crossfader_config_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCrossfaderConfig.html">CrossfaderConfig</a> * crossfader_config_init </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Initialise une <span class="tt"><a class="el" href="structCrossfaderConfig.html">CrossfaderConfig</a></span> avec des valeurs par défaut.</p>
+<p>Initialise une <a class="el" href="structCrossfaderConfig.html">CrossfaderConfig</a> avec des valeurs par défaut. </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="crossfader_8c_source.html#l00037">37</a> du fichier <a class="el" href="crossfader_8c_source.html">crossfader.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="crossfader_8h_source.html#l00029">CrossfaderConfig::color_0_pct</a>, <a class="el" href="crossfader_8h_source.html#l00030">CrossfaderConfig::color_100_pct</a>, <a class="el" href="crossfader_8h_source.html#l00036">CrossfaderConfig::dragging</a>, <a class="el" href="crossfader_8h_source.html#l00023">CrossfaderConfig::h</a>, <a class="el" href="crossfader_8h_source.html#l00027">CrossfaderConfig::hidden</a>, <a class="el" href="crossfader_8h_source.html#l00037">CrossfaderConfig::hover</a>, <a class="el" href="crossfader_8h_source.html#l00031">CrossfaderConfig::knob_color</a>, <a class="el" href="crossfader_8h_source.html#l00039">CrossfaderConfig::knob_texture</a>, <a class="el" href="crossfader_8h_source.html#l00025">CrossfaderConfig::max</a>, <a class="el" href="crossfader_8h_source.html#l00024">CrossfaderConfig::min</a>, <a class="el" href="crossfader_8h_source.html#l00032">CrossfaderConfig::on_change</a>, <a class="el" href="crossfader_8h_source.html#l00035">CrossfaderConfig::rect</a>, <a class="el" href="crossfader_8h_source.html#l00028">CrossfaderConfig::save_player_data</a>, <a class="el" href="crossfader_8h_source.html#l00038">CrossfaderConfig::track_texture</a>, <a class="el" href="crossfader_8h_source.html#l00026">CrossfaderConfig::value</a>, <a class="el" href="crossfader_8h_source.html#l00022">CrossfaderConfig::w</a>, <a class="el" href="crossfader_8h_source.html#l00020">CrossfaderConfig::x</a>, et <a class="el" href="crossfader_8h_source.html#l00021">CrossfaderConfig::y</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="crossfader_8c_source.html#l00069">crossfader_create()</a>, et <a class="el" href="infos_8c_source.html#l00058">init_infos()</a>.</p>
+
+</div>
+</div>
+<a id="ad88a14929edf0a596db17799ac96b3d9" name="ad88a14929edf0a596db17799ac96b3d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad88a14929edf0a596db17799ac96b3d9">&#9670;&#160;</a></span>crossfader_create()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCrossfader.html">Crossfader</a> * crossfader_create </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structCrossfaderConfig.html">CrossfaderConfig</a> *</td>          <td class="paramname"><span class="paramname"><em>cfg</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Crée un crossfader à partir d'une configuration. Si <span class="tt">cfg</span> est NULL, les valeurs par défaut sont utilisées. Le crossfader créé doit être libéré avec <span class="tt">crossfaders_free</span> pour éviter les fuites de mémoire. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>Renderer SDL (actuellement inutilisé, mais peut être utilisé à l'avenir pour charger des textures). </td></tr>
+    <tr><td class="paramname">id</td><td>Identifiant du crossfader, utilisé pour le récupérer plus tard. Doit être unique parmi les crossfaders créés. </td></tr>
+    <tr><td class="paramname">cfg_in</td><td>Pointeur vers la configuration du crossfader. Si NULL, les valeurs par défaut sont utilisées. La configuration est copiée, donc le pointeur peut être libéré ou modifié après l'appel sans affecter le crossfader créé. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Pointeur vers le crossfader créé, ou NULL en cas d'erreur (par exemple, échec d'allocation mémoire ou si le nombre maximum de crossfaders est atteint). </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="crossfader_8c_source.html#l00069">69</a> du fichier <a class="el" href="crossfader_8c_source.html">crossfader.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="crossfader_8h_source.html#l00047">Crossfader::cfg</a>, <a class="el" href="crossfader_8c_source.html#l00037">crossfader_config_init()</a>, <a class="el" href="crossfader_8c_source.html#l00005">crossfader_count</a>, <a class="el" href="crossfader_8c_source.html#l00013">crossfader_load_saved_value_if_enabled()</a>, <a class="el" href="crossfader_8c_source.html#l00004">crossfaders</a>, <a class="el" href="crossfader_8h_source.html#l00036">CrossfaderConfig::dragging</a>, <a class="el" href="crossfader_8h_source.html#l00023">CrossfaderConfig::h</a>, <a class="el" href="crossfader_8h_source.html#l00037">CrossfaderConfig::hover</a>, <a class="el" href="crossfader_8h_source.html#l00046">Crossfader::id</a>, <a class="el" href="crossfader_8h_source.html#l00039">CrossfaderConfig::knob_texture</a>, <a class="el" href="crossfader_8h_source.html#l00025">CrossfaderConfig::max</a>, <a class="el" href="crossfader_8h_source.html#l00011">MAX_CROSSFADERS</a>, <a class="el" href="crossfader_8h_source.html#l00024">CrossfaderConfig::min</a>, <a class="el" href="crossfader_8h_source.html#l00035">CrossfaderConfig::rect</a>, <a class="el" href="crossfader_8h_source.html#l00038">CrossfaderConfig::track_texture</a>, <a class="el" href="crossfader_8h_source.html#l00026">CrossfaderConfig::value</a>, <a class="el" href="crossfader_8h_source.html#l00022">CrossfaderConfig::w</a>, <a class="el" href="crossfader_8h_source.html#l00020">CrossfaderConfig::x</a>, et <a class="el" href="crossfader_8h_source.html#l00021">CrossfaderConfig::y</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00058">init_infos()</a>.</p>
+
+</div>
+</div>
+<a id="a0bed147822b42417aefeea1541272501" name="a0bed147822b42417aefeea1541272501"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bed147822b42417aefeea1541272501">&#9670;&#160;</a></span>crossfader_get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCrossfader.html">Crossfader</a> * crossfader_get </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get crossfader by id. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td><a class="el" href="structCrossfader.html">Crossfader</a> id. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Pointer to the crossfader with the given id, or NULL if not found. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="crossfader_8c_source.html#l00121">121</a> du fichier <a class="el" href="crossfader_8c_source.html">crossfader.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="crossfader_8c_source.html#l00114">find_by_id()</a>.</p>
+
+</div>
+</div>
+<a id="abc2d08f47e64af39655f95b7c07f68f1" name="abc2d08f47e64af39655f95b7c07f68f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc2d08f47e64af39655f95b7c07f68f1">&#9670;&#160;</a></span>crossfader_get_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int crossfader_get_value </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get value of a crossfader by id. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td><a class="el" href="structCrossfader.html">Crossfader</a> id. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Value of the crossfader with the given id, or 0 if not found. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="crossfader_8c_source.html#l00125">125</a> du fichier <a class="el" href="crossfader_8c_source.html">crossfader.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="crossfader_8h_source.html#l00047">Crossfader::cfg</a>, <a class="el" href="crossfader_8c_source.html#l00114">find_by_id()</a>, et <a class="el" href="crossfader_8h_source.html#l00026">CrossfaderConfig::value</a>.</p>
+
+</div>
+</div>
+<a id="a9fbc240d80a9b442ae978e38f43b7e03" name="a9fbc240d80a9b442ae978e38f43b7e03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fbc240d80a9b442ae978e38f43b7e03">&#9670;&#160;</a></span>crossfader_set_on_change()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void crossfader_set_on_change </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structCrossfader.html">Crossfader</a> *</td>          <td class="paramname"><span class="paramname"><em>cf</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void(*</td>          <td class="paramname"><span class="paramname"><em>cb&#160;</em></span>)(<a class="el" href="structSDL__Context.html">SDL_Context</a> *, int)&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set callback for a crossfader. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cf</td><td><a class="el" href="structCrossfader.html">Crossfader</a> pointer. </td></tr>
+    <tr><td class="paramname">cb</td><td>Callback function. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="crossfader_8c_source.html#l00144">144</a> du fichier <a class="el" href="crossfader_8c_source.html">crossfader.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="crossfader_8h_source.html#l00047">Crossfader::cfg</a>, et <a class="el" href="crossfader_8h_source.html#l00032">CrossfaderConfig::on_change</a>.</p>
+
+</div>
+</div>
+<a id="aa12b0bd0cbcf2b7137b73c9eacc59a9f" name="aa12b0bd0cbcf2b7137b73c9eacc59a9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa12b0bd0cbcf2b7137b73c9eacc59a9f">&#9670;&#160;</a></span>crossfader_set_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int crossfader_set_value </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set value of a crossfader by id. Will be clamped to [min, max] and trigger on_change if different from current value. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td><a class="el" href="structCrossfader.html">Crossfader</a> id. </td></tr>
+    <tr><td class="paramname">value</td><td>New value to set. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS if the value was set successfully, EXIT_FAILURE if the crossfader with the given id was not found. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="crossfader_8c_source.html#l00131">131</a> du fichier <a class="el" href="crossfader_8c_source.html">crossfader.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="crossfader_8h_source.html#l00047">Crossfader::cfg</a>, <a class="el" href="crossfader_8c_source.html#l00025">crossfader_save_value_if_enabled()</a>, <a class="el" href="crossfader_8c_source.html#l00114">find_by_id()</a>, <a class="el" href="crossfader_8h_source.html#l00025">CrossfaderConfig::max</a>, <a class="el" href="crossfader_8h_source.html#l00024">CrossfaderConfig::min</a>, <a class="el" href="crossfader_8h_source.html#l00032">CrossfaderConfig::on_change</a>, et <a class="el" href="crossfader_8h_source.html#l00026">CrossfaderConfig::value</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="crossfader_8c_source.html#l00149">edit_crfd_cfg()</a>.</p>
+
+</div>
+</div>
+<a id="a44ded336e9ff59db3be4ec0f350d6939" name="a44ded336e9ff59db3be4ec0f350d6939"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44ded336e9ff59db3be4ec0f350d6939">&#9670;&#160;</a></span>crossfaders_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void crossfaders_free </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Free all crossfaders. </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="crossfader_8c_source.html#l00482">482</a> du fichier <a class="el" href="crossfader_8c_source.html">crossfader.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="crossfader_8c_source.html#l00005">crossfader_count</a>, <a class="el" href="crossfader_8c_source.html#l00004">crossfaders</a>, et <a class="el" href="sdl_8c_source.html#l00228">free_image()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00390">infos_free()</a>.</p>
+
+</div>
+</div>
+<a id="ad75c50dc09517491d53f760bea0fb894" name="ad75c50dc09517491d53f760bea0fb894"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad75c50dc09517491d53f760bea0fb894">&#9670;&#160;</a></span>crossfaders_handle_event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void crossfaders_handle_event </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structSDL__Context.html">SDL_Context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Event *</td>          <td class="paramname"><span class="paramname"><em>event</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Handle events for all crossfaders (mouse motion, clicks). Must be called from the main event loop. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>SDL context, passed to callbacks. </td></tr>
+    <tr><td class="paramname">event</td><td>SDL event to handle. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="crossfader_8c_source.html#l00300">300</a> du fichier <a class="el" href="crossfader_8c_source.html">crossfader.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="crossfader_8h_source.html#l00047">Crossfader::cfg</a>, <a class="el" href="crossfader_8c_source.html#l00005">crossfader_count</a>, <a class="el" href="crossfader_8c_source.html#l00004">crossfaders</a>, <a class="el" href="crossfader_8h_source.html#l00036">CrossfaderConfig::dragging</a>, <a class="el" href="crossfader_8h_source.html#l00027">CrossfaderConfig::hidden</a>, <a class="el" href="crossfader_8h_source.html#l00037">CrossfaderConfig::hover</a>, <a class="el" href="crossfader_8c_source.html#l00236">point_in_rect()</a>, <a class="el" href="crossfader_8h_source.html#l00035">CrossfaderConfig::rect</a>, et <a class="el" href="crossfader_8c_source.html#l00283">update_value_from_mouse()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00319">infos_handle_event()</a>.</p>
+
+</div>
+</div>
+<a id="ad474b93da0891997c452368c5b9a3604" name="ad474b93da0891997c452368c5b9a3604"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad474b93da0891997c452368c5b9a3604">&#9670;&#160;</a></span>crossfaders_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void crossfaders_init </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="crossfader_8c_source.html#l00064">64</a> du fichier <a class="el" href="crossfader_8c_source.html">crossfader.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="crossfader_8c_source.html#l00005">crossfader_count</a>, <a class="el" href="crossfader_8c_source.html#l00004">crossfaders</a>, et <a class="el" href="crossfader_8h_source.html#l00011">MAX_CROSSFADERS</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00058">init_infos()</a>.</p>
+
+</div>
+</div>
+<a id="a4b968aa69e95c0594b0f075b0c07363d" name="a4b968aa69e95c0594b0f075b0c07363d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b968aa69e95c0594b0f075b0c07363d">&#9670;&#160;</a></span>crossfaders_render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void crossfaders_render </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="crossfader_8c_source.html#l00423">423</a> du fichier <a class="el" href="crossfader_8c_source.html">crossfader.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="crossfader_8c_source.html#l00269">brighten_color()</a>, <a class="el" href="crossfader_8h_source.html#l00047">Crossfader::cfg</a>, <a class="el" href="crossfader_8h_source.html#l00029">CrossfaderConfig::color_0_pct</a>, <a class="el" href="crossfader_8h_source.html#l00030">CrossfaderConfig::color_100_pct</a>, <a class="el" href="crossfader_8c_source.html#l00005">crossfader_count</a>, <a class="el" href="crossfader_8c_source.html#l00004">crossfaders</a>, <a class="el" href="crossfader_8h_source.html#l00036">CrossfaderConfig::dragging</a>, <a class="el" href="crossfader_8h_source.html#l00027">CrossfaderConfig::hidden</a>, <a class="el" href="crossfader_8h_source.html#l00037">CrossfaderConfig::hover</a>, <a class="el" href="crossfader_8h_source.html#l00031">CrossfaderConfig::knob_color</a>, <a class="el" href="crossfader_8c_source.html#l00241">knob_x_for_value()</a>, <a class="el" href="crossfader_8c_source.html#l00260">lerp_color()</a>, <a class="el" href="crossfader_8h_source.html#l00035">CrossfaderConfig::rect</a>, <a class="el" href="crossfader_8c_source.html#l00407">render_capsule_outline()</a>, <a class="el" href="crossfader_8c_source.html#l00341">render_circle_outline()</a>, <a class="el" href="crossfader_8c_source.html#l00375">render_filled_capsule()</a>, <a class="el" href="crossfader_8c_source.html#l00333">render_filled_circle()</a>, <a class="el" href="crossfader_8c_source.html#l00392">render_filled_left_capsule()</a>, et <a class="el" href="crossfader_8c_source.html#l00251">value_percent_for_crossfader()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00227">infos_display()</a>.</p>
+
+</div>
+</div>
+<a id="ac997af9b7522ae44c8e8406f364caf33" name="ac997af9b7522ae44c8e8406f364caf33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac997af9b7522ae44c8e8406f364caf33">&#9670;&#160;</a></span>edit_crfd_cfg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int edit_crfd_cfg </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#afe46759d0a90580e13d099a69c6fc9f6">CrfdCfgKey</a></td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">intptr_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Modifie une valeur de configuration d'un crossfader identifié par son id. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>L'ID du crossfader à modifier. </td></tr>
+    <tr><td class="paramname">key</td><td>Champ ciblé dans la configuration. </td></tr>
+    <tr><td class="paramname">value</td><td>Valeur à appliquer (entier direct pour champs int/bool, pointeur casté en <span class="tt">intptr_t</span> pour les champs pointeurs, et adresse d'une structure pour <span class="tt">CRFD_CFG_COLOR_0_PCT</span> / <span class="tt">CRFD_CFG_COLOR_100_PCT</span> / <span class="tt">CRFD_CFG_KNOB_COLOR</span> / <span class="tt">CRFD_CFG_RECT</span>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS si le crossfader existe, sinon EXIT_FAILURE. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="crossfader_8c_source.html#l00149">149</a> du fichier <a class="el" href="crossfader_8c_source.html">crossfader.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="crossfader_8h_source.html#l00047">Crossfader::cfg</a>, <a class="el" href="crossfader_8h_source.html#l00029">CrossfaderConfig::color_0_pct</a>, <a class="el" href="crossfader_8h_source.html#l00030">CrossfaderConfig::color_100_pct</a>, <a class="el" href="crossfader_8h_source.html#l00063">CRFD_CFG_COLOR_0_PCT</a>, <a class="el" href="crossfader_8h_source.html#l00064">CRFD_CFG_COLOR_100_PCT</a>, <a class="el" href="crossfader_8h_source.html#l00068">CRFD_CFG_DRAGGING</a>, <a class="el" href="crossfader_8h_source.html#l00057">CRFD_CFG_H</a>, <a class="el" href="crossfader_8h_source.html#l00061">CRFD_CFG_HIDDEN</a>, <a class="el" href="crossfader_8h_source.html#l00069">CRFD_CFG_HOVER</a>, <a class="el" href="crossfader_8h_source.html#l00065">CRFD_CFG_KNOB_COLOR</a>, <a class="el" href="crossfader_8h_source.html#l00071">CRFD_CFG_KNOB_TEXTURE</a>, <a class="el" href="crossfader_8h_source.html#l00059">CRFD_CFG_MAX</a>, <a class="el" href="crossfader_8h_source.html#l00058">CRFD_CFG_MIN</a>, <a class="el" href="crossfader_8h_source.html#l00066">CRFD_CFG_ON_CHANGE</a>, <a class="el" href="crossfader_8h_source.html#l00067">CRFD_CFG_RECT</a>, <a class="el" href="crossfader_8h_source.html#l00062">CRFD_CFG_SAVE_PLAYER_DATA</a>, <a class="el" href="crossfader_8h_source.html#l00070">CRFD_CFG_TRACK_TEXTURE</a>, <a class="el" href="crossfader_8h_source.html#l00060">CRFD_CFG_VALUE</a>, <a class="el" href="crossfader_8h_source.html#l00056">CRFD_CFG_W</a>, <a class="el" href="crossfader_8h_source.html#l00054">CRFD_CFG_X</a>, <a class="el" href="crossfader_8h_source.html#l00055">CRFD_CFG_Y</a>, <a class="el" href="crossfader_8c_source.html#l00131">crossfader_set_value()</a>, <a class="el" href="crossfader_8h_source.html#l00036">CrossfaderConfig::dragging</a>, <a class="el" href="crossfader_8c_source.html#l00114">find_by_id()</a>, <a class="el" href="crossfader_8h_source.html#l00023">CrossfaderConfig::h</a>, <a class="el" href="crossfader_8h_source.html#l00027">CrossfaderConfig::hidden</a>, <a class="el" href="crossfader_8h_source.html#l00037">CrossfaderConfig::hover</a>, <a class="el" href="crossfader_8h_source.html#l00031">CrossfaderConfig::knob_color</a>, <a class="el" href="crossfader_8h_source.html#l00039">CrossfaderConfig::knob_texture</a>, <a class="el" href="crossfader_8h_source.html#l00025">CrossfaderConfig::max</a>, <a class="el" href="crossfader_8h_source.html#l00024">CrossfaderConfig::min</a>, <a class="el" href="crossfader_8h_source.html#l00032">CrossfaderConfig::on_change</a>, <a class="el" href="crossfader_8h_source.html#l00035">CrossfaderConfig::rect</a>, <a class="el" href="crossfader_8h_source.html#l00028">CrossfaderConfig::save_player_data</a>, <a class="el" href="crossfader_8h_source.html#l00038">CrossfaderConfig::track_texture</a>, <a class="el" href="crossfader_8h_source.html#l00026">CrossfaderConfig::value</a>, <a class="el" href="crossfader_8h_source.html#l00022">CrossfaderConfig::w</a>, <a class="el" href="crossfader_8h_source.html#l00020">CrossfaderConfig::x</a>, et <a class="el" href="crossfader_8h_source.html#l00021">CrossfaderConfig::y</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a href="crossfader_8h.html">crossfader.h</a></li>
+    <li class="footer">Généré le Jeudi 19 Mars 2026 15:31:46 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

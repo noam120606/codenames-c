@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Codenames: Référence du fichier client/src/index.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Codenames<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Jeu Codenames multijoueur en C - Client SDL2 et Serveur TCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('client_2src_2index_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Référence du fichier index.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="client_2lib_2all_8h_source.html">../lib/all.h</a>&quot;</code><br />
+<code>#include &lt;sys/stat.h&gt;</code><br />
+<code>#include &lt;sys/types.h&gt;</code><br />
+<code>#include &lt;errno.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+</div>
+<p><a href="client_2src_2index_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97" id="r_a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
+</table>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a id="a0ddf1224851353fc92bfbff6f499fa97" name="a0ddf1224851353fc92bfbff6f499fa97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ddf1224851353fc92bfbff6f499fa97">&#9670;&#160;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>argc</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>argv</em></span>[]&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2index_8c_source.html#l00007">7</a> du fichier <a class="el" href="client_2src_2index_8c_source.html">index.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="ressources_8c_source.html#l00016">add_destroy_resource()</a>, <a class="el" href="sdl_8h_source.html#l00043">SDL_Context::app_state</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00049">APP_STATE_LOBBY</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00048">APP_STATE_MENU</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00051">APP_STATE_PAUSED</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00050">APP_STATE_PLAYING</a>, <a class="el" href="background_8c_source.html#l00223">background_handle_event()</a>, <a class="el" href="button_8h_source.html#l00014">BTN_RET_QUIT</a>, <a class="el" href="ressources_8c_source.html#l00024">cleanup_resources()</a>, <a class="el" href="sdl_8h_source.html#l00039">SDL_Context::clock</a>, <a class="el" href="ressources_8c_source.html#l00009">define_sdl_context()</a>, <a class="el" href="background_8c_source.html#l00281">destroy_background()</a>, <a class="el" href="sdl_8c_source.html#l00245">destroy_context()</a>, <a class="el" href="background_8c_source.html#l00147">display_background()</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00017">format_to()</a>, <a class="el" href="sdl_8h_source.html#l00046">SDL_Context::frame_start_time</a>, <a class="el" href="client_2src_2game_8c_source.html#l00112">game_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00122">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00011">game_handle_event()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00015">game_init()</a>, <a class="el" href="infos_8c_source.html#l00227">infos_display()</a>, <a class="el" href="infos_8c_source.html#l00390">infos_free()</a>, <a class="el" href="infos_8c_source.html#l00319">infos_handle_event()</a>, <a class="el" href="background_8c_source.html#l00126">init_background()</a>, <a class="el" href="infos_8c_source.html#l00058">init_infos()</a>, <a class="el" href="ressources_8c_source.html#l00004">init_resources()</a>, <a class="el" href="sdl_8c_source.html#l00042">init_sdl()</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00007">init_tcp()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00168">lobby_display()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00210">lobby_free()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00197">lobby_handle_event()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00068">lobby_init()</a>, <a class="el" href="menu_8c_source.html#l00228">menu_display()</a>, <a class="el" href="menu_8c_source.html#l00262">menu_free()</a>, <a class="el" href="menu_8c_source.html#l00042">menu_handle_event()</a>, <a class="el" href="menu_8c_source.html#l00067">menu_init()</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00027">MSG_REQUESTUUID</a>, <a class="el" href="sdl_8h_source.html#l00051">SDL_Context::player_uuid</a>, <a class="el" href="sdl_8h_source.html#l00038">SDL_Context::renderer</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00117">send_tcp()</a>, <a class="el" href="sdl_8h_source.html#l00041">SDL_Context::sock</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00034">tick_tcp()</a>, <a class="el" href="sdl_8c_source.html#l00234">toggle_fullscreen()</a>, et <a class="el" href="sdl_8h_source.html#l00037">SDL_Context::window</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a href="client_2src_2index_8c.html">index.c</a></li>
+    <li class="footer">Généré le Jeudi 19 Mars 2026 15:31:46 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

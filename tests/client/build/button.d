@@ -69,6 +69,7 @@ build/button.o: ../../client/src/button.c ../../client/src/../lib/all.h \
  ../../client/src/../lib/../lib/../lib/game.h \
  ../../client/src/../lib/../lib/../lib/list.h \
  ../../client/src/../lib/../lib/../lib/lobby.h \
+ ../../client/src/../lib/../lib/../lib/../lib/user.h \
  ../../client/src/../lib/../lib/sdl.h \
  ../../client/src/../lib/../lib/menu.h \
  ../../client/src/../lib/../lib/../lib/button.h \
@@ -158,6 +159,7 @@ build/button.o: ../../client/src/button.c ../../client/src/../lib/all.h \
 ../../client/src/../lib/../lib/../lib/game.h:
 ../../client/src/../lib/../lib/../lib/list.h:
 ../../client/src/../lib/../lib/../lib/lobby.h:
+../../client/src/../lib/../lib/../lib/../lib/user.h:
 ../../client/src/../lib/../lib/sdl.h:
 ../../client/src/../lib/../lib/menu.h:
 ../../client/src/../lib/../lib/../lib/button.h:

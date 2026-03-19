@@ -3,9 +3,6 @@
 server/build*
 client/build*
 
-# Docs
-docs/
-
 # Libraries
 client/SDL2/
 

@@ -1,0 +1,27 @@
+var server_2src_2lobby_8c =
+[
+    [ "choose_role", "server_2src_2lobby_8c.html#af844d1079e019dab0a618c378178fe75", null ],
+    [ "create_lobby", "server_2src_2lobby_8c.html#a44d2d1f1a9577918a430c3d184438383", null ],
+    [ "create_lobby_manager", "server_2src_2lobby_8c.html#a95d0cf6c24388e7600fecdf9207fcb72", null ],
+    [ "destroy_lobby", "server_2src_2lobby_8c.html#a2bb4ca514adcafddefb6759e2b5b69a7", null ],
+    [ "destroy_lobby_callback", "server_2src_2lobby_8c.html#a14e512d3eb1682633b932273dc4e4e01", null ],
+    [ "destroy_lobby_manager", "server_2src_2lobby_8c.html#a1f8c73963ebfb36ee377a21fe636d1e3", null ],
+    [ "fetchUsernames", "server_2src_2lobby_8c.html#a0573481bcb614626f62b5ca74d77da04", null ],
+    [ "find_lobby_by_code", "server_2src_2lobby_8c.html#a34b870bac73ec966edab28acc4be717a", null ],
+    [ "find_lobby_by_ownerid", "server_2src_2lobby_8c.html#a70ab64da857b6aa300fbf07629e64ed4", null ],
+    [ "find_lobby_by_playerid", "server_2src_2lobby_8c.html#ab200dca231db3c7405e5242cd1d580e1", null ],
+    [ "find_user_by_id", "server_2src_2lobby_8c.html#a09e92c0051506ed8b2ab1d8c3de28ac1", null ],
+    [ "getRandomUsername", "server_2src_2lobby_8c.html#aad728c7047f2a0533bf4e9aca60894f9", null ],
+    [ "init_lobby_manager", "server_2src_2lobby_8c.html#a5b4a01b92da39d13659424154af47ec9", null ],
+    [ "join_lobby", "server_2src_2lobby_8c.html#a3f3f826b2ed73b99d1f5b51ff9bb5fd5", null ],
+    [ "leave_lobby", "server_2src_2lobby_8c.html#ab54b2e902c3070efb2feb5f75699ccef", null ],
+    [ "lobby_get_id", "server_2src_2lobby_8c.html#ae4d65bf167ca0197b9597951ed83354e", null ],
+    [ "predicate_code", "server_2src_2lobby_8c.html#a969f400f36a01da706e7826a085eb8a1", null ],
+    [ "predicate_owner_id", "server_2src_2lobby_8c.html#a0e14f36deb0a104096160456cc43dc3c", null ],
+    [ "predicate_player_id", "server_2src_2lobby_8c.html#a2aa6bdfaf517ad38036ca53f3c729ee3", null ],
+    [ "request_choose_role", "server_2src_2lobby_8c.html#a76b3acb0d15109a3dbe5969f25992b26", null ],
+    [ "request_create_lobby", "server_2src_2lobby_8c.html#a1e46ad30b12b838c13c44f55629d0fca", null ],
+    [ "request_join_lobby", "server_2src_2lobby_8c.html#afaedceed157f9f521ace2eaf1b173bc5", null ],
+    [ "request_leave_lobby", "server_2src_2lobby_8c.html#a2db08c1d26473428f71d46b6e87c06f8", null ],
+    [ "USERNAMESCOUNT", "server_2src_2lobby_8c.html#a168a2dc85ad0faf1041bb752b59d87a7", null ]
+];
