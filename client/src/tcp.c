@@ -31,7 +31,7 @@ int init_tcp(const char* server_ip, int port) {
     return sock;
 }
 
-int tick_tcp(SDL_Context* context, int sock) {
+int tick_tcp(AppContext* context, int sock) {
     fd_set readfds;
     FD_ZERO(&readfds);
     FD_SET(STDIN_FILENO, &readfds);

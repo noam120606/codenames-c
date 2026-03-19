@@ -16,7 +16,7 @@ int init_tcp(const char* server_ip, int port);
  * @param sock Descripteur de socket.
  * @return `EXIT_SUCCESS` en cas de succès, `EXIT_FAILURE` en cas d'erreur.
  */
-int tick_tcp(SDL_Context* context, int sock);
+int tick_tcp(AppContext* context, int sock);
 
 /**
  * Lit le ping TCP (RTT) depuis la socket, en millisecondes.

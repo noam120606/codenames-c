@@ -55,6 +55,19 @@ static float compute_low_pass_alpha(float cutoff_hz) {
     return dt / (rc + dt);
 }
 
+/* Charge un fichier audio de façon sûre : vérifie d'abord son existence
+ * pour éviter les erreurs Mix_LoadWAV_RW with NULL src lorsque le chemin
+ * est absent. Retourne NULL si le fichier n'existe pas ou si le chargement échoue.
+ */
+static Mix_Chunk* load_wav_safe(const char* path) {
+    if (!path || access(path, R_OK) != 0) {
+        /* fichier non trouvé */
+        return NULL;
+    }
+    Mix_Chunk* c = Mix_LoadWAV(path);
+    return c;
+}
+
 static void low_pass_effect(int channel, void* stream, int len, void* udata) {
     (void)channel;
 
@@ -129,6 +142,14 @@ static void apply_channel_filter(int channel, SoundID id) {
 }
 
 int audio_init() {
+    /* Si l'audio est désactivé via la variable d'environnement, ne rien faire. */
+    {
+        const char* v = getenv("CODENAMES_AUDIO_DISABLED");
+        if (v && strcmp(v, "0") != 0 && v[0] != '\0') {
+            printf("Audio disabled via CODENAMES_AUDIO_DISABLED, skipping audio_init()\n");
+            return EXIT_SUCCESS;
+        }
+    }
     int frequency = 0;
     Uint16 format = 0;
     int channels = 0;
@@ -161,21 +182,35 @@ int audio_init() {
 
     // Load menu music as a chunk so it can be played on a channel
     sound_cfgs[MUSIC_MENU_LOBBY].kind = AUDIO_SOUND_KIND_MUSIC;
-    sounds[MUSIC_MENU_LOBBY] = Mix_LoadWAV("assets/audio/music_menu_lobby.ogg");
+    sound_cfgs[MUSIC_MENU_LOBBY].kind = AUDIO_SOUND_KIND_MUSIC;
+    sounds[MUSIC_MENU_LOBBY] = load_wav_safe("assets/audio/music_menu_lobby.ogg");
     if (!sounds[MUSIC_MENU_LOBBY]) {
-        printf("Erreur Mix_LoadWAV: %s\n", Mix_GetError());
+        /* affiche un message plus explicite si le fichier est manquant ou le chargement a échoué */
+        if (access("assets/audio/music_menu_lobby.ogg", R_OK) != 0) {
+            printf("Audio absent: assets/audio/music_menu_lobby.ogg\n");
+        } else {
+            printf("Erreur Mix_LoadWAV: %s\n", Mix_GetError());
+        }
     }
 
     sound_cfgs[MUSIC_GAME].kind = AUDIO_SOUND_KIND_MUSIC;
-    sounds[MUSIC_GAME] = Mix_LoadWAV("assets/audio/music_game.ogg");
+    sounds[MUSIC_GAME] = load_wav_safe("assets/audio/music_game.ogg");
     if (!sounds[MUSIC_GAME]) {
-        printf("Erreur Mix_LoadWAV: %s\n", Mix_GetError());
+        if (access("assets/audio/music_game.ogg", R_OK) != 0) {
+            printf("Audio absent: assets/audio/music_game.ogg\n");
+        } else {
+            printf("Erreur Mix_LoadWAV: %s\n", Mix_GetError());
+        }
     }
 
     sound_cfgs[SOUND_BUTTON_CLICKED].kind = AUDIO_SOUND_KIND_SFX;
-    sounds[SOUND_BUTTON_CLICKED] = Mix_LoadWAV("assets/audio/sound_button_clicked.ogg");
+    sounds[SOUND_BUTTON_CLICKED] = load_wav_safe("assets/audio/sound_button_clicked.ogg");
     if (!sounds[SOUND_BUTTON_CLICKED]) {
-        printf("Erreur Mix_LoadWAV: %s\n", Mix_GetError());
+        if (access("assets/audio/sound_button_clicked.ogg", R_OK) != 0) {
+            printf("Audio absent: assets/audio/sound_button_clicked.ogg\n");
+        } else {
+            printf("Erreur Mix_LoadWAV: %s\n", Mix_GetError());
+        }
     }
 
     return EXIT_SUCCESS;

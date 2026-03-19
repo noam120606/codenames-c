@@ -8,11 +8,11 @@ SDL_Texture* card_h_blue;
 SDL_Texture* card_f_blue;
 SDL_Texture* card_black;
 
-void game_handle_event(SDL_Context* context, SDL_Event* e) {
+void game_handle_event(AppContext* context, SDL_Event* e) {
     // gestion evenements sdl
 }
 
-int game_init(SDL_Context * context) {
+int game_init(AppContext * context) {
     int loading_fails = 0;
 
     // Chargement image
@@ -55,13 +55,13 @@ int game_init(SDL_Context * context) {
     return loading_fails;
 }
 
-void game_render_cards(SDL_Context * context) {
+void game_render_cards(AppContext * context) {
     int x=0;
     int y=0;
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
             if (!context->cards[i*5 + j]) {
-                x += 100;
+                x += 50;
                 continue;
             }
             if(context->player_role == ROLE_SPY && !context->cards[i*5 + j]->revealed) {
@@ -102,14 +102,14 @@ void game_render_cards(SDL_Context * context) {
             else if (context->cards[i*5 + j]->revealed) {
                 // Attente des images des cartes "révélées"
             }
-            x += 100;
+            x += 250;
         }
         x = 0;
-        y += 100;
+        y += 150;
     }
 }
 
-void game_display(SDL_Context * context) {
+void game_display(AppContext * context) {
 
     if (!audio_is_playing(MUSIC_GAME)) {
         audio_play(MUSIC_GAME, -1);

@@ -6,9 +6,9 @@ Resources* init_resources() {
     return res;
 }
 
-int define_sdl_context(Resources* res, SDL_Context* context, DestroyContext destroy_context) {
+int define_app_context(Resources* res, AppContext* context, DestroyContext destroy_context) {
     if (!res || !context) return EXIT_FAILURE;
-    res->sdl_context = context;
+    res->context = context;
     res->destroy_context = destroy_context;
     return EXIT_SUCCESS;
 }
@@ -32,7 +32,7 @@ void cleanup_resources(Resources* res) {
         }
     }
     if (res->destroy_context) {
-        res->destroy_context(res->sdl_context);
+        res->destroy_context(res->context);
     }
     free(res);
 }

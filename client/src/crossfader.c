@@ -141,7 +141,7 @@ int crossfader_set_value(int id, int value) {
     return EXIT_SUCCESS;
 }
 
-void crossfader_set_on_change(Crossfader* cf, void (*cb)(SDL_Context*, int)) {
+void crossfader_set_on_change(Crossfader* cf, void (*cb)(AppContext*, int)) {
     if (!cf) return;
     cf->cfg->on_change = cb;
 }
@@ -206,7 +206,7 @@ int edit_crfd_cfg(int id, CrfdCfgKey key, intptr_t value) {
                 cf->cfg->on_change = NULL;
                 return EXIT_SUCCESS;
             }
-            cf->cfg->on_change = *(void (**)(SDL_Context*, int))value;
+            cf->cfg->on_change = *(void (**)(AppContext*, int))value;
             return EXIT_SUCCESS;
         case CRFD_CFG_RECT:
             if (!value) return EXIT_FAILURE;
@@ -280,7 +280,7 @@ static SDL_Color brighten_color(SDL_Color c, int delta) {
 }
 
 /* Update value from pixel x coordinate */
-static void update_value_from_mouse(Crossfader* cf, SDL_Context* ctx, int mouse_x) {
+static void update_value_from_mouse(Crossfader* cf, AppContext* ctx, int mouse_x) {
     int knob_w = cf->cfg->rect.h; /* use height as knob size */
     int left = cf->cfg->rect.x + knob_w/2;
     int right = cf->cfg->rect.x + cf->cfg->rect.w - knob_w/2;
@@ -297,7 +297,7 @@ static void update_value_from_mouse(Crossfader* cf, SDL_Context* ctx, int mouse_
     }
 }
 
-void crossfaders_handle_event(SDL_Context* ctx, SDL_Event* event) {
+void crossfaders_handle_event(AppContext* ctx, SDL_Event* event) {
     if (!event) return;
     if (event->type == SDL_MOUSEMOTION) {
         int mx = event->motion.x;

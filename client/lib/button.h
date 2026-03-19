@@ -4,7 +4,7 @@
 
 #include <stdint.h>
 #include "../SDL2/include/SDL2/SDL.h"
-typedef struct SDL_Context SDL_Context;
+typedef struct AppContext AppContext;
 
 /**
  * Valeurs de retour des callbacks de boutons.
@@ -22,7 +22,7 @@ typedef struct Button Button;
  * @param context Contexte SDL.
  * @param button  Le bouton qui a été cliqué.
  */
-typedef ButtonReturn (*ButtonCallback)(SDL_Context* context, Button* button);
+typedef ButtonReturn (*ButtonCallback)(AppContext* context, Button* button);
 
 /**
  * Configuration pour créer un `Button`.
@@ -117,7 +117,7 @@ void button_destroy(Button* button);
  * @param event   L'événement SDL à traiter.
  * @return La valeur de retour du callback si le bouton a été cliqué, sinon BTN_RET_NONE.
  */
-ButtonReturn button_handle_event(SDL_Context* context, Button* button, SDL_Event* event);
+ButtonReturn button_handle_event(AppContext* context, Button* button, SDL_Event* event);
 
 /**
  * Rendu d'un bouton à l'écran.

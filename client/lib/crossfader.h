@@ -6,7 +6,7 @@
 #include "../SDL2/include/SDL2/SDL_image.h"
 #include "../SDL2/include/SDL2/SDL_ttf.h"
 
-typedef struct SDL_Context SDL_Context;
+typedef struct AppContext AppContext;
 
 #define MAX_CROSSFADERS 32
 
@@ -29,7 +29,7 @@ typedef struct CrossfaderConfig {
     SDL_Color color_0_pct;    /* couleur de la track à 0% */
     SDL_Color color_100_pct;  /* couleur de la track à 100% */
     SDL_Color knob_color;     /* couleur du noeud */
-    void (*on_change)(SDL_Context* ctx, int new_value);
+    void (*on_change)(AppContext* ctx, int new_value);
 
     /* --- champs d'état (runtime) --- */
     SDL_Rect rect;             /* full track rect */
@@ -95,7 +95,7 @@ void crossfaders_render(SDL_Renderer* renderer);
  * @param ctx SDL context, passed to callbacks.
  * @param event SDL event to handle.
  */
-void crossfaders_handle_event(SDL_Context* ctx, SDL_Event* event);
+void crossfaders_handle_event(AppContext* ctx, SDL_Event* event);
 
 /** Get crossfader by id.
  * @param id Crossfader id.
@@ -120,7 +120,7 @@ int crossfader_set_value(int id, int value);
  * @param cf Crossfader pointer.
  * @param cb Callback function.
  */
-void crossfader_set_on_change(Crossfader* cf, void (*cb)(SDL_Context*, int));
+void crossfader_set_on_change(Crossfader* cf, void (*cb)(AppContext*, int));
 
 /** Free all crossfaders.
  */

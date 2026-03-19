@@ -39,8 +39,8 @@ static Uint32 get_renderer_flags(void) {
     return SDL_RENDERER_ACCELERATED;
 }
 
-SDL_Context init_sdl() {
-    SDL_Context context = {0}; // Initialisation sécurisée à zéro
+AppContext init_sdl() {
+    AppContext context = {0}; // Initialisation sécurisée à zéro
 
     // Log dimensions
     printf("WIN_WIDTH = %d, WIN_HEIGHT = %d\n", WIN_WIDTH, WIN_HEIGHT);
@@ -114,16 +114,20 @@ SDL_Context init_sdl() {
         return context;
     }
 
-    // Initialize Mixer
+    // Initialize Mixer (skip if audio disabled/dummy)
     printf("Initializing Mixer...\n");
-    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) != 0) {
-        printf("Mix_OpenAudio Error: %s\n", Mix_GetError());
-        TTF_Quit();
-        IMG_Quit();
-        SDL_DestroyRenderer(renderer);
-        SDL_DestroyWindow(win);
-        SDL_Quit();
-        return context;
+    if (is_truthy_env(getenv("CODENAMES_AUDIO_DISABLED")) || is_truthy_env(getenv("CODENAMES_AUDIO_DUMMY"))) {
+        printf("Audio initialization skipped (CODENAMES_AUDIO_DISABLED or CODENAMES_AUDIO_DUMMY set)\n");
+    } else {
+        if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) != 0) {
+            printf("Mix_OpenAudio Error: %s\n", Mix_GetError());
+            TTF_Quit();
+            IMG_Quit();
+            SDL_DestroyRenderer(renderer);
+            SDL_DestroyWindow(win);
+            SDL_Quit();
+            return context;
+        }
     }
 
     context.clock = 0;
@@ -227,7 +231,7 @@ void free_image(SDL_Texture* texture) {
     }
 }
 
-void toggle_fullscreen(SDL_Context* context) {
+void toggle_fullscreen(AppContext* context) {
     if (!context || !context->window) return;
     Uint32 flags = SDL_GetWindowFlags(context->window);
     int is_fullscreen = (flags & SDL_WINDOW_FULLSCREEN_DESKTOP) || (flags & SDL_WINDOW_FULLSCREEN);
@@ -238,7 +242,7 @@ void toggle_fullscreen(SDL_Context* context) {
     }
 }
 
-int destroy_context(SDL_Context* context) {
+int destroy_context(AppContext* context) {
     if (!context) {
         return EXIT_FAILURE;
     }

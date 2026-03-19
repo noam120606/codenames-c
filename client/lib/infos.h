@@ -14,7 +14,7 @@
  * @param context Contexte SDL contenant le renderer.
  * @return Nombre d'erreurs de chargement (0 si succès).
  */
-int init_infos(SDL_Context* context);
+int init_infos(AppContext* context);
 
 
 // OTHER INFOS
@@ -25,7 +25,7 @@ int init_infos(SDL_Context* context);
  * @param current_time Temps actuel en millisecondes (généralement obtenu via `SDL_GetTicks()`).
  * Note : Cette fonction doit être appelée à chaque frame pour mettre à jour les FPS.
  */
-void calculate_fps(SDL_Context* context, Uint32 current_time);
+void calculate_fps(AppContext* context, Uint32 current_time);
 
 
 // DISPLAY INFOS
@@ -34,21 +34,21 @@ void calculate_fps(SDL_Context* context, Uint32 current_time);
  * Affiche les informations à l'écran.
  * @param context Contexte SDL contenant le renderer et les données nécessaires pour l'affichage.
  */
-void infos_display(SDL_Context* context);
+void infos_display(AppContext* context);
 
 /**
  * Gère les événements SDL pour le bandeau infos (crossfaders, etc.).
  * @param context Contexte SDL.
  * @param event Événement SDL à traiter.
  */
-void infos_handle_event(SDL_Context* context, SDL_Event* event);
+void infos_handle_event(AppContext* context, SDL_Event* event);
 
 /**
  * Affiche les FPS (Frames Per Second)
  * @param context Contexte SDL contenant le temps écoulé depuis la dernière mise à jour.
  * @param display_x La position x courante du placeholder pour que les FPS le suivent.
  */
-void fps_ping_display(SDL_Context* context, int display_x);
+void fps_ping_display(AppContext* context, int display_x);
 
 /**
  * Libère les ressources utilisées pour l'affichage des informations.

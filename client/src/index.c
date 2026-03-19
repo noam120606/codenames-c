@@ -60,7 +60,7 @@ int main(int argc, char* argv[]){
         return EXIT_FAILURE;
     }
 
-    SDL_Context context = init_sdl();
+    AppContext context = init_sdl();
     if (context.window == NULL || context.renderer == NULL) {
         printf("Failed to initialize SDL\n");
         destroy_context(&context);
@@ -69,7 +69,7 @@ int main(int argc, char* argv[]){
     }
 
     // Register SDL context and cleanup function
-    if (define_sdl_context(resources, &context, destroy_context) != EXIT_SUCCESS) {
+    if (define_app_context(resources, &context, destroy_context) != EXIT_SUCCESS) {
         printf("Failed to define SDL context\n");
         destroy_context(&context);
         cleanup_resources(resources);
