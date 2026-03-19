@@ -12,6 +12,10 @@ Button* btn_return = NULL;
 static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
     if (!context || !button) return BTN_RET_NONE;
     if (button == btn_red_agent) {
+        if (context->player_role == ROLE_AGENT && context->player_team == TEAM_RED) {
+            printf("Role didn't change\n");
+            return BTN_RET_NONE;
+        }
         context->player_role = ROLE_AGENT;
         context->player_team = TEAM_RED;
         char msg[16];
@@ -19,6 +23,10 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
         send_tcp(context->sock, msg);
         printf("Selected role: RED AGENT\n");
     } else if (button == btn_red_spy) {
+        if (context->player_role == ROLE_SPY && context->player_team == TEAM_RED) {
+            printf("Role didn't change\n");
+            return BTN_RET_NONE;
+        }
         context->player_role = ROLE_SPY;
         context->player_team = TEAM_RED;
         char msg[16];
@@ -26,6 +34,10 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
         send_tcp(context->sock, msg);
         printf("Selected role: RED SPY\n");
     } else if (button == btn_blue_agent) {
+        if (context->player_role == ROLE_AGENT && context->player_team == TEAM_BLUE) {
+            printf("Role didn't change\n");
+            return BTN_RET_NONE;
+        }
         context->player_role = ROLE_AGENT;
         context->player_team = TEAM_BLUE;
         char msg[16];
@@ -33,6 +45,10 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
         send_tcp(context->sock, msg);
         printf("Selected role: BLUE AGENT\n");
     } else if (button == btn_blue_spy) {
+        if (context->player_role == ROLE_SPY && context->player_team == TEAM_BLUE) {
+            printf("Role didn't change\n");
+            return BTN_RET_NONE;
+        }
         context->player_role = ROLE_SPY;
         context->player_team = TEAM_BLUE;
         char msg[16];
@@ -48,6 +64,12 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
     } else if (button == btn_return) {
         /* Informer le serveur qu'on quitte le lobby */
         if (context->lobby->id >= 0 && context->sock >= 0) {
+            for(int i = 0; i < context->lobby->nb_players; i++) {
+                if (context->lobby->users[i] && context->lobby->users[i]->name) {
+                    free(context->lobby->users[i]->name);
+                    free(context->lobby->users[i]);
+                }
+            }
             char msg[16];
             format_to(msg, sizeof(msg), "%d", MSG_LEAVELOBBY);
             send_tcp(context->sock, msg);

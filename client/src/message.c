@@ -66,6 +66,16 @@ int on_message(AppContext* context, char* message) {
                 if (args.argv) free(args.argv);
                 return EXIT_FAILURE;
             }
+
+            User* new_player = create_user((char*)args.argv[0], (UserRole)atoi((char*)args.argv[1]), (Team)atoi((char*)args.argv[2]));
+
+            for (int i = 0; i < context->lobby->nb_players; i++) {
+                if (!context->lobby->users[i]) {
+                    context->lobby->users[i] = new_player;
+                    break;
+                }
+            }
+
             printf("Player %s joined the lobby with role %s and team %s\n", (char*)args.argv[0], (char*)args.argv[1], (char*)args.argv[2]);
             break;
 
