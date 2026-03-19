@@ -23,24 +23,12 @@ typedef enum LobbyStatus {
 } LobbyStatus;
 
 /**
- * Conteneurs de rôles pour faciliter la gestion des rôles/équipes dans le lobby.
- * Chaque conteneur correspond à un rôle/équipe spécifique (ex: RED_AGENT, BLUE_SPY, etc.) et contient les utilisateurs qui ont choisi ce rôle/équipe.
- * @param users tableau de pointeurs vers les utilisateurs ayant choisi ce rôle/équipe.
- * @param count_users nombre d'utilisateurs dans ce conteneur.
- */
-typedef struct LobbyRoleContainers {
-    List users[MAX_USERS]; // Les utilisateurs ayant choisi ce rôle/équipe (au maximum MAX_USERS pour ne pas avoir à gérer des soucis de places dans les conteneurs de rôles)
-    int count_users;
-} LobbyRoleContainers;
-
-/**
  * Représente un lobby de jeu.
  * @param id identifiant unique du lobby.
  * @param owner_id identifiant du joueur propriétaire du lobby.
  * @param code code d'accès au lobby (généré aléatoirement).
  * @param status état courant du lobby (LB_STATUS_*).
  * @param users tableau de pointeurs vers les joueurs présents.
- * @param role_containers liste de rôles pour faciliter la gestion des rôles/équipes dans le lobby.
  * @param nb_players nombre de joueurs actuellement connectés.
  * @param game partie associée au lobby (NULL si aucune partie).
  */
@@ -50,7 +38,6 @@ typedef struct Lobby {
     char code[6];
     LobbyStatus status;
     User* users[MAX_USERS];
-    LobbyRoleContainers role_containers[5]; // Les NONE, RED_AGENT, RED_SPY, BLUE_AGENT, BLUE_SPY
     int nb_players;
     Game* game;
 } Lobby;

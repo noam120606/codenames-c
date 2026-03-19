@@ -183,23 +183,23 @@ int main(int argc, char* argv[]){
             infos_handle_event(&context, &e);
 
             /* Fond interactif (clic sur un symbole) */
-            if (context.game_state == GAME_STATE_MENU || context.game_state == GAME_STATE_LOBBY)
+            if (context.app_state == APP_STATE_MENU || context.app_state == APP_STATE_LOBBY)
                 background_handle_event(&context, &e);
 
             // Déléguer l'événement selon l'état courant
-            switch (context.game_state) {
-                case GAME_STATE_MENU: {
+            switch (context.app_state) {
+                case APP_STATE_MENU: {
                     ButtonReturn bref = menu_handle_event(&context, &e);
                     if (bref == BTN_RET_QUIT) running = 0;
                     break;
                 }
-                case GAME_STATE_LOBBY: {
+                case APP_STATE_LOBBY: {
                     ButtonReturn bref = lobby_handle_event(&context, &e);
                     if (bref == BTN_RET_QUIT) running = 0;
                     break;
                 }
-                case GAME_STATE_PLAYING: game_handle_event(&context, &e); break;
-                case GAME_STATE_PAUSED: break;
+                case APP_STATE_PLAYING: game_handle_event(&context, &e); break;
+                case APP_STATE_PAUSED: break;
             }
         }
 
@@ -208,20 +208,20 @@ int main(int argc, char* argv[]){
         SDL_RenderClear(context.renderer);
 
         // Rendu et logique d'affichage
-        switch (context.game_state) {
-            case GAME_STATE_MENU:
+        switch (context.app_state) {
+            case APP_STATE_MENU:
                 display_background(&context);
                 menu_display(&context);
                 
                 break;
-            case GAME_STATE_LOBBY:
+            case APP_STATE_LOBBY:
                 display_background(&context);
                 lobby_display(&context);
                 break;
-            case GAME_STATE_PLAYING:
+            case APP_STATE_PLAYING:
                 game_display(&context);
                 break;
-            case GAME_STATE_PAUSED:
+            case APP_STATE_PAUSED:
                 // TODO: Implement paused state rendering
                 break;
         }

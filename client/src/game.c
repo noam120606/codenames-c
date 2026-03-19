@@ -120,12 +120,12 @@ void game_display(SDL_Context * context) {
 
 
 int game_free() {
-    if (card_h_classic) free_image(card_h_classic);
-    if (card_f_classic) free_image(card_f_classic);
-    if (card_h_red) free_image(card_h_red);
-    if (card_f_red) free_image(card_f_red);
-    if (card_h_blue) free_image(card_h_blue);
-    if (card_f_blue) free_image(card_f_blue);
-    if (card_black) free_image(card_black);
+    if (card_h_classic) { free_image(card_h_classic); card_h_classic = NULL; }
+    if (card_f_classic) { free_image(card_f_classic); card_f_classic = NULL; }
+    if (card_h_red) { free_image(card_h_red); card_h_red = NULL; }
+    if (card_f_red) { free_image(card_f_red); card_f_red = NULL; }
+    if (card_h_blue) { free_image(card_h_blue); card_h_blue = NULL; }
+    if (card_f_blue) { free_image(card_f_blue); card_f_blue = NULL; }
+    if (card_black) { free_image(card_black); card_black = NULL; }
     return EXIT_SUCCESS;
 }

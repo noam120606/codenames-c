@@ -6,6 +6,27 @@ SDL_Texture* bandeau;
 static Crossfader* cf_music = NULL;
 static Crossfader* cf_sfx = NULL;
 
+// Texte des règles dans le bandeau
+static const char* rules_title = "REGLES DU JEU";
+static const char* rules_lines[] = {
+    "25 cartes sont disposees",
+    "sur le plateau de jeu.",
+    "",
+    "Chaque equipe a un Maitre-Espion",
+    "qui connait les couleurs",
+    "des cartes.",
+    "",
+    "Le Maitre-Espion donne un",
+    "indice : UN mot et UN chiffre.",
+    "",
+    "Son equipe doit deviner",
+    "les cartes correspondantes.",
+    "",
+    "Attention a l'Assassin !",
+    "Le toucher = defaite immediate."
+};
+static const int rules_line_count = 15;
+
 // Animation state
 typedef enum {
     INFOS_HIDDEN,
@@ -276,6 +297,18 @@ void infos_display(SDL_Context* context) {
             int label_x = display_x + 100;
             text_display(context->renderer, "Musique", FONT_LARABIE, 18, COL_WHITE, label_x, 345, 0, 255);
             text_display(context->renderer, "Effets Sonores", FONT_LARABIE, 18, COL_WHITE, label_x, 275, 0, 255);
+
+            /* Affichage des règles du jeu */
+            int rules_start_y = 180;  // Position Y de départ (en dessous des volumes)
+            int line_spacing = 22;    // Espacement entre les lignes
+            
+            // Titre des règles
+            text_display(context->renderer, rules_title, FONT_LARABIE, 20, COL_WHITE, label_x, rules_start_y, 0, 255);
+            
+            // Lignes des règles
+            for (int i = 0; i < rules_line_count; i++) {
+                text_display(context->renderer, rules_lines[i], FONT_LARABIE, 14, COL_WHITE, label_x, rules_start_y - 35 - (i * line_spacing), 0, 200);
+            }
 
             /* Rendu des crossfaders */
             crossfaders_render(context->renderer);

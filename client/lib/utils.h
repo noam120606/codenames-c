@@ -49,4 +49,29 @@ char* itoa(int value);
  */
 char* getRandomUsername(void);
 
+/**
+ * Calcule la distance de Levenshtein entre deux chaînes (insensible à la casse)
+ * @param s1 Première chaîne
+ * @param s2 Deuxième chaîne
+ * @return Distance de Levenshtein (0 = identique, plus c'est grand plus c'est différent)
+ */
+int levenshtein(const char* s1, const char* s2);
+
+/**
+ * Vérifie si un mot est trop proche d'un mot de carte (à bannir)
+ * @param input Le mot entré par le joueur
+ * @param card_word Le mot sur la carte
+ * @param threshold Seuil de distance max (ex: 2 = modifications max autorisées)
+ * @return 1 si le mot est trop proche (à bannir), 0 sinon
+ */
+int is_word_too_close(const char* input, const char* card_word, int threshold);
+
+/**
+ * Vérifie si un mot contient un autre mot (sous-chaîne, insensible à la casse)
+ * @param input Le mot entré
+ * @param card_word Le mot de la carte
+ * @return 1 si input contient card_word ou vice versa, 0 sinon
+ */
+int word_contains(const char* input, const char* card_word);
+
 #endif // UTILS_H

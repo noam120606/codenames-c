@@ -133,10 +133,18 @@ SDL_Context init_sdl() {
     context.clock = 0;
     context.fps = 0.0f;
     context.sock = 0;
-    context.lobby_id = -1;
+    context.lobby = (Lobby*)malloc(sizeof(Lobby));
+    if (!context.lobby) {
+        printf("Failed to allocate memory for lobby\n");
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(win);
+        SDL_Quit();
+        return context;
+    }
+    context.lobby->id = -1;
     context.frame_start_time = 0;
     context.ping_ms = -1;
-    context.game_state = GAME_STATE_MENU;
+    context.app_state = APP_STATE_MENU;
     context.music_volume = MIX_MAX_VOLUME;
     context.sound_effects_volume = MIX_MAX_VOLUME;
 
@@ -254,10 +262,6 @@ int destroy_context(SDL_Context* context) {
     if (context->player_uuid) {
         free(context->player_uuid);
         context->player_uuid = NULL;
-    }
-    if (context->lobby_code) {
-        free(context->lobby_code);
-        context->lobby_code = NULL;
     }
     audio_cleanup();
     Mix_Quit();

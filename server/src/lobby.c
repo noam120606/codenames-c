@@ -263,7 +263,7 @@ int request_join_lobby(Codenames* codenames, TcpClient* client, char* message, A
         return EXIT_FAILURE;
     }
 
-    User* user = create_user(client->id, args.argv[1], client->socket);
+    User* user = create_user(client->id, args.argv[1], client->id);
     if (!user) {
         printf("Failed to create user for client %d\n", client->id);
         return EXIT_FAILURE;
@@ -276,6 +276,18 @@ int request_join_lobby(Codenames* codenames, TcpClient* client, char* message, A
     }
 
     printf("Client %d (%s) joined lobby %d\n", client->id, user->name, lobby->id);
+
+    char trame[64];
+    format_to(trame, sizeof(trame), "%d %d %s", MSG_JOINLOBBY, lobby->id, lobby->code);
+    tcp_send_to_client(codenames, client->id, trame);
+
+    for (int i = 0; i < lobby->nb_players; i++) {
+        if (lobby->users[i]->id != client->id) {
+            char msg[64];
+            format_to(msg, sizeof(msg), "%d %s %d %d", MSG_PLAYERJOINED, lobby->users[i]->name, lobby->users[i]->role, lobby->users[i]->team);
+            tcp_send_to_client(codenames, lobby->users[i]->id, msg);
+        }
+    }
 
     return EXIT_SUCCESS;
 }
@@ -315,8 +327,8 @@ int request_leave_lobby(Codenames* codenames, TcpClient* client, char* message, 
     /* Si le lobby est vide, le détruire */
     if (lobby->nb_players == 0) {
         list_remove(codenames->lobby->lobbies, lobby);
-        free(lobby);
         printf("Lobby %d destroyed (empty)\n", lobby->id);
+        free(lobby);
     }
     /* Si le owner a quitté, transférer au premier joueur restant */
     else if (lobby->owner_id == client->id) {
@@ -358,6 +370,7 @@ int request_choose_role(Codenames* codenames, TcpClient* client, char* message, 
     format_to(reponse, sizeof(reponse), "%d %d %d %d", MSG_CHOOSE_ROLE, user->id, user->role, user->team);
     for (int i = 0; i < lobby->nb_players; i++) {
         if (lobby->users[i]->id != client->id) { // Pas besoin de s'envoyer à soi-même
+            printf("Sending role choice to client %d: %s\n", lobby->users[i]->id, reponse);
             tcp_send_to_client(codenames, lobby->users[i]->socket_fd, reponse);
         }
     }
