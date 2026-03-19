@@ -54,6 +54,14 @@ int main(int argc, char* argv[]) {
         return EXIT_FAILURE;
     } else add_destroy_resource(resources, game_free);
 
+    int bg_loading_fails = init_background(&context);
+    if (bg_loading_fails > 0) {
+        printf("Failed to load %d background resource(s)\n", bg_loading_fails);
+        destroy_background();
+        cleanup_resources(resources);
+        return EXIT_FAILURE;
+    } else add_destroy_resource(resources, destroy_background);
+
     SDL_Event e;
     int running = 1;
 
@@ -108,11 +116,16 @@ int main(int argc, char* argv[]) {
                 }
             }
             game_handle_event(&context, &e);
+            background_handle_event(&context, &e);
         }
 
-        SDL_SetRenderDrawColor(context.renderer, 50, 50, 50, 255);
+        // Couleur rouge pour le jeu
+        background_set_color(80, 30, 30);
+        SDL_Color bg = background_get_color();
+        SDL_SetRenderDrawColor(context.renderer, bg.r, bg.g, bg.b, bg.a);
         SDL_RenderClear(context.renderer);
 
+        display_background(&context);
         game_display(&context);
 
         // Post Rendu

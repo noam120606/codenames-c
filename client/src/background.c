@@ -5,6 +5,9 @@ static SDL_Texture* lens;
 static SDL_Texture* hat;
 static SDL_Texture* spyglasses;
 
+/* Couleur de fond du background (par défaut gris foncé) */
+static SDL_Color bg_color = {50, 50, 50, 255};
+
 /* Constantes de la grille (partagées init/display/event) */
 #define BG_SYMBOL_W  64
 #define BG_SYMBOL_H  64
@@ -284,5 +287,16 @@ int destroy_background() {
     if (spyglasses) { free_image(spyglasses); spyglasses = NULL; }
     override_count = 0;
     memset(animations, 0, sizeof(animations));
+    bg_color = (SDL_Color){50, 50, 50, 255}; // Reset to default
     return EXIT_SUCCESS;
+}
+
+void background_set_color(Uint8 r, Uint8 g, Uint8 b) {
+    bg_color.r = r;
+    bg_color.g = g;
+    bg_color.b = b;
+}
+
+SDL_Color background_get_color(void) {
+    return bg_color;
 }

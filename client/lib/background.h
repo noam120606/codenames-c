@@ -26,4 +26,18 @@ void background_handle_event(AppContext* context, SDL_Event* e);
  */
 int destroy_background();
 
+/**
+ * Set the background color.
+ * @param r Red component (0-255)
+ * @param g Green component (0-255)
+ * @param b Blue component (0-255)
+ */
+void background_set_color(Uint8 r, Uint8 g, Uint8 b);
+
+/**
+ * Get the current background color.
+ * @return The current SDL_Color of the background.
+ */
+SDL_Color background_get_color(void);
+
 #endif // BACKGROUND_H
