@@ -203,22 +203,27 @@ int main(int argc, char* argv[]){
             }
         }
 
-        // Pré Rendu
-        SDL_SetRenderDrawColor(context.renderer, 50, 50, 50, 255);
+        // Pré Rendu - Utiliser la couleur du background
+        SDL_Color bg = background_get_color();
+        SDL_SetRenderDrawColor(context.renderer, bg.r, bg.g, bg.b, bg.a);
         SDL_RenderClear(context.renderer);
 
         // Rendu et logique d'affichage
         switch (context.app_state) {
             case APP_STATE_MENU:
+                background_set_color(50, 50, 50);  // Gris par défaut
                 display_background(&context);
                 menu_display(&context);
                 
                 break;
             case APP_STATE_LOBBY:
+                background_set_color(80, 30, 30);  // Gris par défaut
                 display_background(&context);
                 lobby_display(&context);
                 break;
             case APP_STATE_PLAYING:
+                background_set_color(80, 30, 30);  // Rouge foncé pour le jeu
+                display_background(&context);
                 game_display(&context);
                 break;
             case APP_STATE_PAUSED:

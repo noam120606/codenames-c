@@ -69,4 +69,6 @@ ButtonReturn lobby_handle_event(AppContext* context, SDL_Event* event);
  */
 void lobby_display(AppContext* context);
 
+void player_icon_display(AppContext* context, User* user);
+
 #endif // LOBBY_H

@@ -7,18 +7,30 @@ Button* btn_blue_agent = NULL;
 Button* btn_blue_spy = NULL;
 Button* btn_launch_game = NULL;
 Button* btn_return = NULL;
+SDL_Texture* player_icon_none = NULL;
+SDL_Texture* player_icon_red = NULL;
+SDL_Texture* player_icon_blue = NULL;
 
 /* Callback pour boutons du lobby (choix de rôle / équipe) */
 static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
     if (!context || !button) return BTN_RET_NONE;
     if (button == btn_red_agent) {
+        if (context->player_role == ROLE_AGENT && context->player_team == TEAM_RED) {
+            printf("Role didn't change\n");
+            return BTN_RET_NONE;
+        }
         context->player_role = ROLE_AGENT;
         context->player_team = TEAM_RED;
         char msg[16];
         format_to(msg, sizeof(msg), "%d %d %d", MSG_CHOOSE_ROLE, ROLE_AGENT, TEAM_RED);
         send_tcp(context->sock, msg);
+
         printf("Selected role: RED AGENT\n");
     } else if (button == btn_red_spy) {
+        if (context->player_role == ROLE_SPY && context->player_team == TEAM_RED) {
+            printf("Role didn't change\n");
+            return BTN_RET_NONE;
+        }
         context->player_role = ROLE_SPY;
         context->player_team = TEAM_RED;
         char msg[16];
@@ -26,6 +38,10 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
         send_tcp(context->sock, msg);
         printf("Selected role: RED SPY\n");
     } else if (button == btn_blue_agent) {
+        if (context->player_role == ROLE_AGENT && context->player_team == TEAM_BLUE) {
+            printf("Role didn't change\n");
+            return BTN_RET_NONE;
+        }
         context->player_role = ROLE_AGENT;
         context->player_team = TEAM_BLUE;
         char msg[16];
@@ -33,6 +49,10 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
         send_tcp(context->sock, msg);
         printf("Selected role: BLUE AGENT\n");
     } else if (button == btn_blue_spy) {
+        if (context->player_role == ROLE_SPY && context->player_team == TEAM_BLUE) {
+            printf("Role didn't change\n");
+            return BTN_RET_NONE;
+        }
         context->player_role = ROLE_SPY;
         context->player_team = TEAM_BLUE;
         char msg[16];
@@ -48,6 +68,12 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
     } else if (button == btn_return) {
         /* Informer le serveur qu'on quitte le lobby */
         if (context->lobby->id >= 0 && context->sock >= 0) {
+            for(int i = 0; i < context->lobby->nb_players; i++) {
+                if (context->lobby->users[i] && context->lobby->users[i]->name) {
+                    free(context->lobby->users[i]->name);
+                    free(context->lobby->users[i]);
+                }
+            }
             char msg[16];
             format_to(msg, sizeof(msg), "%d", MSG_LEAVELOBBY);
             send_tcp(context->sock, msg);
@@ -69,8 +95,27 @@ int lobby_init(AppContext* context) {
 
     int loading_fails = 0;
 
+    // Chargement images
+    player_icon_none = load_image(context->renderer, "assets/img/player_icons/none.png");
+    if (!player_icon_none) {
+        printf("Failed to load player_icon_none image\n");
+        loading_fails++;
+    }
+
+    player_icon_red = load_image(context->renderer, "assets/img/player_icons/red.png");
+    if (!player_icon_red) {
+        printf("Failed to load player_icon_red image\n");
+        loading_fails++;
+    }
+
+    player_icon_blue = load_image(context->renderer, "assets/img/player_icons/blue.png");
+    if (!player_icon_blue) {
+        printf("Failed to load player_icon_blue image\n");
+        loading_fails++;
+    }
+
     /* Créer les boutons de rôle/équipe via ButtonConfig */
-    int height   = 64;
+    int height = 64;
 
     ButtonConfig* cfg_btn_red_agent = button_config_init();
     if (cfg_btn_red_agent) {
@@ -192,6 +237,14 @@ void lobby_display(AppContext* context) {
     button_render(context->renderer, btn_blue_spy);
     button_render(context->renderer, btn_launch_game);
     button_render(context->renderer, btn_return);
+
+    /* Afficher les icônes des joueurs */
+    for (int i = 0; i < MAX_USERS; i++) {
+        User* user = context->lobby->users[i];
+        if (user) {
+            player_icon_display(context, user);
+        }
+    }
 }
 
 ButtonReturn lobby_handle_event(AppContext* context, SDL_Event* e) {
@@ -203,8 +256,31 @@ ButtonReturn lobby_handle_event(AppContext* context, SDL_Event* e) {
     if (btn_red_spy)    { r = button_handle_event(context, btn_red_spy, e);    if (r != BTN_RET_NONE) ret = r; }
     if (btn_blue_agent) { r = button_handle_event(context, btn_blue_agent, e); if (r != BTN_RET_NONE) ret = r; }
     if (btn_blue_spy)   { r = button_handle_event(context, btn_blue_spy, e);   if (r != BTN_RET_NONE) ret = r; }
+    if (btn_launch_game) { r = button_handle_event(context, btn_launch_game, e); if (r != BTN_RET_NONE) ret = r; }
     if (btn_return)     { r = button_handle_event(context, btn_return, e);     if (r != BTN_RET_NONE) ret = r; }
     return ret;
+}
+
+void player_icon_display(AppContext* context, User* user) {
+    if (!context || !user) return;
+
+    SDL_Texture* icon = NULL;
+    if (user->team == TEAM_RED) {
+        icon = player_icon_red;
+    } else if (user->team == TEAM_BLUE) {
+        icon = player_icon_blue;
+    } else {
+        icon = player_icon_none;
+    }
+
+    if (icon) {
+        /* Afficher l'icône à la position souhaitée (ex: à gauche du nom du joueur) */
+        int x = -300; // Position X relative
+        int y = 0;    // Position Y relative (à ajuster selon la position du nom)
+        SDL_Rect dst_rect = { x, y, 32, 32 }; // Taille de l'icône
+        SDL_RenderCopy(context->renderer, icon, NULL, &dst_rect);
+        SDL_DestroyTexture(icon);
+    }
 }
 
 int lobby_free(){
@@ -216,6 +292,10 @@ int lobby_free(){
     if (btn_blue_spy)   { button_destroy(btn_blue_spy);   btn_blue_spy = NULL; }
     if (btn_launch_game) { button_destroy(btn_launch_game); btn_launch_game = NULL; }
     if (btn_return)     { button_destroy(btn_return);     btn_return = NULL; }
+
+    if (player_icon_none) { SDL_DestroyTexture(player_icon_none); player_icon_none = NULL; }
+    if (player_icon_red)  { SDL_DestroyTexture(player_icon_red);  player_icon_red = NULL; }
+    if (player_icon_blue) { SDL_DestroyTexture(player_icon_blue); player_icon_blue = NULL; }
 
     return EXIT_SUCCESS;
 }

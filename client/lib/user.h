@@ -22,9 +22,7 @@ typedef enum UserRole {
  * @param team équipe (TEAM_*).
  */
 typedef struct {
-    int id;
     char* name;
-    int socket_fd;
     UserRole role;
     Team team;
 } User;
@@ -38,7 +36,7 @@ typedef struct {
  * @param socket_fd Socket associée.
  * @return Pointeur vers le User créé, ou NULL en cas d'erreur.
  */
-User* create_user(int id, const char* name, int socket_fd);
+User* create_user(const char* name, UserRole role, Team team);
 
 /** Détruit un utilisateur et libère ses ressources.
  * @param user Utilisateur à détruire.
