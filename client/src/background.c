@@ -106,7 +106,7 @@ static int world_phase(int scaled_time, int tile_size) {
     return 2 * (scaled_time / (tile_size * 2));
 }
 
-static void window_to_logical(SDL_Context* context, int wx, int wy, int* lx, int* ly) {
+static void window_to_logical(AppContext* context, int wx, int wy, int* lx, int* ly) {
     if (!lx || !ly) return;
 
     if (!context || !context->renderer) {
@@ -123,7 +123,7 @@ static void window_to_logical(SDL_Context* context, int wx, int wy, int* lx, int
 }
 
 
-int init_background(SDL_Context* context) {
+int init_background(AppContext* context) {
     int fails = 0;
 
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "0");
@@ -144,7 +144,7 @@ int init_background(SDL_Context* context) {
     return fails;
 }
 
-void display_background(SDL_Context* context) {
+void display_background(AppContext* context) {
     const int   INTERACT_RADIUS = 150;
     const float MAX_SCALE       = 1.4f;
 
@@ -220,7 +220,7 @@ void display_background(SDL_Context* context) {
 }
 
 /* Event (clic gauche → cycle symbole du tile cliqué) */
-void background_handle_event(SDL_Context* context, SDL_Event* e) {
+void background_handle_event(AppContext* context, SDL_Event* e) {
     if (e->type != SDL_MOUSEBUTTONDOWN || e->button.button != SDL_BUTTON_LEFT) return;
 
     const int scaled_time = (int)(context->clock * BG_SPEED);

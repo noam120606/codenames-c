@@ -5,7 +5,7 @@
 #include "../SDL2/include/SDL2/SDL_image.h"
 #include "../SDL2/include/SDL2/SDL_ttf.h"
 
-typedef struct SDL_Context SDL_Context;
+typedef struct AppContext AppContext;
 #include "../lib/button.h"
 
 /**
@@ -99,14 +99,14 @@ typedef struct Card {
  * @param context Contexte SDL.
  * @param e Événement SDL à traiter.
  */
-void game_handle_event(SDL_Context* context, SDL_Event* e);
+void game_handle_event(AppContext* context, SDL_Event* e);
 
 /**
  * Initialise le jeu.
  * @param context Contexte SDL.
  * @return 0 en cas de succès, un code d'erreur sinon.
  */
-int game_init(SDL_Context * context);
+int game_init(AppContext * context);
 
 /**
  * Libère les ressources utilisées par le jeu.
@@ -119,13 +119,13 @@ int game_free();
  * @param context Contexte SDL.
  * @param event Événement SDL à traiter.
  */
-void game_handle_event(SDL_Context * context, SDL_Event * event);
+void game_handle_event(AppContext * context, SDL_Event * event);
 
 /**
  * Affiche le jeu.
  * @param context Contexte SDL.
  */
-void game_display(SDL_Context * context);
+void game_display(AppContext * context);
 
 
 #endif // GAME_H

@@ -33,7 +33,7 @@ typedef struct Card Card;
  * @param ping_ms Ping TCP courant en millisecondes (-1 si indisponible).
  * @param player_uuid UUID unique du joueur (persisté dans datas/uuid).
  */
-typedef struct SDL_Context {
+typedef struct AppContext {
     SDL_Window* window;
     SDL_Renderer* renderer;
     long clock;
@@ -49,14 +49,14 @@ typedef struct SDL_Context {
     int sound_effects_volume;  /**< Volume des effets sonores (0-128). */
     Card* cards[25];
     char* player_uuid;         /**< UUID unique du joueur. */
-} SDL_Context;
+} AppContext;
 
 /**
  * Initialise SDL et crée une fenêtre et un renderer.
- * @return Un SDL_Context contenant la fenêtre et le renderer,
- *         ou un SDL_Context avec des pointeurs `NULL` en cas d'erreur.
+ * @return Un AppContext contenant la fenêtre et le renderer,
+ *         ou un AppContext avec des pointeurs `NULL` en cas d'erreur.
  */
-SDL_Context init_sdl();
+AppContext init_sdl();
 
 /**
  * Charge une image depuis le disque et retourne une texture SDL.
@@ -89,14 +89,14 @@ void free_image(SDL_Texture* texture);
 
 /**
  * Bascule le mode plein écran / fenêtré de la fenêtre.
- * @param context Le SDL_Context contenant la fenêtre.
+ * @param context Le AppContext contenant la fenêtre.
  */
-void toggle_fullscreen(SDL_Context* context);
+void toggle_fullscreen(AppContext* context);
 
 /**
  * Détruit la fenêtre et le renderer, et quitte SDL.
- * @param context Le SDL_Context à détruire.
+ * @param context Le AppContext à détruire.
  */
-int destroy_context(SDL_Context* context);
+int destroy_context(AppContext* context);
 
 #endif // SDL_H

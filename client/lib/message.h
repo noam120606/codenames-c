@@ -1,7 +1,7 @@
 #ifndef MESSAGE_H
 #define MESSAGE_H
 
-typedef struct SDL_Context SDL_Context;
+typedef struct AppContext AppContext;
 
 /**
  * Types de messages harmonisé client/serveur (aussi appelé HEADER) 
@@ -50,6 +50,6 @@ Arguments parse_arguments(char* message);
  * @param message message brut reçu du serveur.
  * @return `EXIT_SUCCESS` en cas de succès, `EXIT_FAILURE` en cas d'erreur.
  */
-int on_message(SDL_Context* context, char* message);
+int on_message(AppContext* context, char* message);
 
 #endif // MESSAGE_H

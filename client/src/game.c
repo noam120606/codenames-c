@@ -8,11 +8,11 @@ SDL_Texture* card_h_blue;
 SDL_Texture* card_f_blue;
 SDL_Texture* card_black;
 
-void game_handle_event(SDL_Context* context, SDL_Event* e) {
+void game_handle_event(AppContext* context, SDL_Event* e) {
     // gestion evenements sdl
 }
 
-int game_init(SDL_Context * context) {
+int game_init(AppContext * context) {
     int loading_fails = 0;
 
     // Chargement image
@@ -55,7 +55,7 @@ int game_init(SDL_Context * context) {
     return loading_fails;
 }
 
-void game_render_cards(SDL_Context * context) {
+void game_render_cards(AppContext * context) {
     int x=0;
     int y=0;
     for (int i = 0; i < 5; i++) {
@@ -109,7 +109,7 @@ void game_render_cards(SDL_Context * context) {
     }
 }
 
-void game_display(SDL_Context * context) {
+void game_display(AppContext * context) {
 
     if (!audio_is_playing(MUSIC_GAME)) {
         audio_play(MUSIC_GAME, -1);

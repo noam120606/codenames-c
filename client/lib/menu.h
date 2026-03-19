@@ -5,7 +5,7 @@
 #include "../SDL2/include/SDL2/SDL_image.h"
 #include "../SDL2/include/SDL2/SDL_ttf.h"
 
-typedef struct SDL_Context SDL_Context;
+typedef struct AppContext AppContext;
 #include "../lib/button.h"
 
 /**
@@ -13,19 +13,19 @@ typedef struct SDL_Context SDL_Context;
  * @param context Contexte SDL.
  * @return Nombre d'erreurs survenues lors du chargement (0 si tout s'est bien passé, >0 sinon).
  */
-int menu_init(SDL_Context* context);
+int menu_init(AppContext* context);
 
 /**
  * Affiche le menu principal.
  * @param context Contexte SDL.
  */
-void menu_display(SDL_Context* context);
+void menu_display(AppContext* context);
 
 /**
  * Handle SDL events for the menu (inputs, buttons, etc.).
  * @return ButtonReturn (BTN_RET_QUIT to exit, BTN_RET_NONE otherwise).
  */
-ButtonReturn menu_handle_event(SDL_Context* context, SDL_Event* e);
+ButtonReturn menu_handle_event(AppContext* context, SDL_Event* e);
 
 /** 
  * Libère les ressources du menu.

@@ -39,8 +39,8 @@ static Uint32 get_renderer_flags(void) {
     return SDL_RENDERER_ACCELERATED;
 }
 
-SDL_Context init_sdl() {
-    SDL_Context context = {0}; // Initialisation sécurisée à zéro
+AppContext init_sdl() {
+    AppContext context = {0}; // Initialisation sécurisée à zéro
 
     // Log dimensions
     printf("WIN_WIDTH = %d, WIN_HEIGHT = %d\n", WIN_WIDTH, WIN_HEIGHT);
@@ -231,7 +231,7 @@ void free_image(SDL_Texture* texture) {
     }
 }
 
-void toggle_fullscreen(SDL_Context* context) {
+void toggle_fullscreen(AppContext* context) {
     if (!context || !context->window) return;
     Uint32 flags = SDL_GetWindowFlags(context->window);
     int is_fullscreen = (flags & SDL_WINDOW_FULLSCREEN_DESKTOP) || (flags & SDL_WINDOW_FULLSCREEN);
@@ -242,7 +242,7 @@ void toggle_fullscreen(SDL_Context* context) {
     }
 }
 
-int destroy_context(SDL_Context* context) {
+int destroy_context(AppContext* context) {
     if (!context) {
         return EXIT_FAILURE;
     }

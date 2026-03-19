@@ -5,7 +5,7 @@
 #include "../SDL2/include/SDL2/SDL_image.h"
 #include "../SDL2/include/SDL2/SDL_ttf.h"
 
-typedef struct SDL_Context SDL_Context;
+typedef struct AppContext AppContext;
 #include "../lib/button.h"
 #include "../lib/user.h"
 
@@ -48,7 +48,7 @@ typedef struct Lobby {
  * @param context Contexte SDL.
  * @return 0 en cas de succès, un code d'erreur sinon.
  */
-int lobby_init(SDL_Context* context);
+int lobby_init(AppContext* context);
 
 /**
  * Libère les ressources utilisées par le lobby.
@@ -61,12 +61,12 @@ int lobby_free();
  * @param event Événement SDL à traiter.
  * @return ButtonReturn (BTN_RET_QUIT to exit, BTN_RET_NONE otherwise).
  */
-ButtonReturn lobby_handle_event(SDL_Context* context, SDL_Event* event);
+ButtonReturn lobby_handle_event(AppContext* context, SDL_Event* event);
 
 /**
  * Affiche le lobby.
  * @param context Contexte SDL.
  */
-void lobby_display(SDL_Context* context);
+void lobby_display(AppContext* context);
 
 #endif // LOBBY_H
