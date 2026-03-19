@@ -1,6 +1,11 @@
 #include "../lib/all.h"
 
 void text_display(SDL_Renderer* renderer, const char* text, const char* font_path, int size, SDL_Color color, int x, int y, double angle, Uint8 opacity) {
+    /* Vérifier que le texte n'est pas NULL ou vide */
+    if (!text || text[0] == '\0') {
+        return;
+    }
+
     TTF_Font* font = TTF_OpenFont(font_path, size);
     if (!font) {
         printf("Failed to load font: %s\n", TTF_GetError());
