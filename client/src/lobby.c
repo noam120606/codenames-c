@@ -47,22 +47,19 @@ static ButtonReturn lobby_button_click(SDL_Context* context, Button* button) {
         printf("Launch game requested\n");
     } else if (button == btn_return) {
         /* Informer le serveur qu'on quitte le lobby */
-        if (context->lobby_id >= 0 && context->sock >= 0) {
+        if (context->lobby->id >= 0 && context->sock >= 0) {
             char msg[16];
             format_to(msg, sizeof(msg), "%d", MSG_LEAVELOBBY);
             send_tcp(context->sock, msg);
         }
         context->player_role = ROLE_NONE;
         context->player_team = TEAM_NONE;
-        context->lobby_id = -1;
-        if (context->lobby_code) {
-            free(context->lobby_code);
-            context->lobby_code = NULL;
-        }
+        context->lobby->id = -1;
+
         /* Retirer le filtre audio en quittant le lobby */
         audio_set_filter(MUSIC_MENU_LOBBY, AUDIO_FILTER_NONE, 0);
         lobby_filter_applied = 0;
-        context->game_state = GAME_STATE_MENU;
+        context->app_state = APP_STATE_MENU;
         printf("Returned to menu\n");
     }
     return BTN_RET_NONE;
@@ -179,8 +176,8 @@ void lobby_display(SDL_Context* context) {
     /* Afficher le code et l'id du lobby */
     char buf[128];
     format_to(buf, sizeof(buf), "Lobby %d  •  Code : %s",
-              context->lobby_id,
-              context->lobby_code ? context->lobby_code : "----");
+              context->lobby->id,
+              context->lobby->code ? context->lobby->code : "----");
 
     /* Affichage centré horizontalement, position verticale relative */
     int rel_x = 0;

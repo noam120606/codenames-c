@@ -25,9 +25,8 @@ typedef struct Card Card;
  * @param clock Nombre de frame écoulé depuis le début de l'application.
  * @param fps Nombre de frames par seconde (calculé à partir du clock).
  * @param sock Identifiant socket.  
- * @param lobby_id Identifiant du lobby auquel le client est connecté (-1 si aucun).
- * @param lobby_code Code du lobby auquel le client est connecté (NULL si aucun).
- * @param game_state État actuel du jeu (menu, lobby, partie, etc.).
+ * @param lobby Pointeur vers la structure de lobby.
+ * @param app_state État actuel du jeu (menu, lobby, partie, etc.).
  * @param player_role Rôle du joueur (ROLE_AGENT ou ROLE_SPY).
  * @param player_team Équipe du joueur (TEAM_RED, TEAM_BLUE, TEAM_NONE).
  * @param frame_start_time Timestamp du début de la frame actuelle (en ms).
@@ -40,9 +39,8 @@ typedef struct SDL_Context {
     long clock;
     float fps;
     int sock;
-    int lobby_id;
-    char* lobby_code;
-    AppState game_state;
+    Lobby* lobby;
+    AppState app_state;
     UserRole player_role; 
     Team player_team; 
     Uint32 frame_start_time;
