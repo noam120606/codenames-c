@@ -279,7 +279,6 @@ void player_icon_display(AppContext* context, User* user) {
         int y = 0;    // Position Y relative (à ajuster selon la position du nom)
         SDL_Rect dst_rect = { x, y, 32, 32 }; // Taille de l'icône
         SDL_RenderCopy(context->renderer, icon, NULL, &dst_rect);
-        SDL_DestroyTexture(icon);
     }
 }
 

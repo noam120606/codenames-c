@@ -133,7 +133,7 @@ AppContext init_sdl() {
     context.clock = 0;
     context.fps = 0.0f;
     context.sock = 0;
-    context.lobby = (Lobby*)malloc(sizeof(Lobby));
+    context.lobby = (Lobby*)calloc(1, sizeof(Lobby));
     if (!context.lobby) {
         printf("Failed to allocate memory for lobby\n");
         SDL_DestroyRenderer(renderer);
