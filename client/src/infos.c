@@ -40,7 +40,7 @@ static void on_sfx_volume_change(AppContext* ctx, int new_value) {
 }
 
 /* Charge les règles depuis le fichier rules.txt */
-static void load_rules(void) {
+static void load_rules() {
     FILE* f = fopen("assets/misc/rules.txt", "r");
     if (!f) {
         printf("Failed to open rules.txt\n");
@@ -72,51 +72,7 @@ static void load_rules(void) {
 }
 
 /* Libère la mémoire des règles */
-static void free_rules(void) {
-    if (rules_lines) {
-        for (int i = 0; i < rules_line_count; i++) {
-            free(rules_lines[i]);
-        }
-        free(rules_lines);
-        rules_lines = NULL;
-    }
-    rules_line_count = 0;
-}
-
-/* Charge les règles depuis le fichier rules.txt */
-static void load_rules(void) {
-    FILE* f = fopen("assets/misc/rules.txt", "r");
-    if (!f) {
-        printf("Failed to open rules.txt\n");
-        return;
-    }
-
-    char line_buf[256];
-    while (fgets(line_buf, sizeof(line_buf), f)) {
-        // Retirer le '\n' final
-        size_t len = strlen(line_buf);
-        if (len > 0 && line_buf[len - 1] == '\n') line_buf[len - 1] = '\0';
-
-        // Allouer et copier la ligne
-        char* line_copy = strdup(line_buf);
-        if (!line_copy) continue;
-
-        // Agrandir le tableau
-        char** tmp = realloc(rules_lines, sizeof(char*) * (rules_line_count + 1));
-        if (!tmp) {
-            free(line_copy);
-            continue;
-        }
-        rules_lines = tmp;
-        rules_lines[rules_line_count] = line_copy;
-        rules_line_count++;
-    }
-
-    fclose(f);
-}
-
-/* Libère la mémoire des règles */
-static void free_rules(void) {
+static void free_rules() {
     if (rules_lines) {
         for (int i = 0; i < rules_line_count; i++) {
             free(rules_lines[i]);
