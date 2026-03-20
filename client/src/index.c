@@ -183,7 +183,7 @@ int main(int argc, char* argv[]){
             infos_handle_event(&context, &e);
 
             /* Fond interactif (clic sur un symbole) */
-            if (context.app_state == APP_STATE_MENU || context.app_state == APP_STATE_LOBBY)
+            if (context.app_state == APP_STATE_MENU || context.app_state == APP_STATE_LOBBY || context.app_state == APP_STATE_PLAYING)
                 background_handle_event(&context, &e);
 
             // Déléguer l'événement selon l'état courant
