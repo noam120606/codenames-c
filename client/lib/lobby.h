@@ -79,7 +79,7 @@ ButtonReturn lobby_handle_event(AppContext* context, SDL_Event* event);
 void lobby_display(AppContext* context);
 
 /**
- * Affiche les icones des joueurs.
+ * Affiche les joueurs dans les sections du lobby.
  * @param context Contexte SDL.
  * @param user Utilisateur dont l'icône doit être affichée.
  * @param nb_none Nombre de joueurs sans équipe.
@@ -88,6 +88,17 @@ void lobby_display(AppContext* context);
  * @param nb_blue_spy Nombre de joueurs de l'équipe bleue (espions).
  * @param nb_blue_agent Nombre de joueurs de l'équipe bleue (agents).
  */
-void player_icon_display(AppContext* context, User* user, int nb_none, int nb_red_spy, int nb_red_agent, int nb_blue_spy, int nb_blue_agent);
+void player_display(AppContext* context, User* user, int nb_none, int nb_red_spy, int nb_red_agent, int nb_blue_spy, int nb_blue_agent);
+
+/**
+ * Positionne l'icône et le pseudo d'un joueur.
+ * @param context Contexte SDL.
+ * @param user Utilisateur dont l'icône doit être positionnée.
+ * @param icon Texture de l'icône à afficher.
+ * @param nb_player Nombre de joueurs de ce type.
+ * @param base_x Position de base en X.
+ * @param base_y Position de base en Y.
+ */
+void player_icon_pos(AppContext* context, User* user, SDL_Texture* icon, int nb_player, int base_x, int base_y);
 
 #endif // LOBBY_H
