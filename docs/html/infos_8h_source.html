@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames:  Fichier source de client/lib/infos.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,22 +34,28 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.14.0 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -63,9 +68,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('infos_8h_source.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('infos_8h_source.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -96,49 +102,48 @@ $(function(){initNavTree('infos_8h_source.html','',''); });
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define INFOS_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="sdl_8h.html">sdl.h</a>&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="infos_8h.html#a33a612bb99cde5e7d08cc25002db4cdd">    7</a></span><span class="preprocessor">#define CROSSFADER_ID_MUSIC_VOLUME    1</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="infos_8h.html#a5d1ef3b5a31b4091fc933e3433224560">    8</a></span><span class="preprocessor">#define CROSSFADER_ID_SFX_VOLUME      2</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">// INIT INFOS</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keywordtype">int</span> <a class="code hl_function" href="infos_8h.html#ae056339fd001e1c98b20022e0ebc87fa">init_infos</a>(<a class="code hl_struct" href="structSDL__Context.html">SDL_Context</a>* context);</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keywordtype">int</span> <a class="code hl_function" href="infos_8h.html#a39c238f1efb8789c8dd182158c88e165">init_infos</a>(<a class="code hl_struct" href="structAppContext.html">AppContext</a>* context);</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">// OTHER INFOS</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keywordtype">void</span> <a class="code hl_function" href="infos_8h.html#ac1d859a1497d5ad549c0a3570cb6d2e9">calculate_fps</a>(<a class="code hl_struct" href="structSDL__Context.html">SDL_Context</a>* context, Uint32 current_time);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keywordtype">void</span> <a class="code hl_function" href="infos_8h.html#a983096ca60b10079efe1a2463c30bccf">calculate_fps</a>(<a class="code hl_struct" href="structAppContext.html">AppContext</a>* context, Uint32 current_time);</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">// DISPLAY INFOS</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keywordtype">void</span> <a class="code hl_function" href="infos_8h.html#a33729346224a7193a25851bcf96995b0">infos_display</a>(<a class="code hl_struct" href="structSDL__Context.html">SDL_Context</a>* context);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keywordtype">void</span> <a class="code hl_function" href="infos_8h.html#a7caa5416f7e5fc7b5a471a3e792e180c">infos_handle_event</a>(<a class="code hl_struct" href="structSDL__Context.html">SDL_Context</a>* context, SDL_Event* event);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keywordtype">void</span> <a class="code hl_function" href="infos_8h.html#a4b8e24890febc0790cce70d371fccbbb">fps_ping_display</a>(<a class="code hl_struct" href="structSDL__Context.html">SDL_Context</a>* context, <span class="keywordtype">int</span> display_x);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keywordtype">void</span> <a class="code hl_function" href="infos_8h.html#a7e90b959138d44b57a8a441e5e93f68f">infos_display</a>(<a class="code hl_struct" href="structAppContext.html">AppContext</a>* context);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keywordtype">void</span> <a class="code hl_function" href="infos_8h.html#af9fb2e148a7245057eb37733619010e7">infos_handle_event</a>(<a class="code hl_struct" href="structAppContext.html">AppContext</a>* context, SDL_Event* event);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keywordtype">void</span> <a class="code hl_function" href="infos_8h.html#aad33eabe628f0e215c0c6c6334fb02a4">fps_ping_display</a>(<a class="code hl_struct" href="structAppContext.html">AppContext</a>* context, <span class="keywordtype">int</span> display_x);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keywordtype">int</span> <a class="code hl_function" href="infos_8h.html#a4240fe678f6fbf364ae1bd964d0907a1">infos_free</a>();</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#endif </span><span class="comment">/* INFOS_H */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="ainfos_8h_html_a33729346224a7193a25851bcf96995b0"><div class="ttname"><a href="infos_8h.html#a33729346224a7193a25851bcf96995b0">infos_display</a></div><div class="ttdeci">void infos_display(SDL_Context *context)</div><div class="ttdef"><b>Definition</b> <a href="infos_8c_source.html#l00227">infos.c:227</a></div></div>
-<div class="ttc" id="ainfos_8h_html_a4240fe678f6fbf364ae1bd964d0907a1"><div class="ttname"><a href="infos_8h.html#a4240fe678f6fbf364ae1bd964d0907a1">infos_free</a></div><div class="ttdeci">int infos_free()</div><div class="ttdef"><b>Definition</b> <a href="infos_8c_source.html#l00390">infos.c:390</a></div></div>
-<div class="ttc" id="ainfos_8h_html_a4b8e24890febc0790cce70d371fccbbb"><div class="ttname"><a href="infos_8h.html#a4b8e24890febc0790cce70d371fccbbb">fps_ping_display</a></div><div class="ttdeci">void fps_ping_display(SDL_Context *context, int display_x)</div><div class="ttdef"><b>Definition</b> <a href="infos_8c_source.html#l00342">infos.c:342</a></div></div>
-<div class="ttc" id="ainfos_8h_html_a7caa5416f7e5fc7b5a471a3e792e180c"><div class="ttname"><a href="infos_8h.html#a7caa5416f7e5fc7b5a471a3e792e180c">infos_handle_event</a></div><div class="ttdeci">void infos_handle_event(SDL_Context *context, SDL_Event *event)</div><div class="ttdef"><b>Definition</b> <a href="infos_8c_source.html#l00319">infos.c:319</a></div></div>
-<div class="ttc" id="ainfos_8h_html_ac1d859a1497d5ad549c0a3570cb6d2e9"><div class="ttname"><a href="infos_8h.html#ac1d859a1497d5ad549c0a3570cb6d2e9">calculate_fps</a></div><div class="ttdeci">void calculate_fps(SDL_Context *context, Uint32 current_time)</div><div class="ttdef"><b>Definition</b> <a href="infos_8c_source.html#l00324">infos.c:324</a></div></div>
-<div class="ttc" id="ainfos_8h_html_ae056339fd001e1c98b20022e0ebc87fa"><div class="ttname"><a href="infos_8h.html#ae056339fd001e1c98b20022e0ebc87fa">init_infos</a></div><div class="ttdeci">int init_infos(SDL_Context *context)</div><div class="ttdef"><b>Definition</b> <a href="infos_8c_source.html#l00058">infos.c:58</a></div></div>
+<div class="ttc" id="ainfos_8h_html_a39c238f1efb8789c8dd182158c88e165"><div class="ttname"><a href="infos_8h.html#a39c238f1efb8789c8dd182158c88e165">init_infos</a></div><div class="ttdeci">int init_infos(AppContext *context)</div><div class="ttdef"><b>Definition</b> <a href="infos_8c_source.html#l00086">infos.c:86</a></div></div>
+<div class="ttc" id="ainfos_8h_html_a4240fe678f6fbf364ae1bd964d0907a1"><div class="ttname"><a href="infos_8h.html#a4240fe678f6fbf364ae1bd964d0907a1">infos_free</a></div><div class="ttdeci">int infos_free()</div><div class="ttdef"><b>Definition</b> <a href="infos_8c_source.html#l00428">infos.c:428</a></div></div>
+<div class="ttc" id="ainfos_8h_html_a7e90b959138d44b57a8a441e5e93f68f"><div class="ttname"><a href="infos_8h.html#a7e90b959138d44b57a8a441e5e93f68f">infos_display</a></div><div class="ttdeci">void infos_display(AppContext *context)</div><div class="ttdef"><b>Definition</b> <a href="infos_8c_source.html#l00258">infos.c:258</a></div></div>
+<div class="ttc" id="ainfos_8h_html_a983096ca60b10079efe1a2463c30bccf"><div class="ttname"><a href="infos_8h.html#a983096ca60b10079efe1a2463c30bccf">calculate_fps</a></div><div class="ttdeci">void calculate_fps(AppContext *context, Uint32 current_time)</div><div class="ttdef"><b>Definition</b> <a href="infos_8c_source.html#l00355">infos.c:355</a></div></div>
+<div class="ttc" id="ainfos_8h_html_aad33eabe628f0e215c0c6c6334fb02a4"><div class="ttname"><a href="infos_8h.html#aad33eabe628f0e215c0c6c6334fb02a4">fps_ping_display</a></div><div class="ttdeci">void fps_ping_display(AppContext *context, int display_x)</div><div class="ttdef"><b>Definition</b> <a href="infos_8c_source.html#l00373">infos.c:373</a></div></div>
+<div class="ttc" id="ainfos_8h_html_af9fb2e148a7245057eb37733619010e7"><div class="ttname"><a href="infos_8h.html#af9fb2e148a7245057eb37733619010e7">infos_handle_event</a></div><div class="ttdeci">void infos_handle_event(AppContext *context, SDL_Event *event)</div><div class="ttdef"><b>Definition</b> <a href="infos_8c_source.html#l00350">infos.c:350</a></div></div>
 <div class="ttc" id="asdl_8h_html"><div class="ttname"><a href="sdl_8h.html">sdl.h</a></div></div>
-<div class="ttc" id="astructSDL__Context_html"><div class="ttname"><a href="structSDL__Context.html">SDL_Context</a></div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00036">sdl.h:36</a></div></div>
+<div class="ttc" id="astructAppContext_html"><div class="ttname"><a href="structAppContext.html">AppContext</a></div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00037">sdl.h:37</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a href="infos_8h.html">infos.h</a></li>
-    <li class="footer">Généré le Jeudi 19 Mars 2026 15:31:45 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a class="el" href="infos_8h.html">infos.h</a></li>
+    <li class="footer">Généré le Vendredi 20 Mars 2026 21:22:33 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

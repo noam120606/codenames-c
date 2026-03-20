@@ -1,7 +1,7 @@
 var searchData=
 [
   ['bandeau_0',['bandeau',['../infos_8c.html#afec87a7e90cc9e31bee013010065ed0b',1,'infos.c']]],
-  ['bg_5fcolor_1',['bg_color',['../structInputConfig.html#a419cdfeec4d867c73ccbc7f708318eef',1,'InputConfig']]],
+  ['bg_5fcolor_1',['bg_color',['../structInputConfig.html#a419cdfeec4d867c73ccbc7f708318eef',1,'InputConfig::bg_color'],['../background_8c.html#a41a4146bfafc08d5edf38a02628e8038',1,'bg_color:&#160;background.c']]],
   ['bg_5fpadding_2',['bg_padding',['../structInputConfig.html#ae114f9e9add57c758697e5981ed378a0',1,'InputConfig']]],
   ['bg_5fpath_3',['bg_path',['../structInputConfig.html#a78b07106328bea9766f6d12467c97c40',1,'InputConfig']]],
   ['bg_5ftexture_4',['bg_texture',['../structInputConfig.html#af108d4f5430305ced39033d662270c8f',1,'InputConfig']]],
@@ -12,10 +12,11 @@ var searchData=
   ['btn_5fjoin_9',['btn_join',['../menu_8c.html#a0208f2fa2ad80654dde4ec2246d23141',1,'menu.c']]],
   ['btn_5flaunch_5fgame_10',['btn_launch_game',['../client_2src_2lobby_8c.html#afc3e06e31db024eaabe4157e0b248fa8',1,'lobby.c']]],
   ['btn_5fquit_11',['btn_quit',['../menu_8c.html#a807c146e98d5f8a5e4e1c70b0747c8fa',1,'menu.c']]],
-  ['btn_5fred_5fagent_12',['btn_red_agent',['../client_2src_2lobby_8c.html#aeebab5be76f845b399acdef246e5696d',1,'lobby.c']]],
-  ['btn_5fred_5fspy_13',['btn_red_spy',['../client_2src_2lobby_8c.html#a826bed728c3ac0d6c29a1b585bc93e96',1,'lobby.c']]],
-  ['btn_5freturn_14',['btn_return',['../client_2src_2lobby_8c.html#ab5d9550c4b6ee353d280eedb9456a0ee',1,'lobby.c']]],
-  ['btn_5fsocial_15',['btn_social',['../menu_8c.html#a307fb71f04ab4bc9c91e17c479004449',1,'menu.c']]],
-  ['buffer_16',['buffer',['../client_2src_2tcp_8c.html#af00b615ca097c43dbb02ae3a00ea3a62',1,'tcp.c']]],
-  ['bypass_5ffilter_17',['bypass_filter',['../structSoundConfig.html#a5ae2e69d5769651e73efd32ffaca0f5d',1,'SoundConfig']]]
+  ['btn_5fquit_5fgame_12',['btn_quit_game',['../client_2src_2game_8c.html#ae55a68275d94f7600af382da9c4b528c',1,'game.c']]],
+  ['btn_5fred_5fagent_13',['btn_red_agent',['../client_2src_2lobby_8c.html#aeebab5be76f845b399acdef246e5696d',1,'lobby.c']]],
+  ['btn_5fred_5fspy_14',['btn_red_spy',['../client_2src_2lobby_8c.html#a826bed728c3ac0d6c29a1b585bc93e96',1,'lobby.c']]],
+  ['btn_5freturn_15',['btn_return',['../client_2src_2lobby_8c.html#ab5d9550c4b6ee353d280eedb9456a0ee',1,'lobby.c']]],
+  ['btn_5fsocial_16',['btn_social',['../menu_8c.html#a307fb71f04ab4bc9c91e17c479004449',1,'menu.c']]],
+  ['buffer_17',['buffer',['../client_2src_2tcp_8c.html#af00b615ca097c43dbb02ae3a00ea3a62',1,'tcp.c']]],
+  ['bypass_5ffilter_18',['bypass_filter',['../structSoundConfig.html#a5ae2e69d5769651e73efd32ffaca0f5d',1,'SoundConfig']]]
 ];

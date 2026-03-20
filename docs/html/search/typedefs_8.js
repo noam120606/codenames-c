@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sdl_5fcontext_0',['SDL_Context',['../button_8h.html#acd98f47343cc59c6701056950ce8ffb5',1,'SDL_Context:&#160;button.h'],['../sdl_8h.html#acd98f47343cc59c6701056950ce8ffb5',1,'SDL_Context:&#160;sdl.h']]]
+  ['team_0',['team',['../client_2lib_2game_8h.html#a66a998123301ec295ccf7a27e19f1723',1,'Team:&#160;game.h'],['../server_2lib_2game_8h.html#a66a998123301ec295ccf7a27e19f1723',1,'Team:&#160;game.h']]]
 ];

@@ -5,6 +5,7 @@ typedef struct AppContext AppContext;
 
 /**
  * Types de messages harmonisé client/serveur (aussi appelé HEADER) 
+ * @param MSG_SERVER_ERROR message d'erreur envoyé par le serveur en cas de problème (ex: format de message invalide, action interdite, etc.). Le message d'erreur est suivi d'une description de l'erreur pour aider au debug. 
  * @param MSG_UNKNOWN message inconnu.
  * @param MSG_CREATELOBBY message de création de lobby.
  * @param MSG_JOINLOBBY message de rejoindre un lobby.
@@ -13,10 +14,12 @@ typedef struct AppContext AppContext;
  * @param MSG_PLAYERJOINED message d'un joueur qui a rejoint le lobby.
  * @param MSG_PLAYERLEFT message d'un joueur qui a quitté le lobby.
  * @param MSG_CHOOSE_ROLE message de choix de rôle/équipe dans le lobby (pour informer les autres joueurs en temps réel du choix d'un joueur).
- * @param MSG_STARTGAME message de démarrage de partie.
+ * @param MSG_STARTGAME message de démarrage de partie. 
+ * @param MSG_WORDDATA message de données de mots pour la partie (envoyé par le serveur au démarrage de la partie, contient la liste des mots et leur couleur). 
  * @param MSG_REQUESTUUID message de demande d'UUID (pour le client de demander son UUID au serveur après connexion, si besoin pour le protocole).
  */
 typedef enum MessageType {
+    MSG_SERVER_ERROR = -2,
     MSG_UNKNOWN = -1,
     MSG_CREATELOBBY,
     MSG_JOINLOBBY,
@@ -27,7 +30,7 @@ typedef enum MessageType {
     MSG_CHOOSE_ROLE,
     MSG_STARTGAME,
     MSG_WORDDATA,
-    MSG_REQUESTUUID
+    MSG_REQUESTUUID,
 } MessageType;
 
 /**

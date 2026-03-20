@@ -1,5 +1,6 @@
 var annotated_dup =
 [
+    [ "AppContext", "structAppContext.html", "structAppContext" ],
     [ "Arguments", "structArguments.html", "structArguments" ],
     [ "Button", "structButton.html", "structButton" ],
     [ "ButtonConfig", "structButtonConfig.html", "structButtonConfig" ],
@@ -16,7 +17,6 @@ var annotated_dup =
     [ "Lobby", "structLobby.html", "structLobby" ],
     [ "LobbyManager", "structLobbyManager.html", "structLobbyManager" ],
     [ "Resources", "structResources.html", "structResources" ],
-    [ "SDL_Context", "structSDL__Context.html", "structSDL__Context" ],
     [ "SoundConfig", "structSoundConfig.html", "structSoundConfig" ],
     [ "TcpClient", "structTcpClient.html", "structTcpClient" ],
     [ "TcpServer", "structTcpServer.html", "structTcpServer" ],

@@ -89,24 +89,11 @@ int get_tcp_ping_ms(int sock) {
         return -1;
     }
 
-#ifdef __linux__
     struct tcp_info info;
     socklen_t info_len = sizeof(info);
     if (getsockopt(sock, IPPROTO_TCP, TCP_INFO, &info, &info_len) == 0) {
         return (int)(info.tcpi_rtt / 1000U);
     }
-#elif defined(__windows__)
-    /* Windows ne fournit pas d'API simple pour obtenir le ping d'une socket TCP.
-       Une solution serait de mesurer le temps entre l'envoi d'un message de ping personnalisé
-       et la réception d'une réponse du serveur, mais cela nécessite une implémentation côté serveur. */
-    return -1;
-#elif defined(__APPLE__)
-    struct tcp_connection_info info;
-    socklen_t info_len = sizeof(info);
-    if (getsockopt(sock, IPPROTO_TCP, TCP_CONNECTION_INFO, &info, &info_len) == 0) {
-        return (int)(info.tcpi_rtt / 1000U);
-    }
-#endif
 
     return -1;
 }

@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier server/src/list.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,20 +34,21 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.14.0 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,9 +63,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('server_2src_2list_8c.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('server_2src_2list_8c.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -89,6 +90,9 @@ $(function(){initNavTree('server_2src_2list_8c.html','',''); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">Référence du fichier list.c</div></div>
 </div><!--header-->
 <div class="contents">
@@ -98,23 +102,33 @@ $(function(){initNavTree('server_2src_2list_8c.html','',''); });
 </div>
 <p><a href="server_2src_2list_8c_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a50a6d26faf5a6f4c65eb98feaf2430b5" id="r_a50a6d26faf5a6f4c65eb98feaf2430b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structList.html">List</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a50a6d26faf5a6f4c65eb98feaf2430b5">list_create</a> ()</td></tr>
-<tr class="memitem:a769aba1f6d36778101fcb047890a26fd" id="r_a769aba1f6d36778101fcb047890a26fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a769aba1f6d36778101fcb047890a26fd">list_destroy</a> (<a class="el" href="structList.html">List</a> *list, void(*free_data)(void *))</td></tr>
-<tr class="memitem:a18f87d88930c7be4d848c4db76e6fe76" id="r_a18f87d88930c7be4d848c4db76e6fe76"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18f87d88930c7be4d848c4db76e6fe76">list_add</a> (<a class="el" href="structList.html">List</a> *list, void *data)</td></tr>
-<tr class="memitem:af20bc7624ee624752ed51867be6944fe" id="r_af20bc7624ee624752ed51867be6944fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af20bc7624ee624752ed51867be6944fe">list_remove</a> (<a class="el" href="structList.html">List</a> *list, void *data)</td></tr>
-<tr class="memitem:a91bcac9bcc90fdec55719cefde1f1c90" id="r_a91bcac9bcc90fdec55719cefde1f1c90"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91bcac9bcc90fdec55719cefde1f1c90">list_get</a> (<a class="el" href="structList.html">List</a> *list, int index)</td></tr>
-<tr class="memitem:ab5ca2956cad41e6608e8e2cc42827180" id="r_ab5ca2956cad41e6608e8e2cc42827180"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5ca2956cad41e6608e8e2cc42827180">list_find</a> (<a class="el" href="structList.html">List</a> *list, int(*predicate)(void *, void *), void *context)</td></tr>
-<tr class="memitem:a2e0b573f5ab9221c82af4a5eb5a48379" id="r_a2e0b573f5ab9221c82af4a5eb5a48379"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e0b573f5ab9221c82af4a5eb5a48379">list_size</a> (<a class="el" href="structList.html">List</a> *list)</td></tr>
-<tr class="memitem:ab7f699854df7ed988c068dc6048ca789" id="r_ab7f699854df7ed988c068dc6048ca789"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7f699854df7ed988c068dc6048ca789">list_foreach</a> (<a class="el" href="structList.html">List</a> *list, void(*callback)(void *, void *), void *context)</td></tr>
-<tr class="memitem:a98ea9df4ed883d333d98d7b00aaf82a2" id="r_a98ea9df4ed883d333d98d7b00aaf82a2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a98ea9df4ed883d333d98d7b00aaf82a2">list_next_available_id</a> (<a class="el" href="structList.html">List</a> *list, int(*get_id)(void *))</td></tr>
+<tr class="memitem:a50a6d26faf5a6f4c65eb98feaf2430b5" id="r_a50a6d26faf5a6f4c65eb98feaf2430b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structList.html">List</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2src_2list_8c.html#a50a6d26faf5a6f4c65eb98feaf2430b5">list_create</a> ()</td></tr>
+<tr class="separator:a50a6d26faf5a6f4c65eb98feaf2430b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a769aba1f6d36778101fcb047890a26fd" id="r_a769aba1f6d36778101fcb047890a26fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2src_2list_8c.html#a769aba1f6d36778101fcb047890a26fd">list_destroy</a> (<a class="el" href="structList.html">List</a> *list, void(*free_data)(void *))</td></tr>
+<tr class="separator:a769aba1f6d36778101fcb047890a26fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18f87d88930c7be4d848c4db76e6fe76" id="r_a18f87d88930c7be4d848c4db76e6fe76"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2src_2list_8c.html#a18f87d88930c7be4d848c4db76e6fe76">list_add</a> (<a class="el" href="structList.html">List</a> *list, void *data)</td></tr>
+<tr class="separator:a18f87d88930c7be4d848c4db76e6fe76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af20bc7624ee624752ed51867be6944fe" id="r_af20bc7624ee624752ed51867be6944fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2src_2list_8c.html#af20bc7624ee624752ed51867be6944fe">list_remove</a> (<a class="el" href="structList.html">List</a> *list, void *data)</td></tr>
+<tr class="separator:af20bc7624ee624752ed51867be6944fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91bcac9bcc90fdec55719cefde1f1c90" id="r_a91bcac9bcc90fdec55719cefde1f1c90"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2src_2list_8c.html#a91bcac9bcc90fdec55719cefde1f1c90">list_get</a> (<a class="el" href="structList.html">List</a> *list, int index)</td></tr>
+<tr class="separator:a91bcac9bcc90fdec55719cefde1f1c90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5ca2956cad41e6608e8e2cc42827180" id="r_ab5ca2956cad41e6608e8e2cc42827180"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2src_2list_8c.html#ab5ca2956cad41e6608e8e2cc42827180">list_find</a> (<a class="el" href="structList.html">List</a> *list, int(*predicate)(void *, void *), void *context)</td></tr>
+<tr class="separator:ab5ca2956cad41e6608e8e2cc42827180"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e0b573f5ab9221c82af4a5eb5a48379" id="r_a2e0b573f5ab9221c82af4a5eb5a48379"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2src_2list_8c.html#a2e0b573f5ab9221c82af4a5eb5a48379">list_size</a> (<a class="el" href="structList.html">List</a> *list)</td></tr>
+<tr class="separator:a2e0b573f5ab9221c82af4a5eb5a48379"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7f699854df7ed988c068dc6048ca789" id="r_ab7f699854df7ed988c068dc6048ca789"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2src_2list_8c.html#ab7f699854df7ed988c068dc6048ca789">list_foreach</a> (<a class="el" href="structList.html">List</a> *list, void(*callback)(void *, void *), void *context)</td></tr>
+<tr class="separator:ab7f699854df7ed988c068dc6048ca789"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98ea9df4ed883d333d98d7b00aaf82a2" id="r_a98ea9df4ed883d333d98d7b00aaf82a2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2src_2list_8c.html#a98ea9df4ed883d333d98d7b00aaf82a2">list_next_available_id</a> (<a class="el" href="structList.html">List</a> *list, int(*get_id)(void *))</td></tr>
+<tr class="separator:a98ea9df4ed883d333d98d7b00aaf82a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:aca5d24e757cc36f97ea62789a309c647" id="r_aca5d24e757cc36f97ea62789a309c647"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca5d24e757cc36f97ea62789a309c647">list_id_counter</a> = 0</td></tr>
+<tr class="memitem:aca5d24e757cc36f97ea62789a309c647" id="r_aca5d24e757cc36f97ea62789a309c647"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2src_2list_8c.html#aca5d24e757cc36f97ea62789a309c647">list_id_counter</a> = 0</td></tr>
+<tr class="separator:aca5d24e757cc36f97ea62789a309c647"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a id="a18f87d88930c7be4d848c4db76e6fe76" name="a18f87d88930c7be4d848c4db76e6fe76"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a18f87d88930c7be4d848c4db76e6fe76">&#9670;&#160;</a></span>list_add()</h2>
 
@@ -124,12 +138,19 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int list_add </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structList.html">List</a> *</td>          <td class="paramname"><span class="paramname"><em>list</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structList.html">List</a> *&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>&#160;)</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -157,7 +178,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structList.html">List</a> * list_create </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -179,12 +200,19 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void list_destroy </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structList.html">List</a> *</td>          <td class="paramname"><span class="paramname"><em>list</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structList.html">List</a> *&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void(*</td>          <td class="paramname"><span class="paramname"><em>free_data&#160;</em></span>)(void *)&#160;)</td>
+          <td class="paramtype">void(*)(void *)&#160;</td>
+          <td class="paramname"><em>free_data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -211,17 +239,25 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void * list_find </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structList.html">List</a> *</td>          <td class="paramname"><span class="paramname"><em>list</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structList.html">List</a> *&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int(*</td>          <td class="paramname"><span class="paramname"><em>predicate&#160;</em></span>)(void *, void *), </td>
+          <td class="paramtype">int(*)(void *, void *)&#160;</td>
+          <td class="paramname"><em>predicate</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>&#160;)</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>context</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -250,17 +286,25 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void list_foreach </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structList.html">List</a> *</td>          <td class="paramname"><span class="paramname"><em>list</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structList.html">List</a> *&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void(*</td>          <td class="paramname"><span class="paramname"><em>callback&#160;</em></span>)(void *, void *), </td>
+          <td class="paramtype">void(*)(void *, void *)&#160;</td>
+          <td class="paramname"><em>callback</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>&#160;)</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>context</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -288,12 +332,19 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void * list_get </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structList.html">List</a> *</td>          <td class="paramname"><span class="paramname"><em>list</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structList.html">List</a> *&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -321,12 +372,19 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int list_next_available_id </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structList.html">List</a> *</td>          <td class="paramname"><span class="paramname"><em>list</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structList.html">List</a> *&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int(*</td>          <td class="paramname"><span class="paramname"><em>get_id&#160;</em></span>)(void *)&#160;)</td>
+          <td class="paramtype">int(*)(void *)&#160;</td>
+          <td class="paramname"><em>get_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -354,12 +412,19 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int list_remove </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structList.html">List</a> *</td>          <td class="paramname"><span class="paramname"><em>list</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structList.html">List</a> *&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>&#160;)</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -387,7 +452,8 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int list_size </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structList.html">List</a> *</td>          <td class="paramname"><span class="paramname"><em>list</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structList.html">List</a> *&#160;</td>
+          <td class="paramname"><em>list</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -406,7 +472,7 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Documentation des variables</h2>
+<h2 class="groupheader">Documentation des variables</h2>
 <a id="aca5d24e757cc36f97ea62789a309c647" name="aca5d24e757cc36f97ea62789a309c647"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aca5d24e757cc36f97ea62789a309c647">&#9670;&#160;</a></span>list_id_counter</h2>
 
@@ -422,7 +488,7 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -434,19 +500,11 @@ Variables</h2></td></tr>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div id="page-nav" class="page-nav-panel">
-<div id="page-nav-resize-handle"></div>
-<div id="page-nav-tree">
-<div id="page-nav-contents">
-</div><!-- page-nav-contents -->
-</div><!-- page-nav-tree -->
-</div><!-- page-nav -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a href="dir_a063914ab482288b7b0e1b2fca86158c.html">src</a></li><li class="navelem"><a href="server_2src_2list_8c.html">list.c</a></li>
-    <li class="footer">Généré le Jeudi 19 Mars 2026 15:31:46 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+    <li class="navelem"><a class="el" href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a class="el" href="dir_a063914ab482288b7b0e1b2fca86158c.html">src</a></li><li class="navelem"><a class="el" href="server_2src_2list_8c.html">list.c</a></li>
+    <li class="footer">Généré le Vendredi 20 Mars 2026 21:22:33 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

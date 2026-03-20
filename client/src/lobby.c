@@ -68,12 +68,7 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
     } else if (button == btn_return) {
         /* Informer le serveur qu'on quitte le lobby */
         if (context->lobby->id >= 0 && context->sock >= 0) {
-            for(int i = 0; i < context->lobby->nb_players; i++) {
-                if (context->lobby->users[i] && context->lobby->users[i]->name) {
-                    free(context->lobby->users[i]->name);
-                    free(context->lobby->users[i]);
-                }
-            }
+            struct_lobby_init(context->lobby, -1, "");
             char msg[16];
             format_to(msg, sizeof(msg), "%d", MSG_LEAVELOBBY);
             send_tcp(context->sock, msg);
@@ -212,6 +207,15 @@ int lobby_init(AppContext* context) {
 
 int struct_lobby_init(Lobby* lobby, int id, const char* code) {
     if (!lobby) return EXIT_FAILURE;
+
+    for(int i = 0; i < MAX_USERS; i++) {
+        if (lobby->users[i] && lobby->users[i]->name) {
+            free(lobby->users[i]->name);
+            lobby->users[i]->name = NULL;
+            free(lobby->users[i]);
+            lobby->users[i] = NULL;
+        }
+    }
 
     lobby->id = id;
     lobby->status = LB_STATUS_WAITING;

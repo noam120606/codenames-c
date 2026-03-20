@@ -112,12 +112,18 @@ int request_start_game(Codenames* codenames, TcpClient* client, char* message, A
     Lobby* lobby = find_lobby_by_ownerid(codenames->lobby, client->id);
     if (!lobby) {
         printf("Client %d doesn't own a lobby\n", client->id);
+        char msg[64];
+        format_to(msg, sizeof(msg), "%d %s", MSG_SERVER_ERROR, "You must be the lobby owner to start the game");
+        tcp_send_to_client(codenames, client->id, msg);
         return EXIT_FAILURE;
     }
 
     // Vérifie que le lobby est prêt à démarrer
     if (lobby->status != LB_STATUS_WAITING) {
         printf("Lobby %d is not ready to start\n", lobby->id);
+        char msg[64];
+        format_to(msg, sizeof(msg), "%d %s", MSG_SERVER_ERROR, "Lobby is not ready to start");
+        tcp_send_to_client(codenames, client->id, msg);
         return EXIT_FAILURE;
     }
 

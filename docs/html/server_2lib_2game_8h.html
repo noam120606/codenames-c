@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier server/lib/game.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,20 +34,21 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.14.0 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,9 +63,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('server_2lib_2game_8h.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('server_2lib_2game_8h.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -89,43 +90,61 @@ $(function(){initNavTree('server_2lib_2game_8h.html','',''); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#enum-members">Énumérations</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
   <div class="headertitle"><div class="title">Référence du fichier game.h</div></div>
 </div><!--header-->
 <div class="contents">
-
+<div class="textblock"><code>#include &quot;<a class="el" href="server_2lib_2message_8h_source.html">../lib/message.h</a>&quot;</code><br />
+</div>
 <p><a href="server_2lib_2game_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Structures de données</h2></td></tr>
-<tr class="memitem:Word" id="r_Word"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWord.html">Word</a></td></tr>
-<tr class="memitem:Game" id="r_Game"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGame.html">Game</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWord.html">Word</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGame.html">Game</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Définitions de type</h2></td></tr>
-<tr class="memitem:a66a998123301ec295ccf7a27e19f1723" id="r_a66a998123301ec295ccf7a27e19f1723"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66a998123301ec295ccf7a27e19f1723">Team</a></td></tr>
-<tr class="memitem:a2185b55f783b76da98f60ddfedae594d" id="r_a2185b55f783b76da98f60ddfedae594d"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="client_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2185b55f783b76da98f60ddfedae594d">GameState</a></td></tr>
+<tr class="memitem:a66a998123301ec295ccf7a27e19f1723" id="r_a66a998123301ec295ccf7a27e19f1723"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2game_8h.html#a66a998123301ec295ccf7a27e19f1723">Team</a></td></tr>
+<tr class="separator:a66a998123301ec295ccf7a27e19f1723"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2185b55f783b76da98f60ddfedae594d" id="r_a2185b55f783b76da98f60ddfedae594d"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="client_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2game_8h.html#a2185b55f783b76da98f60ddfedae594d">GameState</a></td></tr>
+<tr class="separator:a2185b55f783b76da98f60ddfedae594d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Énumérations</h2></td></tr>
-<tr class="memitem:a9c13bb5b1d69698f9b47900990eaa598" id="r_a9c13bb5b1d69698f9b47900990eaa598"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c13bb5b1d69698f9b47900990eaa598">Team</a> { <a class="el" href="#a9c13bb5b1d69698f9b47900990eaa598a66bbf321f9fe6b3387090eb97e230c68">TEAM_NONE</a>
-, <a class="el" href="#a9c13bb5b1d69698f9b47900990eaa598a097bdc2bb8d24f733c06f0be9b66bc3d">TEAM_RED</a>
-, <a class="el" href="#a9c13bb5b1d69698f9b47900990eaa598aa36a5d6a8d34fba0b01fc4e56cd2a240">TEAM_BLUE</a>
-, <a class="el" href="#a9c13bb5b1d69698f9b47900990eaa598a61552105f8585ebcf1056afa4085d92b">TEAM_BLACK</a>
+<tr class="memitem:a9c13bb5b1d69698f9b47900990eaa598" id="r_a9c13bb5b1d69698f9b47900990eaa598"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> { <a class="el" href="server_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598a66bbf321f9fe6b3387090eb97e230c68">TEAM_NONE</a>
+, <a class="el" href="server_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598a097bdc2bb8d24f733c06f0be9b66bc3d">TEAM_RED</a>
+, <a class="el" href="server_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598aa36a5d6a8d34fba0b01fc4e56cd2a240">TEAM_BLUE</a>
+, <a class="el" href="server_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598a61552105f8585ebcf1056afa4085d92b">TEAM_BLACK</a>
  }</td></tr>
-<tr class="memitem:a7899b65f1ea0f655e4bbf8d2a5714285" id="r_a7899b65f1ea0f655e4bbf8d2a5714285"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a> { <a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285a466f1dad3c9d6cdfdce7f1d6d144f932">GAMESTATE_WAITING</a>
-, <a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285af079481b440a51bd16e0cce30e777204">GAMESTATE_TURN_RED</a>
-, <a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285ad8fc1a83ebeb07efb9f36d8d77ac39d4">GAMESTATE_TURN_BLUE</a>
-, <a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285aa58a7cf5b2690f73ec2359ec09e42095">GAMESTATE_ENDED</a>
+<tr class="separator:a9c13bb5b1d69698f9b47900990eaa598"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7899b65f1ea0f655e4bbf8d2a5714285" id="r_a7899b65f1ea0f655e4bbf8d2a5714285"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a> { <a class="el" href="server_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a466f1dad3c9d6cdfdce7f1d6d144f932">GAMESTATE_WAITING</a>
+, <a class="el" href="server_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285af079481b440a51bd16e0cce30e777204">GAMESTATE_TURN_RED</a>
+, <a class="el" href="server_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285ad8fc1a83ebeb07efb9f36d8d77ac39d4">GAMESTATE_TURN_BLUE</a>
+, <a class="el" href="server_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285aa58a7cf5b2690f73ec2359ec09e42095">GAMESTATE_ENDED</a>
  }</td></tr>
+<tr class="separator:a7899b65f1ea0f655e4bbf8d2a5714285"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a61f5b946e5a9ea7baac132dd624c0c02" id="r_a61f5b946e5a9ea7baac132dd624c0c02"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61f5b946e5a9ea7baac132dd624c0c02">init_game_manager</a> ()</td></tr>
-<tr class="memitem:aa0542d3562ef733d7367f8b6f79809ad" id="r_aa0542d3562ef733d7367f8b6f79809ad"><td class="memItemLeft" align="right" valign="top">char **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0542d3562ef733d7367f8b6f79809ad">fetchWords</a> ()</td></tr>
-<tr class="memitem:a2de0000a7223c09218cc302fd073b3cf" id="r_a2de0000a7223c09218cc302fd073b3cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structWord.html">Word</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2de0000a7223c09218cc302fd073b3cf">generateWords</a> (int count)</td></tr>
-<tr class="memitem:a97dfd080f74c933486fe8c2f39250faf" id="r_a97dfd080f74c933486fe8c2f39250faf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97dfd080f74c933486fe8c2f39250faf">shuffleWords</a> (<a class="el" href="structWord.html">Word</a> *words, int count)</td></tr>
+<tr class="memitem:a61f5b946e5a9ea7baac132dd624c0c02" id="r_a61f5b946e5a9ea7baac132dd624c0c02"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2game_8h.html#a61f5b946e5a9ea7baac132dd624c0c02">init_game_manager</a> ()</td></tr>
+<tr class="separator:a61f5b946e5a9ea7baac132dd624c0c02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0542d3562ef733d7367f8b6f79809ad" id="r_aa0542d3562ef733d7367f8b6f79809ad"><td class="memItemLeft" align="right" valign="top">char **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2game_8h.html#aa0542d3562ef733d7367f8b6f79809ad">fetchWords</a> ()</td></tr>
+<tr class="separator:aa0542d3562ef733d7367f8b6f79809ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e4a9af783e7402a3dee23812edad2f2" id="r_a3e4a9af783e7402a3dee23812edad2f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structWord.html">Word</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2game_8h.html#a3e4a9af783e7402a3dee23812edad2f2">generateWords</a> (int count, <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> start_team)</td></tr>
+<tr class="separator:a3e4a9af783e7402a3dee23812edad2f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97dfd080f74c933486fe8c2f39250faf" id="r_a97dfd080f74c933486fe8c2f39250faf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2game_8h.html#a97dfd080f74c933486fe8c2f39250faf">shuffleWords</a> (<a class="el" href="structWord.html">Word</a> *words, int count)</td></tr>
+<tr class="separator:a97dfd080f74c933486fe8c2f39250faf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ae5673b1ec898e007a5641fd3d43b3d" id="r_a7ae5673b1ec898e007a5641fd3d43b3d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2game_8h.html#a7ae5673b1ec898e007a5641fd3d43b3d">request_start_game</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client, char *message, <a class="el" href="structArguments.html">Arguments</a> args)</td></tr>
+<tr class="separator:a7ae5673b1ec898e007a5641fd3d43b3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Documentation des définitions de type</h2>
+<h2 class="groupheader">Documentation des définitions de type</h2>
 <a id="a2185b55f783b76da98f60ddfedae594d" name="a2185b55f783b76da98f60ddfedae594d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2185b55f783b76da98f60ddfedae594d">&#9670;&#160;</a></span>GameState</h2>
 
@@ -172,7 +191,7 @@ Fonctions</h2></td></tr>
 
 </div>
 </div>
-<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Documentation du type de l'énumération</h2>
+<h2 class="groupheader">Documentation du type de l'énumération</h2>
 <a id="a7899b65f1ea0f655e4bbf8d2a5714285" name="a7899b65f1ea0f655e4bbf8d2a5714285"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7899b65f1ea0f655e4bbf8d2a5714285">&#9670;&#160;</a></span>GameState</h2>
 
@@ -200,7 +219,7 @@ Fonctions</h2></td></tr>
 <tr><td class="fieldname"><a id="a7899b65f1ea0f655e4bbf8d2a5714285aa58a7cf5b2690f73ec2359ec09e42095" name="a7899b65f1ea0f655e4bbf8d2a5714285aa58a7cf5b2690f73ec2359ec09e42095"></a>GAMESTATE_ENDED&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2lib_2game_8h_source.html#l00040">40</a> du fichier <a class="el" href="server_2lib_2game_8h_source.html">game.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2lib_2game_8h_source.html#l00042">42</a> du fichier <a class="el" href="server_2lib_2game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -231,11 +250,11 @@ Fonctions</h2></td></tr>
 <tr><td class="fieldname"><a id="a9c13bb5b1d69698f9b47900990eaa598a61552105f8585ebcf1056afa4085d92b" name="a9c13bb5b1d69698f9b47900990eaa598a61552105f8585ebcf1056afa4085d92b"></a>TEAM_BLACK&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2lib_2game_8h_source.html#l00013">13</a> du fichier <a class="el" href="server_2lib_2game_8h_source.html">game.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2lib_2game_8h_source.html#l00015">15</a> du fichier <a class="el" href="server_2lib_2game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a id="aa0542d3562ef733d7367f8b6f79809ad" name="aa0542d3562ef733d7367f8b6f79809ad"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa0542d3562ef733d7367f8b6f79809ad">&#9670;&#160;</a></span>fetchWords()</h2>
 
@@ -245,7 +264,7 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">char ** fetchWords </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -260,8 +279,8 @@ Fonctions</h2></td></tr>
 
 </div>
 </div>
-<a id="a2de0000a7223c09218cc302fd073b3cf" name="a2de0000a7223c09218cc302fd073b3cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2de0000a7223c09218cc302fd073b3cf">&#9670;&#160;</a></span>generateWords()</h2>
+<a id="a3e4a9af783e7402a3dee23812edad2f2" name="a3e4a9af783e7402a3dee23812edad2f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e4a9af783e7402a3dee23812edad2f2">&#9670;&#160;</a></span>generateWords()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -269,8 +288,19 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structWord.html">Word</a> * generateWords </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>count</em></span></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td>
+          <td class="paramname"><em>start_team</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -284,7 +314,9 @@ Fonctions</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="server_2src_2game_8c_source.html#l00051">51</a> du fichier <a class="el" href="server_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="server_2src_2game_8c_source.html#l00017">fetchWords()</a>, <a class="el" href="server_2src_2utils_8c_source.html#l00006">randint()</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00037">Word::revealed</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00036">Word::team</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00024">TEAM_BLACK</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00023">TEAM_BLUE</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00021">TEAM_NONE</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00022">TEAM_RED</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00035">Word::word</a>, et <a class="el" href="server_2src_2game_8c_source.html#l00003">WORDCOUNT</a>.</p>
+<p class="reference">Références <a class="el" href="server_2src_2game_8c_source.html#l00017">fetchWords()</a>, <a class="el" href="server_2src_2utils_8c_source.html#l00006">randint()</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00038">Word::revealed</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00036">Word::team</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00024">TEAM_BLACK</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00023">TEAM_BLUE</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00021">TEAM_NONE</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00022">TEAM_RED</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00035">Word::word</a>, et <a class="el" href="server_2src_2game_8c_source.html#l00003">WORDCOUNT</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="server_2src_2game_8c_source.html#l00110">request_start_game()</a>.</p>
 
 </div>
 </div>
@@ -297,7 +329,7 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int init_game_manager </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -312,6 +344,62 @@ Fonctions</h2></td></tr>
 
 </div>
 </div>
+<a id="a7ae5673b1ec898e007a5641fd3d43b3d" name="a7ae5673b1ec898e007a5641fd3d43b3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ae5673b1ec898e007a5641fd3d43b3d">&#9670;&#160;</a></span>request_start_game()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int request_start_game </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *&#160;</td>
+          <td class="paramname"><em>codenames</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structTcpClient.html">TcpClient</a> *&#160;</td>
+          <td class="paramname"><em>client</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structArguments.html">Arguments</a>&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Traite la demande de démarrage de partie. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">codenames</td><td>Contexte principal du serveur. </td></tr>
+    <tr><td class="paramname">client</td><td>Client TCP ayant envoyé la demande. </td></tr>
+    <tr><td class="paramname">message</td><td>Message brut reçu du client. </td></tr>
+    <tr><td class="paramname">args</td><td><a class="el" href="structArguments.html">Arguments</a> extraits du message. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2game_8c_source.html#l00110">110</a> du fichier <a class="el" href="server_2src_2game_8c_source.html">game.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="server_2src_2game_8c_source.html#l00098">destroy_game()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00135">find_lobby_by_ownerid()</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00017">format_to()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00043">Lobby::game</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00065">GAMESTATE_TURN_BLUE</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00064">GAMESTATE_TURN_RED</a>, <a class="el" href="server_2src_2game_8c_source.html#l00051">generateWords()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00037">Lobby::id</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00024">User::id</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00015">TcpClient::id</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00023">LB_STATUS_IN_GAME</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00022">LB_STATUS_WAITING</a>, <a class="el" href="codenames_8h_source.html#l00014">Codenames::lobby</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00020">MSG_SERVER_ERROR</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00029">MSG_STARTGAME</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00030">MSG_WORDDATA</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00042">Lobby::nb_players</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00077">Game::nb_words</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00038">Word::revealed</a>, <a class="el" href="server_2src_2game_8c_source.html#l00089">shuffleWords()</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00078">Game::state</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00040">Lobby::status</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00131">tcp_send_to_client()</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00036">Word::team</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00023">TEAM_BLUE</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00022">TEAM_RED</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00041">Lobby::users</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00035">Word::word</a>, et <a class="el" href="client_2lib_2game_8h_source.html#l00076">Game::words</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="server_2src_2message_8c_source.html#l00024">on_message()</a>.</p>
+
+</div>
+</div>
 <a id="a97dfd080f74c933486fe8c2f39250faf" name="a97dfd080f74c933486fe8c2f39250faf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a97dfd080f74c933486fe8c2f39250faf">&#9670;&#160;</a></span>shuffleWords()</h2>
 
@@ -321,12 +409,19 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void shuffleWords </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structWord.html">Word</a> *</td>          <td class="paramname"><span class="paramname"><em>words</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structWord.html">Word</a> *&#160;</td>
+          <td class="paramname"><em>words</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>count</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -340,23 +435,17 @@ Fonctions</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="server_2src_2game_8c_source.html#l00089">89</a> du fichier <a class="el" href="server_2src_2game_8c_source.html">game.c</a>.</p>
 
+<p class="reference">Référencé par <a class="el" href="server_2src_2game_8c_source.html#l00110">request_start_game()</a>.</p>
+
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div id="page-nav" class="page-nav-panel">
-<div id="page-nav-resize-handle"></div>
-<div id="page-nav-tree">
-<div id="page-nav-contents">
-</div><!-- page-nav-contents -->
-</div><!-- page-nav-tree -->
-</div><!-- page-nav -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a href="dir_00d910b2a486164e1f2e533045ca4778.html">lib</a></li><li class="navelem"><a href="server_2lib_2game_8h.html">game.h</a></li>
-    <li class="footer">Généré le Jeudi 19 Mars 2026 15:31:46 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+    <li class="navelem"><a class="el" href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a class="el" href="dir_00d910b2a486164e1f2e533045ca4778.html">lib</a></li><li class="navelem"><a class="el" href="server_2lib_2game_8h.html">game.h</a></li>
+    <li class="footer">Généré le Vendredi 20 Mars 2026 21:22:33 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -17,7 +17,8 @@ var server_2lib_2game_8h =
       [ "TEAM_BLACK", "server_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598a61552105f8585ebcf1056afa4085d92b", null ]
     ] ],
     [ "fetchWords", "server_2lib_2game_8h.html#aa0542d3562ef733d7367f8b6f79809ad", null ],
-    [ "generateWords", "server_2lib_2game_8h.html#a2de0000a7223c09218cc302fd073b3cf", null ],
+    [ "generateWords", "server_2lib_2game_8h.html#a3e4a9af783e7402a3dee23812edad2f2", null ],
     [ "init_game_manager", "server_2lib_2game_8h.html#a61f5b946e5a9ea7baac132dd624c0c02", null ],
+    [ "request_start_game", "server_2lib_2game_8h.html#a7ae5673b1ec898e007a5641fd3d43b3d", null ],
     [ "shuffleWords", "server_2lib_2game_8h.html#a97dfd080f74c933486fe8c2f39250faf", null ]
 ];

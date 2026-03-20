@@ -12,10 +12,11 @@ var searchData=
   ['crfd_5fcfg_5fmin_9',['CRFD_CFG_MIN',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6adfb618c543de1be59aec8453f757631d',1,'crossfader.h']]],
   ['crfd_5fcfg_5fon_5fchange_10',['CRFD_CFG_ON_CHANGE',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6a974ea54bdc9fda2bd35854460c95f6e1',1,'crossfader.h']]],
   ['crfd_5fcfg_5frect_11',['CRFD_CFG_RECT',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6a154e58384c3b476c8ba72e25b286c868',1,'crossfader.h']]],
-  ['crfd_5fcfg_5fsave_5fplayer_5fdata_12',['CRFD_CFG_SAVE_PLAYER_DATA',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6a2660c4374cd3f72e6882acf2490a657d',1,'crossfader.h']]],
-  ['crfd_5fcfg_5ftrack_5ftexture_13',['CRFD_CFG_TRACK_TEXTURE',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6ad18fa8ea2a95e56b2773019bdc054050',1,'crossfader.h']]],
-  ['crfd_5fcfg_5fvalue_14',['CRFD_CFG_VALUE',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6aefa19fffd931d63331e75e8aa0b189b3',1,'crossfader.h']]],
-  ['crfd_5fcfg_5fw_15',['CRFD_CFG_W',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6a8c47c3f63bae70eed66a78edde4962d5',1,'crossfader.h']]],
-  ['crfd_5fcfg_5fx_16',['CRFD_CFG_X',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6a070fa40aec610c680335bad37aa4f266',1,'crossfader.h']]],
-  ['crfd_5fcfg_5fy_17',['CRFD_CFG_Y',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6aa79acfb22d0f21e2e2a12c0ebd26cc18',1,'crossfader.h']]]
+  ['crfd_5fcfg_5fsave_5fpending_12',['CRFD_CFG_SAVE_PENDING',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6a5597d0b435b1430b55fbe074fcc8fac9',1,'crossfader.h']]],
+  ['crfd_5fcfg_5fsave_5fplayer_5fdata_13',['CRFD_CFG_SAVE_PLAYER_DATA',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6a2660c4374cd3f72e6882acf2490a657d',1,'crossfader.h']]],
+  ['crfd_5fcfg_5ftrack_5ftexture_14',['CRFD_CFG_TRACK_TEXTURE',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6ad18fa8ea2a95e56b2773019bdc054050',1,'crossfader.h']]],
+  ['crfd_5fcfg_5fvalue_15',['CRFD_CFG_VALUE',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6aefa19fffd931d63331e75e8aa0b189b3',1,'crossfader.h']]],
+  ['crfd_5fcfg_5fw_16',['CRFD_CFG_W',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6a8c47c3f63bae70eed66a78edde4962d5',1,'crossfader.h']]],
+  ['crfd_5fcfg_5fx_17',['CRFD_CFG_X',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6a070fa40aec610c680335bad37aa4f266',1,'crossfader.h']]],
+  ['crfd_5fcfg_5fy_18',['CRFD_CFG_Y',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6aa79acfb22d0f21e2e2a12c0ebd26cc18',1,'crossfader.h']]]
 ];

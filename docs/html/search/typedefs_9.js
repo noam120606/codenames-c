@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['team_0',['Team',['../client_2lib_2game_8h.html#a66a998123301ec295ccf7a27e19f1723',1,'Team:&#160;game.h'],['../server_2lib_2game_8h.html#a66a998123301ec295ccf7a27e19f1723',1,'Team:&#160;game.h']]]
+  ['userrole_0',['userrole',['../client_2lib_2user_8h.html#a064a2c5e2528af581f38d07fbbaa8e5a',1,'UserRole:&#160;user.h'],['../server_2lib_2user_8h.html#a064a2c5e2528af581f38d07fbbaa8e5a',1,'UserRole:&#160;user.h']]]
 ];

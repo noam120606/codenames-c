@@ -159,7 +159,7 @@ int on_message(AppContext* context, char* message) {
             strcpy(context->lobby->game->words[wordid].word, word);
             context->lobby->game->words[wordid].team = team;
             context->lobby->game->words[wordid].revealed = revealed;
-            context->lobby->game->words[wordid].gender = rand() % 2; // 0 = male, 1 = female
+            context->lobby->game->words[wordid].gender = rand() % 2; // 0 = homme, 1 = femme
 
             if (wordid == context->lobby->game->nb_words - 1) {
                 context->app_state = APP_STATE_PLAYING;

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['arguments_0',['Arguments',['../structArguments.html',1,'']]]
+  ['appcontext_0',['AppContext',['../structAppContext.html',1,'']]],
+  ['arguments_1',['Arguments',['../structArguments.html',1,'']]]
 ];

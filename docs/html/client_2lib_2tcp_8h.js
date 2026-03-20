@@ -5,5 +5,5 @@ var client_2lib_2tcp_8h =
     [ "init_tcp", "client_2lib_2tcp_8h.html#a6ac472484968ec75f0cc2ca1212e8e4b", null ],
     [ "is_tcp_local_server", "client_2lib_2tcp_8h.html#a219aafb1dfd40098b80739d476dcf9cd", null ],
     [ "send_tcp", "client_2lib_2tcp_8h.html#a4a1ac696cfcab23f00771084596b5c70", null ],
-    [ "tick_tcp", "client_2lib_2tcp_8h.html#a5b061aa6c6d60339ba21450829ad922d", null ]
+    [ "tick_tcp", "client_2lib_2tcp_8h.html#a34b5a239b401b57144f034c3e4cfaea6", null ]
 ];

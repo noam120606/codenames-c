@@ -15,7 +15,7 @@ var structInputConfig =
     [ "init_text", "structInputConfig.html#adc6756d9b02d406378cd9c71d8c4b976", null ],
     [ "len", "structInputConfig.html#a60e40831e2bef5a8eb40e11378a2059b", null ],
     [ "maxlen", "structInputConfig.html#a0403106f5107d41dec1bd89afcd33857", null ],
-    [ "on_submit", "structInputConfig.html#a6a901335a8a3f4d7ccadb38d04bec545", null ],
+    [ "on_submit", "structInputConfig.html#a42ad1a6ebdc91d2f0101216702c833d6", null ],
     [ "padding", "structInputConfig.html#a85c28f2890a20b03ae04c058853e25a0", null ],
     [ "placeholder_count", "structInputConfig.html#ac17ddf41b8e88038bed346eadb8c9321", null ],
     [ "placeholder_index", "structInputConfig.html#a6eff2f134d1d30fb36e347f88a9ac84e", null ],

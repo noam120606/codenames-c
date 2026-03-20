@@ -58,7 +58,7 @@ But
 Bâton
 Bête
 Bûche
-Bɶuf
+Boeuf
 Cabinet
 Cadre
 Cafard
@@ -124,7 +124,7 @@ Critique
 Crochet
 Cuisine
 Cycle
-Cɶur
+Coeur
 Danse
 Dinosaure
 Docteur
@@ -250,7 +250,7 @@ Note
 Noël
 Nuit
 Numéro
-Nɶud
+Noeud
 Oiseau
 Opéra
 Opération

@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames:  Fichier source de client/lib/ressources.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,22 +34,28 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.14.0 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -63,9 +68,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('ressources_8h_source.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('ressources_8h_source.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -98,52 +104,50 @@ $(function(){initNavTree('ressources_8h_source.html','',''); });
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="sdl_8h.html">sdl.h</a>&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="ressources_8h.html#a036c05ee5aeca0a55276156cd8870adc">    6</a></span><span class="preprocessor">#define MAX_RESOURCES 16</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="ressources_8h.html#a3d3fde9eb15b92df43d944a5fdc2d4d5">   12</a></span><span class="keyword">typedef</span> int(*<a class="code hl_typedef" href="ressources_8h.html#a3d3fde9eb15b92df43d944a5fdc2d4d5">DestroyFunction</a>)(void);</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="ressources_8h.html#a9ce640df8f2146ff66fc40034840a089">   18</a></span><span class="keyword">typedef</span> int(*<a class="code hl_typedef" href="ressources_8h.html#a9ce640df8f2146ff66fc40034840a089">DestroyContext</a>)(<a class="code hl_struct" href="structSDL__Context.html">SDL_Context</a>*);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="ressources_8h.html#ac1d79394487a061fddd260474143e62d">   18</a></span><span class="keyword">typedef</span> int(*<a class="code hl_typedef" href="ressources_8h.html#ac1d79394487a061fddd260474143e62d">DestroyContext</a>)(<a class="code hl_struct" href="structAppContext.html">AppContext</a>*);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
 <div class="foldopen" id="foldopen00027" data-start="{" data-end="};">
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structResources.html">   27</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structResources.html#a21a9fecc2ac8b1f12cf5522c88e1ca50">   28</a></span>    <a class="code hl_struct" href="structSDL__Context.html">SDL_Context</a>* <a class="code hl_variable" href="structResources.html#a21a9fecc2ac8b1f12cf5522c88e1ca50">sdl_context</a>;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structResources.html#af4497f3d311299b2c9873c1d270d333d">   29</a></span>    <a class="code hl_typedef" href="ressources_8h.html#a9ce640df8f2146ff66fc40034840a089">DestroyContext</a> <a class="code hl_variable" href="structResources.html#af4497f3d311299b2c9873c1d270d333d">destroy_context</a>;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structResources.html#acb28dc8046b9260a625ddfc48e8583a8">   30</a></span>    <a class="code hl_typedef" href="ressources_8h.html#a3d3fde9eb15b92df43d944a5fdc2d4d5">DestroyFunction</a> <a class="code hl_variable" href="structResources.html#acb28dc8046b9260a625ddfc48e8583a8">destroy_functions</a>[<a class="code hl_define" href="ressources_8h.html#a036c05ee5aeca0a55276156cd8870adc">MAX_RESOURCES</a>];</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structResources.html#a2822e48797428e277605a25b4a59c46b">   28</a></span>    <a class="code hl_struct" href="structAppContext.html">AppContext</a>* <a class="code hl_variable" href="structResources.html#a2822e48797428e277605a25b4a59c46b">context</a>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structResources.html#af4497f3d311299b2c9873c1d270d333d">   29</a></span>    <a class="code hl_typedef" href="ressources_8h.html#ac1d79394487a061fddd260474143e62d">DestroyContext</a> <a class="code hl_variable" href="structResources.html#af4497f3d311299b2c9873c1d270d333d">destroy_context</a>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structResources.html#acb28dc8046b9260a625ddfc48e8583a8">   30</a></span>    <a class="code hl_typedef" href="ressources_8h.html#a3d3fde9eb15b92df43d944a5fdc2d4d5">DestroyFunction</a> destroy_functions[<a class="code hl_define" href="ressources_8h.html#a036c05ee5aeca0a55276156cd8870adc">MAX_RESOURCES</a>];</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="structResources.html#a1812e80e43137385b06b313c67e7088a">   31</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structResources.html#a1812e80e43137385b06b313c67e7088a">nb_resources</a>;</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>} <a class="code hl_struct" href="structResources.html">Resources</a>;</div>
 </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><a class="code hl_struct" href="structResources.html">Resources</a>* <a class="code hl_function" href="ressources_8h.html#a0beda1ea9e6106cbc23563c7ef9018fa">init_resources</a>();</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keywordtype">int</span> <a class="code hl_function" href="ressources_8h.html#acd64ba0411e750b21f50fd8089c6b9df">define_sdl_context</a>(<a class="code hl_struct" href="structResources.html">Resources</a>* res, <a class="code hl_struct" href="structSDL__Context.html">SDL_Context</a>* context, <a class="code hl_typedef" href="ressources_8h.html#a9ce640df8f2146ff66fc40034840a089">DestroyContext</a> <a class="code hl_function" href="sdl_8c.html#aa33d3646a7f48b840181c436dc32f8f7">destroy_context</a>);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keywordtype">int</span> <a class="code hl_function" href="ressources_8h.html#aeb04b89e20809ba62eb1274d89e6275e">define_app_context</a>(<a class="code hl_struct" href="structResources.html">Resources</a>* res, <a class="code hl_struct" href="structAppContext.html">AppContext</a>* context, <a class="code hl_typedef" href="ressources_8h.html#ac1d79394487a061fddd260474143e62d">DestroyContext</a> <a class="code hl_function" href="sdl_8c.html#a287c6280bfa12f44b321d22d6450a125">destroy_context</a>);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keywordtype">int</span> <a class="code hl_function" href="ressources_8h.html#a36d4da70ab4c605e03853373acc03b99">add_destroy_resource</a>(<a class="code hl_struct" href="structResources.html">Resources</a>* res, <a class="code hl_typedef" href="ressources_8h.html#a3d3fde9eb15b92df43d944a5fdc2d4d5">DestroyFunction</a> destroy);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keywordtype">void</span> <a class="code hl_function" href="ressources_8h.html#a25ce324123d4f50334b6905ef696812e">cleanup_resources</a>(<a class="code hl_struct" href="structResources.html">Resources</a>* res);</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#endif </span><span class="comment">// RESSOURCES_H</span></div>
-<div class="ttc" id="aressources_8h_html_a036c05ee5aeca0a55276156cd8870adc"><div class="ttname"><a href="ressources_8h.html#a036c05ee5aeca0a55276156cd8870adc">MAX_RESOURCES</a></div><div class="ttdeci">#define MAX_RESOURCES</div><div class="ttdef"><b>Definition</b> <a href="#l00006">ressources.h:6</a></div></div>
+<div class="ttc" id="aressources_8h_html_a036c05ee5aeca0a55276156cd8870adc"><div class="ttname"><a href="ressources_8h.html#a036c05ee5aeca0a55276156cd8870adc">MAX_RESOURCES</a></div><div class="ttdeci">#define MAX_RESOURCES</div><div class="ttdef"><b>Definition</b> <a href="ressources_8h_source.html#l00006">ressources.h:6</a></div></div>
 <div class="ttc" id="aressources_8h_html_a0beda1ea9e6106cbc23563c7ef9018fa"><div class="ttname"><a href="ressources_8h.html#a0beda1ea9e6106cbc23563c7ef9018fa">init_resources</a></div><div class="ttdeci">Resources * init_resources()</div><div class="ttdef"><b>Definition</b> <a href="ressources_8c_source.html#l00004">ressources.c:4</a></div></div>
 <div class="ttc" id="aressources_8h_html_a25ce324123d4f50334b6905ef696812e"><div class="ttname"><a href="ressources_8h.html#a25ce324123d4f50334b6905ef696812e">cleanup_resources</a></div><div class="ttdeci">void cleanup_resources(Resources *res)</div><div class="ttdef"><b>Definition</b> <a href="ressources_8c_source.html#l00024">ressources.c:24</a></div></div>
 <div class="ttc" id="aressources_8h_html_a36d4da70ab4c605e03853373acc03b99"><div class="ttname"><a href="ressources_8h.html#a36d4da70ab4c605e03853373acc03b99">add_destroy_resource</a></div><div class="ttdeci">int add_destroy_resource(Resources *res, DestroyFunction destroy)</div><div class="ttdef"><b>Definition</b> <a href="ressources_8c_source.html#l00016">ressources.c:16</a></div></div>
-<div class="ttc" id="aressources_8h_html_a3d3fde9eb15b92df43d944a5fdc2d4d5"><div class="ttname"><a href="ressources_8h.html#a3d3fde9eb15b92df43d944a5fdc2d4d5">DestroyFunction</a></div><div class="ttdeci">int(* DestroyFunction)(void)</div><div class="ttdef"><b>Definition</b> <a href="#l00012">ressources.h:12</a></div></div>
-<div class="ttc" id="aressources_8h_html_a9ce640df8f2146ff66fc40034840a089"><div class="ttname"><a href="ressources_8h.html#a9ce640df8f2146ff66fc40034840a089">DestroyContext</a></div><div class="ttdeci">int(* DestroyContext)(SDL_Context *)</div><div class="ttdef"><b>Definition</b> <a href="#l00018">ressources.h:18</a></div></div>
-<div class="ttc" id="aressources_8h_html_acd64ba0411e750b21f50fd8089c6b9df"><div class="ttname"><a href="ressources_8h.html#acd64ba0411e750b21f50fd8089c6b9df">define_sdl_context</a></div><div class="ttdeci">int define_sdl_context(Resources *res, SDL_Context *context, DestroyContext destroy_context)</div><div class="ttdef"><b>Definition</b> <a href="ressources_8c_source.html#l00009">ressources.c:9</a></div></div>
-<div class="ttc" id="asdl_8c_html_aa33d3646a7f48b840181c436dc32f8f7"><div class="ttname"><a href="sdl_8c.html#aa33d3646a7f48b840181c436dc32f8f7">destroy_context</a></div><div class="ttdeci">int destroy_context(SDL_Context *context)</div><div class="ttdef"><b>Definition</b> <a href="sdl_8c_source.html#l00245">sdl.c:245</a></div></div>
+<div class="ttc" id="aressources_8h_html_a3d3fde9eb15b92df43d944a5fdc2d4d5"><div class="ttname"><a href="ressources_8h.html#a3d3fde9eb15b92df43d944a5fdc2d4d5">DestroyFunction</a></div><div class="ttdeci">int(* DestroyFunction)(void)</div><div class="ttdef"><b>Definition</b> <a href="ressources_8h_source.html#l00012">ressources.h:12</a></div></div>
+<div class="ttc" id="aressources_8h_html_ac1d79394487a061fddd260474143e62d"><div class="ttname"><a href="ressources_8h.html#ac1d79394487a061fddd260474143e62d">DestroyContext</a></div><div class="ttdeci">int(* DestroyContext)(AppContext *)</div><div class="ttdef"><b>Definition</b> <a href="ressources_8h_source.html#l00018">ressources.h:18</a></div></div>
+<div class="ttc" id="aressources_8h_html_aeb04b89e20809ba62eb1274d89e6275e"><div class="ttname"><a href="ressources_8h.html#aeb04b89e20809ba62eb1274d89e6275e">define_app_context</a></div><div class="ttdeci">int define_app_context(Resources *res, AppContext *context, DestroyContext destroy_context)</div><div class="ttdef"><b>Definition</b> <a href="ressources_8c_source.html#l00009">ressources.c:9</a></div></div>
+<div class="ttc" id="asdl_8c_html_a287c6280bfa12f44b321d22d6450a125"><div class="ttname"><a href="sdl_8c.html#a287c6280bfa12f44b321d22d6450a125">destroy_context</a></div><div class="ttdeci">int destroy_context(AppContext *context)</div><div class="ttdef"><b>Definition</b> <a href="sdl_8c_source.html#l00245">sdl.c:245</a></div></div>
 <div class="ttc" id="asdl_8h_html"><div class="ttname"><a href="sdl_8h.html">sdl.h</a></div></div>
-<div class="ttc" id="astructResources_html"><div class="ttname"><a href="structResources.html">Resources</a></div><div class="ttdef"><b>Definition</b> <a href="#l00027">ressources.h:27</a></div></div>
-<div class="ttc" id="astructResources_html_a1812e80e43137385b06b313c67e7088a"><div class="ttname"><a href="structResources.html#a1812e80e43137385b06b313c67e7088a">Resources::nb_resources</a></div><div class="ttdeci">int nb_resources</div><div class="ttdef"><b>Definition</b> <a href="#l00031">ressources.h:31</a></div></div>
-<div class="ttc" id="astructResources_html_a21a9fecc2ac8b1f12cf5522c88e1ca50"><div class="ttname"><a href="structResources.html#a21a9fecc2ac8b1f12cf5522c88e1ca50">Resources::sdl_context</a></div><div class="ttdeci">SDL_Context * sdl_context</div><div class="ttdef"><b>Definition</b> <a href="#l00028">ressources.h:28</a></div></div>
-<div class="ttc" id="astructResources_html_acb28dc8046b9260a625ddfc48e8583a8"><div class="ttname"><a href="structResources.html#acb28dc8046b9260a625ddfc48e8583a8">Resources::destroy_functions</a></div><div class="ttdeci">DestroyFunction destroy_functions[MAX_RESOURCES]</div><div class="ttdef"><b>Definition</b> <a href="#l00030">ressources.h:30</a></div></div>
-<div class="ttc" id="astructResources_html_af4497f3d311299b2c9873c1d270d333d"><div class="ttname"><a href="structResources.html#af4497f3d311299b2c9873c1d270d333d">Resources::destroy_context</a></div><div class="ttdeci">DestroyContext destroy_context</div><div class="ttdef"><b>Definition</b> <a href="#l00029">ressources.h:29</a></div></div>
-<div class="ttc" id="astructSDL__Context_html"><div class="ttname"><a href="structSDL__Context.html">SDL_Context</a></div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00036">sdl.h:36</a></div></div>
+<div class="ttc" id="astructAppContext_html"><div class="ttname"><a href="structAppContext.html">AppContext</a></div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00037">sdl.h:37</a></div></div>
+<div class="ttc" id="astructResources_html"><div class="ttname"><a href="structResources.html">Resources</a></div><div class="ttdef"><b>Definition</b> <a href="ressources_8h_source.html#l00027">ressources.h:27</a></div></div>
+<div class="ttc" id="astructResources_html_a1812e80e43137385b06b313c67e7088a"><div class="ttname"><a href="structResources.html#a1812e80e43137385b06b313c67e7088a">Resources::nb_resources</a></div><div class="ttdeci">int nb_resources</div><div class="ttdef"><b>Definition</b> <a href="ressources_8h_source.html#l00031">ressources.h:31</a></div></div>
+<div class="ttc" id="astructResources_html_a2822e48797428e277605a25b4a59c46b"><div class="ttname"><a href="structResources.html#a2822e48797428e277605a25b4a59c46b">Resources::context</a></div><div class="ttdeci">AppContext * context</div><div class="ttdef"><b>Definition</b> <a href="ressources_8h_source.html#l00028">ressources.h:28</a></div></div>
+<div class="ttc" id="astructResources_html_af4497f3d311299b2c9873c1d270d333d"><div class="ttname"><a href="structResources.html#af4497f3d311299b2c9873c1d270d333d">Resources::destroy_context</a></div><div class="ttdeci">DestroyContext destroy_context</div><div class="ttdef"><b>Definition</b> <a href="ressources_8h_source.html#l00029">ressources.h:29</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a href="ressources_8h.html">ressources.h</a></li>
-    <li class="footer">Généré le Jeudi 19 Mars 2026 15:31:45 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a class="el" href="ressources_8h.html">ressources.h</a></li>
+    <li class="footer">Généré le Vendredi 20 Mars 2026 21:22:33 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

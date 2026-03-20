@@ -3,6 +3,7 @@ var client_2lib_2game_8h =
     [ "Word", "structWord.html", "structWord" ],
     [ "Game", "structGame.html", "structGame" ],
     [ "Card", "structCard.html", "structCard" ],
+    [ "AppContext", "client_2lib_2game_8h.html#aab477be81bad6aadbec06506e3cc26a2", null ],
     [ "AppState", "client_2lib_2game_8h.html#af18642bfb6229ca25b25c60e12cffa6c", null ],
     [ "Card", "client_2lib_2game_8h.html#a23ff27324f1ac52bcafa4cc91e2c2744", null ],
     [ "GameState", "client_2lib_2game_8h.html#a2185b55f783b76da98f60ddfedae594d", null ],
@@ -25,8 +26,8 @@ var client_2lib_2game_8h =
       [ "TEAM_BLUE", "client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598aa36a5d6a8d34fba0b01fc4e56cd2a240", null ],
       [ "TEAM_BLACK", "client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598a61552105f8585ebcf1056afa4085d92b", null ]
     ] ],
-    [ "game_display", "client_2lib_2game_8h.html#acf6c59afbe8597329d4e7afcd035a720", null ],
+    [ "game_display", "client_2lib_2game_8h.html#a113cc37a0ea70f2b9bea4fa5f834a983", null ],
     [ "game_free", "client_2lib_2game_8h.html#ae52f5479f34f39bb3de7703f7ba412d6", null ],
-    [ "game_handle_event", "client_2lib_2game_8h.html#a5c2f0264b179bcc232a8230e24f0d427", null ],
-    [ "game_init", "client_2lib_2game_8h.html#a1ddd310c60a78ea4f1932f525cdf1aba", null ]
+    [ "game_handle_event", "client_2lib_2game_8h.html#afd3d7f4bdeb22a8fc7a4c284cdbeb919", null ],
+    [ "game_init", "client_2lib_2game_8h.html#a9f85eab4f1455671d70455e858c74dac", null ]
 ];

@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier server/lib/tcp.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,20 +34,21 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.14.0 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,9 +63,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('server_2lib_2tcp_8h.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('server_2lib_2tcp_8h.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -89,6 +90,11 @@ $(function(){initNavTree('server_2lib_2tcp_8h.html','',''); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
   <div class="headertitle"><div class="title">Référence du fichier tcp.h</div></div>
 </div><!--header-->
 <div class="contents">
@@ -96,27 +102,43 @@ $(function(){initNavTree('server_2lib_2tcp_8h.html','',''); });
 </div>
 <p><a href="server_2lib_2tcp_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Structures de données</h2></td></tr>
-<tr class="memitem:TcpClient" id="r_TcpClient"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTcpClient.html">TcpClient</a></td></tr>
-<tr class="memitem:TcpServer" id="r_TcpServer"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTcpServer.html">TcpServer</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTcpClient.html">TcpClient</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTcpServer.html">TcpServer</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a5b53bef6d63b7ccb5a69cc9ea79a7330" id="r_a5b53bef6d63b7ccb5a69cc9ea79a7330"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b53bef6d63b7ccb5a69cc9ea79a7330">TCP_MAX_CLIENTS</a>&#160;&#160;&#160;128</td></tr>
-<tr class="memitem:a02ded67c60c79f3a121a19a495bde2fe" id="r_a02ded67c60c79f3a121a19a495bde2fe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02ded67c60c79f3a121a19a495bde2fe">TCP_BUFFER_SIZE</a>&#160;&#160;&#160;1024</td></tr>
+<tr class="memitem:a5b53bef6d63b7ccb5a69cc9ea79a7330" id="r_a5b53bef6d63b7ccb5a69cc9ea79a7330"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2tcp_8h.html#a5b53bef6d63b7ccb5a69cc9ea79a7330">TCP_MAX_CLIENTS</a>&#160;&#160;&#160;128</td></tr>
+<tr class="separator:a5b53bef6d63b7ccb5a69cc9ea79a7330"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02ded67c60c79f3a121a19a495bde2fe" id="r_a02ded67c60c79f3a121a19a495bde2fe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2tcp_8h.html#a02ded67c60c79f3a121a19a495bde2fe">TCP_BUFFER_SIZE</a>&#160;&#160;&#160;1024</td></tr>
+<tr class="separator:a02ded67c60c79f3a121a19a495bde2fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:aa44c3a3da81703c57680df8630f4414e" id="r_aa44c3a3da81703c57680df8630f4414e"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structCodenames.html">Codenames</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2tcp_8h.html#aa44c3a3da81703c57680df8630f4414e">Codenames</a></td></tr>
+<tr class="separator:aa44c3a3da81703c57680df8630f4414e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a391f747d7efe0143c7379257b4ef11e6" id="r_a391f747d7efe0143c7379257b4ef11e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTcpServer.html">TcpServer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a391f747d7efe0143c7379257b4ef11e6">tcp_server_create</a> (int port)</td></tr>
-<tr class="memitem:a87ee33923925e6b9e2a68d31affb96cc" id="r_a87ee33923925e6b9e2a68d31affb96cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87ee33923925e6b9e2a68d31affb96cc">tcp_server_destroy</a> (<a class="el" href="structTcpServer.html">TcpServer</a> *server)</td></tr>
-<tr class="memitem:a5a0faa5148ca1f09b46e80d27c318542" id="r_a5a0faa5148ca1f09b46e80d27c318542"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a0faa5148ca1f09b46e80d27c318542">tcp_server_tick</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames)</td></tr>
-<tr class="memitem:ae3efc44467ee08b4d29bcc4ef7886119" id="r_ae3efc44467ee08b4d29bcc4ef7886119"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3efc44467ee08b4d29bcc4ef7886119">tcp_send_to_client</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, int client_id, const char *message)</td></tr>
-<tr class="memitem:a55c99d36c3c04576b30e38c0eac2f83d" id="r_a55c99d36c3c04576b30e38c0eac2f83d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55c99d36c3c04576b30e38c0eac2f83d">tcp_on_client_connect</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client)</td></tr>
-<tr class="memitem:a4e3564e7cb720d84f2d8b2f1385e1c50" id="r_a4e3564e7cb720d84f2d8b2f1385e1c50"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4e3564e7cb720d84f2d8b2f1385e1c50">tcp_on_client_disconnect</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client)</td></tr>
-<tr class="memitem:adffbce60e9acd77a4071c627e70d1431" id="r_adffbce60e9acd77a4071c627e70d1431"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adffbce60e9acd77a4071c627e70d1431">tcp_on_client_message</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client, char *message)</td></tr>
+<tr class="memitem:a391f747d7efe0143c7379257b4ef11e6" id="r_a391f747d7efe0143c7379257b4ef11e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTcpServer.html">TcpServer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2tcp_8h.html#a391f747d7efe0143c7379257b4ef11e6">tcp_server_create</a> (int port)</td></tr>
+<tr class="separator:a391f747d7efe0143c7379257b4ef11e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87ee33923925e6b9e2a68d31affb96cc" id="r_a87ee33923925e6b9e2a68d31affb96cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2tcp_8h.html#a87ee33923925e6b9e2a68d31affb96cc">tcp_server_destroy</a> (<a class="el" href="structTcpServer.html">TcpServer</a> *server)</td></tr>
+<tr class="separator:a87ee33923925e6b9e2a68d31affb96cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a0faa5148ca1f09b46e80d27c318542" id="r_a5a0faa5148ca1f09b46e80d27c318542"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2tcp_8h.html#a5a0faa5148ca1f09b46e80d27c318542">tcp_server_tick</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames)</td></tr>
+<tr class="separator:a5a0faa5148ca1f09b46e80d27c318542"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3efc44467ee08b4d29bcc4ef7886119" id="r_ae3efc44467ee08b4d29bcc4ef7886119"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2tcp_8h.html#ae3efc44467ee08b4d29bcc4ef7886119">tcp_send_to_client</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, int client_id, const char *message)</td></tr>
+<tr class="separator:ae3efc44467ee08b4d29bcc4ef7886119"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55c99d36c3c04576b30e38c0eac2f83d" id="r_a55c99d36c3c04576b30e38c0eac2f83d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2tcp_8h.html#a55c99d36c3c04576b30e38c0eac2f83d">tcp_on_client_connect</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client)</td></tr>
+<tr class="separator:a55c99d36c3c04576b30e38c0eac2f83d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e3564e7cb720d84f2d8b2f1385e1c50" id="r_a4e3564e7cb720d84f2d8b2f1385e1c50"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2tcp_8h.html#a4e3564e7cb720d84f2d8b2f1385e1c50">tcp_on_client_disconnect</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client)</td></tr>
+<tr class="separator:a4e3564e7cb720d84f2d8b2f1385e1c50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adffbce60e9acd77a4071c627e70d1431" id="r_adffbce60e9acd77a4071c627e70d1431"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2tcp_8h.html#adffbce60e9acd77a4071c627e70d1431">tcp_on_client_message</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client, char *message)</td></tr>
+<tr class="separator:adffbce60e9acd77a4071c627e70d1431"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentation des macros</h2>
+<h2 class="groupheader">Documentation des macros</h2>
 <a id="a02ded67c60c79f3a121a19a495bde2fe" name="a02ded67c60c79f3a121a19a495bde2fe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a02ded67c60c79f3a121a19a495bde2fe">&#9670;&#160;</a></span>TCP_BUFFER_SIZE</h2>
 
@@ -130,8 +152,6 @@ Fonctions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="server_2lib_2tcp_8h_source.html#l00007">7</a> du fichier <a class="el" href="server_2lib_2tcp_8h_source.html">tcp.h</a>.</p>
-
-<p class="reference">Référencé par <a class="el" href="server_2src_2tcp_8c_source.html#l00083">tcp_server_tick()</a>.</p>
 
 </div>
 </div>
@@ -149,11 +169,26 @@ Fonctions</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="server_2lib_2tcp_8h_source.html#l00006">6</a> du fichier <a class="el" href="server_2lib_2tcp_8h_source.html">tcp.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2tcp_8c_source.html#l00060">add_client()</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00131">tcp_send_to_client()</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00048">tcp_server_destroy()</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00083">tcp_server_tick()</a>.</p>
+</div>
+</div>
+<h2 class="groupheader">Documentation des définitions de type</h2>
+<a id="aa44c3a3da81703c57680df8630f4414e" name="aa44c3a3da81703c57680df8630f4414e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa44c3a3da81703c57680df8630f4414e">&#9670;&#160;</a></span>Codenames</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structCodenames.html">Codenames</a> <a class="el" href="structCodenames.html">Codenames</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="server_2lib_2tcp_8h_source.html#l00048">48</a> du fichier <a class="el" href="server_2lib_2tcp_8h_source.html">tcp.h</a>.</p>
 
 </div>
 </div>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a id="a55c99d36c3c04576b30e38c0eac2f83d" name="a55c99d36c3c04576b30e38c0eac2f83d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a55c99d36c3c04576b30e38c0eac2f83d">&#9670;&#160;</a></span>tcp_on_client_connect()</h2>
 
@@ -163,17 +198,24 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void tcp_on_client_connect </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *</td>          <td class="paramname"><span class="paramname"><em>codenames</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *&#160;</td>
+          <td class="paramname"><em>codenames</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structTcpClient.html">TcpClient</a> *</td>          <td class="paramname"><span class="paramname"><em>client</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structTcpClient.html">TcpClient</a> *&#160;</td>
+          <td class="paramname"><em>client</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00140">140</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00148">148</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="server_2src_2tcp_8c_source.html#l00060">add_client()</a>.</p>
 
@@ -188,17 +230,24 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void tcp_on_client_disconnect </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *</td>          <td class="paramname"><span class="paramname"><em>codenames</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *&#160;</td>
+          <td class="paramname"><em>codenames</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structTcpClient.html">TcpClient</a> *</td>          <td class="paramname"><span class="paramname"><em>client</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structTcpClient.html">TcpClient</a> *&#160;</td>
+          <td class="paramname"><em>client</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00145">145</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00153">153</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
 <p class="reference">Références <a class="el" href="server_2src_2message_8c_source.html#l00052">on_leave()</a>.</p>
 
@@ -215,22 +264,30 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void tcp_on_client_message </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *</td>          <td class="paramname"><span class="paramname"><em>codenames</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *&#160;</td>
+          <td class="paramname"><em>codenames</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structTcpClient.html">TcpClient</a> *</td>          <td class="paramname"><span class="paramname"><em>client</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structTcpClient.html">TcpClient</a> *&#160;</td>
+          <td class="paramname"><em>client</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>message</em></span>&#160;)</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00150">150</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00158">158</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
 <p class="reference">Références <a class="el" href="server_2lib_2tcp_8h_source.html#l00015">TcpClient::id</a>, <a class="el" href="client_2src_2message_8c_source.html#l00024">on_message()</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00077">remove_client()</a>, <a class="el" href="server_2src_2utils_8c_source.html#l00046">starts_with()</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00131">tcp_send_to_client()</a>.</p>
 
@@ -247,17 +304,25 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int tcp_send_to_client </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *</td>          <td class="paramname"><span class="paramname"><em>codenames</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *&#160;</td>
+          <td class="paramname"><em>codenames</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>client_id</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>client_id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>message</em></span>&#160;)</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -275,7 +340,7 @@ Fonctions</h2></td></tr>
 
 <p class="reference">Références <a class="el" href="server_2lib_2tcp_8h_source.html#l00029">TcpServer::clients</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00015">TcpClient::id</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00016">TcpClient::socket</a>, <a class="el" href="codenames_8h_source.html#l00013">Codenames::tcp</a>, et <a class="el" href="server_2lib_2tcp_8h_source.html#l00006">TCP_MAX_CLIENTS</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00208">destroy_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00078">destroy_lobby_callback()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00342">request_choose_role()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00221">request_create_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00253">request_join_lobby()</a>, <a class="el" href="uuid_8c_source.html#l00003">request_uuid()</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00150">tcp_on_client_message()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00147">destroy_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00015">destroy_lobby_callback()</a>, <a class="el" href="server_2src_2message_8c_source.html#l00052">on_leave()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00301">request_choose_role()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00160">request_create_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00192">request_join_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00244">request_leave_lobby()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00110">request_start_game()</a>, <a class="el" href="uuid_8c_source.html#l00003">request_uuid()</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00158">tcp_on_client_message()</a>.</p>
 
 </div>
 </div>
@@ -288,7 +353,8 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structTcpServer.html">TcpServer</a> * tcp_server_create </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>port</em></span></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -318,7 +384,8 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void tcp_server_destroy </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structTcpServer.html">TcpServer</a> *</td>          <td class="paramname"><span class="paramname"><em>server</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structTcpServer.html">TcpServer</a> *&#160;</td>
+          <td class="paramname"><em>server</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -347,7 +414,8 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void tcp_server_tick </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *</td>          <td class="paramname"><span class="paramname"><em>codenames</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *&#160;</td>
+          <td class="paramname"><em>codenames</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -361,7 +429,7 @@ Fonctions</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00083">83</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="server_2src_2tcp_8c_source.html#l00060">add_client()</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00005">buffer</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00029">TcpServer::clients</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00077">remove_client()</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00027">TcpServer::server_socket</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00016">TcpClient::socket</a>, <a class="el" href="codenames_8h_source.html#l00013">Codenames::tcp</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00007">TCP_BUFFER_SIZE</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00006">TCP_MAX_CLIENTS</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00150">tcp_on_client_message()</a>.</p>
+<p class="reference">Références <a class="el" href="server_2src_2tcp_8c_source.html#l00060">add_client()</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00005">buffer</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00029">TcpServer::clients</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00077">remove_client()</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00027">TcpServer::server_socket</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00016">TcpClient::socket</a>, <a class="el" href="codenames_8h_source.html#l00013">Codenames::tcp</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00007">TCP_BUFFER_SIZE</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00006">TCP_MAX_CLIENTS</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00158">tcp_on_client_message()</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="server_2src_2index_8c_source.html#l00003">main()</a>.</p>
 
@@ -369,19 +437,11 @@ Fonctions</h2></td></tr>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div id="page-nav" class="page-nav-panel">
-<div id="page-nav-resize-handle"></div>
-<div id="page-nav-tree">
-<div id="page-nav-contents">
-</div><!-- page-nav-contents -->
-</div><!-- page-nav-tree -->
-</div><!-- page-nav -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a href="dir_00d910b2a486164e1f2e533045ca4778.html">lib</a></li><li class="navelem"><a href="server_2lib_2tcp_8h.html">tcp.h</a></li>
-    <li class="footer">Généré le Jeudi 19 Mars 2026 15:31:46 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+    <li class="navelem"><a class="el" href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a class="el" href="dir_00d910b2a486164e1f2e533045ca4778.html">lib</a></li><li class="navelem"><a class="el" href="server_2lib_2tcp_8h.html">tcp.h</a></li>
+    <li class="footer">Généré le Vendredi 20 Mars 2026 21:22:33 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

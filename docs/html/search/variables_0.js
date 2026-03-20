@@ -7,7 +7,7 @@ var searchData=
   ['animation_5fduration_4',['ANIMATION_DURATION',['../infos_8c.html#addee7354de430c785bc1e8c5598fcae3',1,'infos.c']]],
   ['animation_5fstart_5ftime_5',['animation_start_time',['../infos_8c.html#a5c10f13bdcbb57a755889ae15393ff10',1,'infos.c']]],
   ['animations_6',['animations',['../background_8c.html#aecee9fd9c8255361411f98ca4e75b90c',1,'background.c']]],
-  ['app_5fstate_7',['app_state',['../structSDL__Context.html#affaa376f40421ed5e671540834ac9573',1,'SDL_Context']]],
+  ['app_5fstate_7',['app_state',['../structAppContext.html#a12358a947c811f31061ea211c1956784',1,'AppContext']]],
   ['argc_8',['argc',['../structArguments.html#ad7e02331365bd54d9d3abdef6b81dc30',1,'Arguments']]],
   ['argv_9',['argv',['../structArguments.html#a29e8dac2f7b3adc32cbd95e9a4162194',1,'Arguments']]]
 ];

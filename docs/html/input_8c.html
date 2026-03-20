@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier client/src/input.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,20 +34,21 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.14.0 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,9 +63,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('input_8c.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('input_8c.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -89,6 +90,10 @@ $(function(){initNavTree('input_8c.html','',''); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">Référence du fichier input.c</div></div>
 </div><!--header-->
 <div class="contents">
@@ -96,43 +101,70 @@ $(function(){initNavTree('input_8c.html','',''); });
 </div>
 <p><a href="input_8c_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a67ea8592b7ced96ca53dec58434397e8" id="r_a67ea8592b7ced96ca53dec58434397e8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67ea8592b7ced96ca53dec58434397e8">MAX_INPUTS</a>&#160;&#160;&#160;32</td></tr>
+<tr class="memitem:a67ea8592b7ced96ca53dec58434397e8" id="r_a67ea8592b7ced96ca53dec58434397e8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#a67ea8592b7ced96ca53dec58434397e8">MAX_INPUTS</a>&#160;&#160;&#160;32</td></tr>
+<tr class="separator:a67ea8592b7ced96ca53dec58434397e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a7037c114fe7504447585ccd315559d52" id="r_a7037c114fe7504447585ccd315559d52"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structInput.html">Input</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7037c114fe7504447585ccd315559d52">input_find_by_id</a> (<a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9">InputId</a> id)</td></tr>
-<tr class="memitem:ae2010ec730054238f2085c92e3aa175e" id="r_ae2010ec730054238f2085c92e3aa175e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2010ec730054238f2085c92e3aa175e">input_clear_selection_internal</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
-<tr class="memitem:aaf28af36372abb10237a4b596b5f84cc" id="r_aaf28af36372abb10237a4b596b5f84cc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf28af36372abb10237a4b596b5f84cc">input_submit_internal</a> (<a class="el" href="structSDL__Context.html">SDL_Context</a> *context, <a class="el" href="structInput.html">Input</a> *in)</td></tr>
-<tr class="memitem:a8adebff4becd4ba0edd7a83da5aba781" id="r_a8adebff4becd4ba0edd7a83da5aba781"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structInputConfig.html">InputConfig</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8adebff4becd4ba0edd7a83da5aba781">input_config_init</a> ()</td></tr>
-<tr class="memitem:a07a47479ac8be271eb38060552b4ecc5" id="r_a07a47479ac8be271eb38060552b4ecc5"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07a47479ac8be271eb38060552b4ecc5">input_has_selection</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
-<tr class="memitem:aab19af1ede14a8fb9566b5512090bc1a" id="r_aab19af1ede14a8fb9566b5512090bc1a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab19af1ede14a8fb9566b5512090bc1a">input_delete_selection</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
-<tr class="memitem:a7e231c1574642376cefafd5ee753739e" id="r_a7e231c1574642376cefafd5ee753739e"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e231c1574642376cefafd5ee753739e">prev_word_pos</a> (<a class="el" href="structInput.html">Input</a> *in, int pos)</td></tr>
-<tr class="memitem:a8cde532a8ed8ceb10c31c63cc1407119" id="r_a8cde532a8ed8ceb10c31c63cc1407119"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8cde532a8ed8ceb10c31c63cc1407119">next_word_pos</a> (<a class="el" href="structInput.html">Input</a> *in, int pos)</td></tr>
-<tr class="memitem:afb94b7639f753d63656903360e5388ea" id="r_afb94b7639f753d63656903360e5388ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structInput.html">Input</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb94b7639f753d63656903360e5388ea">input_create</a> (SDL_Renderer *renderer, <a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9">InputId</a> id, const <a class="el" href="structInputConfig.html">InputConfig</a> *cfg_in)</td></tr>
-<tr class="memitem:a74487cf6d45be3908faaa34a7864de2a" id="r_a74487cf6d45be3908faaa34a7864de2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74487cf6d45be3908faaa34a7864de2a">input_destroy</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
-<tr class="memitem:ab18097b9a4583ef1f8193e01c508c999" id="r_ab18097b9a4583ef1f8193e01c508c999"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab18097b9a4583ef1f8193e01c508c999">input_text_allowed</a> (const char *allowed_pattern, const char *txt)</td></tr>
-<tr class="memitem:a1749bca0f8782d5876577e90481bfdef" id="r_a1749bca0f8782d5876577e90481bfdef"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1749bca0f8782d5876577e90481bfdef">point_in_rect</a> (int x, int y, SDL_Rect *r)</td></tr>
-<tr class="memitem:ab8617b70b064e1356181441e920d4fd6" id="r_ab8617b70b064e1356181441e920d4fd6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8617b70b064e1356181441e920d4fd6">input_handle_event</a> (<a class="el" href="structSDL__Context.html">SDL_Context</a> *context, <a class="el" href="structInput.html">Input</a> *in, SDL_Event *e)</td></tr>
-<tr class="memitem:aa520d2f9b20c84746b3c8a6b199e47b6" id="r_aa520d2f9b20c84746b3c8a6b199e47b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa520d2f9b20c84746b3c8a6b199e47b6">input_render</a> (SDL_Renderer *renderer, <a class="el" href="structInput.html">Input</a> *in)</td></tr>
-<tr class="memitem:ab8198703573f27e19f82e1dcbe43c2b9" id="r_ab8198703573f27e19f82e1dcbe43c2b9"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8198703573f27e19f82e1dcbe43c2b9">input_get_text</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
-<tr class="memitem:adb78f49e1c212bae644fcd1a087bd92d" id="r_adb78f49e1c212bae644fcd1a087bd92d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb78f49e1c212bae644fcd1a087bd92d">input_is_submitted</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
-<tr class="memitem:a7df0d402a380e372de17852658d786ef" id="r_a7df0d402a380e372de17852658d786ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7df0d402a380e372de17852658d786ef">input_clear_submitted</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
-<tr class="memitem:af3e1af4d4282b8b01d3d44b7c20bdcc3" id="r_af3e1af4d4282b8b01d3d44b7c20bdcc3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3e1af4d4282b8b01d3d44b7c20bdcc3">input_submit</a> (<a class="el" href="structSDL__Context.html">SDL_Context</a> *context, <a class="el" href="structInput.html">Input</a> *in)</td></tr>
-<tr class="memitem:a928e3979ecdcf6f146de5dc66ffdd17f" id="r_a928e3979ecdcf6f146de5dc66ffdd17f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a928e3979ecdcf6f146de5dc66ffdd17f">input_set_text</a> (<a class="el" href="structInput.html">Input</a> *in, const char *text)</td></tr>
-<tr class="memitem:a70c2f65a9fbe9dbcfa8af61c68663a77" id="r_a70c2f65a9fbe9dbcfa8af61c68663a77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a70c2f65a9fbe9dbcfa8af61c68663a77">input_set_on_submit</a> (<a class="el" href="structInput.html">Input</a> *in, void(*cb)(<a class="el" href="structSDL__Context.html">SDL_Context</a> *, const char *))</td></tr>
-<tr class="memitem:ab530114a79fbb2e0231569b118355baa" id="r_ab530114a79fbb2e0231569b118355baa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab530114a79fbb2e0231569b118355baa">input_set_bg</a> (<a class="el" href="structInput.html">Input</a> *in, SDL_Renderer *renderer, const char *path, int padding)</td></tr>
-<tr class="memitem:a1f09bab7fb4c182015ed115f1abb1d1a" id="r_a1f09bab7fb4c182015ed115f1abb1d1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f09bab7fb4c182015ed115f1abb1d1a">input_clear_bg</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
-<tr class="memitem:a25f9c60994612692f407494aa5de5673" id="r_a25f9c60994612692f407494aa5de5673"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25f9c60994612692f407494aa5de5673">input_set_padding</a> (<a class="el" href="structInput.html">Input</a> *in, int padding)</td></tr>
-<tr class="memitem:a827bf3680c14ed7cff612d6b6ceb8c70" id="r_a827bf3680c14ed7cff612d6b6ceb8c70"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a827bf3680c14ed7cff612d6b6ceb8c70">edit_in_cfg</a> (<a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9">InputId</a> id, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58">InputCfgKey</a> key, intptr_t value)</td></tr>
+<tr class="memitem:a7037c114fe7504447585ccd315559d52" id="r_a7037c114fe7504447585ccd315559d52"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structInput.html">Input</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#a7037c114fe7504447585ccd315559d52">input_find_by_id</a> (<a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9">InputId</a> id)</td></tr>
+<tr class="separator:a7037c114fe7504447585ccd315559d52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2010ec730054238f2085c92e3aa175e" id="r_ae2010ec730054238f2085c92e3aa175e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#ae2010ec730054238f2085c92e3aa175e">input_clear_selection_internal</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
+<tr class="separator:ae2010ec730054238f2085c92e3aa175e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f97e9ebdeb832dbf28c9e747ba912c8" id="r_a4f97e9ebdeb832dbf28c9e747ba912c8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#a4f97e9ebdeb832dbf28c9e747ba912c8">input_submit_internal</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structInput.html">Input</a> *in)</td></tr>
+<tr class="separator:a4f97e9ebdeb832dbf28c9e747ba912c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8adebff4becd4ba0edd7a83da5aba781" id="r_a8adebff4becd4ba0edd7a83da5aba781"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structInputConfig.html">InputConfig</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#a8adebff4becd4ba0edd7a83da5aba781">input_config_init</a> ()</td></tr>
+<tr class="separator:a8adebff4becd4ba0edd7a83da5aba781"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07a47479ac8be271eb38060552b4ecc5" id="r_a07a47479ac8be271eb38060552b4ecc5"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#a07a47479ac8be271eb38060552b4ecc5">input_has_selection</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
+<tr class="separator:a07a47479ac8be271eb38060552b4ecc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab19af1ede14a8fb9566b5512090bc1a" id="r_aab19af1ede14a8fb9566b5512090bc1a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#aab19af1ede14a8fb9566b5512090bc1a">input_delete_selection</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
+<tr class="separator:aab19af1ede14a8fb9566b5512090bc1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e231c1574642376cefafd5ee753739e" id="r_a7e231c1574642376cefafd5ee753739e"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#a7e231c1574642376cefafd5ee753739e">prev_word_pos</a> (<a class="el" href="structInput.html">Input</a> *in, int pos)</td></tr>
+<tr class="separator:a7e231c1574642376cefafd5ee753739e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cde532a8ed8ceb10c31c63cc1407119" id="r_a8cde532a8ed8ceb10c31c63cc1407119"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#a8cde532a8ed8ceb10c31c63cc1407119">next_word_pos</a> (<a class="el" href="structInput.html">Input</a> *in, int pos)</td></tr>
+<tr class="separator:a8cde532a8ed8ceb10c31c63cc1407119"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb94b7639f753d63656903360e5388ea" id="r_afb94b7639f753d63656903360e5388ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structInput.html">Input</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#afb94b7639f753d63656903360e5388ea">input_create</a> (SDL_Renderer *renderer, <a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9">InputId</a> id, const <a class="el" href="structInputConfig.html">InputConfig</a> *cfg_in)</td></tr>
+<tr class="separator:afb94b7639f753d63656903360e5388ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74487cf6d45be3908faaa34a7864de2a" id="r_a74487cf6d45be3908faaa34a7864de2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#a74487cf6d45be3908faaa34a7864de2a">input_destroy</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
+<tr class="separator:a74487cf6d45be3908faaa34a7864de2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab18097b9a4583ef1f8193e01c508c999" id="r_ab18097b9a4583ef1f8193e01c508c999"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#ab18097b9a4583ef1f8193e01c508c999">input_text_allowed</a> (const char *allowed_pattern, const char *txt)</td></tr>
+<tr class="separator:ab18097b9a4583ef1f8193e01c508c999"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1749bca0f8782d5876577e90481bfdef" id="r_a1749bca0f8782d5876577e90481bfdef"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#a1749bca0f8782d5876577e90481bfdef">point_in_rect</a> (int x, int y, SDL_Rect *r)</td></tr>
+<tr class="separator:a1749bca0f8782d5876577e90481bfdef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77fd4ed0f0cd565b859a10157c284ec8" id="r_a77fd4ed0f0cd565b859a10157c284ec8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#a77fd4ed0f0cd565b859a10157c284ec8">input_handle_event</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structInput.html">Input</a> *in, SDL_Event *e)</td></tr>
+<tr class="separator:a77fd4ed0f0cd565b859a10157c284ec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa520d2f9b20c84746b3c8a6b199e47b6" id="r_aa520d2f9b20c84746b3c8a6b199e47b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#aa520d2f9b20c84746b3c8a6b199e47b6">input_render</a> (SDL_Renderer *renderer, <a class="el" href="structInput.html">Input</a> *in)</td></tr>
+<tr class="separator:aa520d2f9b20c84746b3c8a6b199e47b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8198703573f27e19f82e1dcbe43c2b9" id="r_ab8198703573f27e19f82e1dcbe43c2b9"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#ab8198703573f27e19f82e1dcbe43c2b9">input_get_text</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
+<tr class="separator:ab8198703573f27e19f82e1dcbe43c2b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb78f49e1c212bae644fcd1a087bd92d" id="r_adb78f49e1c212bae644fcd1a087bd92d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#adb78f49e1c212bae644fcd1a087bd92d">input_is_submitted</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
+<tr class="separator:adb78f49e1c212bae644fcd1a087bd92d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7df0d402a380e372de17852658d786ef" id="r_a7df0d402a380e372de17852658d786ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#a7df0d402a380e372de17852658d786ef">input_clear_submitted</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
+<tr class="separator:a7df0d402a380e372de17852658d786ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade42f1ea801614ec46c132f79ca8ce53" id="r_ade42f1ea801614ec46c132f79ca8ce53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#ade42f1ea801614ec46c132f79ca8ce53">input_submit</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structInput.html">Input</a> *in)</td></tr>
+<tr class="separator:ade42f1ea801614ec46c132f79ca8ce53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a928e3979ecdcf6f146de5dc66ffdd17f" id="r_a928e3979ecdcf6f146de5dc66ffdd17f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#a928e3979ecdcf6f146de5dc66ffdd17f">input_set_text</a> (<a class="el" href="structInput.html">Input</a> *in, const char *text)</td></tr>
+<tr class="separator:a928e3979ecdcf6f146de5dc66ffdd17f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a399255cb92407b394beb2b352537f1f4" id="r_a399255cb92407b394beb2b352537f1f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#a399255cb92407b394beb2b352537f1f4">input_set_on_submit</a> (<a class="el" href="structInput.html">Input</a> *in, void(*cb)(<a class="el" href="structAppContext.html">AppContext</a> *, const char *))</td></tr>
+<tr class="separator:a399255cb92407b394beb2b352537f1f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab530114a79fbb2e0231569b118355baa" id="r_ab530114a79fbb2e0231569b118355baa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#ab530114a79fbb2e0231569b118355baa">input_set_bg</a> (<a class="el" href="structInput.html">Input</a> *in, SDL_Renderer *renderer, const char *path, int padding)</td></tr>
+<tr class="separator:ab530114a79fbb2e0231569b118355baa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f09bab7fb4c182015ed115f1abb1d1a" id="r_a1f09bab7fb4c182015ed115f1abb1d1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#a1f09bab7fb4c182015ed115f1abb1d1a">input_clear_bg</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
+<tr class="separator:a1f09bab7fb4c182015ed115f1abb1d1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25f9c60994612692f407494aa5de5673" id="r_a25f9c60994612692f407494aa5de5673"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#a25f9c60994612692f407494aa5de5673">input_set_padding</a> (<a class="el" href="structInput.html">Input</a> *in, int padding)</td></tr>
+<tr class="separator:a25f9c60994612692f407494aa5de5673"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a827bf3680c14ed7cff612d6b6ceb8c70" id="r_a827bf3680c14ed7cff612d6b6ceb8c70"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#a827bf3680c14ed7cff612d6b6ceb8c70">edit_in_cfg</a> (<a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9">InputId</a> id, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58">InputCfgKey</a> key, intptr_t value)</td></tr>
+<tr class="separator:a827bf3680c14ed7cff612d6b6ceb8c70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ad1723ac8fb77a41fc83509519767014a" id="r_ad1723ac8fb77a41fc83509519767014a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structInput.html">Input</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1723ac8fb77a41fc83509519767014a">inputs</a> [<a class="el" href="#a67ea8592b7ced96ca53dec58434397e8">MAX_INPUTS</a>]</td></tr>
-<tr class="memitem:a1dcf081f133c58340a448d9d92f0eb31" id="r_a1dcf081f133c58340a448d9d92f0eb31"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1dcf081f133c58340a448d9d92f0eb31">input_count</a> = 0</td></tr>
+<tr class="memitem:ad1723ac8fb77a41fc83509519767014a" id="r_ad1723ac8fb77a41fc83509519767014a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structInput.html">Input</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#ad1723ac8fb77a41fc83509519767014a">inputs</a> [<a class="el" href="input_8c.html#a67ea8592b7ced96ca53dec58434397e8">MAX_INPUTS</a>]</td></tr>
+<tr class="separator:ad1723ac8fb77a41fc83509519767014a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1dcf081f133c58340a448d9d92f0eb31" id="r_a1dcf081f133c58340a448d9d92f0eb31"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#a1dcf081f133c58340a448d9d92f0eb31">input_count</a> = 0</td></tr>
+<tr class="separator:a1dcf081f133c58340a448d9d92f0eb31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentation des macros</h2>
+<h2 class="groupheader">Documentation des macros</h2>
 <a id="a67ea8592b7ced96ca53dec58434397e8" name="a67ea8592b7ced96ca53dec58434397e8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a67ea8592b7ced96ca53dec58434397e8">&#9670;&#160;</a></span>MAX_INPUTS</h2>
 
@@ -147,11 +179,9 @@ Variables</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00004">4</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="input_8c_source.html#l00140">input_create()</a>.</p>
-
 </div>
 </div>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a id="a827bf3680c14ed7cff612d6b6ceb8c70" name="a827bf3680c14ed7cff612d6b6ceb8c70"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a827bf3680c14ed7cff612d6b6ceb8c70">&#9670;&#160;</a></span>edit_in_cfg()</h2>
 
@@ -161,17 +191,25 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int edit_in_cfg </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9">InputId</a></td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+          <td class="paramtype"><a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9">InputId</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58">InputCfgKey</a></td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+          <td class="paramtype"><a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58">InputCfgKey</a>&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">intptr_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+          <td class="paramtype">intptr_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -179,7 +217,7 @@ Variables</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">id</td><td>L'ID de l'input à modifier. </td></tr>
     <tr><td class="paramname">key</td><td>Champ ciblé dans la configuration. </td></tr>
-    <tr><td class="paramname">value</td><td>Valeur à appliquer (entier direct pour champs int/bool, pointeur casté en <span class="tt">intptr_t</span> pour les champs pointeurs, et adresse d'une structure pour <span class="tt">IN_CFG_BG_COLOR</span> / <span class="tt">IN_CFG_BORDER_COLOR</span> / <span class="tt">IN_CFG_TEXT_COLOR</span> / <span class="tt">IN_CFG_RECT</span>). </td></tr>
+    <tr><td class="paramname">value</td><td>Valeur à appliquer (entier direct pour champs int/bool, pointeur casté en <code>intptr_t</code> pour les champs pointeurs, et adresse d'une structure pour <code>IN_CFG_BG_COLOR</code> / <code>IN_CFG_BORDER_COLOR</code> / <code>IN_CFG_TEXT_COLOR</code> / <code>IN_CFG_RECT</code>). </td></tr>
   </table>
   </dd>
 </dl>
@@ -200,7 +238,8 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void input_clear_bg </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -228,15 +267,16 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void input_clear_selection_internal </td>
+          <td class="memname">static void input_clear_selection_internal </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -258,7 +298,8 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void input_clear_submitted </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -285,7 +326,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structInputConfig.html">InputConfig</a> * input_config_init </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -296,7 +337,7 @@ Variables</h2></td></tr>
 
 <p class="reference">Références <a class="el" href="input_8h_source.html#l00071">InputConfig::allowed_pattern</a>, <a class="el" href="input_8h_source.html#l00064">InputConfig::bg_color</a>, <a class="el" href="input_8h_source.html#l00070">InputConfig::bg_padding</a>, <a class="el" href="input_8h_source.html#l00069">InputConfig::bg_path</a>, <a class="el" href="input_8h_source.html#l00080">InputConfig::bg_texture</a>, <a class="el" href="input_8h_source.html#l00065">InputConfig::border_color</a>, <a class="el" href="input_8h_source.html#l00068">InputConfig::centered</a>, <a class="el" href="input_8h_source.html#l00077">InputConfig::cursor_pos</a>, <a class="el" href="input_8h_source.html#l00078">InputConfig::focused</a>, <a class="el" href="input_8h_source.html#l00057">InputConfig::font_path</a>, <a class="el" href="input_8h_source.html#l00058">InputConfig::font_size</a>, <a class="el" href="input_8h_source.html#l00056">InputConfig::h</a>, <a class="el" href="input_8h_source.html#l00073">InputConfig::init_text</a>, <a class="el" href="input_8h_source.html#l00007">INPUT_DEFAULT_MAX</a>, <a class="el" href="input_8h_source.html#l00076">InputConfig::len</a>, <a class="el" href="input_8h_source.html#l00062">InputConfig::maxlen</a>, <a class="el" href="input_8h_source.html#l00087">InputConfig::on_submit</a>, <a class="el" href="input_8h_source.html#l00067">InputConfig::padding</a>, <a class="el" href="input_8h_source.html#l00060">InputConfig::placeholder_count</a>, <a class="el" href="input_8h_source.html#l00085">InputConfig::placeholder_index</a>, <a class="el" href="input_8h_source.html#l00086">InputConfig::placeholder_last_tick</a>, <a class="el" href="input_8h_source.html#l00059">InputConfig::placeholders</a>, <a class="el" href="input_8h_source.html#l00074">InputConfig::rect</a>, <a class="el" href="input_8h_source.html#l00063">InputConfig::save_player_data</a>, <a class="el" href="input_8h_source.html#l00083">InputConfig::sel_anchor</a>, <a class="el" href="input_8h_source.html#l00082">InputConfig::sel_len</a>, <a class="el" href="input_8h_source.html#l00081">InputConfig::sel_start</a>, <a class="el" href="input_8h_source.html#l00072">InputConfig::submit_pattern</a>, <a class="el" href="input_8h_source.html#l00079">InputConfig::submitted</a>, <a class="el" href="input_8h_source.html#l00061">InputConfig::submitted_label</a>, <a class="el" href="input_8h_source.html#l00084">InputConfig::submitted_text</a>, <a class="el" href="input_8h_source.html#l00075">InputConfig::text</a>, <a class="el" href="input_8h_source.html#l00066">InputConfig::text_color</a>, <a class="el" href="input_8h_source.html#l00055">InputConfig::w</a>, <a class="el" href="input_8h_source.html#l00053">InputConfig::x</a>, et <a class="el" href="input_8h_source.html#l00054">InputConfig::y</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="input_8c_source.html#l00140">input_create()</a>, et <a class="el" href="menu_8c_source.html#l00067">menu_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="input_8c_source.html#l00140">input_create()</a>, et <a class="el" href="menu_8c_source.html#l00066">menu_init()</a>.</p>
 
 </div>
 </div>
@@ -309,23 +350,31 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structInput.html">Input</a> * input_create </td>
           <td>(</td>
-          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9">InputId</a></td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+          <td class="paramtype"><a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9">InputId</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structInputConfig.html">InputConfig</a> *</td>          <td class="paramname"><span class="paramname"><em>cfg</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="structInputConfig.html">InputConfig</a> *&#160;</td>
+          <td class="paramname"><em>cfg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Crée un nouvel input à partir d'une configuration. Si <span class="tt">cfg</span> est NULL, les valeurs par défaut sont utilisées. L'input créé doit être détruit avec <span class="tt">input_destroy</span> pour éviter les fuites de mémoire. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Crée un nouvel input à partir d'une configuration. Si <code>cfg</code> est NULL, les valeurs par défaut sont utilisées. L'input créé doit être détruit avec <code>input_destroy</code> pour éviter les fuites de mémoire. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">renderer</td><td>Renderer SDL utilisé pour charger la texture de fond si <span class="tt">bg_path</span> est défini dans la configuration. </td></tr>
+    <tr><td class="paramname">renderer</td><td>Renderer SDL utilisé pour charger la texture de fond si <code>bg_path</code> est défini dans la configuration. </td></tr>
     <tr><td class="paramname">id</td><td>Identifiant de l'input (ex: INPUT_ID_NAME). Peut être utilisé pour différencier les inputs dans les callbacks. </td></tr>
     <tr><td class="paramname">cfg_in</td><td>Pointeur vers la configuration de l'input. Si NULL, les valeurs par défaut sont utilisées. La configuration est copiée, donc le pointeur peut être libéré ou modifié après l'appel sans affecter l'input créé. </td></tr>
   </table>
@@ -337,7 +386,7 @@ Variables</h2></td></tr>
 
 <p class="reference">Références <a class="el" href="input_8h_source.html#l00070">InputConfig::bg_padding</a>, <a class="el" href="input_8h_source.html#l00069">InputConfig::bg_path</a>, <a class="el" href="input_8h_source.html#l00080">InputConfig::bg_texture</a>, <a class="el" href="input_8h_source.html#l00095">Input::cfg</a>, <a class="el" href="input_8h_source.html#l00077">InputConfig::cursor_pos</a>, <a class="el" href="input_8h_source.html#l00078">InputConfig::focused</a>, <a class="el" href="input_8h_source.html#l00056">InputConfig::h</a>, <a class="el" href="input_8h_source.html#l00094">Input::id</a>, <a class="el" href="input_8h_source.html#l00073">InputConfig::init_text</a>, <a class="el" href="input_8c_source.html#l00057">input_config_init()</a>, <a class="el" href="input_8c_source.html#l00006">input_count</a>, <a class="el" href="input_8h_source.html#l00007">INPUT_DEFAULT_MAX</a>, <a class="el" href="input_8c_source.html#l00228">input_destroy()</a>, <a class="el" href="input_8h_source.html#l00014">INPUT_ID_NAME</a>, <a class="el" href="input_8c_source.html#l00614">input_set_bg()</a>, <a class="el" href="input_8c_source.html#l00005">inputs</a>, <a class="el" href="input_8h_source.html#l00076">InputConfig::len</a>, <a class="el" href="input_8c_source.html#l00004">MAX_INPUTS</a>, <a class="el" href="input_8h_source.html#l00062">InputConfig::maxlen</a>, <a class="el" href="input_8h_source.html#l00085">InputConfig::placeholder_index</a>, <a class="el" href="input_8h_source.html#l00086">InputConfig::placeholder_last_tick</a>, <a class="el" href="save_8c_source.html#l00012">read_property()</a>, <a class="el" href="input_8h_source.html#l00074">InputConfig::rect</a>, <a class="el" href="input_8h_source.html#l00063">InputConfig::save_player_data</a>, <a class="el" href="input_8h_source.html#l00083">InputConfig::sel_anchor</a>, <a class="el" href="input_8h_source.html#l00082">InputConfig::sel_len</a>, <a class="el" href="input_8h_source.html#l00081">InputConfig::sel_start</a>, <a class="el" href="input_8h_source.html#l00079">InputConfig::submitted</a>, <a class="el" href="input_8h_source.html#l00084">InputConfig::submitted_text</a>, <a class="el" href="input_8h_source.html#l00075">InputConfig::text</a>, <a class="el" href="input_8h_source.html#l00055">InputConfig::w</a>, <a class="el" href="sdl_8h_source.html#l00015">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00014">WIN_WIDTH</a>, <a class="el" href="input_8h_source.html#l00053">InputConfig::x</a>, et <a class="el" href="input_8h_source.html#l00054">InputConfig::y</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00067">menu_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00066">menu_init()</a>.</p>
 
 </div>
 </div>
@@ -351,15 +400,16 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void input_delete_selection </td>
+          <td class="memname">static void input_delete_selection </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -381,7 +431,8 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void input_destroy </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -397,7 +448,7 @@ Variables</h2></td></tr>
 
 <p class="reference">Références <a class="el" href="input_8h_source.html#l00080">InputConfig::bg_texture</a>, <a class="el" href="input_8h_source.html#l00095">Input::cfg</a>, <a class="el" href="sdl_8c_source.html#l00228">free_image()</a>, <a class="el" href="input_8c_source.html#l00006">input_count</a>, <a class="el" href="input_8c_source.html#l00005">inputs</a>, <a class="el" href="input_8h_source.html#l00084">InputConfig::submitted_text</a>, et <a class="el" href="input_8h_source.html#l00075">InputConfig::text</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="input_8c_source.html#l00140">input_create()</a>, et <a class="el" href="menu_8c_source.html#l00262">menu_free()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="input_8c_source.html#l00140">input_create()</a>, et <a class="el" href="menu_8c_source.html#l00263">menu_free()</a>.</p>
 
 </div>
 </div>
@@ -411,15 +462,16 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structInput.html">Input</a> * input_find_by_id </td>
+          <td class="memname">static <a class="el" href="structInput.html">Input</a> * input_find_by_id </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9">InputId</a></td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9">InputId</a>&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -441,7 +493,8 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">const char * input_get_text </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -458,12 +511,12 @@ Variables</h2></td></tr>
 
 <p class="reference">Références <a class="el" href="input_8h_source.html#l00095">Input::cfg</a>, et <a class="el" href="input_8h_source.html#l00075">InputConfig::text</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00067">menu_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00066">menu_init()</a>.</p>
 
 </div>
 </div>
-<a id="ab8617b70b064e1356181441e920d4fd6" name="ab8617b70b064e1356181441e920d4fd6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab8617b70b064e1356181441e920d4fd6">&#9670;&#160;</a></span>input_handle_event()</h2>
+<a id="a77fd4ed0f0cd565b859a10157c284ec8" name="a77fd4ed0f0cd565b859a10157c284ec8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77fd4ed0f0cd565b859a10157c284ec8">&#9670;&#160;</a></span>input_handle_event()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -471,17 +524,25 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void input_handle_event </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structSDL__Context.html">SDL_Context</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SDL_Event *</td>          <td class="paramname"><span class="paramname"><em>e</em></span>&#160;)</td>
+          <td class="paramtype">SDL_Event *&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -498,7 +559,7 @@ Variables</h2></td></tr>
 
 <p class="reference">Références <a class="el" href="input_8h_source.html#l00071">InputConfig::allowed_pattern</a>, <a class="el" href="input_8h_source.html#l00095">Input::cfg</a>, <a class="el" href="input_8h_source.html#l00077">InputConfig::cursor_pos</a>, <a class="el" href="input_8h_source.html#l00078">InputConfig::focused</a>, <a class="el" href="input_8c_source.html#l00101">input_clear_selection_internal()</a>, <a class="el" href="input_8c_source.html#l00112">input_delete_selection()</a>, <a class="el" href="input_8c_source.html#l00108">input_has_selection()</a>, <a class="el" href="input_8c_source.html#l00017">input_submit_internal()</a>, <a class="el" href="input_8c_source.html#l00252">input_text_allowed()</a>, <a class="el" href="input_8h_source.html#l00076">InputConfig::len</a>, <a class="el" href="input_8h_source.html#l00062">InputConfig::maxlen</a>, <a class="el" href="input_8c_source.html#l00132">next_word_pos()</a>, <a class="el" href="input_8c_source.html#l00269">point_in_rect()</a>, <a class="el" href="input_8c_source.html#l00124">prev_word_pos()</a>, <a class="el" href="input_8h_source.html#l00074">InputConfig::rect</a>, <a class="el" href="input_8h_source.html#l00083">InputConfig::sel_anchor</a>, <a class="el" href="input_8h_source.html#l00082">InputConfig::sel_len</a>, <a class="el" href="input_8h_source.html#l00081">InputConfig::sel_start</a>, et <a class="el" href="input_8h_source.html#l00075">InputConfig::text</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00042">menu_handle_event()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00041">menu_handle_event()</a>.</p>
 
 </div>
 </div>
@@ -512,15 +573,16 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int input_has_selection </td>
+          <td class="memname">static int input_has_selection </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -542,7 +604,8 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int input_is_submitted </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -570,12 +633,19 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void input_render </td>
           <td>(</td>
-          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -591,7 +661,7 @@ Variables</h2></td></tr>
 
 <p class="reference">Références <a class="el" href="input_8h_source.html#l00064">InputConfig::bg_color</a>, <a class="el" href="input_8h_source.html#l00080">InputConfig::bg_texture</a>, <a class="el" href="input_8h_source.html#l00065">InputConfig::border_color</a>, <a class="el" href="input_8h_source.html#l00068">InputConfig::centered</a>, <a class="el" href="input_8h_source.html#l00095">Input::cfg</a>, <a class="el" href="input_8h_source.html#l00077">InputConfig::cursor_pos</a>, <a class="el" href="input_8h_source.html#l00078">InputConfig::focused</a>, <a class="el" href="input_8h_source.html#l00057">InputConfig::font_path</a>, <a class="el" href="input_8h_source.html#l00058">InputConfig::font_size</a>, <a class="el" href="input_8h_source.html#l00056">InputConfig::h</a>, <a class="el" href="input_8c_source.html#l00108">input_has_selection()</a>, <a class="el" href="input_8h_source.html#l00076">InputConfig::len</a>, <a class="el" href="input_8h_source.html#l00067">InputConfig::padding</a>, <a class="el" href="input_8h_source.html#l00060">InputConfig::placeholder_count</a>, <a class="el" href="input_8h_source.html#l00085">InputConfig::placeholder_index</a>, <a class="el" href="input_8h_source.html#l00086">InputConfig::placeholder_last_tick</a>, <a class="el" href="input_8h_source.html#l00059">InputConfig::placeholders</a>, <a class="el" href="input_8h_source.html#l00074">InputConfig::rect</a>, <a class="el" href="input_8h_source.html#l00082">InputConfig::sel_len</a>, <a class="el" href="input_8h_source.html#l00081">InputConfig::sel_start</a>, <a class="el" href="input_8h_source.html#l00061">InputConfig::submitted_label</a>, <a class="el" href="input_8h_source.html#l00084">InputConfig::submitted_text</a>, <a class="el" href="input_8h_source.html#l00075">InputConfig::text</a>, <a class="el" href="input_8h_source.html#l00066">InputConfig::text_color</a>, <a class="el" href="input_8h_source.html#l00055">InputConfig::w</a>, <a class="el" href="input_8h_source.html#l00053">InputConfig::x</a>, et <a class="el" href="input_8h_source.html#l00054">InputConfig::y</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00228">menu_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00229">menu_display()</a>.</p>
 
 </div>
 </div>
@@ -604,22 +674,31 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int input_set_bg </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>path</em></span>, </td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>padding</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>padding</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -632,7 +711,7 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd><span class="tt">EXIT_SUCCESS</span> si la texture a été définie avec succès, <span class="tt">EXIT_FAILURE</span> en cas d'erreur (par exemple, si le chargement de l'image échoue). </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd><code>EXIT_SUCCESS</code> si la texture a été définie avec succès, <code>EXIT_FAILURE</code> en cas d'erreur (par exemple, si le chargement de l'image échoue). </dd></dl>
 
 <p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00614">614</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
 
@@ -642,8 +721,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a70c2f65a9fbe9dbcfa8af61c68663a77" name="a70c2f65a9fbe9dbcfa8af61c68663a77"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a70c2f65a9fbe9dbcfa8af61c68663a77">&#9670;&#160;</a></span>input_set_on_submit()</h2>
+<a id="a399255cb92407b394beb2b352537f1f4" name="a399255cb92407b394beb2b352537f1f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a399255cb92407b394beb2b352537f1f4">&#9670;&#160;</a></span>input_set_on_submit()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -651,19 +730,26 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void input_set_on_submit </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void(*</td>          <td class="paramname"><span class="paramname"><em>cb&#160;</em></span>)(<a class="el" href="structSDL__Context.html">SDL_Context</a> *, const char *)&#160;)</td>
+          <td class="paramtype">void(*)(<a class="el" href="structAppContext.html">AppContext</a> *, const char *)&#160;</td>
+          <td class="paramname"><em>cb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Définit une fonction de rappel à appeler lorsque l'input est soumis (par exemple, en appuyant sur Entrée). </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">in</td><td>Pointeur vers l'input. </td></tr>
-    <tr><td class="paramname">cb</td><td>Pointeur vers la fonction de rappel à appeler lors de la soumission. La fonction doit prendre un <span class="tt">SDL_Context*</span> (contexte SDL) et un <span class="tt">const char*</span> (le texte soumis) et retourner void. Si NULL, aucune fonction ne sera appelée. </td></tr>
+    <tr><td class="paramname">cb</td><td>Pointeur vers la fonction de rappel à appeler lors de la soumission. La fonction doit prendre un <code>AppContext*</code> (contexte SDL) et un <code>const char*</code> (le texte soumis) et retourner void. Si NULL, aucune fonction ne sera appelée. </td></tr>
   </table>
   </dd>
 </dl>
@@ -683,16 +769,23 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void input_set_padding </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>padding</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>padding</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Définit le padding intérieur de l'input, c'est-à-dire l'espace entre le texte et les bords de l'input. Si une texture de fond est définie, il est recommandé d'utiliser <span class="tt">input_set_bg</span> avec un padding approprié pour assurer une bonne apparence. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Définit le padding intérieur de l'input, c'est-à-dire l'espace entre le texte et les bords de l'input. Si une texture de fond est définie, il est recommandé d'utiliser <code>input_set_bg</code> avec un padding approprié pour assurer une bonne apparence. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">in</td><td>Pointeur vers l'input. </td></tr>
     <tr><td class="paramname">padding</td><td>Nouvelle valeur de padding en pixels. Si &lt; 0, le padding sera défini à 0. </td></tr>
@@ -715,12 +808,19 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void input_set_text </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>text</em></span>&#160;)</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>text</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -736,12 +836,12 @@ Variables</h2></td></tr>
 
 <p class="reference">Références <a class="el" href="input_8h_source.html#l00095">Input::cfg</a>, <a class="el" href="input_8h_source.html#l00077">InputConfig::cursor_pos</a>, <a class="el" href="input_8c_source.html#l00101">input_clear_selection_internal()</a>, <a class="el" href="input_8h_source.html#l00076">InputConfig::len</a>, <a class="el" href="input_8h_source.html#l00062">InputConfig::maxlen</a>, <a class="el" href="input_8h_source.html#l00083">InputConfig::sel_anchor</a>, et <a class="el" href="input_8h_source.html#l00075">InputConfig::text</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="input_8c_source.html#l00653">edit_in_cfg()</a>, et <a class="el" href="menu_8c_source.html#l00067">menu_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="input_8c_source.html#l00653">edit_in_cfg()</a>, et <a class="el" href="menu_8c_source.html#l00066">menu_init()</a>.</p>
 
 </div>
 </div>
-<a id="af3e1af4d4282b8b01d3d44b7c20bdcc3" name="af3e1af4d4282b8b01d3d44b7c20bdcc3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af3e1af4d4282b8b01d3d44b7c20bdcc3">&#9670;&#160;</a></span>input_submit()</h2>
+<a id="ade42f1ea801614ec46c132f79ca8ce53" name="ade42f1ea801614ec46c132f79ca8ce53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade42f1ea801614ec46c132f79ca8ce53">&#9670;&#160;</a></span>input_submit()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -749,16 +849,23 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void input_submit </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structSDL__Context.html">SDL_Context</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Soumet le texte courant de l'input (même comportement qu'appuyer sur Entrée). Marque l'input comme soumis, appelle le callback <span class="tt">on_submit</span> si défini, puis vide le texte courant de l'input. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Soumet le texte courant de l'input (même comportement qu'appuyer sur Entrée). Marque l'input comme soumis, appelle le callback <code>on_submit</code> si défini, puis vide le texte courant de l'input. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">context</td><td>Contexte SDL passé au callback de soumission. </td></tr>
     <tr><td class="paramname">in</td><td>Pointeur vers l'input. </td></tr>
@@ -770,12 +877,12 @@ Variables</h2></td></tr>
 
 <p class="reference">Références <a class="el" href="input_8c_source.html#l00017">input_submit_internal()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00067">menu_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00066">menu_init()</a>.</p>
 
 </div>
 </div>
-<a id="aaf28af36372abb10237a4b596b5f84cc" name="aaf28af36372abb10237a4b596b5f84cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf28af36372abb10237a4b596b5f84cc">&#9670;&#160;</a></span>input_submit_internal()</h2>
+<a id="a4f97e9ebdeb832dbf28c9e747ba912c8" name="a4f97e9ebdeb832dbf28c9e747ba912c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f97e9ebdeb832dbf28c9e747ba912c8">&#9670;&#160;</a></span>input_submit_internal()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -784,19 +891,26 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void input_submit_internal </td>
+          <td class="memname">static void input_submit_internal </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structSDL__Context.html">SDL_Context</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -819,23 +933,30 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int input_text_allowed </td>
+          <td class="memname">static int input_text_allowed </td>
           <td>(</td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>allowed_pattern</em></span>, </td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>allowed_pattern</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>txt</em></span>&#160;)</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>txt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Vérifie si le texte <span class="tt">txt</span> correspond à la regex <span class="tt">allowed_pattern</span>. Retourne 1 si le texte est accepté, 0 sinon. </p>
+<p>Vérifie si le texte <code>txt</code> correspond à la regex <code>allowed_pattern</code>. Retourne 1 si le texte est accepté, 0 sinon. </p>
 
 <p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00252">252</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
 
@@ -853,19 +974,26 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int next_word_pos </td>
+          <td class="memname">static int next_word_pos </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -888,24 +1016,32 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int point_in_rect </td>
+          <td class="memname">static int point_in_rect </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SDL_Rect *</td>          <td class="paramname"><span class="paramname"><em>r</em></span>&#160;)</td>
+          <td class="paramtype">SDL_Rect *&#160;</td>
+          <td class="paramname"><em>r</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -926,19 +1062,26 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int prev_word_pos </td>
+          <td class="memname">static int prev_word_pos </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -951,7 +1094,7 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Documentation des variables</h2>
+<h2 class="groupheader">Documentation des variables</h2>
 <a id="a1dcf081f133c58340a448d9d92f0eb31" name="a1dcf081f133c58340a448d9d92f0eb31"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1dcf081f133c58340a448d9d92f0eb31">&#9670;&#160;</a></span>input_count</h2>
 
@@ -967,7 +1110,7 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -988,12 +1131,12 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structInput.html">Input</a>* inputs[<a class="el" href="#a67ea8592b7ced96ca53dec58434397e8">MAX_INPUTS</a>]</td>
+          <td class="memname"><a class="el" href="structInput.html">Input</a>* inputs[<a class="el" href="input_8c.html#a67ea8592b7ced96ca53dec58434397e8">MAX_INPUTS</a>]</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1006,19 +1149,11 @@ Variables</h2></td></tr>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div id="page-nav" class="page-nav-panel">
-<div id="page-nav-resize-handle"></div>
-<div id="page-nav-tree">
-<div id="page-nav-contents">
-</div><!-- page-nav-contents -->
-</div><!-- page-nav-tree -->
-</div><!-- page-nav -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a href="input_8c.html">input.c</a></li>
-    <li class="footer">Généré le Jeudi 19 Mars 2026 15:31:46 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a class="el" href="input_8c.html">input.c</a></li>
+    <li class="footer">Généré le Vendredi 20 Mars 2026 21:22:33 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

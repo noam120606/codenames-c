@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier client/lib/text.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,20 +34,21 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.14.0 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,9 +63,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('text_8h.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('text_8h.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -89,6 +90,8 @@ $(function(){initNavTree('text_8h.html','',''); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
   <div class="headertitle"><div class="title">Référence du fichier text.h</div></div>
 </div><!--header-->
 <div class="contents">
@@ -96,11 +99,12 @@ $(function(){initNavTree('text_8h.html','',''); });
 </div>
 <p><a href="text_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a962718650d8c063f387812a91d8606ff" id="r_a962718650d8c063f387812a91d8606ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a962718650d8c063f387812a91d8606ff">text_display</a> (SDL_Renderer *renderer, const char *text, const char *font_path, int size, SDL_Color color, int x, int y, double angle, Uint8 opacity)</td></tr>
+<tr class="memitem:a962718650d8c063f387812a91d8606ff" id="r_a962718650d8c063f387812a91d8606ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8h.html#a962718650d8c063f387812a91d8606ff">text_display</a> (SDL_Renderer *renderer, const char *text, const char *font_path, int size, SDL_Color color, int x, int y, double angle, Uint8 opacity)</td></tr>
+<tr class="separator:a962718650d8c063f387812a91d8606ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a id="a962718650d8c063f387812a91d8606ff" name="a962718650d8c063f387812a91d8606ff"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a962718650d8c063f387812a91d8606ff">&#9670;&#160;</a></span>text_display()</h2>
 
@@ -110,47 +114,61 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void text_display </td>
           <td>(</td>
-          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>text</em></span>, </td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>font_path</em></span>, </td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>font_path</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SDL_Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span>, </td>
+          <td class="paramtype">SDL_Color&#160;</td>
+          <td class="paramname"><em>color</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>angle</em></span>, </td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>angle</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Uint8</td>          <td class="paramname"><span class="paramname"><em>opacity</em></span>&#160;)</td>
+          <td class="paramtype">Uint8&#160;</td>
+          <td class="paramname"><em>opacity</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -161,8 +179,8 @@ Fonctions</h2></td></tr>
     <tr><td class="paramname">font_path</td><td>Chemin vers la police à utiliser </td></tr>
     <tr><td class="paramname">size</td><td>Taille de la police </td></tr>
     <tr><td class="paramname">color</td><td>Couleur du texte (SDL_Color) </td></tr>
-    <tr><td class="paramname">x</td><td>Position x du centre du texte (<span class="tt">0</span> centre x de la fenêtre) </td></tr>
-    <tr><td class="paramname">y</td><td>Position y du centre du texte (<span class="tt">0</span> centre y de la fenêtre) </td></tr>
+    <tr><td class="paramname">x</td><td>Position x du centre du texte (<code>0</code> centre x de la fenêtre) </td></tr>
+    <tr><td class="paramname">y</td><td>Position y du centre du texte (<code>0</code> centre y de la fenêtre) </td></tr>
     <tr><td class="paramname">angle</td><td>Angle de rotation du texte en degrés (0 par défaut, sens horaire) </td></tr>
     <tr><td class="paramname">opacity</td><td>Opacité du texte (0-255, 255 par défaut) Note : Le texte est affiché centré en (x, y). </td></tr>
   </table>
@@ -173,25 +191,17 @@ Fonctions</h2></td></tr>
 
 <p class="reference">Références <a class="el" href="sdl_8h_source.html#l00015">WIN_HEIGHT</a>, et <a class="el" href="sdl_8h_source.html#l00014">WIN_WIDTH</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00342">fps_ping_display()</a>, <a class="el" href="infos_8c_source.html#l00227">infos_display()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00168">lobby_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00373">fps_ping_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00182">game_render_cards()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00115">game_render_team_panels()</a>, <a class="el" href="infos_8c_source.html#l00258">infos_display()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00234">lobby_display()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00407">player_icon_pos()</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div id="page-nav" class="page-nav-panel">
-<div id="page-nav-resize-handle"></div>
-<div id="page-nav-tree">
-<div id="page-nav-contents">
-</div><!-- page-nav-contents -->
-</div><!-- page-nav-tree -->
-</div><!-- page-nav -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a href="text_8h.html">text.h</a></li>
-    <li class="footer">Généré le Jeudi 19 Mars 2026 15:31:46 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a class="el" href="text_8h.html">text.h</a></li>
+    <li class="footer">Généré le Vendredi 20 Mars 2026 21:22:33 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

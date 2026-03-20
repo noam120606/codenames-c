@@ -2,10 +2,10 @@ var infos_8h =
 [
     [ "CROSSFADER_ID_MUSIC_VOLUME", "infos_8h.html#a33a612bb99cde5e7d08cc25002db4cdd", null ],
     [ "CROSSFADER_ID_SFX_VOLUME", "infos_8h.html#a5d1ef3b5a31b4091fc933e3433224560", null ],
-    [ "calculate_fps", "infos_8h.html#ac1d859a1497d5ad549c0a3570cb6d2e9", null ],
-    [ "fps_ping_display", "infos_8h.html#a4b8e24890febc0790cce70d371fccbbb", null ],
-    [ "infos_display", "infos_8h.html#a33729346224a7193a25851bcf96995b0", null ],
+    [ "calculate_fps", "infos_8h.html#a983096ca60b10079efe1a2463c30bccf", null ],
+    [ "fps_ping_display", "infos_8h.html#aad33eabe628f0e215c0c6c6334fb02a4", null ],
+    [ "infos_display", "infos_8h.html#a7e90b959138d44b57a8a441e5e93f68f", null ],
     [ "infos_free", "infos_8h.html#a4240fe678f6fbf364ae1bd964d0907a1", null ],
-    [ "infos_handle_event", "infos_8h.html#a7caa5416f7e5fc7b5a471a3e792e180c", null ],
-    [ "init_infos", "infos_8h.html#ae056339fd001e1c98b20022e0ebc87fa", null ]
+    [ "infos_handle_event", "infos_8h.html#af9fb2e148a7245057eb37733619010e7", null ],
+    [ "init_infos", "infos_8h.html#a39c238f1efb8789c8dd182158c88e165", null ]
 ];

@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames:  Fichier source de client/src/utils.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,22 +34,28 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.14.0 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -63,9 +68,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('client_2src_2utils_8c_source.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('client_2src_2utils_8c_source.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -92,7 +98,7 @@ $(function(){initNavTree('client_2src_2utils_8c_source.html','',''); });
   <div class="headertitle"><div class="title">utils.c</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="client_2src_2utils_8c.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="client_2lib_2all_8h.html">../lib/all.h</a>&quot;</span></div>
+<a href="client_2src_2utils_8c.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;../lib/all.h&quot;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="foldopen" id="foldopen00003" data-start="{" data-end="}">
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="client_2src_2utils_8c.html#acf06ac69f86a58e43477083d3930a4ca">    3</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="client_2src_2utils_8c.html#acf06ac69f86a58e43477083d3930a4ca">number_length</a>(<span class="keywordtype">int</span> n) {</div>
@@ -174,7 +180,7 @@ $(function(){initNavTree('client_2src_2utils_8c_source.html','',''); });
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordflow">return</span> result;</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}</div>
 </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
 <div class="foldopen" id="foldopen00082" data-start="{" data-end="}">
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="client_2src_2utils_8c.html#ac85a2fa057900ac7d0c0dcac2a47d843">   82</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="client_2src_2utils_8c.html#ac85a2fa057900ac7d0c0dcac2a47d843">levenshtein</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* s1, <span class="keyword">const</span> <span class="keywordtype">char</span>* s2) {</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordflow">if</span> (!s1 || !s2) <span class="keywordflow">return</span> -1;</div>
@@ -231,7 +237,7 @@ $(function(){initNavTree('client_2src_2utils_8c_source.html','',''); });
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="keywordflow">return</span> result;</div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>}</div>
 </div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
 <div class="foldopen" id="foldopen00144" data-start="{" data-end="}">
 <div class="line"><a id="l00144" name="l00144"></a><span class="lineno"><a class="line" href="client_2src_2utils_8c.html#a2d814e171e88c474251ab3e778c99d13">  144</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="client_2src_2utils_8c.html#a2d814e171e88c474251ab3e778c99d13">is_word_too_close</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* input, <span class="keyword">const</span> <span class="keywordtype">char</span>* card_word, <span class="keywordtype">int</span> threshold) {</div>
 <div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keywordflow">if</span> (!input || !card_word) <span class="keywordflow">return</span> 0;</div>
@@ -242,7 +248,7 @@ $(function(){initNavTree('client_2src_2utils_8c_source.html','',''); });
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keywordflow">return</span> distance &lt;= threshold;</div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>}</div>
 </div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
 <div class="foldopen" id="foldopen00159" data-start="{" data-end="}">
 <div class="line"><a id="l00159" name="l00159"></a><span class="lineno"><a class="line" href="client_2src_2utils_8c.html#abe64ca50f79e62a1be14590abf7ecd6a">  159</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="client_2src_2utils_8c.html#abe64ca50f79e62a1be14590abf7ecd6a">word_contains</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* input, <span class="keyword">const</span> <span class="keywordtype">char</span>* card_word) {</div>
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="keywordflow">if</span> (!input || !card_word) <span class="keywordflow">return</span> 0;</div>
@@ -270,23 +276,21 @@ $(function(){initNavTree('client_2src_2utils_8c_source.html','',''); });
 <div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    <span class="keywordflow">return</span> result;</div>
 <div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>}</div>
 </div>
-<div class="ttc" id="aclient_2lib_2all_8h_html"><div class="ttname"><a href="client_2lib_2all_8h.html">all.h</a></div></div>
 <div class="ttc" id="aclient_2src_2tcp_8c_html_af00b615ca097c43dbb02ae3a00ea3a62"><div class="ttname"><a href="client_2src_2tcp_8c.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a></div><div class="ttdeci">char buffer[BUFFER_SIZE]</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2tcp_8c_source.html#l00005">tcp.c:5</a></div></div>
-<div class="ttc" id="aclient_2src_2utils_8c_html_a2d814e171e88c474251ab3e778c99d13"><div class="ttname"><a href="client_2src_2utils_8c.html#a2d814e171e88c474251ab3e778c99d13">is_word_too_close</a></div><div class="ttdeci">int is_word_too_close(const char *input, const char *card_word, int threshold)</div><div class="ttdef"><b>Definition</b> <a href="#l00144">utils.c:144</a></div></div>
-<div class="ttc" id="aclient_2src_2utils_8c_html_a4421b3b56ef0c8d301e35e23ba17f9d5"><div class="ttname"><a href="client_2src_2utils_8c.html#a4421b3b56ef0c8d301e35e23ba17f9d5">itoa</a></div><div class="ttdeci">char * itoa(int value)</div><div class="ttdef"><b>Definition</b> <a href="#l00027">utils.c:27</a></div></div>
-<div class="ttc" id="aclient_2src_2utils_8c_html_abe64ca50f79e62a1be14590abf7ecd6a"><div class="ttname"><a href="client_2src_2utils_8c.html#abe64ca50f79e62a1be14590abf7ecd6a">word_contains</a></div><div class="ttdeci">int word_contains(const char *input, const char *card_word)</div><div class="ttdef"><b>Definition</b> <a href="#l00159">utils.c:159</a></div></div>
-<div class="ttc" id="aclient_2src_2utils_8c_html_ac85a2fa057900ac7d0c0dcac2a47d843"><div class="ttname"><a href="client_2src_2utils_8c.html#ac85a2fa057900ac7d0c0dcac2a47d843">levenshtein</a></div><div class="ttdeci">int levenshtein(const char *s1, const char *s2)</div><div class="ttdef"><b>Definition</b> <a href="#l00082">utils.c:82</a></div></div>
-<div class="ttc" id="aclient_2src_2utils_8c_html_acf06ac69f86a58e43477083d3930a4ca"><div class="ttname"><a href="client_2src_2utils_8c.html#acf06ac69f86a58e43477083d3930a4ca">number_length</a></div><div class="ttdeci">int number_length(int n)</div><div class="ttdef"><b>Definition</b> <a href="#l00003">utils.c:3</a></div></div>
-<div class="ttc" id="aclient_2src_2utils_8c_html_ade6960f663c739637ee1beaf757c5f24"><div class="ttname"><a href="client_2src_2utils_8c.html#ade6960f663c739637ee1beaf757c5f24">format_to</a></div><div class="ttdeci">int format_to(char *buf, size_t size, const char *fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="#l00017">utils.c:17</a></div></div>
-<div class="ttc" id="aclient_2src_2utils_8c_html_aead8640545d5f567606f56f8248d1b35"><div class="ttname"><a href="client_2src_2utils_8c.html#aead8640545d5f567606f56f8248d1b35">getRandomUsername</a></div><div class="ttdeci">char * getRandomUsername(void)</div><div class="ttdef"><b>Definition</b> <a href="#l00033">utils.c:33</a></div></div>
+<div class="ttc" id="aclient_2src_2utils_8c_html_a2d814e171e88c474251ab3e778c99d13"><div class="ttname"><a href="client_2src_2utils_8c.html#a2d814e171e88c474251ab3e778c99d13">is_word_too_close</a></div><div class="ttdeci">int is_word_too_close(const char *input, const char *card_word, int threshold)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2utils_8c_source.html#l00144">utils.c:144</a></div></div>
+<div class="ttc" id="aclient_2src_2utils_8c_html_a4421b3b56ef0c8d301e35e23ba17f9d5"><div class="ttname"><a href="client_2src_2utils_8c.html#a4421b3b56ef0c8d301e35e23ba17f9d5">itoa</a></div><div class="ttdeci">char * itoa(int value)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2utils_8c_source.html#l00027">utils.c:27</a></div></div>
+<div class="ttc" id="aclient_2src_2utils_8c_html_abe64ca50f79e62a1be14590abf7ecd6a"><div class="ttname"><a href="client_2src_2utils_8c.html#abe64ca50f79e62a1be14590abf7ecd6a">word_contains</a></div><div class="ttdeci">int word_contains(const char *input, const char *card_word)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2utils_8c_source.html#l00159">utils.c:159</a></div></div>
+<div class="ttc" id="aclient_2src_2utils_8c_html_ac85a2fa057900ac7d0c0dcac2a47d843"><div class="ttname"><a href="client_2src_2utils_8c.html#ac85a2fa057900ac7d0c0dcac2a47d843">levenshtein</a></div><div class="ttdeci">int levenshtein(const char *s1, const char *s2)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2utils_8c_source.html#l00082">utils.c:82</a></div></div>
+<div class="ttc" id="aclient_2src_2utils_8c_html_acf06ac69f86a58e43477083d3930a4ca"><div class="ttname"><a href="client_2src_2utils_8c.html#acf06ac69f86a58e43477083d3930a4ca">number_length</a></div><div class="ttdeci">int number_length(int n)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2utils_8c_source.html#l00003">utils.c:3</a></div></div>
+<div class="ttc" id="aclient_2src_2utils_8c_html_ade6960f663c739637ee1beaf757c5f24"><div class="ttname"><a href="client_2src_2utils_8c.html#ade6960f663c739637ee1beaf757c5f24">format_to</a></div><div class="ttdeci">int format_to(char *buf, size_t size, const char *fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2utils_8c_source.html#l00017">utils.c:17</a></div></div>
+<div class="ttc" id="aclient_2src_2utils_8c_html_aead8640545d5f567606f56f8248d1b35"><div class="ttname"><a href="client_2src_2utils_8c.html#aead8640545d5f567606f56f8248d1b35">getRandomUsername</a></div><div class="ttdeci">char * getRandomUsername(void)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2utils_8c_source.html#l00033">utils.c:33</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a href="client_2src_2utils_8c.html">utils.c</a></li>
-    <li class="footer">Généré le Jeudi 19 Mars 2026 15:31:45 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a class="el" href="client_2src_2utils_8c.html">utils.c</a></li>
+    <li class="footer">Généré le Vendredi 20 Mars 2026 21:22:33 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

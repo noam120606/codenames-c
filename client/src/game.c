@@ -7,14 +7,35 @@ SDL_Texture* card_f_red;
 SDL_Texture* card_h_blue;
 SDL_Texture* card_f_blue;
 SDL_Texture* card_black;
+Button* btn_quit_game = NULL;
 
 /* Couleurs pour les panneaux d'équipe */
 static const SDL_Color TEAM_BLUE_COLOR = {50, 80, 150, 200};
 static const SDL_Color TEAM_RED_COLOR = {150, 50, 50, 200};
 static const SDL_Color PANEL_BG_COLOR = {30, 30, 30, 180};
 
+static ButtonReturn game_button_click(AppContext* context, Button* button) {
+    if (!context || !button) return BTN_RET_NONE;
+
+    if (button == btn_quit_game) {
+        context->app_state = APP_STATE_MENU;
+
+        struct_lobby_init(context->lobby, -1, "");
+        char msg[16];
+        format_to(msg, sizeof(msg), "%d", MSG_LEAVELOBBY);
+        send_tcp(context->sock, msg);
+
+        printf("Left game and returned to menu\n");
+    }
+
+    return BTN_RET_NONE;
+}
+
 void game_handle_event(AppContext* context, SDL_Event* e) {
-    // gestion evenements sdl
+    if (!context || !e) return;
+    if (btn_quit_game) {
+        button_handle_event(context, btn_quit_game, e);
+    }
 }
 
 int game_init(AppContext * context) {
@@ -54,6 +75,24 @@ int game_init(AppContext * context) {
     card_black = load_image(context->renderer, "assets/img/cards/Black.png");
     if (!card_black) {
         printf("Failed to load card image\n");
+        loading_fails++;
+    }
+
+    ButtonConfig* cfg_btn_quit_game = button_config_init();
+    if (cfg_btn_quit_game) {
+        cfg_btn_quit_game->x         = -730;
+        cfg_btn_quit_game->y         = -450;
+        cfg_btn_quit_game->h         = 64;
+        cfg_btn_quit_game->font_path = FONT_LARABIE;
+        cfg_btn_quit_game->color     = COL_WHITE;
+        cfg_btn_quit_game->text      = "Quitter la partie";
+        cfg_btn_quit_game->callback  = game_button_click;
+        btn_quit_game = button_create(context->renderer, 0, cfg_btn_quit_game);
+        if (!btn_quit_game) {
+            loading_fails++;
+        }
+        free(cfg_btn_quit_game);
+    } else {
         loading_fails++;
     }
 
@@ -146,11 +185,7 @@ void game_render_cards(AppContext * context) {
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
             Word word = context->lobby->game->words[i*5 + j];
-            /*
-            if (!word) {
-                x += 200;
-                continue;
-            }*/
+
             if(context->player_role == ROLE_SPY && !word.revealed) {
                 switch (word.team) {
                     case TEAM_NONE:
@@ -186,7 +221,7 @@ void game_render_cards(AppContext * context) {
                     display_image(context->renderer, card_h_classic, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
                 }
             }
-            else if (context->cards[i*5 + j]->revealed) {
+            else if (word.revealed) {
                 // Attente des images des cartes "révélées"
             }
             text_display(context->renderer, word.word, FONT_LARABIE, 18, COL_BLACK, x, y-22, 0, 255);
@@ -205,6 +240,9 @@ void game_display(AppContext * context) {
 
     game_render_team_panels(context);
     game_render_cards(context);
+    if (btn_quit_game) {
+        button_render(context->renderer, btn_quit_game);
+    }
     
 }
 
@@ -217,5 +255,6 @@ int game_free() {
     if (card_h_blue) { free_image(card_h_blue); card_h_blue = NULL; }
     if (card_f_blue) { free_image(card_f_blue); card_f_blue = NULL; }
     if (card_black) { free_image(card_black); card_black = NULL; }
+    if (btn_quit_game) { button_destroy(btn_quit_game); btn_quit_game = NULL; }
     return EXIT_SUCCESS;
 }

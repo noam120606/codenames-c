@@ -56,12 +56,12 @@ var input_8h =
     [ "input_create", "input_8h.html#afdc810a8b85502f37330699e8dddc630", null ],
     [ "input_destroy", "input_8h.html#a74487cf6d45be3908faaa34a7864de2a", null ],
     [ "input_get_text", "input_8h.html#ab8198703573f27e19f82e1dcbe43c2b9", null ],
-    [ "input_handle_event", "input_8h.html#ab8617b70b064e1356181441e920d4fd6", null ],
+    [ "input_handle_event", "input_8h.html#a77fd4ed0f0cd565b859a10157c284ec8", null ],
     [ "input_is_submitted", "input_8h.html#adb78f49e1c212bae644fcd1a087bd92d", null ],
     [ "input_render", "input_8h.html#aa520d2f9b20c84746b3c8a6b199e47b6", null ],
     [ "input_set_bg", "input_8h.html#ab530114a79fbb2e0231569b118355baa", null ],
-    [ "input_set_on_submit", "input_8h.html#a70c2f65a9fbe9dbcfa8af61c68663a77", null ],
+    [ "input_set_on_submit", "input_8h.html#a399255cb92407b394beb2b352537f1f4", null ],
     [ "input_set_padding", "input_8h.html#a25f9c60994612692f407494aa5de5673", null ],
     [ "input_set_text", "input_8h.html#a928e3979ecdcf6f146de5dc66ffdd17f", null ],
-    [ "input_submit", "input_8h.html#af3e1af4d4282b8b01d3d44b7c20bdcc3", null ]
+    [ "input_submit", "input_8h.html#ade42f1ea801614ec46c132f79ca8ce53", null ]
 ];
