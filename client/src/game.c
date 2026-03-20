@@ -145,28 +145,30 @@ void game_render_cards(AppContext * context) {
     int y=-250;
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
-            if (!context->cards[i*5 + j]) {
+            Word word = context->lobby->game->words[i*5 + j];
+            /*
+            if (!word) {
                 x += 200;
                 continue;
-            }
-            if(context->player_role == ROLE_SPY && !context->cards[i*5 + j]->revealed) {
-                switch (context->cards[i*5 + j]->team) {
+            }*/
+            if(context->player_role == ROLE_SPY && !word.revealed) {
+                switch (word.team) {
                     case TEAM_NONE:
-                        if (context->cards[i*5 + j]->gender) {
+                        if (word.gender) {
                             display_image(context->renderer, card_f_classic, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
                         }else{
                             display_image(context->renderer, card_h_classic, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
                         }
                         break;
                     case TEAM_RED:
-                        if (context->cards[i*5 + j]->gender) {
+                        if (word.gender) {
                             display_image(context->renderer, card_f_red, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
                         }else{
                             display_image(context->renderer, card_h_red, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
                         }
                         break;
                     case TEAM_BLUE:
-                        if (context->cards[i*5 + j]->gender) {
+                        if (word.gender) {
                             display_image(context->renderer, card_f_blue, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
                         }else{
                             display_image(context->renderer, card_h_blue, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
@@ -177,8 +179,8 @@ void game_render_cards(AppContext * context) {
                     default:
                         break;
                 }
-            }else if (context->player_role == ROLE_AGENT && !context->cards[i*5 + j]->revealed) {
-                if (context->cards[i*5 + j]->gender) {
+            }else if (context->player_role == ROLE_AGENT && !word.revealed) {
+                if (word.gender) {
                     display_image(context->renderer, card_f_classic, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
                 }else{
                     display_image(context->renderer, card_h_classic, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
@@ -187,7 +189,7 @@ void game_render_cards(AppContext * context) {
             else if (context->cards[i*5 + j]->revealed) {
                 // Attente des images des cartes "révélées"
             }
-            text_display(context->renderer, context->cards[i*5 + j]->word, FONT_LARABIE, 18, COL_BLACK, x, y-22, 0, 255);
+            text_display(context->renderer, word.word, FONT_LARABIE, 18, COL_BLACK, x, y-22, 0, 255);
             x += 200;
         }
         x = -400;
@@ -200,6 +202,7 @@ void game_display(AppContext * context) {
     if (!audio_is_playing(MUSIC_GAME)) {
         audio_play(MUSIC_GAME, -1);
     }
+
     game_render_team_panels(context);
     game_render_cards(context);
     

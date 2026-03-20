@@ -34,6 +34,7 @@ typedef enum Team {
 typedef struct {
     char word[32];
     Team team;
+    int gender;
     int revealed;
 } Word;
 
@@ -67,13 +68,11 @@ typedef enum GameState {
 
 /**
  * Représente une partie de Codenames.
- * @param id identifiant unique de la partie.
  * @param words tableau dynamique de Word (taille nb_words).
  * @param nb_words nombre de mots dans la grille.
  * @param state état courant de la partie (GAMESTATE_*).
  */
 typedef struct {
-    int id;
     Word* words;
     int nb_words;
     GameState state;
