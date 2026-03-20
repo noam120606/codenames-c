@@ -257,25 +257,27 @@ void lobby_display(AppContext* context) {
 
     /* Afficher les icônes des joueurs */
     int nb_none = 0;
-    int nb_red = 0;
-    int nb_blue = 0;
+    int nb_red_spy = 0;
+    int nb_red_agent = 0;
+    int nb_blue_spy = 0;
+    int nb_blue_agent = 0;
 
     // Affichage des joueurs distants
     for (int i = 0; i < MAX_USERS; i++) {
         User* user = context->lobby->users[i];
         if (!user) continue;
         switch(user->team) {
-            case TEAM_RED: nb_red++; break;
-            case TEAM_BLUE: nb_blue++; break;
+            case TEAM_RED: user->role == ROLE_SPY ? nb_red_spy++ : nb_red_agent++; break;
+            case TEAM_BLUE: user->role == ROLE_SPY ? nb_blue_spy++ : nb_blue_agent++; break;
             case TEAM_NONE: nb_none++; break;
             default: printf("Warning: User %s has invalid team %d\n", user->name, user->team); break;
         }
-        player_icon_display(context, user, nb_none, nb_red, nb_blue);
+        player_icon_display(context, user, nb_none, nb_red_spy, nb_red_agent, nb_blue_spy, nb_blue_agent);
     }
 
     // Affichage du joueur local
     User user = {-1, context->player_name, context->player_role, context->player_team};
-    player_icon_display(context, &user, nb_none, nb_red, nb_blue);
+    player_icon_display(context, &user, nb_none, nb_red_spy, nb_red_agent, nb_blue_spy, nb_blue_agent);
 }
 
 ButtonReturn lobby_handle_event(AppContext* context, SDL_Event* e) {
@@ -292,54 +294,71 @@ ButtonReturn lobby_handle_event(AppContext* context, SDL_Event* e) {
     return ret;
 }
 
-void player_icon_display(AppContext* context, User* user, int nb_none, int nb_red, int nb_blue) {
-    if (!context || !user){
-        printf("Warning: Invalid context or user for player icon display\n");
-        return;
-    }
-
-    if (!user->name) {
-        printf("Warning: User with NULL name, skipping icon display\n");
-        return;
-    }
+void player_icon_display(AppContext* context, User* user, int nb_none, int nb_red_spy, int nb_red_agent, int nb_blue_spy, int nb_blue_agent) {
+    if (!context || !user) return;
+    if (!user->name) return;
 
     SDL_Texture* icon = NULL;
     int base_x = 0;
     int base_y = 0;
-    int index = 0; // zero-based index in the column
+    int index = 0;
+
+    // Positions des boutons (mêmes que dans lobby_init)
+    const int btn_red_x = -360;
+    const int btn_blue_x = 360;
+    const int btn_agent_y = 120;
+    const int btn_spy_y = -120;
+
+    // Décalage horizontal entre chaque joueur du même rôle
+    const int spacing_x = 80;
+    // Décalage vertical au-dessus du bouton
+    const int offset_y = 80;
 
     if (user->team == TEAM_RED) {
         icon = player_icon_red;
-        base_x = -460 + nb_red * 100; // left column for red team
-        index = nb_red - 1;
+        base_x = btn_red_x;
+        if (user->role == ROLE_SPY) {
+            base_y = btn_spy_y + offset_y;
+            index = nb_red_spy;
+        } else if (user->role == ROLE_AGENT) {
+            base_y = btn_agent_y + offset_y;
+            index = nb_red_agent;
+        } else {
+            // Rôle non assigné mais équipe rouge
+            base_y = 0 + offset_y;
+            index = nb_none;
+        }
     } else if (user->team == TEAM_BLUE) {
         icon = player_icon_blue;
-        base_x = 260 + nb_blue * 100;  // right column for blue team
-        index = nb_blue - 1;
+        base_x = btn_blue_x;
+        if (user->role == ROLE_SPY) {
+            base_y = btn_spy_y + offset_y;
+            index = nb_blue_spy;
+        } else if (user->role == ROLE_AGENT) {
+            base_y = btn_agent_y + offset_y;
+            index = nb_blue_agent;
+        } else {
+            // Rôle non assigné mais équipe bleue
+            base_y = 0 + offset_y;
+            index = nb_none;
+        }
     } else {
+        // Équipe non assignée (TEAM_NONE) - afficher au centre
         icon = player_icon_none;
-        base_x = 0;    // center column for unassigned
-        index = nb_none - 1;
+        base_x = 0;
+        base_y = 250;
+        index = nb_none;
     }
 
-    if (user->role == ROLE_AGENT) {
-        base_y = 128;
-    } else if (user->role == ROLE_SPY) {
-        base_y = -64;
-    }
-
-    /* Layout tuning */
-    const int start_y = 160;   /* first row vertical offset (positive is down) */
-    const int spacing = 56;    /* space between stacked players */
-    int y = start_y + index * spacing;
+    // Calcul de la position X finale avec décalage horizontal
+    int x = base_x + (index * spacing_x);
+    int y = base_y;
 
     if (icon && context->renderer) {
-        /* Draw icon then draw the player's name to the right of the icon */
-        const int icon_x = base_x; /* shift icon slightly left so name sits comfortably */
-        const int icon_y = base_y + y - 16;      /* center icon vertically relative to text */
-        display_image(context->renderer, icon, icon_x, icon_y, 0.3, 0, SDL_FLIP_NONE, 1, 255);
-        /* Name displayed beside icon */
-        text_display(context->renderer, user->name, FONT_LARABIE, 24, COL_WHITE, icon_x, base_y + y - 40, 0, 255);
+        // Afficher l'icône
+        display_image(context->renderer, icon, x, y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
+        // Afficher le pseudo au-dessus de l'icône
+        text_display(context->renderer, user->name, FONT_LARABIE, 18, COL_WHITE, x, y - 25, 0, 255);
     }
 }
 
