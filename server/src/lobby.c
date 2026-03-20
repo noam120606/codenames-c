@@ -268,6 +268,16 @@ int request_leave_lobby(Codenames* codenames, TcpClient* client, char* message, 
     }
     lobby->nb_players--;
 
+
+    // Informer les autres joueurs du lobby qu'un joueur a quitté
+    char msg[64];
+    format_to(msg, sizeof(msg), "%d %d", MSG_PLAYERLEFT, user->id);
+    for (int i = 0; i < lobby->nb_players; i++) {
+        if (lobby->users[i]->id != client->id) {
+            tcp_send_to_client(codenames, lobby->users[i]->id, msg);
+        }
+    }
+
     printf("Client %d (%s) left lobby %d\n", client->id, user->name, lobby->id);
     destroy_user(user); // Libérer les ressources associées à l'utilisateur avant de le retirer du lobby
 
@@ -281,15 +291,6 @@ int request_leave_lobby(Codenames* codenames, TcpClient* client, char* message, 
     else if (lobby->owner_id == client->id) {
         lobby->owner_id = lobby->users[0]->id;
         printf("Lobby %d ownership transferred to client %d\n", lobby->id, lobby->owner_id);
-    }
-
-    // Informer les autres joueurs du lobby qu'un joueur a quitté
-    char msg[64];
-    format_to(msg, sizeof(msg), "%d %d", MSG_PLAYERLEFT, user->id);
-    for (int i = 0; i < lobby->nb_players; i++) {
-        if (lobby->users[i]->id != client->id) {
-            tcp_send_to_client(codenames, lobby->users[i]->socket_fd, msg);
-        }
     }
 
     return EXIT_SUCCESS;
