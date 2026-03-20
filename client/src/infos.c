@@ -413,9 +413,16 @@ void fps_ping_display(AppContext* context, int display_x) {
     /* Barre horizontale décorative sous les fps et ping */
     char horizontal_bar_text[32];
     snprintf(horizontal_bar_text, sizeof(horizontal_bar_text), "______________");
-    int horizontal_bar_x = display_x + 50;
-    int horizontal_bar_y = 370;
-    text_display(context->renderer, horizontal_bar_text, "assets/fonts/larabiefont.otf", 22, COL_WHITE, horizontal_bar_x, horizontal_bar_y, 0, 255);
+    int horizontal_bar_1_x = display_x + 50;
+    int horizontal_bar_1_y = 370;
+    text_display(context->renderer, horizontal_bar_text, "assets/fonts/larabiefont.otf", 22, COL_WHITE, horizontal_bar_1_x, horizontal_bar_1_y, 0, 255);
+
+    /* Barre horizontale décorative sous les crossfaders */
+    char horizontal_bar_2_text[32];
+    snprintf(horizontal_bar_2_text, sizeof(horizontal_bar_2_text), "______________");
+    int horizontal_bar_2_x = display_x + 50;
+    int horizontal_bar_2_y = 230;
+    text_display(context->renderer, horizontal_bar_2_text, "assets/fonts/larabiefont.otf", 22, COL_WHITE, horizontal_bar_2_x, horizontal_bar_2_y, 0, 255);
 }
 
 int infos_free() {
