@@ -28,6 +28,16 @@ int on_message(AppContext* context, char* message) {
     Arguments args = parse_arguments(message);
 
     switch (header) {
+
+        case MSG_SERVER_ERROR:
+            if (args.argc < 1) {
+                printf("Invalid error message from server: \"%s\"\n", message);
+                if (args.argv) free(args.argv);
+                return EXIT_FAILURE;
+            }
+            printf("Error from server: %s\n", (char*)args.argv[0]);
+            break;
+            
         case MSG_UNKNOWN: 
             printf("Received unknown message from server: \"%s\"\n", message);
             break;
