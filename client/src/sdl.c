@@ -267,7 +267,23 @@ int destroy_context(AppContext* context) {
         free(context->player_name);
         context->player_name = NULL;
     }
-    
+    if (context->lobby) {
+        for (int i = 0; i < MAX_USERS; i++) {
+            if (context->lobby->users[i]) {
+                free(context->lobby->users[i]->name);
+                free(context->lobby->users[i]);
+                context->lobby->users[i] = NULL;
+            }
+        }
+        if (context->lobby->game) {
+            free(context->lobby->game->words);
+            free(context->lobby->game);
+            context->lobby->game = NULL;
+        }
+        free(context->lobby);
+        context->lobby = NULL;
+    }
+
     audio_cleanup();
     Mix_Quit();
     TTF_Quit();

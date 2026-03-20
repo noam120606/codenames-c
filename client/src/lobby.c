@@ -212,6 +212,7 @@ int lobby_init(AppContext* context) {
 
 int struct_lobby_init(Lobby* lobby, int id, const char* code) {
     if (!lobby) return EXIT_FAILURE;
+    if (lobby->game) free(lobby->game);
 
     lobby->id = id;
     lobby->status = LB_STATUS_WAITING;

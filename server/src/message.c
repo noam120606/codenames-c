@@ -39,8 +39,8 @@ int on_message(Codenames* codenames, TcpClient* client, char* message) {
         case MSG_LEAVELOBBY: return request_leave_lobby(codenames, client, message, args);
         case MSG_LOBBYCLOSED: break; // Server -> Client only
         case MSG_CHOOSE_ROLE: return request_choose_role(codenames, client, message, args);
-        case MSG_STARTGAME: break; // Handle start game
-        
+        case MSG_STARTGAME: return request_start_game(codenames, client, message, args);
+
         case MSG_REQUESTUUID: return request_uuid(codenames, client, message, args);
 
         
@@ -51,20 +51,40 @@ int on_message(Codenames* codenames, TcpClient* client, char* message) {
 
 int on_leave(Codenames* codenames, TcpClient* client) {
     // Handle client disconnection
-    Lobby* lobby = find_lobby_by_ownerid(codenames->lobby, client->id);
-    // User* user = find_user_by_id(lobby, client->id);
 
-    // printf("Client %d (%s) disconnected\n", client->id, user ? user->name : "Unknown");
+    Lobby* owned_lobby = find_lobby_by_ownerid(codenames->lobby, client->id);
+    if (owned_lobby) {
+        int id = owned_lobby->id;
 
-    if (lobby) {
-        int id = lobby->id;
-        /* S'il reste des joueurs dans le lobby, on ne le détruit pas et on passe l'owner à un des joueurs restants */
-        if (lobby->nb_players > 1) {
-            lobby->owner_id = lobby->users[0]->id;
-        } else {
-            destroy_lobby(codenames, lobby);
+        /*
+        User* user = find_user_by_id(owned_lobby, client->id);
+        if (user) {
+            printf("Client %d (%s) left lobby %d\n", user->id, user->name, id);
+            leave_lobby(owned_lobby, user);
         }
-        printf("Destroyed lobby %d owned by client %d\n", id, client->id);
+        */
+
+        /* S'il reste des joueurs dans le lobby, on ne le détruit pas et on passe l'owner à un des joueurs restants */
+        if (owned_lobby->nb_players > 1) {
+            owned_lobby->owner_id = owned_lobby->users[0]->id;
+            printf("Client %d (%s) is now the owner of lobby %d\n", owned_lobby->owner_id, owned_lobby->users[0]->name, id);
+        } else {
+            destroy_lobby(codenames, owned_lobby);
+            printf("Destroyed lobby %d owned by client %d\n", id, client->id);
+        }
+
+    }
+
+    // Informer les autres joueurs du lobby qu'un joueur a quitté
+    Lobby* player_lobby = find_lobby_by_playerid(codenames->lobby, client->id);
+    if (player_lobby) {
+        char msg[64];
+        format_to(msg, sizeof(msg), "%d %d", MSG_PLAYERLEFT, client->id);
+        for (int i = 0; i < player_lobby->nb_players; i++) {
+            if (player_lobby->users[i]->id != client->id) {
+                tcp_send_to_client(codenames, player_lobby->users[i]->id, msg);
+            }
+        }
     }
 
     return EXIT_SUCCESS;

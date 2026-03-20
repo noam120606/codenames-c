@@ -26,6 +26,7 @@ typedef enum MessageType {
     MSG_PLAYERLEFT,
     MSG_CHOOSE_ROLE,
     MSG_STARTGAME,
+    MSG_WORDDATA,
     MSG_REQUESTUUID
 } MessageType;
 

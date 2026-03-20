@@ -70,6 +70,7 @@ int join_lobby(Lobby* lobby, User* user) {
 
 int leave_lobby(Lobby* lobby, User* user) {
     int index = -1;
+    // Cherche l'utilisateur dans la liste des joueurs du lobby
     for (int i = 0; i < lobby->nb_players; i++) {
         if (lobby->users[i]->id == user->id) {
             index = i;
@@ -80,6 +81,7 @@ int leave_lobby(Lobby* lobby, User* user) {
         return EXIT_FAILURE;
     }
     destroy_user(lobby->users[index]);
+    // Décale les utilisateurs restants vers la gauche
     for (int j = index; j < lobby->nb_players - 1; j++) {
         lobby->users[j] = lobby->users[j + 1];
     }

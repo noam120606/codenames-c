@@ -1,6 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include "../lib/message.h"
+
 /**
  * TEAM est utilisé à la fois pour catégoriser les mots dans la grille et pour assigner les joueurs à une équipe.
  * Catégories de mots dans la grille de Codenames.
@@ -46,13 +48,11 @@ typedef enum GameState {
 
 /**
  * Représente une partie de Codenames.
- * @param id identifiant unique de la partie.
  * @param words tableau dynamique de Word (taille nb_words).
  * @param nb_words nombre de mots dans la grille.
  * @param state état courant de la partie (GAMESTATE_*).
  */
 typedef struct {
-    int id;
     Word* words;
     int nb_words;
     GameState state;
@@ -81,7 +81,7 @@ char** fetchWords();
  *         ou NULL en cas d'erreur. La gestion mémoire est à la
  *         charge de l'appelant.
  */
-Word* generateWords(int count);
+Word* generateWords(int count, Team start_team);
 
 /**
  * Mélange un tableau de mots in-place (Fisher-Yates).
@@ -89,5 +89,15 @@ Word* generateWords(int count);
  * @param count Nombre d'éléments dans le tableau.
  */
 void shuffleWords(Word* words, int count);
+
+/**
+ * Traite la demande de démarrage de partie.
+ * @param codenames Contexte principal du serveur.
+ * @param client Client TCP ayant envoyé la demande.
+ * @param message Message brut reçu du client.
+ * @param args Arguments extraits du message.
+ * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur.
+ */
+int request_start_game(Codenames* codenames, TcpClient* client, char* message, Arguments args);
 
 #endif // GAME_H

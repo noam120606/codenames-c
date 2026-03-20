@@ -115,6 +115,57 @@ int on_message(AppContext* context, char* message) {
             
             break;
 
+        case MSG_STARTGAME:
+            if (args.argc < 2) {
+                printf("Invalid start game message from server: \"%s\"\n", message);
+                if (args.argv) free(args.argv);
+                return EXIT_FAILURE;
+            }
+
+            Game* game = (Game*)malloc(sizeof(Game));
+            if (!game) {
+                printf("Failed to allocate memory for game\n");
+                return EXIT_FAILURE;
+            }
+            game->state = (GameState)atoi((char*)args.argv[0]);
+            game->nb_words = atoi((char*)args.argv[1]);
+            printf("Starting game with state %d and %d words\n", game->state, game->nb_words);
+            game->words = (Word*)malloc(sizeof(Word) * game->nb_words);
+            if (!game->words) {
+                printf("Failed to allocate memory for game words\n");
+                free(game);
+                return EXIT_FAILURE;
+            }
+
+            context->lobby->game = game;
+
+            printf("Game started with status %d\n", game->state);
+            break;
+
+        case MSG_WORDDATA:
+            if (args.argc < 4) {
+                printf("Invalid word data message from server: \"%s\"\n", message);
+                if (args.argv) free(args.argv);
+                return EXIT_FAILURE;
+            }
+
+            int wordid = atoi((char*)args.argv[0]);
+            char* word = (char*)args.argv[1];
+            Team team = (Team)atoi((char*)args.argv[2]);
+            int revealed = atoi((char*)args.argv[3]);
+
+            printf("Word data received: %s (Team: %d, Revealed: %d)\n", word, team, revealed);
+
+            strcpy(context->lobby->game->words[wordid].word, word);
+            context->lobby->game->words[wordid].team = team;
+            context->lobby->game->words[wordid].revealed = revealed;
+            context->lobby->game->words[wordid].gender = rand() % 2; // 0 = male, 1 = female
+
+            if (wordid == context->lobby->game->nb_words - 1) {
+                context->app_state = APP_STATE_PLAYING;
+            }
+
+            break;
 
         case MSG_REQUESTUUID:
             // Réception de l'UUID généré par le serveur

@@ -48,7 +48,7 @@ char** fetchWords() { // Lit le fichier wordlist.txt et ordonne dans une liste d
     return words;
 }
 
-Word* generateWords(int count) { //Trouver 25 mots au hasard parmis la liste des mots.
+Word* generateWords(int count, Team start_team) { //Trouver 25 mots au hasard parmis la liste des mots.
     Word* words = (Word*)malloc(sizeof(Word) * count);
     if (!words) {
         perror("Failed to allocate memory for words");
@@ -61,8 +61,8 @@ Word* generateWords(int count) { //Trouver 25 mots au hasard parmis la liste des
         return NULL;
     }
 
-    int red_count = count / 3 + 1; // Example distribution
-    int blue_count = count / 3;
+    int red_count = count / 3 + (start_team == TEAM_RED ? 1 : 0);
+    int blue_count = count / 3 + (start_team == TEAM_BLUE ? 1 : 0);
     int neutral_count = count - red_count - blue_count - 1;
 
     int already_used[WORDCOUNT];
@@ -93,4 +93,71 @@ void shuffleWords(Word* words, int count) { // Mélange les cartes auxquelles so
         words[i] = words[j];
         words[j] = temp;
     }
+}
+
+int destroy_game(Game* game) {
+    if (!game) return EXIT_FAILURE;
+    if (game->words) {
+        for (int i = 0; i < game->nb_words; i++) {
+            free(game->words[i].word);
+        }
+        free(game->words);
+    }
+    free(game);
+    return EXIT_SUCCESS;
+}
+
+int request_start_game(Codenames* codenames, TcpClient* client, char* message, Arguments args) {
+    // Vérifie que le client est bien dans un lobby
+    Lobby* lobby = find_lobby_by_ownerid(codenames->lobby, client->id);
+    if (!lobby) {
+        printf("Client %d doesn't own a lobby\n", client->id);
+        return EXIT_FAILURE;
+    }
+
+    // Vérifie que le lobby est prêt à démarrer
+    if (lobby->status != LB_STATUS_WAITING) {
+        printf("Lobby %d is not ready to start\n", lobby->id);
+        return EXIT_FAILURE;
+    }
+
+    // Démarre le jeu
+    lobby->status = LB_STATUS_IN_GAME;
+    printf("Game started in lobby %d\n", lobby->id);
+
+    Game* game = (Game*)malloc(sizeof(Game));
+    if (!game) {
+        printf("Failed to allocate memory for game\n");
+        return EXIT_FAILURE;
+    }
+
+    Team start_team = (rand() % 2 == 0) ? TEAM_RED : TEAM_BLUE;
+
+    // Génère les mots pour le jeu
+    game->words = generateWords(25, start_team);
+    shuffleWords(game->words, 25);
+    if (!game->words) {
+        printf("Failed to generate words for lobby %d\n", lobby->id);
+        destroy_game(game);
+        return EXIT_FAILURE;
+    }
+
+    game->nb_words = 25;
+    game->state = start_team == TEAM_RED ? GAMESTATE_TURN_RED : GAMESTATE_TURN_BLUE;
+    lobby->game = game;
+
+    // Envoi de la partie aux joueurs
+    for (int i = 0; i < lobby->nb_players; i++) {
+        User* user = lobby->users[i];
+        char msg[32];
+        format_to(msg, sizeof(msg), "%d %d %d", MSG_STARTGAME, game->state, game->nb_words);
+        tcp_send_to_client(codenames, user->id, msg);
+        // Envoi de chaque mot
+        for (int j = 0; j < game->nb_words; j++) {
+            format_to(msg, sizeof(msg), "%d %d %s %d %d", MSG_WORDDATA, j, game->words[j].word, game->words[j].team, game->words[j].revealed);
+            tcp_send_to_client(codenames, user->id, msg);
+        }
+    }
+
+    return EXIT_SUCCESS;
 }
