@@ -232,7 +232,7 @@ static SDL_Color color_for_ping(int ping_ms) {
 /* Met à jour la position des crossfaders pour qu'ils suivent le bandeau */
 static void update_crossfader_positions(int display_x) {
     /* Même décalage X que le texte FPS */
-    int bx = display_x + 100;
+    int bx = display_x + 50;
 
     if (cf_music && cf_music->cfg) {
         int sx = bandeau_to_screen_x(bx, cf_music->cfg->w);
@@ -266,7 +266,7 @@ void infos_display(AppContext* context) {
         
         // Constantes pour le positionnement
         const int TRIGGER_X = 300; // Seuil X pour déclencher l'animation
-        const int BASE_X = -950; // Position visible du bandeau
+        const int BASE_X = -900; // Position visible du bandeau
         const int HIDDEN_X = -1300; // Position hors écran (caché)
         
         // Vérifier si la souris est dedans (au-dessus du seuil)
@@ -321,11 +321,11 @@ void infos_display(AppContext* context) {
         
         // N'afficher que si pas complètement caché
         if (infos_state != INFOS_HIDDEN) {
-            display_image(context->renderer, bandeau, display_x, 0, 0.75, 90, SDL_FLIP_NONE, 1, 192);
+            display_image(context->renderer, bandeau, display_x, 0, 0.95, 90, SDL_FLIP_NONE, 1, 255);
             fps_ping_display(context, display_x);
 
             /* Labels des crossfaders (coordonnées bandeau, même repère que text_display) */
-            int label_x = display_x + 100;
+            int label_x = display_x + 50;
             text_display(context->renderer, "Musique", FONT_LARABIE, 18, COL_WHITE, label_x, 345, 0, 255);
             text_display(context->renderer, "Effets Sonores", FONT_LARABIE, 18, COL_WHITE, label_x, 275, 0, 255);
 
@@ -379,7 +379,7 @@ void fps_ping_display(AppContext* context, int display_x) {
     snprintf(fps_text, sizeof(fps_text), "FPS : %.2f", context->fps);
     SDL_Color fps_color = color_for_fps(context->fps);
     // Positionner le texte relativement au display_x du bandeau
-    int fps_x = display_x + 100;
+    int fps_x = display_x + 50;
     int fps_y = 450;
     text_display(context->renderer, fps_text, "assets/fonts/larabiefont.otf", 22, fps_color, fps_x, fps_y, 0, 255);
 
@@ -394,17 +394,17 @@ void fps_ping_display(AppContext* context, int display_x) {
         ? color_for_ping(context->ping_ms)
         : COL_WHITE;
 
-    int ping_x = display_x + 100;
+    int ping_x = display_x + 50;
     int ping_y = 410;
     text_display(context->renderer, ping_text, "assets/fonts/larabiefont.otf", 22, ping_color, ping_x, ping_y, 0, 255);
 
     /* Info sur le type de serveur (local/distant) à côté du ping */
     if (is_tcp_local_server(context->sock)) {
-        int local_x = display_x + 100;
+        int local_x = display_x + 50;
         int local_y = 385;
         text_display(context->renderer, "(serveur local)", "assets/fonts/larabiefont.otf", 14, COL_GREEN, local_x, local_y, 0, 220);
     } else if (context->sock >= 0) {
-        int local_x = display_x + 100;
+        int local_x = display_x + 50;
         int local_y = 385;
         /* La couleur est la même que celle du ping si le serveur est distant */
         text_display(context->renderer, "(serveur distant)", "assets/fonts/larabiefont.otf", 14, ping_color, local_x, local_y, 0, 220);
@@ -413,7 +413,7 @@ void fps_ping_display(AppContext* context, int display_x) {
     /* Barre horizontale décorative sous les fps et ping */
     char horizontal_bar_text[32];
     snprintf(horizontal_bar_text, sizeof(horizontal_bar_text), "______________");
-    int horizontal_bar_x = display_x + 100;
+    int horizontal_bar_x = display_x + 50;
     int horizontal_bar_y = 370;
     text_display(context->renderer, horizontal_bar_text, "assets/fonts/larabiefont.otf", 22, COL_WHITE, horizontal_bar_x, horizontal_bar_y, 0, 255);
 }
