@@ -83,12 +83,17 @@ void lobby_display(AppContext* context);
  * @param context Contexte SDL.
  * @param user Utilisateur dont l'icône doit être affichée.
  * @param nb_none Nombre de joueurs sans équipe.
+ * @param i_none Indice du joueur sans équipe.
  * @param nb_red_spy Nombre de joueurs de l'équipe rouge (espions).
+ * @param i_red_spy Indice du joueur espion rouge.
  * @param nb_red_agent Nombre de joueurs de l'équipe rouge (agents).
+ * @param i_red_agent Indice du joueur agent rouge.
  * @param nb_blue_spy Nombre de joueurs de l'équipe bleue (espions).
+ * @param i_blue_spy Indice du joueur espion bleu.
  * @param nb_blue_agent Nombre de joueurs de l'équipe bleue (agents).
+ * @param i_blue_agent Indice du joueur agent bleu.
  */
-void player_display(AppContext* context, User* user, int nb_none, int nb_red_spy, int nb_red_agent, int nb_blue_spy, int nb_blue_agent);
+void player_display(AppContext* context, User* user, int nb_none, int i_none, int nb_red_spy, int i_red_spy, int nb_red_agent, int i_red_agent, int nb_blue_spy, int i_blue_spy, int nb_blue_agent, int i_blue_agent);
 
 /**
  * Positionne l'icône et le pseudo d'un joueur.
@@ -96,9 +101,10 @@ void player_display(AppContext* context, User* user, int nb_none, int nb_red_spy
  * @param user Utilisateur dont l'icône doit être positionnée.
  * @param icon Texture de l'icône à afficher.
  * @param nb_player Nombre de joueurs de ce type.
+ * @param i_player Indice du joueur de ce type.
  * @param base_x Position de base en X.
  * @param base_y Position de base en Y.
  */
-void player_icon_pos(AppContext* context, User* user, SDL_Texture* icon, int nb_player, int base_x, int base_y);
+void player_icon_pos(AppContext* context, User* user, SDL_Texture* icon, int nb_player, int i_player, int base_x, int base_y);
 
 #endif // LOBBY_H
