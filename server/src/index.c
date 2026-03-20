@@ -25,7 +25,6 @@ int main(int argc, char* argv[]) {
     // Initialisations diverses
     srand(time(NULL));
     init_game_manager();
-    init_lobby_manager();
 
     Codenames* codenames = malloc(sizeof(Codenames));
     if (codenames == NULL) {

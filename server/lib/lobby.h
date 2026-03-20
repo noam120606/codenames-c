@@ -50,22 +50,6 @@ typedef struct LobbyManager {
     List* lobbies;
 } LobbyManager;
 
-/** Initialise le gestionnaire de lobbies.
- * @return EXIT_SUCCESS si OK, EXIT_FAILURE en cas d'erreur.
- */
-int init_lobby_manager();
-
-/**
- * Lit les noms d'utilisateur possibles depuis assets/usernames.txt et les stocke dans un tableau.
- * @return Tableau de chaînes de caractères contenant les noms d'utilisateur, ou NULL en cas d'erreur.
- */
-char** fetchUsernames();
-
-/** Sélectionne un nom d'utilisateur aléatoire parmi ceux disponibles.
- * @return Chaîne de caractères contenant le nom d'utilisateur sélectionné, ou NULL en cas d'erreur.
- */
-char* getRandomUsername();
-
 /** Crée et initialise un gestionnaire de lobbies.
  * @param codenames Contexte principal du serveur, nécessaire pour certaines opérations (ex: fermer les connexions des joueurs lors de la destruction d'un lobby). 
  * @return Pointeur vers le LobbyManager, ou NULL en cas d'erreur.

@@ -12,11 +12,9 @@ User* create_user(int id, const char* name, int socket_fd) {
 
     if (strcmp(user->name, "NONE") == 0) {
         free(user->name);
-        user->name = getRandomUsername();
-        if (user->name == NULL) {
-            free(user);
-            return NULL;
-        }
+        free(user);
+        printf("User creation failed: invalid username\n");
+        return NULL;
     }
 
     return user;
