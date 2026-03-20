@@ -214,7 +214,7 @@ void lobby_display(AppContext* context) {
 
     /* Application d'un filtre sur la musique du menu (une seule fois) */
     if (!lobby_filter_applied) {
-        audio_set_filter(MUSIC_MENU_LOBBY, AUDIO_FILTER_LOW_PASS, 2200);
+        audio_set_filter(MUSIC_MENU_LOBBY, AUDIO_FILTER_LOW_PASS, 1700);
         lobby_filter_applied = 1;
     }
 
@@ -270,9 +270,15 @@ ButtonReturn lobby_handle_event(AppContext* context, SDL_Event* e) {
 }
 
 void player_icon_display(AppContext* context, User* user, int nb_none, int nb_red, int nb_blue) {
-    if (!context || !user) return;
+    if (!context || !user){
+        printf("Warning: Invalid context or user for player icon display\n");
+        return;
+    }
 
-    if (!user->name) return;
+    if (!user->name) {
+        printf("Warning: User with NULL name, skipping icon display\n");
+        return;
+    }
 
     /* Determine column (x) and vertical index (y) based on team and counts.
        nb_* are 1-based counts because caller increments before calling. */
@@ -309,7 +315,7 @@ void player_icon_display(AppContext* context, User* user, int nb_none, int nb_re
         const int icon_y = y - 16;      /* center icon vertically relative to text */
         display_image(context->renderer, icon, icon_x, icon_y, 1, 0, SDL_FLIP_NONE, 1, 255);
         /* Name displayed beside icon */
-        text_display(context->renderer, user->name, FONT_LARABIE, 24, COL_WHITE, icon_x + 56, y - 8, 0, 255);
+        text_display(context->renderer, user->name, FONT_LARABIE, 24, COL_WHITE, icon_x, y - 25, 0, 255);
     }
 }
 
