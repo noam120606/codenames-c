@@ -283,6 +283,15 @@ int request_leave_lobby(Codenames* codenames, TcpClient* client, char* message, 
         printf("Lobby %d ownership transferred to client %d\n", lobby->id, lobby->owner_id);
     }
 
+    // Informer les autres joueurs du lobby qu'un joueur a quitté
+    char msg[64];
+    format_to(msg, sizeof(msg), "%d %d", MSG_PLAYERLEFT, user->id);
+    for (int i = 0; i < lobby->nb_players; i++) {
+        if (lobby->users[i]->id != client->id) {
+            tcp_send_to_client(codenames, lobby->users[i]->socket_fd, msg);
+        }
+    }
+
     return EXIT_SUCCESS;
 }
 
@@ -312,13 +321,18 @@ int request_choose_role(Codenames* codenames, TcpClient* client, char* message, 
     }
     printf("Client %d (%s) chose role %d team %d in lobby %d\n", client->id, user->name, user->role, user->team, lobby->id);
     
+    // affichage des joueurs lobby
+    for (int i = 0; i < lobby->nb_players; i++) {
+        printf(" - Player %d: %s, role %d, team %d\n", lobby->users[i]->id, lobby->users[i]->name, lobby->users[i]->role, lobby->users[i]->team);
+    }
+
     // On informe les autres joueurs du lobby du choix de rôle/équipe de ce joueur
     char reponse[64];
     format_to(reponse, sizeof(reponse), "%d %d %d %d", MSG_CHOOSE_ROLE, user->id, user->role, user->team);
     for (int i = 0; i < lobby->nb_players; i++) {
         if (lobby->users[i]->id != client->id) { // Pas besoin de s'envoyer à soi-même
             printf("Sending role choice to client %d: %s\n", lobby->users[i]->id, reponse);
-            tcp_send_to_client(codenames, lobby->users[i]->socket_fd, reponse);
+            tcp_send_to_client(codenames, lobby->users[i]->id, reponse);
         }
     }
     

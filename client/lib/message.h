@@ -11,6 +11,7 @@ typedef struct AppContext AppContext;
  * @param MSG_LEAVELOBBY message de quitter un lobby.
  * @param MSG_LOBBYCLOSED message de fermeture de lobby.
  * @param MSG_PLAYERJOINED message d'un joueur qui a rejoint le lobby.
+ * @param MSG_PLAYERLEFT message d'un joueur qui a quitté le lobby.
  * @param MSG_CHOOSE_ROLE message de choix de rôle/équipe dans le lobby (pour informer les autres joueurs en temps réel du choix d'un joueur).
  * @param MSG_STARTGAME message de démarrage de partie.
  * @param MSG_REQUESTUUID message de demande d'UUID (pour le client de demander son UUID au serveur après connexion, si besoin pour le protocole).
@@ -22,6 +23,7 @@ typedef enum MessageType {
     MSG_LEAVELOBBY,
     MSG_LOBBYCLOSED,
     MSG_PLAYERJOINED,
+    MSG_PLAYERLEFT,
     MSG_CHOOSE_ROLE,
     MSG_STARTGAME,
     MSG_REQUESTUUID

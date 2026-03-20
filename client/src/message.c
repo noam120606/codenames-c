@@ -77,6 +77,24 @@ int on_message(AppContext* context, char* message) {
 
             printf("Player %s joined the lobby with role %s and team %s\n", (char*)args.argv[0], (char*)args.argv[1], (char*)args.argv[2]);
             break;
+        
+        case MSG_PLAYERLEFT:
+            if (args.argc < 1) {
+                printf("Invalid player left message from server: \"%s\"\n", message);
+                if (args.argv) free(args.argv);
+                return EXIT_FAILURE;
+            }
+            int player_id = atoi((char*)args.argv[0]);
+            for (int i = 0; i < MAX_USERS; i++) {
+                if (context->lobby->users[i] && context->lobby->users[i]->id == player_id) {
+                    destroy_user(context->lobby->users[i]);
+                    context->lobby->users[i] = NULL;
+                    context->lobby->nb_players--;
+                    break;
+                }
+            }
+            printf("Player %d left the lobby\n", player_id);
+            break;
 
         case MSG_CHOOSE_ROLE:
             if (args.argc < 3) {
