@@ -38,15 +38,13 @@ int on_message(AppContext* context, char* message) {
                 if (args.argv) free(args.argv);
                 return EXIT_FAILURE;
             }
-            context->lobby->id = atoi((char*)args.argv[0]);
-            strcpy(context->lobby->code, (char*)args.argv[1]);
+            struct_lobby_init(context->lobby, atoi((char*)args.argv[0]), (char*)args.argv[1]);
             break;
 
         case MSG_JOINLOBBY:
             // Handle join lobby
             if (args.argc >= 2) {
-                context->lobby->id = atoi((char*)args.argv[0]);
-                strcpy(context->lobby->code, (char*)args.argv[1]);
+                struct_lobby_init(context->lobby, atoi((char*)args.argv[0]), (char*)args.argv[1]);
             }
             break;
 
@@ -61,17 +59,18 @@ int on_message(AppContext* context, char* message) {
             break;
         
         case MSG_PLAYERJOINED:
-            if (args.argc < 3) {
+            if (args.argc < 4) {
                 printf("Invalid player joined message from server: \"%s\"\n", message);
                 if (args.argv) free(args.argv);
                 return EXIT_FAILURE;
             }
 
-            User* new_player = create_user((char*)args.argv[0], (UserRole)atoi((char*)args.argv[1]), (Team)atoi((char*)args.argv[2]));
+            User* new_player = create_user(atoi((char*)args.argv[0]), (char*)args.argv[1], (UserRole)atoi((char*)args.argv[2]), (Team)atoi((char*)args.argv[3]));
 
-            for (int i = 0; i < context->lobby->nb_players; i++) {
+            for (int i = 0; i < MAX_USERS; i++) {
                 if (!context->lobby->users[i]) {
                     context->lobby->users[i] = new_player;
+                    context->lobby->nb_players++;
                     break;
                 }
             }
@@ -85,8 +84,17 @@ int on_message(AppContext* context, char* message) {
                 if (args.argv) free(args.argv);
                 return EXIT_FAILURE;
             }
+
+            for (int i = 0; i < MAX_USERS; i++) {
+                if (context->lobby->users[i] && context->lobby->users[i]->id == atoi((char*)args.argv[0])) {
+                    context->lobby->users[i]->role = (UserRole)atoi((char*)args.argv[1]);
+                    context->lobby->users[i]->team = (Team)atoi((char*)args.argv[2]);
+                    break;
+                }
+            }
+
             printf("Player %s chose role %s team %s\n", (char*)args.argv[0], (char*)args.argv[1], (char*)args.argv[2]);
-            // 
+            
             break;
 
 

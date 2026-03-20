@@ -32,6 +32,7 @@ typedef struct Card Card;
  * @param frame_start_time Timestamp du début de la frame actuelle (en ms).
  * @param ping_ms Ping TCP courant en millisecondes (-1 si indisponible).
  * @param player_uuid UUID unique du joueur (persisté dans datas/uuid).
+ * @param player_name Nom du joueur (persisté dans datas/name).
  */
 typedef struct AppContext {
     SDL_Window* window;
@@ -49,6 +50,7 @@ typedef struct AppContext {
     int sound_effects_volume;  /**< Volume des effets sonores (0-128). */
     Card* cards[25];
     char* player_uuid;         /**< UUID unique du joueur. */
+    char* player_name;         /**< Nom du joueur. */
 } AppContext;
 
 /**

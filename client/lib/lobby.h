@@ -44,6 +44,15 @@ typedef struct Lobby {
 } Lobby;
 
 /**
+ * Initialise la structure d'un lobby.
+ * @param lobby Pointeur vers le lobby à initialiser.
+ * @param id Identifiant du lobby.
+ * @param code Code d'accès au lobby.
+ * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE sinon.
+ */
+int struct_lobby_init(Lobby* lobby, int id, const char* code);
+
+/**
  * Initialise le lobby.
  * @param context Contexte SDL.
  * @return 0 en cas de succès, un code d'erreur sinon.

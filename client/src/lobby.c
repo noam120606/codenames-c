@@ -210,6 +210,23 @@ int lobby_init(AppContext* context) {
     
 }
 
+int struct_lobby_init(Lobby* lobby, int id, const char* code) {
+    if (!lobby) return EXIT_FAILURE;
+
+    lobby->id = id;
+    lobby->status = LB_STATUS_WAITING;
+    lobby->nb_players = 0;
+    lobby->owner_id = -1;
+    lobby->game = NULL;
+    strcpy(lobby->code, code);
+
+    for (int i = 0; i < MAX_USERS; i++) {
+        lobby->users[i] = NULL;
+    }
+
+    return EXIT_SUCCESS;
+}
+
 void lobby_display(AppContext* context) {
 
     /* Application d'un filtre sur la musique du menu (une seule fois) */
@@ -242,17 +259,23 @@ void lobby_display(AppContext* context) {
     int nb_none = 0;
     int nb_red = 0;
     int nb_blue = 0;
+
+    // Affichage des joueurs distants
     for (int i = 0; i < MAX_USERS; i++) {
         User* user = context->lobby->users[i];
-        if (user) {
-            switch(user->team) {
-                case TEAM_RED: nb_red++; break;
-                case TEAM_BLUE: nb_blue++; break;
-                default: nb_none++; break;
-            }
-            player_icon_display(context, user, nb_none, nb_red, nb_blue);
+        if (!user) continue;
+        switch(user->team) {
+            case TEAM_RED: nb_red++; break;
+            case TEAM_BLUE: nb_blue++; break;
+            case TEAM_NONE: nb_none++; break;
+            default: printf("Warning: User %s has invalid team %d\n", user->name, user->team); break;
         }
+        player_icon_display(context, user, nb_none, nb_red, nb_blue);
     }
+
+    // Affichage du joueur local
+    User user = {-1, context->player_name, context->player_role, context->player_team};
+    player_icon_display(context, &user, nb_none, nb_red, nb_blue);
 }
 
 ButtonReturn lobby_handle_event(AppContext* context, SDL_Event* e) {
@@ -280,19 +303,29 @@ void player_icon_display(AppContext* context, User* user, int nb_none, int nb_re
         return;
     }
 
-    /* Determine column (x) and vertical index (y) based on team and counts.
-       nb_* are 1-based counts because caller increments before calling. */
+    SDL_Texture* icon = NULL;
     int base_x = 0;
-    int index = 0; /* zero-based index in the column */
+    int base_y = 0;
+    int index = 0; // zero-based index in the column
+
     if (user->team == TEAM_RED) {
-        base_x = -360; /* left column for red team */
+        icon = player_icon_red;
+        base_x = -460 + nb_red * 100; // left column for red team
         index = nb_red - 1;
     } else if (user->team == TEAM_BLUE) {
-        base_x = 360;  /* right column for blue team */
+        icon = player_icon_blue;
+        base_x = 260 + nb_blue * 100;  // right column for blue team
         index = nb_blue - 1;
     } else {
-        base_x = 0;    /* center column for unassigned */
+        icon = player_icon_none;
+        base_x = 0;    // center column for unassigned
         index = nb_none - 1;
+    }
+
+    if (user->role == ROLE_AGENT) {
+        base_y = 128;
+    } else if (user->role == ROLE_SPY) {
+        base_y = -64;
     }
 
     /* Layout tuning */
@@ -300,22 +333,13 @@ void player_icon_display(AppContext* context, User* user, int nb_none, int nb_re
     const int spacing = 56;    /* space between stacked players */
     int y = start_y + index * spacing;
 
-    SDL_Texture* icon = NULL;
-    if (user->team == TEAM_RED) {
-        icon = player_icon_red;
-    } else if (user->team == TEAM_BLUE) {
-        icon = player_icon_blue;
-    } else {
-        icon = player_icon_none;
-    }
-
     if (icon && context->renderer) {
         /* Draw icon then draw the player's name to the right of the icon */
-        const int icon_x = base_x - 24; /* shift icon slightly left so name sits comfortably */
-        const int icon_y = y - 16;      /* center icon vertically relative to text */
-        display_image(context->renderer, icon, icon_x, icon_y, 1, 0, SDL_FLIP_NONE, 1, 255);
+        const int icon_x = base_x; /* shift icon slightly left so name sits comfortably */
+        const int icon_y = base_y + y - 16;      /* center icon vertically relative to text */
+        display_image(context->renderer, icon, icon_x, icon_y, 0.3, 0, SDL_FLIP_NONE, 1, 255);
         /* Name displayed beside icon */
-        text_display(context->renderer, user->name, FONT_LARABIE, 24, COL_WHITE, icon_x, y - 25, 0, 255);
+        text_display(context->renderer, user->name, FONT_LARABIE, 24, COL_WHITE, icon_x, base_y + y - 40, 0, 255);
     }
 }
 

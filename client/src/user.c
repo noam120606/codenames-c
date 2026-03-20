@@ -1,9 +1,10 @@
 #include "../lib/all.h"
 
-User* create_user(const char* name, UserRole role, Team team) {
+User* create_user(int id, const char* name, UserRole role, Team team) {
     User* user = malloc(sizeof(User));
     if (!user) return NULL;
 
+    user->id = id;
     user->name = strdup(name);
     user->role = role;
     user->team = team;

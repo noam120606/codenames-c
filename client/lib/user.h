@@ -17,11 +17,11 @@ typedef enum UserRole {
 /** Représente un joueur connecté.
  * @param id identifiant unique de l'utilisateur.
  * @param name nom du joueur.
- * @param socket_fd id de socket associée au joueur.
  * @param role rôle (ROLE_SPY ou ROLE_AGENT).
  * @param team équipe (TEAM_*).
  */
 typedef struct {
+    int id;
     char* name;
     UserRole role;
     Team team;
@@ -33,10 +33,11 @@ typedef struct {
 /** Crée un utilisateur.
  * @param id Identifiant de l'utilisateur.
  * @param name Nom du joueur (copié en interne).
- * @param socket_fd Socket associée.
+ * @param role Rôle de l'utilisateur.
+ * @param team Équipe de l'utilisateur.
  * @return Pointeur vers le User créé, ou NULL en cas d'erreur.
  */
-User* create_user(const char* name, UserRole role, Team team);
+User* create_user(int id, const char* name, UserRole role, Team team);
 
 /** Détruit un utilisateur et libère ses ressources.
  * @param user Utilisateur à détruire.

@@ -263,6 +263,11 @@ int destroy_context(AppContext* context) {
         free(context->player_uuid);
         context->player_uuid = NULL;
     }
+    if (context->player_name) {
+        free(context->player_name);
+        context->player_name = NULL;
+    }
+    
     audio_cleanup();
     Mix_Quit();
     TTF_Quit();

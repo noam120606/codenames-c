@@ -8,24 +8,23 @@ Button* btn_quit;
 Button* btn_social;
 Input* name_input = NULL;
 Input* code_input = NULL;
-char* name = NULL; // Le nom du joueur, à envoyer au serveur lors de la création ou du join d'un lobby. Peut être NULL ou chaîne vide si non défini.
 int joining = 0;
 
 static void name_on_submit(AppContext* context, const char* text) {
     printf("Name input submitted: %s\n", text ? text : "");
-    if (name) {
-        free(name);
-        name = NULL;
+    if (context->player_name) {
+        free(context->player_name);
+        context->player_name = NULL;
     }
     if (text) {
-        name = strdup(text);
-        if (!name) {
-            name = malloc(1);
-            if (name) name[0] = '\0';
+        context->player_name = strdup(text);
+        if (!context->player_name) {
+            context->player_name = malloc(1);
+            if (context->player_name) context->player_name[0] = '\0';
         }
         write_property("PLAYER_NAME", text);
     } else {
-        name = NULL;
+        context->player_name = NULL;
         write_property("PLAYER_NAME", "");
     }
 }
@@ -34,7 +33,7 @@ static void code_on_submit(AppContext* context, const char* text) {
     printf("Code input submitted: %s\n", text ? text : "");
     if (text) {
         char trame[20];
-        format_to(trame, sizeof(trame), "%d %s %s", MSG_JOINLOBBY, text, name ? name : "NONE");
+        format_to(trame, sizeof(trame), "%d %s %s", MSG_JOINLOBBY, text, context->player_name ? context->player_name : "NONE");
         send_tcp(context->sock, trame);
     }
 }
@@ -56,7 +55,7 @@ ButtonReturn menu_button_click(AppContext* context, Button* button) {
         joining = 1;
     } else if (button == btn_create) {
         char trame[20];
-        format_to(trame, sizeof(trame), "%d %s", MSG_CREATELOBBY, name ? name : "NONE");
+        format_to(trame, sizeof(trame), "%d %s", MSG_CREATELOBBY, context->player_name ? context->player_name : "NONE");
         send_tcp(context->sock, trame);
     } else if (button == btn_quit) {
         return BTN_RET_QUIT;
@@ -161,7 +160,7 @@ int menu_init(AppContext * context) {
 
     /* Si aucun nom n'a été chargé depuis la sauvegarde, en choisir un
        aléatoirement dans assets/misc/usernames.txt et l'appliquer. */
-    if (!name || name[0] == '\0') {
+    if (!context->player_name || context->player_name[0] == '\0') {
         char saved[INPUT_DEFAULT_MAX + 1] = {0};
         int has_saved = (read_property(saved, "PLAYER_NAME") == EXIT_SUCCESS && saved[0] != '\0');
         if (!has_saved) {
@@ -272,8 +271,6 @@ int menu_free() {
 
     if (name_input) { input_destroy(name_input); name_input = NULL; }
     if (code_input) { input_destroy(code_input); code_input = NULL; }
-
-    if (name) { free(name); name = NULL; }
 
     joining = 0;
 

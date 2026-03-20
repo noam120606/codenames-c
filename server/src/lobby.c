@@ -222,7 +222,7 @@ int request_join_lobby(Codenames* codenames, TcpClient* client, char* message, A
     for (int i = 0; i < lobby->nb_players; i++) {
         if (lobby->users[i]->id != client->id) {
             char msg[64];
-            format_to(msg, sizeof(msg), "%d %s %d %d", MSG_PLAYERJOINED, lobby->users[i]->name, lobby->users[i]->role, lobby->users[i]->team);
+            format_to(msg, sizeof(msg), "%d %d %s %d %d", MSG_PLAYERJOINED, lobby->users[i]->id, lobby->users[i]->name, lobby->users[i]->role, lobby->users[i]->team);
             tcp_send_to_client(codenames, client->id, msg);
         }
     }
@@ -231,7 +231,7 @@ int request_join_lobby(Codenames* codenames, TcpClient* client, char* message, A
     for (int i = 0; i < lobby->nb_players; i++) {
         if (lobby->users[i]->id != client->id) {
             char msg[64];
-            format_to(msg, sizeof(msg), "%d %s %d %d", MSG_PLAYERJOINED, user->name, user->role, user->team);
+            format_to(msg, sizeof(msg), "%d %d %s %d %d", MSG_PLAYERJOINED, user->id, user->name, user->role, user->team);
             tcp_send_to_client(codenames, lobby->users[i]->id, msg);
         }
     }
