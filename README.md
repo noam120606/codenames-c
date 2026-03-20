@@ -120,6 +120,21 @@ sudo apt install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
 
 ## Utilisation
 
+### Version automatique à chaque commit
+
+Le projet utilise un fichier `VERSION` au format `MAJOR.MINOR.PATCH`.
+
+Un hook Git `pre-commit` incrémente automatiquement le `PATCH` à chaque commit, puis ajoute `VERSION` au commit en cours. Cette version est ensuite injectée à la compilation dans la macro C `CODENAMES_VERSION` (client et serveur).
+
+Configurer les hooks (une fois par clone) :
+
+```bash
+git config core.hooksPath .githooks
+chmod +x .githooks/pre-commit scripts/bump_version.sh
+```
+
+Après compilation, la version est visible au démarrage du client/serveur (logs console).
+
 ### Lancement du serveur
 
 ```bash

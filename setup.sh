@@ -97,6 +97,11 @@ cd ..
 
 rm -rf "$BUILD_DIR"
 
+if git -C "$ROOT_DIR" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  git -C "$ROOT_DIR" config core.hooksPath .githooks
+  echo "Git hooks configured: core.hooksPath=.githooks"
+fi
+
 echo
 echo "====================================================================="
 echo " SDL2 + SDL2_image + SDL2_ttf + SDL2_mixer installés avec succès "

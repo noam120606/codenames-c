@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+set -eu
+
+ROOT_DIR="$(git rev-parse --show-toplevel)"
+"$ROOT_DIR/scripts/bump_version.sh"
+
+git add "$ROOT_DIR/VERSION"

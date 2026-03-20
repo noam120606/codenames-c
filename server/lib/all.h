@@ -16,6 +16,10 @@
 #include <stdarg.h>
 #include <stddef.h>
 
+#ifndef CODENAMES_VERSION
+#define CODENAMES_VERSION "dev"
+#endif
+
 #include "../lib/list.h"
 #include "../lib/tcp.h"
 #include "../lib/lobby.h"

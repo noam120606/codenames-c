@@ -52,7 +52,7 @@ int main(int argc, char* argv[]){
         return EXIT_FAILURE;
     }
 
-    printf("Starting Codenames Client...\n");
+    printf("Starting Codenames Client v%s...\n", CODENAMES_VERSION);
 
     Resources* resources = init_resources();
     if (!resources) {

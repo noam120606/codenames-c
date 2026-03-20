@@ -6,8 +6,9 @@ CC       := gcc
 SRC_DIR  := src
 DIR      := build
 TARGET   := $(DIR)/server
+VERSION  := $(shell cat ../VERSION 2>/dev/null || echo "0.0.0")
 
-CPPFLAGS := -I./lib
+CPPFLAGS := -I./lib -DCODENAMES_VERSION=\"$(VERSION)\"
 CFLAGS   := -Wall -Wextra -O2 -MMD -MP
 LDFLAGS  :=
 

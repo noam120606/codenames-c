@@ -20,7 +20,7 @@ int main(int argc, char* argv[]) {
         return EXIT_FAILURE;
     }
 
-    printf("Starting the game server on port %d...\n", port);
+    printf("Starting the game server v%s on port %d...\n", CODENAMES_VERSION, port);
 
     // Initialisations diverses
     srand(time(NULL));
