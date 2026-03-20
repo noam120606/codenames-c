@@ -54,6 +54,7 @@ CrossfaderConfig* crossfader_config_init(void) {
 
     cfg->rect = (SDL_Rect){0, 0, 0, 0};
     cfg->dragging = 0;
+    cfg->save_pending = 0;
     cfg->hover = 0;
     cfg->track_texture = NULL;
     cfg->knob_texture = NULL;
@@ -95,6 +96,7 @@ Crossfader* crossfader_create(SDL_Renderer* renderer, int id, const CrossfaderCo
     cf->cfg->track_texture = NULL;
     cf->cfg->knob_texture = NULL;
     cf->cfg->dragging = 0;
+    cf->cfg->save_pending = 0;
     cf->cfg->hover = 0;
 
     /* optional persisted value */
@@ -136,7 +138,14 @@ int crossfader_set_value(int id, int value) {
     if (cf->cfg->value != value) {
         cf->cfg->value = value;
         if (cf->cfg->on_change) cf->cfg->on_change(NULL, cf->cfg->value);
-        crossfader_save_value_if_enabled(cf);
+        if (cf->cfg->save_player_data) {
+            if (cf->cfg->dragging) {
+                /* defer until release */
+                cf->cfg->save_pending = 1;
+            } else {
+                crossfader_save_value_if_enabled(cf);
+            }
+        }
     }
     return EXIT_SUCCESS;
 }
@@ -219,6 +228,9 @@ int edit_crfd_cfg(int id, CrfdCfgKey key, intptr_t value) {
         case CRFD_CFG_DRAGGING:
             cf->cfg->dragging = ((int)value != 0);
             return EXIT_SUCCESS;
+        case CRFD_CFG_SAVE_PENDING:
+            cf->cfg->save_pending = ((int)value != 0);
+            return EXIT_SUCCESS;
         case CRFD_CFG_HOVER:
             cf->cfg->hover = ((int)value != 0);
             return EXIT_SUCCESS;
@@ -293,7 +305,8 @@ static void update_value_from_mouse(Crossfader* cf, AppContext* ctx, int mouse_x
     if (newv != cf->cfg->value) {
         cf->cfg->value = newv;
         if (cf->cfg->on_change) cf->cfg->on_change(ctx, cf->cfg->value);
-        crossfader_save_value_if_enabled(cf);
+    /* defer write until release to avoid frequent file writes */
+    if (cf->cfg->save_player_data) cf->cfg->save_pending = 1;
     }
 }
 
@@ -322,8 +335,12 @@ void crossfaders_handle_event(AppContext* ctx, SDL_Event* event) {
     } else if (event->type == SDL_MOUSEBUTTONUP && event->button.button == SDL_BUTTON_LEFT) {
         for (int i = 0; i < crossfader_count; ++i) {
             Crossfader* cf = crossfaders[i];
-            if (!cf) continue;
+            if (!cf || !cf->cfg) continue;
             cf->cfg->dragging = 0;
+            if (cf->cfg->save_player_data && cf->cfg->save_pending) {
+                crossfader_save_value_if_enabled(cf);
+                cf->cfg->save_pending = 0;
+            }
         }
     }
 }

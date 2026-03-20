@@ -2,19 +2,19 @@
 disposées sur le 
 plateau de jeu.
 
-Chaque equipe a un 
+Chaque équipe a un 
 Espion qui connait
 les couleurs
 des cartes.
 
 L'Espion donne
 un indice :
-UN mot et UN chiffre.
+UN mot et UN nombre.
 
-Son equipe doit 
+Son équipe doit
 deviner les cartes
 correspondantes.
 
 Attention au mot Noir !
 Si il est trouvé
-c'est terminé :(
+vous perdez

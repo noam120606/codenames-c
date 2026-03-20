@@ -353,7 +353,6 @@ void player_display(AppContext* context, User* user, int nb_none, int i_none, in
 
     // Décalages
     const int offset_y = -80;
-    const int offset_x = 0;
 
     if (user->team == TEAM_RED) {
         icon = player_icon_red;
@@ -420,28 +419,47 @@ void player_icon_pos(AppContext* context, User* user, SDL_Texture* icon, int nb_
     const int spacing_y = 80;
 
     if(nb_player > 0 && nb_player <= 4){ // Les joueurs sont affichés sur 1 étage (à la suite)
-        base_x += -spacing_x * 2 + spacing_x / 2 + i_player * spacing_x;
-        // Afficher l'icône
-        display_image(context->renderer, icon, base_x, base_y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
-        // Afficher le pseudo au-dessus de l'icône
-        text_display(context->renderer, user->name, FONT_LARABIE, 18, COL_WHITE, base_x, base_y - 25, 0, 255);
+        int x = base_x -spacing_x * 2 + spacing_x / 2 + i_player * spacing_x;
+        int y = base_y;
+        // Afficher l'icône puis du pseudo
+        display_image(context->renderer, icon, x, y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
+        text_display(context->renderer, user->name, FONT_LARABIE, 18, COL_WHITE, x, y - 25, 0, 255);
     } else if(nb_player > 4 && nb_player <= 8){ // Les joueurs sont affichés sur 2 étages
         if(nb_player % 2){
-            if(nb_player < 4){
-                base_x += spacing_x;
+            if(i_player <= 4){
+                int x = base_x -spacing_x * 2 + spacing_x / 2 + i_player * spacing_x;
+                int y = base_y;
+                display_image(context->renderer, icon, x, y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
+                text_display(context->renderer, user->name, FONT_LARABIE, 18, COL_WHITE, x, y - 25, 0, 255);
             } else {
-
+                int x = base_x -spacing_x * 2 + spacing_x / 2 + (i_player - 4) * spacing_x;
+                int y = base_y - spacing_y;
+                display_image(context->renderer, icon, x, y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
+                text_display(context->renderer, user->name, FONT_LARABIE, 18, COL_WHITE, x, y - 25, 0, 255);
             }
-            // Afficher l'icône
-            display_image(context->renderer, icon, base_x, base_y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
-            // Afficher le pseudo au-dessus de l'icône
-            text_display(context->renderer, user->name, FONT_LARABIE, 18, COL_WHITE, base_x, base_y - 25, 0, 255);
-        } else { // cas pour 5 et 7 joueurs
-            for(int i = 0; i < (nb_player + 1) / 2; i++){ // On affiche 3 ou 4 joueurs au premier étage
-                
+        } else if(nb_player == 5){
+            if(i_player < 3){ // On affiche 3 joueurs au premier étage
+                int x = base_x -spacing_x * 1.5 + i_player * spacing_x;
+                int y = base_y;
+                display_image(context->renderer, icon, x, y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
+                text_display(context->renderer, user->name, FONT_LARABIE, 18, COL_WHITE, x, y - 25, 0, 255);
+            } else { // On affiche 2 joueurs au deuxième étage
+                int x = base_x -spacing_x * 2 + spacing_x / 2 + i_player * spacing_x;
+                int y = base_y - spacing_y;
+                display_image(context->renderer, icon, x, y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
+                text_display(context->renderer, user->name, FONT_LARABIE, 18, COL_WHITE, x, y - 25, 0, 255);
             }
-            for(int i = 0; i < nb_player / 2; i++){ // On affiche 2 ou 3 joueurs au deuxième étage
-                
+        } else if(nb_player == 7){
+            if(i_player < 4){ // On affiche 4 joueurs au premier étage
+                int x = base_x -spacing_x * 2 + spacing_x / 2 + i_player * spacing_x;
+                int y = base_y;
+                display_image(context->renderer, icon, x, y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
+                text_display(context->renderer, user->name, FONT_LARABIE, 18, COL_WHITE, x, y - 25, 0, 255);
+            } else { // On affiche 3 joueurs au deuxième étage
+                int x = base_x -spacing_x * 1.5 + (i_player - 4) * spacing_x;
+                int y = base_y - spacing_y;
+                display_image(context->renderer, icon, x, y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
+                text_display(context->renderer, user->name, FONT_LARABIE, 18, COL_WHITE, x, y - 25, 0, 255);
             }
         }
     } else {

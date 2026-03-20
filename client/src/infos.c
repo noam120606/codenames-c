@@ -7,7 +7,7 @@ static Crossfader* cf_music = NULL;
 static Crossfader* cf_sfx = NULL;
 
 // Texte des règles dans le bandeau (chargé depuis rules.txt)
-static const char* rules_title = "REGLES DU JEU";
+static const char* rules_title = "RÈGLES DU JEU";
 static char** rules_lines = NULL;
 static int rules_line_count = 0;
 

@@ -14,6 +14,7 @@ typedef struct AppContext AppContext;
  * Configuration pour créer un `Crossfader`.
  * Tous les champs ont des valeurs par défaut définies via `crossfader_config_init`.
  * La structure peut être modifiée à tout moment et passée à `crossfader_create`.
+ * @
  */
 typedef struct CrossfaderConfig {
     /* --- champs configurables par l'utilisateur --- */
@@ -34,6 +35,7 @@ typedef struct CrossfaderConfig {
     /* --- champs d'état (runtime) --- */
     SDL_Rect rect;             /* full track rect */
     int dragging;
+    int save_pending;          /* flag: value changed while dragging, write on release */
     int hover;
     SDL_Texture* track_texture; /* optional */
     SDL_Texture* knob_texture;  /* optional */
@@ -66,6 +68,7 @@ typedef enum CrfdCfgKey {
     CRFD_CFG_ON_CHANGE,
     CRFD_CFG_RECT,
     CRFD_CFG_DRAGGING,
+    CRFD_CFG_SAVE_PENDING,
     CRFD_CFG_HOVER,
     CRFD_CFG_TRACK_TEXTURE,
     CRFD_CFG_KNOB_TEXTURE,
