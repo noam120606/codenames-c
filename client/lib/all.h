@@ -39,5 +39,6 @@
 #include "../lib/lobby.h"
 #include "../lib/ressources.h"
 #include "../lib/save.h"
+#include "../lib/window.h"
 
 #endif // ALL_H
