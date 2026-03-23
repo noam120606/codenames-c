@@ -1,7 +1,6 @@
 #include "../lib/all.h"
 
 SDL_Texture* menu_logo;
-SDL_Texture* quagmire;
 Button* btn_create;
 Button* btn_join;
 Button* btn_quit;
@@ -243,11 +242,6 @@ void menu_display(AppContext * context) {
     if (menu_logo) {
         display_image(context->renderer, menu_logo, 0, 200, 1.00, 0, SDL_FLIP_NONE, 1, 255);
     }
-    
-    // Afficher quagmire à sa taille d'origine
-    if (quagmire) {
-        display_image(context->renderer, quagmire, 850, -350, 1.0, 0, SDL_FLIP_NONE, 1, 255);
-    }
 
     /* input is drawn by menu */
     if (name_input) input_render(context->renderer, name_input);
@@ -262,7 +256,6 @@ void menu_display(AppContext * context) {
 
 int menu_free() {
     if (menu_logo) { free_image(menu_logo); menu_logo = NULL; }
-    if (quagmire) { free_image(quagmire); quagmire = NULL; }
 
     if (btn_create) { button_destroy(btn_create); btn_create = NULL; }
     if (btn_join) { button_destroy(btn_join); btn_join = NULL; }
