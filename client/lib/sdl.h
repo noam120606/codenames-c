@@ -22,6 +22,7 @@ typedef struct Card Card;
  * Contexte SDL contenant la fenêtre et le renderer.
  * @param window Fenêtre SDL.
  * @param renderer Renderer SDL associé à la fenêtre.
+ * @param bg_color Couleur de fond de la fenêtre.
  * @param clock Nombre de frame écoulé depuis le début de l'application.
  * @param fps Nombre de frames par seconde (calculé à partir du clock).
  * @param sock Identifiant socket.  
@@ -37,6 +38,7 @@ typedef struct Card Card;
 typedef struct AppContext {
     SDL_Window* window;
     SDL_Renderer* renderer;
+    SDL_Color bg_color;
     long clock;
     float fps;
     int sock;

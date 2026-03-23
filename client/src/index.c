@@ -21,6 +21,8 @@ int main(int argc, char* argv[]){
         if (auto_close_frames < 0) auto_close_frames = 0;
     }
 
+    srand(time(NULL));
+
     /* Assure que le répertoire 'data' existe (non fatal) */
     {
         struct stat st = {0};
@@ -68,9 +70,9 @@ int main(int argc, char* argv[]){
         return EXIT_FAILURE;
     }
 
-    // Register SDL context and cleanup function
+    // Register App context and cleanup function
     if (define_app_context(resources, &context, destroy_context) != EXIT_SUCCESS) {
-        printf("Failed to define SDL context\n");
+        printf("Failed to define App context\n");
         destroy_context(&context);
         cleanup_resources(resources);
         return EXIT_FAILURE;
@@ -159,7 +161,7 @@ int main(int argc, char* argv[]){
     SDL_Event e;
     int running = 1;
 
-    while (running && tick_tcp(&context, context.sock) == EXIT_SUCCESS) {
+    while (running && tick_tcp(&context) == EXIT_SUCCESS) {
         // Enregistrer le début de la frame
         context.frame_start_time = SDL_GetTicks();
 
@@ -188,41 +190,40 @@ int main(int argc, char* argv[]){
 
             // Déléguer l'événement selon l'état courant
             switch (context.app_state) {
-                case APP_STATE_MENU: {
-                    ButtonReturn bref = menu_handle_event(&context, &e);
-                    if (bref == BTN_RET_QUIT) running = 0;
-                    break;
-                }
-                case APP_STATE_LOBBY: {
-                    ButtonReturn bref = lobby_handle_event(&context, &e);
-                    if (bref == BTN_RET_QUIT) running = 0;
-                    break;
-                }
+                ButtonReturn btn_ret;
+
+                case APP_STATE_MENU:
+                    btn_ret = menu_handle_event(&context, &e);
+                    if (btn_ret == BTN_RET_QUIT) running = 0; break;
+    
+                case APP_STATE_LOBBY: 
+                    btn_ret = lobby_handle_event(&context, &e);
+                    if (btn_ret == BTN_RET_QUIT) running = 0; break;
+                
                 case APP_STATE_PLAYING: game_handle_event(&context, &e); break;
                 case APP_STATE_PAUSED: break;
             }
         }
 
         // Pré Rendu - Utiliser la couleur du background
-        SDL_Color bg = background_get_color();
-        SDL_SetRenderDrawColor(context.renderer, bg.r, bg.g, bg.b, bg.a);
+        SDL_SetRenderDrawColor(context.renderer, context.bg_color.r, context.bg_color.g, context.bg_color.b, context.bg_color.a);
         SDL_RenderClear(context.renderer);
 
         // Rendu et logique d'affichage
         switch (context.app_state) {
             case APP_STATE_MENU:
-                background_set_color(50, 50, 50);  // Gris par défaut
+                context.bg_color = (SDL_Color){50, 50, 50, 255}; // Gris par défaut
                 display_background(&context);
                 menu_display(&context);
                 
                 break;
             case APP_STATE_LOBBY:
-                background_set_color(80, 30, 30);  // Gris par défaut
+                context.bg_color = (SDL_Color){50, 50, 50, 255};  // Gris par défaut
                 display_background(&context);
                 lobby_display(&context);
                 break;
             case APP_STATE_PLAYING:
-                background_set_color(80, 30, 30);  // Rouge foncé pour le jeu
+                context.bg_color = (SDL_Color){80, 30, 30, 255};  // Rouge foncé pour le jeu
                 display_background(&context);
                 game_display(&context);
                 break;
