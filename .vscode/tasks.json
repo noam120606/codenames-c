@@ -28,13 +28,35 @@
       }
     },
     {
-      "label": "codenames-c: Run All",
+      "label": "codenames-c: Run Client with params",
+      "type": "shell",
+      "command": "./run_with_params.sh",
+      "options": {
+        "cwd": "${workspaceFolder}/client"
+      },
+      "presentation": {
+        "panel": "shared",
+        "group": "dev",
+        "clear": false
+      }
+    },
+    {
+      "label": "codenames-c: Run Both",
       "dependsOn": ["codenames-c: Run Server", "codenames-c: Run Client"],
       "dependsOrder": "parallel",
       "group": {
         "kind": "build",
         "isDefault": true
       }
-    }
+    },
+    {
+      "label": "codenames-c: Run Both with params",
+      "dependsOn": ["codenames-c: Run Server", "codenames-c: Run Client with params"],
+      "dependsOrder": "parallel",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
   ]
 }

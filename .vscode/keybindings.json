@@ -1,0 +1,27 @@
+[
+  {
+    "key": "ctrl+[Numpad7]",
+    "command": "workbench.action.tasks.runTask",
+    "args": "codenames-c: Run Server"
+  },
+  {
+    "key": "ctrl+[Numpad9]",
+    "command": "workbench.action.tasks.runTask",
+    "args": "codenames-c: Run Client with params"
+  },
+  {
+    "key": "ctrl+[Numpad8]",
+    "command": "workbench.action.tasks.runTask",
+    "args": "codenames-c: Run Both with params"
+  },
+  {
+    "key": "ctrl+[Numpad6]",
+    "command": "workbench.action.tasks.runTask",
+    "args": "codenames-c: Run Client"
+  },
+  {
+    "key": "ctrl+[Numpad5]",
+    "command": "workbench.action.tasks.runTask",
+    "args": "codenames-c: Run Both"
+  }
+]
