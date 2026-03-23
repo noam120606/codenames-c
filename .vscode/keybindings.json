@@ -1,26 +1,26 @@
 [
   {
-    "key": "ctrl+[Numpad7]",
+    "key": "ctrl+numpad7",
     "command": "workbench.action.tasks.runTask",
     "args": "codenames-c: Run Server"
   },
   {
-    "key": "ctrl+[Numpad9]",
+    "key": "ctrl+numpad9",
     "command": "workbench.action.tasks.runTask",
     "args": "codenames-c: Run Client with params"
   },
   {
-    "key": "ctrl+[Numpad8]",
+    "key": "ctrl+numpad8",
     "command": "workbench.action.tasks.runTask",
     "args": "codenames-c: Run Both with params"
   },
   {
-    "key": "ctrl+[Numpad6]",
+    "key": "ctrl+numpad6",
     "command": "workbench.action.tasks.runTask",
     "args": "codenames-c: Run Client"
   },
   {
-    "key": "ctrl+[Numpad5]",
+    "key": "ctrl+numpad5",
     "command": "workbench.action.tasks.runTask",
     "args": "codenames-c: Run Both"
   }

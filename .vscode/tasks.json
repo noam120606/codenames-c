@@ -48,15 +48,6 @@
         "kind": "build",
         "isDefault": true
       }
-    },
-    {
-      "label": "codenames-c: Run Both with params",
-      "dependsOn": ["codenames-c: Run Server", "codenames-c: Run Client with params"],
-      "dependsOrder": "parallel",
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      }
-    },
+    }
   ]
 }
