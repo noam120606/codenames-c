@@ -9,6 +9,10 @@ SDL_Texture* card_f_blue;
 SDL_Texture* card_black;
 Button* btn_quit_game = NULL;
 
+/* Utilisation des icônes déjà chargées dans lobby.c */
+extern SDL_Texture* player_icon_red;
+extern SDL_Texture* player_icon_blue;
+
 /* Couleurs pour les panneaux d'équipe */
 static const SDL_Color TEAM_BLUE_COLOR = {50, 80, 150, 200};
 static const SDL_Color TEAM_RED_COLOR = {150, 50, 50, 200};
@@ -58,6 +62,7 @@ void game_handle_event(AppContext* context, SDL_Event* e) {
 }
 
 int game_init(AppContext * context) {
+
     int loading_fails = 0;
 
     // Chargement image
@@ -133,9 +138,9 @@ int game_init(AppContext * context) {
     /* Textes pour les noms de joueurs */
     for (int i = 0; i < MAX_TEAM_PLAYERS; i++) {
         txt_blue_players[i] = init_text(context, " ", 
-            create_text_config(FONT_LARABIE, 16, COL_WHITE, 0, 0, 0, 255));
+            create_text_config(FONT_LARABIE, 14, COL_WHITE, 0, 0, 0, 255));
         txt_red_players[i] = init_text(context, " ", 
-            create_text_config(FONT_LARABIE, 16, COL_WHITE, 0, 0, 0, 255));
+            create_text_config(FONT_LARABIE, 14, COL_WHITE, 0, 0, 0, 255));
     }
 
     /* Textes pour les mots des cartes */
@@ -165,6 +170,7 @@ void game_render_team_panels(AppContext* context) {
     const int PANEL_H = 400;
     const int PANEL_Y = 200;
     const int PANEL_MARGIN = 30;
+    const int ICON_SPACING = 55;  /* Espacement vertical entre les joueurs */
     
     /* Réinitialiser les compteurs de textes joueurs */
     blue_player_text_index = 0;
@@ -172,7 +178,7 @@ void game_render_team_panels(AppContext* context) {
     
     /* Panel équipe bleue (gauche) */
     int blue_x = -WIN_WIDTH/2 + PANEL_MARGIN;
-    int blue_text_x = blue_x + PANEL_W/2 - WIN_WIDTH/2;
+    int blue_text_x = blue_x + PANEL_W/2;  /* Centre du panneau en coordonnées centrées */
     draw_filled_rect(context->renderer, blue_x, PANEL_Y, PANEL_W, PANEL_H, PANEL_BG_COLOR);
     draw_filled_rect(context->renderer, blue_x, PANEL_Y, PANEL_W, 40, TEAM_BLUE_COLOR);
     
@@ -184,28 +190,54 @@ void game_render_team_panels(AppContext* context) {
     display_text(context, txt_blue_spy_label);
     
     /* Agents bleus */
-    update_text_position(txt_blue_agents_label, blue_text_x, PANEL_Y - 160);
+    update_text_position(txt_blue_agents_label, blue_text_x, PANEL_Y - 230);
     display_text(context, txt_blue_agents_label);
     
     /* Afficher les joueurs bleus du lobby */
     if (context->lobby) {
-        int spy_y = PANEL_Y - 90;
-        int agent_y = PANEL_Y - 190;
+        int spy_y = PANEL_Y - 100;
+        int agent_y = PANEL_Y - 260;
+        
+        /* Afficher le joueur local s'il est dans l'équipe bleue */
+        if (context->player_team == TEAM_BLUE && blue_player_text_index < MAX_TEAM_PLAYERS) {
+            Text* txt = txt_blue_players[blue_player_text_index];
+            if (context->player_role == ROLE_SPY) {
+                display_image(context->renderer, player_icon_blue, blue_text_x - 40, spy_y, 0.20, 0, SDL_FLIP_NONE, 1, 255);
+                update_text(context, txt, context->player_name ? context->player_name : "Moi");
+                update_text_position(txt, blue_text_x + 20, spy_y);
+                display_text(context, txt);
+                spy_y -= ICON_SPACING;
+                blue_player_text_index++;
+            } else if (context->player_role == ROLE_AGENT) {
+                display_image(context->renderer, player_icon_blue, blue_text_x - 40, agent_y, 0.20, 0, SDL_FLIP_NONE, 1, 255);
+                update_text(context, txt, context->player_name ? context->player_name : "Moi");
+                update_text_position(txt, blue_text_x + 20, agent_y);
+                display_text(context, txt);
+                agent_y -= ICON_SPACING;
+                blue_player_text_index++;
+            }
+        }
+        
+        /* Afficher les autres joueurs bleus du lobby */
         for (int i = 0; i < context->lobby->nb_players && i < MAX_USERS; i++) {
             User* u = context->lobby->users[i];
             if (u && u->team == TEAM_BLUE && blue_player_text_index < MAX_TEAM_PLAYERS) {
                 Text* txt = txt_blue_players[blue_player_text_index];
                 if (u->role == ROLE_SPY) {
+                    /* Icône + nom */
+                    display_image(context->renderer, player_icon_blue, blue_text_x - 40, spy_y, 0.20, 0, SDL_FLIP_NONE, 1, 255);
                     update_text(context, txt, u->name ? u->name : "???");
-                    update_text_position(txt, blue_text_x, spy_y);
+                    update_text_position(txt, blue_text_x + 20, spy_y);
                     display_text(context, txt);
-                    spy_y -= 25;
+                    spy_y -= ICON_SPACING;
                     blue_player_text_index++;
                 } else if (u->role == ROLE_AGENT) {
+                    /* Icône + nom */
+                    display_image(context->renderer, player_icon_blue, blue_text_x - 40, agent_y, 0.20, 0, SDL_FLIP_NONE, 1, 255);
                     update_text(context, txt, u->name ? u->name : "???");
-                    update_text_position(txt, blue_text_x, agent_y);
+                    update_text_position(txt, blue_text_x + 20, agent_y);
                     display_text(context, txt);
-                    agent_y -= 25;
+                    agent_y -= ICON_SPACING;
                     blue_player_text_index++;
                 }
             }
@@ -214,7 +246,7 @@ void game_render_team_panels(AppContext* context) {
     
     /* Panel équipe rouge (droite) */
     int red_x = WIN_WIDTH/2 - PANEL_W - PANEL_MARGIN;
-    int red_text_x = red_x + PANEL_W/2 - WIN_WIDTH/2;
+    int red_text_x = red_x + PANEL_W/2;  /* Centre du panneau en coordonnées centrées */
     draw_filled_rect(context->renderer, red_x, PANEL_Y, PANEL_W, PANEL_H, PANEL_BG_COLOR);
     draw_filled_rect(context->renderer, red_x, PANEL_Y, PANEL_W, 40, TEAM_RED_COLOR);
     
@@ -226,28 +258,54 @@ void game_render_team_panels(AppContext* context) {
     display_text(context, txt_red_spy_label);
     
     /* Agents rouges */
-    update_text_position(txt_red_agents_label, red_text_x, PANEL_Y - 160);
+    update_text_position(txt_red_agents_label, red_text_x, PANEL_Y - 230);
     display_text(context, txt_red_agents_label);
     
     /* Afficher les joueurs rouges du lobby */
     if (context->lobby) {
-        int spy_y = PANEL_Y - 90;
-        int agent_y = PANEL_Y - 190;
+        int spy_y = PANEL_Y - 100;
+        int agent_y = PANEL_Y - 260;
+        
+        /* Afficher le joueur local s'il est dans l'équipe rouge */
+        if (context->player_team == TEAM_RED && red_player_text_index < MAX_TEAM_PLAYERS) {
+            Text* txt = txt_red_players[red_player_text_index];
+            if (context->player_role == ROLE_SPY) {
+                display_image(context->renderer, player_icon_red, red_text_x - 40, spy_y, 0.20, 0, SDL_FLIP_NONE, 1, 255);
+                update_text(context, txt, context->player_name ? context->player_name : "Moi");
+                update_text_position(txt, red_text_x + 20, spy_y);
+                display_text(context, txt);
+                spy_y -= ICON_SPACING;
+                red_player_text_index++;
+            } else if (context->player_role == ROLE_AGENT) {
+                display_image(context->renderer, player_icon_red, red_text_x - 40, agent_y, 0.20, 0, SDL_FLIP_NONE, 1, 255);
+                update_text(context, txt, context->player_name ? context->player_name : "Moi");
+                update_text_position(txt, red_text_x + 20, agent_y);
+                display_text(context, txt);
+                agent_y -= ICON_SPACING;
+                red_player_text_index++;
+            }
+        }
+        
+        /* Afficher les autres joueurs rouges du lobby */
         for (int i = 0; i < context->lobby->nb_players && i < MAX_USERS; i++) {
             User* u = context->lobby->users[i];
             if (u && u->team == TEAM_RED && red_player_text_index < MAX_TEAM_PLAYERS) {
                 Text* txt = txt_red_players[red_player_text_index];
                 if (u->role == ROLE_SPY) {
+                    /* Icône + nom */
+                    display_image(context->renderer, player_icon_red, red_text_x - 40, spy_y, 0.20, 0, SDL_FLIP_NONE, 1, 255);
                     update_text(context, txt, u->name ? u->name : "???");
-                    update_text_position(txt, red_text_x, spy_y);
+                    update_text_position(txt, red_text_x + 20, spy_y);
                     display_text(context, txt);
-                    spy_y -= 25;
+                    spy_y -= ICON_SPACING;
                     red_player_text_index++;
                 } else if (u->role == ROLE_AGENT) {
+                    /* Icône + nom */
+                    display_image(context->renderer, player_icon_red, red_text_x - 40, agent_y, 0.20, 0, SDL_FLIP_NONE, 1, 255);
                     update_text(context, txt, u->name ? u->name : "???");
-                    update_text_position(txt, red_text_x, agent_y);
+                    update_text_position(txt, red_text_x + 20, agent_y);
                     display_text(context, txt);
-                    agent_y -= 25;
+                    agent_y -= ICON_SPACING;
                     red_player_text_index++;
                 }
             }
