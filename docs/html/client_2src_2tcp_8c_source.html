@@ -166,7 +166,7 @@ $(function(){initNavTree('client_2src_2tcp_8c_source.html','',''); });
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="comment">// Copier la ligne car on_message utilise strtok qui écraserait notre état</span></div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            <span class="keywordtype">char</span>* line_copy = strdup(line);</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <span class="keywordflow">if</span> (line_copy) {</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                printf(<span class="stringliteral">&quot;[SERVER] %s\n&quot;</span>, line_copy);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                <span class="comment">// printf(&quot;[SERVER] %s\n&quot;, line_copy);</span></div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                <span class="keywordtype">int</span> ret = <a class="code hl_function" href="client_2src_2message_8c.html#ab721dcd31c8851d491ef34ea7ae9dc9e">on_message</a>(context, line_copy);</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                free(line_copy);</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                <span class="keywordflow">if</span> (ret != EXIT_SUCCESS) {</div>
@@ -254,8 +254,8 @@ $(function(){initNavTree('client_2src_2tcp_8c_source.html','',''); });
 <div class="ttc" id="aclient_2src_2tcp_8c_html_a6b20d41d6252e9871430c242cb1a56e7"><div class="ttname"><a href="client_2src_2tcp_8c.html#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a></div><div class="ttdeci">#define BUFFER_SIZE</div><div class="ttdef"><b>Definition</b> <a href="#l00004">tcp.c:4</a></div></div>
 <div class="ttc" id="aclient_2src_2tcp_8c_html_a8f805fa6d3692001fb03edcb5a2736cc"><div class="ttname"><a href="client_2src_2tcp_8c.html#a8f805fa6d3692001fb03edcb5a2736cc">send_tcp</a></div><div class="ttdeci">int send_tcp(int sock, const char *payload)</div><div class="ttdef"><b>Definition</b> <a href="#l00122">tcp.c:122</a></div></div>
 <div class="ttc" id="aclient_2src_2tcp_8c_html_af00b615ca097c43dbb02ae3a00ea3a62"><div class="ttname"><a href="client_2src_2tcp_8c.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a></div><div class="ttdeci">char buffer[BUFFER_SIZE]</div><div class="ttdef"><b>Definition</b> <a href="#l00005">tcp.c:5</a></div></div>
-<div class="ttc" id="astructAppContext_html"><div class="ttname"><a href="structAppContext.html">AppContext</a></div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00038">sdl.h:38</a></div></div>
-<div class="ttc" id="astructAppContext_html_ae094faa774b18ad2519c7f88376098e0"><div class="ttname"><a href="structAppContext.html#ae094faa774b18ad2519c7f88376098e0">AppContext::sock</a></div><div class="ttdeci">int sock</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00044">sdl.h:44</a></div></div>
+<div class="ttc" id="astructAppContext_html"><div class="ttname"><a href="structAppContext.html">AppContext</a></div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00039">sdl.h:39</a></div></div>
+<div class="ttc" id="astructAppContext_html_ae094faa774b18ad2519c7f88376098e0"><div class="ttname"><a href="structAppContext.html#ae094faa774b18ad2519c7f88376098e0">AppContext::sock</a></div><div class="ttdeci">int sock</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00045">sdl.h:45</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
@@ -263,7 +263,7 @@ $(function(){initNavTree('client_2src_2tcp_8c_source.html','',''); });
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a href="client_2src_2tcp_8c.html">tcp.c</a></li>
-    <li class="footer">Généré le Lundi 23 Mars 2026 17:03:04 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+    <li class="footer">Généré le Lundi 23 Mars 2026 18:41:13 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
 </body>

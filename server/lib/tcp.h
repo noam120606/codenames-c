@@ -47,6 +47,13 @@ void tcp_server_destroy(TcpServer* server);
 /* Forward declaration to avoid circular include with codenames.h */
 typedef struct Codenames Codenames;
 
+/**
+ * Déconnecte un client du serveur.
+ * @param codenames Contexte principal du serveur.
+ * @param client Client à déconnecter.
+ */
+void tcp_disconnect(Codenames* codenames, TcpClient* client);
+
 /** 
  * Tick à appeler dans la boucle principale du serveur pour gérer les événements réseau.
  * @param codenames Contexte principal du serveur.

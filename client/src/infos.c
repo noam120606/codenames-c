@@ -170,41 +170,7 @@ int init_infos(AppContext* context) {
         audio_set_type_volume(AUDIO_SOUND_KIND_SFX, context->sound_effects_volume);
     }
 
-    /* Lire la version depuis le fichier "VERSION" de façon sûre :
-       on lit d'abord dans un tampon local puis on strdup() dans
-       context->version (libérant l'ancien si nécessaire).
-       On affiche la version comme cela : "V<version>" */
-    {
-        char verbuf[128] = {0};
-        FILE* v = fopen("../VERSION", "r");
-        if (v) {
-            if (fgets(verbuf, sizeof(verbuf), v)) {
-                /* Retirer le '\n' final */
-                size_t len = strlen(verbuf);
-                if (len > 0 && verbuf[len - 1] == '\n') verbuf[len - 1] = '\0';
-            } else {
-                verbuf[0] = '\0';
-            }
-            fclose(v);
-        } else {
-            /* Fallback : utiliser la macro CODENAMES_VERSION si le fichier est absent */
-            snprintf(verbuf, sizeof(verbuf), "%s", CODENAMES_VERSION);
-        }
-
-        if (context) {
-            if (context->version) {
-                free(context->version);
-            }
-            /* Préfixe 'V' pour affichage */
-            char prefixed[160];
-            snprintf(prefixed, sizeof(prefixed), "V%s", verbuf);
-            context->version = strdup(prefixed);
-            if (!context->version) {
-                /* En cas d'erreur d'allocation, conserver une chaîne vide */
-                context->version = strdup("");
-            }
-        }
-    }
+    
 
     /* Initialisation des textes optimisés */
     // Textes statiques (labels)

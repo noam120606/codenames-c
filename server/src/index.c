@@ -20,8 +20,6 @@ int main(int argc, char* argv[]) {
         return EXIT_FAILURE;
     }
 
-    printf("Starting the game server v%s on port %d...\n", CODENAMES_VERSION, port);
-
     // Initialisations diverses
     srand(time(NULL));
     init_game_manager();
@@ -32,6 +30,11 @@ int main(int argc, char* argv[]) {
         return EXIT_FAILURE;
     }
 
+    load_version(codenames);
+
+    printf("Starting the game server %s on port %d...\n", codenames->version, port);
+
+    // Démarrer le serveur
     codenames->tcp = tcp_server_create(port);
     if (codenames->tcp == NULL) {
         free(codenames);

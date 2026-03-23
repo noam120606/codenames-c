@@ -54,7 +54,7 @@ typedef struct AppContext {
     Card* cards[25];
     char* player_uuid;         /**< UUID unique du joueur. */
     char* player_name;         /**< Nom du joueur. */
-    char* version;             /**< Version du jeu (chargée depuis VERSION). */
+    char version[16];             /**< Version du jeu (chargée depuis VERSION). */
 } AppContext;
 
 /**

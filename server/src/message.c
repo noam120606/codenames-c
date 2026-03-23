@@ -42,8 +42,7 @@ int on_message(Codenames* codenames, TcpClient* client, char* message) {
         case MSG_STARTGAME: return request_start_game(codenames, client, message, args);
 
         case MSG_REQUESTUUID: return request_uuid(codenames, client, message, args);
-
-        
+        case MSG_COMPAREVERSION: return on_version_compare(codenames, client, message, args);
     }
 
     return EXIT_SUCCESS;
@@ -55,14 +54,6 @@ int on_leave(Codenames* codenames, TcpClient* client) {
     Lobby* owned_lobby = find_lobby_by_ownerid(codenames->lobby, client->id);
     if (owned_lobby) {
         int id = owned_lobby->id;
-
-        /*
-        User* user = find_user_by_id(owned_lobby, client->id);
-        if (user) {
-            printf("Client %d (%s) left lobby %d\n", user->id, user->name, id);
-            leave_lobby(owned_lobby, user);
-        }
-        */
 
         /* S'il reste des joueurs dans le lobby, on ne le détruit pas et on passe l'owner à un des joueurs restants */
         if (owned_lobby->nb_players > 1) {

@@ -46,5 +46,6 @@ var infos_8c =
     [ "txt_rules_title", "infos_8c.html#a48179d996f7a7dfd6f1906c9ab3dbf97", null ],
     [ "txt_server_distant", "infos_8c.html#a8cadf80ad86dae76d8cfebd4a00eb761", null ],
     [ "txt_server_local", "infos_8c.html#a22f957f831b5f806b6bfd7da5d640746", null ],
-    [ "txt_sfx_label", "infos_8c.html#ad4627060590d6ba5dca7f987b1b801c9", null ]
+    [ "txt_sfx_label", "infos_8c.html#ad4627060590d6ba5dca7f987b1b801c9", null ],
+    [ "txt_version", "infos_8c.html#a601c5254eb24236836efa250186165bc", null ]
 ];

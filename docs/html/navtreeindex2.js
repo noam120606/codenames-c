@@ -1,5 +1,12 @@
 var NAVTREEINDEX2 =
 {
+"index.html#autotoc_md28":[0,7,0],
+"index.html#autotoc_md29":[0,7,1],
+"index.html#autotoc_md3":[0,1],
+"index.html#autotoc_md30":[0,7,2],
+"index.html#autotoc_md32":[0,8],
+"index.html#autotoc_md34":[0,9],
+"index.html#autotoc_md4":[0,1,0],
 "index.html#autotoc_md5":[0,1,1],
 "index.html#autotoc_md7":[0,2],
 "index.html#autotoc_md9":[0,3],
@@ -21,6 +28,7 @@ var NAVTREEINDEX2 =
 "infos_8c.html#a566c6caa6b73617f62dc4402dbee67ce":[2,0,0,1,6,36],
 "infos_8c.html#a56e3dfd620e48606c0f39ab976eec6cd":[2,0,0,1,6,18],
 "infos_8c.html#a5c10f13bdcbb57a755889ae15393ff10":[2,0,0,1,6,22],
+"infos_8c.html#a601c5254eb24236836efa250186165bc":[2,0,0,1,6,42],
 "infos_8c.html#a6910c41b9159f3272486cb7ec7cb3336":[2,0,0,1,6,12],
 "infos_8c.html#a74f1c18506ff8cbfce8cf43f20f59fbb":[2,0,0,1,6,5],
 "infos_8c.html#a7529f877faba58638faeeeab49d47068":[2,0,0,1,6,27],
@@ -228,7 +236,6 @@ var NAVTREEINDEX2 =
 "sdl_8h.html#af2c6b730c5804f9e1d59476c6b24e93d":[2,0,0,0,14,7],
 "sdl_8h_source.html":[2,0,0,0,14],
 "server_2lib_2all_8h.html":[2,0,1,0,0],
-"server_2lib_2all_8h.html#a7d756a646ff6787a441e27ba0dfbee88":[2,0,1,0,0,0],
 "server_2lib_2all_8h_source.html":[2,0,1,0,0],
 "server_2lib_2game_8h.html":[2,0,1,0,2],
 "server_2lib_2game_8h.html#a2185b55f783b76da98f60ddfedae594d":[2,0,1,0,2,2],
@@ -242,12 +249,5 @@ var NAVTREEINDEX2 =
 "server_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285af079481b440a51bd16e0cce30e777204":[2,0,1,0,2,4,1],
 "server_2lib_2game_8h.html#a7ae5673b1ec898e007a5641fd3d43b3d":[2,0,1,0,2,9],
 "server_2lib_2game_8h.html#a97dfd080f74c933486fe8c2f39250faf":[2,0,1,0,2,10],
-"server_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598":[2,0,1,0,2,5],
-"server_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598a097bdc2bb8d24f733c06f0be9b66bc3d":[2,0,1,0,2,5,1],
-"server_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598a61552105f8585ebcf1056afa4085d92b":[2,0,1,0,2,5,3],
-"server_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598a66bbf321f9fe6b3387090eb97e230c68":[2,0,1,0,2,5,0],
-"server_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598aa36a5d6a8d34fba0b01fc4e56cd2a240":[2,0,1,0,2,5,2],
-"server_2lib_2game_8h.html#aa0542d3562ef733d7367f8b6f79809ad":[2,0,1,0,2,6],
-"server_2lib_2game_8h_source.html":[2,0,1,0,2],
-"server_2lib_2list_8h.html":[2,0,1,0,3]
+"server_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598":[2,0,1,0,2,5]
 };

@@ -80,6 +80,10 @@ static void remove_client(Codenames* codenames, TcpClient* client) {
     memset(client, 0, sizeof(TcpClient));
 }
 
+void tcp_disconnect(Codenames* codenames, TcpClient* client) {
+    remove_client(codenames, client);
+}
+
 void tcp_server_tick(Codenames* codenames) {
     TcpServer* server = codenames->tcp;
 

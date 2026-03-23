@@ -99,17 +99,19 @@ $(function(){initNavTree('structCodenames.html','',''); });
 Champs de données</h2></td></tr>
 <tr class="memitem:a9b446405ee95a45f8c4bb68033e7119d" id="r_a9b446405ee95a45f8c4bb68033e7119d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTcpServer.html">TcpServer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b446405ee95a45f8c4bb68033e7119d">tcp</a></td></tr>
 <tr class="memitem:a60e595ede4c21bb5ab8aeead6009726a" id="r_a60e595ede4c21bb5ab8aeead6009726a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLobbyManager.html">LobbyManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a60e595ede4c21bb5ab8aeead6009726a">lobby</a></td></tr>
+<tr class="memitem:ad580c29675babacd6aa96e65e0f71151" id="r_ad580c29675babacd6aa96e65e0f71151"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad580c29675babacd6aa96e65e0f71151">version</a> [16]</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Structure principale du serveur de <a class="el" href="structCodenames.html">Codenames</a>. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">tcp</td><td>gestionnaire du serveur TCP (sockets, clients, etc.). </td></tr>
     <tr><td class="paramname">lobby</td><td>gestionnaire des lobbies (parties en attente, joueurs, etc.). </td></tr>
+    <tr><td class="paramname">version</td><td>version du serveur. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="codenames_8h_source.html#l00012">12</a> du fichier <a class="el" href="codenames_8h_source.html">codenames.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="codenames_8h_source.html#l00013">13</a> du fichier <a class="el" href="codenames_8h_source.html">codenames.h</a>.</p>
 </div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Documentation des champs</h2>
 <a id="a60e595ede4c21bb5ab8aeead6009726a" name="a60e595ede4c21bb5ab8aeead6009726a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a60e595ede4c21bb5ab8aeead6009726a">&#9670;&#160;</a></span>lobby</h2>
@@ -123,9 +125,9 @@ Champs de données</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="codenames_8h_source.html#l00014">14</a> du fichier <a class="el" href="codenames_8h_source.html">codenames.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="codenames_8h_source.html#l00015">15</a> du fichier <a class="el" href="codenames_8h_source.html">codenames.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00147">destroy_lobby()</a>, <a class="el" href="server_2src_2index_8c_source.html#l00003">main()</a>, <a class="el" href="server_2src_2message_8c_source.html#l00052">on_leave()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00301">request_choose_role()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00160">request_create_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00192">request_join_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00244">request_leave_lobby()</a>, et <a class="el" href="server_2src_2game_8c_source.html#l00110">request_start_game()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00147">destroy_lobby()</a>, <a class="el" href="server_2src_2index_8c_source.html#l00003">main()</a>, <a class="el" href="server_2src_2message_8c_source.html#l00051">on_leave()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00301">request_choose_role()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00160">request_create_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00192">request_join_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00244">request_leave_lobby()</a>, et <a class="el" href="server_2src_2game_8c_source.html#l00110">request_start_game()</a>.</p>
 
 </div>
 </div>
@@ -141,9 +143,27 @@ Champs de données</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="codenames_8h_source.html#l00013">13</a> du fichier <a class="el" href="codenames_8h_source.html">codenames.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="codenames_8h_source.html#l00014">14</a> du fichier <a class="el" href="codenames_8h_source.html">codenames.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2tcp_8c_source.html#l00060">add_client()</a>, <a class="el" href="server_2src_2index_8c_source.html#l00003">main()</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00131">tcp_send_to_client()</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00083">tcp_server_tick()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2tcp_8c_source.html#l00060">add_client()</a>, <a class="el" href="server_2src_2index_8c_source.html#l00003">main()</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00135">tcp_send_to_client()</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00087">tcp_server_tick()</a>.</p>
+
+</div>
+</div>
+<a id="ad580c29675babacd6aa96e65e0f71151" name="ad580c29675babacd6aa96e65e0f71151"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad580c29675babacd6aa96e65e0f71151">&#9670;&#160;</a></span>version</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Codenames::version[16]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="codenames_8h_source.html#l00016">16</a> du fichier <a class="el" href="codenames_8h_source.html">codenames.h</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="server_2src_2version_8c_source.html#l00003">load_version()</a>, <a class="el" href="server_2src_2index_8c_source.html#l00003">main()</a>, et <a class="el" href="server_2src_2version_8c_source.html#l00024">on_version_compare()</a>.</p>
 
 </div>
 </div>
@@ -164,7 +184,7 @@ Champs de données</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a href="structCodenames.html">Codenames</a></li>
-    <li class="footer">Généré le Lundi 23 Mars 2026 17:03:04 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+    <li class="footer">Généré le Lundi 23 Mars 2026 18:41:14 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
 </body>

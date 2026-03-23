@@ -12,10 +12,6 @@
 #include <arpa/inet.h>
 #include <sys/select.h>
 
-#ifndef CODENAMES_VERSION
-#define CODENAMES_VERSION "dev"
-#endif
-
 #include "../SDL2/include/SDL2/SDL.h"
 #include "../SDL2/include/SDL2/SDL_image.h"
 #include "../SDL2/include/SDL2/SDL_ttf.h"
@@ -40,5 +36,6 @@
 #include "../lib/ressources.h"
 #include "../lib/save.h"
 #include "../lib/window.h"
+#include "../lib/version.h"
 
 #endif // ALL_H

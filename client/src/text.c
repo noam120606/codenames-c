@@ -22,7 +22,7 @@ TextConfig create_text_config(const char* font_path, int size, SDL_Color color, 
 }
 
 void reload_text(AppContext* context, Text* text) {
-    if (!text || !context) return;
+    if (!text || !text->content || !context || text->content[0] == '\0') return;
 
     if (text->texture) {
         SDL_DestroyTexture(text->texture);

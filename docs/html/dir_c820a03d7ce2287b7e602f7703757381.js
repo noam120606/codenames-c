@@ -1,6 +1,6 @@
 var dir_c820a03d7ce2287b7e602f7703757381 =
 [
-    [ "all.h", "client_2lib_2all_8h.html", "client_2lib_2all_8h" ],
+    [ "all.h", "client_2lib_2all_8h.html", null ],
     [ "audio.h", "audio_8h.html", "audio_8h" ],
     [ "background.h", "background_8h.html", "background_8h" ],
     [ "button.h", "button_8h.html", "button_8h" ],
@@ -19,5 +19,6 @@ var dir_c820a03d7ce2287b7e602f7703757381 =
     [ "text.h", "text_8h.html", "text_8h" ],
     [ "user.h", "client_2lib_2user_8h.html", "client_2lib_2user_8h" ],
     [ "utils.h", "client_2lib_2utils_8h.html", "client_2lib_2utils_8h" ],
+    [ "version.h", "client_2lib_2version_8h.html", "client_2lib_2version_8h" ],
     [ "window.h", "window_8h.html", "window_8h" ]
 ];

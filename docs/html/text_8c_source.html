@@ -121,7 +121,7 @@ $(function(){initNavTree('text_8c_source.html','',''); });
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
 <div class="foldopen" id="foldopen00024" data-start="{" data-end="}">
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="text_8c.html#a4f18e0289e818bb799834fa1c6516d87">   24</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="text_8c.html#a4f18e0289e818bb799834fa1c6516d87">reload_text</a>(<a class="code hl_struct" href="structAppContext.html">AppContext</a>* context, <a class="code hl_struct" href="structText.html">Text</a>* text) {</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordflow">if</span> (!text || !context) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordflow">if</span> (!text || !text-&gt;<a class="code hl_variable" href="structText.html#a3f476bfa356f497d3c04202feaeb000f">content</a> || !context || text-&gt;<a class="code hl_variable" href="structText.html#a3f476bfa356f497d3c04202feaeb000f">content</a>[0] == <span class="charliteral">&#39;\0&#39;</span>) <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">if</span> (text-&gt;<a class="code hl_variable" href="structText.html#aea2a82ef1d8b4d448b6b3e524bce2cc2">texture</a>) {</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        SDL_DestroyTexture(text-&gt;<a class="code hl_variable" href="structText.html#aea2a82ef1d8b4d448b6b3e524bce2cc2">texture</a>);</div>
@@ -249,8 +249,8 @@ $(function(){initNavTree('text_8c_source.html','',''); });
 <div class="ttc" id="aclient_2lib_2all_8h_html"><div class="ttname"><a href="client_2lib_2all_8h.html">all.h</a></div></div>
 <div class="ttc" id="asdl_8h_html_a0a33b1743038db1adbbf1045aa839b38"><div class="ttname"><a href="sdl_8h.html#a0a33b1743038db1adbbf1045aa839b38">WIN_HEIGHT</a></div><div class="ttdeci">#define WIN_HEIGHT</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00015">sdl.h:15</a></div></div>
 <div class="ttc" id="asdl_8h_html_a2e6ef411e0ff00ad889788b6cde701b5"><div class="ttname"><a href="sdl_8h.html#a2e6ef411e0ff00ad889788b6cde701b5">WIN_WIDTH</a></div><div class="ttdeci">#define WIN_WIDTH</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00014">sdl.h:14</a></div></div>
-<div class="ttc" id="astructAppContext_html"><div class="ttname"><a href="structAppContext.html">AppContext</a></div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00038">sdl.h:38</a></div></div>
-<div class="ttc" id="astructAppContext_html_a70a91ad56405a07962fe46fa7f640882"><div class="ttname"><a href="structAppContext.html#a70a91ad56405a07962fe46fa7f640882">AppContext::renderer</a></div><div class="ttdeci">SDL_Renderer * renderer</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00040">sdl.h:40</a></div></div>
+<div class="ttc" id="astructAppContext_html"><div class="ttname"><a href="structAppContext.html">AppContext</a></div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00039">sdl.h:39</a></div></div>
+<div class="ttc" id="astructAppContext_html_a70a91ad56405a07962fe46fa7f640882"><div class="ttname"><a href="structAppContext.html#a70a91ad56405a07962fe46fa7f640882">AppContext::renderer</a></div><div class="ttdeci">SDL_Renderer * renderer</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00041">sdl.h:41</a></div></div>
 <div class="ttc" id="astructTextConfig_html"><div class="ttname"><a href="structTextConfig.html">TextConfig</a></div><div class="ttdef"><b>Definition</b> <a href="text_8h_source.html#l00016">text.h:16</a></div></div>
 <div class="ttc" id="astructTextConfig_html_a02386a90e9da07ac4788fd7a77245bc9"><div class="ttname"><a href="structTextConfig.html#a02386a90e9da07ac4788fd7a77245bc9">TextConfig::x</a></div><div class="ttdeci">int x</div><div class="ttdef"><b>Definition</b> <a href="text_8h_source.html#l00020">text.h:20</a></div></div>
 <div class="ttc" id="astructTextConfig_html_a17cc89e4ae28eb580932cef65c3d50d1"><div class="ttname"><a href="structTextConfig.html#a17cc89e4ae28eb580932cef65c3d50d1">TextConfig::color</a></div><div class="ttdeci">SDL_Color color</div><div class="ttdef"><b>Definition</b> <a href="text_8h_source.html#l00019">text.h:19</a></div></div>
@@ -280,7 +280,7 @@ $(function(){initNavTree('text_8c_source.html','',''); });
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a href="text_8c.html">text.c</a></li>
-    <li class="footer">Généré le Lundi 23 Mars 2026 17:03:04 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+    <li class="footer">Généré le Lundi 23 Mars 2026 18:41:13 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
 </body>

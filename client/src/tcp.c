@@ -69,7 +69,7 @@ int tick_tcp(AppContext* context) {
             // Copier la ligne car on_message utilise strtok qui écraserait notre état
             char* line_copy = strdup(line);
             if (line_copy) {
-                printf("[SERVER] %s\n", line_copy);
+                // printf("[SERVER] %s\n", line_copy);
                 int ret = on_message(context, line_copy);
                 free(line_copy);
                 if (ret != EXIT_SUCCESS) {

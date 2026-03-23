@@ -16,5 +16,6 @@ var structAppContext =
     [ "renderer", "structAppContext.html#a70a91ad56405a07962fe46fa7f640882", null ],
     [ "sock", "structAppContext.html#ae094faa774b18ad2519c7f88376098e0", null ],
     [ "sound_effects_volume", "structAppContext.html#ac754a95e774d145e7a60387c1bfd0de9", null ],
+    [ "version", "structAppContext.html#a9c886b815d7fb53d4820a2366bb46820", null ],
     [ "window", "structAppContext.html#a04bd2282bfa748f6c8dcf4564d48ac6c", null ]
 ];

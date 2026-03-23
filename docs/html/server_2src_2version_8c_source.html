@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Codenames:  Fichier source de server/src/version.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Codenames<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Jeu Codenames multijoueur en C - Client SDL2 et Serveur TCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('server_2src_2version_8c_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">version.c</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="server_2src_2version_8c.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="server_2lib_2all_8h.html">../lib/all.h</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="foldopen" id="foldopen00003" data-start="{" data-end="}">
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="server_2src_2version_8c.html#aa379470bb63ced6588048ab884e0be3f">    3</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="client_2src_2version_8c.html#a20de9f93e1ebf6d1d2299d8d0ee6b1e0">load_version</a>(<a class="code hl_struct" href="structCodenames.html">Codenames</a>* codenames) {</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>    <span class="keywordtype">char</span> version[16] = {0};</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    FILE* v = fopen(<span class="stringliteral">&quot;../VERSION&quot;</span>, <span class="stringliteral">&quot;r&quot;</span>);</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keywordflow">if</span> (v) {</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>        <span class="keywordflow">if</span> (fgets(version, <span class="keyword">sizeof</span>(version), v)) {</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>            <span class="comment">/* Retirer le &#39;\n&#39; final */</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>            <span class="keywordtype">size_t</span> len = strlen(version);</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>            <span class="keywordflow">if</span> (len &gt; 0 &amp;&amp; version[len - 1] == <span class="charliteral">&#39;\n&#39;</span>) version[len - 1] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>            version[0] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        }</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        fclose(v);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="comment">/* Fallback : 0.0.0 si le fichier est absent */</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        snprintf(version, <span class="keyword">sizeof</span>(version), <span class="stringliteral">&quot;%s&quot;</span>, <span class="stringliteral">&quot;0.0.0&quot;</span>);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    }</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    snprintf(codenames-&gt;<a class="code hl_variable" href="structCodenames.html#ad580c29675babacd6aa96e65e0f71151">version</a>, <span class="keyword">sizeof</span>(codenames-&gt;<a class="code hl_variable" href="structCodenames.html#ad580c29675babacd6aa96e65e0f71151">version</a>), <span class="stringliteral">&quot;V%s&quot;</span>, version);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>}</div>
+</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="foldopen" id="foldopen00024" data-start="{" data-end="}">
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="server_2src_2version_8c.html#afa30bed3efd45e2a49841fad471ab04c">   24</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="server_2src_2version_8c.html#afa30bed3efd45e2a49841fad471ab04c">on_version_compare</a>(<a class="code hl_struct" href="structCodenames.html">Codenames</a>* codenames, <a class="code hl_struct" href="structTcpClient.html">TcpClient</a>* client, <span class="keywordtype">char</span>* message, <a class="code hl_struct" href="structArguments.html">Arguments</a> args) {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordflow">if</span> (args.<a class="code hl_variable" href="structArguments.html#ad7e02331365bd54d9d3abdef6b81dc30">argc</a> &lt; 1) {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        printf(<span class="stringliteral">&quot;Invalid version compare message from client %d\n&quot;</span>, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    }</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">const</span> <span class="keywordtype">char</span>* client_version = args.<a class="code hl_variable" href="structArguments.html#a29e8dac2f7b3adc32cbd95e9a4162194">argv</a>[0];</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    printf(<span class="stringliteral">&quot;Comparing versions: client=%s server=%s\n&quot;</span>, client_version, codenames-&gt;<a class="code hl_variable" href="structCodenames.html#ad580c29675babacd6aa96e65e0f71151">version</a>);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordflow">if</span> (strcmp(client_version, codenames-&gt;<a class="code hl_variable" href="structCodenames.html#ad580c29675babacd6aa96e65e0f71151">version</a>) != 0) {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        printf(<span class="stringliteral">&quot;Client %d has an outdated version\n&quot;</span>, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordtype">char</span> response[64];</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <a class="code hl_function" href="client_2src_2utils_8c.html#ade6960f663c739637ee1beaf757c5f24">format_to</a>(response, <span class="keyword">sizeof</span>(response), <span class="stringliteral">&quot;%d Your version is outdated (%s instead of %s)&quot;</span>, <a class="code hl_enumvalue" href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013ac0b16798f47a9d0c23cbe6a3dc242c0d">MSG_INFO</a>, client_version, codenames-&gt;<a class="code hl_variable" href="structCodenames.html#ad580c29675babacd6aa96e65e0f71151">version</a>);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <a class="code hl_function" href="server_2src_2tcp_8c.html#ae3efc44467ee08b4d29bcc4ef7886119">tcp_send_to_client</a>(codenames, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>, response);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <a class="code hl_function" href="server_2src_2tcp_8c.html#a502d691574df99a3251b25dfc19cb927">tcp_disconnect</a>(codenames, client); <span class="comment">// Deconnexion</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    }</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>}</div>
+</div>
+<div class="ttc" id="aclient_2lib_2message_8h_html_ac6606ebe91c8ac66a2c314c79f5ab013ac0b16798f47a9d0c23cbe6a3dc242c0d"><div class="ttname"><a href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013ac0b16798f47a9d0c23cbe6a3dc242c0d">MSG_INFO</a></div><div class="ttdeci">@ MSG_INFO</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00026">message.h:26</a></div></div>
+<div class="ttc" id="aclient_2src_2utils_8c_html_ade6960f663c739637ee1beaf757c5f24"><div class="ttname"><a href="client_2src_2utils_8c.html#ade6960f663c739637ee1beaf757c5f24">format_to</a></div><div class="ttdeci">int format_to(char *buf, size_t size, const char *fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2utils_8c_source.html#l00017">utils.c:17</a></div></div>
+<div class="ttc" id="aclient_2src_2version_8c_html_a20de9f93e1ebf6d1d2299d8d0ee6b1e0"><div class="ttname"><a href="client_2src_2version_8c.html#a20de9f93e1ebf6d1d2299d8d0ee6b1e0">load_version</a></div><div class="ttdeci">void load_version(AppContext *context)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2version_8c_source.html#l00003">version.c:3</a></div></div>
+<div class="ttc" id="aserver_2lib_2all_8h_html"><div class="ttname"><a href="server_2lib_2all_8h.html">all.h</a></div></div>
+<div class="ttc" id="aserver_2src_2tcp_8c_html_a502d691574df99a3251b25dfc19cb927"><div class="ttname"><a href="server_2src_2tcp_8c.html#a502d691574df99a3251b25dfc19cb927">tcp_disconnect</a></div><div class="ttdeci">void tcp_disconnect(Codenames *codenames, TcpClient *client)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2tcp_8c_source.html#l00083">tcp.c:83</a></div></div>
+<div class="ttc" id="aserver_2src_2tcp_8c_html_ae3efc44467ee08b4d29bcc4ef7886119"><div class="ttname"><a href="server_2src_2tcp_8c.html#ae3efc44467ee08b4d29bcc4ef7886119">tcp_send_to_client</a></div><div class="ttdeci">int tcp_send_to_client(Codenames *codenames, int client_id, const char *message)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2tcp_8c_source.html#l00135">tcp.c:135</a></div></div>
+<div class="ttc" id="aserver_2src_2version_8c_html_afa30bed3efd45e2a49841fad471ab04c"><div class="ttname"><a href="server_2src_2version_8c.html#afa30bed3efd45e2a49841fad471ab04c">on_version_compare</a></div><div class="ttdeci">int on_version_compare(Codenames *codenames, TcpClient *client, char *message, Arguments args)</div><div class="ttdef"><b>Definition</b> <a href="#l00024">version.c:24</a></div></div>
+<div class="ttc" id="astructArguments_html"><div class="ttname"><a href="structArguments.html">Arguments</a></div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00045">message.h:45</a></div></div>
+<div class="ttc" id="astructArguments_html_a29e8dac2f7b3adc32cbd95e9a4162194"><div class="ttname"><a href="structArguments.html#a29e8dac2f7b3adc32cbd95e9a4162194">Arguments::argv</a></div><div class="ttdeci">char ** argv</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00047">message.h:47</a></div></div>
+<div class="ttc" id="astructArguments_html_ad7e02331365bd54d9d3abdef6b81dc30"><div class="ttname"><a href="structArguments.html#ad7e02331365bd54d9d3abdef6b81dc30">Arguments::argc</a></div><div class="ttdeci">int argc</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00046">message.h:46</a></div></div>
+<div class="ttc" id="astructCodenames_html"><div class="ttname"><a href="structCodenames.html">Codenames</a></div><div class="ttdef"><b>Definition</b> <a href="codenames_8h_source.html#l00013">codenames.h:13</a></div></div>
+<div class="ttc" id="astructCodenames_html_ad580c29675babacd6aa96e65e0f71151"><div class="ttname"><a href="structCodenames.html#ad580c29675babacd6aa96e65e0f71151">Codenames::version</a></div><div class="ttdeci">char version[16]</div><div class="ttdef"><b>Definition</b> <a href="codenames_8h_source.html#l00016">codenames.h:16</a></div></div>
+<div class="ttc" id="astructTcpClient_html"><div class="ttname"><a href="structTcpClient.html">TcpClient</a></div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2tcp_8h_source.html#l00014">tcp.h:14</a></div></div>
+<div class="ttc" id="astructTcpClient_html_a28a40517fae053778f34c4c8498b83b6"><div class="ttname"><a href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">TcpClient::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2tcp_8h_source.html#l00015">tcp.h:15</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a href="dir_a063914ab482288b7b0e1b2fca86158c.html">src</a></li><li class="navelem"><a href="server_2src_2version_8c.html">version.c</a></li>
+    <li class="footer">Généré le Lundi 23 Mars 2026 18:41:13 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

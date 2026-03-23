@@ -25,7 +25,11 @@ int on_message(AppContext* context, char* message) {
     MessageType header = fetch_header(message);
     message += number_length((int)header) + 1; // Skip header et espace
 
-    Arguments args = parse_arguments(message);
+     /* Keep a raw copy of the message (everything after the header)
+         so we can print the full argument string later even though
+         parse_arguments() will modify `message` with strtok(). */
+     char* raw_message = strdup(message);
+     Arguments args = parse_arguments(message);
 
     switch (header) {
 
@@ -40,6 +44,18 @@ int on_message(AppContext* context, char* message) {
             
         case MSG_UNKNOWN: 
             printf("Received unknown message from server: \"%s\"\n", message);
+            break;
+
+        case MSG_INFO:
+            if (args.argc < 1) {
+            printf("Invalid info message from server: \"%s\"\n", message);
+                if (args.argv) free(args.argv);
+                return EXIT_FAILURE;
+            }
+
+            /* Print the entire argument string (everything after header) */
+            printf("Info from server: %s\n", raw_message ? raw_message : "");
+
             break;
 
         case MSG_CREATELOBBY: // Confirmation de la création du lobby, avec l'id du lobby créé
@@ -207,6 +223,7 @@ int on_message(AppContext* context, char* message) {
     };
 
     if (args.argv) free(args.argv);
+    if (raw_message) free(raw_message);
 
     return EXIT_SUCCESS;
 }  

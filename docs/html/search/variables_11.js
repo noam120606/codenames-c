@@ -36,5 +36,6 @@ var searchData=
   ['txt_5fsfx_5flabel_33',['txt_sfx_label',['../infos_8c.html#ad4627060590d6ba5dca7f987b1b801c9',1,'infos.c']]],
   ['txt_5fteam_5fblue_5ftitle_34',['txt_team_blue_title',['../client_2src_2game_8c.html#ae84fa88101ef501acd7b14ae78b60daf',1,'game.c']]],
   ['txt_5fteam_5fred_5ftitle_35',['txt_team_red_title',['../client_2src_2game_8c.html#a23dd2f16818715c840f7e1f7162c6407',1,'game.c']]],
-  ['type_5fvolumes_36',['type_volumes',['../audio_8c.html#adeb20f7aeb6743520d75d3a8301ef162',1,'audio.c']]]
+  ['txt_5fversion_36',['txt_version',['../infos_8c.html#a601c5254eb24236836efa250186165bc',1,'infos.c']]],
+  ['type_5fvolumes_37',['type_volumes',['../audio_8c.html#adeb20f7aeb6743520d75d3a8301ef162',1,'audio.c']]]
 ];

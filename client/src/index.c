@@ -54,7 +54,7 @@ int main(int argc, char* argv[]){
         return EXIT_FAILURE;
     }
 
-    printf("Starting Codenames Client v%s...\n", CODENAMES_VERSION);
+    printf("Starting Codenames Client...");
 
     Resources* resources = init_resources();
     if (!resources) {
@@ -87,6 +87,9 @@ int main(int argc, char* argv[]){
     }
 
     printf("Connected to server at %s:%d\n", ip, port);
+
+    load_version(&context);
+    printf("Codenames Client Version: %s\n", context.version);
 
     // Gestion de l'UUID du joueur
     context.player_uuid = NULL;
@@ -223,7 +226,7 @@ int main(int argc, char* argv[]){
                 lobby_display(&context);
                 break;
             case APP_STATE_PLAYING:
-                context.bg_color = (SDL_Color){80, 30, 30, 255};  // Rouge foncé pour le jeu
+                context.bg_color = context.player_team == TEAM_RED ? (SDL_Color){80, 30, 30, 255} : (SDL_Color){40, 40, 80, 255};  // Couleur du background en fonction de l'equipe
                 display_background(&context);
                 game_display(&context);
                 break;
