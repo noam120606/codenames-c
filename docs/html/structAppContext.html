@@ -3,16 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence de la structure AppContext</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -34,21 +35,20 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.9.8 -->
+<!-- Généré par Doxygen 1.14.0 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-/* @license-end */
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
 });
-/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,10 +63,9 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('structAppContext.html',''); initResizable(); });
-/* @license-end */
+$(function(){initNavTree('structAppContext.html','',''); });
 </script>
+<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -90,54 +89,38 @@ $(document).ready(function(){initNavTree('structAppContext.html',''); initResiza
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle"><div class="title">Référence de la structure AppContext</div></div>
 </div><!--header-->
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="sdl_8h_source.html">sdl.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr class="memitem:a04bd2282bfa748f6c8dcf4564d48ac6c" id="r_a04bd2282bfa748f6c8dcf4564d48ac6c"><td class="memItemLeft" align="right" valign="top">SDL_Window *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAppContext.html#a04bd2282bfa748f6c8dcf4564d48ac6c">window</a></td></tr>
-<tr class="separator:a04bd2282bfa748f6c8dcf4564d48ac6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70a91ad56405a07962fe46fa7f640882" id="r_a70a91ad56405a07962fe46fa7f640882"><td class="memItemLeft" align="right" valign="top">SDL_Renderer *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAppContext.html#a70a91ad56405a07962fe46fa7f640882">renderer</a></td></tr>
-<tr class="separator:a70a91ad56405a07962fe46fa7f640882"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0836b90fd45bdb3c8113599a4b07124" id="r_aa0836b90fd45bdb3c8113599a4b07124"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAppContext.html#aa0836b90fd45bdb3c8113599a4b07124">clock</a></td></tr>
-<tr class="separator:aa0836b90fd45bdb3c8113599a4b07124"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9d77d7d3c4f3a49436ab668385b847e" id="r_ae9d77d7d3c4f3a49436ab668385b847e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAppContext.html#ae9d77d7d3c4f3a49436ab668385b847e">fps</a></td></tr>
-<tr class="separator:ae9d77d7d3c4f3a49436ab668385b847e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae094faa774b18ad2519c7f88376098e0" id="r_ae094faa774b18ad2519c7f88376098e0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAppContext.html#ae094faa774b18ad2519c7f88376098e0">sock</a></td></tr>
-<tr class="separator:ae094faa774b18ad2519c7f88376098e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0482118779b050a3a693031790e0ebf6" id="r_a0482118779b050a3a693031790e0ebf6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLobby.html">Lobby</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAppContext.html#a0482118779b050a3a693031790e0ebf6">lobby</a></td></tr>
-<tr class="separator:a0482118779b050a3a693031790e0ebf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12358a947c811f31061ea211c1956784" id="r_a12358a947c811f31061ea211c1956784"><td class="memItemLeft" align="right" valign="top"><a class="el" href="client_2lib_2game_8h.html#a83fc559664fc7c7e310c93586457b428">AppState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAppContext.html#a12358a947c811f31061ea211c1956784">app_state</a></td></tr>
-<tr class="separator:a12358a947c811f31061ea211c1956784"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acdea17bcfc0e068e8cf73241280b1ebe" id="r_acdea17bcfc0e068e8cf73241280b1ebe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775">UserRole</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAppContext.html#acdea17bcfc0e068e8cf73241280b1ebe">player_role</a></td></tr>
-<tr class="separator:acdea17bcfc0e068e8cf73241280b1ebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02cb522b64d54cadeacd519e4468e3b4" id="r_a02cb522b64d54cadeacd519e4468e3b4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAppContext.html#a02cb522b64d54cadeacd519e4468e3b4">player_team</a></td></tr>
-<tr class="separator:a02cb522b64d54cadeacd519e4468e3b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8f74eb4803c461921f64cb543650c22" id="r_ab8f74eb4803c461921f64cb543650c22"><td class="memItemLeft" align="right" valign="top">Uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAppContext.html#ab8f74eb4803c461921f64cb543650c22">frame_start_time</a></td></tr>
-<tr class="separator:ab8f74eb4803c461921f64cb543650c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a109b81a1fc4136ff7e0ae5727a735975" id="r_a109b81a1fc4136ff7e0ae5727a735975"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAppContext.html#a109b81a1fc4136ff7e0ae5727a735975">ping_ms</a></td></tr>
-<tr class="separator:a109b81a1fc4136ff7e0ae5727a735975"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8691eee497ea679662d39b2926343394" id="r_a8691eee497ea679662d39b2926343394"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAppContext.html#a8691eee497ea679662d39b2926343394">music_volume</a></td></tr>
-<tr class="separator:a8691eee497ea679662d39b2926343394"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac754a95e774d145e7a60387c1bfd0de9" id="r_ac754a95e774d145e7a60387c1bfd0de9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAppContext.html#ac754a95e774d145e7a60387c1bfd0de9">sound_effects_volume</a></td></tr>
-<tr class="separator:ac754a95e774d145e7a60387c1bfd0de9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af06e68308f2663feacf57e5055e54a0b" id="r_af06e68308f2663feacf57e5055e54a0b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sdl_8h.html#a23ff27324f1ac52bcafa4cc91e2c2744">Card</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAppContext.html#af06e68308f2663feacf57e5055e54a0b">cards</a> [25]</td></tr>
-<tr class="separator:af06e68308f2663feacf57e5055e54a0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e75d9cd35b7645dc8803102396c4f7a" id="r_a8e75d9cd35b7645dc8803102396c4f7a"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAppContext.html#a8e75d9cd35b7645dc8803102396c4f7a">player_uuid</a></td></tr>
-<tr class="separator:a8e75d9cd35b7645dc8803102396c4f7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30c1cf80cb97e4947d684a813b1ff8fa" id="r_a30c1cf80cb97e4947d684a813b1ff8fa"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAppContext.html#a30c1cf80cb97e4947d684a813b1ff8fa">player_name</a></td></tr>
-<tr class="separator:a30c1cf80cb97e4947d684a813b1ff8fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04bd2282bfa748f6c8dcf4564d48ac6c" id="r_a04bd2282bfa748f6c8dcf4564d48ac6c"><td class="memItemLeft" align="right" valign="top">SDL_Window *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04bd2282bfa748f6c8dcf4564d48ac6c">window</a></td></tr>
+<tr class="memitem:a70a91ad56405a07962fe46fa7f640882" id="r_a70a91ad56405a07962fe46fa7f640882"><td class="memItemLeft" align="right" valign="top">SDL_Renderer *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a70a91ad56405a07962fe46fa7f640882">renderer</a></td></tr>
+<tr class="memitem:a8dd06081b28551d292567af46730b101" id="r_a8dd06081b28551d292567af46730b101"><td class="memItemLeft" align="right" valign="top">SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8dd06081b28551d292567af46730b101">bg_color</a></td></tr>
+<tr class="memitem:aa0836b90fd45bdb3c8113599a4b07124" id="r_aa0836b90fd45bdb3c8113599a4b07124"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0836b90fd45bdb3c8113599a4b07124">clock</a></td></tr>
+<tr class="memitem:ae9d77d7d3c4f3a49436ab668385b847e" id="r_ae9d77d7d3c4f3a49436ab668385b847e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae9d77d7d3c4f3a49436ab668385b847e">fps</a></td></tr>
+<tr class="memitem:ae094faa774b18ad2519c7f88376098e0" id="r_ae094faa774b18ad2519c7f88376098e0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae094faa774b18ad2519c7f88376098e0">sock</a></td></tr>
+<tr class="memitem:a0482118779b050a3a693031790e0ebf6" id="r_a0482118779b050a3a693031790e0ebf6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLobby.html">Lobby</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0482118779b050a3a693031790e0ebf6">lobby</a></td></tr>
+<tr class="memitem:a12358a947c811f31061ea211c1956784" id="r_a12358a947c811f31061ea211c1956784"><td class="memItemLeft" align="right" valign="top"><a class="el" href="client_2lib_2game_8h.html#a83fc559664fc7c7e310c93586457b428">AppState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12358a947c811f31061ea211c1956784">app_state</a></td></tr>
+<tr class="memitem:acdea17bcfc0e068e8cf73241280b1ebe" id="r_acdea17bcfc0e068e8cf73241280b1ebe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775">UserRole</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdea17bcfc0e068e8cf73241280b1ebe">player_role</a></td></tr>
+<tr class="memitem:a02cb522b64d54cadeacd519e4468e3b4" id="r_a02cb522b64d54cadeacd519e4468e3b4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02cb522b64d54cadeacd519e4468e3b4">player_team</a></td></tr>
+<tr class="memitem:ab8f74eb4803c461921f64cb543650c22" id="r_ab8f74eb4803c461921f64cb543650c22"><td class="memItemLeft" align="right" valign="top">Uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8f74eb4803c461921f64cb543650c22">frame_start_time</a></td></tr>
+<tr class="memitem:a109b81a1fc4136ff7e0ae5727a735975" id="r_a109b81a1fc4136ff7e0ae5727a735975"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a109b81a1fc4136ff7e0ae5727a735975">ping_ms</a></td></tr>
+<tr class="memitem:a8691eee497ea679662d39b2926343394" id="r_a8691eee497ea679662d39b2926343394"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8691eee497ea679662d39b2926343394">music_volume</a></td></tr>
+<tr class="memitem:ac754a95e774d145e7a60387c1bfd0de9" id="r_ac754a95e774d145e7a60387c1bfd0de9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac754a95e774d145e7a60387c1bfd0de9">sound_effects_volume</a></td></tr>
+<tr class="memitem:af06e68308f2663feacf57e5055e54a0b" id="r_af06e68308f2663feacf57e5055e54a0b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCard.html">Card</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af06e68308f2663feacf57e5055e54a0b">cards</a> [25]</td></tr>
+<tr class="memitem:a8e75d9cd35b7645dc8803102396c4f7a" id="r_a8e75d9cd35b7645dc8803102396c4f7a"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e75d9cd35b7645dc8803102396c4f7a">player_uuid</a></td></tr>
+<tr class="memitem:a30c1cf80cb97e4947d684a813b1ff8fa" id="r_a30c1cf80cb97e4947d684a813b1ff8fa"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30c1cf80cb97e4947d684a813b1ff8fa">player_name</a></td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Contexte SDL contenant la fenêtre et le renderer. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">window</td><td>Fenêtre SDL. </td></tr>
     <tr><td class="paramname">renderer</td><td>Renderer SDL associé à la fenêtre. </td></tr>
+    <tr><td class="paramname">bg_color</td><td>Couleur de fond de la fenêtre. </td></tr>
     <tr><td class="paramname">clock</td><td>Nombre de frame écoulé depuis le début de l'application. </td></tr>
     <tr><td class="paramname">fps</td><td>Nombre de frames par seconde (calculé à partir du clock). </td></tr>
     <tr><td class="paramname">sock</td><td>Identifiant socket. <br  />
@@ -154,8 +137,8 @@ Champs de données</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00037">37</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
-</div><h2 class="groupheader">Documentation des champs</h2>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00038">38</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
+</div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Documentation des champs</h2>
 <a id="a12358a947c811f31061ea211c1956784" name="a12358a947c811f31061ea211c1956784"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a12358a947c811f31061ea211c1956784">&#9670;&#160;</a></span>app_state</h2>
 
@@ -168,9 +151,27 @@ Champs de données</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00044">44</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00046">46</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00017">game_button_click()</a>, <a class="el" href="sdl_8c_source.html#l00042">init_sdl()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00015">lobby_button_click()</a>, <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>, <a class="el" href="menu_8c_source.html#l00229">menu_display()</a>, et <a class="el" href="client_2src_2message_8c_source.html#l00024">on_message()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00040">game_button_click()</a>, <a class="el" href="sdl_8c_source.html#l00042">init_sdl()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00022">lobby_button_click()</a>, <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>, <a class="el" href="menu_8c_source.html#l00230">menu_display()</a>, et <a class="el" href="client_2src_2message_8c_source.html#l00024">on_message()</a>.</p>
+
+</div>
+</div>
+<a id="a8dd06081b28551d292567af46730b101" name="a8dd06081b28551d292567af46730b101"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dd06081b28551d292567af46730b101">&#9670;&#160;</a></span>bg_color</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Color AppContext::bg_color</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00041">41</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>.</p>
 
 </div>
 </div>
@@ -181,12 +182,12 @@ Champs de données</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="sdl_8h.html#a23ff27324f1ac52bcafa4cc91e2c2744">Card</a>* AppContext::cards[25]</td>
+          <td class="memname"><a class="el" href="structCard.html">Card</a>* AppContext::cards[25]</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00051">51</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00053">53</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
 
 </div>
 </div>
@@ -202,7 +203,7 @@ Champs de données</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00040">40</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00042">42</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="background_8c_source.html#l00226">background_handle_event()</a>, <a class="el" href="background_8c_source.html#l00150">display_background()</a>, <a class="el" href="sdl_8c_source.html#l00042">init_sdl()</a>, et <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>.</p>
 
@@ -220,9 +221,9 @@ Champs de données</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00041">41</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00043">43</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00355">calculate_fps()</a>, <a class="el" href="infos_8c_source.html#l00373">fps_ping_display()</a>, et <a class="el" href="sdl_8c_source.html#l00042">init_sdl()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00412">calculate_fps()</a>, <a class="el" href="infos_8c_source.html#l00430">fps_ping_display()</a>, et <a class="el" href="sdl_8c_source.html#l00042">init_sdl()</a>.</p>
 
 </div>
 </div>
@@ -238,7 +239,7 @@ Champs de données</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00047">47</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00049">49</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="sdl_8c_source.html#l00042">init_sdl()</a>, et <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>.</p>
 
@@ -256,9 +257,9 @@ Champs de données</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00043">43</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00045">45</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="sdl_8c_source.html#l00245">destroy_context()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00017">game_button_click()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00182">game_render_cards()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00115">game_render_team_panels()</a>, <a class="el" href="sdl_8c_source.html#l00042">init_sdl()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00015">lobby_button_click()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00234">lobby_display()</a>, <a class="el" href="menu_8c_source.html#l00229">menu_display()</a>, et <a class="el" href="client_2src_2message_8c_source.html#l00024">on_message()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="sdl_8c_source.html#l00245">destroy_context()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00040">game_button_click()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00316">game_render_cards()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00168">game_render_team_panels()</a>, <a class="el" href="sdl_8c_source.html#l00042">init_sdl()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00022">lobby_button_click()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00253">lobby_display()</a>, <a class="el" href="menu_8c_source.html#l00230">menu_display()</a>, et <a class="el" href="client_2src_2message_8c_source.html#l00024">on_message()</a>.</p>
 
 </div>
 </div>
@@ -275,9 +276,9 @@ Champs de données</h2></td></tr>
 </div><div class="memdoc">
 <p>Volume de la musique (0-128). </p>
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00049">49</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00051">51</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00086">init_infos()</a>, <a class="el" href="sdl_8c_source.html#l00042">init_sdl()</a>, et <a class="el" href="infos_8c_source.html#l00031">on_music_volume_change()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>, <a class="el" href="sdl_8c_source.html#l00042">init_sdl()</a>, et <a class="el" href="infos_8c_source.html#l00043">on_music_volume_change()</a>.</p>
 
 </div>
 </div>
@@ -293,9 +294,9 @@ Champs de données</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00048">48</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00050">50</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00373">fps_ping_display()</a>, et <a class="el" href="sdl_8c_source.html#l00042">init_sdl()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00430">fps_ping_display()</a>, et <a class="el" href="sdl_8c_source.html#l00042">init_sdl()</a>.</p>
 
 </div>
 </div>
@@ -312,9 +313,9 @@ Champs de données</h2></td></tr>
 </div><div class="memdoc">
 <p>Nom du joueur. </p>
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00053">53</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00055">55</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00032">code_on_submit()</a>, <a class="el" href="sdl_8c_source.html#l00245">destroy_context()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00234">lobby_display()</a>, <a class="el" href="menu_8c_source.html#l00053">menu_button_click()</a>, <a class="el" href="menu_8c_source.html#l00066">menu_init()</a>, et <a class="el" href="menu_8c_source.html#l00013">name_on_submit()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00031">code_on_submit()</a>, <a class="el" href="sdl_8c_source.html#l00245">destroy_context()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00168">game_render_team_panels()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00253">lobby_display()</a>, <a class="el" href="menu_8c_source.html#l00053">menu_button_click()</a>, <a class="el" href="menu_8c_source.html#l00067">menu_init()</a>, et <a class="el" href="menu_8c_source.html#l00012">name_on_submit()</a>.</p>
 
 </div>
 </div>
@@ -330,9 +331,9 @@ Champs de données</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00045">45</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00047">47</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00182">game_render_cards()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00015">lobby_button_click()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00234">lobby_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00031">code_on_submit()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00316">game_render_cards()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00168">game_render_team_panels()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00022">lobby_button_click()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00253">lobby_display()</a>, et <a class="el" href="menu_8c_source.html#l00053">menu_button_click()</a>.</p>
 
 </div>
 </div>
@@ -348,9 +349,9 @@ Champs de données</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00046">46</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00048">48</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2lobby_8c_source.html#l00015">lobby_button_click()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00234">lobby_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00168">game_render_team_panels()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00022">lobby_button_click()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00253">lobby_display()</a>.</p>
 
 </div>
 </div>
@@ -367,7 +368,7 @@ Champs de données</h2></td></tr>
 </div><div class="memdoc">
 <p>UUID unique du joueur. </p>
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00052">52</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00054">54</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="sdl_8c_source.html#l00245">destroy_context()</a>, <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>, et <a class="el" href="client_2src_2message_8c_source.html#l00024">on_message()</a>.</p>
 
@@ -385,9 +386,9 @@ Champs de données</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00039">39</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00040">40</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="sdl_8c_source.html#l00245">destroy_context()</a>, <a class="el" href="background_8c_source.html#l00150">display_background()</a>, <a class="el" href="infos_8c_source.html#l00373">fps_ping_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00235">game_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00041">game_init()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00182">game_render_cards()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00115">game_render_team_panels()</a>, <a class="el" href="infos_8c_source.html#l00258">infos_display()</a>, <a class="el" href="background_8c_source.html#l00129">init_background()</a>, <a class="el" href="infos_8c_source.html#l00086">init_infos()</a>, <a class="el" href="sdl_8c_source.html#l00042">init_sdl()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00234">lobby_display()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00089">lobby_init()</a>, <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>, <a class="el" href="menu_8c_source.html#l00229">menu_display()</a>, <a class="el" href="menu_8c_source.html#l00066">menu_init()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00407">player_icon_pos()</a>, <a class="el" href="background_8c_source.html#l00112">window_to_logical()</a>, et <a class="el" href="infos_8c_source.html#l00188">window_to_logical()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="sdl_8c_source.html#l00245">destroy_context()</a>, <a class="el" href="background_8c_source.html#l00150">display_background()</a>, <a class="el" href="text_8c_source.html#l00102">display_text()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00377">game_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00064">game_init()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00316">game_render_cards()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00168">game_render_team_panels()</a>, <a class="el" href="infos_8c_source.html#l00307">infos_display()</a>, <a class="el" href="background_8c_source.html#l00129">init_background()</a>, <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>, <a class="el" href="sdl_8c_source.html#l00042">init_sdl()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00253">lobby_display()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00096">lobby_init()</a>, <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>, <a class="el" href="menu_8c_source.html#l00230">menu_display()</a>, <a class="el" href="menu_8c_source.html#l00067">menu_init()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00441">player_icon_pos()</a>, <a class="el" href="text_8c_source.html#l00024">reload_text()</a>, <a class="el" href="background_8c_source.html#l00112">window_to_logical()</a>, et <a class="el" href="infos_8c_source.html#l00237">window_to_logical()</a>.</p>
 
 </div>
 </div>
@@ -403,9 +404,9 @@ Champs de données</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00042">42</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00044">44</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00032">code_on_submit()</a>, <a class="el" href="sdl_8c_source.html#l00245">destroy_context()</a>, <a class="el" href="infos_8c_source.html#l00373">fps_ping_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00017">game_button_click()</a>, <a class="el" href="sdl_8c_source.html#l00042">init_sdl()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00015">lobby_button_click()</a>, <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>, et <a class="el" href="menu_8c_source.html#l00053">menu_button_click()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00031">code_on_submit()</a>, <a class="el" href="sdl_8c_source.html#l00245">destroy_context()</a>, <a class="el" href="infos_8c_source.html#l00430">fps_ping_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00040">game_button_click()</a>, <a class="el" href="sdl_8c_source.html#l00042">init_sdl()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00022">lobby_button_click()</a>, <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>, <a class="el" href="menu_8c_source.html#l00053">menu_button_click()</a>, et <a class="el" href="client_2src_2tcp_8c_source.html#l00034">tick_tcp()</a>.</p>
 
 </div>
 </div>
@@ -422,9 +423,9 @@ Champs de données</h2></td></tr>
 </div><div class="memdoc">
 <p>Volume des effets sonores (0-128). </p>
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00050">50</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00052">52</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00086">init_infos()</a>, <a class="el" href="sdl_8c_source.html#l00042">init_sdl()</a>, et <a class="el" href="infos_8c_source.html#l00037">on_sfx_volume_change()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>, <a class="el" href="sdl_8c_source.html#l00042">init_sdl()</a>, et <a class="el" href="infos_8c_source.html#l00049">on_sfx_volume_change()</a>.</p>
 
 </div>
 </div>
@@ -440,7 +441,7 @@ Champs de données</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00038">38</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00039">39</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="sdl_8c_source.html#l00245">destroy_context()</a>, <a class="el" href="sdl_8c_source.html#l00042">init_sdl()</a>, <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>, et <a class="el" href="sdl_8c_source.html#l00234">toggle_fullscreen()</a>.</p>
 
@@ -451,11 +452,19 @@ Champs de données</h2></td></tr>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="structAppContext.html">AppContext</a></li>
-    <li class="footer">Généré le Vendredi 20 Mars 2026 21:22:33 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="navelem"><a href="structAppContext.html">AppContext</a></li>
+    <li class="footer">Généré le Lundi 23 Mars 2026 17:03:04 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
 </body>

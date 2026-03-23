@@ -11,6 +11,19 @@ static const char* rules_title = "RÈGLES DU JEU";
 static char** rules_lines = NULL;
 static int rules_line_count = 0;
 
+// Textes statiques et dynamiques pour le nouveau système optimisé
+static Text* txt_music_label = NULL;
+static Text* txt_sfx_label = NULL;
+static Text* txt_rules_title = NULL;
+static Text** txt_rules_lines = NULL;
+static Text* txt_fps = NULL;
+static Text* txt_ping = NULL;
+static Text* txt_server_local = NULL;
+static Text* txt_server_distant = NULL;
+static Text* txt_bar_1 = NULL;
+static Text* txt_bar_2 = NULL;
+static Text* txt_version = NULL;
+
 // Animation state
 typedef enum {
     INFOS_HIDDEN,
@@ -166,8 +179,6 @@ int init_infos(AppContext* context) {
         FILE* v = fopen("../VERSION", "r");
         if (v) {
             if (fgets(verbuf, sizeof(verbuf), v)) {
-                /* Ajouter le préfixe "V" */
-                snprintf(verbuf, sizeof(verbuf), "V%s", verbuf);
                 /* Retirer le '\n' final */
                 size_t len = strlen(verbuf);
                 if (len > 0 && verbuf[len - 1] == '\n') verbuf[len - 1] = '\0';
@@ -184,12 +195,58 @@ int init_infos(AppContext* context) {
             if (context->version) {
                 free(context->version);
             }
-            context->version = strdup(verbuf);
+            /* Préfixe 'V' pour affichage */
+            char prefixed[160];
+            snprintf(prefixed, sizeof(prefixed), "V%s", verbuf);
+            context->version = strdup(prefixed);
             if (!context->version) {
                 /* En cas d'erreur d'allocation, conserver une chaîne vide */
                 context->version = strdup("");
             }
         }
+    }
+
+    /* Initialisation des textes optimisés */
+    // Textes statiques (labels)
+    txt_music_label = init_text(context, "Musique", 
+        create_text_config(FONT_LARABIE, 18, COL_WHITE, 0, 345, 0, 255));
+    txt_sfx_label = init_text(context, "Effets Sonores", 
+        create_text_config(FONT_LARABIE, 18, COL_WHITE, 0, 275, 0, 255));
+    
+    // Titre et lignes des règles
+    txt_rules_title = init_text(context, rules_title, 
+        create_text_config(FONT_LARABIE, 20, COL_WHITE, 0, 180, 0, 255));
+    
+    if (rules_line_count > 0) {
+        txt_rules_lines = malloc(sizeof(Text*) * rules_line_count);
+        for (int i = 0; i < rules_line_count; i++) {
+            txt_rules_lines[i] = init_text(context, rules_lines[i], 
+                create_text_config(FONT_LARABIE, 14, COL_WHITE, 0, 180 - 35 - (i * 22), 0, 200));
+        }
+    }
+    
+    // Textes dynamiques (FPS, ping, etc.)
+    txt_fps = init_text(context, "FPS : 0.00", 
+        create_text_config(FONT_LARABIE, 22, COL_WHITE, 0, 450, 0, 255));
+    txt_ping = init_text(context, "Ping : --", 
+        create_text_config(FONT_LARABIE, 22, COL_WHITE, 0, 410, 0, 255));
+    
+    // Textes serveur
+    txt_server_local = init_text(context, "(serveur local)", 
+        create_text_config(FONT_LARABIE, 14, COL_GREEN, 0, 385, 0, 220));
+    txt_server_distant = init_text(context, "(serveur distant)", 
+        create_text_config(FONT_LARABIE, 14, COL_WHITE, 0, 385, 0, 220));
+    
+    // Barres décoratives
+    txt_bar_1 = init_text(context, "______________", 
+        create_text_config(FONT_LARABIE, 22, COL_WHITE, 0, 370, 0, 255));
+    txt_bar_2 = init_text(context, "______________", 
+        create_text_config(FONT_LARABIE, 22, COL_WHITE, 0, 230, 0, 255));
+
+    /* Texte de version */
+    if (context && context->version) {
+        txt_version = init_text(context, context->version,
+            create_text_config(FONT_LARABIE, 14, COL_WHITE, 0, -500, 0, 255));
     }
 
     return loading_fails;
@@ -359,26 +416,36 @@ void infos_display(AppContext* context) {
             display_image(context->renderer, bandeau, display_x, 0, 0.95, 90, SDL_FLIP_NONE, 1, 255);
             fps_ping_display(context, display_x);
 
-            /* Labels des crossfaders (coordonnées bandeau, même repère que text_display) */
+            /* Labels des crossfaders - mise à jour position et affichage */
             int label_x = display_x + 50;
-            text_display(context->renderer, "Musique", FONT_LARABIE, 18, COL_WHITE, label_x, 345, 0, 255);
-            text_display(context->renderer, "Effets Sonores", FONT_LARABIE, 18, COL_WHITE, label_x, 275, 0, 255);
+            
+            update_text_position(txt_music_label, label_x, 345);
+            display_text(context, txt_music_label);
+            
+            update_text_position(txt_sfx_label, label_x, 275);
+            display_text(context, txt_sfx_label);
 
             /* Affichage des règles du jeu */
-            int rules_start_y = 180;  // Position Y de départ (en dessous des volumes)
-            int line_spacing = 22;    // Espacement entre les lignes
-            
+            int rules_start_y = 180;
+            int line_spacing = 22;
+
             // Titre des règles
-            text_display(context->renderer, rules_title, FONT_LARABIE, 20, COL_WHITE, label_x, rules_start_y, 0, 255);
+            update_text_position(txt_rules_title, label_x, rules_start_y);
+            display_text(context, txt_rules_title);
             
             // Lignes des règles
             for (int i = 0; i < rules_line_count; i++) {
-                text_display(context->renderer, rules_lines[i], FONT_LARABIE, 14, COL_WHITE, label_x, rules_start_y - 35 - (i * line_spacing), 0, 200);
+                if (txt_rules_lines && txt_rules_lines[i]) {
+                    update_text_position(txt_rules_lines[i], label_x, rules_start_y - 35 - (i * line_spacing));
+                    display_text(context, txt_rules_lines[i]);
+                }
             }
 
             /* Affichage de la version du jeu */
-            const int version_y = -450; // Position Y pour la version (en bas du bandeau)
-            text_display(context->renderer, context->version, FONT_LARABIE, 16, COL_WHITE, label_x, version_y, 0, 255);
+            if (txt_version) {
+                update_text_position(txt_version, label_x, -450);
+                display_text(context, txt_version);
+            }
 
             /* Rendu des crossfaders */
             crossfaders_render(context->renderer);
@@ -413,55 +480,51 @@ void fps_ping_display(AppContext* context, int display_x) {
     calculate_fps(context, SDL_GetTicks());
     context->ping_ms = get_tcp_ping_ms(context->sock);
 
-    // Affichage des FPS qui suit le bandeau
-    char fps_text[20];
-    snprintf(fps_text, sizeof(fps_text), "FPS : %.2f", context->fps);
-    SDL_Color fps_color = color_for_fps(context->fps);
-    // Positionner le texte relativement au display_x du bandeau
-    int fps_x = display_x + 50;
-    int fps_y = 450;
-    text_display(context->renderer, fps_text, "assets/fonts/larabiefont.otf", 22, fps_color, fps_x, fps_y, 0, 255);
+    int base_x = display_x + 50;
 
-    char ping_text[32];
+    // Affichage des FPS qui suit le bandeau
+    char fps_text_buf[20];
+    snprintf(fps_text_buf, sizeof(fps_text_buf), "FPS : %.2f", context->fps);
+    SDL_Color fps_color = color_for_fps(context->fps);
+    
+    update_text(context, txt_fps, fps_text_buf);
+    update_text_color(context, txt_fps, fps_color);
+    update_text_position(txt_fps, base_x, 450);
+    display_text(context, txt_fps);
+
+    // Affichage du ping
+    char ping_text_buf[32];
     if (context->ping_ms >= 0) {
-        snprintf(ping_text, sizeof(ping_text), "Ping : %d ms", context->ping_ms);
+        snprintf(ping_text_buf, sizeof(ping_text_buf), "Ping : %d ms", context->ping_ms);
     } else {
-        snprintf(ping_text, sizeof(ping_text), "Ping : --");
+        snprintf(ping_text_buf, sizeof(ping_text_buf), "Ping : --");
     }
 
     SDL_Color ping_color = (context->ping_ms >= 0)
         ? color_for_ping(context->ping_ms)
         : COL_WHITE;
 
-    int ping_x = display_x + 50;
-    int ping_y = 410;
-    text_display(context->renderer, ping_text, "assets/fonts/larabiefont.otf", 22, ping_color, ping_x, ping_y, 0, 255);
+    update_text(context, txt_ping, ping_text_buf);
+    update_text_color(context, txt_ping, ping_color);
+    update_text_position(txt_ping, base_x, 410);
+    display_text(context, txt_ping);
 
-    /* Info sur le type de serveur (local/distant) à côté du ping */
+    /* Info sur le type de serveur (local/distant) */
     if (is_tcp_local_server(context->sock)) {
-        int local_x = display_x + 50;
-        int local_y = 385;
-        text_display(context->renderer, "(serveur local)", "assets/fonts/larabiefont.otf", 14, COL_GREEN, local_x, local_y, 0, 220);
+        update_text_position(txt_server_local, base_x, 385);
+        display_text(context, txt_server_local);
     } else if (context->sock >= 0) {
-        int local_x = display_x + 50;
-        int local_y = 385;
-        /* La couleur est la même que celle du ping si le serveur est distant */
-        text_display(context->renderer, "(serveur distant)", "assets/fonts/larabiefont.otf", 14, ping_color, local_x, local_y, 0, 220);
+        update_text_color(context, txt_server_distant, ping_color);
+        update_text_position(txt_server_distant, base_x, 385);
+        display_text(context, txt_server_distant);
     }
 
-    /* Barre horizontale décorative sous les fps et ping */
-    char horizontal_bar_text[32];
-    snprintf(horizontal_bar_text, sizeof(horizontal_bar_text), "______________");
-    int horizontal_bar_1_x = display_x + 50;
-    int horizontal_bar_1_y = 370;
-    text_display(context->renderer, horizontal_bar_text, "assets/fonts/larabiefont.otf", 22, COL_WHITE, horizontal_bar_1_x, horizontal_bar_1_y, 0, 255);
-
-    /* Barre horizontale décorative sous les crossfaders */
-    char horizontal_bar_2_text[32];
-    snprintf(horizontal_bar_2_text, sizeof(horizontal_bar_2_text), "______________");
-    int horizontal_bar_2_x = display_x + 50;
-    int horizontal_bar_2_y = 230;
-    text_display(context->renderer, horizontal_bar_2_text, "assets/fonts/larabiefont.otf", 22, COL_WHITE, horizontal_bar_2_x, horizontal_bar_2_y, 0, 255);
+    /* Barres horizontales décoratives */
+    update_text_position(txt_bar_1, base_x, 370);
+    display_text(context, txt_bar_1);
+    
+    update_text_position(txt_bar_2, base_x, 230);
+    display_text(context, txt_bar_2);
 }
 
 int infos_free() {
@@ -471,5 +534,27 @@ int infos_free() {
     }
     crossfaders_free();
     free_rules();
+    
+    /* Libération des textes optimisés */
+    destroy_text(txt_music_label); txt_music_label = NULL;
+    destroy_text(txt_sfx_label); txt_sfx_label = NULL;
+    destroy_text(txt_rules_title); txt_rules_title = NULL;
+    
+    if (txt_rules_lines) {
+        for (int i = 0; i < rules_line_count; i++) {
+            destroy_text(txt_rules_lines[i]);
+        }
+        free(txt_rules_lines);
+        txt_rules_lines = NULL;
+    }
+    
+    destroy_text(txt_fps); txt_fps = NULL;
+    destroy_text(txt_ping); txt_ping = NULL;
+    destroy_text(txt_server_local); txt_server_local = NULL;
+    destroy_text(txt_server_distant); txt_server_distant = NULL;
+    destroy_text(txt_bar_1); txt_bar_1 = NULL;
+    destroy_text(txt_bar_2); txt_bar_2 = NULL;
+    destroy_text(txt_version); txt_version = NULL;
+    
     return EXIT_SUCCESS;
 }

@@ -3,16 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames:  Fichier source de server/src/lobby.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -34,28 +35,22 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.9.8 -->
+<!-- Généré par Doxygen 1.14.0 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-/* @license-end */
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
 });
-/* @license-end */
 </script>
 <div id="main-nav"></div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function() { init_codefold(0); });
-/* @license-end */
-</script>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -68,10 +63,9 @@ $(document).ready(function() { init_codefold(0); });
   </div>
 </div>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('server_2src_2lobby_8c_source.html',''); initResizable(); });
-/* @license-end */
+$(function(){initNavTree('server_2src_2lobby_8c_source.html','',''); });
 </script>
+<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -98,7 +92,7 @@ $(document).ready(function(){initNavTree('server_2src_2lobby_8c_source.html','')
   <div class="headertitle"><div class="title">lobby.c</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="server_2src_2lobby_8c.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;../lib/all.h&quot;</span></div>
+<a href="server_2src_2lobby_8c.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="server_2lib_2all_8h.html">../lib/all.h</a>&quot;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="foldopen" id="foldopen00003" data-start="{" data-end="}">
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#a95d0cf6c24388e7600fecdf9207fcb72">    3</a></span><a class="code hl_struct" href="structLobbyManager.html">LobbyManager</a>* <a class="code hl_function" href="server_2src_2lobby_8c.html#a95d0cf6c24388e7600fecdf9207fcb72">create_lobby_manager</a>() {</div>
@@ -112,7 +106,7 @@ $(document).ready(function(){initNavTree('server_2src_2lobby_8c_source.html','')
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keywordflow">return</span> manager;</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>}</div>
 </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span></div>
 <div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#a14e512d3eb1682633b932273dc4e4e01">   15</a></span><span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="server_2src_2lobby_8c.html#a14e512d3eb1682633b932273dc4e4e01">destroy_lobby_callback</a>(<span class="keywordtype">void</span>* data, <span class="keywordtype">void</span>* context) {</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_struct" href="structCodenames.html">Codenames</a>* codenames = (<a class="code hl_struct" href="structCodenames.html">Codenames</a>*)context;</div>
@@ -137,10 +131,10 @@ $(document).ready(function(){initNavTree('server_2src_2lobby_8c_source.html','')
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    }</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
 </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span></div>
 <div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="server_2src_2lobby_8c.html#ae4d65bf167ca0197b9597951ed83354e">   37</a></span><span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_function" href="server_2src_2lobby_8c.html#ae4d65bf167ca0197b9597951ed83354e">lobby_get_id</a>(<span class="keywordtype">void</span>* data) {</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">return</span> ((<a class="code hl_struct" href="structLobby.html">Lobby</a>*)data)-&gt;id;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">return</span> ((<a class="code hl_struct" href="structLobby.html">Lobby</a>*)data)-&gt;<a class="code hl_variable" href="structLobby.html#aa61b45b961a54b3f1bb20c926c389e5f">id</a>;</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>}</div>
 </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
@@ -482,12 +476,12 @@ $(document).ready(function(){initNavTree('server_2src_2lobby_8c_source.html','')
 <div class="ttc" id="aclient_2lib_2lobby_8h_html_a02f4e343ea570764cb2390b12ad37d83a715a5fc1dd102e417ed4fc5b81477ba4"><div class="ttname"><a href="client_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83a715a5fc1dd102e417ed4fc5b81477ba4">LB_STATUS_WAITING</a></div><div class="ttdeci">@ LB_STATUS_WAITING</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00022">lobby.h:22</a></div></div>
 <div class="ttc" id="aclient_2lib_2lobby_8h_html_a2c2a303621f66761529e598758d7ef34"><div class="ttname"><a href="client_2lib_2lobby_8h.html#a2c2a303621f66761529e598758d7ef34">MAX_USERS</a></div><div class="ttdeci">#define MAX_USERS</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00014">lobby.h:14</a></div></div>
 <div class="ttc" id="aclient_2lib_2lobby_8h_html_a67fee069fc4be0b17f7a3a8d185f4416"><div class="ttname"><a href="client_2lib_2lobby_8h.html#a67fee069fc4be0b17f7a3a8d185f4416">MAX_LOBBIES</a></div><div class="ttdeci">#define MAX_LOBBIES</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00013">lobby.h:13</a></div></div>
-<div class="ttc" id="aclient_2lib_2message_8h_html_ac6606ebe91c8ac66a2c314c79f5ab013a0bf951f6070633557526081ff9c09126"><div class="ttname"><a href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a0bf951f6070633557526081ff9c09126">MSG_CREATELOBBY</a></div><div class="ttdeci">@ MSG_CREATELOBBY</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00022">message.h:22</a></div></div>
-<div class="ttc" id="aclient_2lib_2message_8h_html_ac6606ebe91c8ac66a2c314c79f5ab013a165d64b96149e42ee6d282a2f6149edd"><div class="ttname"><a href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a165d64b96149e42ee6d282a2f6149edd">MSG_CHOOSE_ROLE</a></div><div class="ttdeci">@ MSG_CHOOSE_ROLE</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00028">message.h:28</a></div></div>
-<div class="ttc" id="aclient_2lib_2message_8h_html_ac6606ebe91c8ac66a2c314c79f5ab013a780e0c0675c808873eb7553b183f25c6"><div class="ttname"><a href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a780e0c0675c808873eb7553b183f25c6">MSG_PLAYERJOINED</a></div><div class="ttdeci">@ MSG_PLAYERJOINED</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00026">message.h:26</a></div></div>
-<div class="ttc" id="aclient_2lib_2message_8h_html_ac6606ebe91c8ac66a2c314c79f5ab013a8459c153aec15b0127febfd3a63ff57e"><div class="ttname"><a href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a8459c153aec15b0127febfd3a63ff57e">MSG_PLAYERLEFT</a></div><div class="ttdeci">@ MSG_PLAYERLEFT</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00027">message.h:27</a></div></div>
-<div class="ttc" id="aclient_2lib_2message_8h_html_ac6606ebe91c8ac66a2c314c79f5ab013ab050c6c555efefa0665c624be338b2e5"><div class="ttname"><a href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013ab050c6c555efefa0665c624be338b2e5">MSG_JOINLOBBY</a></div><div class="ttdeci">@ MSG_JOINLOBBY</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00023">message.h:23</a></div></div>
-<div class="ttc" id="aclient_2lib_2message_8h_html_ac6606ebe91c8ac66a2c314c79f5ab013ad241e6a214ef89fed912835259455f8b"><div class="ttname"><a href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013ad241e6a214ef89fed912835259455f8b">MSG_LOBBYCLOSED</a></div><div class="ttdeci">@ MSG_LOBBYCLOSED</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00025">message.h:25</a></div></div>
+<div class="ttc" id="aclient_2lib_2message_8h_html_ac6606ebe91c8ac66a2c314c79f5ab013a0bf951f6070633557526081ff9c09126"><div class="ttname"><a href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a0bf951f6070633557526081ff9c09126">MSG_CREATELOBBY</a></div><div class="ttdeci">@ MSG_CREATELOBBY</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00024">message.h:24</a></div></div>
+<div class="ttc" id="aclient_2lib_2message_8h_html_ac6606ebe91c8ac66a2c314c79f5ab013a165d64b96149e42ee6d282a2f6149edd"><div class="ttname"><a href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a165d64b96149e42ee6d282a2f6149edd">MSG_CHOOSE_ROLE</a></div><div class="ttdeci">@ MSG_CHOOSE_ROLE</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00030">message.h:30</a></div></div>
+<div class="ttc" id="aclient_2lib_2message_8h_html_ac6606ebe91c8ac66a2c314c79f5ab013a780e0c0675c808873eb7553b183f25c6"><div class="ttname"><a href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a780e0c0675c808873eb7553b183f25c6">MSG_PLAYERJOINED</a></div><div class="ttdeci">@ MSG_PLAYERJOINED</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00028">message.h:28</a></div></div>
+<div class="ttc" id="aclient_2lib_2message_8h_html_ac6606ebe91c8ac66a2c314c79f5ab013a8459c153aec15b0127febfd3a63ff57e"><div class="ttname"><a href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a8459c153aec15b0127febfd3a63ff57e">MSG_PLAYERLEFT</a></div><div class="ttdeci">@ MSG_PLAYERLEFT</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00029">message.h:29</a></div></div>
+<div class="ttc" id="aclient_2lib_2message_8h_html_ac6606ebe91c8ac66a2c314c79f5ab013ab050c6c555efefa0665c624be338b2e5"><div class="ttname"><a href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013ab050c6c555efefa0665c624be338b2e5">MSG_JOINLOBBY</a></div><div class="ttdeci">@ MSG_JOINLOBBY</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00025">message.h:25</a></div></div>
+<div class="ttc" id="aclient_2lib_2message_8h_html_ac6606ebe91c8ac66a2c314c79f5ab013ad241e6a214ef89fed912835259455f8b"><div class="ttname"><a href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013ad241e6a214ef89fed912835259455f8b">MSG_LOBBYCLOSED</a></div><div class="ttdeci">@ MSG_LOBBYCLOSED</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00027">message.h:27</a></div></div>
 <div class="ttc" id="aclient_2src_2list_8c_html_a18f87d88930c7be4d848c4db76e6fe76"><div class="ttname"><a href="client_2src_2list_8c.html#a18f87d88930c7be4d848c4db76e6fe76">list_add</a></div><div class="ttdeci">int list_add(List *list, void *data)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2list_8c_source.html#l00034">list.c:34</a></div></div>
 <div class="ttc" id="aclient_2src_2list_8c_html_a2e0b573f5ab9221c82af4a5eb5a48379"><div class="ttname"><a href="client_2src_2list_8c.html#a2e0b573f5ab9221c82af4a5eb5a48379">list_size</a></div><div class="ttdeci">int list_size(List *list)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2list_8c_source.html#l00104">list.c:104</a></div></div>
 <div class="ttc" id="aclient_2src_2list_8c_html_a50a6d26faf5a6f4c65eb98feaf2430b5"><div class="ttname"><a href="client_2src_2list_8c.html#a50a6d26faf5a6f4c65eb98feaf2430b5">list_create</a></div><div class="ttdeci">List * list_create()</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2list_8c_source.html#l00008">list.c:8</a></div></div>
@@ -499,31 +493,32 @@ $(document).ready(function(){initNavTree('server_2src_2lobby_8c_source.html','')
 <div class="ttc" id="aclient_2src_2user_8c_html_a0cb0c3d3b4ddc01d1d2c77ca4eada124"><div class="ttname"><a href="client_2src_2user_8c.html#a0cb0c3d3b4ddc01d1d2c77ca4eada124">create_user</a></div><div class="ttdeci">User * create_user(int id, const char *name, UserRole role, Team team)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2user_8c_source.html#l00003">user.c:3</a></div></div>
 <div class="ttc" id="aclient_2src_2user_8c_html_a2479a5c30e476b2f3312e542e9fc7089"><div class="ttname"><a href="client_2src_2user_8c.html#a2479a5c30e476b2f3312e542e9fc7089">destroy_user</a></div><div class="ttdeci">void destroy_user(User *user)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2user_8c_source.html#l00024">user.c:24</a></div></div>
 <div class="ttc" id="aclient_2src_2utils_8c_html_ade6960f663c739637ee1beaf757c5f24"><div class="ttname"><a href="client_2src_2utils_8c.html#ade6960f663c739637ee1beaf757c5f24">format_to</a></div><div class="ttdeci">int format_to(char *buf, size_t size, const char *fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2utils_8c_source.html#l00017">utils.c:17</a></div></div>
-<div class="ttc" id="aserver_2src_2lobby_8c_html_a09e92c0051506ed8b2ab1d8c3de28ac1"><div class="ttname"><a href="server_2src_2lobby_8c.html#a09e92c0051506ed8b2ab1d8c3de28ac1">find_user_by_id</a></div><div class="ttdeci">User * find_user_by_id(Lobby *lobby, int id)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00126">lobby.c:126</a></div></div>
-<div class="ttc" id="aserver_2src_2lobby_8c_html_a0e14f36deb0a104096160456cc43dc3c"><div class="ttname"><a href="server_2src_2lobby_8c.html#a0e14f36deb0a104096160456cc43dc3c">predicate_owner_id</a></div><div class="ttdeci">static int predicate_owner_id(void *data, void *context)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00105">lobby.c:105</a></div></div>
-<div class="ttc" id="aserver_2src_2lobby_8c_html_a14e512d3eb1682633b932273dc4e4e01"><div class="ttname"><a href="server_2src_2lobby_8c.html#a14e512d3eb1682633b932273dc4e4e01">destroy_lobby_callback</a></div><div class="ttdeci">static void destroy_lobby_callback(void *data, void *context)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00015">lobby.c:15</a></div></div>
-<div class="ttc" id="aserver_2src_2lobby_8c_html_a1e46ad30b12b838c13c44f55629d0fca"><div class="ttname"><a href="server_2src_2lobby_8c.html#a1e46ad30b12b838c13c44f55629d0fca">request_create_lobby</a></div><div class="ttdeci">int request_create_lobby(Codenames *codenames, TcpClient *client, char *message, Arguments args)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00160">lobby.c:160</a></div></div>
-<div class="ttc" id="aserver_2src_2lobby_8c_html_a1f8c73963ebfb36ee377a21fe636d1e3"><div class="ttname"><a href="server_2src_2lobby_8c.html#a1f8c73963ebfb36ee377a21fe636d1e3">destroy_lobby_manager</a></div><div class="ttdeci">void destroy_lobby_manager(Codenames *codenames, LobbyManager *manager)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00028">lobby.c:28</a></div></div>
-<div class="ttc" id="aserver_2src_2lobby_8c_html_a2aa6bdfaf517ad38036ca53f3c729ee3"><div class="ttname"><a href="server_2src_2lobby_8c.html#a2aa6bdfaf517ad38036ca53f3c729ee3">predicate_player_id</a></div><div class="ttdeci">static int predicate_player_id(void *data, void *context)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00111">lobby.c:111</a></div></div>
-<div class="ttc" id="aserver_2src_2lobby_8c_html_a2bb4ca514adcafddefb6759e2b5b69a7"><div class="ttname"><a href="server_2src_2lobby_8c.html#a2bb4ca514adcafddefb6759e2b5b69a7">destroy_lobby</a></div><div class="ttdeci">void destroy_lobby(Codenames *codenames, Lobby *lobby)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00147">lobby.c:147</a></div></div>
-<div class="ttc" id="aserver_2src_2lobby_8c_html_a2db08c1d26473428f71d46b6e87c06f8"><div class="ttname"><a href="server_2src_2lobby_8c.html#a2db08c1d26473428f71d46b6e87c06f8">request_leave_lobby</a></div><div class="ttdeci">int request_leave_lobby(Codenames *codenames, TcpClient *client, char *message, Arguments args)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00244">lobby.c:244</a></div></div>
-<div class="ttc" id="aserver_2src_2lobby_8c_html_a34b870bac73ec966edab28acc4be717a"><div class="ttname"><a href="server_2src_2lobby_8c.html#a34b870bac73ec966edab28acc4be717a">find_lobby_by_code</a></div><div class="ttdeci">Lobby * find_lobby_by_code(LobbyManager *manager, const char *code)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00143">lobby.c:143</a></div></div>
-<div class="ttc" id="aserver_2src_2lobby_8c_html_a3f3f826b2ed73b99d1f5b51ff9bb5fd5"><div class="ttname"><a href="server_2src_2lobby_8c.html#a3f3f826b2ed73b99d1f5b51ff9bb5fd5">join_lobby</a></div><div class="ttdeci">int join_lobby(Lobby *lobby, User *user)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00063">lobby.c:63</a></div></div>
-<div class="ttc" id="aserver_2src_2lobby_8c_html_a44d2d1f1a9577918a430c3d184438383"><div class="ttname"><a href="server_2src_2lobby_8c.html#a44d2d1f1a9577918a430c3d184438383">create_lobby</a></div><div class="ttdeci">Lobby * create_lobby(LobbyManager *manager)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00041">lobby.c:41</a></div></div>
-<div class="ttc" id="aserver_2src_2lobby_8c_html_a70ab64da857b6aa300fbf07629e64ed4"><div class="ttname"><a href="server_2src_2lobby_8c.html#a70ab64da857b6aa300fbf07629e64ed4">find_lobby_by_ownerid</a></div><div class="ttdeci">Lobby * find_lobby_by_ownerid(LobbyManager *manager, int owner_id)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00135">lobby.c:135</a></div></div>
-<div class="ttc" id="aserver_2src_2lobby_8c_html_a76b3acb0d15109a3dbe5969f25992b26"><div class="ttname"><a href="server_2src_2lobby_8c.html#a76b3acb0d15109a3dbe5969f25992b26">request_choose_role</a></div><div class="ttdeci">int request_choose_role(Codenames *codenames, TcpClient *client, char *message, Arguments args)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00301">lobby.c:301</a></div></div>
-<div class="ttc" id="aserver_2src_2lobby_8c_html_a95d0cf6c24388e7600fecdf9207fcb72"><div class="ttname"><a href="server_2src_2lobby_8c.html#a95d0cf6c24388e7600fecdf9207fcb72">create_lobby_manager</a></div><div class="ttdeci">LobbyManager * create_lobby_manager()</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00003">lobby.c:3</a></div></div>
-<div class="ttc" id="aserver_2src_2lobby_8c_html_a969f400f36a01da706e7826a085eb8a1"><div class="ttname"><a href="server_2src_2lobby_8c.html#a969f400f36a01da706e7826a085eb8a1">predicate_code</a></div><div class="ttdeci">static int predicate_code(void *data, void *context)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00120">lobby.c:120</a></div></div>
-<div class="ttc" id="aserver_2src_2lobby_8c_html_ab200dca231db3c7405e5242cd1d580e1"><div class="ttname"><a href="server_2src_2lobby_8c.html#ab200dca231db3c7405e5242cd1d580e1">find_lobby_by_playerid</a></div><div class="ttdeci">Lobby * find_lobby_by_playerid(LobbyManager *manager, int id)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00139">lobby.c:139</a></div></div>
-<div class="ttc" id="aserver_2src_2lobby_8c_html_ab54b2e902c3070efb2feb5f75699ccef"><div class="ttname"><a href="server_2src_2lobby_8c.html#ab54b2e902c3070efb2feb5f75699ccef">leave_lobby</a></div><div class="ttdeci">int leave_lobby(Lobby *lobby, User *user)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00071">lobby.c:71</a></div></div>
-<div class="ttc" id="aserver_2src_2lobby_8c_html_ae4d65bf167ca0197b9597951ed83354e"><div class="ttname"><a href="server_2src_2lobby_8c.html#ae4d65bf167ca0197b9597951ed83354e">lobby_get_id</a></div><div class="ttdeci">static int lobby_get_id(void *data)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00037">lobby.c:37</a></div></div>
-<div class="ttc" id="aserver_2src_2lobby_8c_html_af844d1079e019dab0a618c378178fe75"><div class="ttname"><a href="server_2src_2lobby_8c.html#af844d1079e019dab0a618c378178fe75">choose_role</a></div><div class="ttdeci">int choose_role(Lobby *lobby, User *user, int role, int team)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00092">lobby.c:92</a></div></div>
-<div class="ttc" id="aserver_2src_2lobby_8c_html_afaedceed157f9f521ace2eaf1b173bc5"><div class="ttname"><a href="server_2src_2lobby_8c.html#afaedceed157f9f521ace2eaf1b173bc5">request_join_lobby</a></div><div class="ttdeci">int request_join_lobby(Codenames *codenames, TcpClient *client, char *message, Arguments args)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00192">lobby.c:192</a></div></div>
+<div class="ttc" id="aserver_2lib_2all_8h_html"><div class="ttname"><a href="server_2lib_2all_8h.html">all.h</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a09e92c0051506ed8b2ab1d8c3de28ac1"><div class="ttname"><a href="server_2src_2lobby_8c.html#a09e92c0051506ed8b2ab1d8c3de28ac1">find_user_by_id</a></div><div class="ttdeci">User * find_user_by_id(Lobby *lobby, int id)</div><div class="ttdef"><b>Definition</b> <a href="#l00126">lobby.c:126</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a0e14f36deb0a104096160456cc43dc3c"><div class="ttname"><a href="server_2src_2lobby_8c.html#a0e14f36deb0a104096160456cc43dc3c">predicate_owner_id</a></div><div class="ttdeci">static int predicate_owner_id(void *data, void *context)</div><div class="ttdef"><b>Definition</b> <a href="#l00105">lobby.c:105</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a14e512d3eb1682633b932273dc4e4e01"><div class="ttname"><a href="server_2src_2lobby_8c.html#a14e512d3eb1682633b932273dc4e4e01">destroy_lobby_callback</a></div><div class="ttdeci">static void destroy_lobby_callback(void *data, void *context)</div><div class="ttdef"><b>Definition</b> <a href="#l00015">lobby.c:15</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a1e46ad30b12b838c13c44f55629d0fca"><div class="ttname"><a href="server_2src_2lobby_8c.html#a1e46ad30b12b838c13c44f55629d0fca">request_create_lobby</a></div><div class="ttdeci">int request_create_lobby(Codenames *codenames, TcpClient *client, char *message, Arguments args)</div><div class="ttdef"><b>Definition</b> <a href="#l00160">lobby.c:160</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a1f8c73963ebfb36ee377a21fe636d1e3"><div class="ttname"><a href="server_2src_2lobby_8c.html#a1f8c73963ebfb36ee377a21fe636d1e3">destroy_lobby_manager</a></div><div class="ttdeci">void destroy_lobby_manager(Codenames *codenames, LobbyManager *manager)</div><div class="ttdef"><b>Definition</b> <a href="#l00028">lobby.c:28</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a2aa6bdfaf517ad38036ca53f3c729ee3"><div class="ttname"><a href="server_2src_2lobby_8c.html#a2aa6bdfaf517ad38036ca53f3c729ee3">predicate_player_id</a></div><div class="ttdeci">static int predicate_player_id(void *data, void *context)</div><div class="ttdef"><b>Definition</b> <a href="#l00111">lobby.c:111</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a2bb4ca514adcafddefb6759e2b5b69a7"><div class="ttname"><a href="server_2src_2lobby_8c.html#a2bb4ca514adcafddefb6759e2b5b69a7">destroy_lobby</a></div><div class="ttdeci">void destroy_lobby(Codenames *codenames, Lobby *lobby)</div><div class="ttdef"><b>Definition</b> <a href="#l00147">lobby.c:147</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a2db08c1d26473428f71d46b6e87c06f8"><div class="ttname"><a href="server_2src_2lobby_8c.html#a2db08c1d26473428f71d46b6e87c06f8">request_leave_lobby</a></div><div class="ttdeci">int request_leave_lobby(Codenames *codenames, TcpClient *client, char *message, Arguments args)</div><div class="ttdef"><b>Definition</b> <a href="#l00244">lobby.c:244</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a34b870bac73ec966edab28acc4be717a"><div class="ttname"><a href="server_2src_2lobby_8c.html#a34b870bac73ec966edab28acc4be717a">find_lobby_by_code</a></div><div class="ttdeci">Lobby * find_lobby_by_code(LobbyManager *manager, const char *code)</div><div class="ttdef"><b>Definition</b> <a href="#l00143">lobby.c:143</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a3f3f826b2ed73b99d1f5b51ff9bb5fd5"><div class="ttname"><a href="server_2src_2lobby_8c.html#a3f3f826b2ed73b99d1f5b51ff9bb5fd5">join_lobby</a></div><div class="ttdeci">int join_lobby(Lobby *lobby, User *user)</div><div class="ttdef"><b>Definition</b> <a href="#l00063">lobby.c:63</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a44d2d1f1a9577918a430c3d184438383"><div class="ttname"><a href="server_2src_2lobby_8c.html#a44d2d1f1a9577918a430c3d184438383">create_lobby</a></div><div class="ttdeci">Lobby * create_lobby(LobbyManager *manager)</div><div class="ttdef"><b>Definition</b> <a href="#l00041">lobby.c:41</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a70ab64da857b6aa300fbf07629e64ed4"><div class="ttname"><a href="server_2src_2lobby_8c.html#a70ab64da857b6aa300fbf07629e64ed4">find_lobby_by_ownerid</a></div><div class="ttdeci">Lobby * find_lobby_by_ownerid(LobbyManager *manager, int owner_id)</div><div class="ttdef"><b>Definition</b> <a href="#l00135">lobby.c:135</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a76b3acb0d15109a3dbe5969f25992b26"><div class="ttname"><a href="server_2src_2lobby_8c.html#a76b3acb0d15109a3dbe5969f25992b26">request_choose_role</a></div><div class="ttdeci">int request_choose_role(Codenames *codenames, TcpClient *client, char *message, Arguments args)</div><div class="ttdef"><b>Definition</b> <a href="#l00301">lobby.c:301</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a95d0cf6c24388e7600fecdf9207fcb72"><div class="ttname"><a href="server_2src_2lobby_8c.html#a95d0cf6c24388e7600fecdf9207fcb72">create_lobby_manager</a></div><div class="ttdeci">LobbyManager * create_lobby_manager()</div><div class="ttdef"><b>Definition</b> <a href="#l00003">lobby.c:3</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a969f400f36a01da706e7826a085eb8a1"><div class="ttname"><a href="server_2src_2lobby_8c.html#a969f400f36a01da706e7826a085eb8a1">predicate_code</a></div><div class="ttdeci">static int predicate_code(void *data, void *context)</div><div class="ttdef"><b>Definition</b> <a href="#l00120">lobby.c:120</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_ab200dca231db3c7405e5242cd1d580e1"><div class="ttname"><a href="server_2src_2lobby_8c.html#ab200dca231db3c7405e5242cd1d580e1">find_lobby_by_playerid</a></div><div class="ttdeci">Lobby * find_lobby_by_playerid(LobbyManager *manager, int id)</div><div class="ttdef"><b>Definition</b> <a href="#l00139">lobby.c:139</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_ab54b2e902c3070efb2feb5f75699ccef"><div class="ttname"><a href="server_2src_2lobby_8c.html#ab54b2e902c3070efb2feb5f75699ccef">leave_lobby</a></div><div class="ttdeci">int leave_lobby(Lobby *lobby, User *user)</div><div class="ttdef"><b>Definition</b> <a href="#l00071">lobby.c:71</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_ae4d65bf167ca0197b9597951ed83354e"><div class="ttname"><a href="server_2src_2lobby_8c.html#ae4d65bf167ca0197b9597951ed83354e">lobby_get_id</a></div><div class="ttdeci">static int lobby_get_id(void *data)</div><div class="ttdef"><b>Definition</b> <a href="#l00037">lobby.c:37</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_af844d1079e019dab0a618c378178fe75"><div class="ttname"><a href="server_2src_2lobby_8c.html#af844d1079e019dab0a618c378178fe75">choose_role</a></div><div class="ttdeci">int choose_role(Lobby *lobby, User *user, int role, int team)</div><div class="ttdef"><b>Definition</b> <a href="#l00092">lobby.c:92</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_afaedceed157f9f521ace2eaf1b173bc5"><div class="ttname"><a href="server_2src_2lobby_8c.html#afaedceed157f9f521ace2eaf1b173bc5">request_join_lobby</a></div><div class="ttdeci">int request_join_lobby(Codenames *codenames, TcpClient *client, char *message, Arguments args)</div><div class="ttdef"><b>Definition</b> <a href="#l00192">lobby.c:192</a></div></div>
 <div class="ttc" id="aserver_2src_2tcp_8c_html_ae3efc44467ee08b4d29bcc4ef7886119"><div class="ttname"><a href="server_2src_2tcp_8c.html#ae3efc44467ee08b4d29bcc4ef7886119">tcp_send_to_client</a></div><div class="ttdeci">int tcp_send_to_client(Codenames *codenames, int client_id, const char *message)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2tcp_8c_source.html#l00131">tcp.c:131</a></div></div>
 <div class="ttc" id="aserver_2src_2utils_8c_html_abeaa3b934bab9c3d990dde11d4dc5d64"><div class="ttname"><a href="server_2src_2utils_8c.html#abeaa3b934bab9c3d990dde11d4dc5d64">generate_code</a></div><div class="ttdeci">char * generate_code()</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2utils_8c_source.html#l00076">utils.c:76</a></div></div>
-<div class="ttc" id="astructArguments_html"><div class="ttname"><a href="structArguments.html">Arguments</a></div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00039">message.h:39</a></div></div>
-<div class="ttc" id="astructArguments_html_a29e8dac2f7b3adc32cbd95e9a4162194"><div class="ttname"><a href="structArguments.html#a29e8dac2f7b3adc32cbd95e9a4162194">Arguments::argv</a></div><div class="ttdeci">char ** argv</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00041">message.h:41</a></div></div>
-<div class="ttc" id="astructArguments_html_ad7e02331365bd54d9d3abdef6b81dc30"><div class="ttname"><a href="structArguments.html#ad7e02331365bd54d9d3abdef6b81dc30">Arguments::argc</a></div><div class="ttdeci">int argc</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00040">message.h:40</a></div></div>
+<div class="ttc" id="astructArguments_html"><div class="ttname"><a href="structArguments.html">Arguments</a></div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00041">message.h:41</a></div></div>
+<div class="ttc" id="astructArguments_html_a29e8dac2f7b3adc32cbd95e9a4162194"><div class="ttname"><a href="structArguments.html#a29e8dac2f7b3adc32cbd95e9a4162194">Arguments::argv</a></div><div class="ttdeci">char ** argv</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00043">message.h:43</a></div></div>
+<div class="ttc" id="astructArguments_html_ad7e02331365bd54d9d3abdef6b81dc30"><div class="ttname"><a href="structArguments.html#ad7e02331365bd54d9d3abdef6b81dc30">Arguments::argc</a></div><div class="ttdeci">int argc</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00042">message.h:42</a></div></div>
 <div class="ttc" id="astructCodenames_html"><div class="ttname"><a href="structCodenames.html">Codenames</a></div><div class="ttdef"><b>Definition</b> <a href="codenames_8h_source.html#l00012">codenames.h:12</a></div></div>
 <div class="ttc" id="astructCodenames_html_a60e595ede4c21bb5ab8aeead6009726a"><div class="ttname"><a href="structCodenames.html#a60e595ede4c21bb5ab8aeead6009726a">Codenames::lobby</a></div><div class="ttdeci">LobbyManager * lobby</div><div class="ttdef"><b>Definition</b> <a href="codenames_8h_source.html#l00014">codenames.h:14</a></div></div>
 <div class="ttc" id="astructLobbyManager_html"><div class="ttname"><a href="structLobbyManager.html">LobbyManager</a></div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2lobby_8h_source.html#l00049">lobby.h:49</a></div></div>
@@ -547,11 +542,12 @@ $(document).ready(function(){initNavTree('server_2src_2lobby_8c_source.html','')
 <div class="ttc" id="astructUser_html_ae1faef3d602da4c65e7571e751f775f2"><div class="ttname"><a href="structUser.html#ae1faef3d602da4c65e7571e751f775f2">User::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2user_8h_source.html#l00025">user.h:25</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a class="el" href="dir_a063914ab482288b7b0e1b2fca86158c.html">src</a></li><li class="navelem"><a class="el" href="server_2src_2lobby_8c.html">lobby.c</a></li>
-    <li class="footer">Généré le Vendredi 20 Mars 2026 21:22:33 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="navelem"><a href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a href="dir_a063914ab482288b7b0e1b2fca86158c.html">src</a></li><li class="navelem"><a href="server_2src_2lobby_8c.html">lobby.c</a></li>
+    <li class="footer">Généré le Lundi 23 Mars 2026 17:03:04 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
 </body>

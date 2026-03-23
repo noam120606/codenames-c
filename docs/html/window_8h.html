@@ -1,0 +1,521 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Codenames: Référence du fichier client/lib/window.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Codenames<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Jeu Codenames multijoueur en C - Client SDL2 et Serveur TCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('window_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Référence du fichier window.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;../SDL2/include/SDL2/SDL.h&quot;</code><br />
+</div>
+<p><a href="window_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:WindowConfig" id="r_WindowConfig"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWindowConfig.html">WindowConfig</a></td></tr>
+<tr class="memitem:Window" id="r_Window"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWindow.html">Window</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:aa55a4e0dac412d6cc8373e53e495a24f" id="r_aa55a4e0dac412d6cc8373e53e495a24f"><td class="memItemLeft" align="right" valign="top">typedef struct WindowConfig&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa55a4e0dac412d6cc8373e53e495a24f">WindowConfig</a></td></tr>
+<tr class="memitem:adb2a551453af16dd3214a23b16e67544" id="r_adb2a551453af16dd3214a23b16e67544"><td class="memItemLeft" align="right" valign="top">typedef struct Window&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb2a551453af16dd3214a23b16e67544">Window</a></td></tr>
+<tr class="memitem:aecb8c7003664efcbb60479f8c8aecc6c" id="r_aecb8c7003664efcbb60479f8c8aecc6c"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="#aca1e6d52665396b32e863043ad7237f6">WindowCfgKey</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aecb8c7003664efcbb60479f8c8aecc6c">WindowCfgKey</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:aca1e6d52665396b32e863043ad7237f6" id="r_aca1e6d52665396b32e863043ad7237f6"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca1e6d52665396b32e863043ad7237f6">WindowCfgKey</a> { <br />
+&#160;&#160;<a class="el" href="#aca1e6d52665396b32e863043ad7237f6aa278ef9ab26cdbffdbb7d53a0074e577">WIN_CFG_X</a> = 100
+, <a class="el" href="#aca1e6d52665396b32e863043ad7237f6a4f005d6d43c1a47b9b961b5196e30085">WIN_CFG_Y</a>
+, <a class="el" href="#aca1e6d52665396b32e863043ad7237f6ac1210040192bd7423d0f217f3f79bc22">WIN_CFG_W</a>
+, <a class="el" href="#aca1e6d52665396b32e863043ad7237f6aa23ace3a531b847e7fca8fea38a60099">WIN_CFG_H</a>
+, <br />
+&#160;&#160;<a class="el" href="#aca1e6d52665396b32e863043ad7237f6aea66d2e7c95a103cc3958f0c905ab44a">WIN_CFG_MOVABLE</a>
+, <a class="el" href="#aca1e6d52665396b32e863043ad7237f6a5c358dbbb364eda48ab25f921937accb">WIN_CFG_HIDDEN</a>
+, <a class="el" href="#aca1e6d52665396b32e863043ad7237f6aa31ba83362ac4b415d222f4b554dfaf6">WIN_CFG_BG_COLOR</a>
+, <a class="el" href="#aca1e6d52665396b32e863043ad7237f6a42352dce190ae56e16717b2055b1d87c">WIN_CFG_BORDER_COLOR</a>
+, <br />
+&#160;&#160;<a class="el" href="#aca1e6d52665396b32e863043ad7237f6a89725346c9bf91c6846178518886412f">WIN_CFG_TITLEBAR_COLOR</a>
+, <a class="el" href="#aca1e6d52665396b32e863043ad7237f6a8c050f4f4636aa82401cc2a6032d2cb6">WIN_CFG_BORDER_THICKNESS</a>
+, <a class="el" href="#aca1e6d52665396b32e863043ad7237f6a529fb1f4385ad2c82fded3916ac7b7e5">WIN_CFG_TITLEBAR_H</a>
+, <a class="el" href="#aca1e6d52665396b32e863043ad7237f6aa1af741d39920a019c04e816f8a1c75d">WIN_CFG_RECT</a>
+, <br />
+&#160;&#160;<a class="el" href="#aca1e6d52665396b32e863043ad7237f6ab2123f3ee102f26e54c2ffcf37a993c6">WIN_CFG_DRAGGING</a>
+, <a class="el" href="#aca1e6d52665396b32e863043ad7237f6a4fc5dc7e2e90e1eed88337dc2d375ffe">WIN_CFG_DRAG_OFFSET_X</a>
+, <a class="el" href="#aca1e6d52665396b32e863043ad7237f6ad8df32685d4beba68962e9f886bc2c09">WIN_CFG_DRAG_OFFSET_Y</a>
+<br />
+ }</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a5879eca5a98c40e57e4efa57d5e316a8" id="r_a5879eca5a98c40e57e4efa57d5e316a8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structWindowConfig.html">WindowConfig</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5879eca5a98c40e57e4efa57d5e316a8">window_config_init</a> ()</td></tr>
+<tr class="memitem:a528e0ad9eba17c1953d7c8fa4de0a360" id="r_a528e0ad9eba17c1953d7c8fa4de0a360"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structWindow.html">Window</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a528e0ad9eba17c1953d7c8fa4de0a360">window_create</a> (int id, const <a class="el" href="structWindowConfig.html">WindowConfig</a> *cfg)</td></tr>
+<tr class="memitem:a37e9821a250b421c60c0f287b2682b4d" id="r_a37e9821a250b421c60c0f287b2682b4d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37e9821a250b421c60c0f287b2682b4d">window_destroy</a> (<a class="el" href="structWindow.html">Window</a> *win)</td></tr>
+<tr class="memitem:a2b028817484c245cdf440e506f3fbd0d" id="r_a2b028817484c245cdf440e506f3fbd0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b028817484c245cdf440e506f3fbd0d">window_update_rect</a> (<a class="el" href="structWindow.html">Window</a> *win)</td></tr>
+<tr class="memitem:afc458f8e977a8dfb3f6c3061da8767c6" id="r_afc458f8e977a8dfb3f6c3061da8767c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc458f8e977a8dfb3f6c3061da8767c6">window_handle_event</a> (<a class="el" href="structAppContext.html">AppContext</a> *ctx, <a class="el" href="structWindow.html">Window</a> *win, SDL_Event *event)</td></tr>
+<tr class="memitem:a9285833340439f457207d10355d15b29" id="r_a9285833340439f457207d10355d15b29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9285833340439f457207d10355d15b29">window_render</a> (SDL_Renderer *renderer, const <a class="el" href="structWindow.html">Window</a> *win)</td></tr>
+<tr class="memitem:ae52eb1547cda588ffb6e084a31641038" id="r_ae52eb1547cda588ffb6e084a31641038"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae52eb1547cda588ffb6e084a31641038">window_contains_point</a> (const <a class="el" href="structWindow.html">Window</a> *win, int logical_x, int logical_y)</td></tr>
+<tr class="memitem:a4fb2b8937d4dde44dba4b1721f6dddd6" id="r_a4fb2b8937d4dde44dba4b1721f6dddd6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fb2b8937d4dde44dba4b1721f6dddd6">window_edit_cfg</a> (<a class="el" href="structWindow.html">Window</a> *win, <a class="el" href="#aca1e6d52665396b32e863043ad7237f6">WindowCfgKey</a> key, intptr_t value)</td></tr>
+</table>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Documentation des définitions de type</h2>
+<a id="adb2a551453af16dd3214a23b16e67544" name="adb2a551453af16dd3214a23b16e67544"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb2a551453af16dd3214a23b16e67544">&#9670;&#160;</a></span>Window</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct Window Window</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aecb8c7003664efcbb60479f8c8aecc6c" name="aecb8c7003664efcbb60479f8c8aecc6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecb8c7003664efcbb60479f8c8aecc6c">&#9670;&#160;</a></span>WindowCfgKey</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="#aca1e6d52665396b32e863043ad7237f6">WindowCfgKey</a> <a class="el" href="#aca1e6d52665396b32e863043ad7237f6">WindowCfgKey</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Clés de configuration modifiables avec <span class="tt">window_edit_cfg</span>. </p>
+
+</div>
+</div>
+<a id="aa55a4e0dac412d6cc8373e53e495a24f" name="aa55a4e0dac412d6cc8373e53e495a24f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa55a4e0dac412d6cc8373e53e495a24f">&#9670;&#160;</a></span>WindowConfig</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct WindowConfig WindowConfig</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Configuration d'une fenêtre UI. Les coordonnées x/y sont relatives au centre logique de l'écran. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>Position horizontale relative au centre de l'écran (en pixels). </td></tr>
+    <tr><td class="paramname">y</td><td>Position verticale relative au centre de l'écran (en pixels). </td></tr>
+    <tr><td class="paramname">w</td><td>Largeur de la fenêtre (en pixels). </td></tr>
+    <tr><td class="paramname">h</td><td>Hauteur de la fenêtre (en pixels). </td></tr>
+    <tr><td class="paramname">movable</td><td>Indique si la fenêtre peut être déplacée par l'utilisateur (1 = oui, 0 = non). </td></tr>
+    <tr><td class="paramname">hidden</td><td>Indique si la fenêtre est cachée (1 = oui, 0 = non). </td></tr>
+    <tr><td class="paramname">bg_color</td><td>Couleur de fond de la fenêtre (RGBA). </td></tr>
+    <tr><td class="paramname">border_color</td><td>Couleur de la bordure de la fenêtre (RGBA). </td></tr>
+    <tr><td class="paramname">titlebar_color</td><td>Couleur de la barre de titre de la fenêtre (RGBA). </td></tr>
+    <tr><td class="paramname">border_thickness</td><td>Épaisseur de la bordure de la fenêtre (en pixels). </td></tr>
+    <tr><td class="paramname">titlebar_h</td><td>Hauteur de la barre de titre de la fenêtre (en pixels). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Documentation du type de l'énumération</h2>
+<a id="aca1e6d52665396b32e863043ad7237f6" name="aca1e6d52665396b32e863043ad7237f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca1e6d52665396b32e863043ad7237f6">&#9670;&#160;</a></span>WindowCfgKey</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#aca1e6d52665396b32e863043ad7237f6">WindowCfgKey</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Clés de configuration modifiables avec <span class="tt">window_edit_cfg</span>. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="aca1e6d52665396b32e863043ad7237f6aa278ef9ab26cdbffdbb7d53a0074e577" name="aca1e6d52665396b32e863043ad7237f6aa278ef9ab26cdbffdbb7d53a0074e577"></a>WIN_CFG_X&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aca1e6d52665396b32e863043ad7237f6a4f005d6d43c1a47b9b961b5196e30085" name="aca1e6d52665396b32e863043ad7237f6a4f005d6d43c1a47b9b961b5196e30085"></a>WIN_CFG_Y&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aca1e6d52665396b32e863043ad7237f6ac1210040192bd7423d0f217f3f79bc22" name="aca1e6d52665396b32e863043ad7237f6ac1210040192bd7423d0f217f3f79bc22"></a>WIN_CFG_W&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aca1e6d52665396b32e863043ad7237f6aa23ace3a531b847e7fca8fea38a60099" name="aca1e6d52665396b32e863043ad7237f6aa23ace3a531b847e7fca8fea38a60099"></a>WIN_CFG_H&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aca1e6d52665396b32e863043ad7237f6aea66d2e7c95a103cc3958f0c905ab44a" name="aca1e6d52665396b32e863043ad7237f6aea66d2e7c95a103cc3958f0c905ab44a"></a>WIN_CFG_MOVABLE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aca1e6d52665396b32e863043ad7237f6a5c358dbbb364eda48ab25f921937accb" name="aca1e6d52665396b32e863043ad7237f6a5c358dbbb364eda48ab25f921937accb"></a>WIN_CFG_HIDDEN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aca1e6d52665396b32e863043ad7237f6aa31ba83362ac4b415d222f4b554dfaf6" name="aca1e6d52665396b32e863043ad7237f6aa31ba83362ac4b415d222f4b554dfaf6"></a>WIN_CFG_BG_COLOR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aca1e6d52665396b32e863043ad7237f6a42352dce190ae56e16717b2055b1d87c" name="aca1e6d52665396b32e863043ad7237f6a42352dce190ae56e16717b2055b1d87c"></a>WIN_CFG_BORDER_COLOR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aca1e6d52665396b32e863043ad7237f6a89725346c9bf91c6846178518886412f" name="aca1e6d52665396b32e863043ad7237f6a89725346c9bf91c6846178518886412f"></a>WIN_CFG_TITLEBAR_COLOR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aca1e6d52665396b32e863043ad7237f6a8c050f4f4636aa82401cc2a6032d2cb6" name="aca1e6d52665396b32e863043ad7237f6a8c050f4f4636aa82401cc2a6032d2cb6"></a>WIN_CFG_BORDER_THICKNESS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aca1e6d52665396b32e863043ad7237f6a529fb1f4385ad2c82fded3916ac7b7e5" name="aca1e6d52665396b32e863043ad7237f6a529fb1f4385ad2c82fded3916ac7b7e5"></a>WIN_CFG_TITLEBAR_H&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aca1e6d52665396b32e863043ad7237f6aa1af741d39920a019c04e816f8a1c75d" name="aca1e6d52665396b32e863043ad7237f6aa1af741d39920a019c04e816f8a1c75d"></a>WIN_CFG_RECT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aca1e6d52665396b32e863043ad7237f6ab2123f3ee102f26e54c2ffcf37a993c6" name="aca1e6d52665396b32e863043ad7237f6ab2123f3ee102f26e54c2ffcf37a993c6"></a>WIN_CFG_DRAGGING&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aca1e6d52665396b32e863043ad7237f6a4fc5dc7e2e90e1eed88337dc2d375ffe" name="aca1e6d52665396b32e863043ad7237f6a4fc5dc7e2e90e1eed88337dc2d375ffe"></a>WIN_CFG_DRAG_OFFSET_X&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aca1e6d52665396b32e863043ad7237f6ad8df32685d4beba68962e9f886bc2c09" name="aca1e6d52665396b32e863043ad7237f6ad8df32685d4beba68962e9f886bc2c09"></a>WIN_CFG_DRAG_OFFSET_Y&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Définition à la ligne <a class="el" href="window_8h_source.html#l00052">52</a> du fichier <a class="el" href="window_8h_source.html">window.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a id="a5879eca5a98c40e57e4efa57d5e316a8" name="a5879eca5a98c40e57e4efa57d5e316a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5879eca5a98c40e57e4efa57d5e316a8">&#9670;&#160;</a></span>window_config_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structWindowConfig.html">WindowConfig</a> * window_config_init </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Initialise une configuration de fenêtre avec des valeurs par défaut. </p><dl class="section return"><dt>Renvoie</dt><dd>Un pointeur vers la configuration initialisée, ou NULL en cas d'erreur. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00029">29</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00031">WindowConfig::bg_color</a>, <a class="el" href="window_8h_source.html#l00032">WindowConfig::border_color</a>, <a class="el" href="window_8h_source.html#l00034">WindowConfig::border_thickness</a>, <a class="el" href="window_8h_source.html#l00040">WindowConfig::drag_offset_x</a>, <a class="el" href="window_8h_source.html#l00041">WindowConfig::drag_offset_y</a>, <a class="el" href="window_8h_source.html#l00039">WindowConfig::dragging</a>, <a class="el" href="window_8h_source.html#l00028">WindowConfig::h</a>, <a class="el" href="window_8h_source.html#l00030">WindowConfig::hidden</a>, <a class="el" href="window_8h_source.html#l00029">WindowConfig::movable</a>, <a class="el" href="window_8h_source.html#l00038">WindowConfig::rect</a>, <a class="el" href="window_8h_source.html#l00033">WindowConfig::titlebar_color</a>, <a class="el" href="window_8h_source.html#l00035">WindowConfig::titlebar_h</a>, <a class="el" href="window_8h_source.html#l00027">WindowConfig::w</a>, <a class="el" href="sdl_8h_source.html#l00015">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00014">WIN_WIDTH</a>, <a class="el" href="window_8h_source.html#l00025">WindowConfig::x</a>, et <a class="el" href="window_8h_source.html#l00026">WindowConfig::y</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="window_8c_source.html#l00070">window_create()</a>.</p>
+
+</div>
+</div>
+<a id="ae52eb1547cda588ffb6e084a31641038" name="ae52eb1547cda588ffb6e084a31641038"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae52eb1547cda588ffb6e084a31641038">&#9670;&#160;</a></span>window_contains_point()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int window_contains_point </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structWindow.html">Window</a> *</td>          <td class="paramname"><span class="paramname"><em>win</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>logical_x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>logical_y</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Teste si un point logique (coordonnées SDL logiques) est dans la fenêtre. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">win</td><td>La fenêtre à tester. </td></tr>
+    <tr><td class="paramname">logical_x</td><td>Coordonnée x du point à tester (en pixels, relative au centre de l'écran). </td></tr>
+    <tr><td class="paramname">logical_y</td><td>Coordonnée y du point à tester (en pixels, relative au centre de l'écran). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>1 si le point est dans la fenêtre, 0 sinon. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00095">95</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00046">Window::cfg</a>, <a class="el" href="window_8h_source.html#l00030">WindowConfig::hidden</a>, <a class="el" href="window_8c_source.html#l00012">point_in_rect()</a>, et <a class="el" href="window_8h_source.html#l00038">WindowConfig::rect</a>.</p>
+
+</div>
+</div>
+<a id="a528e0ad9eba17c1953d7c8fa4de0a360" name="a528e0ad9eba17c1953d7c8fa4de0a360"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a528e0ad9eba17c1953d7c8fa4de0a360">&#9670;&#160;</a></span>window_create()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structWindow.html">Window</a> * window_create </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structWindowConfig.html">WindowConfig</a> *</td>          <td class="paramname"><span class="paramname"><em>cfg</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Crée une fenêtre à partir d'une configuration. Si cfg est NULL, les valeurs par défaut sont utilisées. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>L'identifiant de la fenêtre. </td></tr>
+    <tr><td class="paramname">cfg</td><td>La configuration de la fenêtre. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur vers la fenêtre créée, ou NULL en cas d'erreur. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00070">70</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00046">Window::cfg</a>, <a class="el" href="window_8h_source.html#l00045">Window::id</a>, <a class="el" href="window_8c_source.html#l00029">window_config_init()</a>, et <a class="el" href="window_8c_source.html#l00056">window_update_rect()</a>.</p>
+
+</div>
+</div>
+<a id="a37e9821a250b421c60c0f287b2682b4d" name="a37e9821a250b421c60c0f287b2682b4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37e9821a250b421c60c0f287b2682b4d">&#9670;&#160;</a></span>window_destroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void window_destroy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structWindow.html">Window</a> *</td>          <td class="paramname"><span class="paramname"><em>win</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Détruit une fenêtre et libère ses ressources. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">win</td><td>La fenêtre à détruire. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00089">89</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00046">Window::cfg</a>.</p>
+
+</div>
+</div>
+<a id="a4fb2b8937d4dde44dba4b1721f6dddd6" name="a4fb2b8937d4dde44dba4b1721f6dddd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fb2b8937d4dde44dba4b1721f6dddd6">&#9670;&#160;</a></span>window_edit_cfg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int window_edit_cfg </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structWindow.html">Window</a> *</td>          <td class="paramname"><span class="paramname"><em>win</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#aca1e6d52665396b32e863043ad7237f6">WindowCfgKey</a></td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">intptr_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Modifie un champ de config d'une fenêtre. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">win</td><td>La fenêtre à modifier. </td></tr>
+    <tr><td class="paramname">key</td><td>La clé de configuration à modifier. </td></tr>
+    <tr><td class="paramname">value</td><td>La nouvelle valeur. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS en cas de succès, EXIT_FAILURE sinon. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00167">167</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00031">WindowConfig::bg_color</a>, <a class="el" href="window_8h_source.html#l00032">WindowConfig::border_color</a>, <a class="el" href="window_8h_source.html#l00034">WindowConfig::border_thickness</a>, <a class="el" href="window_8h_source.html#l00046">Window::cfg</a>, <a class="el" href="window_8h_source.html#l00040">WindowConfig::drag_offset_x</a>, <a class="el" href="window_8h_source.html#l00041">WindowConfig::drag_offset_y</a>, <a class="el" href="window_8h_source.html#l00039">WindowConfig::dragging</a>, <a class="el" href="window_8h_source.html#l00028">WindowConfig::h</a>, <a class="el" href="window_8h_source.html#l00030">WindowConfig::hidden</a>, <a class="el" href="window_8h_source.html#l00029">WindowConfig::movable</a>, <a class="el" href="window_8h_source.html#l00038">WindowConfig::rect</a>, <a class="el" href="window_8h_source.html#l00033">WindowConfig::titlebar_color</a>, <a class="el" href="window_8h_source.html#l00035">WindowConfig::titlebar_h</a>, <a class="el" href="window_8h_source.html#l00027">WindowConfig::w</a>, <a class="el" href="window_8h_source.html#l00059">WIN_CFG_BG_COLOR</a>, <a class="el" href="window_8h_source.html#l00060">WIN_CFG_BORDER_COLOR</a>, <a class="el" href="window_8h_source.html#l00062">WIN_CFG_BORDER_THICKNESS</a>, <a class="el" href="window_8h_source.html#l00066">WIN_CFG_DRAG_OFFSET_X</a>, <a class="el" href="window_8h_source.html#l00067">WIN_CFG_DRAG_OFFSET_Y</a>, <a class="el" href="window_8h_source.html#l00065">WIN_CFG_DRAGGING</a>, <a class="el" href="window_8h_source.html#l00056">WIN_CFG_H</a>, <a class="el" href="window_8h_source.html#l00058">WIN_CFG_HIDDEN</a>, <a class="el" href="window_8h_source.html#l00057">WIN_CFG_MOVABLE</a>, <a class="el" href="window_8h_source.html#l00064">WIN_CFG_RECT</a>, <a class="el" href="window_8h_source.html#l00061">WIN_CFG_TITLEBAR_COLOR</a>, <a class="el" href="window_8h_source.html#l00063">WIN_CFG_TITLEBAR_H</a>, <a class="el" href="window_8h_source.html#l00055">WIN_CFG_W</a>, <a class="el" href="window_8h_source.html#l00053">WIN_CFG_X</a>, <a class="el" href="window_8h_source.html#l00054">WIN_CFG_Y</a>, <a class="el" href="window_8c_source.html#l00056">window_update_rect()</a>, <a class="el" href="window_8h_source.html#l00025">WindowConfig::x</a>, et <a class="el" href="window_8h_source.html#l00026">WindowConfig::y</a>.</p>
+
+</div>
+</div>
+<a id="afc458f8e977a8dfb3f6c3061da8767c6" name="afc458f8e977a8dfb3f6c3061da8767c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc458f8e977a8dfb3f6c3061da8767c6">&#9670;&#160;</a></span>window_handle_event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void window_handle_event </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structWindow.html">Window</a> *</td>          <td class="paramname"><span class="paramname"><em>win</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Event *</td>          <td class="paramname"><span class="paramname"><em>event</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Gère les événements SDL (clic et drag) pour déplacer la fenêtre. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>Le contexte de l'application. </td></tr>
+    <tr><td class="paramname">win</td><td>La fenêtre à gérer. </td></tr>
+    <tr><td class="paramname">event</td><td>L'événement SDL à traiter. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00100">100</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00046">Window::cfg</a>, <a class="el" href="window_8h_source.html#l00040">WindowConfig::drag_offset_x</a>, <a class="el" href="window_8h_source.html#l00041">WindowConfig::drag_offset_y</a>, <a class="el" href="window_8h_source.html#l00039">WindowConfig::dragging</a>, <a class="el" href="window_8h_source.html#l00028">WindowConfig::h</a>, <a class="el" href="window_8h_source.html#l00030">WindowConfig::hidden</a>, <a class="el" href="window_8h_source.html#l00029">WindowConfig::movable</a>, <a class="el" href="window_8c_source.html#l00017">point_in_titlebar()</a>, <a class="el" href="window_8h_source.html#l00038">WindowConfig::rect</a>, <a class="el" href="window_8h_source.html#l00027">WindowConfig::w</a>, <a class="el" href="sdl_8h_source.html#l00015">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00014">WIN_WIDTH</a>, <a class="el" href="window_8c_source.html#l00056">window_update_rect()</a>, <a class="el" href="window_8h_source.html#l00025">WindowConfig::x</a>, et <a class="el" href="window_8h_source.html#l00026">WindowConfig::y</a>.</p>
+
+</div>
+</div>
+<a id="a9285833340439f457207d10355d15b29" name="a9285833340439f457207d10355d15b29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9285833340439f457207d10355d15b29">&#9670;&#160;</a></span>window_render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void window_render </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structWindow.html">Window</a> *</td>          <td class="paramname"><span class="paramname"><em>win</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Dessine la fenêtre (fond, bordure, barre de titre). </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>Le renderer SDL. </td></tr>
+    <tr><td class="paramname">win</td><td>La fenêtre à dessiner. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00132">132</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00031">WindowConfig::bg_color</a>, <a class="el" href="window_8h_source.html#l00032">WindowConfig::border_color</a>, <a class="el" href="window_8h_source.html#l00034">WindowConfig::border_thickness</a>, <a class="el" href="window_8h_source.html#l00046">Window::cfg</a>, <a class="el" href="window_8c_source.html#l00003">clamp_non_negative()</a>, <a class="el" href="window_8h_source.html#l00030">WindowConfig::hidden</a>, <a class="el" href="window_8h_source.html#l00038">WindowConfig::rect</a>, <a class="el" href="window_8h_source.html#l00033">WindowConfig::titlebar_color</a>, et <a class="el" href="window_8h_source.html#l00035">WindowConfig::titlebar_h</a>.</p>
+
+</div>
+</div>
+<a id="a2b028817484c245cdf440e506f3fbd0d" name="a2b028817484c245cdf440e506f3fbd0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b028817484c245cdf440e506f3fbd0d">&#9670;&#160;</a></span>window_update_rect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void window_update_rect </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structWindow.html">Window</a> *</td>          <td class="paramname"><span class="paramname"><em>win</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Recalcule le rectangle écran depuis x/y/w/h. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">win</td><td>La fenêtre à mettre à jour. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00056">56</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00046">Window::cfg</a>, <a class="el" href="window_8c_source.html#l00003">clamp_non_negative()</a>, <a class="el" href="window_8c_source.html#l00007">clamp_positive()</a>, <a class="el" href="window_8h_source.html#l00028">WindowConfig::h</a>, <a class="el" href="window_8h_source.html#l00038">WindowConfig::rect</a>, <a class="el" href="window_8h_source.html#l00035">WindowConfig::titlebar_h</a>, <a class="el" href="window_8h_source.html#l00027">WindowConfig::w</a>, <a class="el" href="sdl_8h_source.html#l00015">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00014">WIN_WIDTH</a>, <a class="el" href="window_8h_source.html#l00025">WindowConfig::x</a>, et <a class="el" href="window_8h_source.html#l00026">WindowConfig::y</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="window_8c_source.html#l00070">window_create()</a>, <a class="el" href="window_8c_source.html#l00167">window_edit_cfg()</a>, et <a class="el" href="window_8c_source.html#l00100">window_handle_event()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a href="window_8h.html">window.h</a></li>
+    <li class="footer">Généré le Lundi 23 Mars 2026 17:03:04 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

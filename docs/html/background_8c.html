@@ -3,16 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier client/src/background.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -34,21 +35,20 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.9.8 -->
+<!-- Généré par Doxygen 1.14.0 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-/* @license-end */
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
 });
-/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,10 +63,9 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('background_8c.html',''); initResizable(); });
-/* @license-end */
+$(function(){initNavTree('background_8c.html','',''); });
 </script>
+<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -90,11 +89,6 @@ $(document).ready(function(){initNavTree('background_8c.html',''); initResizable
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#nested-classes">Structures de données</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Fonctions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">Référence du fichier background.c</div></div>
 </div><!--header-->
 <div class="contents">
@@ -102,87 +96,53 @@ $(document).ready(function(){initNavTree('background_8c.html',''); initResizable
 </div>
 <p><a href="background_8c_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Structures de données</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTileOverride.html">TileOverride</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTileAnimation.html">TileAnimation</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:TileOverride" id="r_TileOverride"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTileOverride.html">TileOverride</a></td></tr>
+<tr class="memitem:TileAnimation" id="r_TileAnimation"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTileAnimation.html">TileAnimation</a></td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:aea643b9d735c55808b15d4364bfd9b31" id="r_aea643b9d735c55808b15d4364bfd9b31"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#aea643b9d735c55808b15d4364bfd9b31">BG_SYMBOL_W</a>&#160;&#160;&#160;64</td></tr>
-<tr class="separator:aea643b9d735c55808b15d4364bfd9b31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f6303ee0a1992bf221b48a3b1aa1241" id="r_a6f6303ee0a1992bf221b48a3b1aa1241"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#a6f6303ee0a1992bf221b48a3b1aa1241">BG_SYMBOL_H</a>&#160;&#160;&#160;64</td></tr>
-<tr class="separator:a6f6303ee0a1992bf221b48a3b1aa1241"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20dd6f458d09d8ab58f4c915f741c537" id="r_a20dd6f458d09d8ab58f4c915f741c537"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#a20dd6f458d09d8ab58f4c915f741c537">BG_SPACING</a>&#160;&#160;&#160;32</td></tr>
-<tr class="separator:a20dd6f458d09d8ab58f4c915f741c537"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7777ac92c55024269875f8142f2394e" id="r_ae7777ac92c55024269875f8142f2394e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#ae7777ac92c55024269875f8142f2394e">BG_TILE_W</a>&#160;&#160;&#160;(<a class="el" href="background_8c.html#aea643b9d735c55808b15d4364bfd9b31">BG_SYMBOL_W</a> + <a class="el" href="background_8c.html#a20dd6f458d09d8ab58f4c915f741c537">BG_SPACING</a>)</td></tr>
-<tr class="separator:ae7777ac92c55024269875f8142f2394e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06c3c47221a7724b15ac9ef108416f90" id="r_a06c3c47221a7724b15ac9ef108416f90"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#a06c3c47221a7724b15ac9ef108416f90">BG_TILE_H</a>&#160;&#160;&#160;(<a class="el" href="background_8c.html#a6f6303ee0a1992bf221b48a3b1aa1241">BG_SYMBOL_H</a> + <a class="el" href="background_8c.html#a20dd6f458d09d8ab58f4c915f741c537">BG_SPACING</a>)</td></tr>
-<tr class="separator:a06c3c47221a7724b15ac9ef108416f90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2de8138d3df5f1150f59e0379106f060" id="r_a2de8138d3df5f1150f59e0379106f060"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#a2de8138d3df5f1150f59e0379106f060">BG_EXTRA</a>&#160;&#160;&#160;15</td></tr>
-<tr class="separator:a2de8138d3df5f1150f59e0379106f060"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afcf985576c872d3b804dbd7375190e1f" id="r_afcf985576c872d3b804dbd7375190e1f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#afcf985576c872d3b804dbd7375190e1f">BG_SPEED</a>&#160;&#160;&#160;0.55f</td></tr>
-<tr class="separator:afcf985576c872d3b804dbd7375190e1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4604e9ef173357d57814010151ee07b" id="r_ab4604e9ef173357d57814010151ee07b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#ab4604e9ef173357d57814010151ee07b">BG_SIZE</a>&#160;&#160;&#160;0.12f</td></tr>
-<tr class="separator:ab4604e9ef173357d57814010151ee07b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ea49671b0af0645adfdf65d161bdc52" id="r_a4ea49671b0af0645adfdf65d161bdc52"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#a4ea49671b0af0645adfdf65d161bdc52">BG_ANIM_FRAMES</a>&#160;&#160;&#160;14</td></tr>
-<tr class="separator:a4ea49671b0af0645adfdf65d161bdc52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d6d70a57ec56cc9ff6343baefbb6c1a" id="r_a4d6d70a57ec56cc9ff6343baefbb6c1a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#a4d6d70a57ec56cc9ff6343baefbb6c1a">BG_ANIM_POP</a>&#160;&#160;&#160;0.18f</td></tr>
-<tr class="separator:a4d6d70a57ec56cc9ff6343baefbb6c1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78331983ec9727bd3c739a22c93d01b7" id="r_a78331983ec9727bd3c739a22c93d01b7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#a78331983ec9727bd3c739a22c93d01b7">MAX_OVERRIDES</a>&#160;&#160;&#160;512</td></tr>
-<tr class="separator:a78331983ec9727bd3c739a22c93d01b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea643b9d735c55808b15d4364bfd9b31" id="r_aea643b9d735c55808b15d4364bfd9b31"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea643b9d735c55808b15d4364bfd9b31">BG_SYMBOL_W</a>&#160;&#160;&#160;64</td></tr>
+<tr class="memitem:a6f6303ee0a1992bf221b48a3b1aa1241" id="r_a6f6303ee0a1992bf221b48a3b1aa1241"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f6303ee0a1992bf221b48a3b1aa1241">BG_SYMBOL_H</a>&#160;&#160;&#160;64</td></tr>
+<tr class="memitem:a20dd6f458d09d8ab58f4c915f741c537" id="r_a20dd6f458d09d8ab58f4c915f741c537"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20dd6f458d09d8ab58f4c915f741c537">BG_SPACING</a>&#160;&#160;&#160;32</td></tr>
+<tr class="memitem:ae7777ac92c55024269875f8142f2394e" id="r_ae7777ac92c55024269875f8142f2394e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7777ac92c55024269875f8142f2394e">BG_TILE_W</a>&#160;&#160;&#160;(<a class="el" href="#aea643b9d735c55808b15d4364bfd9b31">BG_SYMBOL_W</a> + <a class="el" href="#a20dd6f458d09d8ab58f4c915f741c537">BG_SPACING</a>)</td></tr>
+<tr class="memitem:a06c3c47221a7724b15ac9ef108416f90" id="r_a06c3c47221a7724b15ac9ef108416f90"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a06c3c47221a7724b15ac9ef108416f90">BG_TILE_H</a>&#160;&#160;&#160;(<a class="el" href="#a6f6303ee0a1992bf221b48a3b1aa1241">BG_SYMBOL_H</a> + <a class="el" href="#a20dd6f458d09d8ab58f4c915f741c537">BG_SPACING</a>)</td></tr>
+<tr class="memitem:a2de8138d3df5f1150f59e0379106f060" id="r_a2de8138d3df5f1150f59e0379106f060"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2de8138d3df5f1150f59e0379106f060">BG_EXTRA</a>&#160;&#160;&#160;15</td></tr>
+<tr class="memitem:afcf985576c872d3b804dbd7375190e1f" id="r_afcf985576c872d3b804dbd7375190e1f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afcf985576c872d3b804dbd7375190e1f">BG_SPEED</a>&#160;&#160;&#160;0.55f</td></tr>
+<tr class="memitem:ab4604e9ef173357d57814010151ee07b" id="r_ab4604e9ef173357d57814010151ee07b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab4604e9ef173357d57814010151ee07b">BG_SIZE</a>&#160;&#160;&#160;0.12f</td></tr>
+<tr class="memitem:a4ea49671b0af0645adfdf65d161bdc52" id="r_a4ea49671b0af0645adfdf65d161bdc52"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ea49671b0af0645adfdf65d161bdc52">BG_ANIM_FRAMES</a>&#160;&#160;&#160;14</td></tr>
+<tr class="memitem:a4d6d70a57ec56cc9ff6343baefbb6c1a" id="r_a4d6d70a57ec56cc9ff6343baefbb6c1a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d6d70a57ec56cc9ff6343baefbb6c1a">BG_ANIM_POP</a>&#160;&#160;&#160;0.18f</td></tr>
+<tr class="memitem:a78331983ec9727bd3c739a22c93d01b7" id="r_a78331983ec9727bd3c739a22c93d01b7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78331983ec9727bd3c739a22c93d01b7">MAX_OVERRIDES</a>&#160;&#160;&#160;512</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a467e0ded6c5a03d31811e8778c2bd44e" id="r_a467e0ded6c5a03d31811e8778c2bd44e"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#a467e0ded6c5a03d31811e8778c2bd44e">find_override</a> (int wi, int wj)</td></tr>
-<tr class="separator:a467e0ded6c5a03d31811e8778c2bd44e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a574518a007b8db782a636366085ce1a3" id="r_a574518a007b8db782a636366085ce1a3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#a574518a007b8db782a636366085ce1a3">set_override</a> (int wi, int wj, int symbol)</td></tr>
-<tr class="separator:a574518a007b8db782a636366085ce1a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb47c36f04ea6865ec10c625191dd789" id="r_acb47c36f04ea6865ec10c625191dd789"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#acb47c36f04ea6865ec10c625191dd789">find_animation</a> (int wi, int wj)</td></tr>
-<tr class="separator:acb47c36f04ea6865ec10c625191dd789"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9720ae0edd525f8a6e2cebafbcc7af08" id="r_a9720ae0edd525f8a6e2cebafbcc7af08"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#a9720ae0edd525f8a6e2cebafbcc7af08">start_animation</a> (int wi, int wj, int from_symbol, int to_symbol, long start_clock)</td></tr>
-<tr class="separator:a9720ae0edd525f8a6e2cebafbcc7af08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03785556f97d2da9270f90a5d44791a5" id="r_a03785556f97d2da9270f90a5d44791a5"><td class="memItemLeft" align="right" valign="top">static SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#a03785556f97d2da9270f90a5d44791a5">symbol_texture</a> (int symbol)</td></tr>
-<tr class="separator:a03785556f97d2da9270f90a5d44791a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6752b20a256cdd8f52350997a8b10a13" id="r_a6752b20a256cdd8f52350997a8b10a13"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#a6752b20a256cdd8f52350997a8b10a13">default_symbol</a> (int wi, int wj)</td></tr>
-<tr class="separator:a6752b20a256cdd8f52350997a8b10a13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2a59714f57e46b920d6cb89b7b634f9" id="r_aa2a59714f57e46b920d6cb89b7b634f9"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#aa2a59714f57e46b920d6cb89b7b634f9">world_phase</a> (int scaled_time, int tile_size)</td></tr>
-<tr class="separator:aa2a59714f57e46b920d6cb89b7b634f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6f4c8fa43ae7a3920abab13be4df8d3" id="r_ab6f4c8fa43ae7a3920abab13be4df8d3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#ab6f4c8fa43ae7a3920abab13be4df8d3">window_to_logical</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, int wx, int wy, int *lx, int *ly)</td></tr>
-<tr class="separator:ab6f4c8fa43ae7a3920abab13be4df8d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94b8ff04782778a94b423b2e8cc83f54" id="r_a94b8ff04782778a94b423b2e8cc83f54"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#a94b8ff04782778a94b423b2e8cc83f54">init_background</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
-<tr class="separator:a94b8ff04782778a94b423b2e8cc83f54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25f96140cbb118ccb8dc753189d34ca8" id="r_a25f96140cbb118ccb8dc753189d34ca8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#a25f96140cbb118ccb8dc753189d34ca8">display_background</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
-<tr class="separator:a25f96140cbb118ccb8dc753189d34ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6dd4b89aa74d14d45923b2f1e0d02b9a" id="r_a6dd4b89aa74d14d45923b2f1e0d02b9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#a6dd4b89aa74d14d45923b2f1e0d02b9a">background_handle_event</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, SDL_Event *e)</td></tr>
-<tr class="separator:a6dd4b89aa74d14d45923b2f1e0d02b9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af78b95c9b390ccd54324ea83c93c854f" id="r_af78b95c9b390ccd54324ea83c93c854f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#af78b95c9b390ccd54324ea83c93c854f">destroy_background</a> ()</td></tr>
-<tr class="separator:af78b95c9b390ccd54324ea83c93c854f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43c28abfd144d197f2fa1aa919418949" id="r_a43c28abfd144d197f2fa1aa919418949"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#a43c28abfd144d197f2fa1aa919418949">background_set_color</a> (Uint8 r, Uint8 g, Uint8 b)</td></tr>
-<tr class="separator:a43c28abfd144d197f2fa1aa919418949"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9740a76d3766ec89d3add7ee2ceaf25" id="r_ac9740a76d3766ec89d3add7ee2ceaf25"><td class="memItemLeft" align="right" valign="top">SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#ac9740a76d3766ec89d3add7ee2ceaf25">background_get_color</a> (void)</td></tr>
-<tr class="separator:ac9740a76d3766ec89d3add7ee2ceaf25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a467e0ded6c5a03d31811e8778c2bd44e" id="r_a467e0ded6c5a03d31811e8778c2bd44e"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a467e0ded6c5a03d31811e8778c2bd44e">find_override</a> (int wi, int wj)</td></tr>
+<tr class="memitem:a574518a007b8db782a636366085ce1a3" id="r_a574518a007b8db782a636366085ce1a3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a574518a007b8db782a636366085ce1a3">set_override</a> (int wi, int wj, int symbol)</td></tr>
+<tr class="memitem:acb47c36f04ea6865ec10c625191dd789" id="r_acb47c36f04ea6865ec10c625191dd789"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb47c36f04ea6865ec10c625191dd789">find_animation</a> (int wi, int wj)</td></tr>
+<tr class="memitem:a9720ae0edd525f8a6e2cebafbcc7af08" id="r_a9720ae0edd525f8a6e2cebafbcc7af08"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9720ae0edd525f8a6e2cebafbcc7af08">start_animation</a> (int wi, int wj, int from_symbol, int to_symbol, long start_clock)</td></tr>
+<tr class="memitem:a03785556f97d2da9270f90a5d44791a5" id="r_a03785556f97d2da9270f90a5d44791a5"><td class="memItemLeft" align="right" valign="top">static SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03785556f97d2da9270f90a5d44791a5">symbol_texture</a> (int symbol)</td></tr>
+<tr class="memitem:a6752b20a256cdd8f52350997a8b10a13" id="r_a6752b20a256cdd8f52350997a8b10a13"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6752b20a256cdd8f52350997a8b10a13">default_symbol</a> (int wi, int wj)</td></tr>
+<tr class="memitem:aa2a59714f57e46b920d6cb89b7b634f9" id="r_aa2a59714f57e46b920d6cb89b7b634f9"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2a59714f57e46b920d6cb89b7b634f9">world_phase</a> (int scaled_time, int tile_size)</td></tr>
+<tr class="memitem:ab6f4c8fa43ae7a3920abab13be4df8d3" id="r_ab6f4c8fa43ae7a3920abab13be4df8d3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6f4c8fa43ae7a3920abab13be4df8d3">window_to_logical</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, int wx, int wy, int *lx, int *ly)</td></tr>
+<tr class="memitem:a94b8ff04782778a94b423b2e8cc83f54" id="r_a94b8ff04782778a94b423b2e8cc83f54"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94b8ff04782778a94b423b2e8cc83f54">init_background</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="memitem:a25f96140cbb118ccb8dc753189d34ca8" id="r_a25f96140cbb118ccb8dc753189d34ca8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25f96140cbb118ccb8dc753189d34ca8">display_background</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="memitem:a6dd4b89aa74d14d45923b2f1e0d02b9a" id="r_a6dd4b89aa74d14d45923b2f1e0d02b9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6dd4b89aa74d14d45923b2f1e0d02b9a">background_handle_event</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, SDL_Event *e)</td></tr>
+<tr class="memitem:af78b95c9b390ccd54324ea83c93c854f" id="r_af78b95c9b390ccd54324ea83c93c854f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af78b95c9b390ccd54324ea83c93c854f">destroy_background</a> ()</td></tr>
+<tr class="memitem:a43c28abfd144d197f2fa1aa919418949" id="r_a43c28abfd144d197f2fa1aa919418949"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43c28abfd144d197f2fa1aa919418949">background_set_color</a> (Uint8 r, Uint8 g, Uint8 b)</td></tr>
+<tr class="memitem:ac9740a76d3766ec89d3add7ee2ceaf25" id="r_ac9740a76d3766ec89d3add7ee2ceaf25"><td class="memItemLeft" align="right" valign="top">SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9740a76d3766ec89d3add7ee2ceaf25">background_get_color</a> (void)</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a46bc688b0fffc839388c748c904460f4" id="r_a46bc688b0fffc839388c748c904460f4"><td class="memItemLeft" align="right" valign="top">static SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#a46bc688b0fffc839388c748c904460f4">lens</a></td></tr>
-<tr class="separator:a46bc688b0fffc839388c748c904460f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a67dc3a4aa5ffe8ea6cda2812d20219" id="r_a0a67dc3a4aa5ffe8ea6cda2812d20219"><td class="memItemLeft" align="right" valign="top">static SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#a0a67dc3a4aa5ffe8ea6cda2812d20219">hat</a></td></tr>
-<tr class="separator:a0a67dc3a4aa5ffe8ea6cda2812d20219"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b0cefe4533c4d1eb4d4a35c4f09de7a" id="r_a4b0cefe4533c4d1eb4d4a35c4f09de7a"><td class="memItemLeft" align="right" valign="top">static SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#a4b0cefe4533c4d1eb4d4a35c4f09de7a">spyglasses</a></td></tr>
-<tr class="separator:a4b0cefe4533c4d1eb4d4a35c4f09de7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41a4146bfafc08d5edf38a02628e8038" id="r_a41a4146bfafc08d5edf38a02628e8038"><td class="memItemLeft" align="right" valign="top">static SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#a41a4146bfafc08d5edf38a02628e8038">bg_color</a> = {50, 50, 50, 255}</td></tr>
-<tr class="separator:a41a4146bfafc08d5edf38a02628e8038"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2a93d3efa03bab44da6f56b5fed8c6c" id="r_ad2a93d3efa03bab44da6f56b5fed8c6c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structTileOverride.html">TileOverride</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#ad2a93d3efa03bab44da6f56b5fed8c6c">overrides</a> [<a class="el" href="background_8c.html#a78331983ec9727bd3c739a22c93d01b7">MAX_OVERRIDES</a>]</td></tr>
-<tr class="separator:ad2a93d3efa03bab44da6f56b5fed8c6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac984eac65d555c21bdfcb12e3ee3aaf1" id="r_ac984eac65d555c21bdfcb12e3ee3aaf1"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#ac984eac65d555c21bdfcb12e3ee3aaf1">override_count</a> = 0</td></tr>
-<tr class="separator:ac984eac65d555c21bdfcb12e3ee3aaf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aecee9fd9c8255361411f98ca4e75b90c" id="r_aecee9fd9c8255361411f98ca4e75b90c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structTileAnimation.html">TileAnimation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="background_8c.html#aecee9fd9c8255361411f98ca4e75b90c">animations</a> [<a class="el" href="background_8c.html#a78331983ec9727bd3c739a22c93d01b7">MAX_OVERRIDES</a>]</td></tr>
-<tr class="separator:aecee9fd9c8255361411f98ca4e75b90c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46bc688b0fffc839388c748c904460f4" id="r_a46bc688b0fffc839388c748c904460f4"><td class="memItemLeft" align="right" valign="top">static SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46bc688b0fffc839388c748c904460f4">lens</a></td></tr>
+<tr class="memitem:a0a67dc3a4aa5ffe8ea6cda2812d20219" id="r_a0a67dc3a4aa5ffe8ea6cda2812d20219"><td class="memItemLeft" align="right" valign="top">static SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a67dc3a4aa5ffe8ea6cda2812d20219">hat</a></td></tr>
+<tr class="memitem:a4b0cefe4533c4d1eb4d4a35c4f09de7a" id="r_a4b0cefe4533c4d1eb4d4a35c4f09de7a"><td class="memItemLeft" align="right" valign="top">static SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b0cefe4533c4d1eb4d4a35c4f09de7a">spyglasses</a></td></tr>
+<tr class="memitem:a41a4146bfafc08d5edf38a02628e8038" id="r_a41a4146bfafc08d5edf38a02628e8038"><td class="memItemLeft" align="right" valign="top">static SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41a4146bfafc08d5edf38a02628e8038">bg_color</a> = {50, 50, 50, 255}</td></tr>
+<tr class="memitem:ad2a93d3efa03bab44da6f56b5fed8c6c" id="r_ad2a93d3efa03bab44da6f56b5fed8c6c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structTileOverride.html">TileOverride</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2a93d3efa03bab44da6f56b5fed8c6c">overrides</a> [<a class="el" href="#a78331983ec9727bd3c739a22c93d01b7">MAX_OVERRIDES</a>]</td></tr>
+<tr class="memitem:ac984eac65d555c21bdfcb12e3ee3aaf1" id="r_ac984eac65d555c21bdfcb12e3ee3aaf1"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac984eac65d555c21bdfcb12e3ee3aaf1">override_count</a> = 0</td></tr>
+<tr class="memitem:aecee9fd9c8255361411f98ca4e75b90c" id="r_aecee9fd9c8255361411f98ca4e75b90c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structTileAnimation.html">TileAnimation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aecee9fd9c8255361411f98ca4e75b90c">animations</a> [<a class="el" href="#a78331983ec9727bd3c739a22c93d01b7">MAX_OVERRIDES</a>]</td></tr>
 </table>
-<h2 class="groupheader">Documentation des macros</h2>
+<a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentation des macros</h2>
 <a id="a4ea49671b0af0645adfdf65d161bdc52" name="a4ea49671b0af0645adfdf65d161bdc52"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4ea49671b0af0645adfdf65d161bdc52">&#9670;&#160;</a></span>BG_ANIM_FRAMES</h2>
 
@@ -196,6 +156,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="background_8c_source.html#l00020">20</a> du fichier <a class="el" href="background_8c_source.html">background.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="background_8c_source.html#l00150">display_background()</a>.</p>
 
 </div>
 </div>
@@ -213,6 +175,8 @@ Variables</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="background_8c_source.html#l00021">21</a> du fichier <a class="el" href="background_8c_source.html">background.c</a>.</p>
 
+<p class="reference">Référencé par <a class="el" href="background_8c_source.html#l00150">display_background()</a>.</p>
+
 </div>
 </div>
 <a id="a2de8138d3df5f1150f59e0379106f060" name="a2de8138d3df5f1150f59e0379106f060"></a>
@@ -229,6 +193,8 @@ Variables</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="background_8c_source.html#l00017">17</a> du fichier <a class="el" href="background_8c_source.html">background.c</a>.</p>
 
+<p class="reference">Référencé par <a class="el" href="background_8c_source.html#l00226">background_handle_event()</a>, et <a class="el" href="background_8c_source.html#l00150">display_background()</a>.</p>
+
 </div>
 </div>
 <a id="ab4604e9ef173357d57814010151ee07b" name="ab4604e9ef173357d57814010151ee07b"></a>
@@ -244,6 +210,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="background_8c_source.html#l00019">19</a> du fichier <a class="el" href="background_8c_source.html">background.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="background_8c_source.html#l00226">background_handle_event()</a>, et <a class="el" href="background_8c_source.html#l00150">display_background()</a>.</p>
 
 </div>
 </div>
@@ -277,6 +245,8 @@ Variables</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="background_8c_source.html#l00018">18</a> du fichier <a class="el" href="background_8c_source.html">background.c</a>.</p>
 
+<p class="reference">Référencé par <a class="el" href="background_8c_source.html#l00226">background_handle_event()</a>, et <a class="el" href="background_8c_source.html#l00150">display_background()</a>.</p>
+
 </div>
 </div>
 <a id="a6f6303ee0a1992bf221b48a3b1aa1241" name="a6f6303ee0a1992bf221b48a3b1aa1241"></a>
@@ -292,6 +262,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="background_8c_source.html#l00013">13</a> du fichier <a class="el" href="background_8c_source.html">background.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="background_8c_source.html#l00226">background_handle_event()</a>, et <a class="el" href="background_8c_source.html#l00150">display_background()</a>.</p>
 
 </div>
 </div>
@@ -309,6 +281,8 @@ Variables</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="background_8c_source.html#l00012">12</a> du fichier <a class="el" href="background_8c_source.html">background.c</a>.</p>
 
+<p class="reference">Référencé par <a class="el" href="background_8c_source.html#l00226">background_handle_event()</a>, et <a class="el" href="background_8c_source.html#l00150">display_background()</a>.</p>
+
 </div>
 </div>
 <a id="a06c3c47221a7724b15ac9ef108416f90" name="a06c3c47221a7724b15ac9ef108416f90"></a>
@@ -318,12 +292,14 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define BG_TILE_H&#160;&#160;&#160;(<a class="el" href="background_8c.html#a6f6303ee0a1992bf221b48a3b1aa1241">BG_SYMBOL_H</a> + <a class="el" href="background_8c.html#a20dd6f458d09d8ab58f4c915f741c537">BG_SPACING</a>)</td>
+          <td class="memname">#define BG_TILE_H&#160;&#160;&#160;(<a class="el" href="#a6f6303ee0a1992bf221b48a3b1aa1241">BG_SYMBOL_H</a> + <a class="el" href="#a20dd6f458d09d8ab58f4c915f741c537">BG_SPACING</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="background_8c_source.html#l00016">16</a> du fichier <a class="el" href="background_8c_source.html">background.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="background_8c_source.html#l00226">background_handle_event()</a>, et <a class="el" href="background_8c_source.html#l00150">display_background()</a>.</p>
 
 </div>
 </div>
@@ -334,12 +310,14 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define BG_TILE_W&#160;&#160;&#160;(<a class="el" href="background_8c.html#aea643b9d735c55808b15d4364bfd9b31">BG_SYMBOL_W</a> + <a class="el" href="background_8c.html#a20dd6f458d09d8ab58f4c915f741c537">BG_SPACING</a>)</td>
+          <td class="memname">#define BG_TILE_W&#160;&#160;&#160;(<a class="el" href="#aea643b9d735c55808b15d4364bfd9b31">BG_SYMBOL_W</a> + <a class="el" href="#a20dd6f458d09d8ab58f4c915f741c537">BG_SPACING</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="background_8c_source.html#l00015">15</a> du fichier <a class="el" href="background_8c_source.html">background.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="background_8c_source.html#l00226">background_handle_event()</a>, et <a class="el" href="background_8c_source.html#l00150">display_background()</a>.</p>
 
 </div>
 </div>
@@ -357,9 +335,11 @@ Variables</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="background_8c_source.html#l00024">24</a> du fichier <a class="el" href="background_8c_source.html">background.c</a>.</p>
 
+<p class="reference">Référencé par <a class="el" href="background_8c_source.html#l00058">find_animation()</a>, <a class="el" href="background_8c_source.html#l00046">set_override()</a>, et <a class="el" href="background_8c_source.html#l00064">start_animation()</a>.</p>
+
 </div>
 </div>
-<h2 class="groupheader">Documentation des fonctions</h2>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
 <a id="ac9740a76d3766ec89d3add7ee2ceaf25" name="ac9740a76d3766ec89d3add7ee2ceaf25"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac9740a76d3766ec89d3add7ee2ceaf25">&#9670;&#160;</a></span>background_get_color()</h2>
 
@@ -369,8 +349,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">SDL_Color background_get_color </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -380,8 +359,6 @@ Variables</h2></td></tr>
 <p class="definition">Définition à la ligne <a class="el" href="background_8c_source.html#l00300">300</a> du fichier <a class="el" href="background_8c_source.html">background.c</a>.</p>
 
 <p class="reference">Références <a class="el" href="background_8c_source.html#l00009">bg_color</a>.</p>
-
-<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>.</p>
 
 </div>
 </div>
@@ -394,19 +371,12 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void background_handle_event </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
-          <td class="paramname"><em>context</em>, </td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SDL_Event *&#160;</td>
-          <td class="paramname"><em>e</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">SDL_Event *</td>          <td class="paramname"><span class="paramname"><em>e</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -420,7 +390,7 @@ Variables</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="background_8c_source.html#l00226">226</a> du fichier <a class="el" href="background_8c_source.html">background.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="background_8c_source.html#l00017">BG_EXTRA</a>, <a class="el" href="background_8c_source.html#l00019">BG_SIZE</a>, <a class="el" href="background_8c_source.html#l00018">BG_SPEED</a>, <a class="el" href="background_8c_source.html#l00013">BG_SYMBOL_H</a>, <a class="el" href="background_8c_source.html#l00012">BG_SYMBOL_W</a>, <a class="el" href="background_8c_source.html#l00016">BG_TILE_H</a>, <a class="el" href="background_8c_source.html#l00015">BG_TILE_W</a>, <a class="el" href="sdl_8h_source.html#l00040">AppContext::clock</a>, <a class="el" href="background_8c_source.html#l00095">default_symbol()</a>, <a class="el" href="background_8c_source.html#l00040">find_override()</a>, <a class="el" href="background_8c_source.html#l00026">overrides</a>, <a class="el" href="background_8c_source.html#l00046">set_override()</a>, <a class="el" href="background_8c_source.html#l00064">start_animation()</a>, <a class="el" href="sdl_8h_source.html#l00015">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00014">WIN_WIDTH</a>, et <a class="el" href="background_8c_source.html#l00108">world_phase()</a>.</p>
+<p class="reference">Références <a class="el" href="background_8c_source.html#l00017">BG_EXTRA</a>, <a class="el" href="background_8c_source.html#l00019">BG_SIZE</a>, <a class="el" href="background_8c_source.html#l00018">BG_SPEED</a>, <a class="el" href="background_8c_source.html#l00013">BG_SYMBOL_H</a>, <a class="el" href="background_8c_source.html#l00012">BG_SYMBOL_W</a>, <a class="el" href="background_8c_source.html#l00016">BG_TILE_H</a>, <a class="el" href="background_8c_source.html#l00015">BG_TILE_W</a>, <a class="el" href="sdl_8h_source.html#l00042">AppContext::clock</a>, <a class="el" href="background_8c_source.html#l00095">default_symbol()</a>, <a class="el" href="background_8c_source.html#l00040">find_override()</a>, <a class="el" href="background_8c_source.html#l00026">overrides</a>, <a class="el" href="background_8c_source.html#l00046">set_override()</a>, <a class="el" href="background_8c_source.html#l00064">start_animation()</a>, <a class="el" href="sdl_8h_source.html#l00015">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00014">WIN_WIDTH</a>, et <a class="el" href="background_8c_source.html#l00108">world_phase()</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>.</p>
 
@@ -435,25 +405,17 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void background_set_color </td>
           <td>(</td>
-          <td class="paramtype">Uint8&#160;</td>
-          <td class="paramname"><em>r</em>, </td>
+          <td class="paramtype">Uint8</td>          <td class="paramname"><span class="paramname"><em>r</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Uint8&#160;</td>
-          <td class="paramname"><em>g</em>, </td>
+          <td class="paramtype">Uint8</td>          <td class="paramname"><span class="paramname"><em>g</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Uint8&#160;</td>
-          <td class="paramname"><em>b</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">Uint8</td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -470,8 +432,6 @@ Variables</h2></td></tr>
 
 <p class="reference">Références <a class="el" href="background_8c_source.html#l00009">bg_color</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>.</p>
-
 </div>
 </div>
 <a id="a6752b20a256cdd8f52350997a8b10a13" name="a6752b20a256cdd8f52350997a8b10a13"></a>
@@ -484,26 +444,19 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static int default_symbol </td>
+          <td class="memname">int default_symbol </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>wi</em>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>wi</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>wj</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>wj</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -523,7 +476,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int destroy_background </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -547,8 +500,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void display_background </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
-          <td class="paramname"><em>context</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -562,7 +514,7 @@ Variables</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="background_8c_source.html#l00150">150</a> du fichier <a class="el" href="background_8c_source.html">background.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="background_8c_source.html#l00035">TileAnimation::active</a>, <a class="el" href="background_8c_source.html#l00038">animations</a>, <a class="el" href="background_8c_source.html#l00020">BG_ANIM_FRAMES</a>, <a class="el" href="background_8c_source.html#l00021">BG_ANIM_POP</a>, <a class="el" href="background_8c_source.html#l00017">BG_EXTRA</a>, <a class="el" href="background_8c_source.html#l00019">BG_SIZE</a>, <a class="el" href="background_8c_source.html#l00018">BG_SPEED</a>, <a class="el" href="background_8c_source.html#l00013">BG_SYMBOL_H</a>, <a class="el" href="background_8c_source.html#l00012">BG_SYMBOL_W</a>, <a class="el" href="background_8c_source.html#l00016">BG_TILE_H</a>, <a class="el" href="background_8c_source.html#l00015">BG_TILE_W</a>, <a class="el" href="sdl_8h_source.html#l00040">AppContext::clock</a>, <a class="el" href="background_8c_source.html#l00095">default_symbol()</a>, <a class="el" href="sdl_8c_source.html#l00190">display_image()</a>, <a class="el" href="background_8c_source.html#l00058">find_animation()</a>, <a class="el" href="background_8c_source.html#l00040">find_override()</a>, <a class="el" href="background_8c_source.html#l00026">overrides</a>, <a class="el" href="sdl_8h_source.html#l00039">AppContext::renderer</a>, <a class="el" href="background_8c_source.html#l00034">TileAnimation::start_clock</a>, <a class="el" href="background_8c_source.html#l00086">symbol_texture()</a>, <a class="el" href="sdl_8h_source.html#l00015">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00014">WIN_WIDTH</a>, <a class="el" href="background_8c_source.html#l00112">window_to_logical()</a>, et <a class="el" href="background_8c_source.html#l00108">world_phase()</a>.</p>
+<p class="reference">Références <a class="el" href="background_8c_source.html#l00038">animations</a>, <a class="el" href="background_8c_source.html#l00020">BG_ANIM_FRAMES</a>, <a class="el" href="background_8c_source.html#l00021">BG_ANIM_POP</a>, <a class="el" href="background_8c_source.html#l00017">BG_EXTRA</a>, <a class="el" href="background_8c_source.html#l00019">BG_SIZE</a>, <a class="el" href="background_8c_source.html#l00018">BG_SPEED</a>, <a class="el" href="background_8c_source.html#l00013">BG_SYMBOL_H</a>, <a class="el" href="background_8c_source.html#l00012">BG_SYMBOL_W</a>, <a class="el" href="background_8c_source.html#l00016">BG_TILE_H</a>, <a class="el" href="background_8c_source.html#l00015">BG_TILE_W</a>, <a class="el" href="sdl_8h_source.html#l00042">AppContext::clock</a>, <a class="el" href="background_8c_source.html#l00095">default_symbol()</a>, <a class="el" href="sdl_8c_source.html#l00190">display_image()</a>, <a class="el" href="background_8c_source.html#l00058">find_animation()</a>, <a class="el" href="background_8c_source.html#l00040">find_override()</a>, <a class="el" href="background_8c_source.html#l00026">overrides</a>, <a class="el" href="sdl_8h_source.html#l00040">AppContext::renderer</a>, <a class="el" href="background_8c_source.html#l00086">symbol_texture()</a>, <a class="el" href="sdl_8h_source.html#l00015">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00014">WIN_WIDTH</a>, <a class="el" href="background_8c_source.html#l00112">window_to_logical()</a>, et <a class="el" href="background_8c_source.html#l00108">world_phase()</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>.</p>
 
@@ -578,26 +530,19 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static int find_animation </td>
+          <td class="memname">int find_animation </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>wi</em>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>wi</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>wj</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>wj</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -620,26 +565,19 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static int find_override </td>
+          <td class="memname">int find_override </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>wi</em>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>wi</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>wj</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>wj</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -661,8 +599,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int init_background </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
-          <td class="paramname"><em>context</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -677,7 +614,7 @@ Variables</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="background_8c_source.html#l00129">129</a> du fichier <a class="el" href="background_8c_source.html">background.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="background_8c_source.html#l00005">hat</a>, <a class="el" href="background_8c_source.html#l00004">lens</a>, <a class="el" href="sdl_8c_source.html#l00169">load_image()</a>, <a class="el" href="sdl_8h_source.html#l00039">AppContext::renderer</a>, et <a class="el" href="background_8c_source.html#l00006">spyglasses</a>.</p>
+<p class="reference">Références <a class="el" href="background_8c_source.html#l00005">hat</a>, <a class="el" href="background_8c_source.html#l00004">lens</a>, <a class="el" href="sdl_8c_source.html#l00169">load_image()</a>, <a class="el" href="sdl_8h_source.html#l00040">AppContext::renderer</a>, et <a class="el" href="background_8c_source.html#l00006">spyglasses</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>.</p>
 
@@ -693,39 +630,31 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void set_override </td>
+          <td class="memname">void set_override </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>wi</em>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>wi</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>wj</em>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>wj</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>symbol</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>symbol</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="background_8c_source.html#l00046">46</a> du fichier <a class="el" href="background_8c_source.html">background.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="background_8c_source.html#l00040">find_override()</a>, <a class="el" href="background_8c_source.html#l00024">MAX_OVERRIDES</a>, <a class="el" href="background_8c_source.html#l00027">override_count</a>, <a class="el" href="background_8c_source.html#l00026">overrides</a>, <a class="el" href="background_8c_source.html#l00025">TileOverride::symbol</a>, <a class="el" href="background_8c_source.html#l00025">TileOverride::wi</a>, et <a class="el" href="background_8c_source.html#l00025">TileOverride::wj</a>.</p>
+<p class="reference">Références <a class="el" href="background_8c_source.html#l00040">find_override()</a>, <a class="el" href="background_8c_source.html#l00024">MAX_OVERRIDES</a>, <a class="el" href="background_8c_source.html#l00027">override_count</a>, et <a class="el" href="background_8c_source.html#l00026">overrides</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="background_8c_source.html#l00226">background_handle_event()</a>.</p>
 
@@ -741,51 +670,41 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void start_animation </td>
+          <td class="memname">void start_animation </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>wi</em>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>wi</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>wj</em>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>wj</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>from_symbol</em>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>from_symbol</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>to_symbol</em>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>to_symbol</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">long&#160;</td>
-          <td class="paramname"><em>start_clock</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">long</td>          <td class="paramname"><span class="paramname"><em>start_clock</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="background_8c_source.html#l00064">64</a> du fichier <a class="el" href="background_8c_source.html">background.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="background_8c_source.html#l00035">TileAnimation::active</a>, <a class="el" href="background_8c_source.html#l00038">animations</a>, <a class="el" href="background_8c_source.html#l00058">find_animation()</a>, <a class="el" href="background_8c_source.html#l00032">TileAnimation::from_symbol</a>, <a class="el" href="background_8c_source.html#l00024">MAX_OVERRIDES</a>, <a class="el" href="background_8c_source.html#l00034">TileAnimation::start_clock</a>, <a class="el" href="background_8c_source.html#l00033">TileAnimation::to_symbol</a>, <a class="el" href="background_8c_source.html#l00030">TileAnimation::wi</a>, et <a class="el" href="background_8c_source.html#l00031">TileAnimation::wj</a>.</p>
+<p class="reference">Références <a class="el" href="background_8c_source.html#l00038">animations</a>, <a class="el" href="background_8c_source.html#l00058">find_animation()</a>, et <a class="el" href="background_8c_source.html#l00024">MAX_OVERRIDES</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="background_8c_source.html#l00226">background_handle_event()</a>.</p>
 
@@ -801,16 +720,15 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static SDL_Texture * symbol_texture </td>
+          <td class="memname">SDL_Texture * symbol_texture </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>symbol</em></td><td>)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>symbol</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -833,51 +751,41 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void window_to_logical </td>
+          <td class="memname">void window_to_logical </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
-          <td class="paramname"><em>context</em>, </td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>wx</em>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>wx</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>wy</em>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>wy</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>lx</em>, </td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>lx</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>ly</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>ly</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="background_8c_source.html#l00112">112</a> du fichier <a class="el" href="background_8c_source.html">background.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00039">AppContext::renderer</a>.</p>
+<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00040">AppContext::renderer</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="background_8c_source.html#l00150">display_background()</a>.</p>
 
@@ -893,26 +801,19 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static int world_phase </td>
+          <td class="memname">int world_phase </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>scaled_time</em>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>scaled_time</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>tile_size</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>tile_size</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -923,7 +824,7 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Documentation des variables</h2>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Documentation des variables</h2>
 <a id="aecee9fd9c8255361411f98ca4e75b90c" name="aecee9fd9c8255361411f98ca4e75b90c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aecee9fd9c8255361411f98ca4e75b90c">&#9670;&#160;</a></span>animations</h2>
 
@@ -934,12 +835,12 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structTileAnimation.html">TileAnimation</a> animations[<a class="el" href="background_8c.html#a78331983ec9727bd3c739a22c93d01b7">MAX_OVERRIDES</a>]</td>
+          <td class="memname"><a class="el" href="structTileAnimation.html">TileAnimation</a> animations[<a class="el" href="#a78331983ec9727bd3c739a22c93d01b7">MAX_OVERRIDES</a>]</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -965,7 +866,7 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -991,7 +892,7 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1017,7 +918,7 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1043,7 +944,7 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1064,12 +965,12 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structTileOverride.html">TileOverride</a> overrides[<a class="el" href="background_8c.html#a78331983ec9727bd3c739a22c93d01b7">MAX_OVERRIDES</a>]</td>
+          <td class="memname"><a class="el" href="structTileOverride.html">TileOverride</a> overrides[<a class="el" href="#a78331983ec9727bd3c739a22c93d01b7">MAX_OVERRIDES</a>]</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1095,7 +996,7 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1108,11 +1009,19 @@ Variables</h2></td></tr>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a class="el" href="background_8c.html">background.c</a></li>
-    <li class="footer">Généré le Vendredi 20 Mars 2026 21:22:33 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a href="background_8c.html">background.c</a></li>
+    <li class="footer">Généré le Lundi 23 Mars 2026 17:03:04 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
 </body>

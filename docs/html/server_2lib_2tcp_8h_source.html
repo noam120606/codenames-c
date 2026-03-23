@@ -3,16 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames:  Fichier source de server/lib/tcp.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -34,28 +35,22 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.9.8 -->
+<!-- Généré par Doxygen 1.14.0 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-/* @license-end */
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
 });
-/* @license-end */
 </script>
 <div id="main-nav"></div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function() { init_codefold(0); });
-/* @license-end */
-</script>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -68,10 +63,9 @@ $(document).ready(function() { init_codefold(0); });
   </div>
 </div>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('server_2lib_2tcp_8h_source.html',''); initResizable(); });
-/* @license-end */
+$(function(){initNavTree('server_2lib_2tcp_8h_source.html','',''); });
 </script>
+<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -105,36 +99,36 @@ $(document).ready(function(){initNavTree('server_2lib_2tcp_8h_source.html',''); 
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="server_2lib_2tcp_8h.html#a5b53bef6d63b7ccb5a69cc9ea79a7330">    6</a></span><span class="preprocessor">#define TCP_MAX_CLIENTS 128</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="server_2lib_2tcp_8h.html#a02ded67c60c79f3a121a19a495bde2fe">    7</a></span><span class="preprocessor">#define TCP_BUFFER_SIZE 1024</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span></div>
 <div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="structTcpClient.html">   14</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">   15</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>;</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structTcpClient.html#a65f3c371110f630616b3b459972753b1">   16</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structTcpClient.html#a65f3c371110f630616b3b459972753b1">socket</a>;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structTcpClient.html#a16d1db1ab6eb28b277ce51d595050eb8">   17</a></span>    <span class="keyword">struct </span>sockaddr_in addr;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structTcpClient.html#a16d1db1ab6eb28b277ce51d595050eb8">   17</a></span>    <span class="keyword">struct </span>sockaddr_in <a class="code hl_variable" href="structTcpClient.html#a16d1db1ab6eb28b277ce51d595050eb8">addr</a>;</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>} <a class="code hl_struct" href="structTcpClient.html">TcpClient</a>;</div>
 </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span></div>
 <div class="foldopen" id="foldopen00026" data-start="{" data-end="};">
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structTcpServer.html">   26</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structTcpServer.html#ab349c28c4c3421907d40f56c112fec65">   27</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structTcpServer.html#ab349c28c4c3421907d40f56c112fec65">server_socket</a>;</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structTcpServer.html#a95fc31ff59f7a0bc013b942e68d07e37">   28</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structTcpServer.html#a95fc31ff59f7a0bc013b942e68d07e37">port</a>;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structTcpServer.html#a9e6430ea9a333be4622922dc4bb35924">   29</a></span>    <a class="code hl_struct" href="structTcpClient.html">TcpClient</a> clients[<a class="code hl_define" href="server_2lib_2tcp_8h.html#a5b53bef6d63b7ccb5a69cc9ea79a7330">TCP_MAX_CLIENTS</a>];</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structTcpServer.html#a9e6430ea9a333be4622922dc4bb35924">   29</a></span>    <a class="code hl_struct" href="structTcpClient.html">TcpClient</a> <a class="code hl_variable" href="structTcpServer.html#a9e6430ea9a333be4622922dc4bb35924">clients</a>[<a class="code hl_define" href="server_2lib_2tcp_8h.html#a5b53bef6d63b7ccb5a69cc9ea79a7330">TCP_MAX_CLIENTS</a>];</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>} <a class="code hl_struct" href="structTcpServer.html">TcpServer</a>;</div>
 </div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">/* Initialisation / destruction */</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><a class="code hl_struct" href="structTcpServer.html">TcpServer</a>* <a class="code hl_function" href="server_2lib_2tcp_8h.html#a391f747d7efe0143c7379257b4ef11e6">tcp_server_create</a>(<span class="keywordtype">int</span> port);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span></div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keywordtype">void</span> <a class="code hl_function" href="server_2lib_2tcp_8h.html#a87ee33923925e6b9e2a68d31affb96cc">tcp_server_destroy</a>(<a class="code hl_struct" href="structTcpServer.html">TcpServer</a>* server);</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">/* Forward declaration to avoid circular include with codenames.h */</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="server_2lib_2tcp_8h.html#aa44c3a3da81703c57680df8630f4414e">   48</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structCodenames.html">Codenames</a> <a class="code hl_struct" href="structCodenames.html">Codenames</a>;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structCodenames.html">Codenames</a> <a class="code hl_struct" href="structCodenames.html">Codenames</a>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keywordtype">void</span> <a class="code hl_function" href="server_2lib_2tcp_8h.html#a5a0faa5148ca1f09b46e80d27c318542">tcp_server_tick</a>(<a class="code hl_struct" href="structCodenames.html">Codenames</a>* codenames);</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">/* Communication */</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span></div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keywordtype">int</span> <a class="code hl_function" href="server_2lib_2tcp_8h.html#ae3efc44467ee08b4d29bcc4ef7886119">tcp_send_to_client</a>(<a class="code hl_struct" href="structCodenames.html">Codenames</a>* codenames, <span class="keywordtype">int</span> client_id, <span class="keyword">const</span> <span class="keywordtype">char</span>* message);</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">/* Callbacks (à override si besoin) */</span></div>
@@ -148,24 +142,27 @@ $(document).ready(function(){initNavTree('server_2lib_2tcp_8h_source.html',''); 
 <div class="ttc" id="aserver_2lib_2tcp_8h_html_a4e3564e7cb720d84f2d8b2f1385e1c50"><div class="ttname"><a href="server_2lib_2tcp_8h.html#a4e3564e7cb720d84f2d8b2f1385e1c50">tcp_on_client_disconnect</a></div><div class="ttdeci">void tcp_on_client_disconnect(Codenames *codenames, TcpClient *client)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2tcp_8c_source.html#l00153">tcp.c:153</a></div></div>
 <div class="ttc" id="aserver_2lib_2tcp_8h_html_a55c99d36c3c04576b30e38c0eac2f83d"><div class="ttname"><a href="server_2lib_2tcp_8h.html#a55c99d36c3c04576b30e38c0eac2f83d">tcp_on_client_connect</a></div><div class="ttdeci">void tcp_on_client_connect(Codenames *codenames, TcpClient *client)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2tcp_8c_source.html#l00148">tcp.c:148</a></div></div>
 <div class="ttc" id="aserver_2lib_2tcp_8h_html_a5a0faa5148ca1f09b46e80d27c318542"><div class="ttname"><a href="server_2lib_2tcp_8h.html#a5a0faa5148ca1f09b46e80d27c318542">tcp_server_tick</a></div><div class="ttdeci">void tcp_server_tick(Codenames *codenames)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2tcp_8c_source.html#l00083">tcp.c:83</a></div></div>
-<div class="ttc" id="aserver_2lib_2tcp_8h_html_a5b53bef6d63b7ccb5a69cc9ea79a7330"><div class="ttname"><a href="server_2lib_2tcp_8h.html#a5b53bef6d63b7ccb5a69cc9ea79a7330">TCP_MAX_CLIENTS</a></div><div class="ttdeci">#define TCP_MAX_CLIENTS</div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2tcp_8h_source.html#l00006">tcp.h:6</a></div></div>
+<div class="ttc" id="aserver_2lib_2tcp_8h_html_a5b53bef6d63b7ccb5a69cc9ea79a7330"><div class="ttname"><a href="server_2lib_2tcp_8h.html#a5b53bef6d63b7ccb5a69cc9ea79a7330">TCP_MAX_CLIENTS</a></div><div class="ttdeci">#define TCP_MAX_CLIENTS</div><div class="ttdef"><b>Definition</b> <a href="#l00006">tcp.h:6</a></div></div>
 <div class="ttc" id="aserver_2lib_2tcp_8h_html_a87ee33923925e6b9e2a68d31affb96cc"><div class="ttname"><a href="server_2lib_2tcp_8h.html#a87ee33923925e6b9e2a68d31affb96cc">tcp_server_destroy</a></div><div class="ttdeci">void tcp_server_destroy(TcpServer *server)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2tcp_8c_source.html#l00048">tcp.c:48</a></div></div>
 <div class="ttc" id="aserver_2lib_2tcp_8h_html_adffbce60e9acd77a4071c627e70d1431"><div class="ttname"><a href="server_2lib_2tcp_8h.html#adffbce60e9acd77a4071c627e70d1431">tcp_on_client_message</a></div><div class="ttdeci">void tcp_on_client_message(Codenames *codenames, TcpClient *client, char *message)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2tcp_8c_source.html#l00158">tcp.c:158</a></div></div>
 <div class="ttc" id="aserver_2lib_2tcp_8h_html_ae3efc44467ee08b4d29bcc4ef7886119"><div class="ttname"><a href="server_2lib_2tcp_8h.html#ae3efc44467ee08b4d29bcc4ef7886119">tcp_send_to_client</a></div><div class="ttdeci">int tcp_send_to_client(Codenames *codenames, int client_id, const char *message)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2tcp_8c_source.html#l00131">tcp.c:131</a></div></div>
 <div class="ttc" id="astructCodenames_html"><div class="ttname"><a href="structCodenames.html">Codenames</a></div><div class="ttdef"><b>Definition</b> <a href="codenames_8h_source.html#l00012">codenames.h:12</a></div></div>
-<div class="ttc" id="astructTcpClient_html"><div class="ttname"><a href="structTcpClient.html">TcpClient</a></div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2tcp_8h_source.html#l00014">tcp.h:14</a></div></div>
-<div class="ttc" id="astructTcpClient_html_a28a40517fae053778f34c4c8498b83b6"><div class="ttname"><a href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">TcpClient::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2tcp_8h_source.html#l00015">tcp.h:15</a></div></div>
-<div class="ttc" id="astructTcpClient_html_a65f3c371110f630616b3b459972753b1"><div class="ttname"><a href="structTcpClient.html#a65f3c371110f630616b3b459972753b1">TcpClient::socket</a></div><div class="ttdeci">int socket</div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2tcp_8h_source.html#l00016">tcp.h:16</a></div></div>
-<div class="ttc" id="astructTcpServer_html"><div class="ttname"><a href="structTcpServer.html">TcpServer</a></div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2tcp_8h_source.html#l00026">tcp.h:26</a></div></div>
-<div class="ttc" id="astructTcpServer_html_a95fc31ff59f7a0bc013b942e68d07e37"><div class="ttname"><a href="structTcpServer.html#a95fc31ff59f7a0bc013b942e68d07e37">TcpServer::port</a></div><div class="ttdeci">int port</div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2tcp_8h_source.html#l00028">tcp.h:28</a></div></div>
-<div class="ttc" id="astructTcpServer_html_ab349c28c4c3421907d40f56c112fec65"><div class="ttname"><a href="structTcpServer.html#ab349c28c4c3421907d40f56c112fec65">TcpServer::server_socket</a></div><div class="ttdeci">int server_socket</div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2tcp_8h_source.html#l00027">tcp.h:27</a></div></div>
+<div class="ttc" id="astructTcpClient_html"><div class="ttname"><a href="structTcpClient.html">TcpClient</a></div><div class="ttdef"><b>Definition</b> <a href="#l00014">tcp.h:14</a></div></div>
+<div class="ttc" id="astructTcpClient_html_a16d1db1ab6eb28b277ce51d595050eb8"><div class="ttname"><a href="structTcpClient.html#a16d1db1ab6eb28b277ce51d595050eb8">TcpClient::addr</a></div><div class="ttdeci">struct sockaddr_in addr</div><div class="ttdef"><b>Definition</b> <a href="#l00017">tcp.h:17</a></div></div>
+<div class="ttc" id="astructTcpClient_html_a28a40517fae053778f34c4c8498b83b6"><div class="ttname"><a href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">TcpClient::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition</b> <a href="#l00015">tcp.h:15</a></div></div>
+<div class="ttc" id="astructTcpClient_html_a65f3c371110f630616b3b459972753b1"><div class="ttname"><a href="structTcpClient.html#a65f3c371110f630616b3b459972753b1">TcpClient::socket</a></div><div class="ttdeci">int socket</div><div class="ttdef"><b>Definition</b> <a href="#l00016">tcp.h:16</a></div></div>
+<div class="ttc" id="astructTcpServer_html"><div class="ttname"><a href="structTcpServer.html">TcpServer</a></div><div class="ttdef"><b>Definition</b> <a href="#l00026">tcp.h:26</a></div></div>
+<div class="ttc" id="astructTcpServer_html_a95fc31ff59f7a0bc013b942e68d07e37"><div class="ttname"><a href="structTcpServer.html#a95fc31ff59f7a0bc013b942e68d07e37">TcpServer::port</a></div><div class="ttdeci">int port</div><div class="ttdef"><b>Definition</b> <a href="#l00028">tcp.h:28</a></div></div>
+<div class="ttc" id="astructTcpServer_html_a9e6430ea9a333be4622922dc4bb35924"><div class="ttname"><a href="structTcpServer.html#a9e6430ea9a333be4622922dc4bb35924">TcpServer::clients</a></div><div class="ttdeci">TcpClient clients[TCP_MAX_CLIENTS]</div><div class="ttdef"><b>Definition</b> <a href="#l00029">tcp.h:29</a></div></div>
+<div class="ttc" id="astructTcpServer_html_ab349c28c4c3421907d40f56c112fec65"><div class="ttname"><a href="structTcpServer.html#ab349c28c4c3421907d40f56c112fec65">TcpServer::server_socket</a></div><div class="ttdeci">int server_socket</div><div class="ttdef"><b>Definition</b> <a href="#l00027">tcp.h:27</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a class="el" href="dir_00d910b2a486164e1f2e533045ca4778.html">lib</a></li><li class="navelem"><a class="el" href="server_2lib_2tcp_8h.html">tcp.h</a></li>
-    <li class="footer">Généré le Vendredi 20 Mars 2026 21:22:33 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="navelem"><a href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a href="dir_00d910b2a486164e1f2e533045ca4778.html">lib</a></li><li class="navelem"><a href="server_2lib_2tcp_8h.html">tcp.h</a></li>
+    <li class="footer">Généré le Lundi 23 Mars 2026 17:03:04 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
 </body>

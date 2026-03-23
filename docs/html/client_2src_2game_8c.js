@@ -1,5 +1,7 @@
 var client_2src_2game_8c =
 [
+    [ "MAX_TEAM_PLAYERS", "client_2src_2game_8c.html#a2cfd47dd773bbdfd91bf22b13c727f77", null ],
+    [ "NUM_CARDS", "client_2src_2game_8c.html#af5b5fa19c2e690e24904d81c5692a30d", null ],
     [ "draw_filled_rect", "client_2src_2game_8c.html#a386c6773790f1a73405affc2f87f8c09", null ],
     [ "game_button_click", "client_2src_2game_8c.html#a13d4ca1c1cd01084ff6c5918d2c4820f", null ],
     [ "game_display", "client_2src_2game_8c.html#a113cc37a0ea70f2b9bea4fa5f834a983", null ],
@@ -8,6 +10,7 @@ var client_2src_2game_8c =
     [ "game_init", "client_2src_2game_8c.html#a9f85eab4f1455671d70455e858c74dac", null ],
     [ "game_render_cards", "client_2src_2game_8c.html#afc281acdfa1094848747657fcacd03d3", null ],
     [ "game_render_team_panels", "client_2src_2game_8c.html#a30ee99bf8314872c76775ec9c49129ce", null ],
+    [ "blue_player_text_index", "client_2src_2game_8c.html#a4436cb927edfbe3e7aa2a72ebc2e6d05", null ],
     [ "btn_quit_game", "client_2src_2game_8c.html#ae55a68275d94f7600af382da9c4b528c", null ],
     [ "card_black", "client_2src_2game_8c.html#afe9e4666aaaa438258f01b02d2dd5b50", null ],
     [ "card_f_blue", "client_2src_2game_8c.html#ae54bd50311003974405fafa889149ccf", null ],
@@ -17,6 +20,18 @@ var client_2src_2game_8c =
     [ "card_h_classic", "client_2src_2game_8c.html#a433ed37af32bd5c57d9b27aaee38d7b1", null ],
     [ "card_h_red", "client_2src_2game_8c.html#ad25317eec93546f7decab5a783152af9", null ],
     [ "PANEL_BG_COLOR", "client_2src_2game_8c.html#a4dd13083c17c9ca134c0397a76fa9fef", null ],
+    [ "player_icon_blue", "client_2src_2game_8c.html#ab62da2a22c36cf86c0aecfa26c5fd379", null ],
+    [ "player_icon_red", "client_2src_2game_8c.html#a23f9047fe9c1ab44e55bfdb65496a590", null ],
+    [ "red_player_text_index", "client_2src_2game_8c.html#a216feb4db1303c66a65e98d10ee407cf", null ],
     [ "TEAM_BLUE_COLOR", "client_2src_2game_8c.html#a70ea3e2052aeba4ae7d6acc392a49d74", null ],
-    [ "TEAM_RED_COLOR", "client_2src_2game_8c.html#a7f4bfde91045770a447b91aa657158f1", null ]
+    [ "TEAM_RED_COLOR", "client_2src_2game_8c.html#a7f4bfde91045770a447b91aa657158f1", null ],
+    [ "txt_blue_agents_label", "client_2src_2game_8c.html#a09c3b769e9a9cc3261b0872eef2a02fb", null ],
+    [ "txt_blue_players", "client_2src_2game_8c.html#a9a757d8abb83b57a521d3ae667ce6e77", null ],
+    [ "txt_blue_spy_label", "client_2src_2game_8c.html#ac68b638b6c12c89674971b7b3a43b4d2", null ],
+    [ "txt_card_words", "client_2src_2game_8c.html#af249ba2d639bfbb1a976cb68fb9324b7", null ],
+    [ "txt_red_agents_label", "client_2src_2game_8c.html#aba3aeba0a29b1b888af7355bfcbff376", null ],
+    [ "txt_red_players", "client_2src_2game_8c.html#ae72e1de1134cfcaed1c49040bcf814d0", null ],
+    [ "txt_red_spy_label", "client_2src_2game_8c.html#a6c27e99dfcfbe4f7a4103b5e108a88f9", null ],
+    [ "txt_team_blue_title", "client_2src_2game_8c.html#ae84fa88101ef501acd7b14ae78b60daf", null ],
+    [ "txt_team_red_title", "client_2src_2game_8c.html#a23dd2f16818715c840f7e1f7162c6407", null ]
 ];

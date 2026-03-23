@@ -1,0 +1,33 @@
+var window_8h =
+[
+    [ "WindowConfig", "structWindowConfig.html", "structWindowConfig" ],
+    [ "Window", "structWindow.html", "structWindow" ],
+    [ "Window", "window_8h.html#adb2a551453af16dd3214a23b16e67544", null ],
+    [ "WindowCfgKey", "window_8h.html#aecb8c7003664efcbb60479f8c8aecc6c", null ],
+    [ "WindowConfig", "window_8h.html#aa55a4e0dac412d6cc8373e53e495a24f", null ],
+    [ "WindowCfgKey", "window_8h.html#aca1e6d52665396b32e863043ad7237f6", [
+      [ "WIN_CFG_X", "window_8h.html#aca1e6d52665396b32e863043ad7237f6aa278ef9ab26cdbffdbb7d53a0074e577", null ],
+      [ "WIN_CFG_Y", "window_8h.html#aca1e6d52665396b32e863043ad7237f6a4f005d6d43c1a47b9b961b5196e30085", null ],
+      [ "WIN_CFG_W", "window_8h.html#aca1e6d52665396b32e863043ad7237f6ac1210040192bd7423d0f217f3f79bc22", null ],
+      [ "WIN_CFG_H", "window_8h.html#aca1e6d52665396b32e863043ad7237f6aa23ace3a531b847e7fca8fea38a60099", null ],
+      [ "WIN_CFG_MOVABLE", "window_8h.html#aca1e6d52665396b32e863043ad7237f6aea66d2e7c95a103cc3958f0c905ab44a", null ],
+      [ "WIN_CFG_HIDDEN", "window_8h.html#aca1e6d52665396b32e863043ad7237f6a5c358dbbb364eda48ab25f921937accb", null ],
+      [ "WIN_CFG_BG_COLOR", "window_8h.html#aca1e6d52665396b32e863043ad7237f6aa31ba83362ac4b415d222f4b554dfaf6", null ],
+      [ "WIN_CFG_BORDER_COLOR", "window_8h.html#aca1e6d52665396b32e863043ad7237f6a42352dce190ae56e16717b2055b1d87c", null ],
+      [ "WIN_CFG_TITLEBAR_COLOR", "window_8h.html#aca1e6d52665396b32e863043ad7237f6a89725346c9bf91c6846178518886412f", null ],
+      [ "WIN_CFG_BORDER_THICKNESS", "window_8h.html#aca1e6d52665396b32e863043ad7237f6a8c050f4f4636aa82401cc2a6032d2cb6", null ],
+      [ "WIN_CFG_TITLEBAR_H", "window_8h.html#aca1e6d52665396b32e863043ad7237f6a529fb1f4385ad2c82fded3916ac7b7e5", null ],
+      [ "WIN_CFG_RECT", "window_8h.html#aca1e6d52665396b32e863043ad7237f6aa1af741d39920a019c04e816f8a1c75d", null ],
+      [ "WIN_CFG_DRAGGING", "window_8h.html#aca1e6d52665396b32e863043ad7237f6ab2123f3ee102f26e54c2ffcf37a993c6", null ],
+      [ "WIN_CFG_DRAG_OFFSET_X", "window_8h.html#aca1e6d52665396b32e863043ad7237f6a4fc5dc7e2e90e1eed88337dc2d375ffe", null ],
+      [ "WIN_CFG_DRAG_OFFSET_Y", "window_8h.html#aca1e6d52665396b32e863043ad7237f6ad8df32685d4beba68962e9f886bc2c09", null ]
+    ] ],
+    [ "window_config_init", "window_8h.html#a5879eca5a98c40e57e4efa57d5e316a8", null ],
+    [ "window_contains_point", "window_8h.html#ae52eb1547cda588ffb6e084a31641038", null ],
+    [ "window_create", "window_8h.html#a528e0ad9eba17c1953d7c8fa4de0a360", null ],
+    [ "window_destroy", "window_8h.html#a37e9821a250b421c60c0f287b2682b4d", null ],
+    [ "window_edit_cfg", "window_8h.html#a4fb2b8937d4dde44dba4b1721f6dddd6", null ],
+    [ "window_handle_event", "window_8h.html#afc458f8e977a8dfb3f6c3061da8767c6", null ],
+    [ "window_render", "window_8h.html#a9285833340439f457207d10355d15b29", null ],
+    [ "window_update_rect", "window_8h.html#a2b028817484c245cdf440e506f3fbd0d", null ]
+];

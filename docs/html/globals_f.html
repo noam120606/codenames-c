@@ -3,16 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Variables globale</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -34,21 +35,20 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.9.8 -->
+<!-- Généré par Doxygen 1.14.0 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-/* @license-end */
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
 });
-/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,10 +63,9 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('globals_f.html',''); initResizable(); });
-/* @license-end */
+$(function(){initNavTree('globals_f.html','',''); });
 </script>
+<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -92,15 +91,15 @@ $(document).ready(function(){initNavTree('globals_f.html',''); initResizable(); 
 <div class="contents">
 <div class="textblock">Liste de toutes les fonctions, variables, macros, enumérations, et définitions de type avec des liens vers les fichiers auxquels ils appartiennent :</div>
 
-<h3><a id="index_f" name="index_f"></a>- f -</h3><ul>
-<li>fetch_header()&#160;:&#160;<a class="el" href="server_2src_2message_8c.html#a0a92593fab77af4d4a585fea5a7e29f8">message.c</a></li>
+<h3 class="doxsection"><a id="index_f" name="index_f"></a>- f -</h3><ul>
+<li>fetch_header()&#160;:&#160;<a class="el" href="client_2src_2message_8c.html#a0a92593fab77af4d4a585fea5a7e29f8">message.c</a></li>
 <li>fetchWords()&#160;:&#160;<a class="el" href="server_2src_2game_8c.html#aa0542d3562ef733d7367f8b6f79809ad">game.c</a>, <a class="el" href="server_2lib_2game_8h.html#aa0542d3562ef733d7367f8b6f79809ad">game.h</a></li>
 <li>FILTER_DEFAULT_CUTOFF_HZ&#160;:&#160;<a class="el" href="audio_8c.html#a3aea005f252f2ca0aac9676260968ac4">audio.c</a></li>
 <li>find_animation()&#160;:&#160;<a class="el" href="background_8c.html#acb47c36f04ea6865ec10c625191dd789">background.c</a></li>
 <li>find_by_id()&#160;:&#160;<a class="el" href="crossfader_8c.html#a1df9381eddaecae0c14395ffae3ca32f">crossfader.c</a></li>
 <li>find_lobby_by_code()&#160;:&#160;<a class="el" href="server_2src_2lobby_8c.html#a34b870bac73ec966edab28acc4be717a">lobby.c</a>, <a class="el" href="server_2lib_2lobby_8h.html#a34b870bac73ec966edab28acc4be717a">lobby.h</a></li>
 <li>find_lobby_by_ownerid()&#160;:&#160;<a class="el" href="server_2src_2lobby_8c.html#a70ab64da857b6aa300fbf07629e64ed4">lobby.c</a>, <a class="el" href="server_2lib_2lobby_8h.html#a70ab64da857b6aa300fbf07629e64ed4">lobby.h</a></li>
-<li>find_lobby_by_playerid()&#160;:&#160;<a class="el" href="server_2lib_2lobby_8h.html#ab200dca231db3c7405e5242cd1d580e1">lobby.h</a>, <a class="el" href="server_2src_2lobby_8c.html#ab200dca231db3c7405e5242cd1d580e1">lobby.c</a></li>
+<li>find_lobby_by_playerid()&#160;:&#160;<a class="el" href="server_2src_2lobby_8c.html#ab200dca231db3c7405e5242cd1d580e1">lobby.c</a>, <a class="el" href="server_2lib_2lobby_8h.html#ab200dca231db3c7405e5242cd1d580e1">lobby.h</a></li>
 <li>find_override()&#160;:&#160;<a class="el" href="background_8c.html#a467e0ded6c5a03d31811e8778c2bd44e">background.c</a></li>
 <li>find_user_by_id()&#160;:&#160;<a class="el" href="server_2src_2lobby_8c.html#a09e92c0051506ed8b2ab1d8c3de28ac1">lobby.c</a></li>
 <li>FONT_LARABIE&#160;:&#160;<a class="el" href="client_2lib_2utils_8h.html#aab705a93a97be74e68805de82d9f9d66">utils.h</a></li>
@@ -111,10 +110,11 @@ $(document).ready(function(){initNavTree('globals_f.html',''); initResizable(); 
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
+</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 20 Mars 2026 21:22:33 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Généré le Lundi 23 Mars 2026 17:03:05 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
 </body>

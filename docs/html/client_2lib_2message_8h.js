@@ -1,7 +1,6 @@
 var client_2lib_2message_8h =
 [
     [ "Arguments", "structArguments.html", "structArguments" ],
-    [ "AppContext", "client_2lib_2message_8h.html#aab477be81bad6aadbec06506e3cc26a2", null ],
     [ "Arguments", "client_2lib_2message_8h.html#ac9817a3ea34e47aa6dd60b6952c57e63", null ],
     [ "MessageType", "client_2lib_2message_8h.html#a551dec83c55825ee5e7bfa1ad5609551", null ],
     [ "MessageType", "client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013", [

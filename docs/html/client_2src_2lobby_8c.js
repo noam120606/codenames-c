@@ -1,5 +1,7 @@
 var client_2src_2lobby_8c =
 [
+    [ "MAX_PLAYER_TEXTS", "client_2src_2lobby_8c.html#aefc343c95469ed42c5c6a2e982bb1c43", null ],
+    [ "display_player_name", "client_2src_2lobby_8c.html#ac6ba8ea767b261066e1fa3d0e7c9c8de", null ],
     [ "lobby_button_click", "client_2src_2lobby_8c.html#add7585ea902e534cb2446f8ef734b2e0", null ],
     [ "lobby_display", "client_2src_2lobby_8c.html#ad39ac60e8d5da1f3eea4b4f09b63a0e7", null ],
     [ "lobby_free", "client_2src_2lobby_8c.html#a2a81a21e07b85e6018556a3704f0a9ca", null ],
@@ -14,8 +16,12 @@ var client_2src_2lobby_8c =
     [ "btn_red_agent", "client_2src_2lobby_8c.html#aeebab5be76f845b399acdef246e5696d", null ],
     [ "btn_red_spy", "client_2src_2lobby_8c.html#a826bed728c3ac0d6c29a1b585bc93e96", null ],
     [ "btn_return", "client_2src_2lobby_8c.html#ab5d9550c4b6ee353d280eedb9456a0ee", null ],
+    [ "current_player_text_index", "client_2src_2lobby_8c.html#acd7ada16665ace9a6e10d7cc09fcaf11", null ],
     [ "lobby_filter_applied", "client_2src_2lobby_8c.html#a53848c36d7d2c5d1cb42684a92ea2148", null ],
     [ "player_icon_blue", "client_2src_2lobby_8c.html#ab62da2a22c36cf86c0aecfa26c5fd379", null ],
     [ "player_icon_none", "client_2src_2lobby_8c.html#aa44da161781e64a66d791055278de434", null ],
-    [ "player_icon_red", "client_2src_2lobby_8c.html#a23f9047fe9c1ab44e55bfdb65496a590", null ]
+    [ "player_icon_red", "client_2src_2lobby_8c.html#a23f9047fe9c1ab44e55bfdb65496a590", null ],
+    [ "txt_lobby_info", "client_2src_2lobby_8c.html#a869a4a64062d240999b78b9a8c8fd313", null ],
+    [ "txt_no_role_label", "client_2src_2lobby_8c.html#ac182c6cde88764249d17b1efdf293fe5", null ],
+    [ "txt_player_names", "client_2src_2lobby_8c.html#ac28b2d26abb310422c6330f921d76fd9", null ]
 ];

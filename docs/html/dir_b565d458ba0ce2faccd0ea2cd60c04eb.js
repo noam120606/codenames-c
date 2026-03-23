@@ -18,5 +18,6 @@ var dir_b565d458ba0ce2faccd0ea2cd60c04eb =
     [ "tcp.c", "client_2src_2tcp_8c.html", "client_2src_2tcp_8c" ],
     [ "text.c", "text_8c.html", "text_8c" ],
     [ "user.c", "client_2src_2user_8c.html", "client_2src_2user_8c" ],
-    [ "utils.c", "client_2src_2utils_8c.html", "client_2src_2utils_8c" ]
+    [ "utils.c", "client_2src_2utils_8c.html", "client_2src_2utils_8c" ],
+    [ "window.c", "window_8c.html", "window_8c" ]
 ];

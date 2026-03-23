@@ -14,6 +14,5 @@ var menu_8c =
     [ "code_input", "menu_8c.html#ad24c44449acf9d0c6656252858d95756", null ],
     [ "joining", "menu_8c.html#a71dfe639ba77b8db90086cad0b47401b", null ],
     [ "menu_logo", "menu_8c.html#aad1f91bb5698ea305b1ca57f275097f5", null ],
-    [ "name_input", "menu_8c.html#a298a8ce12d85797bd5f97a976411985a", null ],
-    [ "quagmire", "menu_8c.html#a865475a0771e30633c012a564a94eec3", null ]
+    [ "name_input", "menu_8c.html#a298a8ce12d85797bd5f97a976411985a", null ]
 ];

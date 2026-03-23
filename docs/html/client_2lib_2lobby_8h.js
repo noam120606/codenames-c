@@ -3,7 +3,6 @@ var client_2lib_2lobby_8h =
     [ "Lobby", "structLobby.html", "structLobby" ],
     [ "MAX_LOBBIES", "client_2lib_2lobby_8h.html#a67fee069fc4be0b17f7a3a8d185f4416", null ],
     [ "MAX_USERS", "client_2lib_2lobby_8h.html#a2c2a303621f66761529e598758d7ef34", null ],
-    [ "AppContext", "client_2lib_2lobby_8h.html#aab477be81bad6aadbec06506e3cc26a2", null ],
     [ "Lobby", "client_2lib_2lobby_8h.html#a229c875e4f4c628685491500cddaae31", null ],
     [ "LobbyStatus", "client_2lib_2lobby_8h.html#a66b59b004a9832d09c7c6ebf763eec32", null ],
     [ "LobbyStatus", "client_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83", [

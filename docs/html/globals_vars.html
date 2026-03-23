@@ -3,16 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Variables globale</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -34,21 +35,20 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.9.8 -->
+<!-- Généré par Doxygen 1.14.0 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-/* @license-end */
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
 });
-/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,10 +63,9 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('globals_vars.html',''); initResizable(); });
-/* @license-end */
+$(function(){initNavTree('globals_vars.html','',''); });
 </script>
+<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -92,16 +91,17 @@ $(document).ready(function(){initNavTree('globals_vars.html',''); initResizable(
 <div class="contents">
 <div class="textblock">&#160;</div>
 
-<h3><a id="index_a" name="index_a"></a>- a -</h3><ul>
+<h3 class="doxsection"><a id="index_a" name="index_a"></a>- a -</h3><ul>
 <li>ANIMATION_DURATION&#160;:&#160;<a class="el" href="infos_8c.html#addee7354de430c785bc1e8c5598fcae3">infos.c</a></li>
 <li>animation_start_time&#160;:&#160;<a class="el" href="infos_8c.html#a5c10f13bdcbb57a755889ae15393ff10">infos.c</a></li>
 <li>animations&#160;:&#160;<a class="el" href="background_8c.html#aecee9fd9c8255361411f98ca4e75b90c">background.c</a></li>
 </ul>
 
 
-<h3><a id="index_b" name="index_b"></a>- b -</h3><ul>
+<h3 class="doxsection"><a id="index_b" name="index_b"></a>- b -</h3><ul>
 <li>bandeau&#160;:&#160;<a class="el" href="infos_8c.html#afec87a7e90cc9e31bee013010065ed0b">infos.c</a></li>
 <li>bg_color&#160;:&#160;<a class="el" href="background_8c.html#a41a4146bfafc08d5edf38a02628e8038">background.c</a></li>
+<li>blue_player_text_index&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#a4436cb927edfbe3e7aa2a72ebc2e6d05">game.c</a></li>
 <li>btn_blue_agent&#160;:&#160;<a class="el" href="client_2src_2lobby_8c.html#a3c02aef4e03fcadf55fc7f3805de926d">lobby.c</a></li>
 <li>btn_blue_spy&#160;:&#160;<a class="el" href="client_2src_2lobby_8c.html#af984841ed04d0340346e3537553dfe61">lobby.c</a></li>
 <li>btn_create&#160;:&#160;<a class="el" href="menu_8c.html#aeece597ced8fadb6376f09a722206f08">menu.c</a></li>
@@ -117,7 +117,7 @@ $(document).ready(function(){initNavTree('globals_vars.html',''); initResizable(
 </ul>
 
 
-<h3><a id="index_c" name="index_c"></a>- c -</h3><ul>
+<h3 class="doxsection"><a id="index_c" name="index_c"></a>- c -</h3><ul>
 <li>card_black&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#afe9e4666aaaa438258f01b02d2dd5b50">game.c</a></li>
 <li>card_f_blue&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#ae54bd50311003974405fafa889149ccf">game.c</a></li>
 <li>card_f_classic&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#aff4debb79f9b6edc20084040a2305309">game.c</a></li>
@@ -143,71 +143,68 @@ $(document).ready(function(){initNavTree('globals_vars.html',''); initResizable(
 <li>crossfader_count&#160;:&#160;<a class="el" href="crossfader_8c.html#a0ce8e67845f5a7841d1ad7fd1392918c">crossfader.c</a></li>
 <li>crossfaders&#160;:&#160;<a class="el" href="crossfader_8c.html#abac4aa6a694945af96309a31c9cad66b">crossfader.c</a></li>
 <li>current_display_x&#160;:&#160;<a class="el" href="infos_8c.html#aa5c0c9ab93e6e76ba7845cbce2e94b52">infos.c</a></li>
+<li>current_player_text_index&#160;:&#160;<a class="el" href="client_2src_2lobby_8c.html#acd7ada16665ace9a6e10d7cc09fcaf11">lobby.c</a></li>
 </ul>
 
 
-<h3><a id="index_h" name="index_h"></a>- h -</h3><ul>
+<h3 class="doxsection"><a id="index_h" name="index_h"></a>- h -</h3><ul>
 <li>hat&#160;:&#160;<a class="el" href="background_8c.html#a0a67dc3a4aa5ffe8ea6cda2812d20219">background.c</a></li>
 </ul>
 
 
-<h3><a id="index_i" name="index_i"></a>- i -</h3><ul>
+<h3 class="doxsection"><a id="index_i" name="index_i"></a>- i -</h3><ul>
 <li>infos_state&#160;:&#160;<a class="el" href="infos_8c.html#a7529f877faba58638faeeeab49d47068">infos.c</a></li>
 <li>input_count&#160;:&#160;<a class="el" href="input_8c.html#a1dcf081f133c58340a448d9d92f0eb31">input.c</a></li>
 <li>inputs&#160;:&#160;<a class="el" href="input_8c.html#ad1723ac8fb77a41fc83509519767014a">input.c</a></li>
 </ul>
 
 
-<h3><a id="index_j" name="index_j"></a>- j -</h3><ul>
+<h3 class="doxsection"><a id="index_j" name="index_j"></a>- j -</h3><ul>
 <li>joining&#160;:&#160;<a class="el" href="menu_8c.html#a71dfe639ba77b8db90086cad0b47401b">menu.c</a></li>
 </ul>
 
 
-<h3><a id="index_l" name="index_l"></a>- l -</h3><ul>
+<h3 class="doxsection"><a id="index_l" name="index_l"></a>- l -</h3><ul>
 <li>lens&#160;:&#160;<a class="el" href="background_8c.html#a46bc688b0fffc839388c748c904460f4">background.c</a></li>
 <li>list_id_counter&#160;:&#160;<a class="el" href="client_2src_2list_8c.html#aca5d24e757cc36f97ea62789a309c647">list.c</a></li>
 <li>lobby_filter_applied&#160;:&#160;<a class="el" href="client_2src_2lobby_8c.html#a53848c36d7d2c5d1cb42684a92ea2148">lobby.c</a></li>
 </ul>
 
 
-<h3><a id="index_m" name="index_m"></a>- m -</h3><ul>
+<h3 class="doxsection"><a id="index_m" name="index_m"></a>- m -</h3><ul>
 <li>menu_logo&#160;:&#160;<a class="el" href="menu_8c.html#aad1f91bb5698ea305b1ca57f275097f5">menu.c</a></li>
 <li>mouse_was_inside&#160;:&#160;<a class="el" href="infos_8c.html#abf701c92a6aa5a894ba57efe3b4af920">infos.c</a></li>
 </ul>
 
 
-<h3><a id="index_n" name="index_n"></a>- n -</h3><ul>
+<h3 class="doxsection"><a id="index_n" name="index_n"></a>- n -</h3><ul>
 <li>name_input&#160;:&#160;<a class="el" href="menu_8c.html#a298a8ce12d85797bd5f97a976411985a">menu.c</a></li>
 </ul>
 
 
-<h3><a id="index_o" name="index_o"></a>- o -</h3><ul>
+<h3 class="doxsection"><a id="index_o" name="index_o"></a>- o -</h3><ul>
 <li>override_count&#160;:&#160;<a class="el" href="background_8c.html#ac984eac65d555c21bdfcb12e3ee3aaf1">background.c</a></li>
 <li>overrides&#160;:&#160;<a class="el" href="background_8c.html#ad2a93d3efa03bab44da6f56b5fed8c6c">background.c</a></li>
 </ul>
 
 
-<h3><a id="index_p" name="index_p"></a>- p -</h3><ul>
+<h3 class="doxsection"><a id="index_p" name="index_p"></a>- p -</h3><ul>
 <li>PANEL_BG_COLOR&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#a4dd13083c17c9ca134c0397a76fa9fef">game.c</a></li>
-<li>player_icon_blue&#160;:&#160;<a class="el" href="client_2src_2lobby_8c.html#ab62da2a22c36cf86c0aecfa26c5fd379">lobby.c</a></li>
+<li>player_icon_blue&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#ab62da2a22c36cf86c0aecfa26c5fd379">game.c</a>, <a class="el" href="client_2src_2lobby_8c.html#ab62da2a22c36cf86c0aecfa26c5fd379">lobby.c</a></li>
 <li>player_icon_none&#160;:&#160;<a class="el" href="client_2src_2lobby_8c.html#aa44da161781e64a66d791055278de434">lobby.c</a></li>
-<li>player_icon_red&#160;:&#160;<a class="el" href="client_2src_2lobby_8c.html#a23f9047fe9c1ab44e55bfdb65496a590">lobby.c</a></li>
+<li>player_icon_red&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#a23f9047fe9c1ab44e55bfdb65496a590">game.c</a>, <a class="el" href="client_2src_2lobby_8c.html#a23f9047fe9c1ab44e55bfdb65496a590">lobby.c</a></li>
 </ul>
 
 
-<h3><a id="index_q" name="index_q"></a>- q -</h3><ul>
-<li>quagmire&#160;:&#160;<a class="el" href="menu_8c.html#a865475a0771e30633c012a564a94eec3">menu.c</a></li>
-</ul>
-
-
-<h3><a id="index_r" name="index_r"></a>- r -</h3><ul>
+<h3 class="doxsection"><a id="index_r" name="index_r"></a>- r -</h3><ul>
+<li>red_player_text_index&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#a216feb4db1303c66a65e98d10ee407cf">game.c</a></li>
 <li>rules_line_count&#160;:&#160;<a class="el" href="infos_8c.html#a3f9cb5df846184803ffb556d92a85aa0">infos.c</a></li>
 <li>rules_lines&#160;:&#160;<a class="el" href="infos_8c.html#a455e806e355945510f3da8893a8d981c">infos.c</a></li>
 <li>rules_title&#160;:&#160;<a class="el" href="infos_8c.html#a5377b7365f8ed2b352452fbb2d883eba">infos.c</a></li>
 </ul>
 
 
-<h3><a id="index_s" name="index_s"></a>- s -</h3><ul>
+<h3 class="doxsection"><a id="index_s" name="index_s"></a>- s -</h3><ul>
 <li>sound_cfgs&#160;:&#160;<a class="el" href="audio_8c.html#a9136cebfebf9bcfc0a7e440bfc4b2280">audio.c</a></li>
 <li>sound_channels&#160;:&#160;<a class="el" href="audio_8c.html#afe65fb0260cef970c83d9992c85143bc">audio.c</a></li>
 <li>sounds&#160;:&#160;<a class="el" href="audio_8c.html#a6219ed6e0fee9ae23980d9672f4048e2">audio.c</a></li>
@@ -215,22 +212,45 @@ $(document).ready(function(){initNavTree('globals_vars.html',''); initResizable(
 </ul>
 
 
-<h3><a id="index_t" name="index_t"></a>- t -</h3><ul>
+<h3 class="doxsection"><a id="index_t" name="index_t"></a>- t -</h3><ul>
 <li>TEAM_BLUE_COLOR&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#a70ea3e2052aeba4ae7d6acc392a49d74">game.c</a></li>
 <li>TEAM_RED_COLOR&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#a7f4bfde91045770a447b91aa657158f1">game.c</a></li>
+<li>txt_bar_1&#160;:&#160;<a class="el" href="infos_8c.html#a3a7eb5eb7c091bbd2fa00cacea4df9cc">infos.c</a></li>
+<li>txt_bar_2&#160;:&#160;<a class="el" href="infos_8c.html#a1cd675ee97487e8f2ffc50859f2b3d04">infos.c</a></li>
+<li>txt_blue_agents_label&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#a09c3b769e9a9cc3261b0872eef2a02fb">game.c</a></li>
+<li>txt_blue_players&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#a9a757d8abb83b57a521d3ae667ce6e77">game.c</a></li>
+<li>txt_blue_spy_label&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#ac68b638b6c12c89674971b7b3a43b4d2">game.c</a></li>
+<li>txt_card_words&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#af249ba2d639bfbb1a976cb68fb9324b7">game.c</a></li>
+<li>txt_fps&#160;:&#160;<a class="el" href="infos_8c.html#af8f69df21fb58b6605bdf0d7adbe31de">infos.c</a></li>
+<li>txt_lobby_info&#160;:&#160;<a class="el" href="client_2src_2lobby_8c.html#a869a4a64062d240999b78b9a8c8fd313">lobby.c</a></li>
+<li>txt_music_label&#160;:&#160;<a class="el" href="infos_8c.html#a04f57e893cc1eb237c39d5c0129d6298">infos.c</a></li>
+<li>txt_no_role_label&#160;:&#160;<a class="el" href="client_2src_2lobby_8c.html#ac182c6cde88764249d17b1efdf293fe5">lobby.c</a></li>
+<li>txt_ping&#160;:&#160;<a class="el" href="infos_8c.html#a566c6caa6b73617f62dc4402dbee67ce">infos.c</a></li>
+<li>txt_player_names&#160;:&#160;<a class="el" href="client_2src_2lobby_8c.html#ac28b2d26abb310422c6330f921d76fd9">lobby.c</a></li>
+<li>txt_red_agents_label&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#aba3aeba0a29b1b888af7355bfcbff376">game.c</a></li>
+<li>txt_red_players&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#ae72e1de1134cfcaed1c49040bcf814d0">game.c</a></li>
+<li>txt_red_spy_label&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#a6c27e99dfcfbe4f7a4103b5e108a88f9">game.c</a></li>
+<li>txt_rules_lines&#160;:&#160;<a class="el" href="infos_8c.html#ab32d8485cb8fce21a8a3c2aff6574212">infos.c</a></li>
+<li>txt_rules_title&#160;:&#160;<a class="el" href="infos_8c.html#a48179d996f7a7dfd6f1906c9ab3dbf97">infos.c</a></li>
+<li>txt_server_distant&#160;:&#160;<a class="el" href="infos_8c.html#a8cadf80ad86dae76d8cfebd4a00eb761">infos.c</a></li>
+<li>txt_server_local&#160;:&#160;<a class="el" href="infos_8c.html#a22f957f831b5f806b6bfd7da5d640746">infos.c</a></li>
+<li>txt_sfx_label&#160;:&#160;<a class="el" href="infos_8c.html#ad4627060590d6ba5dca7f987b1b801c9">infos.c</a></li>
+<li>txt_team_blue_title&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#ae84fa88101ef501acd7b14ae78b60daf">game.c</a></li>
+<li>txt_team_red_title&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#a23dd2f16818715c840f7e1f7162c6407">game.c</a></li>
 <li>type_volumes&#160;:&#160;<a class="el" href="audio_8c.html#adeb20f7aeb6743520d75d3a8301ef162">audio.c</a></li>
 </ul>
 
 
-<h3><a id="index_w" name="index_w"></a>- w -</h3><ul>
+<h3 class="doxsection"><a id="index_w" name="index_w"></a>- w -</h3><ul>
 <li>WORDCOUNT&#160;:&#160;<a class="el" href="server_2src_2game_8c.html#affa1ff34ea79641e3e14f26cd247e66f">game.c</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
+</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 20 Mars 2026 21:22:33 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Généré le Lundi 23 Mars 2026 17:03:05 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
 </body>

@@ -1,6 +1,7 @@
 var structAppContext =
 [
     [ "app_state", "structAppContext.html#a12358a947c811f31061ea211c1956784", null ],
+    [ "bg_color", "structAppContext.html#a8dd06081b28551d292567af46730b101", null ],
     [ "cards", "structAppContext.html#af06e68308f2663feacf57e5055e54a0b", null ],
     [ "clock", "structAppContext.html#aa0836b90fd45bdb3c8113599a4b07124", null ],
     [ "fps", "structAppContext.html#ae9d77d7d3c4f3a49436ab668385b847e", null ],

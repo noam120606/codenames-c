@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['userrole_0',['UserRole',['../client_2lib_2user_8h.html#a064a2c5e2528af581f38d07fbbaa8e5a',1,'UserRole:&#160;user.h'],['../server_2lib_2user_8h.html#a064a2c5e2528af581f38d07fbbaa8e5a',1,'UserRole:&#160;user.h']]]
+  ['window_0',['Window',['../window_8h.html#adb2a551453af16dd3214a23b16e67544',1,'window.h']]],
+  ['windowcfgkey_1',['WindowCfgKey',['../window_8h.html#aecb8c7003664efcbb60479f8c8aecc6c',1,'window.h']]],
+  ['windowconfig_2',['WindowConfig',['../window_8h.html#aa55a4e0dac412d6cc8373e53e495a24f',1,'window.h']]]
 ];

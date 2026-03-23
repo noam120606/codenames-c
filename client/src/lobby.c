@@ -11,6 +11,13 @@ SDL_Texture* player_icon_none = NULL;
 SDL_Texture* player_icon_red = NULL;
 SDL_Texture* player_icon_blue = NULL;
 
+/* Textes optimisés pour le lobby */
+static Text* txt_lobby_info = NULL;
+static Text* txt_no_role_label = NULL;
+#define MAX_PLAYER_TEXTS 16
+static Text* txt_player_names[MAX_PLAYER_TEXTS] = {NULL};
+static int current_player_text_index = 0;
+
 /* Callback pour boutons du lobby (choix de rôle / équipe) */
 static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
     if (!context || !button) return BTN_RET_NONE;
@@ -194,6 +201,18 @@ int lobby_init(AppContext* context) {
         free(cfg_btn_return);
     } else loading_fails++;
 
+    /* Initialisation des textes optimisés */
+    txt_lobby_info = init_text(context, "Lobby",
+        create_text_config(FONT_LARABIE, 36, COL_WHITE, 0, -250, 0, 255));
+    
+    txt_no_role_label = init_text(context, "Joueur(s) sans rôle :",
+        create_text_config(FONT_LARABIE, 18, COL_WHITE, 0, 500, 0, 255));
+    
+    /* Pré-allouer les textes pour les noms de joueurs */
+    for (int i = 0; i < MAX_PLAYER_TEXTS; i++) {
+        txt_player_names[i] = init_text(context, "",
+            create_text_config(FONT_LARABIE, 18, COL_WHITE, 0, 0, 0, 255));
+    }
 
     if (loading_fails == 0) {
         printf("Lobby assets loaded successfully\n");
@@ -233,6 +252,9 @@ int struct_lobby_init(Lobby* lobby, int id, const char* code) {
 
 void lobby_display(AppContext* context) {
 
+    /* Réinitialiser le compteur d'index de texte joueur */
+    current_player_text_index = 0;
+
     /* Application d'un filtre sur la musique du menu (une seule fois) */
     if (!lobby_filter_applied) {
         audio_set_filter(MUSIC_MENU_LOBBY, AUDIO_FILTER_LOW_PASS, 1700);
@@ -246,14 +268,12 @@ void lobby_display(AppContext* context) {
               context->lobby->code ? context->lobby->code : "----");
 
     /* Affichage centré horizontalement, position verticale relative */
-    int rel_x = 0;
-    int rel_y = -250;
-    text_display(context->renderer, buf, FONT_LARABIE, 36, COL_WHITE, rel_x, rel_y, 0, 255);
+    update_text(context, txt_lobby_info, buf);
+    update_text_position(txt_lobby_info, 0, -250);
+    display_text(context, txt_lobby_info);
 
     // Affichage des joueurs sans rôle
-    int no_role_x = 0;
-    int no_role_y = 500;
-    text_display(context->renderer, "Joueur(s) sans rôle :", FONT_LARABIE, 18, COL_WHITE, no_role_x, no_role_y, 0, 255);
+    display_text(context, txt_no_role_label);
 
     /* afficher la liste des joueurs ici (nécessite que le client reçoive la liste du serveur). */
 
@@ -404,6 +424,20 @@ void player_display(AppContext* context, User* user, int nb_none, int i_none, in
     }
 }
 
+/* Affiche le nom d'un joueur en utilisant les textes pré-alloués */
+static void display_player_name(AppContext* context, const char* name, int x, int y) {
+    if (current_player_text_index >= MAX_PLAYER_TEXTS) return;
+    if (!name) return;
+    
+    Text* txt = txt_player_names[current_player_text_index];
+    if (txt) {
+        update_text(context, txt, name);
+        update_text_position(txt, x, y);
+        display_text(context, txt);
+    }
+    current_player_text_index++;
+}
+
 void player_icon_pos(AppContext* context, User* user, SDL_Texture* icon, int nb_player, int i_player, int base_x, int base_y) {
     if (!context){
         printf("Invalid context\n");
@@ -427,43 +461,43 @@ void player_icon_pos(AppContext* context, User* user, SDL_Texture* icon, int nb_
         int y = base_y;
         // Afficher l'icône puis du pseudo
         display_image(context->renderer, icon, x, y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
-        text_display(context->renderer, user->name, FONT_LARABIE, 18, COL_WHITE, x, y - 25, 0, 255);
+        display_player_name(context, user->name, x, y - 25);
     } else if(nb_player > 4 && nb_player <= 8){ // Les joueurs sont affichés sur 2 étages
         if(nb_player % 2){
             if(i_player <= 4){
                 int x = base_x -spacing_x * 2 + spacing_x / 2 + i_player * spacing_x;
                 int y = base_y;
                 display_image(context->renderer, icon, x, y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
-                text_display(context->renderer, user->name, FONT_LARABIE, 18, COL_WHITE, x, y - 25, 0, 255);
+                display_player_name(context, user->name, x, y - 25);
             } else {
                 int x = base_x -spacing_x * 2 + spacing_x / 2 + (i_player - 4) * spacing_x;
                 int y = base_y - spacing_y;
                 display_image(context->renderer, icon, x, y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
-                text_display(context->renderer, user->name, FONT_LARABIE, 18, COL_WHITE, x, y - 25, 0, 255);
+                display_player_name(context, user->name, x, y - 25);
             }
         } else if(nb_player == 5){
             if(i_player < 3){ // On affiche 3 joueurs au premier étage
                 int x = base_x -spacing_x * 1.5 + i_player * spacing_x;
                 int y = base_y;
                 display_image(context->renderer, icon, x, y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
-                text_display(context->renderer, user->name, FONT_LARABIE, 18, COL_WHITE, x, y - 25, 0, 255);
+                display_player_name(context, user->name, x, y - 25);
             } else { // On affiche 2 joueurs au deuxième étage
                 int x = base_x -spacing_x * 2 + spacing_x / 2 + i_player * spacing_x;
                 int y = base_y - spacing_y;
                 display_image(context->renderer, icon, x, y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
-                text_display(context->renderer, user->name, FONT_LARABIE, 18, COL_WHITE, x, y - 25, 0, 255);
+                display_player_name(context, user->name, x, y - 25);
             }
         } else if(nb_player == 7){
             if(i_player < 4){ // On affiche 4 joueurs au premier étage
                 int x = base_x -spacing_x * 2 + spacing_x / 2 + i_player * spacing_x;
                 int y = base_y;
                 display_image(context->renderer, icon, x, y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
-                text_display(context->renderer, user->name, FONT_LARABIE, 18, COL_WHITE, x, y - 25, 0, 255);
+                display_player_name(context, user->name, x, y - 25);
             } else { // On affiche 3 joueurs au deuxième étage
                 int x = base_x -spacing_x * 1.5 + (i_player - 4) * spacing_x;
                 int y = base_y - spacing_y;
                 display_image(context->renderer, icon, x, y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
-                text_display(context->renderer, user->name, FONT_LARABIE, 18, COL_WHITE, x, y - 25, 0, 255);
+                display_player_name(context, user->name, x, y - 25);
             }
         }
     } else {
@@ -485,6 +519,15 @@ int lobby_free(){
     if (player_icon_none) { free_image(player_icon_none); player_icon_none = NULL; }
     if (player_icon_red)  { free_image(player_icon_red);  player_icon_red = NULL; }
     if (player_icon_blue) { free_image(player_icon_blue); player_icon_blue = NULL; }
+
+    /* Libération des textes optimisés */
+    destroy_text(txt_lobby_info); txt_lobby_info = NULL;
+    destroy_text(txt_no_role_label); txt_no_role_label = NULL;
+    
+    for (int i = 0; i < MAX_PLAYER_TEXTS; i++) {
+        destroy_text(txt_player_names[i]);
+        txt_player_names[i] = NULL;
+    }
 
     return EXIT_SUCCESS;
 }
