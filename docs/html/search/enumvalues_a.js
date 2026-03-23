@@ -1,0 +1,18 @@
+var searchData=
+[
+  ['win_5fcfg_5fbg_5fcolor_0',['WIN_CFG_BG_COLOR',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6aa31ba83362ac4b415d222f4b554dfaf6',1,'window.h']]],
+  ['win_5fcfg_5fborder_5fcolor_1',['WIN_CFG_BORDER_COLOR',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6a42352dce190ae56e16717b2055b1d87c',1,'window.h']]],
+  ['win_5fcfg_5fborder_5fthickness_2',['WIN_CFG_BORDER_THICKNESS',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6a8c050f4f4636aa82401cc2a6032d2cb6',1,'window.h']]],
+  ['win_5fcfg_5fdrag_5foffset_5fx_3',['WIN_CFG_DRAG_OFFSET_X',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6a4fc5dc7e2e90e1eed88337dc2d375ffe',1,'window.h']]],
+  ['win_5fcfg_5fdrag_5foffset_5fy_4',['WIN_CFG_DRAG_OFFSET_Y',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6ad8df32685d4beba68962e9f886bc2c09',1,'window.h']]],
+  ['win_5fcfg_5fdragging_5',['WIN_CFG_DRAGGING',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6ab2123f3ee102f26e54c2ffcf37a993c6',1,'window.h']]],
+  ['win_5fcfg_5fh_6',['WIN_CFG_H',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6aa23ace3a531b847e7fca8fea38a60099',1,'window.h']]],
+  ['win_5fcfg_5fhidden_7',['WIN_CFG_HIDDEN',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6a5c358dbbb364eda48ab25f921937accb',1,'window.h']]],
+  ['win_5fcfg_5fmovable_8',['WIN_CFG_MOVABLE',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6aea66d2e7c95a103cc3958f0c905ab44a',1,'window.h']]],
+  ['win_5fcfg_5frect_9',['WIN_CFG_RECT',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6aa1af741d39920a019c04e816f8a1c75d',1,'window.h']]],
+  ['win_5fcfg_5ftitlebar_5fcolor_10',['WIN_CFG_TITLEBAR_COLOR',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6a89725346c9bf91c6846178518886412f',1,'window.h']]],
+  ['win_5fcfg_5ftitlebar_5fh_11',['WIN_CFG_TITLEBAR_H',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6a529fb1f4385ad2c82fded3916ac7b7e5',1,'window.h']]],
+  ['win_5fcfg_5fw_12',['WIN_CFG_W',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6ac1210040192bd7423d0f217f3f79bc22',1,'window.h']]],
+  ['win_5fcfg_5fx_13',['WIN_CFG_X',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6aa278ef9ab26cdbffdbb7d53a0074e577',1,'window.h']]],
+  ['win_5fcfg_5fy_14',['WIN_CFG_Y',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6a4f005d6d43c1a47b9b961b5196e30085',1,'window.h']]]
+];

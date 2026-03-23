@@ -3,7 +3,6 @@ var crossfader_8h =
     [ "CrossfaderConfig", "structCrossfaderConfig.html", "structCrossfaderConfig" ],
     [ "Crossfader", "structCrossfader.html", "structCrossfader" ],
     [ "MAX_CROSSFADERS", "crossfader_8h.html#a21018c4b39fc408ee095a7ee6ca9f09d", null ],
-    [ "AppContext", "crossfader_8h.html#aab477be81bad6aadbec06506e3cc26a2", null ],
     [ "CrfdCfgKey", "crossfader_8h.html#aeca92bb9bd14fb41274e9dd76f190255", null ],
     [ "Crossfader", "crossfader_8h.html#a8cb153a970d35495ffb273e1f02dbd33", null ],
     [ "CrossfaderConfig", "crossfader_8h.html#a29100e9db07ce4018bf39cfe06eb47bf", null ],

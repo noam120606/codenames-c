@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Codenames:  Fichier source de client/lib/window.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Codenames<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Jeu Codenames multijoueur en C - Client SDL2 et Serveur TCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('window_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">window.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="window_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef WINDOW_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define WINDOW_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;../SDL2/include/SDL2/SDL.h&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structAppContext.html">AppContext</a> <a class="code hl_struct" href="structAppContext.html">AppContext</a>;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span></div>
+<div class="foldopen" id="foldopen00024" data-start="{" data-end="};">
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structWindowConfig.html">   24</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structWindowConfig.html">WindowConfig</a> {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structWindowConfig.html#aeb7a016c102d49ebeea44be67ebf8e2a">   25</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structWindowConfig.html#aeb7a016c102d49ebeea44be67ebf8e2a">x</a>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structWindowConfig.html#a57bbe87e4e57a5a4d266b60ebe8b9cfa">   26</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structWindowConfig.html#a57bbe87e4e57a5a4d266b60ebe8b9cfa">y</a>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structWindowConfig.html#a4c62d9eb84ce484e1c502d06db9b4b1d">   27</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structWindowConfig.html#a4c62d9eb84ce484e1c502d06db9b4b1d">w</a>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structWindowConfig.html#ae77dee27cffeebb236ee14ea03e12d87">   28</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structWindowConfig.html#ae77dee27cffeebb236ee14ea03e12d87">h</a>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structWindowConfig.html#a9865a84962fd2c44cebf0895f7757832">   29</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structWindowConfig.html#a9865a84962fd2c44cebf0895f7757832">movable</a>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structWindowConfig.html#aa5ab1c535834d4152c4a3c766a614002">   30</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structWindowConfig.html#aa5ab1c535834d4152c4a3c766a614002">hidden</a>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="structWindowConfig.html#a0db7686b121d84fd0cd3629e926ef158">   31</a></span>    SDL_Color <a class="code hl_variable" href="structWindowConfig.html#a0db7686b121d84fd0cd3629e926ef158">bg_color</a>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="structWindowConfig.html#a07ad17228579bea1f7a662befa52d450">   32</a></span>    SDL_Color <a class="code hl_variable" href="structWindowConfig.html#a07ad17228579bea1f7a662befa52d450">border_color</a>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="structWindowConfig.html#a628d61432cdea5304f90265c4f953921">   33</a></span>    SDL_Color <a class="code hl_variable" href="structWindowConfig.html#a628d61432cdea5304f90265c4f953921">titlebar_color</a>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="structWindowConfig.html#a8913bc7e5e8c2cdcf89bd39bbe927a3f">   34</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structWindowConfig.html#a8913bc7e5e8c2cdcf89bd39bbe927a3f">border_thickness</a>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="structWindowConfig.html#a55215d650c0eaddbbf32d5ad54a383eb">   35</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structWindowConfig.html#a55215d650c0eaddbbf32d5ad54a383eb">titlebar_h</a>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="comment">/* Etat runtime */</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="structWindowConfig.html#a4169b01a110ca1c4323b342439a3c030">   38</a></span>    SDL_Rect <a class="code hl_variable" href="structWindowConfig.html#a4169b01a110ca1c4323b342439a3c030">rect</a>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structWindowConfig.html#a1abe470e450352b1ac7a276739b50cae">   39</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structWindowConfig.html#a1abe470e450352b1ac7a276739b50cae">dragging</a>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="structWindowConfig.html#a7b3cddf32213180320b31036b34b4b0b">   40</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structWindowConfig.html#a7b3cddf32213180320b31036b34b4b0b">drag_offset_x</a>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structWindowConfig.html#a7129fcb203b12008c5c7c3ef4615ad30">   41</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structWindowConfig.html#a7129fcb203b12008c5c7c3ef4615ad30">drag_offset_y</a>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="window_8h.html#aa55a4e0dac412d6cc8373e53e495a24f">   42</a></span>} <a class="code hl_struct" href="structWindowConfig.html">WindowConfig</a>;</div>
+</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="foldopen" id="foldopen00044" data-start="{" data-end="};">
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="structWindow.html">   44</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structWindow.html">Window</a> {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="structWindow.html#a262d90498de3ce0b3b6d8ea1c8919b24">   45</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structWindow.html#a262d90498de3ce0b3b6d8ea1c8919b24">id</a>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="structWindow.html#a8c4744ad727d98364b9d29089d320d8c">   46</a></span>    <a class="code hl_struct" href="structWindowConfig.html">WindowConfig</a>* <a class="code hl_variable" href="structWindow.html#a8c4744ad727d98364b9d29089d320d8c">cfg</a>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="window_8h.html#adb2a551453af16dd3214a23b16e67544">   47</a></span>} <a class="code hl_struct" href="structWindow.html">Window</a>;</div>
+</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span></div>
+<div class="foldopen" id="foldopen00052" data-start="{" data-end="};">
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6">   52</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6">WindowCfgKey</a> {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6aa278ef9ab26cdbffdbb7d53a0074e577">   53</a></span>    <a class="code hl_enumvalue" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6aa278ef9ab26cdbffdbb7d53a0074e577">WIN_CFG_X</a> = 100,</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6a4f005d6d43c1a47b9b961b5196e30085">   54</a></span>    <a class="code hl_enumvalue" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6a4f005d6d43c1a47b9b961b5196e30085">WIN_CFG_Y</a>,</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6ac1210040192bd7423d0f217f3f79bc22">   55</a></span>    <a class="code hl_enumvalue" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6ac1210040192bd7423d0f217f3f79bc22">WIN_CFG_W</a>,</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6aa23ace3a531b847e7fca8fea38a60099">   56</a></span>    <a class="code hl_enumvalue" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6aa23ace3a531b847e7fca8fea38a60099">WIN_CFG_H</a>,</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6aea66d2e7c95a103cc3958f0c905ab44a">   57</a></span>    <a class="code hl_enumvalue" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6aea66d2e7c95a103cc3958f0c905ab44a">WIN_CFG_MOVABLE</a>,</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6a5c358dbbb364eda48ab25f921937accb">   58</a></span>    <a class="code hl_enumvalue" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6a5c358dbbb364eda48ab25f921937accb">WIN_CFG_HIDDEN</a>,</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6aa31ba83362ac4b415d222f4b554dfaf6">   59</a></span>    <a class="code hl_enumvalue" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6aa31ba83362ac4b415d222f4b554dfaf6">WIN_CFG_BG_COLOR</a>,</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6a42352dce190ae56e16717b2055b1d87c">   60</a></span>    <a class="code hl_enumvalue" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6a42352dce190ae56e16717b2055b1d87c">WIN_CFG_BORDER_COLOR</a>,</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6a89725346c9bf91c6846178518886412f">   61</a></span>    <a class="code hl_enumvalue" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6a89725346c9bf91c6846178518886412f">WIN_CFG_TITLEBAR_COLOR</a>,</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6a8c050f4f4636aa82401cc2a6032d2cb6">   62</a></span>    <a class="code hl_enumvalue" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6a8c050f4f4636aa82401cc2a6032d2cb6">WIN_CFG_BORDER_THICKNESS</a>,</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6a529fb1f4385ad2c82fded3916ac7b7e5">   63</a></span>    <a class="code hl_enumvalue" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6a529fb1f4385ad2c82fded3916ac7b7e5">WIN_CFG_TITLEBAR_H</a>,</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6aa1af741d39920a019c04e816f8a1c75d">   64</a></span>    <a class="code hl_enumvalue" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6aa1af741d39920a019c04e816f8a1c75d">WIN_CFG_RECT</a>,</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6ab2123f3ee102f26e54c2ffcf37a993c6">   65</a></span>    <a class="code hl_enumvalue" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6ab2123f3ee102f26e54c2ffcf37a993c6">WIN_CFG_DRAGGING</a>,</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6a4fc5dc7e2e90e1eed88337dc2d375ffe">   66</a></span>    <a class="code hl_enumvalue" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6a4fc5dc7e2e90e1eed88337dc2d375ffe">WIN_CFG_DRAG_OFFSET_X</a>,</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6ad8df32685d4beba68962e9f886bc2c09">   67</a></span>    <a class="code hl_enumvalue" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6ad8df32685d4beba68962e9f886bc2c09">WIN_CFG_DRAG_OFFSET_Y</a>,</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="window_8h.html#aecb8c7003664efcbb60479f8c8aecc6c">   68</a></span>} <a class="code hl_enumeration" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6">WindowCfgKey</a>;</div>
+</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><a class="code hl_struct" href="structWindowConfig.html">WindowConfig</a>* <a class="code hl_function" href="window_8h.html#a5879eca5a98c40e57e4efa57d5e316a8">window_config_init</a>();</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><a class="code hl_struct" href="structWindow.html">Window</a>* <a class="code hl_function" href="window_8h.html#a528e0ad9eba17c1953d7c8fa4de0a360">window_create</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keyword">const</span> <a class="code hl_struct" href="structWindowConfig.html">WindowConfig</a>* cfg);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="keywordtype">void</span> <a class="code hl_function" href="window_8h.html#a37e9821a250b421c60c0f287b2682b4d">window_destroy</a>(<a class="code hl_struct" href="structWindow.html">Window</a>* win);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="keywordtype">void</span> <a class="code hl_function" href="window_8h.html#a2b028817484c245cdf440e506f3fbd0d">window_update_rect</a>(<a class="code hl_struct" href="structWindow.html">Window</a>* win);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="keywordtype">void</span> <a class="code hl_function" href="window_8h.html#afc458f8e977a8dfb3f6c3061da8767c6">window_handle_event</a>(<a class="code hl_struct" href="structAppContext.html">AppContext</a>* ctx, <a class="code hl_struct" href="structWindow.html">Window</a>* win, SDL_Event* event);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="keywordtype">void</span> <a class="code hl_function" href="window_8h.html#a9285833340439f457207d10355d15b29">window_render</a>(SDL_Renderer* renderer, <span class="keyword">const</span> <a class="code hl_struct" href="structWindow.html">Window</a>* win);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="keywordtype">int</span> <a class="code hl_function" href="window_8h.html#ae52eb1547cda588ffb6e084a31641038">window_contains_point</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structWindow.html">Window</a>* win, <span class="keywordtype">int</span> logical_x, <span class="keywordtype">int</span> logical_y);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="keywordtype">int</span> <a class="code hl_function" href="window_8h.html#a4fb2b8937d4dde44dba4b1721f6dddd6">window_edit_cfg</a>(<a class="code hl_struct" href="structWindow.html">Window</a>* win, <a class="code hl_enumeration" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6">WindowCfgKey</a> key, intptr_t value);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="preprocessor">#endif </span><span class="comment">/* WINDOW_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="astructAppContext_html"><div class="ttname"><a href="structAppContext.html">AppContext</a></div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00038">sdl.h:38</a></div></div>
+<div class="ttc" id="astructWindowConfig_html"><div class="ttname"><a href="structWindowConfig.html">WindowConfig</a></div><div class="ttdef"><b>Definition</b> <a href="#l00024">window.h:24</a></div></div>
+<div class="ttc" id="astructWindowConfig_html_a07ad17228579bea1f7a662befa52d450"><div class="ttname"><a href="structWindowConfig.html#a07ad17228579bea1f7a662befa52d450">WindowConfig::border_color</a></div><div class="ttdeci">SDL_Color border_color</div><div class="ttdef"><b>Definition</b> <a href="#l00032">window.h:32</a></div></div>
+<div class="ttc" id="astructWindowConfig_html_a0db7686b121d84fd0cd3629e926ef158"><div class="ttname"><a href="structWindowConfig.html#a0db7686b121d84fd0cd3629e926ef158">WindowConfig::bg_color</a></div><div class="ttdeci">SDL_Color bg_color</div><div class="ttdef"><b>Definition</b> <a href="#l00031">window.h:31</a></div></div>
+<div class="ttc" id="astructWindowConfig_html_a1abe470e450352b1ac7a276739b50cae"><div class="ttname"><a href="structWindowConfig.html#a1abe470e450352b1ac7a276739b50cae">WindowConfig::dragging</a></div><div class="ttdeci">int dragging</div><div class="ttdef"><b>Definition</b> <a href="#l00039">window.h:39</a></div></div>
+<div class="ttc" id="astructWindowConfig_html_a4169b01a110ca1c4323b342439a3c030"><div class="ttname"><a href="structWindowConfig.html#a4169b01a110ca1c4323b342439a3c030">WindowConfig::rect</a></div><div class="ttdeci">SDL_Rect rect</div><div class="ttdef"><b>Definition</b> <a href="#l00038">window.h:38</a></div></div>
+<div class="ttc" id="astructWindowConfig_html_a4c62d9eb84ce484e1c502d06db9b4b1d"><div class="ttname"><a href="structWindowConfig.html#a4c62d9eb84ce484e1c502d06db9b4b1d">WindowConfig::w</a></div><div class="ttdeci">int w</div><div class="ttdef"><b>Definition</b> <a href="#l00027">window.h:27</a></div></div>
+<div class="ttc" id="astructWindowConfig_html_a55215d650c0eaddbbf32d5ad54a383eb"><div class="ttname"><a href="structWindowConfig.html#a55215d650c0eaddbbf32d5ad54a383eb">WindowConfig::titlebar_h</a></div><div class="ttdeci">int titlebar_h</div><div class="ttdef"><b>Definition</b> <a href="#l00035">window.h:35</a></div></div>
+<div class="ttc" id="astructWindowConfig_html_a57bbe87e4e57a5a4d266b60ebe8b9cfa"><div class="ttname"><a href="structWindowConfig.html#a57bbe87e4e57a5a4d266b60ebe8b9cfa">WindowConfig::y</a></div><div class="ttdeci">int y</div><div class="ttdef"><b>Definition</b> <a href="#l00026">window.h:26</a></div></div>
+<div class="ttc" id="astructWindowConfig_html_a628d61432cdea5304f90265c4f953921"><div class="ttname"><a href="structWindowConfig.html#a628d61432cdea5304f90265c4f953921">WindowConfig::titlebar_color</a></div><div class="ttdeci">SDL_Color titlebar_color</div><div class="ttdef"><b>Definition</b> <a href="#l00033">window.h:33</a></div></div>
+<div class="ttc" id="astructWindowConfig_html_a7129fcb203b12008c5c7c3ef4615ad30"><div class="ttname"><a href="structWindowConfig.html#a7129fcb203b12008c5c7c3ef4615ad30">WindowConfig::drag_offset_y</a></div><div class="ttdeci">int drag_offset_y</div><div class="ttdef"><b>Definition</b> <a href="#l00041">window.h:41</a></div></div>
+<div class="ttc" id="astructWindowConfig_html_a7b3cddf32213180320b31036b34b4b0b"><div class="ttname"><a href="structWindowConfig.html#a7b3cddf32213180320b31036b34b4b0b">WindowConfig::drag_offset_x</a></div><div class="ttdeci">int drag_offset_x</div><div class="ttdef"><b>Definition</b> <a href="#l00040">window.h:40</a></div></div>
+<div class="ttc" id="astructWindowConfig_html_a8913bc7e5e8c2cdcf89bd39bbe927a3f"><div class="ttname"><a href="structWindowConfig.html#a8913bc7e5e8c2cdcf89bd39bbe927a3f">WindowConfig::border_thickness</a></div><div class="ttdeci">int border_thickness</div><div class="ttdef"><b>Definition</b> <a href="#l00034">window.h:34</a></div></div>
+<div class="ttc" id="astructWindowConfig_html_a9865a84962fd2c44cebf0895f7757832"><div class="ttname"><a href="structWindowConfig.html#a9865a84962fd2c44cebf0895f7757832">WindowConfig::movable</a></div><div class="ttdeci">int movable</div><div class="ttdef"><b>Definition</b> <a href="#l00029">window.h:29</a></div></div>
+<div class="ttc" id="astructWindowConfig_html_aa5ab1c535834d4152c4a3c766a614002"><div class="ttname"><a href="structWindowConfig.html#aa5ab1c535834d4152c4a3c766a614002">WindowConfig::hidden</a></div><div class="ttdeci">int hidden</div><div class="ttdef"><b>Definition</b> <a href="#l00030">window.h:30</a></div></div>
+<div class="ttc" id="astructWindowConfig_html_ae77dee27cffeebb236ee14ea03e12d87"><div class="ttname"><a href="structWindowConfig.html#ae77dee27cffeebb236ee14ea03e12d87">WindowConfig::h</a></div><div class="ttdeci">int h</div><div class="ttdef"><b>Definition</b> <a href="#l00028">window.h:28</a></div></div>
+<div class="ttc" id="astructWindowConfig_html_aeb7a016c102d49ebeea44be67ebf8e2a"><div class="ttname"><a href="structWindowConfig.html#aeb7a016c102d49ebeea44be67ebf8e2a">WindowConfig::x</a></div><div class="ttdeci">int x</div><div class="ttdef"><b>Definition</b> <a href="#l00025">window.h:25</a></div></div>
+<div class="ttc" id="astructWindow_html"><div class="ttname"><a href="structWindow.html">Window</a></div><div class="ttdef"><b>Definition</b> <a href="#l00044">window.h:44</a></div></div>
+<div class="ttc" id="astructWindow_html_a262d90498de3ce0b3b6d8ea1c8919b24"><div class="ttname"><a href="structWindow.html#a262d90498de3ce0b3b6d8ea1c8919b24">Window::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition</b> <a href="#l00045">window.h:45</a></div></div>
+<div class="ttc" id="astructWindow_html_a8c4744ad727d98364b9d29089d320d8c"><div class="ttname"><a href="structWindow.html#a8c4744ad727d98364b9d29089d320d8c">Window::cfg</a></div><div class="ttdeci">WindowConfig * cfg</div><div class="ttdef"><b>Definition</b> <a href="#l00046">window.h:46</a></div></div>
+<div class="ttc" id="awindow_8h_html_a2b028817484c245cdf440e506f3fbd0d"><div class="ttname"><a href="window_8h.html#a2b028817484c245cdf440e506f3fbd0d">window_update_rect</a></div><div class="ttdeci">void window_update_rect(Window *win)</div><div class="ttdef"><b>Definition</b> <a href="window_8c_source.html#l00056">window.c:56</a></div></div>
+<div class="ttc" id="awindow_8h_html_a37e9821a250b421c60c0f287b2682b4d"><div class="ttname"><a href="window_8h.html#a37e9821a250b421c60c0f287b2682b4d">window_destroy</a></div><div class="ttdeci">void window_destroy(Window *win)</div><div class="ttdef"><b>Definition</b> <a href="window_8c_source.html#l00089">window.c:89</a></div></div>
+<div class="ttc" id="awindow_8h_html_a4fb2b8937d4dde44dba4b1721f6dddd6"><div class="ttname"><a href="window_8h.html#a4fb2b8937d4dde44dba4b1721f6dddd6">window_edit_cfg</a></div><div class="ttdeci">int window_edit_cfg(Window *win, WindowCfgKey key, intptr_t value)</div><div class="ttdef"><b>Definition</b> <a href="window_8c_source.html#l00167">window.c:167</a></div></div>
+<div class="ttc" id="awindow_8h_html_a528e0ad9eba17c1953d7c8fa4de0a360"><div class="ttname"><a href="window_8h.html#a528e0ad9eba17c1953d7c8fa4de0a360">window_create</a></div><div class="ttdeci">Window * window_create(int id, const WindowConfig *cfg)</div><div class="ttdef"><b>Definition</b> <a href="window_8c_source.html#l00070">window.c:70</a></div></div>
+<div class="ttc" id="awindow_8h_html_a5879eca5a98c40e57e4efa57d5e316a8"><div class="ttname"><a href="window_8h.html#a5879eca5a98c40e57e4efa57d5e316a8">window_config_init</a></div><div class="ttdeci">WindowConfig * window_config_init()</div><div class="ttdef"><b>Definition</b> <a href="window_8c_source.html#l00029">window.c:29</a></div></div>
+<div class="ttc" id="awindow_8h_html_a9285833340439f457207d10355d15b29"><div class="ttname"><a href="window_8h.html#a9285833340439f457207d10355d15b29">window_render</a></div><div class="ttdeci">void window_render(SDL_Renderer *renderer, const Window *win)</div><div class="ttdef"><b>Definition</b> <a href="window_8c_source.html#l00132">window.c:132</a></div></div>
+<div class="ttc" id="awindow_8h_html_aca1e6d52665396b32e863043ad7237f6"><div class="ttname"><a href="window_8h.html#aca1e6d52665396b32e863043ad7237f6">WindowCfgKey</a></div><div class="ttdeci">WindowCfgKey</div><div class="ttdef"><b>Definition</b> <a href="#l00052">window.h:52</a></div></div>
+<div class="ttc" id="awindow_8h_html_aca1e6d52665396b32e863043ad7237f6a42352dce190ae56e16717b2055b1d87c"><div class="ttname"><a href="window_8h.html#aca1e6d52665396b32e863043ad7237f6a42352dce190ae56e16717b2055b1d87c">WIN_CFG_BORDER_COLOR</a></div><div class="ttdeci">@ WIN_CFG_BORDER_COLOR</div><div class="ttdef"><b>Definition</b> <a href="#l00060">window.h:60</a></div></div>
+<div class="ttc" id="awindow_8h_html_aca1e6d52665396b32e863043ad7237f6a4f005d6d43c1a47b9b961b5196e30085"><div class="ttname"><a href="window_8h.html#aca1e6d52665396b32e863043ad7237f6a4f005d6d43c1a47b9b961b5196e30085">WIN_CFG_Y</a></div><div class="ttdeci">@ WIN_CFG_Y</div><div class="ttdef"><b>Definition</b> <a href="#l00054">window.h:54</a></div></div>
+<div class="ttc" id="awindow_8h_html_aca1e6d52665396b32e863043ad7237f6a4fc5dc7e2e90e1eed88337dc2d375ffe"><div class="ttname"><a href="window_8h.html#aca1e6d52665396b32e863043ad7237f6a4fc5dc7e2e90e1eed88337dc2d375ffe">WIN_CFG_DRAG_OFFSET_X</a></div><div class="ttdeci">@ WIN_CFG_DRAG_OFFSET_X</div><div class="ttdef"><b>Definition</b> <a href="#l00066">window.h:66</a></div></div>
+<div class="ttc" id="awindow_8h_html_aca1e6d52665396b32e863043ad7237f6a529fb1f4385ad2c82fded3916ac7b7e5"><div class="ttname"><a href="window_8h.html#aca1e6d52665396b32e863043ad7237f6a529fb1f4385ad2c82fded3916ac7b7e5">WIN_CFG_TITLEBAR_H</a></div><div class="ttdeci">@ WIN_CFG_TITLEBAR_H</div><div class="ttdef"><b>Definition</b> <a href="#l00063">window.h:63</a></div></div>
+<div class="ttc" id="awindow_8h_html_aca1e6d52665396b32e863043ad7237f6a5c358dbbb364eda48ab25f921937accb"><div class="ttname"><a href="window_8h.html#aca1e6d52665396b32e863043ad7237f6a5c358dbbb364eda48ab25f921937accb">WIN_CFG_HIDDEN</a></div><div class="ttdeci">@ WIN_CFG_HIDDEN</div><div class="ttdef"><b>Definition</b> <a href="#l00058">window.h:58</a></div></div>
+<div class="ttc" id="awindow_8h_html_aca1e6d52665396b32e863043ad7237f6a89725346c9bf91c6846178518886412f"><div class="ttname"><a href="window_8h.html#aca1e6d52665396b32e863043ad7237f6a89725346c9bf91c6846178518886412f">WIN_CFG_TITLEBAR_COLOR</a></div><div class="ttdeci">@ WIN_CFG_TITLEBAR_COLOR</div><div class="ttdef"><b>Definition</b> <a href="#l00061">window.h:61</a></div></div>
+<div class="ttc" id="awindow_8h_html_aca1e6d52665396b32e863043ad7237f6a8c050f4f4636aa82401cc2a6032d2cb6"><div class="ttname"><a href="window_8h.html#aca1e6d52665396b32e863043ad7237f6a8c050f4f4636aa82401cc2a6032d2cb6">WIN_CFG_BORDER_THICKNESS</a></div><div class="ttdeci">@ WIN_CFG_BORDER_THICKNESS</div><div class="ttdef"><b>Definition</b> <a href="#l00062">window.h:62</a></div></div>
+<div class="ttc" id="awindow_8h_html_aca1e6d52665396b32e863043ad7237f6aa1af741d39920a019c04e816f8a1c75d"><div class="ttname"><a href="window_8h.html#aca1e6d52665396b32e863043ad7237f6aa1af741d39920a019c04e816f8a1c75d">WIN_CFG_RECT</a></div><div class="ttdeci">@ WIN_CFG_RECT</div><div class="ttdef"><b>Definition</b> <a href="#l00064">window.h:64</a></div></div>
+<div class="ttc" id="awindow_8h_html_aca1e6d52665396b32e863043ad7237f6aa23ace3a531b847e7fca8fea38a60099"><div class="ttname"><a href="window_8h.html#aca1e6d52665396b32e863043ad7237f6aa23ace3a531b847e7fca8fea38a60099">WIN_CFG_H</a></div><div class="ttdeci">@ WIN_CFG_H</div><div class="ttdef"><b>Definition</b> <a href="#l00056">window.h:56</a></div></div>
+<div class="ttc" id="awindow_8h_html_aca1e6d52665396b32e863043ad7237f6aa278ef9ab26cdbffdbb7d53a0074e577"><div class="ttname"><a href="window_8h.html#aca1e6d52665396b32e863043ad7237f6aa278ef9ab26cdbffdbb7d53a0074e577">WIN_CFG_X</a></div><div class="ttdeci">@ WIN_CFG_X</div><div class="ttdef"><b>Definition</b> <a href="#l00053">window.h:53</a></div></div>
+<div class="ttc" id="awindow_8h_html_aca1e6d52665396b32e863043ad7237f6aa31ba83362ac4b415d222f4b554dfaf6"><div class="ttname"><a href="window_8h.html#aca1e6d52665396b32e863043ad7237f6aa31ba83362ac4b415d222f4b554dfaf6">WIN_CFG_BG_COLOR</a></div><div class="ttdeci">@ WIN_CFG_BG_COLOR</div><div class="ttdef"><b>Definition</b> <a href="#l00059">window.h:59</a></div></div>
+<div class="ttc" id="awindow_8h_html_aca1e6d52665396b32e863043ad7237f6ab2123f3ee102f26e54c2ffcf37a993c6"><div class="ttname"><a href="window_8h.html#aca1e6d52665396b32e863043ad7237f6ab2123f3ee102f26e54c2ffcf37a993c6">WIN_CFG_DRAGGING</a></div><div class="ttdeci">@ WIN_CFG_DRAGGING</div><div class="ttdef"><b>Definition</b> <a href="#l00065">window.h:65</a></div></div>
+<div class="ttc" id="awindow_8h_html_aca1e6d52665396b32e863043ad7237f6ac1210040192bd7423d0f217f3f79bc22"><div class="ttname"><a href="window_8h.html#aca1e6d52665396b32e863043ad7237f6ac1210040192bd7423d0f217f3f79bc22">WIN_CFG_W</a></div><div class="ttdeci">@ WIN_CFG_W</div><div class="ttdef"><b>Definition</b> <a href="#l00055">window.h:55</a></div></div>
+<div class="ttc" id="awindow_8h_html_aca1e6d52665396b32e863043ad7237f6ad8df32685d4beba68962e9f886bc2c09"><div class="ttname"><a href="window_8h.html#aca1e6d52665396b32e863043ad7237f6ad8df32685d4beba68962e9f886bc2c09">WIN_CFG_DRAG_OFFSET_Y</a></div><div class="ttdeci">@ WIN_CFG_DRAG_OFFSET_Y</div><div class="ttdef"><b>Definition</b> <a href="#l00067">window.h:67</a></div></div>
+<div class="ttc" id="awindow_8h_html_aca1e6d52665396b32e863043ad7237f6aea66d2e7c95a103cc3958f0c905ab44a"><div class="ttname"><a href="window_8h.html#aca1e6d52665396b32e863043ad7237f6aea66d2e7c95a103cc3958f0c905ab44a">WIN_CFG_MOVABLE</a></div><div class="ttdeci">@ WIN_CFG_MOVABLE</div><div class="ttdef"><b>Definition</b> <a href="#l00057">window.h:57</a></div></div>
+<div class="ttc" id="awindow_8h_html_ae52eb1547cda588ffb6e084a31641038"><div class="ttname"><a href="window_8h.html#ae52eb1547cda588ffb6e084a31641038">window_contains_point</a></div><div class="ttdeci">int window_contains_point(const Window *win, int logical_x, int logical_y)</div><div class="ttdef"><b>Definition</b> <a href="window_8c_source.html#l00095">window.c:95</a></div></div>
+<div class="ttc" id="awindow_8h_html_afc458f8e977a8dfb3f6c3061da8767c6"><div class="ttname"><a href="window_8h.html#afc458f8e977a8dfb3f6c3061da8767c6">window_handle_event</a></div><div class="ttdeci">void window_handle_event(AppContext *ctx, Window *win, SDL_Event *event)</div><div class="ttdef"><b>Definition</b> <a href="window_8c_source.html#l00100">window.c:100</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a href="window_8h.html">window.h</a></li>
+    <li class="footer">Généré le Lundi 23 Mars 2026 17:03:04 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

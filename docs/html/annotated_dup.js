@@ -20,8 +20,12 @@ var annotated_dup =
     [ "SoundConfig", "structSoundConfig.html", "structSoundConfig" ],
     [ "TcpClient", "structTcpClient.html", "structTcpClient" ],
     [ "TcpServer", "structTcpServer.html", "structTcpServer" ],
+    [ "Text", "structText.html", "structText" ],
+    [ "TextConfig", "structTextConfig.html", "structTextConfig" ],
     [ "TileAnimation", "structTileAnimation.html", "structTileAnimation" ],
     [ "TileOverride", "structTileOverride.html", "structTileOverride" ],
     [ "User", "structUser.html", "structUser" ],
+    [ "Window", "structWindow.html", "structWindow" ],
+    [ "WindowConfig", "structWindowConfig.html", "structWindowConfig" ],
     [ "Word", "structWord.html", "structWord" ]
 ];

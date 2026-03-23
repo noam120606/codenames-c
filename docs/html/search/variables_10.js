@@ -1,10 +1,26 @@
 var searchData=
 [
-  ['rect_0',['rect',['../structButtonConfig.html#a499e2e5ebe13589dff7967201b77038c',1,'ButtonConfig::rect'],['../structCrossfaderConfig.html#a4943be4eea5c53d125492ec6e5229a4f',1,'CrossfaderConfig::rect'],['../structInputConfig.html#a9d52b0c0e768b365d8c7f63420d8aebb',1,'InputConfig::rect']]],
-  ['renderer_1',['renderer',['../structAppContext.html#a70a91ad56405a07962fe46fa7f640882',1,'AppContext']]],
-  ['revealed_2',['revealed',['../structWord.html#a0cac07c3eb1ee9ad069181b07b045a00',1,'Word::revealed'],['../structCard.html#a081171770c1dfa99ea73cc9ccc7378f0',1,'Card::revealed']]],
-  ['role_3',['role',['../structUser.html#ab91e66ddd08d2a0a76790374c2861fb8',1,'User']]],
-  ['rules_5fline_5fcount_4',['rules_line_count',['../infos_8c.html#a3f9cb5df846184803ffb556d92a85aa0',1,'infos.c']]],
-  ['rules_5flines_5',['rules_lines',['../infos_8c.html#a455e806e355945510f3da8893a8d981c',1,'infos.c']]],
-  ['rules_5ftitle_6',['rules_title',['../infos_8c.html#a5377b7365f8ed2b352452fbb2d883eba',1,'infos.c']]]
+  ['save_5fpending_0',['save_pending',['../structCrossfaderConfig.html#a2fa2393c7776f1ed0860308b588b9113',1,'CrossfaderConfig']]],
+  ['save_5fplayer_5fdata_1',['save_player_data',['../structCrossfaderConfig.html#a9cfcba146e897dae7558ce888fa4cedd',1,'CrossfaderConfig::save_player_data'],['../structInputConfig.html#ae1c49f953d435cb36ec36e75d8f3a385',1,'InputConfig::save_player_data']]],
+  ['sel_5fanchor_2',['sel_anchor',['../structInputConfig.html#a294971542e20fc2661f68d0a68e27331',1,'InputConfig']]],
+  ['sel_5flen_3',['sel_len',['../structInputConfig.html#a2ca7572fa2f18df1baf8016e68f596cb',1,'InputConfig']]],
+  ['sel_5fstart_4',['sel_start',['../structInputConfig.html#ab2c794298ec45e64b09b80fccaee41c4',1,'InputConfig']]],
+  ['server_5fsocket_5',['server_socket',['../structTcpServer.html#ab349c28c4c3421907d40f56c112fec65',1,'TcpServer']]],
+  ['size_6',['size',['../structList.html#ac41719eafdd551f0dcee8f3ce67ececc',1,'List']]],
+  ['sock_7',['sock',['../structAppContext.html#ae094faa774b18ad2519c7f88376098e0',1,'AppContext']]],
+  ['socket_8',['socket',['../structTcpClient.html#a65f3c371110f630616b3b459972753b1',1,'TcpClient']]],
+  ['socket_5ffd_9',['socket_fd',['../structUser.html#aaaf5d2f7495a0381ff5111ef56016ea6',1,'User']]],
+  ['sound_5fcfgs_10',['sound_cfgs',['../audio_8c.html#a9136cebfebf9bcfc0a7e440bfc4b2280',1,'audio.c']]],
+  ['sound_5fchannels_11',['sound_channels',['../audio_8c.html#afe65fb0260cef970c83d9992c85143bc',1,'audio.c']]],
+  ['sound_5feffects_5fvolume_12',['sound_effects_volume',['../structAppContext.html#ac754a95e774d145e7a60387c1bfd0de9',1,'AppContext']]],
+  ['sounds_13',['sounds',['../audio_8c.html#a6219ed6e0fee9ae23980d9672f4048e2',1,'audio.c']]],
+  ['spyglasses_14',['spyglasses',['../background_8c.html#a4b0cefe4533c4d1eb4d4a35c4f09de7a',1,'background.c']]],
+  ['start_5fclock_15',['start_clock',['../structTileAnimation.html#ab43106cf3a65d680e3da6e56a0f0b3ab',1,'TileAnimation']]],
+  ['state_16',['state',['../structGame.html#ad9fc2a8710ee56916f79314b91112ed0',1,'Game']]],
+  ['status_17',['status',['../structLobby.html#a56a7ba822aefe25cb28c9b1d680c6525',1,'Lobby']]],
+  ['submit_5fpattern_18',['submit_pattern',['../structInputConfig.html#a78751aa2e67240fddc2f5e075055a0b9',1,'InputConfig']]],
+  ['submitted_19',['submitted',['../structInputConfig.html#ad6ff6f76429490a4543b34d833e28bf4',1,'InputConfig']]],
+  ['submitted_5flabel_20',['submitted_label',['../structInputConfig.html#a95dbe8c037c9555f68b7c3d4476bc55b',1,'InputConfig']]],
+  ['submitted_5ftext_21',['submitted_text',['../structInputConfig.html#a6093de824748fe24d58179f68d5bff30',1,'InputConfig']]],
+  ['symbol_22',['symbol',['../structTileOverride.html#a1f7e9834cd2baacc3e1174d417c51a12',1,'TileOverride']]]
 ];

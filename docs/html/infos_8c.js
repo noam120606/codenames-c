@@ -36,5 +36,15 @@ var infos_8c =
     [ "mouse_was_inside", "infos_8c.html#abf701c92a6aa5a894ba57efe3b4af920", null ],
     [ "rules_line_count", "infos_8c.html#a3f9cb5df846184803ffb556d92a85aa0", null ],
     [ "rules_lines", "infos_8c.html#a455e806e355945510f3da8893a8d981c", null ],
-    [ "rules_title", "infos_8c.html#a5377b7365f8ed2b352452fbb2d883eba", null ]
+    [ "rules_title", "infos_8c.html#a5377b7365f8ed2b352452fbb2d883eba", null ],
+    [ "txt_bar_1", "infos_8c.html#a3a7eb5eb7c091bbd2fa00cacea4df9cc", null ],
+    [ "txt_bar_2", "infos_8c.html#a1cd675ee97487e8f2ffc50859f2b3d04", null ],
+    [ "txt_fps", "infos_8c.html#af8f69df21fb58b6605bdf0d7adbe31de", null ],
+    [ "txt_music_label", "infos_8c.html#a04f57e893cc1eb237c39d5c0129d6298", null ],
+    [ "txt_ping", "infos_8c.html#a566c6caa6b73617f62dc4402dbee67ce", null ],
+    [ "txt_rules_lines", "infos_8c.html#ab32d8485cb8fce21a8a3c2aff6574212", null ],
+    [ "txt_rules_title", "infos_8c.html#a48179d996f7a7dfd6f1906c9ab3dbf97", null ],
+    [ "txt_server_distant", "infos_8c.html#a8cadf80ad86dae76d8cfebd4a00eb761", null ],
+    [ "txt_server_local", "infos_8c.html#a22f957f831b5f806b6bfd7da5d640746", null ],
+    [ "txt_sfx_label", "infos_8c.html#ad4627060590d6ba5dca7f987b1b801c9", null ]
 ];

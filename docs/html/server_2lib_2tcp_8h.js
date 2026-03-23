@@ -4,7 +4,6 @@ var server_2lib_2tcp_8h =
     [ "TcpServer", "structTcpServer.html", "structTcpServer" ],
     [ "TCP_BUFFER_SIZE", "server_2lib_2tcp_8h.html#a02ded67c60c79f3a121a19a495bde2fe", null ],
     [ "TCP_MAX_CLIENTS", "server_2lib_2tcp_8h.html#a5b53bef6d63b7ccb5a69cc9ea79a7330", null ],
-    [ "Codenames", "server_2lib_2tcp_8h.html#aa44c3a3da81703c57680df8630f4414e", null ],
     [ "tcp_on_client_connect", "server_2lib_2tcp_8h.html#a55c99d36c3c04576b30e38c0eac2f83d", null ],
     [ "tcp_on_client_disconnect", "server_2lib_2tcp_8h.html#a4e3564e7cb720d84f2d8b2f1385e1c50", null ],
     [ "tcp_on_client_message", "server_2lib_2tcp_8h.html#adffbce60e9acd77a4071c627e70d1431", null ],

@@ -4,7 +4,6 @@ var server_2lib_2lobby_8h =
     [ "LobbyManager", "structLobbyManager.html", "structLobbyManager" ],
     [ "MAX_LOBBIES", "server_2lib_2lobby_8h.html#a67fee069fc4be0b17f7a3a8d185f4416", null ],
     [ "MAX_USERS", "server_2lib_2lobby_8h.html#a2c2a303621f66761529e598758d7ef34", null ],
-    [ "Codenames", "server_2lib_2lobby_8h.html#aa44c3a3da81703c57680df8630f4414e", null ],
     [ "Lobby", "server_2lib_2lobby_8h.html#a229c875e4f4c628685491500cddaae31", null ],
     [ "LobbyManager", "server_2lib_2lobby_8h.html#a3a3c4da33b4ef8a21b6374ea385cf368", null ],
     [ "LobbyStatus", "server_2lib_2lobby_8h.html#a66b59b004a9832d09c7c6ebf763eec32", null ],

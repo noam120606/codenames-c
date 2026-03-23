@@ -3,16 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames:  Fichier source de client/src/crossfader.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -34,28 +35,22 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.9.8 -->
+<!-- Généré par Doxygen 1.14.0 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-/* @license-end */
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
 });
-/* @license-end */
 </script>
 <div id="main-nav"></div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function() { init_codefold(0); });
-/* @license-end */
-</script>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -68,10 +63,9 @@ $(document).ready(function() { init_codefold(0); });
   </div>
 </div>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('crossfader_8c_source.html',''); initResizable(); });
-/* @license-end */
+$(function(){initNavTree('crossfader_8c_source.html','',''); });
 </script>
+<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -99,7 +93,7 @@ $(document).ready(function(){initNavTree('crossfader_8c_source.html',''); initRe
 </div><!--header-->
 <div class="contents">
 <a href="crossfader_8c.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/* Crossfader widget implementation */</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;../lib/all.h&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="client_2lib_2all_8h.html">../lib/all.h</a>&quot;</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="crossfader_8c.html#abac4aa6a694945af96309a31c9cad66b">    4</a></span><span class="keyword">static</span> <a class="code hl_struct" href="structCrossfader.html">Crossfader</a>* <a class="code hl_variable" href="crossfader_8c.html#abac4aa6a694945af96309a31c9cad66b">crossfaders</a>[<a class="code hl_define" href="crossfader_8h.html#a21018c4b39fc408ee095a7ee6ca9f09d">MAX_CROSSFADERS</a>];</div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="crossfader_8c.html#a0ce8e67845f5a7841d1ad7fd1392918c">    5</a></span><span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="crossfader_8c.html#a0ce8e67845f5a7841d1ad7fd1392918c">crossfader_count</a> = 0;</div>
@@ -138,7 +132,7 @@ $(document).ready(function(){initNavTree('crossfader_8c_source.html',''); initRe
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_function" href="save_8c.html#aaaddd3a0f040b25a962b4e5a98049466">write_property</a>(key, buf);</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
 </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span></div>
 <div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="crossfader_8c.html#a521dcc82f98f78679b9b0c15528b04c6">   37</a></span><a class="code hl_struct" href="structCrossfaderConfig.html">CrossfaderConfig</a>* <a class="code hl_function" href="crossfader_8c.html#a521dcc82f98f78679b9b0c15528b04c6">crossfader_config_init</a>(<span class="keywordtype">void</span>) {</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <a class="code hl_struct" href="structCrossfaderConfig.html">CrossfaderConfig</a>* cfg = (<a class="code hl_struct" href="structCrossfaderConfig.html">CrossfaderConfig</a>*)calloc(1, <span class="keyword">sizeof</span>(<a class="code hl_struct" href="structCrossfaderConfig.html">CrossfaderConfig</a>));</div>
@@ -665,36 +659,37 @@ $(document).ready(function(){initNavTree('crossfader_8c_source.html',''); initRe
 <div class="line"><a id="l00511" name="l00511"></a><span class="lineno">  511</span>    <a class="code hl_variable" href="crossfader_8c.html#a0ce8e67845f5a7841d1ad7fd1392918c">crossfader_count</a> = 0;</div>
 <div class="line"><a id="l00512" name="l00512"></a><span class="lineno">  512</span>}</div>
 </div>
-<div class="ttc" id="acrossfader_8c_html_a0bed147822b42417aefeea1541272501"><div class="ttname"><a href="crossfader_8c.html#a0bed147822b42417aefeea1541272501">crossfader_get</a></div><div class="ttdeci">Crossfader * crossfader_get(int id)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00123">crossfader.c:123</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_a0c28eae33c90be24b75ffaeb7f256b68"><div class="ttname"><a href="crossfader_8c.html#a0c28eae33c90be24b75ffaeb7f256b68">knob_x_for_value</a></div><div class="ttdeci">static int knob_x_for_value(Crossfader *cf, int knob_w)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00253">crossfader.c:253</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_a0ce8e67845f5a7841d1ad7fd1392918c"><div class="ttname"><a href="crossfader_8c.html#a0ce8e67845f5a7841d1ad7fd1392918c">crossfader_count</a></div><div class="ttdeci">static int crossfader_count</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00005">crossfader.c:5</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_a148770c36381abdf8ab7b6e8a2d6e7d6"><div class="ttname"><a href="crossfader_8c.html#a148770c36381abdf8ab7b6e8a2d6e7d6">crossfader_create</a></div><div class="ttdeci">Crossfader * crossfader_create(SDL_Renderer *renderer, int id, const CrossfaderConfig *cfg_in)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00070">crossfader.c:70</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_a14d2981d36a6a156b3b160a8140a3aff"><div class="ttname"><a href="crossfader_8c.html#a14d2981d36a6a156b3b160a8140a3aff">value_percent_for_crossfader</a></div><div class="ttdeci">static double value_percent_for_crossfader(const Crossfader *cf)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00263">crossfader.c:263</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_a15b7d3bde6a99a3f1b8407d9a79cd2bf"><div class="ttname"><a href="crossfader_8c.html#a15b7d3bde6a99a3f1b8407d9a79cd2bf">render_filled_left_capsule</a></div><div class="ttdeci">static void render_filled_left_capsule(SDL_Renderer *renderer, int x, int y, int w, int h)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00409">crossfader.c:409</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_a1749bca0f8782d5876577e90481bfdef"><div class="ttname"><a href="crossfader_8c.html#a1749bca0f8782d5876577e90481bfdef">point_in_rect</a></div><div class="ttdeci">static int point_in_rect(int x, int y, SDL_Rect *r)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00248">crossfader.c:248</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_a1df9381eddaecae0c14395ffae3ca32f"><div class="ttname"><a href="crossfader_8c.html#a1df9381eddaecae0c14395ffae3ca32f">find_by_id</a></div><div class="ttdeci">static Crossfader * find_by_id(int id)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00116">crossfader.c:116</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_a27ac312f5595c1acc7032b0cd61416a2"><div class="ttname"><a href="crossfader_8c.html#a27ac312f5595c1acc7032b0cd61416a2">render_capsule_outline</a></div><div class="ttdeci">static void render_capsule_outline(SDL_Renderer *renderer, int x, int y, int w, int h)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00424">crossfader.c:424</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_a44ded336e9ff59db3be4ec0f350d6939"><div class="ttname"><a href="crossfader_8c.html#a44ded336e9ff59db3be4ec0f350d6939">crossfaders_free</a></div><div class="ttdeci">void crossfaders_free(void)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00499">crossfader.c:499</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_a4b968aa69e95c0594b0f075b0c07363d"><div class="ttname"><a href="crossfader_8c.html#a4b968aa69e95c0594b0f075b0c07363d">crossfaders_render</a></div><div class="ttdeci">void crossfaders_render(SDL_Renderer *renderer)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00440">crossfader.c:440</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_a519c21fa24125ee05ec1757c26182e90"><div class="ttname"><a href="crossfader_8c.html#a519c21fa24125ee05ec1757c26182e90">crossfader_set_on_change</a></div><div class="ttdeci">void crossfader_set_on_change(Crossfader *cf, void(*cb)(AppContext *, int))</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00153">crossfader.c:153</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_a521dcc82f98f78679b9b0c15528b04c6"><div class="ttname"><a href="crossfader_8c.html#a521dcc82f98f78679b9b0c15528b04c6">crossfader_config_init</a></div><div class="ttdeci">CrossfaderConfig * crossfader_config_init(void)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00037">crossfader.c:37</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_a5be5d1721ae14b1d3aaa6776866ad940"><div class="ttname"><a href="crossfader_8c.html#a5be5d1721ae14b1d3aaa6776866ad940">render_filled_half_circle</a></div><div class="ttdeci">static void render_filled_half_circle(SDL_Renderer *renderer, int cx, int cy, int r, int is_left)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00367">crossfader.c:367</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_a7addb5762d28c38f0b694ea52e10f2a4"><div class="ttname"><a href="crossfader_8c.html#a7addb5762d28c38f0b694ea52e10f2a4">crossfader_save_value_if_enabled</a></div><div class="ttdeci">static void crossfader_save_value_if_enabled(const Crossfader *cf)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00025">crossfader.c:25</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_a83ae7c3bb5124281632cd8f01e5b3817"><div class="ttname"><a href="crossfader_8c.html#a83ae7c3bb5124281632cd8f01e5b3817">lerp_color</a></div><div class="ttdeci">static SDL_Color lerp_color(SDL_Color c0, SDL_Color c1, double t)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00272">crossfader.c:272</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_a96499f24d5ed8bbb36ba69319f5e022a"><div class="ttname"><a href="crossfader_8c.html#a96499f24d5ed8bbb36ba69319f5e022a">brighten_color</a></div><div class="ttdeci">static SDL_Color brighten_color(SDL_Color c, int delta)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00281">crossfader.c:281</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_aa12b0bd0cbcf2b7137b73c9eacc59a9f"><div class="ttname"><a href="crossfader_8c.html#aa12b0bd0cbcf2b7137b73c9eacc59a9f">crossfader_set_value</a></div><div class="ttdeci">int crossfader_set_value(int id, int value)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00133">crossfader.c:133</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_aaa2df932d20d2a8d281ccce344de2579"><div class="ttname"><a href="crossfader_8c.html#aaa2df932d20d2a8d281ccce344de2579">player_key_for_crossfader_id</a></div><div class="ttdeci">static const char * player_key_for_crossfader_id(int id)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00007">crossfader.c:7</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_aaed6fcc09513d856ab82ae783e354fb2"><div class="ttname"><a href="crossfader_8c.html#aaed6fcc09513d856ab82ae783e354fb2">render_filled_capsule</a></div><div class="ttdeci">static void render_filled_capsule(SDL_Renderer *renderer, int x, int y, int w, int h)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00392">crossfader.c:392</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_aaf0a988f209364a32edd472c65809462"><div class="ttname"><a href="crossfader_8c.html#aaf0a988f209364a32edd472c65809462">crossfader_load_saved_value_if_enabled</a></div><div class="ttdeci">static void crossfader_load_saved_value_if_enabled(Crossfader *cf)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00013">crossfader.c:13</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_ab7d69ae3368690642e3d9b21a0b43ba2"><div class="ttname"><a href="crossfader_8c.html#ab7d69ae3368690642e3d9b21a0b43ba2">render_half_circle_outline</a></div><div class="ttdeci">static void render_half_circle_outline(SDL_Renderer *renderer, int cx, int cy, int r, int is_left)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00379">crossfader.c:379</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_abac4aa6a694945af96309a31c9cad66b"><div class="ttname"><a href="crossfader_8c.html#abac4aa6a694945af96309a31c9cad66b">crossfaders</a></div><div class="ttdeci">static Crossfader * crossfaders[MAX_CROSSFADERS]</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00004">crossfader.c:4</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_abc2d08f47e64af39655f95b7c07f68f1"><div class="ttname"><a href="crossfader_8c.html#abc2d08f47e64af39655f95b7c07f68f1">crossfader_get_value</a></div><div class="ttdeci">int crossfader_get_value(int id)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00127">crossfader.c:127</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_ac997af9b7522ae44c8e8406f364caf33"><div class="ttname"><a href="crossfader_8c.html#ac997af9b7522ae44c8e8406f364caf33">edit_crfd_cfg</a></div><div class="ttdeci">int edit_crfd_cfg(int id, CrfdCfgKey key, intptr_t value)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00158">crossfader.c:158</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_ad021f2b0d62d4807604a563b372111e4"><div class="ttname"><a href="crossfader_8c.html#ad021f2b0d62d4807604a563b372111e4">update_value_from_mouse</a></div><div class="ttdeci">static void update_value_from_mouse(Crossfader *cf, AppContext *ctx, int mouse_x)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00295">crossfader.c:295</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_ad474b93da0891997c452368c5b9a3604"><div class="ttname"><a href="crossfader_8c.html#ad474b93da0891997c452368c5b9a3604">crossfaders_init</a></div><div class="ttdeci">void crossfaders_init(void)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00065">crossfader.c:65</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_adc9e735b49e634d43d8de02ca11a85f3"><div class="ttname"><a href="crossfader_8c.html#adc9e735b49e634d43d8de02ca11a85f3">crossfaders_handle_event</a></div><div class="ttdeci">void crossfaders_handle_event(AppContext *ctx, SDL_Event *event)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00313">crossfader.c:313</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_af645753a7990e90dfee1a40a00f403f3"><div class="ttname"><a href="crossfader_8c.html#af645753a7990e90dfee1a40a00f403f3">render_circle_outline</a></div><div class="ttdeci">static void render_circle_outline(SDL_Renderer *renderer, int cx, int cy, int r)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00358">crossfader.c:358</a></div></div>
-<div class="ttc" id="acrossfader_8c_html_af8d0f56307671bc2f3cd6a89c344e35c"><div class="ttname"><a href="crossfader_8c.html#af8d0f56307671bc2f3cd6a89c344e35c">render_filled_circle</a></div><div class="ttdeci">static void render_filled_circle(SDL_Renderer *renderer, int cx, int cy, int r)</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8c_source.html#l00350">crossfader.c:350</a></div></div>
+<div class="ttc" id="aclient_2lib_2all_8h_html"><div class="ttname"><a href="client_2lib_2all_8h.html">all.h</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_a0bed147822b42417aefeea1541272501"><div class="ttname"><a href="crossfader_8c.html#a0bed147822b42417aefeea1541272501">crossfader_get</a></div><div class="ttdeci">Crossfader * crossfader_get(int id)</div><div class="ttdef"><b>Definition</b> <a href="#l00123">crossfader.c:123</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_a0c28eae33c90be24b75ffaeb7f256b68"><div class="ttname"><a href="crossfader_8c.html#a0c28eae33c90be24b75ffaeb7f256b68">knob_x_for_value</a></div><div class="ttdeci">static int knob_x_for_value(Crossfader *cf, int knob_w)</div><div class="ttdef"><b>Definition</b> <a href="#l00253">crossfader.c:253</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_a0ce8e67845f5a7841d1ad7fd1392918c"><div class="ttname"><a href="crossfader_8c.html#a0ce8e67845f5a7841d1ad7fd1392918c">crossfader_count</a></div><div class="ttdeci">static int crossfader_count</div><div class="ttdef"><b>Definition</b> <a href="#l00005">crossfader.c:5</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_a148770c36381abdf8ab7b6e8a2d6e7d6"><div class="ttname"><a href="crossfader_8c.html#a148770c36381abdf8ab7b6e8a2d6e7d6">crossfader_create</a></div><div class="ttdeci">Crossfader * crossfader_create(SDL_Renderer *renderer, int id, const CrossfaderConfig *cfg_in)</div><div class="ttdef"><b>Definition</b> <a href="#l00070">crossfader.c:70</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_a14d2981d36a6a156b3b160a8140a3aff"><div class="ttname"><a href="crossfader_8c.html#a14d2981d36a6a156b3b160a8140a3aff">value_percent_for_crossfader</a></div><div class="ttdeci">static double value_percent_for_crossfader(const Crossfader *cf)</div><div class="ttdef"><b>Definition</b> <a href="#l00263">crossfader.c:263</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_a15b7d3bde6a99a3f1b8407d9a79cd2bf"><div class="ttname"><a href="crossfader_8c.html#a15b7d3bde6a99a3f1b8407d9a79cd2bf">render_filled_left_capsule</a></div><div class="ttdeci">static void render_filled_left_capsule(SDL_Renderer *renderer, int x, int y, int w, int h)</div><div class="ttdef"><b>Definition</b> <a href="#l00409">crossfader.c:409</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_a1749bca0f8782d5876577e90481bfdef"><div class="ttname"><a href="crossfader_8c.html#a1749bca0f8782d5876577e90481bfdef">point_in_rect</a></div><div class="ttdeci">static int point_in_rect(int x, int y, SDL_Rect *r)</div><div class="ttdef"><b>Definition</b> <a href="#l00248">crossfader.c:248</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_a1df9381eddaecae0c14395ffae3ca32f"><div class="ttname"><a href="crossfader_8c.html#a1df9381eddaecae0c14395ffae3ca32f">find_by_id</a></div><div class="ttdeci">static Crossfader * find_by_id(int id)</div><div class="ttdef"><b>Definition</b> <a href="#l00116">crossfader.c:116</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_a27ac312f5595c1acc7032b0cd61416a2"><div class="ttname"><a href="crossfader_8c.html#a27ac312f5595c1acc7032b0cd61416a2">render_capsule_outline</a></div><div class="ttdeci">static void render_capsule_outline(SDL_Renderer *renderer, int x, int y, int w, int h)</div><div class="ttdef"><b>Definition</b> <a href="#l00424">crossfader.c:424</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_a44ded336e9ff59db3be4ec0f350d6939"><div class="ttname"><a href="crossfader_8c.html#a44ded336e9ff59db3be4ec0f350d6939">crossfaders_free</a></div><div class="ttdeci">void crossfaders_free(void)</div><div class="ttdef"><b>Definition</b> <a href="#l00499">crossfader.c:499</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_a4b968aa69e95c0594b0f075b0c07363d"><div class="ttname"><a href="crossfader_8c.html#a4b968aa69e95c0594b0f075b0c07363d">crossfaders_render</a></div><div class="ttdeci">void crossfaders_render(SDL_Renderer *renderer)</div><div class="ttdef"><b>Definition</b> <a href="#l00440">crossfader.c:440</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_a519c21fa24125ee05ec1757c26182e90"><div class="ttname"><a href="crossfader_8c.html#a519c21fa24125ee05ec1757c26182e90">crossfader_set_on_change</a></div><div class="ttdeci">void crossfader_set_on_change(Crossfader *cf, void(*cb)(AppContext *, int))</div><div class="ttdef"><b>Definition</b> <a href="#l00153">crossfader.c:153</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_a521dcc82f98f78679b9b0c15528b04c6"><div class="ttname"><a href="crossfader_8c.html#a521dcc82f98f78679b9b0c15528b04c6">crossfader_config_init</a></div><div class="ttdeci">CrossfaderConfig * crossfader_config_init(void)</div><div class="ttdef"><b>Definition</b> <a href="#l00037">crossfader.c:37</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_a5be5d1721ae14b1d3aaa6776866ad940"><div class="ttname"><a href="crossfader_8c.html#a5be5d1721ae14b1d3aaa6776866ad940">render_filled_half_circle</a></div><div class="ttdeci">static void render_filled_half_circle(SDL_Renderer *renderer, int cx, int cy, int r, int is_left)</div><div class="ttdef"><b>Definition</b> <a href="#l00367">crossfader.c:367</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_a7addb5762d28c38f0b694ea52e10f2a4"><div class="ttname"><a href="crossfader_8c.html#a7addb5762d28c38f0b694ea52e10f2a4">crossfader_save_value_if_enabled</a></div><div class="ttdeci">static void crossfader_save_value_if_enabled(const Crossfader *cf)</div><div class="ttdef"><b>Definition</b> <a href="#l00025">crossfader.c:25</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_a83ae7c3bb5124281632cd8f01e5b3817"><div class="ttname"><a href="crossfader_8c.html#a83ae7c3bb5124281632cd8f01e5b3817">lerp_color</a></div><div class="ttdeci">static SDL_Color lerp_color(SDL_Color c0, SDL_Color c1, double t)</div><div class="ttdef"><b>Definition</b> <a href="#l00272">crossfader.c:272</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_a96499f24d5ed8bbb36ba69319f5e022a"><div class="ttname"><a href="crossfader_8c.html#a96499f24d5ed8bbb36ba69319f5e022a">brighten_color</a></div><div class="ttdeci">static SDL_Color brighten_color(SDL_Color c, int delta)</div><div class="ttdef"><b>Definition</b> <a href="#l00281">crossfader.c:281</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_aa12b0bd0cbcf2b7137b73c9eacc59a9f"><div class="ttname"><a href="crossfader_8c.html#aa12b0bd0cbcf2b7137b73c9eacc59a9f">crossfader_set_value</a></div><div class="ttdeci">int crossfader_set_value(int id, int value)</div><div class="ttdef"><b>Definition</b> <a href="#l00133">crossfader.c:133</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_aaa2df932d20d2a8d281ccce344de2579"><div class="ttname"><a href="crossfader_8c.html#aaa2df932d20d2a8d281ccce344de2579">player_key_for_crossfader_id</a></div><div class="ttdeci">static const char * player_key_for_crossfader_id(int id)</div><div class="ttdef"><b>Definition</b> <a href="#l00007">crossfader.c:7</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_aaed6fcc09513d856ab82ae783e354fb2"><div class="ttname"><a href="crossfader_8c.html#aaed6fcc09513d856ab82ae783e354fb2">render_filled_capsule</a></div><div class="ttdeci">static void render_filled_capsule(SDL_Renderer *renderer, int x, int y, int w, int h)</div><div class="ttdef"><b>Definition</b> <a href="#l00392">crossfader.c:392</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_aaf0a988f209364a32edd472c65809462"><div class="ttname"><a href="crossfader_8c.html#aaf0a988f209364a32edd472c65809462">crossfader_load_saved_value_if_enabled</a></div><div class="ttdeci">static void crossfader_load_saved_value_if_enabled(Crossfader *cf)</div><div class="ttdef"><b>Definition</b> <a href="#l00013">crossfader.c:13</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_ab7d69ae3368690642e3d9b21a0b43ba2"><div class="ttname"><a href="crossfader_8c.html#ab7d69ae3368690642e3d9b21a0b43ba2">render_half_circle_outline</a></div><div class="ttdeci">static void render_half_circle_outline(SDL_Renderer *renderer, int cx, int cy, int r, int is_left)</div><div class="ttdef"><b>Definition</b> <a href="#l00379">crossfader.c:379</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_abac4aa6a694945af96309a31c9cad66b"><div class="ttname"><a href="crossfader_8c.html#abac4aa6a694945af96309a31c9cad66b">crossfaders</a></div><div class="ttdeci">static Crossfader * crossfaders[MAX_CROSSFADERS]</div><div class="ttdef"><b>Definition</b> <a href="#l00004">crossfader.c:4</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_abc2d08f47e64af39655f95b7c07f68f1"><div class="ttname"><a href="crossfader_8c.html#abc2d08f47e64af39655f95b7c07f68f1">crossfader_get_value</a></div><div class="ttdeci">int crossfader_get_value(int id)</div><div class="ttdef"><b>Definition</b> <a href="#l00127">crossfader.c:127</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_ac997af9b7522ae44c8e8406f364caf33"><div class="ttname"><a href="crossfader_8c.html#ac997af9b7522ae44c8e8406f364caf33">edit_crfd_cfg</a></div><div class="ttdeci">int edit_crfd_cfg(int id, CrfdCfgKey key, intptr_t value)</div><div class="ttdef"><b>Definition</b> <a href="#l00158">crossfader.c:158</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_ad021f2b0d62d4807604a563b372111e4"><div class="ttname"><a href="crossfader_8c.html#ad021f2b0d62d4807604a563b372111e4">update_value_from_mouse</a></div><div class="ttdeci">static void update_value_from_mouse(Crossfader *cf, AppContext *ctx, int mouse_x)</div><div class="ttdef"><b>Definition</b> <a href="#l00295">crossfader.c:295</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_ad474b93da0891997c452368c5b9a3604"><div class="ttname"><a href="crossfader_8c.html#ad474b93da0891997c452368c5b9a3604">crossfaders_init</a></div><div class="ttdeci">void crossfaders_init(void)</div><div class="ttdef"><b>Definition</b> <a href="#l00065">crossfader.c:65</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_adc9e735b49e634d43d8de02ca11a85f3"><div class="ttname"><a href="crossfader_8c.html#adc9e735b49e634d43d8de02ca11a85f3">crossfaders_handle_event</a></div><div class="ttdeci">void crossfaders_handle_event(AppContext *ctx, SDL_Event *event)</div><div class="ttdef"><b>Definition</b> <a href="#l00313">crossfader.c:313</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_af645753a7990e90dfee1a40a00f403f3"><div class="ttname"><a href="crossfader_8c.html#af645753a7990e90dfee1a40a00f403f3">render_circle_outline</a></div><div class="ttdeci">static void render_circle_outline(SDL_Renderer *renderer, int cx, int cy, int r)</div><div class="ttdef"><b>Definition</b> <a href="#l00358">crossfader.c:358</a></div></div>
+<div class="ttc" id="acrossfader_8c_html_af8d0f56307671bc2f3cd6a89c344e35c"><div class="ttname"><a href="crossfader_8c.html#af8d0f56307671bc2f3cd6a89c344e35c">render_filled_circle</a></div><div class="ttdeci">static void render_filled_circle(SDL_Renderer *renderer, int cx, int cy, int r)</div><div class="ttdef"><b>Definition</b> <a href="#l00350">crossfader.c:350</a></div></div>
 <div class="ttc" id="acrossfader_8h_html_a21018c4b39fc408ee095a7ee6ca9f09d"><div class="ttname"><a href="crossfader_8h.html#a21018c4b39fc408ee095a7ee6ca9f09d">MAX_CROSSFADERS</a></div><div class="ttdeci">#define MAX_CROSSFADERS</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8h_source.html#l00011">crossfader.h:11</a></div></div>
 <div class="ttc" id="acrossfader_8h_html_afe46759d0a90580e13d099a69c6fc9f6"><div class="ttname"><a href="crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6">CrfdCfgKey</a></div><div class="ttdeci">CrfdCfgKey</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8h_source.html#l00055">crossfader.h:55</a></div></div>
 <div class="ttc" id="acrossfader_8h_html_afe46759d0a90580e13d099a69c6fc9f6a070fa40aec610c680335bad37aa4f266"><div class="ttname"><a href="crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6a070fa40aec610c680335bad37aa4f266">CRFD_CFG_X</a></div><div class="ttdeci">@ CRFD_CFG_X</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8h_source.html#l00056">crossfader.h:56</a></div></div>
@@ -721,7 +716,7 @@ $(document).ready(function(){initNavTree('crossfader_8c_source.html',''); initRe
 <div class="ttc" id="asave_8c_html_a32484d87b11c9bd0b177bb221f4dc627"><div class="ttname"><a href="save_8c.html#a32484d87b11c9bd0b177bb221f4dc627">read_property</a></div><div class="ttdeci">int read_property(char *buf, const char *property)</div><div class="ttdef"><b>Definition</b> <a href="save_8c_source.html#l00012">save.c:12</a></div></div>
 <div class="ttc" id="asave_8c_html_aaaddd3a0f040b25a962b4e5a98049466"><div class="ttname"><a href="save_8c.html#aaaddd3a0f040b25a962b4e5a98049466">write_property</a></div><div class="ttdeci">int write_property(const char *property, const char *value)</div><div class="ttdef"><b>Definition</b> <a href="save_8c_source.html#l00041">save.c:41</a></div></div>
 <div class="ttc" id="asdl_8c_html_a40dc301c542ead27211aba1d2169b2fa"><div class="ttname"><a href="sdl_8c.html#a40dc301c542ead27211aba1d2169b2fa">free_image</a></div><div class="ttdeci">void free_image(SDL_Texture *texture)</div><div class="ttdef"><b>Definition</b> <a href="sdl_8c_source.html#l00228">sdl.c:228</a></div></div>
-<div class="ttc" id="astructAppContext_html"><div class="ttname"><a href="structAppContext.html">AppContext</a></div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00037">sdl.h:37</a></div></div>
+<div class="ttc" id="astructAppContext_html"><div class="ttname"><a href="structAppContext.html">AppContext</a></div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00038">sdl.h:38</a></div></div>
 <div class="ttc" id="astructCrossfaderConfig_html"><div class="ttname"><a href="structCrossfaderConfig.html">CrossfaderConfig</a></div><div class="ttdef"><b>Definition</b> <a href="crossfader_8h_source.html#l00019">crossfader.h:19</a></div></div>
 <div class="ttc" id="astructCrossfaderConfig_html_a08680ac8ae405a2edeb043fe7a5b1d78"><div class="ttname"><a href="structCrossfaderConfig.html#a08680ac8ae405a2edeb043fe7a5b1d78">CrossfaderConfig::hidden</a></div><div class="ttdeci">int hidden</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8h_source.html#l00028">crossfader.h:28</a></div></div>
 <div class="ttc" id="astructCrossfaderConfig_html_a127be42bb95cf6d195f02d0d87bf69db"><div class="ttname"><a href="structCrossfaderConfig.html#a127be42bb95cf6d195f02d0d87bf69db">CrossfaderConfig::color_100_pct</a></div><div class="ttdeci">SDL_Color color_100_pct</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8h_source.html#l00031">crossfader.h:31</a></div></div>
@@ -747,11 +742,12 @@ $(document).ready(function(){initNavTree('crossfader_8c_source.html',''); initRe
 <div class="ttc" id="astructCrossfader_html_ac4fbc9e091fabe83f685f1bd2bd31c32"><div class="ttname"><a href="structCrossfader.html#ac4fbc9e091fabe83f685f1bd2bd31c32">Crossfader::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition</b> <a href="crossfader_8h_source.html#l00048">crossfader.h:48</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a class="el" href="crossfader_8c.html">crossfader.c</a></li>
-    <li class="footer">Généré le Vendredi 20 Mars 2026 21:22:33 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a href="crossfader_8c.html">crossfader.c</a></li>
+    <li class="footer">Généré le Lundi 23 Mars 2026 17:03:04 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
 </body>

@@ -2,8 +2,13 @@ var server_2lib_2message_8h =
 [
     [ "Arguments", "structArguments.html", "structArguments" ],
     [ "Arguments", "server_2lib_2message_8h.html#ac9817a3ea34e47aa6dd60b6952c57e63", null ],
-    [ "Codenames", "server_2lib_2message_8h.html#aa44c3a3da81703c57680df8630f4414e", null ],
+    [ "MessageError", "server_2lib_2message_8h.html#a6f0366c9e0f6141897e0488ce3608708", null ],
     [ "MessageType", "server_2lib_2message_8h.html#a551dec83c55825ee5e7bfa1ad5609551", null ],
+    [ "MessageError", "server_2lib_2message_8h.html#a9374dcf03c1691f812daf280dd37523f", [
+      [ "MSG_ERR_NONE", "server_2lib_2message_8h.html#a9374dcf03c1691f812daf280dd37523facd5f7e33cb775a953b77b470f4a32570", null ],
+      [ "MSG_ERR_INVALID_FORMAT", "server_2lib_2message_8h.html#a9374dcf03c1691f812daf280dd37523faa08f3ecf6ab4879ddd11e9edb75cdf6b", null ],
+      [ "MSG_ERR_UNKNOWN_TYPE", "server_2lib_2message_8h.html#a9374dcf03c1691f812daf280dd37523fabc72cbc034c3c3e4c24c505095e135ef", null ]
+    ] ],
     [ "MessageType", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013", [
       [ "MSG_SERVER_ERROR", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a8de267a33883ee34bdb9880676b6651a", null ],
       [ "MSG_UNKNOWN", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013afe84a91c5c55549a831dfd14ca66fc8a", null ],

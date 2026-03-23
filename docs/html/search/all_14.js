@@ -1,18 +1,7 @@
 var searchData=
 [
-  ['une_20partie_0',['Déroulement d&apos;une partie',['../index.html#autotoc_md17',1,'']]],
-  ['update_5fcrossfader_5fpositions_1',['update_crossfader_positions',['../infos_8c.html#a859d8e9635cbbd1a7f96460aeb84be7d',1,'infos.c']]],
-  ['update_5fvalue_5ffrom_5fmouse_2',['update_value_from_mouse',['../crossfader_8c.html#ad021f2b0d62d4807604a563b372111e4',1,'crossfader.c']]],
-  ['user_3',['User',['../structUser.html',1,'']]],
-  ['user_2ec_4',['user.c',['../client_2src_2user_8c.html',1,'(Espace de nommage global)'],['../server_2src_2user_8c.html',1,'(Espace de nommage global)']]],
-  ['user_2eh_5',['user.h',['../client_2lib_2user_8h.html',1,'(Espace de nommage global)'],['../server_2lib_2user_8h.html',1,'(Espace de nommage global)']]],
-  ['userrole_6',['userrole',['../server_2lib_2user_8h.html#a064a2c5e2528af581f38d07fbbaa8e5a',1,'UserRole:&#160;user.h'],['../client_2lib_2user_8h.html#a064a2c5e2528af581f38d07fbbaa8e5a',1,'UserRole:&#160;user.h'],['../server_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775',1,'UserRole:&#160;user.h'],['../client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775',1,'UserRole:&#160;user.h']]],
-  ['users_7',['users',['../structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965',1,'Lobby']]],
-  ['utilisées_8',['Technologies Utilisées',['../index.html#autotoc_md27',1,'']]],
-  ['utilisation_9',['Utilisation',['../index.html#autotoc_md13',1,'']]],
-  ['utils_2ec_10',['utils.c',['../server_2src_2utils_8c.html',1,'(Espace de nommage global)'],['../client_2src_2utils_8c.html',1,'(Espace de nommage global)']]],
-  ['utils_2eh_11',['utils.h',['../server_2lib_2utils_8h.html',1,'(Espace de nommage global)'],['../client_2lib_2utils_8h.html',1,'(Espace de nommage global)']]],
-  ['uuid_2ec_12',['uuid.c',['../uuid_8c.html',1,'']]],
-  ['uuid_2eh_13',['uuid.h',['../uuid_8h.html',1,'']]],
-  ['uuid_5fexists_5fin_5ffile_14',['uuid_exists_in_file',['../server_2src_2utils_8c.html#acb6f19153f3e8729295ae8f1af0fc3bd',1,'utils.c']]]
+  ['value_0',['value',['../structCrossfaderConfig.html#a9c613b54a06495198c3998c8e6e16522',1,'CrossfaderConfig']]],
+  ['value_5fpercent_5ffor_5fcrossfader_1',['value_percent_for_crossfader',['../crossfader_8c.html#a14d2981d36a6a156b3b160a8140a3aff',1,'crossfader.c']]],
+  ['version_20automatique_20à_20chaque_20commit_2',['Version automatique à chaque commit',['../index.html#autotoc_md14',1,'']]],
+  ['volume_3',['volume',['../structSoundConfig.html#a6df0229497460d8988132348468d9e0d',1,'SoundConfig']]]
 ];

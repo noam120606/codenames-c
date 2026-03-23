@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['background_5fget_5fcolor_0',['background_get_color',['../background_8h.html#ac9740a76d3766ec89d3add7ee2ceaf25',1,'background_get_color(void):&#160;background.c'],['../background_8c.html#ac9740a76d3766ec89d3add7ee2ceaf25',1,'background_get_color(void):&#160;background.c']]],
+  ['background_5fget_5fcolor_0',['background_get_color',['../background_8c.html#ac9740a76d3766ec89d3add7ee2ceaf25',1,'background_get_color(void):&#160;background.c'],['../background_8h.html#ac9740a76d3766ec89d3add7ee2ceaf25',1,'background_get_color(void):&#160;background.c']]],
   ['background_5fhandle_5fevent_1',['background_handle_event',['../background_8c.html#a6dd4b89aa74d14d45923b2f1e0d02b9a',1,'background_handle_event(AppContext *context, SDL_Event *e):&#160;background.c'],['../background_8h.html#a6dd4b89aa74d14d45923b2f1e0d02b9a',1,'background_handle_event(AppContext *context, SDL_Event *e):&#160;background.c']]],
   ['background_5fset_5fcolor_2',['background_set_color',['../background_8c.html#a43c28abfd144d197f2fa1aa919418949',1,'background_set_color(Uint8 r, Uint8 g, Uint8 b):&#160;background.c'],['../background_8h.html#a43c28abfd144d197f2fa1aa919418949',1,'background_set_color(Uint8 r, Uint8 g, Uint8 b):&#160;background.c']]],
   ['bandeau_5fto_5fscreen_5fx_3',['bandeau_to_screen_x',['../infos_8c.html#a48b5c5c44f09a8a25e3de7e199cc8a76',1,'infos.c']]],

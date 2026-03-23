@@ -84,11 +84,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"client_2src_2game_8c.html#a5fd900d48ad01a2c51233e0bd781edd6",
-"infos_8c.html#a74f1c18506ff8cbfce8cf43f20f59fbb",
-"server_2lib_2lobby_8h.html#a3a3c4da33b4ef8a21b6374ea385cf368",
-"structInputConfig.html#ab2c794298ec45e64b09b80fccaee41c4"
+"client_2src_2game_8c.html#a433ed37af32bd5c57d9b27aaee38d7b1",
+"index.html#autotoc_md5",
+"server_2lib_2list_8h.html#a18f87d88930c7be4d848c4db76e6fe76",
+"structInput.html#a2e8fb815db82d790f167fce862673ecf"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';
 var SYNCOFFMSG = 'cliquez pour activer la synchronisation du panel';
+var LISTOFALLMEMBERS = 'Liste de tous les membres';

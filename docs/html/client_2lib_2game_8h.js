@@ -3,7 +3,6 @@ var client_2lib_2game_8h =
     [ "Word", "structWord.html", "structWord" ],
     [ "Game", "structGame.html", "structGame" ],
     [ "Card", "structCard.html", "structCard" ],
-    [ "AppContext", "client_2lib_2game_8h.html#aab477be81bad6aadbec06506e3cc26a2", null ],
     [ "AppState", "client_2lib_2game_8h.html#af18642bfb6229ca25b25c60e12cffa6c", null ],
     [ "Card", "client_2lib_2game_8h.html#a23ff27324f1ac52bcafa4cc91e2c2744", null ],
     [ "GameState", "client_2lib_2game_8h.html#a2185b55f783b76da98f60ddfedae594d", null ],

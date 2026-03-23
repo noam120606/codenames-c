@@ -18,5 +18,6 @@ var dir_c820a03d7ce2287b7e602f7703757381 =
     [ "tcp.h", "client_2lib_2tcp_8h.html", "client_2lib_2tcp_8h" ],
     [ "text.h", "text_8h.html", "text_8h" ],
     [ "user.h", "client_2lib_2user_8h.html", "client_2lib_2user_8h" ],
-    [ "utils.h", "client_2lib_2utils_8h.html", "client_2lib_2utils_8h" ]
+    [ "utils.h", "client_2lib_2utils_8h.html", "client_2lib_2utils_8h" ],
+    [ "window.h", "window_8h.html", "window_8h" ]
 ];

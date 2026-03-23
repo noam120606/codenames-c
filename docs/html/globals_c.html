@@ -3,16 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Variables globale</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -34,21 +35,20 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.9.8 -->
+<!-- Généré par Doxygen 1.14.0 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-/* @license-end */
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
 });
-/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,10 +63,9 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('globals_c.html',''); initResizable(); });
-/* @license-end */
+$(function(){initNavTree('globals_c.html','',''); });
 </script>
+<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -92,9 +91,9 @@ $(document).ready(function(){initNavTree('globals_c.html',''); initResizable(); 
 <div class="contents">
 <div class="textblock">Liste de toutes les fonctions, variables, macros, enumérations, et définitions de type avec des liens vers les fichiers auxquels ils appartiennent :</div>
 
-<h3><a id="index_c" name="index_c"></a>- c -</h3><ul>
-<li>calculate_fps()&#160;:&#160;<a class="el" href="infos_8h.html#a983096ca60b10079efe1a2463c30bccf">infos.h</a>, <a class="el" href="infos_8c.html#a983096ca60b10079efe1a2463c30bccf">infos.c</a></li>
-<li>Card&#160;:&#160;<a class="el" href="sdl_8h.html#a23ff27324f1ac52bcafa4cc91e2c2744">sdl.h</a>, <a class="el" href="client_2lib_2game_8h.html#a23ff27324f1ac52bcafa4cc91e2c2744">game.h</a></li>
+<h3 class="doxsection"><a id="index_c" name="index_c"></a>- c -</h3><ul>
+<li>calculate_fps()&#160;:&#160;<a class="el" href="infos_8c.html#a983096ca60b10079efe1a2463c30bccf">infos.c</a>, <a class="el" href="infos_8h.html#a983096ca60b10079efe1a2463c30bccf">infos.h</a></li>
+<li>Card&#160;:&#160;<a class="el" href="client_2lib_2game_8h.html#a23ff27324f1ac52bcafa4cc91e2c2744">game.h</a></li>
 <li>card_black&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#afe9e4666aaaa438258f01b02d2dd5b50">game.c</a></li>
 <li>card_f_blue&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#ae54bd50311003974405fafa889149ccf">game.c</a></li>
 <li>card_f_classic&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#aff4debb79f9b6edc20084040a2305309">game.c</a></li>
@@ -108,12 +107,14 @@ $(document).ready(function(){initNavTree('globals_c.html',''); initResizable(); 
 <li>channel_sound_ids&#160;:&#160;<a class="el" href="audio_8c.html#ad3f14a7658faa417a3ebc8a32fd3d595">audio.c</a></li>
 <li>choose_role()&#160;:&#160;<a class="el" href="server_2src_2lobby_8c.html#af844d1079e019dab0a618c378178fe75">lobby.c</a></li>
 <li>clamp01()&#160;:&#160;<a class="el" href="infos_8c.html#ab00225c776aaffa6658c5b4d4325afcc">infos.c</a></li>
+<li>clamp_non_negative()&#160;:&#160;<a class="el" href="window_8c.html#adfbab9ec061a0f54a36c5238db015cbb">window.c</a></li>
+<li>clamp_positive()&#160;:&#160;<a class="el" href="window_8c.html#a3bd6685b3fb7a7da7ba7ce6a3f10131d">window.c</a></li>
 <li>clamp_volume()&#160;:&#160;<a class="el" href="audio_8c.html#aca16f856f161aaa151082cea3937fe8e">audio.c</a></li>
 <li>cleanup_resources()&#160;:&#160;<a class="el" href="ressources_8c.html#a25ce324123d4f50334b6905ef696812e">ressources.c</a>, <a class="el" href="ressources_8h.html#a25ce324123d4f50334b6905ef696812e">ressources.h</a></li>
 <li>close_tcp()&#160;:&#160;<a class="el" href="client_2src_2tcp_8c.html#a39171b188778c75d0b5a82713b417786">tcp.c</a>, <a class="el" href="client_2lib_2tcp_8h.html#a39171b188778c75d0b5a82713b417786">tcp.h</a></li>
 <li>code_input&#160;:&#160;<a class="el" href="menu_8c.html#ad24c44449acf9d0c6656252858d95756">menu.c</a></li>
 <li>code_on_submit()&#160;:&#160;<a class="el" href="menu_8c.html#a263ab2317fc0e9c0ff3be940abd74d94">menu.c</a></li>
-<li>Codenames&#160;:&#160;<a class="el" href="codenames_8h.html#aa44c3a3da81703c57680df8630f4414e">codenames.h</a>, <a class="el" href="server_2lib_2lobby_8h.html#aa44c3a3da81703c57680df8630f4414e">lobby.h</a>, <a class="el" href="server_2lib_2message_8h.html#aa44c3a3da81703c57680df8630f4414e">message.h</a>, <a class="el" href="server_2lib_2tcp_8h.html#aa44c3a3da81703c57680df8630f4414e">tcp.h</a></li>
+<li>Codenames&#160;:&#160;<a class="el" href="codenames_8h.html#aa44c3a3da81703c57680df8630f4414e">codenames.h</a></li>
 <li>CODENAMES_VERSION&#160;:&#160;<a class="el" href="client_2lib_2all_8h.html#a7d756a646ff6787a441e27ba0dfbee88">all.h</a></li>
 <li>COL_BLACK&#160;:&#160;<a class="el" href="client_2lib_2utils_8h.html#a2e83cdef7aa658a31d69afd5f75a51b0">utils.h</a></li>
 <li>COL_BLUE&#160;:&#160;<a class="el" href="client_2lib_2utils_8h.html#a9e3b63c4187b7f274912e0c7c533d1af">utils.h</a></li>
@@ -134,7 +135,9 @@ $(document).ready(function(){initNavTree('globals_c.html',''); initResizable(); 
 <li>count_words()&#160;:&#160;<a class="el" href="server_2src_2utils_8c.html#ad93ebcf9b51100e8925bd85aabf977bc">utils.c</a>, <a class="el" href="server_2lib_2utils_8h.html#ad93ebcf9b51100e8925bd85aabf977bc">utils.h</a></li>
 <li>create_lobby()&#160;:&#160;<a class="el" href="server_2src_2lobby_8c.html#a44d2d1f1a9577918a430c3d184438383">lobby.c</a>, <a class="el" href="server_2lib_2lobby_8h.html#a44d2d1f1a9577918a430c3d184438383">lobby.h</a></li>
 <li>create_lobby_manager()&#160;:&#160;<a class="el" href="server_2src_2lobby_8c.html#a95d0cf6c24388e7600fecdf9207fcb72">lobby.c</a>, <a class="el" href="server_2lib_2lobby_8h.html#a95d0cf6c24388e7600fecdf9207fcb72">lobby.h</a></li>
-<li>create_user()&#160;:&#160;<a class="el" href="server_2lib_2user_8h.html#a0710dca1ff61cdf7517bbe57803f1fec">user.h</a>, <a class="el" href="client_2src_2user_8c.html#a0cb0c3d3b4ddc01d1d2c77ca4eada124">user.c</a></li>
+<li>create_text()&#160;:&#160;<a class="el" href="text_8c.html#ae6c3a92a65ce87de859b5ecd21fb0fbc">text.c</a>, <a class="el" href="text_8h.html#ae6c3a92a65ce87de859b5ecd21fb0fbc">text.h</a></li>
+<li>create_text_config()&#160;:&#160;<a class="el" href="text_8c.html#a5229e53c1df6a3e32e4ca68e7fe8b1ba">text.c</a>, <a class="el" href="text_8h.html#a5229e53c1df6a3e32e4ca68e7fe8b1ba">text.h</a></li>
+<li>create_user()&#160;:&#160;<a class="el" href="client_2src_2user_8c.html#a0cb0c3d3b4ddc01d1d2c77ca4eada124">user.c</a>, <a class="el" href="client_2lib_2user_8h.html#a0cb0c3d3b4ddc01d1d2c77ca4eada124">user.h</a>, <a class="el" href="server_2src_2user_8c.html#a0710dca1ff61cdf7517bbe57803f1fec">user.c</a>, <a class="el" href="server_2lib_2user_8h.html#a0710dca1ff61cdf7517bbe57803f1fec">user.h</a></li>
 <li>CRFD_CFG_COLOR_0_PCT&#160;:&#160;<a class="el" href="crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6a494409af326f01a5e9afe94d5c1d62b9">crossfader.h</a></li>
 <li>CRFD_CFG_COLOR_100_PCT&#160;:&#160;<a class="el" href="crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6aac073e7b1f1d16bd1abb477364cf8fd1">crossfader.h</a></li>
 <li>CRFD_CFG_DRAGGING&#160;:&#160;<a class="el" href="crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6aa671d49e547f767dae3c352cc3c443ec">crossfader.h</a></li>
@@ -158,7 +161,7 @@ $(document).ready(function(){initNavTree('globals_c.html',''); initResizable(); 
 <li>Crossfader&#160;:&#160;<a class="el" href="crossfader_8h.html#a8cb153a970d35495ffb273e1f02dbd33">crossfader.h</a></li>
 <li>crossfader_config_init()&#160;:&#160;<a class="el" href="crossfader_8c.html#a521dcc82f98f78679b9b0c15528b04c6">crossfader.c</a>, <a class="el" href="crossfader_8h.html#a521dcc82f98f78679b9b0c15528b04c6">crossfader.h</a></li>
 <li>crossfader_count&#160;:&#160;<a class="el" href="crossfader_8c.html#a0ce8e67845f5a7841d1ad7fd1392918c">crossfader.c</a></li>
-<li>crossfader_create()&#160;:&#160;<a class="el" href="crossfader_8h.html#ad88a14929edf0a596db17799ac96b3d9">crossfader.h</a>, <a class="el" href="crossfader_8c.html#a148770c36381abdf8ab7b6e8a2d6e7d6">crossfader.c</a></li>
+<li>crossfader_create()&#160;:&#160;<a class="el" href="crossfader_8c.html#a148770c36381abdf8ab7b6e8a2d6e7d6">crossfader.c</a>, <a class="el" href="crossfader_8h.html#ad88a14929edf0a596db17799ac96b3d9">crossfader.h</a></li>
 <li>crossfader_get()&#160;:&#160;<a class="el" href="crossfader_8c.html#a0bed147822b42417aefeea1541272501">crossfader.c</a>, <a class="el" href="crossfader_8h.html#a0bed147822b42417aefeea1541272501">crossfader.h</a></li>
 <li>crossfader_get_value()&#160;:&#160;<a class="el" href="crossfader_8c.html#abc2d08f47e64af39655f95b7c07f68f1">crossfader.c</a>, <a class="el" href="crossfader_8h.html#abc2d08f47e64af39655f95b7c07f68f1">crossfader.h</a></li>
 <li>CROSSFADER_ID_MUSIC_VOLUME&#160;:&#160;<a class="el" href="infos_8h.html#a33a612bb99cde5e7d08cc25002db4cdd">infos.h</a></li>
@@ -174,13 +177,15 @@ $(document).ready(function(){initNavTree('globals_c.html',''); initResizable(); 
 <li>crossfaders_init()&#160;:&#160;<a class="el" href="crossfader_8c.html#ad474b93da0891997c452368c5b9a3604">crossfader.c</a>, <a class="el" href="crossfader_8h.html#ad474b93da0891997c452368c5b9a3604">crossfader.h</a></li>
 <li>crossfaders_render()&#160;:&#160;<a class="el" href="crossfader_8c.html#a4b968aa69e95c0594b0f075b0c07363d">crossfader.c</a>, <a class="el" href="crossfader_8h.html#a4b968aa69e95c0594b0f075b0c07363d">crossfader.h</a></li>
 <li>current_display_x&#160;:&#160;<a class="el" href="infos_8c.html#aa5c0c9ab93e6e76ba7845cbce2e94b52">infos.c</a></li>
+<li>current_player_text_index&#160;:&#160;<a class="el" href="client_2src_2lobby_8c.html#acd7ada16665ace9a6e10d7cc09fcaf11">lobby.c</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
+</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 20 Mars 2026 21:22:33 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Généré le Lundi 23 Mars 2026 17:03:05 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
 </body>

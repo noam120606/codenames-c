@@ -3,16 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier client/lib/all.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -34,21 +35,20 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.9.8 -->
+<!-- Généré par Doxygen 1.14.0 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-/* @license-end */
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
 });
-/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,10 +63,9 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('client_2lib_2all_8h.html',''); initResizable(); });
-/* @license-end */
+$(function(){initNavTree('client_2lib_2all_8h.html','',''); });
 </script>
+<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -90,8 +89,6 @@ $(document).ready(function(){initNavTree('client_2lib_2all_8h.html',''); initRes
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#define-members">Macros</a>  </div>
   <div class="headertitle"><div class="title">Référence du fichier all.h</div></div>
 </div><!--header-->
 <div class="contents">
@@ -127,15 +124,15 @@ $(document).ready(function(){initNavTree('client_2lib_2all_8h.html',''); initRes
 <code>#include &quot;<a class="el" href="client_2lib_2lobby_8h_source.html">../lib/lobby.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ressources_8h_source.html">../lib/ressources.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="save_8h_source.html">../lib/save.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="window_8h_source.html">../lib/window.h</a>&quot;</code><br />
 </div>
 <p><a href="client_2lib_2all_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a7d756a646ff6787a441e27ba0dfbee88" id="r_a7d756a646ff6787a441e27ba0dfbee88"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2all_8h.html#a7d756a646ff6787a441e27ba0dfbee88">CODENAMES_VERSION</a>&#160;&#160;&#160;&quot;dev&quot;</td></tr>
-<tr class="separator:a7d756a646ff6787a441e27ba0dfbee88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d756a646ff6787a441e27ba0dfbee88" id="r_a7d756a646ff6787a441e27ba0dfbee88"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d756a646ff6787a441e27ba0dfbee88">CODENAMES_VERSION</a>&#160;&#160;&#160;&quot;dev&quot;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des macros</h2>
+<a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentation des macros</h2>
 <a id="a7d756a646ff6787a441e27ba0dfbee88" name="a7d756a646ff6787a441e27ba0dfbee88"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7d756a646ff6787a441e27ba0dfbee88">&#9670;&#160;</a></span>CODENAMES_VERSION</h2>
 
@@ -150,15 +147,25 @@ Macros</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="client_2lib_2all_8h_source.html#l00016">16</a> du fichier <a class="el" href="client_2lib_2all_8h_source.html">all.h</a>.</p>
 
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>.</p>
+
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a class="el" href="client_2lib_2all_8h.html">all.h</a></li>
-    <li class="footer">Généré le Vendredi 20 Mars 2026 21:22:33 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a href="client_2lib_2all_8h.html">all.h</a></li>
+    <li class="footer">Généré le Lundi 23 Mars 2026 17:03:04 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
 </body>
