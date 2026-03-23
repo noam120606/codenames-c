@@ -5,8 +5,6 @@
 int main(int argc, char* argv[]) {
 
     const float target_fps = 60.0f;
-    char ip[16] = "127.0.0.1";
-    int port = 0;
     /* Nombre de frames avant fermeture automatique (0 pour désactiver)
      * - peut être configuré via la variable d'environnement CODENAMES_AUTOCLOSE_FRAMES
      * utile pour les tests de fuite mémoire afin de ne pas laisser la fenêtre ouverte indéfiniment.
@@ -68,38 +66,35 @@ int main(int argc, char* argv[]) {
     // Initialisation des valeurs de context pour les tests de l'affichage des cartes
     context.player_role = ROLE_SPY;
 
-    int gender = 0, i = 0;
+    int gender = rand() % 2, i = 0;
 
-    context.cards[i] = malloc(sizeof(Card));
-    context.cards[i]->revealed = 0;
-    context.cards[i]->gender = (gender++)%2==0 ? 0 : 1;
-    context.cards[i]->team = TEAM_BLACK;
-    strcpy(context.cards[i]->word, "Test noir");
+    strcpy(context.lobby->game->words[0].word, "Test");
+    context.lobby->game->words[0].team = TEAM_BLACK;
+    context.lobby->game->words[0].revealed = 0;
+    context.lobby->game->words[0].gender = gender++; // 0 = homme, 1 = femme
+
 
     for (i = 1; i < 9; i++) {
-        context.cards[i] = malloc(sizeof(Card));
-        context.cards[i]->revealed = 0;
-        context.cards[i]->gender = (gender++)%2==0 ? 0 : 1;
-        context.cards[i]->team = TEAM_RED;
-        strcpy(context.cards[i]->word, "Test rouge");
+        strcpy(context.lobby->game->words[i].word, "Test");
+        context.lobby->game->words[i].team = TEAM_BLACK;
+        context.lobby->game->words[i].revealed = 0;
+        context.lobby->game->words[i].gender = gender++; // 0 = homme, 1 = femme
     }
     for (i = 9; i < 17; i++) {
-        context.cards[i] = malloc(sizeof(Card));
-        context.cards[i]->revealed = 0;
-        context.cards[i]->gender = (gender++)%2==0 ? 0 : 1;
-        context.cards[i]->team = TEAM_BLUE;
-        strcpy(context.cards[i]->word, "Test bleu");
+        strcpy(context.lobby->game->words[i].word, "Test");
+        context.lobby->game->words[i].team = TEAM_BLACK;
+        context.lobby->game->words[i].revealed = 0;
+        context.lobby->game->words[i].gender = gender++; // 0 = homme, 1 = femme
     }
     for (i = 17; i < 25; i++) {
-        context.cards[i] = malloc(sizeof(Card));
-        context.cards[i]->revealed = 0;
-        context.cards[i]->gender = (gender++)%2==0 ? 0 : 1;
-        context.cards[i]->team = TEAM_NONE;
-        strcpy(context.cards[i]->word, "Test neutre");
+        strcpy(context.lobby->game->words[i].word, "Test");
+        context.lobby->game->words[i].team = TEAM_BLACK;
+        context.lobby->game->words[i].revealed = 0;
+        context.lobby->game->words[i].gender = gender++; // 0 = homme, 1 = femme
     }
 
 
-    while (running && tick_tcp(&context, context.sock) == EXIT_SUCCESS) {
+    while (running && tick_tcp(&context) == EXIT_SUCCESS) {
         // Enregistrer le début de la frame
         context.frame_start_time = SDL_GetTicks();
 
@@ -130,7 +125,7 @@ int main(int argc, char* argv[]) {
         SDL_RenderClear(context.renderer);
 
         display_background(&context);
-        game_display(&context);
+        game_render_cards(&context);
 
         // Post Rendu
         SDL_RenderPresent(context.renderer);
