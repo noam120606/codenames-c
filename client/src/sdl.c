@@ -148,6 +148,12 @@ AppContext init_sdl() {
     context.music_volume = MIX_MAX_VOLUME;
     context.sound_effects_volume = MIX_MAX_VOLUME;
 
+    /* Initialiser la version dans le contexte. */
+    if (context.version) {
+        free(context.version);
+    }
+    context.version = strdup(CODENAMES_VERSION);
+
     if (audio_init() != EXIT_SUCCESS) {
         printf("audio_init Error\n");
         Mix_CloseAudio();
@@ -266,6 +272,10 @@ int destroy_context(AppContext* context) {
     if (context->player_name) {
         free(context->player_name);
         context->player_name = NULL;
+    }
+    if (context->version) {
+        free(context->version);
+        context->version = NULL;
     }
     if (context->lobby) {
         for (int i = 0; i < MAX_USERS; i++) {

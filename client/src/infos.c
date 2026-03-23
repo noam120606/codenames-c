@@ -157,6 +157,41 @@ int init_infos(AppContext* context) {
         audio_set_type_volume(AUDIO_SOUND_KIND_SFX, context->sound_effects_volume);
     }
 
+    /* Lire la version depuis le fichier "VERSION" de façon sûre :
+       on lit d'abord dans un tampon local puis on strdup() dans
+       context->version (libérant l'ancien si nécessaire).
+       On affiche la version comme cela : "V<version>" */
+    {
+        char verbuf[128] = {0};
+        FILE* v = fopen("../VERSION", "r");
+        if (v) {
+            if (fgets(verbuf, sizeof(verbuf), v)) {
+                /* Ajouter le préfixe "V" */
+                snprintf(verbuf, sizeof(verbuf), "V%s", verbuf);
+                /* Retirer le '\n' final */
+                size_t len = strlen(verbuf);
+                if (len > 0 && verbuf[len - 1] == '\n') verbuf[len - 1] = '\0';
+            } else {
+                verbuf[0] = '\0';
+            }
+            fclose(v);
+        } else {
+            /* Fallback : utiliser la macro CODENAMES_VERSION si le fichier est absent */
+            snprintf(verbuf, sizeof(verbuf), "%s", CODENAMES_VERSION);
+        }
+
+        if (context) {
+            if (context->version) {
+                free(context->version);
+            }
+            context->version = strdup(verbuf);
+            if (!context->version) {
+                /* En cas d'erreur d'allocation, conserver une chaîne vide */
+                context->version = strdup("");
+            }
+        }
+    }
+
     return loading_fails;
 }
 
@@ -340,6 +375,10 @@ void infos_display(AppContext* context) {
             for (int i = 0; i < rules_line_count; i++) {
                 text_display(context->renderer, rules_lines[i], FONT_LARABIE, 14, COL_WHITE, label_x, rules_start_y - 35 - (i * line_spacing), 0, 200);
             }
+
+            /* Affichage de la version du jeu */
+            const int version_y = -450; // Position Y pour la version (en bas du bandeau)
+            text_display(context->renderer, context->version, FONT_LARABIE, 16, COL_WHITE, label_x, version_y, 0, 255);
 
             /* Rendu des crossfaders */
             crossfaders_render(context->renderer);
