@@ -3,19 +3,32 @@
 
 #include "sdl.h"
 
-/**
- * Affiche du texte à l'écran.
- * @param renderer Le renderer SDL
- * @param text Le texte à afficher
- * @param font_path Chemin vers la police à utiliser
- * @param size Taille de la police
- * @param color Couleur du texte (SDL_Color)
- * @param x Position x du centre du texte (`0` centre x de la fenêtre)
- * @param y Position y du centre du texte (`0` centre y de la fenêtre)
- * @param angle Angle de rotation du texte en degrés (0 par défaut, sens horaire)
- * @param opacity Opacité du texte (0-255, 255 par défaut)
- * Note : Le texte est affiché centré en (x, y).
- */
-void text_display(SDL_Renderer* renderer, const char* text, const char* font_path, int size, SDL_Color color, int x, int y, double angle, Uint8 opacity);
+
+typedef struct TextConfig {
+    const char* font_path;
+    int font_size;
+    SDL_Color color;
+    int x;
+    int y;
+    double angle;
+    Uint8 opacity;
+} TextConfig;
+
+typedef struct Text {
+    char* content;
+    TextConfig cfg;
+    SDL_Texture* texture;
+} Text;
+
+TTF_Font* load_font(const char* font_path, int size);
+TextConfig create_text_config(const char* font_path, int size, SDL_Color color, int x, int y, double angle, Uint8 opacity);
+void reload_text(AppContext* context, Text* text);
+Text* create_text(const char* content, TextConfig cfg);
+Text* init_text(AppContext* context, const char* content, TextConfig cfg);
+void update_text(AppContext* context, Text* text, const char* new_content);
+void update_text_position(Text* text, int x, int y);
+void update_text_color(AppContext* context, Text* text, SDL_Color color);
+void display_text(AppContext* context, Text* text);
+int destroy_text(Text* text);
 
 #endif /* TEXT_H */

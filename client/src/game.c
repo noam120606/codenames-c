@@ -14,6 +14,25 @@ static const SDL_Color TEAM_BLUE_COLOR = {50, 80, 150, 200};
 static const SDL_Color TEAM_RED_COLOR = {150, 50, 50, 200};
 static const SDL_Color PANEL_BG_COLOR = {30, 30, 30, 180};
 
+/* Textes optimisés pour le jeu */
+static Text* txt_team_blue_title = NULL;
+static Text* txt_team_red_title = NULL;
+static Text* txt_blue_spy_label = NULL;
+static Text* txt_blue_agents_label = NULL;
+static Text* txt_red_spy_label = NULL;
+static Text* txt_red_agents_label = NULL;
+
+/* Textes pour les noms de joueurs (max 8 par équipe) */
+#define MAX_TEAM_PLAYERS 8
+static Text* txt_blue_players[MAX_TEAM_PLAYERS] = {NULL};
+static Text* txt_red_players[MAX_TEAM_PLAYERS] = {NULL};
+static int blue_player_text_index = 0;
+static int red_player_text_index = 0;
+
+/* Textes pour les mots des cartes (25 cartes) */
+#define NUM_CARDS 25
+static Text* txt_card_words[NUM_CARDS] = {NULL};
+
 static ButtonReturn game_button_click(AppContext* context, Button* button) {
     if (!context || !button) return BTN_RET_NONE;
 
@@ -96,6 +115,35 @@ int game_init(AppContext * context) {
         loading_fails++;
     }
 
+    /* Initialisation des textes optimisés pour les panneaux */
+    txt_team_blue_title = init_text(context, "EQUIPE BLEUE", 
+        create_text_config(FONT_LARABIE, 18, COL_WHITE, 0, 0, 0, 255));
+    txt_team_red_title = init_text(context, "EQUIPE ROUGE", 
+        create_text_config(FONT_LARABIE, 18, COL_WHITE, 0, 0, 0, 255));
+    
+    txt_blue_spy_label = init_text(context, "Espion:", 
+        create_text_config(FONT_LARABIE, 14, (SDL_Color){100, 150, 255, 255}, 0, 0, 0, 255));
+    txt_blue_agents_label = init_text(context, "Agents:", 
+        create_text_config(FONT_LARABIE, 14, (SDL_Color){100, 150, 255, 255}, 0, 0, 0, 255));
+    txt_red_spy_label = init_text(context, "Espion:", 
+        create_text_config(FONT_LARABIE, 14, (SDL_Color){255, 100, 100, 255}, 0, 0, 0, 255));
+    txt_red_agents_label = init_text(context, "Agents:", 
+        create_text_config(FONT_LARABIE, 14, (SDL_Color){255, 100, 100, 255}, 0, 0, 0, 255));
+
+    /* Textes pour les noms de joueurs */
+    for (int i = 0; i < MAX_TEAM_PLAYERS; i++) {
+        txt_blue_players[i] = init_text(context, " ", 
+            create_text_config(FONT_LARABIE, 16, COL_WHITE, 0, 0, 0, 255));
+        txt_red_players[i] = init_text(context, " ", 
+            create_text_config(FONT_LARABIE, 16, COL_WHITE, 0, 0, 0, 255));
+    }
+
+    /* Textes pour les mots des cartes */
+    for (int i = 0; i < NUM_CARDS; i++) {
+        txt_card_words[i] = init_text(context, " ", 
+            create_text_config(FONT_LARABIE, 18, COL_BLACK, 0, 0, 0, 255));
+    }
+
     return loading_fails;
 }
 
@@ -118,17 +166,26 @@ void game_render_team_panels(AppContext* context) {
     const int PANEL_Y = 200;
     const int PANEL_MARGIN = 30;
     
+    /* Réinitialiser les compteurs de textes joueurs */
+    blue_player_text_index = 0;
+    red_player_text_index = 0;
+    
     /* Panel équipe bleue (gauche) */
     int blue_x = -WIN_WIDTH/2 + PANEL_MARGIN;
+    int blue_text_x = blue_x + PANEL_W/2 - WIN_WIDTH/2;
     draw_filled_rect(context->renderer, blue_x, PANEL_Y, PANEL_W, PANEL_H, PANEL_BG_COLOR);
     draw_filled_rect(context->renderer, blue_x, PANEL_Y, PANEL_W, 40, TEAM_BLUE_COLOR);
-    text_display(context->renderer, "EQUIPE BLEUE", FONT_LARABIE, 18, COL_WHITE, blue_x + PANEL_W/2 - WIN_WIDTH/2, PANEL_Y - 20, 0, 255);
+    
+    update_text_position(txt_team_blue_title, blue_text_x, PANEL_Y - 20);
+    display_text(context, txt_team_blue_title);
     
     /* Espion bleu */
-    text_display(context->renderer, "Espion:", FONT_LARABIE, 14, (SDL_Color){100, 150, 255, 255}, blue_x + PANEL_W/2 - WIN_WIDTH/2, PANEL_Y - 60, 0, 255);
+    update_text_position(txt_blue_spy_label, blue_text_x, PANEL_Y - 60);
+    display_text(context, txt_blue_spy_label);
     
     /* Agents bleus */
-    text_display(context->renderer, "Agents:", FONT_LARABIE, 14, (SDL_Color){100, 150, 255, 255}, blue_x + PANEL_W/2 - WIN_WIDTH/2, PANEL_Y - 160, 0, 255);
+    update_text_position(txt_blue_agents_label, blue_text_x, PANEL_Y - 160);
+    display_text(context, txt_blue_agents_label);
     
     /* Afficher les joueurs bleus du lobby */
     if (context->lobby) {
@@ -136,13 +193,20 @@ void game_render_team_panels(AppContext* context) {
         int agent_y = PANEL_Y - 190;
         for (int i = 0; i < context->lobby->nb_players && i < MAX_USERS; i++) {
             User* u = context->lobby->users[i];
-            if (u && u->team == TEAM_BLUE) {
+            if (u && u->team == TEAM_BLUE && blue_player_text_index < MAX_TEAM_PLAYERS) {
+                Text* txt = txt_blue_players[blue_player_text_index];
                 if (u->role == ROLE_SPY) {
-                    text_display(context->renderer, u->name ? u->name : "???", FONT_LARABIE, 16, COL_WHITE, blue_x + PANEL_W/2 - WIN_WIDTH/2, spy_y, 0, 255);
+                    update_text(context, txt, u->name ? u->name : "???");
+                    update_text_position(txt, blue_text_x, spy_y);
+                    display_text(context, txt);
                     spy_y -= 25;
+                    blue_player_text_index++;
                 } else if (u->role == ROLE_AGENT) {
-                    text_display(context->renderer, u->name ? u->name : "???", FONT_LARABIE, 16, COL_WHITE, blue_x + PANEL_W/2 - WIN_WIDTH/2, agent_y, 0, 255);
+                    update_text(context, txt, u->name ? u->name : "???");
+                    update_text_position(txt, blue_text_x, agent_y);
+                    display_text(context, txt);
                     agent_y -= 25;
+                    blue_player_text_index++;
                 }
             }
         }
@@ -150,15 +214,20 @@ void game_render_team_panels(AppContext* context) {
     
     /* Panel équipe rouge (droite) */
     int red_x = WIN_WIDTH/2 - PANEL_W - PANEL_MARGIN;
+    int red_text_x = red_x + PANEL_W/2 - WIN_WIDTH/2;
     draw_filled_rect(context->renderer, red_x, PANEL_Y, PANEL_W, PANEL_H, PANEL_BG_COLOR);
     draw_filled_rect(context->renderer, red_x, PANEL_Y, PANEL_W, 40, TEAM_RED_COLOR);
-    text_display(context->renderer, "EQUIPE ROUGE", FONT_LARABIE, 18, COL_WHITE, red_x + PANEL_W/2 - WIN_WIDTH/2, PANEL_Y - 20, 0, 255);
+    
+    update_text_position(txt_team_red_title, red_text_x, PANEL_Y - 20);
+    display_text(context, txt_team_red_title);
     
     /* Espion rouge */
-    text_display(context->renderer, "Espion:", FONT_LARABIE, 14, (SDL_Color){255, 100, 100, 255}, red_x + PANEL_W/2 - WIN_WIDTH/2, PANEL_Y - 60, 0, 255);
+    update_text_position(txt_red_spy_label, red_text_x, PANEL_Y - 60);
+    display_text(context, txt_red_spy_label);
     
     /* Agents rouges */
-    text_display(context->renderer, "Agents:", FONT_LARABIE, 14, (SDL_Color){255, 100, 100, 255}, red_x + PANEL_W/2 - WIN_WIDTH/2, PANEL_Y - 160, 0, 255);
+    update_text_position(txt_red_agents_label, red_text_x, PANEL_Y - 160);
+    display_text(context, txt_red_agents_label);
     
     /* Afficher les joueurs rouges du lobby */
     if (context->lobby) {
@@ -166,13 +235,20 @@ void game_render_team_panels(AppContext* context) {
         int agent_y = PANEL_Y - 190;
         for (int i = 0; i < context->lobby->nb_players && i < MAX_USERS; i++) {
             User* u = context->lobby->users[i];
-            if (u && u->team == TEAM_RED) {
+            if (u && u->team == TEAM_RED && red_player_text_index < MAX_TEAM_PLAYERS) {
+                Text* txt = txt_red_players[red_player_text_index];
                 if (u->role == ROLE_SPY) {
-                    text_display(context->renderer, u->name ? u->name : "???", FONT_LARABIE, 16, COL_WHITE, red_x + PANEL_W/2 - WIN_WIDTH/2, spy_y, 0, 255);
+                    update_text(context, txt, u->name ? u->name : "???");
+                    update_text_position(txt, red_text_x, spy_y);
+                    display_text(context, txt);
                     spy_y -= 25;
+                    red_player_text_index++;
                 } else if (u->role == ROLE_AGENT) {
-                    text_display(context->renderer, u->name ? u->name : "???", FONT_LARABIE, 16, COL_WHITE, red_x + PANEL_W/2 - WIN_WIDTH/2, agent_y, 0, 255);
+                    update_text(context, txt, u->name ? u->name : "???");
+                    update_text_position(txt, red_text_x, agent_y);
+                    display_text(context, txt);
                     agent_y -= 25;
+                    red_player_text_index++;
                 }
             }
         }
@@ -182,6 +258,7 @@ void game_render_team_panels(AppContext* context) {
 void game_render_cards(AppContext * context) {
     int x=-400;
     int y=-250;
+    int card_index = 0;
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
             Word word = context->lobby->game->words[i*5 + j];
@@ -224,7 +301,14 @@ void game_render_cards(AppContext * context) {
             else if (word.revealed) {
                 // Attente des images des cartes "révélées"
             }
-            text_display(context->renderer, word.word, FONT_LARABIE, 18, COL_BLACK, x, y-22, 0, 255);
+            
+            /* Affichage du mot de la carte avec le nouveau système */
+            if (card_index < NUM_CARDS && txt_card_words[card_index]) {
+                update_text(context, txt_card_words[card_index], word.word);
+                update_text_position(txt_card_words[card_index], x, y - 22);
+                display_text(context, txt_card_words[card_index]);
+            }
+            card_index++;
             x += 200;
         }
         x = -400;
@@ -256,5 +340,23 @@ int game_free() {
     if (card_f_blue) { free_image(card_f_blue); card_f_blue = NULL; }
     if (card_black) { free_image(card_black); card_black = NULL; }
     if (btn_quit_game) { button_destroy(btn_quit_game); btn_quit_game = NULL; }
+    
+    /* Libération des textes optimisés */
+    destroy_text(txt_team_blue_title); txt_team_blue_title = NULL;
+    destroy_text(txt_team_red_title); txt_team_red_title = NULL;
+    destroy_text(txt_blue_spy_label); txt_blue_spy_label = NULL;
+    destroy_text(txt_blue_agents_label); txt_blue_agents_label = NULL;
+    destroy_text(txt_red_spy_label); txt_red_spy_label = NULL;
+    destroy_text(txt_red_agents_label); txt_red_agents_label = NULL;
+    
+    for (int i = 0; i < MAX_TEAM_PLAYERS; i++) {
+        destroy_text(txt_blue_players[i]); txt_blue_players[i] = NULL;
+        destroy_text(txt_red_players[i]); txt_red_players[i] = NULL;
+    }
+    
+    for (int i = 0; i < NUM_CARDS; i++) {
+        destroy_text(txt_card_words[i]); txt_card_words[i] = NULL;
+    }
+    
     return EXIT_SUCCESS;
 }
