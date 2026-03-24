@@ -17,6 +17,7 @@ typedef struct AppContext AppContext;
  * @param MSG_CHOOSE_ROLE message de choix de rôle/équipe dans le lobby (pour informer les autres joueurs en temps réel du choix d'un joueur).
  * @param MSG_STARTGAME message de démarrage de partie. 
  * @param MSG_WORDDATA message de données de mots pour la partie (envoyé par le serveur au démarrage de la partie, contient la liste des mots et leur couleur). 
+ * @param MSG_SUBMIT_HINT message de soumission du mot indice.
  * @param MSG_REQUESTUUID message de demande d'UUID (pour le client de demander son UUID au serveur après connexion, si besoin pour le protocole).
  * @param MSG_COMPAREVERSION message de comparaison de version (pour le client de comparer sa version avec celle du serveur).
  * @param MSG_PING message d'echo client/serveur pour mesurer le ping applicatif en temps réel.
@@ -34,6 +35,7 @@ typedef enum MessageType {
     MSG_CHOOSE_ROLE,
     MSG_STARTGAME,
     MSG_WORDDATA,
+    MSG_SUBMIT_HINT,
     MSG_REQUESTUUID,
     MSG_COMPAREVERSION,
     MSG_PING,

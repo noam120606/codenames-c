@@ -51,7 +51,6 @@ typedef struct AppContext {
     int ping_ms;
     int music_volume;          /**< Volume de la musique (0-128). */
     int sound_effects_volume;  /**< Volume des effets sonores (0-128). */
-    Card* cards[25];
     char* player_uuid;         /**< UUID unique du joueur. */
     char* player_name;         /**< Nom du joueur. */
     char version[16];             /**< Version du jeu (chargée depuis VERSION). */

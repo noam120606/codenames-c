@@ -13,7 +13,8 @@ typedef enum {
     INPUT_NONE = 0,
     INPUT_NAME,
     INPUT_JOIN_CODE,
-    INPUT_WORD,
+    INPUT_HINT,
+    INPUT_HINT_COUNT,
     INPUT_CHAT
 } InputId;
 
@@ -38,6 +39,7 @@ typedef enum {
  * @param placeholder_count Nombre de placeholders dans le tableau `placeholders`.
  * @param submitted_label Texte à afficher avant le texte soumis (ex: "Pseudo : "). Peut être NULL pour ne rien afficher.
  * @param maxlen Longueur maximale du texte saisi. Si le texte dépasse cette longueur, il sera tronqué.
+ * @param save_player_data Si 1, la valeur de l'input est sauvegardée dans datas/player.properties à chaque modification et rechargée au lancement du jeu. Utile pour des inputs comme le pseudo du joueur.
  * @param bg_color Couleur de fond de l'input (utilisée si `bg_path` est NULL).
  * @param border_color Couleur de la bordure de l'input.
  * @param text_color Couleur du texte saisi.
@@ -48,6 +50,19 @@ typedef enum {
  * @param allowed_pattern Regex POSIX étendue appliquée à chaque caractère saisi. Si NULL, tout caractère est accepté. Ex: "^[A-Za-z0-9]$"
  * @param submit_pattern Regex POSIX étendue appliquée au texte complet au moment de la soumission. Si définie et non satisfaite, la soumission est ignorée. Ex: "^[0-9]{5}$"
  * @param init_text Texte initial à afficher dans l'input. Si NULL ou chaîne vide, l'input commence vide.
+ * @param rect Rectangle SDL calculé automatiquement à partir de x/y/w/h, utilisé pour le rendu et la détection de clics.
+ * @param text Buffer de texte saisi, géré en interne par l'input.
+ * @param len Longueur actuelle du texte saisi.
+ * @param cursor_pos Position actuelle du curseur dans le texte (index entre 0 et len).
+ * @param focused Indique si l'input est actuellement focalisé (1) ou non (0).
+ * @param submitted Indique si l'input a été soumis (1) ou non (0). Peut être utilisé pour déclencher des actions après la soumission.
+ * @param bg_texture Texture SDL de l'image de fond, chargée automatiquement si `bg_path` est défini. Doit être libérée lors de la destruction de l'input.
+ * @param sel_start Index de début de la sélection de texte (0 si aucune sélection).
+ * @param sel_len Longueur de la sélection de texte (0 si aucune sélection).
+ * @param sel_anchor Index d'ancrage de la sélection, utilisé pour étendre la sélection lors du déplacement du curseur avec Shift.
+ * @param submitted_text Texte qui a été soumis lors de la dernière soumission. Peut être utilisé pour afficher le texte soumis ou pour d'autres logiques de jeu.
+ * @param placeholder_index Index du placeholder actuellement affiché (si l'input est vide), utilisé pour faire défiler les placeholders.
+ * @param placeholder_last_tick Timestamp du dernier changement de placeholder, utilisé pour faire défiler les placeholders à intervalles réguliers.
  * @param on_submit Fonction de rappel à appeler lorsque l'input est soumis (par exemple, en appuyant sur Entrée). La fonction doit prendre un `AppContext*` (contexte SDL) et un `const char*` (le texte soumis) et retourner void. Si NULL, aucune fonction ne sera appelée lors de la soumission.
  */
 typedef struct InputConfig {

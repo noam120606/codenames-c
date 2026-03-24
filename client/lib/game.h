@@ -8,6 +8,8 @@
 typedef struct AppContext AppContext;
 #include "../lib/button.h"
 
+#define NB_WORDS 25
+
 /**
  * TEAM est utilisé à la fois pour catégoriser les mots dans la grille et pour assigner les joueurs à une équipe.
  * Catégories de mots dans la grille de Codenames.

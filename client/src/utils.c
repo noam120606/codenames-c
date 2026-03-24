@@ -181,3 +181,15 @@ int word_contains(const char* input, const char* card_word) {
     
     return result;
 }
+
+int valid_hint(const char* hint, const char card_words[NB_WORDS][32]) {
+    if (!hint) return 0;
+    
+    for (int i = 0; i < NB_WORDS; i++) {
+        if (is_word_too_close(hint, card_words[i], 2) || word_contains(hint, card_words[i])) {
+            return 0; // Hint trop proche ou contient un mot d'une carte
+        }
+    }
+    
+    return 1; // Hint valide
+}
