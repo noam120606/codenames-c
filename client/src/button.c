@@ -18,6 +18,7 @@ ButtonConfig* button_config_init(void) {
     cfg->rect = (SDL_Rect){0, 0, 0, 0};
     cfg->texture = NULL;
     cfg->is_hovered = 0;
+    cfg->is_pressed = 0;
     cfg->is_text = 0;
     cfg->text_rect = (SDL_Rect){0, 0, 0, 0};
     cfg->text_texture = NULL;
@@ -46,6 +47,7 @@ Button* button_create(SDL_Renderer* renderer, int id, const ButtonConfig* cfg_in
 
     /* Réinitialiser les champs runtime */
     button->cfg->is_hovered = 0;
+    button->cfg->is_pressed = 0;
     button->cfg->texture = NULL;
     button->cfg->text_texture = NULL;
 
@@ -213,11 +215,21 @@ ButtonReturn button_handle_event(AppContext* context, Button* button, SDL_Event*
     } else if (event->type == SDL_MOUSEBUTTONDOWN && event->button.button == SDL_BUTTON_LEFT) {
         int mouseX = event->button.x;
         int mouseY = event->button.y;
-        if (is_mouse_over_button(button, mouseX, mouseY)) {
-            if (button->cfg->callback) {
-                audio_play(SOUND_BUTTON_CLICKED, 0);
-                return button->cfg->callback(context, button);
-            }
+        int is_over = is_mouse_over_button(button, mouseX, mouseY);
+        button->cfg->is_hovered = is_over;
+        button->cfg->is_pressed = is_over;
+    } else if (event->type == SDL_MOUSEBUTTONUP && event->button.button == SDL_BUTTON_LEFT) {
+        int mouseX = event->button.x;
+        int mouseY = event->button.y;
+        int is_over = is_mouse_over_button(button, mouseX, mouseY);
+        int should_trigger = button->cfg->is_pressed && is_over;
+
+        button->cfg->is_hovered = is_over;
+        button->cfg->is_pressed = 0;
+
+        if (should_trigger && button->cfg->callback) {
+            audio_play(SOUND_BUTTON_CLICKED, 0);
+            return button->cfg->callback(context, button);
         }
     }
     return BTN_RET_NONE;
@@ -232,7 +244,19 @@ int button_render(SDL_Renderer* renderer, Button* button) {
     /* Grandir le bouton au survol */
     SDL_Rect render_rect = cfg->rect;
     SDL_Rect text_rect = cfg->text_rect;
-    if (cfg->is_hovered) {
+    if (cfg->is_pressed && cfg->is_hovered) {
+        /* Animation d'appui: léger enfoncement vers le bas et compression. */
+        render_rect.x += 2;
+        render_rect.y += 2;
+        render_rect.w -= 4;
+        render_rect.h -= 2;
+        if (cfg->is_text) {
+            text_rect.x += 2;
+            text_rect.y += 2;
+            text_rect.w -= 2;
+            text_rect.h -= 1;
+        }
+    } else if (cfg->is_hovered) {
         render_rect.x -= 4;
         render_rect.y -= 2;
         render_rect.w += 8;

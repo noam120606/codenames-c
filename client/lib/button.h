@@ -50,6 +50,7 @@ typedef ButtonReturn (*ButtonCallback)(AppContext* context, Button* button);
  * @param rect         Rectangle de rendu calculé depuis x/y/w/h.
  * @param texture      Texture de fond chargée depuis tex_path.
  * @param is_hovered   Mis à jour automatiquement lors des événements souris.
+ * @param is_pressed   Mis à 1 quand un clic gauche commence sur le bouton.
  * @param is_text      Mis à 1 automatiquement si text != NULL.
  * @param text_rect    Rectangle de rendu du texte, calculé automatiquement.
  * @param text_texture Texture du texte, générée automatiquement depuis text/font_path/color.
@@ -70,6 +71,7 @@ typedef struct ButtonConfig {
     SDL_Rect rect;
     SDL_Texture* texture;
     int is_hovered;
+    int is_pressed;
     int is_text;
     SDL_Rect text_rect;
     SDL_Texture* text_texture;
