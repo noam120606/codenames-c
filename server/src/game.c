@@ -149,7 +149,7 @@ int request_start_game(Codenames* codenames, TcpClient* client, char* message, A
     }
 
     game->nb_words = 25;
-    game->state = start_team == TEAM_RED ? GAMESTATE_TURN_RED : GAMESTATE_TURN_BLUE;
+    game->state = start_team == TEAM_RED ? GAMESTATE_TURN_RED_SPY : GAMESTATE_TURN_BLUE_SPY;
     lobby->game = game;
 
     // Envoi de la partie aux joueurs

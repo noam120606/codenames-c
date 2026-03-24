@@ -35,14 +35,18 @@ typedef struct {
 /**
  * États possibles d'une partie.
  * @param GAMESTATE_WAITING en attente de joueurs / démarrage.
- * @param GAMESTATE_TURN_RED tour de l'équipe rouge.
- * @param GAMESTATE_TURN_BLUE tour de l'équipe bleue.
+ * @param GAMESTATE_TURN_RED_SPY tour de l'espion rouge.
+ * @param GAMESTATE_TURN_RED_AGENT tour de l'agent rouge.
+ * @param GAMESTATE_TURN_BLUE_SPY tour de l'espion bleu.
+ * @param GAMESTATE_TURN_BLUE_AGENT tour de l'agent bleu.
  * @param GAMESTATE_ENDED partie terminée.
  */
 typedef enum GameState {
     GAMESTATE_WAITING,
-    GAMESTATE_TURN_RED,
-    GAMESTATE_TURN_BLUE,
+    GAMESTATE_TURN_RED_SPY,
+    GAMESTATE_TURN_RED_AGENT,
+    GAMESTATE_TURN_BLUE_SPY,
+    GAMESTATE_TURN_BLUE_AGENT,
     GAMESTATE_ENDED
 } GameState;
 
