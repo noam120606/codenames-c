@@ -84,37 +84,37 @@ int game_init(AppContext * context) {
     int loading_fails = 0;
 
     // Chargement image
-    card_h_classic = load_image(context->renderer, "assets/img/cards/H_Classic.png");
+    card_h_classic = load_image(context->renderer, "assets/img/cards/none/H.png");
     if (!card_h_classic) {
         printf("Failed to load card image\n");
         loading_fails++;
     }
-    card_f_classic = load_image(context->renderer, "assets/img/cards/F_Classic.png");
+    card_f_classic = load_image(context->renderer, "assets/img/cards/none/F.png");
     if (!card_f_classic) {
         printf("Failed to load card image\n");
         loading_fails++;
     }
-    card_h_red = load_image(context->renderer, "assets/img/cards/H_Red.png");
+    card_h_red = load_image(context->renderer, "assets/img/cards/red/H.png");
     if (!card_h_red) {
         printf("Failed to load card image\n");
         loading_fails++;
     }
-    card_f_red = load_image(context->renderer, "assets/img/cards/F_Red.png");
+    card_f_red = load_image(context->renderer, "assets/img/cards/red/F.png");
     if (!card_f_red) {
         printf("Failed to load card image\n");
         loading_fails++;
     }
-    card_h_blue = load_image(context->renderer, "assets/img/cards/H_Blue.png");
+    card_h_blue = load_image(context->renderer, "assets/img/cards/blue/H.png");
     if (!card_h_blue) {
         printf("Failed to load card image\n");
         loading_fails++;
     }
-    card_f_blue = load_image(context->renderer, "assets/img/cards/F_Blue.png");
+    card_f_blue = load_image(context->renderer, "assets/img/cards/blue/F.png");
     if (!card_f_blue) {
         printf("Failed to load card image\n");
         loading_fails++;
     }
-    card_black = load_image(context->renderer, "assets/img/cards/Black.png");
+    card_black = load_image(context->renderer, "assets/img/cards/black/B.png");
     if (!card_black) {
         printf("Failed to load card image\n");
         loading_fails++;
