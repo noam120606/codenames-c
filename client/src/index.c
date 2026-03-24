@@ -7,7 +7,7 @@
 
 int main(int argc, char* argv[]){
 
-    const float target_fps = 10000.0f;
+    const float target_fps = 60.0f;
     char ip[16] = "127.0.0.1";
     int port = 0;
     /* Nombre de frames avant fermeture automatique (0 pour désactiver)
