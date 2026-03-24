@@ -35,7 +35,6 @@ typedef enum {
 static InfosState infos_state = INFOS_HIDDEN;
 static Uint32 animation_start_time = 0;
 static const Uint32 ANIMATION_DURATION = 200; // Durée de l'animation en ms
-static int mouse_was_inside = 0; // Indique si la souris était dans la zone à la dernière vérification
 
 // Position courante du bandeau (mise à jour chaque frame)
 static int current_display_x = -1300;
@@ -323,30 +322,26 @@ void infos_display(AppContext* context) {
         window_to_logical(context, mouse_x, mouse_y, &logical_mouse_x, &logical_mouse_y);
         
         // Constantes pour le positionnement
-        const int TRIGGER_X = 220; // Seuil X pour déclencher l'animation
+        const int TRIGGER_OPEN_X = 20; // Seuil X pour déclencher l'animation
+        const int TRIGGER_CLOSE_X = 240; // Seuil X pour refermer l'animation
         const int BASE_X = -900; // Position visible du bandeau
         const int HIDDEN_X = -1300; // Position hors écran (caché)
-        
-        // Vérifier si la souris est dedans (au-dessus du seuil)
-        int mouse_inside = (logical_mouse_x <= TRIGGER_X);
-        
+
         // Déterminer l'état actuel et les positions d'animation
         Uint32 current_time = SDL_GetTicks();
         float progress = 0.0f;
         int display_x = HIDDEN_X;
         
         // Gérer les transitions d'état basées sur la souris
-        if (mouse_inside && !mouse_was_inside) {
+        if (infos_state == INFOS_HIDDEN && mouse_x < TRIGGER_OPEN_X) {
             // La souris vient d'entrer : déclencher l'apparition
             infos_state = INFOS_SHOWING;
             animation_start_time = SDL_GetTicks();
-            mouse_was_inside = 1;
         } 
-        else if (!mouse_inside && mouse_was_inside) {
+        else if (infos_state == INFOS_VISIBLE && mouse_x > TRIGGER_CLOSE_X) {
             // La souris vient de sortir : déclencher la disparition
             infos_state = INFOS_HIDING;
             animation_start_time = SDL_GetTicks();
-            mouse_was_inside = 0;
         }
         
         // Gérer les animations en cours

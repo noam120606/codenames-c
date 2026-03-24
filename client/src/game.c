@@ -170,7 +170,7 @@ int game_init(AppContext * context) {
     /* Chargement de la fenêtre de l'équipe bleue */
     WindowConfig* cfg_blue_panel = window_config_init();
     if (cfg_blue_panel) {
-        cfg_blue_panel->x = -775;
+        cfg_blue_panel->x = 775;
         cfg_blue_panel->y = 150;
         cfg_blue_panel->w = 250;
         cfg_blue_panel->h = 350;
@@ -189,7 +189,7 @@ int game_init(AppContext * context) {
     /* Chargement de la fenêtre de l'équipe rouge */
     WindowConfig* cfg_red_panel = window_config_init();
     if (cfg_red_panel) {
-        cfg_red_panel->x = 775;
+        cfg_red_panel->x = -775;
         cfg_red_panel->y = 150;
         cfg_red_panel->w = 250;
         cfg_red_panel->h = 350;
@@ -208,7 +208,7 @@ int game_init(AppContext * context) {
     /* Chargement de la fenêtre de l'historique del'équipe bleue */
     WindowConfig* cfg_history_blue = window_config_init();
     if (cfg_history_blue) {
-        cfg_history_blue->x = -775;
+        cfg_history_blue->x = 775;
         cfg_history_blue->y = -350;
         cfg_history_blue->w = 300;
         cfg_history_blue->h = 300;
@@ -227,7 +227,7 @@ int game_init(AppContext * context) {
     /* Chargement de la fenêtre de l'historique de l'équipe rouge */
     WindowConfig* cfg_history_red = window_config_init();
     if (cfg_history_red) {
-        cfg_history_red->x = 775;
+        cfg_history_red->x = -775;
         cfg_history_red->y = -350;
         cfg_history_red->w = 300;
         cfg_history_red->h = 300;
@@ -263,7 +263,7 @@ static void render_team_member_in_panel(AppContext* context, Window* panel, SDL_
     if (!context || !panel || !icon || !txt || !spy_row || !agent_row) return;
 
     const int ICON_X = 10;
-    const int NAME_X = 10 + 32 + 10; // Icon width (32) + padding (10)
+    const int NAME_X = 10 + 32/2 + 10; // Icon width (32) + padding (10)
     const int SPY_BASE_Y = 42;
     const int AGENT_BASE_Y = 176;
     const int ROW_GAP = 36;
@@ -271,10 +271,10 @@ static void render_team_member_in_panel(AppContext* context, Window* panel, SDL_
     int row = (role == ROLE_SPY) ? *spy_row : *agent_row;
     int icon_y = ((role == ROLE_SPY) ? SPY_BASE_Y : AGENT_BASE_Y) + (row * ROW_GAP);
 
-    window_display_image(context->renderer, panel, icon, ICON_X, icon_y, 0.20f, 0, SDL_FLIP_NONE, 1, 255);
+    window_display_image(context->renderer, panel, icon, ICON_X, icon_y - 25, 0.20f, 0, SDL_FLIP_NONE, 1, 255);
 
     update_text(context, txt, name ? name : "???");
-    window_place_text(panel, txt, NAME_X, icon_y + 4);
+    window_place_text(panel, txt, NAME_X, icon_y + 25);
     display_text(context, txt);
 
     if (role == ROLE_SPY) (*spy_row)++;
