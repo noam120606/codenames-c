@@ -439,7 +439,6 @@ void calculate_fps(AppContext* context, Uint32 current_time) {
 // FPS display
 void fps_ping_display(AppContext* context, int display_x) {
     calculate_fps(context, SDL_GetTicks());
-    context->ping_ms = get_tcp_ping_ms(context->sock);
 
     int base_x = display_x + 50;
 

@@ -141,7 +141,7 @@ int game_init(AppContext * context) {
 
     ButtonConfig* cfg_btn_quit_game = button_config_init();
     if (cfg_btn_quit_game) {
-        cfg_btn_quit_game->x         = -725;
+        cfg_btn_quit_game->x         = -775;
         cfg_btn_quit_game->y         = 450;
         cfg_btn_quit_game->h         = 64;
         cfg_btn_quit_game->font_path = FONT_LARABIE;
@@ -161,7 +161,7 @@ int game_init(AppContext * context) {
     if (cfg_word_input) {
         cfg_word_input->x = 0;
         cfg_word_input->y = -450;
-        cfg_word_input->w = 400;
+        cfg_word_input->w = 500;
         cfg_word_input->h = 64;
         cfg_word_input->font_path = FONT_LARABIE;
         cfg_word_input->font_size = 24;
@@ -184,7 +184,7 @@ int game_init(AppContext * context) {
 
     InputConfig* cfg_nb_word_input = input_config_init();
     if (cfg_nb_word_input) {
-        cfg_nb_word_input->x = 250;
+        cfg_nb_word_input->x = 300;
         cfg_nb_word_input->y = -450;
         cfg_nb_word_input->w = 70;
         cfg_nb_word_input->h = 64;
@@ -209,7 +209,7 @@ int game_init(AppContext * context) {
 
     InputConfig* cfg_chat_input = input_config_init();
     if (cfg_chat_input) {
-        cfg_chat_input->x = 430;
+        cfg_chat_input->x = 750;
         cfg_chat_input->y = 450;
         cfg_chat_input->w = 260;
         cfg_chat_input->h = 64;

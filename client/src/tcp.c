@@ -2,7 +2,26 @@
 #include <netinet/tcp.h>
 
 #define BUFFER_SIZE 1024
+#define APP_PING_INTERVAL_MS 2000U
 char buffer[BUFFER_SIZE];
+static Uint32 last_app_ping_sent_at = 0;
+
+static void maybe_send_app_ping(AppContext* context) {
+    if (!context || context->sock < 0) {
+        return;
+    }
+
+    Uint32 now = SDL_GetTicks();
+    if (last_app_ping_sent_at != 0 && (Uint32)(now - last_app_ping_sent_at) < APP_PING_INTERVAL_MS) {
+        return;
+    }
+
+    char payload[64];
+    format_to(payload, sizeof(payload), "%d %u", MSG_PING, now);
+    if (send_tcp(context->sock, payload) >= 0) {
+        last_app_ping_sent_at = now;
+    }
+}
 
 int init_tcp(const char* server_ip, int port) {
 
@@ -33,6 +52,7 @@ int init_tcp(const char* server_ip, int port) {
 
 int tick_tcp(AppContext* context) {
     int sock = context->sock;
+    maybe_send_app_ping(context);
     
     fd_set readfds;
     FD_ZERO(&readfds);

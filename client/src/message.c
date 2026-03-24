@@ -84,7 +84,7 @@ int on_message(AppContext* context, char* message) {
             context->lobby->id = -1;
             break;
         
-        case MSG_PLAYERJOINED:
+        case MSG_PLAYERJOINED: {
             if (args.argc < 4) {
                 printf("Invalid player joined message from server: \"%s\"\n", message);
                 if (args.argv) free(args.argv);
@@ -103,8 +103,9 @@ int on_message(AppContext* context, char* message) {
 
             printf("Player %s joined the lobby with role %s and team %s\n", (char*)args.argv[0], (char*)args.argv[1], (char*)args.argv[2]);
             break;
+        }
         
-        case MSG_PLAYERLEFT:
+        case MSG_PLAYERLEFT: {
             if (args.argc < 1) {
                 printf("Invalid player left message from server: \"%s\"\n", message);
                 if (args.argv) free(args.argv);
@@ -121,8 +122,9 @@ int on_message(AppContext* context, char* message) {
             }
             printf("Player %d left the lobby\n", player_id);
             break;
+        }
 
-        case MSG_CHOOSE_ROLE:
+        case MSG_CHOOSE_ROLE: {
             if (args.argc < 3) {
                 printf("Invalid choose role message from server : \"%s\"\n", message);
                 if (args.argv) free(args.argv);
@@ -140,8 +142,9 @@ int on_message(AppContext* context, char* message) {
             printf("Player %s chose role %s team %s\n", (char*)args.argv[0], (char*)args.argv[1], (char*)args.argv[2]);
             
             break;
+        }
 
-        case MSG_STARTGAME:
+        case MSG_STARTGAME: {
             if (args.argc < 2) {
                 printf("Invalid start game message from server: \"%s\"\n", message);
                 if (args.argv) free(args.argv);
@@ -167,8 +170,9 @@ int on_message(AppContext* context, char* message) {
 
             printf("Game started with status %d\n", game->state);
             break;
+        }
 
-        case MSG_WORDDATA:
+        case MSG_WORDDATA: {
             if (args.argc < 4) {
                 printf("Invalid word data message from server: \"%s\"\n", message);
                 if (args.argv) free(args.argv);
@@ -192,8 +196,9 @@ int on_message(AppContext* context, char* message) {
             }
 
             break;
+        }
 
-        case MSG_REQUESTUUID:
+        case MSG_REQUESTUUID: {
             // Réception de l'UUID généré par le serveur
             if (args.argc < 1) {
                 printf("Invalid UUID message from server: \"%s\"\n", message);
@@ -205,17 +210,30 @@ int on_message(AppContext* context, char* message) {
             context->player_uuid = strdup((char*)args.argv[0]);
 
             // Écrire le fichier data/uuid
-            {
-                FILE* f = fopen("data/uuid", "w");
-                if (f) {
-                    fprintf(f, "NE PAS MODIFIER CE FICHIER !\n%s\n", context->player_uuid);
-                    fclose(f);
-                    printf("UUID saved to data/uuid: %s\n", context->player_uuid);
-                } else {
-                    perror("Failed to write data/uuid");
-                }
+            
+            FILE* f = fopen("data/uuid", "w");
+            if (f) {
+                fprintf(f, "NE PAS MODIFIER CE FICHIER !\n%s\n", context->player_uuid);
+                fclose(f);
+                printf("UUID saved to data/uuid: %s\n", context->player_uuid);
+            } else {
+                perror("Failed to write data/uuid");
             }
+            
             break;
+        }
+
+        case MSG_PING: {
+            if (args.argc < 1) {
+                break;
+            }
+            
+            Uint32 sent_at = (Uint32)strtoul((char*)args.argv[0], NULL, 10);
+            Uint32 now = SDL_GetTicks();
+            context->ping_ms = (int)(now - sent_at);
+            
+            break;
+        }
 
         default:
             printf("Received unhandled message type %d from server: \"%s\"\n", header, message);

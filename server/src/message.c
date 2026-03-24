@@ -25,7 +25,7 @@ int on_message(Codenames* codenames, TcpClient* client, char* message) {
     MessageType header = fetch_header(message);
     message += number_length((int)header) + 1; // Skip header et espace
 
-    printf("[MSG] %d %s\n", header, message);
+    // printf("[MSG] %d %s\n", header, message);
 
     Arguments args = parse_arguments(message);
 
@@ -43,6 +43,13 @@ int on_message(Codenames* codenames, TcpClient* client, char* message) {
 
         case MSG_REQUESTUUID: return request_uuid(codenames, client, message, args);
         case MSG_COMPAREVERSION: return on_version_compare(codenames, client, message, args);
+        case MSG_PING:
+            if (args.argc >= 1) {
+                char response[64];
+                format_to(response, sizeof(response), "%d %s", MSG_PING, (char*)args.argv[0]);
+                tcp_send_to_client(codenames, client->id, response);
+            }
+            return EXIT_SUCCESS;
     }
 
     return EXIT_SUCCESS;
