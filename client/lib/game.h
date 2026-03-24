@@ -107,13 +107,13 @@ void game_handle_event(AppContext* context, SDL_Event* e);
 /**
  * Initialise le jeu.
  * @param context Contexte SDL.
- * @return 0 en cas de succès, un code d'erreur sinon.
+ * @return 0 en cas de succès, le nombre d'erreur sinon.
  */
 int game_init(AppContext * context);
 
 /**
  * Libère les ressources utilisées par le jeu.
- * @return 0 en cas de succès, un code d'erreur sinon.
+ * @return 0 en cas de succès, le nombre d'erreur sinon.
  */
 int game_free();
 

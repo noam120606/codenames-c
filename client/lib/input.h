@@ -10,10 +10,11 @@
  * Identifiants des différents types d'input.
  */
 typedef enum {
-    INPUT_ID_NONE = 0,
-    INPUT_ID_NAME,
-    INPUT_ID_JOIN_CODE,
-    INPUT_ID_TCHAT
+    INPUT_NONE = 0,
+    INPUT_NAME,
+    INPUT_JOIN_CODE,
+    INPUT_WORD,
+    INPUT_CHAT
 } InputId;
 
 /**
