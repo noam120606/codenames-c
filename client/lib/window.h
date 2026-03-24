@@ -5,6 +5,9 @@
 #include "../SDL2/include/SDL2/SDL.h"
 
 typedef struct AppContext AppContext;
+typedef struct Button Button;
+typedef struct Input Input;
+typedef struct Text Text;
 
 /**
  * Configuration d'une fenêtre UI.
@@ -128,5 +131,60 @@ int window_contains_point(const Window* win, int logical_x, int logical_y);
  * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE sinon.
  */
 int window_edit_cfg(Window* win, WindowCfgKey key, intptr_t value);
+
+/**
+ * Convertit une position locale de contenu de fenêtre en coordonnées logiques globales.
+ * Le repère local est en pixels depuis le coin haut-gauche du contenu (sous la titlebar),
+ * avec x vers la droite et y vers le bas.
+ * @param win La fenêtre de référence.
+ * @param rel_x Position locale X (pixels).
+ * @param rel_y Position locale Y (pixels).
+ * @param out_logical_x Reçoit la coordonnée logique globale X (peut être NULL).
+ * @param out_logical_y Reçoit la coordonnée logique globale Y (peut être NULL).
+ */
+void window_content_to_logical(const Window* win, int rel_x, int rel_y, int* out_logical_x, int* out_logical_y);
+
+/**
+ * Place un bouton dans la fenêtre avec une position locale (coin haut-gauche du bouton).
+ * @param win Fenêtre de référence.
+ * @param button Bouton à placer.
+ * @param rel_x Position locale X (pixels).
+ * @param rel_y Position locale Y (pixels).
+ * @return EXIT_SUCCESS si succès, EXIT_FAILURE sinon.
+ */
+int window_place_button(const Window* win, Button* button, int rel_x, int rel_y);
+
+/**
+ * Place un input dans la fenêtre avec une position locale (coin haut-gauche de l'input).
+ * @param win Fenêtre de référence.
+ * @param in Input à placer.
+ * @param rel_x Position locale X (pixels).
+ * @param rel_y Position locale Y (pixels).
+ * @return EXIT_SUCCESS si succès, EXIT_FAILURE sinon.
+ */
+int window_place_input(const Window* win, Input* in, int rel_x, int rel_y);
+
+/**
+ * Place un texte dans la fenêtre avec une position locale (coin haut-gauche du texte).
+ * @param text Le texte à positionner (doit avoir une texture initialisée).
+ * @return EXIT_SUCCESS si succès, EXIT_FAILURE sinon.
+ */
+int window_place_text(const Window* win, Text* text, int rel_x, int rel_y);
+
+/**
+ * Affiche une image à une position locale dans la fenêtre (coin haut-gauche de l'image rendue).
+ * @param renderer Le renderer SDL.
+ * @param win Fenêtre de référence.
+ * @param texture Texture à afficher.
+ * @param rel_x Position locale X (pixels).
+ * @param rel_y Position locale Y (pixels).
+ * @param size_factor Facteur d'échelle.
+ * @param angle Angle de rotation en degrés.
+ * @param flip Mode de flip SDL.
+ * @param ratio Ratio largeur/hauteur appliqué par display_image.
+ * @param opacity Opacité 0-255.
+ * @return EXIT_SUCCESS si succès, EXIT_FAILURE sinon.
+ */
+int window_display_image(SDL_Renderer* renderer, const Window* win, SDL_Texture* texture, int rel_x, int rel_y, float size_factor, double angle, SDL_RendererFlip flip, float ratio, Uint8 opacity);
 
 #endif /* WINDOW_H */

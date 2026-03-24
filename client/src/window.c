@@ -26,6 +26,13 @@ static int point_in_titlebar(const Window* win, int x, int y) {
 	return point_in_rect(x, y, &titlebar);
 }
 
+static int window_content_origin_screen(const Window* win, int* out_x, int* out_y) {
+	if (!win || !win->cfg) return EXIT_FAILURE;
+	if (out_x) *out_x = win->cfg->rect.x;
+	if (out_y) *out_y = win->cfg->rect.y + clamp_non_negative(win->cfg->titlebar_h);
+	return EXIT_SUCCESS;
+}
+
 static int window_set_title(WindowConfig* cfg, const char* title) {
 	if (!cfg) return EXIT_FAILURE;
 
@@ -93,11 +100,11 @@ WindowConfig* window_config_init(void) {
 	cfg->y = 0;
 	cfg->w = 420;
 	cfg->h = 320;
-	cfg->movable = 1;
+	cfg->movable = 0;
 	cfg->hidden = 0;
-	cfg->bg_color = (SDL_Color){28, 31, 38, 240};
-	cfg->border_color = (SDL_Color){225, 229, 236, 255};
-	cfg->titlebar_color = (SDL_Color){58, 76, 94, 255};
+	cfg->bg_color = (SDL_Color){20, 20, 20, 220}; // Noir semi-transparent par défaut
+	cfg->border_color = (SDL_Color){230, 230, 230, 255}; // Blanc par défaut
+	cfg->titlebar_color = (SDL_Color){40, 40, 100, 255}; // Bleu par défaut
 	cfg->title = NULL;
 	cfg->border_thickness = 2;
 	cfg->titlebar_h = 36;
@@ -268,4 +275,93 @@ int window_edit_cfg(Window* win, WindowCfgKey key, intptr_t value) {
 	}
 
 	return EXIT_SUCCESS;
+}
+
+void window_content_to_logical(const Window* win, int rel_x, int rel_y, int* out_logical_x, int* out_logical_y) {
+	int origin_x = 0;
+	int origin_y = 0;
+	if (window_content_origin_screen(win, &origin_x, &origin_y) != EXIT_SUCCESS) return;
+
+	if (out_logical_x) *out_logical_x = (origin_x + rel_x) - (WIN_WIDTH / 2);
+	if (out_logical_y) *out_logical_y = (WIN_HEIGHT / 2) - (origin_y + rel_y);
+}
+
+int window_place_button(const Window* win, Button* button, int rel_x, int rel_y) {
+	if (!win || !win->cfg || !button || !button->cfg) return EXIT_FAILURE;
+
+	int origin_x = 0;
+	int origin_y = 0;
+	if (window_content_origin_screen(win, &origin_x, &origin_y) != EXIT_SUCCESS) return EXIT_FAILURE;
+
+	int x = origin_x + rel_x;
+	int y = origin_y + rel_y;
+
+	button->cfg->x = x;
+	button->cfg->y = y;
+	button->cfg->rect.x = x;
+	button->cfg->rect.y = y;
+
+	if (button->cfg->is_text) {
+		button->cfg->text_rect.x = x + (button->cfg->rect.w - button->cfg->text_rect.w) / 2;
+		button->cfg->text_rect.y = y + (button->cfg->rect.h - button->cfg->text_rect.h) / 2;
+	}
+
+	return EXIT_SUCCESS;
+}
+
+int window_place_input(const Window* win, Input* in, int rel_x, int rel_y) {
+	if (!win || !win->cfg || !in || !in->cfg) return EXIT_FAILURE;
+
+	int origin_x = 0;
+	int origin_y = 0;
+	if (window_content_origin_screen(win, &origin_x, &origin_y) != EXIT_SUCCESS) return EXIT_FAILURE;
+
+	in->cfg->x = origin_x + rel_x;
+	in->cfg->y = origin_y + rel_y;
+	in->cfg->rect.x = in->cfg->x;
+	in->cfg->rect.y = in->cfg->y;
+
+	return EXIT_SUCCESS;
+}
+
+int window_place_text(const Window* win, Text* text, int rel_x, int rel_y) {
+	if (!win || !win->cfg || !text || !text->texture) return EXIT_FAILURE;
+
+	int tex_w = 0;
+	int tex_h = 0;
+	if (SDL_QueryTexture(text->texture, NULL, NULL, &tex_w, &tex_h) != 0) return EXIT_FAILURE;
+
+	int logical_x = 0;
+	int logical_y = 0;
+	window_content_to_logical(win, rel_x, rel_y, &logical_x, &logical_y);
+
+	/* display_text centre le texte autour de cfg.x/cfg.y */
+	update_text_position(text, logical_x + (tex_w / 2), logical_y - (tex_h / 2));
+	return EXIT_SUCCESS;
+}
+
+int window_display_image(SDL_Renderer* renderer, const Window* win, SDL_Texture* texture, int rel_x, int rel_y, float size_factor, double angle, SDL_RendererFlip flip, float ratio, Uint8 opacity) {
+	if (!renderer || !win || !texture) return EXIT_FAILURE;
+
+	int og_w = 0;
+	int og_h = 0;
+	if (SDL_QueryTexture(texture, NULL, NULL, &og_w, &og_h) != 0) return EXIT_FAILURE;
+
+	if (size_factor <= 0.0f) return EXIT_FAILURE;
+
+	int base_w = (ratio != 1.0f) ? (int)(og_w * ratio) : og_w;
+	if (base_w <= 0) return EXIT_FAILURE;
+
+	int draw_w = (int)(base_w * size_factor);
+	int draw_h = (int)(og_h * size_factor);
+	if (draw_w <= 0 || draw_h <= 0) return EXIT_FAILURE;
+
+	int logical_x = 0;
+	int logical_y = 0;
+	window_content_to_logical(win, rel_x, rel_y, &logical_x, &logical_y);
+
+	int center_logical_x = logical_x + (draw_w / 2);
+	int center_logical_y = logical_y - (draw_h / 2);
+
+	return display_image(renderer, texture, center_logical_x, center_logical_y, size_factor, angle, flip, ratio, opacity);
 }

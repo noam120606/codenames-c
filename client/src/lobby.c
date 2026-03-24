@@ -391,7 +391,7 @@ void player_display(AppContext* context, User* user, int nb_none, int i_none, in
             player_icon_pos(context, user, icon, nb_red_agent, i_red_agent, base_x, base_y);
         } else {
             // Rôle non assigné mais équipe rouge
-            base_y = 0;
+            base_y = center_none_x;
             index = nb_none;
             /* draw unassigned red-team player using the same positioning routine */
             player_icon_pos(context, user, icon, nb_none, i_none, base_x, base_y);
@@ -409,7 +409,7 @@ void player_display(AppContext* context, User* user, int nb_none, int i_none, in
             player_icon_pos(context, user, icon, nb_blue_agent, i_blue_agent, base_x, base_y);
         } else {
             // Rôle non assigné mais équipe bleue
-            base_y = 0;
+            base_y = center_none_x;
             index = i_none;
             /* draw unassigned blue-team player */
             player_icon_pos(context, user, icon, nb_none, i_none, base_x, base_y);
@@ -417,7 +417,7 @@ void player_display(AppContext* context, User* user, int nb_none, int i_none, in
     } else {
         // Équipe non assignée (TEAM_NONE) - afficher au centre
         icon = player_icon_none;
-        base_x = 0;
+        base_x = center_none_x;
         base_y = center_none_y + offset_y;
         index = nb_none;
     player_icon_pos(context, user, icon, nb_none, i_none, base_x, base_y);
