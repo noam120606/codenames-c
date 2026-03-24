@@ -28,8 +28,8 @@ static int point_in_titlebar(const Window* win, int x, int y) {
 
 static int window_content_origin_screen(const Window* win, int* out_x, int* out_y) {
 	if (!win || !win->cfg) return EXIT_FAILURE;
-	if (out_x) *out_x = win->cfg->rect.x;
-	if (out_y) *out_y = win->cfg->rect.y + clamp_non_negative(win->cfg->titlebar_h);
+	if (out_x) *out_x = win->cfg->rect.x + (win->cfg->rect.w / 2);
+	if (out_y) *out_y = win->cfg->rect.y + (win->cfg->rect.h / 2);
 	return EXIT_SUCCESS;
 }
 

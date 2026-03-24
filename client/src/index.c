@@ -227,7 +227,11 @@ int main(int argc, char* argv[]){
                 lobby_display(&context);
                 break;
             case APP_STATE_PLAYING:
-                context.bg_color = context.player_team == TEAM_RED ? (SDL_Color){80, 30, 30, 255} : (SDL_Color){40, 40, 80, 255};  // Couleur du background en fonction de l'equipe
+                if (context.lobby->game->state == GAMESTATE_TURN_RED_SPY || context.lobby->game->state == GAMESTATE_TURN_RED_AGENT) {
+                    context.bg_color = (SDL_Color){80, 30, 30, 255}; // Rouge sombre pour l'équipe rouge
+                } else {
+                    context.bg_color = (SDL_Color){40, 40, 80, 255}; // Bleu sombre pour l'équipe bleue
+                }
                 display_background(&context);
                 game_display(&context);
                 break;

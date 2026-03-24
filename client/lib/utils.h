@@ -8,6 +8,9 @@
 // Aliases divers
 static const SDL_Color COL_WHITE = (SDL_Color){255, 255, 255, 255};
 static const SDL_Color COL_BLACK = (SDL_Color){0, 0, 0, 255};
+static const SDL_Color COL_LIGHT_GRAY = (SDL_Color){200, 200, 200, 255};
+static const SDL_Color COL_GRAY = (SDL_Color){128, 128, 128, 255};
+static const SDL_Color COL_DARK_GRAY = (SDL_Color){50, 50, 50, 255};
 static const SDL_Color COL_RED = (SDL_Color){255, 0, 0, 255};
 static const SDL_Color COL_BLUE = (SDL_Color){0, 0, 255, 255};
 static const SDL_Color COL_GREEN = (SDL_Color){0, 255, 0, 255};

@@ -198,6 +198,21 @@ int on_message(AppContext* context, char* message) {
             break;
         }
 
+        case MSG_SUBMIT_HINT: {
+            if (args.argc < 2) {
+                printf("Invalid submit hint message from server: \"%s\"\n", message);
+                if (args.argv) free(args.argv);
+                return EXIT_FAILURE;
+            }
+
+            char* hint = (char*)args.argv[0];
+            int nb_guesses = atoi((char*)args.argv[1]);
+
+            printf("Hint submitted: %s with %d guesses\n", hint, nb_guesses);
+            
+            break;
+        }
+
         case MSG_REQUESTUUID: {
             // Réception de l'UUID généré par le serveur
             if (args.argc < 1) {

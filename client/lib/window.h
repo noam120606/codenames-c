@@ -134,7 +134,7 @@ int window_edit_cfg(Window* win, WindowCfgKey key, intptr_t value);
 
 /**
  * Convertit une position locale de contenu de fenêtre en coordonnées logiques globales.
- * Le repère local est en pixels depuis le coin haut-gauche du contenu (sous la titlebar),
+ * Le repère local est en pixels depuis le centre de la fenêtre,
  * avec x vers la droite et y vers le bas.
  * @param win La fenêtre de référence.
  * @param rel_x Position locale X (pixels).
@@ -146,6 +146,7 @@ void window_content_to_logical(const Window* win, int rel_x, int rel_y, int* out
 
 /**
  * Place un bouton dans la fenêtre avec une position locale (coin haut-gauche du bouton).
+ * Avec rel_x=0 et rel_y=0, le bouton est aligné sur le centre de la fenêtre.
  * @param win Fenêtre de référence.
  * @param button Bouton à placer.
  * @param rel_x Position locale X (pixels).
@@ -156,6 +157,7 @@ int window_place_button(const Window* win, Button* button, int rel_x, int rel_y)
 
 /**
  * Place un input dans la fenêtre avec une position locale (coin haut-gauche de l'input).
+ * Avec rel_x=0 et rel_y=0, l'input est aligné sur le centre de la fenêtre.
  * @param win Fenêtre de référence.
  * @param in Input à placer.
  * @param rel_x Position locale X (pixels).
@@ -166,6 +168,7 @@ int window_place_input(const Window* win, Input* in, int rel_x, int rel_y);
 
 /**
  * Place un texte dans la fenêtre avec une position locale (coin haut-gauche du texte).
+ * Avec rel_x=0 et rel_y=0, le texte est aligné sur le centre de la fenêtre.
  * @param text Le texte à positionner (doit avoir une texture initialisée).
  * @return EXIT_SUCCESS si succès, EXIT_FAILURE sinon.
  */

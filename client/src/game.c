@@ -22,6 +22,7 @@ Window* blue_panel = NULL;
 Window* red_panel = NULL;
 Window* history_window_blue = NULL;
 Window* history_window_red = NULL;
+Window* hint_window = NULL;
 
 /* Utilisation des icônes déjà chargées dans lobby.c */
 extern SDL_Texture* player_icon_red;
@@ -39,6 +40,8 @@ static Text* txt_blue_agents_label = NULL;
 static Text* txt_red_spy_label = NULL;
 static Text* txt_red_agents_label = NULL;
 
+static Text* txt_turn_label = NULL;
+
 /* Textes pour les noms de joueurs (max 8 par équipe) */
 #define MAX_TEAM_PLAYERS 8
 static Text* txt_blue_players[MAX_TEAM_PLAYERS] = {NULL};
@@ -54,12 +57,14 @@ static void hint_on_submit(AppContext* context, const char* text) {
     printf("Hint input submitted: %s\n", text ? text : "");
     /* Envoi de l'indice au serveur */
     if (text && valid_hint(text, context->lobby->game->words)) {
-        edit_in_cfg(hint_input, IN_CFG_SUBMITTED_LABEL, ""); // Réinitialiser le label de soumission
+        window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, &COL_WHITE); // Réinitialiser la couleur du label de soumission
+        window_edit_cfg(hint_window, WIN_CFG_TITLE, ""); // Réinitialiser le label de soumission
         char msg[64];
         format_to(msg, sizeof(msg), "%d %s", MSG_SUBMIT_HINT, text);
         send_tcp(context->sock, msg);
     } else { // TODO : Envoyer un message
-        edit_in_cfg(hint_input, IN_CFG_SUBMITTED_LABEL, "Mot invalide : "); // Mettre à jour le label de soumission pour indiquer que le mot est invalide
+        window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, valid_hint(text, context->lobby->game->words) ? &COL_GREEN : &COL_RED); // Mettre à jour la couleur du label de soumission pour indiquer que le mot est invalide
+        window_edit_cfg(hint_window, WIN_CFG_TITLE, "Mot invalide : "); // Mettre à jour le label de soumission pour indiquer que le mot est invalide
         printf("Invalid hint submitted: %s\n", text ? text : "");
     }
 }
@@ -105,6 +110,10 @@ void game_handle_event(AppContext* context, SDL_Event* e) {
     }
     if (history_window_red) {
         window_handle_event(context, history_window_red, e);
+    }
+
+    if (hint_window) {
+        window_handle_event(context, hint_window, e);
     }
 
     if (btn_quit_game) {
@@ -262,6 +271,9 @@ int game_init(AppContext * context) {
     txt_red_agents_label = init_text(context, "Agents:", 
         create_text_config(FONT_LARABIE, 14, (SDL_Color){255, 100, 100, 255}, 0, 0, 0, 255));
 
+    txt_turn_label = init_text(context, "", 
+        create_text_config(FONT_LARABIE, 14, COL_WHITE, 0, 0, 0, 255));
+
     /* Textes pour les noms de joueurs */
     for (int i = 0; i < MAX_TEAM_PLAYERS; i++) {
         txt_blue_players[i] = init_text(context, " ", 
@@ -298,7 +310,6 @@ int game_init(AppContext * context) {
     /* Chargement de la fenêtre de l'équipe rouge */
     WindowConfig* cfg_red_panel = window_config_init();
     if (cfg_red_panel) {
-        cfg_red_panel->movable = 1;
         cfg_red_panel->x = -775;
         cfg_red_panel->y = 150;
         cfg_red_panel->w = 250;
@@ -353,20 +364,27 @@ int game_init(AppContext * context) {
         loading_fails++;
     }
 
+    /* Chargement de la fenêtre de saisie des mots */
+    WindowConfig* cfg_hint_window = window_config_init();
+    if (cfg_hint_window) {
+        cfg_hint_window->x = 0;
+        cfg_hint_window->y = -400;
+        cfg_hint_window->w = 600;
+        cfg_hint_window->h = 120;
+        cfg_hint_window->title = "";
+        cfg_hint_window->movable = 1;
+        cfg_hint_window->titlebar_color = COL_GRAY;
+        cfg_hint_window->bg_color = (SDL_Color){20, 20, 20, 220};
+        hint_window = window_create(1, cfg_hint_window);
+        if (!hint_window) {
+            loading_fails++;
+        }
+        free(cfg_hint_window);
+    } else {
+        loading_fails++;
+    }
+
     return loading_fails;
-}
-
-static int place_text_centered_in_window(Window* panel, Text* text, int rel_y) {
-    if (!panel || !panel->cfg || !text || !text->texture) return EXIT_FAILURE;
-
-    int tex_w = 0;
-    int tex_h = 0;
-    if (SDL_QueryTexture(text->texture, NULL, NULL, &tex_w, &tex_h) != 0) return EXIT_FAILURE;
-
-    int rel_x = (panel->cfg->w - tex_w) / 2;
-    if (rel_x < 0) rel_x = 0;
-
-    return window_place_text(panel, text, rel_x, rel_y);
 }
 
 static void render_team_member_in_panel(AppContext* context, Window* panel, SDL_Texture* icon, Text* txt, const char* name, UserRole role, int* spy_row, int* agent_row) {
@@ -397,11 +415,11 @@ static void render_team_panel_content(AppContext* context, Window* panel, Team t
     int agent_row = 0;
 
     update_text(context, txt_spy_label, "Espions :");
-    place_text_centered_in_window(panel, txt_spy_label, 12);
+    window_place_text(panel, txt_spy_label, 0, 12);
     display_text(context, txt_spy_label);
 
     update_text(context, txt_agents_label, "Agents :");
-    place_text_centered_in_window(panel, txt_agents_label, 146);
+    window_place_text(panel, txt_agents_label, 0, 146);
     display_text(context, txt_agents_label);
 
     *player_index = 0;
@@ -508,12 +526,53 @@ void game_display(AppContext * context) {
         button_render(context->renderer, btn_quit_game);
     }
 
-    if (hint_input) {
-        input_render(context->renderer, hint_input);
+    if (context->player_role == ROLE_SPY &&
+        (context->lobby->game->state == GAMESTATE_TURN_RED_SPY && context->player_team == TEAM_RED) ||
+        (context->lobby->game->state == GAMESTATE_TURN_BLUE_SPY && context->player_team == TEAM_BLUE)
+    ) {
+        if (hint_input) {
+            input_render(context->renderer, hint_input);
+        }
+
+        if (hint_count_input) {
+            input_render(context->renderer, hint_count_input);
+        }
     }
 
-    if (hint_count_input) {
-        input_render(context->renderer, hint_count_input);
+    if (txt_turn_label) {
+        const char* turn_text = "";
+        SDL_Color turn_color = COL_WHITE;
+
+        switch (context->lobby->game->state) {
+            case GAMESTATE_TURN_BLUE_SPY:
+                turn_text = "Tour de l'espion bleue";
+                turn_color = TEAM_BLUE_COLOR;
+                break;
+            case GAMESTATE_TURN_BLUE_AGENT:
+                turn_text = "Tour de l'agent bleue";
+                turn_color = TEAM_BLUE_COLOR;
+                break;
+            case GAMESTATE_TURN_RED_SPY:
+                turn_text = "Tour de l'espion rouge";
+                turn_color = TEAM_RED_COLOR;
+                break;
+            case GAMESTATE_TURN_RED_AGENT:
+                turn_text = "Tour de l'agent rouge";
+                turn_color = TEAM_RED_COLOR;
+                break;
+            default:
+                turn_text = "Phase de préparation ou partie terminée";
+                turn_color = COL_WHITE;
+                break;
+        }
+        
+        update_text(context, txt_turn_label, turn_text);
+        update_text_color(context, txt_turn_label, turn_color);
+
+        if (hint_window) {
+            window_place_text(hint_window, txt_turn_label, 0, 10);
+            display_text(context, txt_turn_label);
+        }
     }
 
     if (chat_input) {
@@ -531,6 +590,12 @@ void game_display(AppContext * context) {
     }
     if (history_window_red) {
         window_render(context->renderer, history_window_red);
+    }
+
+    if (hint_window) {
+        window_place_input(hint_window, hint_input, 0, -450);
+        window_place_input(hint_window, hint_count_input, 300, -450);
+        window_render(context->renderer, hint_window);
     }
 
     game_render_team_windows(context);
@@ -553,6 +618,7 @@ int game_free() {
     if (red_panel) { window_destroy(red_panel); red_panel = NULL; }
     if (history_window_blue) { window_destroy(history_window_blue); history_window_blue = NULL; }
     if (history_window_red) { window_destroy(history_window_red); history_window_red = NULL; }
+    if (hint_window) { window_destroy(hint_window); hint_window = NULL; }
 
     /* Libération des textes optimisés */
     destroy_text(txt_team_blue_title); txt_team_blue_title = NULL;
@@ -561,6 +627,7 @@ int game_free() {
     destroy_text(txt_blue_agents_label); txt_blue_agents_label = NULL;
     destroy_text(txt_red_spy_label); txt_red_spy_label = NULL;
     destroy_text(txt_red_agents_label); txt_red_agents_label = NULL;
+    destroy_text(txt_turn_label); txt_turn_label = NULL;
     
     for (int i = 0; i < MAX_TEAM_PLAYERS; i++) {
         destroy_text(txt_blue_players[i]); txt_blue_players[i] = NULL;
