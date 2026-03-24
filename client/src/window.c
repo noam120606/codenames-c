@@ -26,6 +26,65 @@ static int point_in_titlebar(const Window* win, int x, int y) {
 	return point_in_rect(x, y, &titlebar);
 }
 
+static int window_set_title(WindowConfig* cfg, const char* title) {
+	if (!cfg) return EXIT_FAILURE;
+
+	char* new_title = NULL;
+	if (title && title[0] != '\0') {
+		new_title = strdup(title);
+		if (!new_title) return EXIT_FAILURE;
+	}
+
+	free(cfg->title);
+	cfg->title = new_title;
+	return EXIT_SUCCESS;
+}
+
+static void window_render_title(SDL_Renderer* renderer, const WindowConfig* cfg) {
+	if (!renderer || !cfg || !cfg->title || cfg->title[0] == '\0' || cfg->titlebar_h <= 0) return;
+
+	int font_size = cfg->titlebar_h - 12;
+	if (font_size < 12) font_size = 12;
+
+	TTF_Font* font = TTF_OpenFont(FONT_LARABIE, font_size);
+	if (!font) return;
+
+	SDL_Surface* title_surface = TTF_RenderUTF8_Blended(font, cfg->title, COL_WHITE);
+	if (!title_surface) {
+		TTF_CloseFont(font);
+		return;
+	}
+
+	SDL_Texture* title_texture = SDL_CreateTextureFromSurface(renderer, title_surface);
+	if (!title_texture) {
+		SDL_FreeSurface(title_surface);
+		TTF_CloseFont(font);
+		return;
+	}
+
+	SDL_Rect dst = {
+		.x = cfg->rect.x + 10,
+		.y = cfg->rect.y + (cfg->titlebar_h - title_surface->h) / 2,
+		.w = title_surface->w,
+		.h = title_surface->h
+	};
+
+	SDL_Rect clip = {
+		.x = cfg->rect.x,
+		.y = cfg->rect.y,
+		.w = cfg->rect.w,
+		.h = cfg->titlebar_h
+	};
+
+	SDL_RenderSetClipRect(renderer, &clip);
+	SDL_RenderCopy(renderer, title_texture, NULL, &dst);
+	SDL_RenderSetClipRect(renderer, NULL);
+
+	SDL_DestroyTexture(title_texture);
+	SDL_FreeSurface(title_surface);
+	TTF_CloseFont(font);
+}
+
 WindowConfig* window_config_init(void) {
 	WindowConfig* cfg = (WindowConfig*)calloc(1, sizeof(WindowConfig));
 	if (!cfg) return NULL;
@@ -39,6 +98,7 @@ WindowConfig* window_config_init(void) {
 	cfg->bg_color = (SDL_Color){28, 31, 38, 240};
 	cfg->border_color = (SDL_Color){225, 229, 236, 255};
 	cfg->titlebar_color = (SDL_Color){58, 76, 94, 255};
+	cfg->title = NULL;
 	cfg->border_thickness = 2;
 	cfg->titlebar_h = 36;
 	cfg->dragging = 0;
@@ -79,7 +139,13 @@ Window* window_create(int id, const WindowConfig* cfg_in) {
 	}
 
 	if (cfg_in) {
+		const char* incoming_title = cfg_in->title;
 		*(win->cfg) = *cfg_in;
+		win->cfg->title = NULL;
+		if (window_set_title(win->cfg, incoming_title) != EXIT_SUCCESS) {
+			window_destroy(win);
+			return NULL;
+		}
 	}
 
 	window_update_rect(win);
@@ -88,6 +154,9 @@ Window* window_create(int id, const WindowConfig* cfg_in) {
 
 void window_destroy(Window* win) {
 	if (!win) return;
+	if (win->cfg) {
+		free(win->cfg->title);
+	}
 	free(win->cfg);
 	free(win);
 }
@@ -148,6 +217,7 @@ void window_render(SDL_Renderer* renderer, const Window* win) {
 		};
 		SDL_SetRenderDrawColor(renderer, cfg->titlebar_color.r, cfg->titlebar_color.g, cfg->titlebar_color.b, cfg->titlebar_color.a);
 		SDL_RenderFillRect(renderer, &titlebar);
+		window_render_title(renderer, cfg);
 	}
 
 	int border = clamp_non_negative(cfg->border_thickness);
@@ -180,6 +250,9 @@ int window_edit_cfg(Window* win, WindowCfgKey key, intptr_t value) {
 		case WIN_CFG_BG_COLOR: cfg->bg_color = *((SDL_Color*)value); break;
 		case WIN_CFG_BORDER_COLOR: cfg->border_color = *((SDL_Color*)value); break;
 		case WIN_CFG_TITLEBAR_COLOR: cfg->titlebar_color = *((SDL_Color*)value); break;
+		case WIN_CFG_TITLE:
+			if (window_set_title(cfg, (const char*)value) != EXIT_SUCCESS) return EXIT_FAILURE;
+			break;
 		case WIN_CFG_BORDER_THICKNESS: cfg->border_thickness = (int)value; break;
 		case WIN_CFG_TITLEBAR_H: cfg->titlebar_h = (int)value; break;
 		case WIN_CFG_RECT: cfg->rect = *((SDL_Rect*)value); break;

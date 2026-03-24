@@ -18,6 +18,7 @@ typedef struct AppContext AppContext;
  * @param bg_color Couleur de fond de la fenêtre (RGBA).
  * @param border_color Couleur de la bordure de la fenêtre (RGBA).
  * @param titlebar_color Couleur de la barre de titre de la fenêtre (RGBA).
+ * @param title Titre affiché dans la barre de titre (NULL pour aucun titre).
  * @param border_thickness Épaisseur de la bordure de la fenêtre (en pixels).
  * @param titlebar_h Hauteur de la barre de titre de la fenêtre (en pixels).
  */
@@ -31,6 +32,7 @@ typedef struct WindowConfig {
 	SDL_Color bg_color;
 	SDL_Color border_color;
 	SDL_Color titlebar_color;
+	char* title;
 	int border_thickness;
 	int titlebar_h;
 
@@ -59,6 +61,7 @@ typedef enum WindowCfgKey {
 	WIN_CFG_BG_COLOR,
 	WIN_CFG_BORDER_COLOR,
 	WIN_CFG_TITLEBAR_COLOR,
+	WIN_CFG_TITLE,
 	WIN_CFG_BORDER_THICKNESS,
 	WIN_CFG_TITLEBAR_H,
 	WIN_CFG_RECT,

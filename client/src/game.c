@@ -8,6 +8,8 @@ SDL_Texture* card_h_blue;
 SDL_Texture* card_f_blue;
 SDL_Texture* card_black;
 Button* btn_quit_game = NULL;
+Window* history_window_blue = NULL;
+Window* history_window_red = NULL;
 
 /* Utilisation des icônes déjà chargées dans lobby.c */
 extern SDL_Texture* player_icon_red;
@@ -149,6 +151,44 @@ int game_init(AppContext * context) {
             create_text_config(FONT_LARABIE, 18, COL_BLACK, 0, 0, 0, 255));
     }
 
+    /* Chargement de la fenêtre de l'historique de l'équipe bleue */
+    WindowConfig* cfg_history_blue = window_config_init();
+    if (cfg_history_blue) {
+        cfg_history_blue->x = -775;
+        cfg_history_blue->y = -350;
+        cfg_history_blue->w = 300;
+        cfg_history_blue->h = 300;
+        cfg_history_blue->movable = 1;
+        cfg_history_blue->title = "Historique bleu";
+        cfg_history_blue->bg_color = (SDL_Color){20, 20, 20, 220};
+        history_window_blue = window_create(0, cfg_history_blue);
+        if (!history_window_blue) {
+            loading_fails++;
+        }
+        free(cfg_history_blue);
+    } else {
+        loading_fails++;
+    }
+
+    /* Chargement de la fenêtre de l'historique de l'équipe rouge */
+    WindowConfig* cfg_history_red = window_config_init();
+    if (cfg_history_red) {
+        cfg_history_red->x = 775;
+        cfg_history_red->y = -350;
+        cfg_history_red->w = 300;
+        cfg_history_red->h = 300;
+        cfg_history_red->movable = 1;
+        cfg_history_red->title = "Historique rouge";
+        cfg_history_red->bg_color = (SDL_Color){20, 20, 20, 220};
+        history_window_red = window_create(1, cfg_history_red);
+        if (!history_window_red) {
+            loading_fails++;
+        }
+        free(cfg_history_red);
+    } else {
+        loading_fails++;
+    }
+
     return loading_fails;
 }
 
@@ -168,7 +208,7 @@ static void draw_filled_rect(SDL_Renderer* renderer, int x, int y, int w, int h,
 void game_render_team_panels(AppContext* context) {
     const int PANEL_W = 220;
     const int PANEL_H = 400;
-    const int PANEL_Y = 200;
+    const int PANEL_Y = 250;
     const int PANEL_MARGIN = 30;
     const int ICON_SPACING = 55;  /* Espacement vertical entre les joueurs */
     
@@ -381,6 +421,12 @@ void game_display(AppContext * context) {
     }
 
     game_render_team_panels(context);
+    if (history_window_blue) {
+        window_render(context->renderer, history_window_blue);
+    }
+    if (history_window_red) {
+        window_render(context->renderer, history_window_red);
+    }
     game_render_cards(context);
     if (btn_quit_game) {
         button_render(context->renderer, btn_quit_game);
@@ -398,7 +444,9 @@ int game_free() {
     if (card_f_blue) { free_image(card_f_blue); card_f_blue = NULL; }
     if (card_black) { free_image(card_black); card_black = NULL; }
     if (btn_quit_game) { button_destroy(btn_quit_game); btn_quit_game = NULL; }
-    
+    if (history_window_blue) { window_destroy(history_window_blue); history_window_blue = NULL; }
+    if (history_window_red) { window_destroy(history_window_red); history_window_red = NULL; }
+
     /* Libération des textes optimisés */
     destroy_text(txt_team_blue_title); txt_team_blue_title = NULL;
     destroy_text(txt_team_red_title); txt_team_red_title = NULL;
