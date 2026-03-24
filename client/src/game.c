@@ -7,7 +7,17 @@ SDL_Texture* card_f_red;
 SDL_Texture* card_h_blue;
 SDL_Texture* card_f_blue;
 SDL_Texture* card_black;
+
 Button* btn_quit_game = NULL;
+
+Input* word_input = NULL;
+Input* nb_word_input = NULL;
+Input* chat_input = NULL;
+
+static const char* WORD_INPUT_PLACEHOLDERS[] = {"Entrez un mot"};
+static const char* WORD_COUNT_INPUT_PLACEHOLDERS[] = {"1","2","3","∞"}; //Symbole infini pour 3 ou plus
+static const char* CHAT_INPUT_PLACEHOLDERS[] = {"Chattez ici ..."};
+
 Window* blue_panel = NULL;
 Window* red_panel = NULL;
 Window* history_window_blue = NULL;
@@ -60,13 +70,22 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
 void game_handle_event(AppContext* context, SDL_Event* e) {
     if (!context || !e) return;
 
+    if (word_input) {
+        input_handle_event(context, word_input, e);
+    }
+    if (nb_word_input) {
+        input_handle_event(context, nb_word_input, e);
+    }
+    if (chat_input) {
+        input_handle_event(context, chat_input, e);
+    }
+
     if (blue_panel) {
         window_handle_event(context, blue_panel, e);
     }
     if (red_panel) {
         window_handle_event(context, red_panel, e);
     }
-
     if (history_window_blue) {
         window_handle_event(context, history_window_blue, e);
     }
@@ -134,6 +153,81 @@ int game_init(AppContext * context) {
             loading_fails++;
         }
         free(cfg_btn_quit_game);
+    } else {
+        loading_fails++;
+    }
+
+    InputConfig* cfg_word_input = input_config_init();
+    if (cfg_word_input) {
+        cfg_word_input->x = 0;
+        cfg_word_input->y = -450;
+        cfg_word_input->w = 400;
+        cfg_word_input->h = 64;
+        cfg_word_input->font_path = FONT_LARABIE;
+        cfg_word_input->font_size = 24;
+        cfg_word_input->placeholders = WORD_INPUT_PLACEHOLDERS;
+        cfg_word_input->placeholder_count = 1;
+        cfg_word_input->maxlen = 50;
+        cfg_word_input->centered = 1;
+        cfg_word_input->allowed_pattern = "^[A-Za-z]$";
+        cfg_word_input->submit_pattern = "^[A-Za-z]{50}$";
+        cfg_word_input->bg_path = "assets/img/inputs/empty.png";
+        cfg_word_input->bg_padding = 16;
+        word_input = input_create(context->renderer, INPUT_WORD, cfg_word_input);
+        if (!word_input) {
+            loading_fails++;
+        }
+        free(cfg_word_input);
+    } else {
+        loading_fails++;
+    }
+
+    InputConfig* cfg_nb_word_input = input_config_init();
+    if (cfg_nb_word_input) {
+        cfg_nb_word_input->x = 250;
+        cfg_nb_word_input->y = -450;
+        cfg_nb_word_input->w = 70;
+        cfg_nb_word_input->h = 64;
+        cfg_nb_word_input->font_path = FONT_LARABIE;
+        cfg_nb_word_input->font_size = 24;
+        cfg_nb_word_input->placeholders = WORD_COUNT_INPUT_PLACEHOLDERS;
+        cfg_nb_word_input->placeholder_count = 4;
+        cfg_nb_word_input->maxlen = 2;
+        cfg_nb_word_input->centered = 1;
+        cfg_nb_word_input->allowed_pattern = "^[0-9]$";
+        cfg_nb_word_input->submit_pattern = "^[0-9]{2}$";
+        cfg_nb_word_input->bg_path = "assets/img/inputs/empty.png";
+        cfg_nb_word_input->bg_padding = 10;
+        nb_word_input = input_create(context->renderer, INPUT_WORD, cfg_nb_word_input);
+        if (!nb_word_input) {
+            loading_fails++;
+        }
+        free(cfg_nb_word_input);
+    } else {
+        loading_fails++;
+    }
+
+    InputConfig* cfg_chat_input = input_config_init();
+    if (cfg_chat_input) {
+        cfg_chat_input->x = 430;
+        cfg_chat_input->y = 450;
+        cfg_chat_input->w = 260;
+        cfg_chat_input->h = 64;
+        cfg_chat_input->font_path = FONT_LARABIE;
+        cfg_chat_input->font_size = 24;
+        cfg_chat_input->placeholders = CHAT_INPUT_PLACEHOLDERS;
+        cfg_chat_input->placeholder_count = 1;
+        cfg_chat_input->maxlen = 50;
+        cfg_chat_input->centered = 1;
+        cfg_chat_input->allowed_pattern = NULL;
+        cfg_chat_input->submit_pattern = NULL;
+        cfg_chat_input->bg_path = "assets/img/inputs/empty.png";
+        cfg_chat_input->bg_padding = 16;
+        chat_input = input_create(context->renderer, INPUT_CHAT, cfg_chat_input);
+        if (!chat_input) {
+            loading_fails++;
+        }
+        free(cfg_chat_input);
     } else {
         loading_fails++;
     }
@@ -399,6 +493,18 @@ void game_display(AppContext * context) {
         button_render(context->renderer, btn_quit_game);
     }
 
+    if (word_input) {
+        input_render(context->renderer, word_input);
+    }
+
+    if (nb_word_input) {
+        input_render(context->renderer, nb_word_input);
+    }
+
+    if (chat_input) {
+        input_render(context->renderer, chat_input);
+    }
+
     if (blue_panel) {
         window_render(context->renderer, blue_panel);
     }
@@ -425,6 +531,9 @@ int game_free() {
     if (card_f_blue) { free_image(card_f_blue); card_f_blue = NULL; }
     if (card_black) { free_image(card_black); card_black = NULL; }
     if (btn_quit_game) { button_destroy(btn_quit_game); btn_quit_game = NULL; }
+    if (word_input) { input_destroy(word_input); word_input = NULL; }
+    if (nb_word_input) { input_destroy(nb_word_input); nb_word_input = NULL; }
+    if (chat_input) { input_destroy(chat_input); chat_input = NULL; }
     if (blue_panel) { window_destroy(blue_panel); blue_panel = NULL; }
     if (red_panel) { window_destroy(red_panel); red_panel = NULL; }
     if (history_window_blue) { window_destroy(history_window_blue); history_window_blue = NULL; }

@@ -148,7 +148,7 @@ int menu_init(AppContext * context) {
         cfg_in_name->submit_pattern = "^[a-zA-Z0-9_é]{3,16}$";
         cfg_in_name->bg_path = "assets/img/inputs/empty.png";
         cfg_in_name->bg_padding = 24;
-        name_input = input_create(context->renderer, INPUT_ID_NAME, cfg_in_name);
+        name_input = input_create(context->renderer, INPUT_NAME, cfg_in_name);
         free(cfg_in_name);
     }
 
@@ -220,7 +220,7 @@ int menu_init(AppContext * context) {
         cfg_in_code->submit_pattern = "^[0-9]{5}$";
         cfg_in_code->bg_path = "assets/img/inputs/empty.png";
         cfg_in_code->bg_padding = 24;
-        code_input = input_create(context->renderer, INPUT_ID_JOIN_CODE, cfg_in_code);
+        code_input = input_create(context->renderer, INPUT_JOIN_CODE, cfg_in_code);
         free(cfg_in_code);
     }
 
