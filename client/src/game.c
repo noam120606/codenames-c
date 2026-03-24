@@ -8,8 +8,8 @@ SDL_Texture* card_h_blue;
 SDL_Texture* card_f_blue;
 SDL_Texture* card_black;
 Button* btn_quit_game = NULL;
-Window* blue_pannel = NULL;
-Window* red_pannel = NULL;
+Window* blue_panel = NULL;
+Window* red_panel = NULL;
 Window* history_window_blue = NULL;
 Window* history_window_red = NULL;
 
@@ -60,11 +60,11 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
 void game_handle_event(AppContext* context, SDL_Event* e) {
     if (!context || !e) return;
 
-    if (blue_pannel) {
-        window_handle_event(context, blue_pannel, e);
+    if (blue_panel) {
+        window_handle_event(context, blue_panel, e);
     }
-    if (red_pannel) {
-        window_handle_event(context, red_pannel, e);
+    if (red_panel) {
+        window_handle_event(context, red_panel, e);
     }
 
     if (history_window_blue) {
@@ -168,39 +168,39 @@ int game_init(AppContext * context) {
     }
 
     /* Chargement de la fenêtre de l'équipe bleue */
-    WindowConfig* cfg_blue_pannel = window_config_init();
-    if (cfg_blue_pannel) {
-        cfg_blue_pannel->x = -775;
-        cfg_blue_pannel->y = 150;
-        cfg_blue_pannel->w = 250;
-        cfg_blue_pannel->h = 350;
-        cfg_blue_pannel->title = "Equipe bleue";
-        cfg_blue_pannel->titlebar_color = TEAM_BLUE_COLOR;
-        cfg_blue_pannel->bg_color = (SDL_Color){20, 20, 20, 220};
-        blue_pannel = window_create(0, cfg_blue_pannel);
-        if (!blue_pannel) {
+    WindowConfig* cfg_blue_panel = window_config_init();
+    if (cfg_blue_panel) {
+        cfg_blue_panel->x = -775;
+        cfg_blue_panel->y = 150;
+        cfg_blue_panel->w = 250;
+        cfg_blue_panel->h = 350;
+        cfg_blue_panel->title = "Equipe bleue";
+        cfg_blue_panel->titlebar_color = TEAM_BLUE_COLOR;
+        cfg_blue_panel->bg_color = (SDL_Color){20, 20, 20, 220};
+        blue_panel = window_create(0, cfg_blue_panel);
+        if (!blue_panel) {
             loading_fails++;
         }
-        free(cfg_blue_pannel);
+        free(cfg_blue_panel);
     } else {
         loading_fails++;
     }
 
     /* Chargement de la fenêtre de l'équipe rouge */
-    WindowConfig* cfg_red_pannel = window_config_init();
-    if (cfg_red_pannel) {
-        cfg_red_pannel->x = 775;
-        cfg_red_pannel->y = 150;
-        cfg_red_pannel->w = 250;
-        cfg_red_pannel->h = 350;
-        cfg_red_pannel->title = "Equipe rouge";
-        cfg_red_pannel->bg_color = (SDL_Color){20, 20, 20, 220};
-        cfg_red_pannel->titlebar_color = TEAM_RED_COLOR;
-        red_pannel = window_create(1, cfg_red_pannel);
-        if (!red_pannel) {
+    WindowConfig* cfg_red_panel = window_config_init();
+    if (cfg_red_panel) {
+        cfg_red_panel->x = 775;
+        cfg_red_panel->y = 150;
+        cfg_red_panel->w = 250;
+        cfg_red_panel->h = 350;
+        cfg_red_panel->title = "Equipe rouge";
+        cfg_red_panel->bg_color = (SDL_Color){20, 20, 20, 220};
+        cfg_red_panel->titlebar_color = TEAM_RED_COLOR;
+        red_panel = window_create(1, cfg_red_panel);
+        if (!red_panel) {
             loading_fails++;
         }
-        free(cfg_red_pannel);
+        free(cfg_red_panel);
     } else {
         loading_fails++;
     }
@@ -319,11 +319,11 @@ static void render_team_panel_content(AppContext* context, Window* panel, Team t
 static void game_render_team_windows(AppContext* context) {
     if (!context) return;
 
-    if (blue_pannel) {
-        render_team_panel_content(context, blue_pannel, TEAM_BLUE, player_icon_blue, txt_blue_spy_label, txt_blue_agents_label, txt_blue_players, &blue_player_text_index);
+    if (blue_panel) {
+        render_team_panel_content(context, blue_panel, TEAM_BLUE, player_icon_blue, txt_blue_spy_label, txt_blue_agents_label, txt_blue_players, &blue_player_text_index);
     }
-    if (red_pannel) {
-        render_team_panel_content(context, red_pannel, TEAM_RED, player_icon_red, txt_red_spy_label, txt_red_agents_label, txt_red_players, &red_player_text_index);
+    if (red_panel) {
+        render_team_panel_content(context, red_panel, TEAM_RED, player_icon_red, txt_red_spy_label, txt_red_agents_label, txt_red_players, &red_player_text_index);
     }
 }
 
@@ -399,11 +399,11 @@ void game_display(AppContext * context) {
         button_render(context->renderer, btn_quit_game);
     }
 
-    if (blue_pannel) {
-        window_render(context->renderer, blue_pannel);
+    if (blue_panel) {
+        window_render(context->renderer, blue_panel);
     }
-    if (red_pannel) {
-        window_render(context->renderer, red_pannel);
+    if (red_panel) {
+        window_render(context->renderer, red_panel);
     }
     if (history_window_blue) {
         window_render(context->renderer, history_window_blue);
@@ -425,8 +425,8 @@ int game_free() {
     if (card_f_blue) { free_image(card_f_blue); card_f_blue = NULL; }
     if (card_black) { free_image(card_black); card_black = NULL; }
     if (btn_quit_game) { button_destroy(btn_quit_game); btn_quit_game = NULL; }
-    if (blue_pannel) { window_destroy(blue_pannel); blue_pannel = NULL; }
-    if (red_pannel) { window_destroy(red_pannel); red_pannel = NULL; }
+    if (blue_panel) { window_destroy(blue_panel); blue_panel = NULL; }
+    if (red_panel) { window_destroy(red_panel); red_panel = NULL; }
     if (history_window_blue) { window_destroy(history_window_blue); history_window_blue = NULL; }
     if (history_window_red) { window_destroy(history_window_red); history_window_red = NULL; }
 
