@@ -104,14 +104,14 @@ void display_text(AppContext* context, Text* text) {
 
     int tex_w = 0, tex_h = 0;
 
-    /* Point de pivot pour la rotation */
-    SDL_Point center = { tex_w / 2, tex_h / 2 };
-
     /* Appliquer l'opacité à la texture du texte */
     SDL_SetTextureAlphaMod(text->texture, text->cfg.opacity);
 
     /* Appliquer l'opacité */
     SDL_QueryTexture(text->texture, NULL, NULL, &tex_w, &tex_h);
+
+    /* Point de pivot pour la rotation */
+    SDL_Point center = { tex_w / 2, tex_h / 2 };
 
     // Centrer le texte dans la fenêtre
     int final_x = (WIN_WIDTH - tex_w) / 2 + text->cfg.x;
