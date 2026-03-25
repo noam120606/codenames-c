@@ -135,22 +135,6 @@ int levenshtein(const char* s1, const char* s2) {
 }
 
 /**
- * Vérifie si un mot est trop proche d'un mot de carte (à bannir)
- * @param input Le mot entré par le joueur
- * @param card_word Le mot sur la carte
- * @param threshold Seuil de distance max (ex: 2 = 2 modifications ou moins = trop proche)
- * @return 1 si le mot est trop proche (à bannir), 0 sinon
- */
-int is_word_too_close(const char* input, const char* card_word, int threshold) {
-    if (!input || !card_word) return 0;
-    
-    int distance = levenshtein(input, card_word);
-    if (distance < 0) return 0;
-    
-    return distance <= threshold;
-}
-
-/**
  * Vérifie si un mot contient un autre mot (sous-chaîne, insensible à la casse)
  * @param input Le mot entré
  * @param card_word Le mot de la carte
@@ -182,11 +166,14 @@ int word_contains(const char* input, const char* card_word) {
     return result;
 }
 
-int valid_hint(const char* hint, const char card_words[NB_WORDS][32]) {
+int valid_hint(const char* hint, Word card_words[NB_WORDS]) {
     if (!hint) return 0;
-    
+
     for (int i = 0; i < NB_WORDS; i++) {
-        if (is_word_too_close(hint, card_words[i], 2) || word_contains(hint, card_words[i])) {
+        int distance = levenshtein(hint, card_words[i].word);
+        int contain = word_contains(hint, card_words[i].word);
+        if (distance < 3 || contain) {
+            printf("Hint '%s' is too close to card word '%s' (distance=%d, contain=%d)\n", hint, card_words[i].word, distance, contain);
             return 0; // Hint trop proche ou contient un mot d'une carte
         }
     }

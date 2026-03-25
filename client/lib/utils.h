@@ -5,6 +5,8 @@
 #include "../SDL2/include/SDL2/SDL_image.h"
 #include "../SDL2/include/SDL2/SDL_ttf.h"
 
+#include "../lib/game.h"
+
 // Aliases divers
 static const SDL_Color COL_WHITE = (SDL_Color){255, 255, 255, 255};
 static const SDL_Color COL_BLACK = (SDL_Color){0, 0, 0, 255};
@@ -21,6 +23,7 @@ static const SDL_Color COL_CYAN = (SDL_Color){0, 255, 255, 255};
 static const SDL_Color COL_MAGENTA = (SDL_Color){255, 0, 255, 255};
 
 #define FONT_LARABIE "assets/fonts/larabiefont.otf"
+#define FONT_NOTO "assets/fonts/NotoSansSymbols.ttf"
 
 
 
@@ -61,20 +64,19 @@ char* getRandomUsername(void);
 int levenshtein(const char* s1, const char* s2);
 
 /**
- * Vérifie si un mot est trop proche d'un mot de carte (à bannir)
- * @param input Le mot entré par le joueur
- * @param card_word Le mot sur la carte
- * @param threshold Seuil de distance max (ex: 2 = modifications max autorisées)
- * @return 1 si le mot est trop proche (à bannir), 0 sinon
- */
-int is_word_too_close(const char* input, const char* card_word, int threshold);
-
-/**
  * Vérifie si un mot contient un autre mot (sous-chaîne, insensible à la casse)
  * @param input Le mot entré
  * @param card_word Le mot de la carte
  * @return 1 si input contient card_word ou vice versa, 0 sinon
  */
 int word_contains(const char* input, const char* card_word);
+
+/**
+ * Vérifie si un indice de mot est valide par rapport à une liste de mots de carte
+ * @param hint Le mot à vérifier
+ * @param card_words La liste des mots de carte
+ * @return 1 si le mot est valide, 0 sinon
+ */
+int valid_hint(const char* hint, Word card_words[NB_WORDS]);
 
 #endif // UTILS_H

@@ -16,7 +16,7 @@ SDL_LDFLAGS_BASE := $(shell pkg-config --libs sdl2 2>/dev/null || ./SDL2/bin/sdl
 SDL_LDFLAGS := $(SDL_LDFLAGS_BASE) -L./SDL2/lib -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 
 CPPFLAGS := -D_GNU_SOURCE -I./lib $(SDL_CFLAGS) -DCODENAMES_VERSION=\"$(VERSION)\"
-CFLAGS   := -Wall -Wextra -O2 -MMD -MP
+CFLAGS   := -Wall -Wextra -O2 -MMD -MP -finput-charset=UTF-8
 LDFLAGS  := $(SDL_LDFLAGS) -lm -Wl,-rpath,'$$ORIGIN/../SDL2/lib'
 
 # =========================
