@@ -173,7 +173,7 @@ int main(int argc, char* argv[]){
             if (e.type == SDL_QUIT) {
                 running = 0;
             }
-            if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_F11) {
+            if (e.type == SDL_KEYDOWN && (e.key.keysym.sym == SDLK_F11 || e.key.keysym.sym == SDLK_ESCAPE)) {
                 toggle_fullscreen(&context);
             }
             if (e.type == SDL_WINDOWEVENT) {

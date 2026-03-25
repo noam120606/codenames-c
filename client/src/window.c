@@ -183,7 +183,13 @@ void window_handle_event(AppContext* ctx, Window* win, SDL_Event* event) {
 		int mx = event->button.x;
 		int my = event->button.y;
 
-		if (cfg->movable && point_in_titlebar(win, mx, my)) {
+		/*
+		 * Autoriser le drag depuis n'importe quelle zone de la fenêtre
+		 * (pas seulement la barre de titre) sauf si un champ de saisie
+		 * texte est actif globalement (SDL_IsTextInputActive()).
+		 * Cela évite d'interférer avec la saisie dans les inputs.
+		 */
+		if (cfg->movable && (point_in_rect(mx, my, &cfg->rect) && !SDL_IsTextInputActive())) {
 			cfg->dragging = 1;
 			cfg->drag_offset_x = mx - cfg->rect.x;
 			cfg->drag_offset_y = my - cfg->rect.y;

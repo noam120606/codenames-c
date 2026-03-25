@@ -24,6 +24,7 @@ Window* red_panel = NULL;
 Window* history_window_blue = NULL;
 Window* history_window_red = NULL;
 Window* hint_window = NULL;
+Window* chat_window = NULL;
 
 /* Utilisation des icônes déjà chargées dans lobby.c */
 extern SDL_Texture* player_icon_red;
@@ -138,6 +139,8 @@ void game_handle_event(AppContext* context, SDL_Event* e) {
 
     if (hint_window) window_handle_event(context, hint_window, e);
 
+    if (chat_window) window_handle_event(context, chat_window, e);
+
     if (btn_quit_game) button_handle_event(context, btn_quit_game, e);
     if (btn_hint_submit) button_handle_event(context, btn_hint_submit, e);
 }
@@ -242,7 +245,7 @@ int game_init(AppContext * context) {
         cfg_hint_count_input->centered = 1;
         cfg_hint_count_input->allowed_pattern = "^[0-9]$";
         cfg_hint_count_input->submit_pattern = "^[0-9]{1}$";
-        cfg_hint_count_input->bg_path = "assets/img/inputs/empty.png";
+        cfg_hint_count_input->bg_path = "assets/img/inputs/square.png";
         cfg_hint_count_input->bg_padding = 10;
         hint_count_input = input_create(context->renderer, INPUT_HINT_COUNT, cfg_hint_count_input);
         if (!hint_count_input) loading_fails++;
@@ -255,8 +258,8 @@ int game_init(AppContext * context) {
     if (cfg_chat_input) {
         cfg_chat_input->x = 750;
         cfg_chat_input->y = 450;
-        cfg_chat_input->w = 260;
-        cfg_chat_input->h = 64;
+        cfg_chat_input->w = 350;
+        cfg_chat_input->h = 48;
         cfg_chat_input->font_path = FONT_LARABIE;
         cfg_chat_input->font_size = 24;
         cfg_chat_input->placeholders = CHAT_INPUT_PLACEHOLDERS;
@@ -383,12 +386,29 @@ int game_init(AppContext * context) {
         cfg_hint_window->w = 650;
         cfg_hint_window->h = 120;
         cfg_hint_window->title = "";
-        cfg_hint_window->movable = 1;
         cfg_hint_window->titlebar_color = COL_GRAY;
         cfg_hint_window->bg_color = (SDL_Color){20, 20, 20, 220};
         hint_window = window_create(1, cfg_hint_window);
         if (!hint_window) loading_fails++;
         free(cfg_hint_window);
+    } else {
+        loading_fails++;
+    }
+
+    /* Chargement de la fenêtre du chat */
+    WindowConfig* cfg_chat_window = window_config_init();
+    if (cfg_chat_window) {
+        cfg_chat_window->x = 785;
+        cfg_chat_window->y = 450;
+        cfg_chat_window->w = 350;
+        cfg_chat_window->h = 200;
+        cfg_chat_window->title = "";
+        cfg_chat_window->movable = 1;
+        cfg_chat_window->titlebar_h = 0; // Pas de barre de titre pour le chat
+        cfg_chat_window->bg_color = (SDL_Color){20, 20, 20, 220};
+        chat_window = window_create(1, cfg_chat_window);
+        if (!chat_window) loading_fails++;
+        free(cfg_chat_window);
     } else {
         loading_fails++;
     }
@@ -401,7 +421,7 @@ static void render_team_member_in_panel(AppContext* context, Window* panel, SDL_
 
     const int POS_X = 0;
     const int SPY_BASE_Y = 50;
-    const int AGENT_BASE_Y = 125 - 25;
+    const int AGENT_BASE_Y = 25;
     const int ROW_GAP = 36;
 
     int row = (role == ROLE_SPY) ? *spy_row : *agent_row;
@@ -420,8 +440,8 @@ static void render_team_member_in_panel(AppContext* context, Window* panel, SDL_
 static void render_team_panel_content(AppContext* context, Window* panel, Team team, SDL_Texture* icon, Text* txt_spy_label, Text* txt_agents_label, Text** player_texts, int* player_index) {
     if (!context || !panel || !txt_spy_label || !txt_agents_label || !player_texts || !player_index) return;
 
-    int spy_row = 0;
-    int agent_row = 0;
+    int spy_row = 25;
+    int agent_row = 125;
 
     update_text(context, txt_spy_label, "Espions :");
     window_place_text(panel, txt_spy_label, 0, -25);
@@ -438,6 +458,7 @@ static void render_team_panel_content(AppContext* context, Window* panel, Team t
     if (context->player_team == team && *player_index < MAX_TEAM_PLAYERS) {
         Text* txt = player_texts[*player_index];
         const char* local_name = context->player_name ? context->player_name : "Moi";
+        // Les membres sont placés en fonctions des étiquettes des rôles
         render_team_member_in_panel(context, panel, icon, txt, local_name, context->player_role, &spy_row, &agent_row);
         (*player_index)++;
     }
@@ -447,6 +468,7 @@ static void render_team_panel_content(AppContext* context, Window* panel, Team t
         if (!u || u->team != team || *player_index >= MAX_TEAM_PLAYERS) continue;
 
         Text* txt = player_texts[*player_index];
+        // Les membres sont placés en fonctions des étiquettes des rôles
         render_team_member_in_panel(context, panel, icon, txt, u->name ? u->name : "???", u->role, &spy_row, &agent_row);
         (*player_index)++;
     }
@@ -605,6 +627,10 @@ void game_display(AppContext * context) {
         }
 
     }
+    if (chat_window) {
+        window_render(context->renderer, chat_window);
+        window_place_input(chat_window, chat_input, 0, -75);
+    }
 
     game_render_team_windows(context);
 }
@@ -628,6 +654,7 @@ int game_free() {
     if (history_window_blue) { window_destroy(history_window_blue); history_window_blue = NULL; }
     if (history_window_red) { window_destroy(history_window_red); history_window_red = NULL; }
     if (hint_window) { window_destroy(hint_window); hint_window = NULL; }
+    if (chat_window) { window_destroy(chat_window); chat_window = NULL; }
 
     /* Libération des textes optimisés */
     destroy_text(txt_team_blue_title); txt_team_blue_title = NULL;
