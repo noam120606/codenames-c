@@ -75,8 +75,8 @@ static void hint_on_submit(AppContext* context, const char* text) {
 static void chat_on_submit(AppContext* context, const char* text) {
     printf("Chat input submitted: %s\n", text ? text : "");
     if (text && strlen(text) > 0) {
-        char msg[256];
-        format_to(msg, sizeof(msg), "%d %s", MSG_SENDCHAT, text);
+        char msg[512];
+        format_to(msg, sizeof(msg), "%d %s %s", MSG_SENDCHAT, context->player_name ? context->player_name : "Unknown", text);
         send_tcp(context->sock, msg);
     }
 }

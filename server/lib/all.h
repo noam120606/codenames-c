@@ -19,6 +19,7 @@
 #include "../lib/list.h"
 #include "../lib/tcp.h"
 #include "../lib/lobby.h"
+#include "../lib/chat.h"
 #include "../lib/message.h"
 #include "../lib/user.h"
 #include "../lib/game.h"

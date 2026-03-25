@@ -8,6 +8,7 @@
 typedef struct AppContext AppContext;
 #include "../lib/button.h"
 #include "../lib/user.h"
+#include "../lib/chat.h"
 
 
 #define MAX_LOBBIES 50
@@ -32,6 +33,7 @@ typedef enum LobbyStatus {
  * @param users tableau de pointeurs vers les joueurs présents.
  * @param nb_players nombre de joueurs actuellement connectés.
  * @param game partie associée au lobby (NULL si aucune partie).
+ * @param chat historique du chat du lobby.
  */
 typedef struct Lobby {
     int id;
@@ -41,6 +43,7 @@ typedef struct Lobby {
     User* users[MAX_USERS];
     int nb_players;
     Game* game;
+    Chat chat;
 } Lobby;
 
 /**

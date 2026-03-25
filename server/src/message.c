@@ -41,6 +41,8 @@ int on_message(Codenames* codenames, TcpClient* client, char* message) {
         case MSG_CHOOSE_ROLE: return request_choose_role(codenames, client, message, args);
         case MSG_STARTGAME: return request_start_game(codenames, client, message, args);
 
+        case MSG_SENDCHAT: return request_send_chat(codenames, client, message, args);
+
         case MSG_REQUESTUUID: return request_uuid(codenames, client, message, args);
         case MSG_COMPAREVERSION: return on_version_compare(codenames, client, message, args);
         case MSG_PING:

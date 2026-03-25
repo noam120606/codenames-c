@@ -213,6 +213,21 @@ int on_message(AppContext* context, char* message) {
             break;
         }
 
+        case MSG_SENDCHAT: {
+            if (args.argc < 2) {
+                printf("Invalid chat message from server: \"%s\"\n", message);
+                if (args.argv) free(args.argv);
+                return EXIT_FAILURE;
+            }
+
+            char* sender = (char*)args.argv[0];
+            char* chat_message = (char*)args.argv[1];
+
+            printf("%s: %s\n", sender, chat_message);
+            
+            break;
+        }
+
         case MSG_REQUESTUUID: {
             // Réception de l'UUID généré par le serveur
             if (args.argc < 1) {

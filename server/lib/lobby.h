@@ -5,6 +5,7 @@
 #include "../lib/game.h"
 #include "../lib/message.h"
 #include "../lib/list.h"
+#include "../lib/chat.h"
 
 /* Forward declaration to avoid circular include with codenames.h */
 typedef struct Codenames Codenames;
@@ -31,6 +32,7 @@ typedef enum LobbyStatus {
  * @param users tableau de pointeurs vers les joueurs présents.
  * @param nb_players nombre de joueurs actuellement connectés.
  * @param game partie associée au lobby (NULL si aucune partie).
+ * @param chat historique du chat du lobby.
  */
 typedef struct Lobby {
     int id;
@@ -40,6 +42,7 @@ typedef struct Lobby {
     User* users[MAX_USERS];
     int nb_players;
     Game* game;
+    Chat chat;
 } Lobby;
 
 /** 
