@@ -14,18 +14,6 @@ static int point_in_rect(int x, int y, const SDL_Rect* r) {
 	return x >= r->x && x < (r->x + r->w) && y >= r->y && y < (r->y + r->h);
 }
 
-static int point_in_titlebar(const Window* win, int x, int y) {
-	if (!win || !win->cfg) return 0;
-	const WindowConfig* cfg = win->cfg;
-	SDL_Rect titlebar = {
-		.x = cfg->rect.x,
-		.y = cfg->rect.y,
-		.w = cfg->rect.w,
-		.h = cfg->titlebar_h
-	};
-	return point_in_rect(x, y, &titlebar);
-}
-
 static int window_content_origin_screen(const Window* win, int* out_x, int* out_y) {
 	if (!win || !win->cfg) return EXIT_FAILURE;
 	if (out_x) *out_x = win->cfg->rect.x + (win->cfg->rect.w / 2);

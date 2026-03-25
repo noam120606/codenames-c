@@ -55,24 +55,6 @@ static int red_player_text_index = 0;
 #define NUM_CARDS 25
 static Text* txt_card_words[NUM_CARDS] = {NULL};
 
-static void hint_on_submit(AppContext* context, const char* text) {
-    printf("Hint input submitted: %s\n", text ? text : "");
-    
-    /* Envoi de l'indice au serveur */
-    int valid = valid_hint(text, context->lobby->game->words);
-
-    if (text && valid) {
-        window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, &COL_WHITE); // Réinitialiser la couleur du label de soumission
-        window_edit_cfg(hint_window, WIN_CFG_TITLE, "Saisissez un mot indice"); // Réinitialiser le label de soumission
-        char msg[64];
-        format_to(msg, sizeof(msg), "%d %s", MSG_SUBMIT_HINT, text);
-        send_tcp(context->sock, msg);
-    } else { // TODO : Envoyer un message
-        window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, valid ? &COL_GREEN : &COL_RED); // Mettre à jour la couleur du label de soumission pour indiquer que le mot est invalide
-        window_edit_cfg(hint_window, WIN_CFG_TITLE, "Le mot saisi est invalide"); // Mettre à jour le label de soumission pour indiquer que le mot est invalide
-        printf("Invalid hint submitted: %s\n", text ? text : "");
-    }
-}
 
 static void chat_on_submit(AppContext* context, const char* text) {
     printf("Chat input submitted: %s\n", text ? text : "");
@@ -108,16 +90,25 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
         
         /* Envoi de l'indice au serveur */
         int valid = valid_hint(text, context->lobby->game->words);
+        // On stocke cette chaine : "Vous avez soumis le mot : " et on lui ajoute "text"
+        char title[64];
+        
 
         if (text && valid) {
-            window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, &COL_WHITE); // Réinitialiser la couleur du label de soumission
-            window_edit_cfg(hint_window, WIN_CFG_TITLE, "Saisissez un mot indice"); // Réinitialiser le label de soumission
+            format_to(title, sizeof(title), "Vous avez soumis le mot : %s", text ? text : "");
+            window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&COL_DARK_GREEN); // Réinitialiser la couleur du label de soumission
+            window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)title); // Mettre à jour le label de soumission
             char msg[64];
             format_to(msg, sizeof(msg), "%d %d %s", MSG_SUBMIT_HINT, nb_hint, text);
             send_tcp(context->sock, msg);
-        } else { // TODO : Envoyer un message
-            window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, valid ? &COL_GREEN : &COL_RED); // Mettre à jour la couleur du label de soumission pour indiquer que le mot est invalide
-            window_edit_cfg(hint_window, WIN_CFG_TITLE, "Le mot saisi est invalide"); // Mettre à jour le label de soumission pour indiquer que le mot est invalide
+        } else if(text == NULL || strlen(text) == 0) {
+            window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&COL_RED); // Mettre à jour la couleur du label de soumission pour indiquer qu'aucun mot n'a été saisi
+            window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)"Vous n'avez pas saisi de mot"); // Mettre à jour le label de soumission pour indiquer qu'aucun mot n'a été saisi
+            printf("Invalid hint submitted: %s\n", text ? text : "");
+        } else {
+            format_to(title, sizeof(title), "Le mot : %s est invalide", text ? text : "");
+            window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&COL_RED); // Mettre à jour la couleur du label de soumission pour indiquer que le mot est invalide
+            window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)title); // Mettre à jour le label de soumission pour indiquer que le mot est invalide
             printf("Invalid hint submitted: %s\n", text ? text : "");
         }
     }
@@ -603,10 +594,10 @@ void game_display(AppContext * context) {
                 break;
         }
 
-        if (context->player_role == ROLE_SPY &&
+        if (context->player_role == ROLE_SPY && (
             (context->lobby->game->state == GAMESTATE_TURN_RED_SPY && context->player_team == TEAM_RED) ||
             (context->lobby->game->state == GAMESTATE_TURN_BLUE_SPY && context->player_team == TEAM_BLUE)
-        ) {
+        )) {
             if (hint_input) {
                 window_place_input(hint_window, hint_input, -70, -15);
                 input_render(context->renderer, hint_input);

@@ -60,12 +60,12 @@ int write_property(const char* property, const char* value) {
                 while (*vp == ' ') vp++;
 
                 if (strcmp(key_buf, property) == 0) {
-                    strncpy(entries[count].key, key_buf, sizeof(entries[count].key) - 1);
-                    strncpy(entries[count].val, value, sizeof(entries[count].val) - 1);
+                    snprintf(entries[count].key, sizeof(entries[count].key), "%s", key_buf);
+                    snprintf(entries[count].val, sizeof(entries[count].val), "%s", value);
                     found = 1;
                 } else {
-                    strncpy(entries[count].key, key_buf, sizeof(entries[count].key) - 1);
-                    strncpy(entries[count].val, vp, sizeof(entries[count].val) - 1);
+                    snprintf(entries[count].key, sizeof(entries[count].key), "%s", key_buf);
+                    snprintf(entries[count].val, sizeof(entries[count].val), "%s", vp);
                 }
                 count++;
             }
@@ -75,8 +75,8 @@ int write_property(const char* property, const char* value) {
 
     // If property was not found, add it
     if (!found && count < 64) {
-        strncpy(entries[count].key, property, sizeof(entries[count].key) - 1);
-        strncpy(entries[count].val, value, sizeof(entries[count].val) - 1);
+        snprintf(entries[count].key, sizeof(entries[count].key), "%s", property);
+        snprintf(entries[count].val, sizeof(entries[count].val), "%s", value);
         count++;
     }
 

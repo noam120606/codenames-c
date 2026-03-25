@@ -52,6 +52,10 @@ int on_message(Codenames* codenames, TcpClient* client, char* message) {
                 tcp_send_to_client(codenames, client->id, response);
             }
             return EXIT_SUCCESS;
+
+        default:
+            // Les autres types de message sont gérés ailleurs ou sont réservés aux clients.
+            break;
     }
 
     return EXIT_SUCCESS;
