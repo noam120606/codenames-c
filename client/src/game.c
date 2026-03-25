@@ -76,8 +76,8 @@ static void hint_on_submit(AppContext* context, const char* text) {
 static void chat_on_submit(AppContext* context, const char* text) {
     printf("Chat input submitted: %s\n", text ? text : "");
     if (text && strlen(text) > 0) {
-        char msg[256];
-        format_to(msg, sizeof(msg), "%d %s", MSG_SENDCHAT, text);
+        char msg[512];
+        format_to(msg, sizeof(msg), "%d %s %s", MSG_SENDCHAT, context->player_name ? context->player_name : "Unknown", text);
         send_tcp(context->sock, msg);
     }
 }
@@ -265,6 +265,7 @@ int game_init(AppContext * context) {
         cfg_chat_input->submit_pattern = NULL;
         cfg_chat_input->bg_path = "assets/img/inputs/empty.png";
         cfg_chat_input->bg_padding = 16;
+        cfg_chat_input->on_submit = chat_on_submit;
         chat_input = input_create(context->renderer, INPUT_CHAT, cfg_chat_input);
         if (!chat_input) loading_fails++;
         free(cfg_chat_input);

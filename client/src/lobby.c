@@ -227,6 +227,8 @@ int lobby_init(AppContext* context) {
 int struct_lobby_init(Lobby* lobby, int id, const char* code) {
     if (!lobby) return EXIT_FAILURE;
 
+    chat_clear(&lobby->chat);
+
     for(int i = 0; i < MAX_USERS; i++) {
         if (lobby->users[i] && lobby->users[i]->name) {
             free(lobby->users[i]->name);
@@ -245,6 +247,10 @@ int struct_lobby_init(Lobby* lobby, int id, const char* code) {
 
     for (int i = 0; i < MAX_USERS; i++) {
         lobby->users[i] = NULL;
+    }
+
+    if (chat_init(&lobby->chat, CHAT_MAX_MESSAGES) != EXIT_SUCCESS) {
+        return EXIT_FAILURE;
     }
 
     return EXIT_SUCCESS;

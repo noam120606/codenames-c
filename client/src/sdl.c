@@ -281,6 +281,7 @@ int destroy_context(AppContext* context) {
             free(context->lobby->game);
             context->lobby->game = NULL;
         }
+        chat_clear(&context->lobby->chat);
         free(context->lobby);
         context->lobby = NULL;
     }

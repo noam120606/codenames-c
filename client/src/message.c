@@ -223,6 +223,12 @@ int on_message(AppContext* context, char* message) {
             char* sender = (char*)args.argv[0];
             char* chat_message = (char*)args.argv[1];
 
+            char full_message[512];
+            format_to(full_message, sizeof(full_message), "%s: %s", sender, chat_message);
+            if (chat_push(&context->lobby->chat, full_message) != EXIT_SUCCESS) {
+                printf("Failed to store chat message in lobby history\n");
+            }
+
             printf("%s: %s\n", sender, chat_message);
             
             break;

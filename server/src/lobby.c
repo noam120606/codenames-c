@@ -21,6 +21,7 @@ static void destroy_lobby_callback(void* data, void* context) {
             tcp_send_to_client(codenames, lobby->users[i]->socket_fd, msg);
             destroy_user(lobby->users[i]);
         }
+        chat_clear(&lobby->chat);
         free(lobby);
     }
 }
@@ -52,7 +53,13 @@ Lobby* create_lobby(LobbyManager* manager) {
     lobby->game = NULL;
     strcpy(lobby->code, generate_code());
 
+    if (chat_init(&lobby->chat, CHAT_MAX_MESSAGES) != EXIT_SUCCESS) {
+        free(lobby);
+        return NULL;
+    }
+
     if (list_add(manager->lobbies, lobby) != EXIT_SUCCESS) {
+        chat_clear(&lobby->chat);
         free(lobby);
         return NULL;
     }
@@ -152,6 +159,7 @@ void destroy_lobby(Codenames* codenames, Lobby* lobby) {
             destroy_user(lobby->users[i]);
         }
         list_remove(codenames->lobby->lobbies, lobby);
+        chat_clear(&lobby->chat);
         free(lobby);
     }
 }
@@ -287,6 +295,7 @@ int request_leave_lobby(Codenames* codenames, TcpClient* client, char* message, 
     if (lobby->nb_players == 0) {
         list_remove(codenames->lobby->lobbies, lobby);
         printf("Lobby %d destroyed (empty)\n", lobby->id);
+        chat_clear(&lobby->chat);
         free(lobby);
     }
     /* Si le owner a quitté, transférer au premier joueur restant */
