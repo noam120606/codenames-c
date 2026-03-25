@@ -293,17 +293,20 @@ int window_place_button(const Window* win, Button* button, int rel_x, int rel_y)
 	int origin_y = 0;
 	if (window_content_origin_screen(win, &origin_x, &origin_y) != EXIT_SUCCESS) return EXIT_FAILURE;
 
-	int x = origin_x + rel_x;
-	int y = origin_y + rel_y;
+	/* rel_x/rel_y: coordonnées relatives au centre de la fenêtre
+	 * rel_x positif = droite, rel_y positif = haut
+	 * On centre le bouton sur la position calculée */
+	int screen_x = origin_x + rel_x - (button->cfg->rect.w / 2);
+	int screen_y = origin_y - rel_y - (button->cfg->rect.h / 2);
 
-	button->cfg->x = x;
-	button->cfg->y = y;
-	button->cfg->rect.x = x;
-	button->cfg->rect.y = y;
+	button->cfg->x = screen_x;
+	button->cfg->y = screen_y;
+	button->cfg->rect.x = screen_x;
+	button->cfg->rect.y = screen_y;
 
 	if (button->cfg->is_text) {
-		button->cfg->text_rect.x = x + (button->cfg->rect.w - button->cfg->text_rect.w) / 2;
-		button->cfg->text_rect.y = y + (button->cfg->rect.h - button->cfg->text_rect.h) / 2;
+		button->cfg->text_rect.x = screen_x + (button->cfg->rect.w - button->cfg->text_rect.w) / 2;
+		button->cfg->text_rect.y = screen_y + (button->cfg->rect.h - button->cfg->text_rect.h) / 2;
 	}
 
 	return EXIT_SUCCESS;
@@ -316,10 +319,16 @@ int window_place_input(const Window* win, Input* in, int rel_x, int rel_y) {
 	int origin_y = 0;
 	if (window_content_origin_screen(win, &origin_x, &origin_y) != EXIT_SUCCESS) return EXIT_FAILURE;
 
-	in->cfg->x = origin_x + rel_x;
-	in->cfg->y = origin_y + rel_y;
-	in->cfg->rect.x = in->cfg->x;
-	in->cfg->rect.y = in->cfg->y;
+	/* rel_x/rel_y: coordonnées relatives au centre de la fenêtre
+	 * rel_x positif = droite, rel_y positif = haut
+	 * On centre l'input sur la position calculée */
+	int screen_x = origin_x + rel_x - (in->cfg->rect.w / 2);
+	int screen_y = origin_y - rel_y - (in->cfg->rect.h / 2);
+
+	in->cfg->x = screen_x;
+	in->cfg->y = screen_y;
+	in->cfg->rect.x = screen_x;
+	in->cfg->rect.y = screen_y;
 
 	return EXIT_SUCCESS;
 }
@@ -331,12 +340,21 @@ int window_place_text(const Window* win, Text* text, int rel_x, int rel_y) {
 	int tex_h = 0;
 	if (SDL_QueryTexture(text->texture, NULL, NULL, &tex_w, &tex_h) != 0) return EXIT_FAILURE;
 
-	int logical_x = 0;
-	int logical_y = 0;
-	window_content_to_logical(win, rel_x, rel_y, &logical_x, &logical_y);
+	int origin_x = 0;
+	int origin_y = 0;
+	if (window_content_origin_screen(win, &origin_x, &origin_y) != EXIT_SUCCESS) return EXIT_FAILURE;
 
-	/* display_text centre le texte autour de cfg.x/cfg.y */
-	update_text_position(text, logical_x + (tex_w / 2), logical_y - (tex_h / 2));
+	/* rel_x/rel_y: coordonnées relatives au centre de la fenêtre
+	 * rel_x positif = droite, rel_y positif = haut
+	 * On centre le texte sur la position calculée */
+	int screen_x = origin_x + rel_x;
+	int screen_y = origin_y - rel_y;
+
+	/* Convertir en coordonnées logiques pour update_text_position */
+	int logical_x = screen_x - (WIN_WIDTH / 2);
+	int logical_y = (WIN_HEIGHT / 2) - screen_y;
+
+	update_text_position(text, logical_x, logical_y);
 	return EXIT_SUCCESS;
 }
 
@@ -356,12 +374,19 @@ int window_display_image(SDL_Renderer* renderer, const Window* win, SDL_Texture*
 	int draw_h = (int)(og_h * size_factor);
 	if (draw_w <= 0 || draw_h <= 0) return EXIT_FAILURE;
 
-	int logical_x = 0;
-	int logical_y = 0;
-	window_content_to_logical(win, rel_x, rel_y, &logical_x, &logical_y);
+	int origin_x = 0;
+	int origin_y = 0;
+	if (window_content_origin_screen(win, &origin_x, &origin_y) != EXIT_SUCCESS) return EXIT_FAILURE;
 
-	int center_logical_x = logical_x + (draw_w / 2);
-	int center_logical_y = logical_y - (draw_h / 2);
+	/* rel_x/rel_y: coordonnées relatives au centre de la fenêtre
+	 * rel_x positif = droite, rel_y positif = haut
+	 * L'image sera centrée sur cette position */
+	int screen_x = origin_x + rel_x;
+	int screen_y = origin_y - rel_y;
 
-	return display_image(renderer, texture, center_logical_x, center_logical_y, size_factor, angle, flip, ratio, opacity);
+	/* Convertir en coordonnées logiques pour display_image */
+	int logical_x = screen_x - (WIN_WIDTH / 2);
+	int logical_y = (WIN_HEIGHT / 2) - screen_y;
+
+	return display_image(renderer, texture, logical_x, logical_y, size_factor, angle, flip, ratio, opacity);
 }
