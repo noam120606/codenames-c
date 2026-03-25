@@ -9,6 +9,7 @@ SDL_Texture* card_f_blue;
 SDL_Texture* card_black;
 
 Button* btn_quit_game = NULL;
+Button* btn_hint_submit = NULL;
 
 Input* hint_input = NULL;
 Input* hint_count_input = NULL;
@@ -53,25 +54,6 @@ static int red_player_text_index = 0;
 #define NUM_CARDS 25
 static Text* txt_card_words[NUM_CARDS] = {NULL};
 
-static void hint_on_submit(AppContext* context, const char* text) {
-    printf("Hint input submitted: %s\n", text ? text : "");
-    
-    /* Envoi de l'indice au serveur */
-    int valid = valid_hint(text, context->lobby->game->words);
-
-    if (text && valid) {
-        window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, &COL_WHITE); // Réinitialiser la couleur du label de soumission
-        window_edit_cfg(hint_window, WIN_CFG_TITLE, "Saisissez un mot indice"); // Réinitialiser le label de soumission
-        char msg[64];
-        format_to(msg, sizeof(msg), "%d %s", MSG_SUBMIT_HINT, text);
-        send_tcp(context->sock, msg);
-    } else { // TODO : Envoyer un message
-        window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, valid ? &COL_GREEN : &COL_RED); // Mettre à jour la couleur du label de soumission pour indiquer que le mot est invalide
-        window_edit_cfg(hint_window, WIN_CFG_TITLE, "Le mot saisi est invalide"); // Mettre à jour le label de soumission pour indiquer que le mot est invalide
-        printf("Invalid hint submitted: %s\n", text ? text : "");
-    }
-}
-
 static ButtonReturn game_button_click(AppContext* context, Button* button) {
     if (!context || !button) return BTN_RET_NONE;
 
@@ -86,42 +68,48 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
         printf("Left game and returned to menu\n");
     }
 
+    if (button == btn_hint_submit) {
+
+        char* text = hint_input->cfg->text;
+        int nb_hint = (int)atoi(hint_count_input->cfg->text);
+
+        printf("Hint input submitted: %s\n", text ? text : "");
+        
+        /* Envoi de l'indice au serveur */
+        int valid = valid_hint(text, context->lobby->game->words);
+
+        if (text && valid) {
+            window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, &COL_WHITE); // Réinitialiser la couleur du label de soumission
+            window_edit_cfg(hint_window, WIN_CFG_TITLE, "Saisissez un mot indice"); // Réinitialiser le label de soumission
+            char msg[64];
+            format_to(msg, sizeof(msg), "%d %d %s", MSG_SUBMIT_HINT, nb_hint, text);
+            send_tcp(context->sock, msg);
+        } else { // TODO : Envoyer un message
+            window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, valid ? &COL_GREEN : &COL_RED); // Mettre à jour la couleur du label de soumission pour indiquer que le mot est invalide
+            window_edit_cfg(hint_window, WIN_CFG_TITLE, "Le mot saisi est invalide"); // Mettre à jour le label de soumission pour indiquer que le mot est invalide
+            printf("Invalid hint submitted: %s\n", text ? text : "");
+        }
+    }
+
     return BTN_RET_NONE;
 }
 
 void game_handle_event(AppContext* context, SDL_Event* e) {
     if (!context || !e) return;
 
-    if (hint_input) {
-        input_handle_event(context, hint_input, e);
-    }
-    if (hint_count_input) {
-        input_handle_event(context, hint_count_input, e);
-    }
-    if (chat_input) {
-        input_handle_event(context, chat_input, e);
-    }
+    if (hint_input) input_handle_event(context, hint_input, e);
+    if (hint_count_input) input_handle_event(context, hint_count_input, e);
+    if (chat_input) input_handle_event(context, chat_input, e);
 
-    if (blue_panel) {
-        window_handle_event(context, blue_panel, e);
-    }
-    if (red_panel) {
-        window_handle_event(context, red_panel, e);
-    }
-    if (history_window_blue) {
-        window_handle_event(context, history_window_blue, e);
-    }
-    if (history_window_red) {
-        window_handle_event(context, history_window_red, e);
-    }
+    if (blue_panel) window_handle_event(context, blue_panel, e);
+    if (red_panel) window_handle_event(context, red_panel, e);
+    if (history_window_blue) window_handle_event(context, history_window_blue, e);
+    if (history_window_red) window_handle_event(context, history_window_red, e);
 
-    if (hint_window) {
-        window_handle_event(context, hint_window, e);
-    }
+    if (hint_window) window_handle_event(context, hint_window, e);
 
-    if (btn_quit_game) {
-        button_handle_event(context, btn_quit_game, e);
-    }
+    if (btn_quit_game) button_handle_event(context, btn_quit_game, e);
+    if (btn_hint_submit) button_handle_event(context, btn_hint_submit, e);
 }
 
 int game_init(AppContext * context) {
@@ -130,62 +118,64 @@ int game_init(AppContext * context) {
 
     // Chargement image
     card_h_classic = load_image(context->renderer, "assets/img/cards/none/H.png");
-    if (!card_h_classic) {
-        printf("Failed to load card image\n");
-        loading_fails++;
-    }
+    if (!card_h_classic) loading_fails++;
+
     card_f_classic = load_image(context->renderer, "assets/img/cards/none/F.png");
-    if (!card_f_classic) {
-        printf("Failed to load card image\n");
-        loading_fails++;
-    }
+    if (!card_f_classic) loading_fails++;
+
     card_h_red = load_image(context->renderer, "assets/img/cards/red/H.png");
-    if (!card_h_red) {
-        printf("Failed to load card image\n");
-        loading_fails++;
-    }
+    if (!card_h_red) loading_fails++;
+
     card_f_red = load_image(context->renderer, "assets/img/cards/red/F.png");
-    if (!card_f_red) {
-        printf("Failed to load card image\n");
-        loading_fails++;
-    }
+    if (!card_f_red) loading_fails++;
+
     card_h_blue = load_image(context->renderer, "assets/img/cards/blue/H.png");
-    if (!card_h_blue) {
-        printf("Failed to load card image\n");
-        loading_fails++;
-    }
+    if (!card_h_blue) loading_fails++;
+
     card_f_blue = load_image(context->renderer, "assets/img/cards/blue/F.png");
-    if (!card_f_blue) {
-        printf("Failed to load card image\n");
-        loading_fails++;
-    }
+    if (!card_f_blue) loading_fails++;
+
     card_black = load_image(context->renderer, "assets/img/cards/black/B.png");
-    if (!card_black) {
-        printf("Failed to load card image\n");
-        loading_fails++;
-    }
+    if (!card_black) loading_fails++;
 
     ButtonConfig* cfg_btn_quit_game = button_config_init();
     if (cfg_btn_quit_game) {
-        cfg_btn_quit_game->x         = -775;
-        cfg_btn_quit_game->y         = 450;
-        cfg_btn_quit_game->h         = 64;
+        cfg_btn_quit_game->x = -775;
+        cfg_btn_quit_game->y = 450;
+        cfg_btn_quit_game->h = 64;
         cfg_btn_quit_game->font_path = FONT_LARABIE;
-        cfg_btn_quit_game->color     = COL_WHITE;
-        cfg_btn_quit_game->text      = "Quitter la partie";
-        cfg_btn_quit_game->callback  = game_button_click;
+        cfg_btn_quit_game->color = COL_WHITE;
+        cfg_btn_quit_game->text = "Quitter la partie";
+        cfg_btn_quit_game->callback = game_button_click;
         btn_quit_game = button_create(context->renderer, 0, cfg_btn_quit_game);
-        if (!btn_quit_game) {
-            loading_fails++;
-        }
+        if (!btn_quit_game) loading_fails++;
         free(cfg_btn_quit_game);
+    } else {
+        loading_fails++;
+    }
+
+    ButtonConfig* cfg_btn_hint_submit = button_config_init();
+    if (cfg_btn_hint_submit) {
+        cfg_btn_hint_submit->x = 30;
+        cfg_btn_hint_submit->y = -450;
+        cfg_btn_hint_submit->w = 64;
+        cfg_btn_hint_submit->h = 64;
+        cfg_btn_hint_submit->font_path = FONT_NOTO; // inclus les emojis
+        cfg_btn_hint_submit->color = COL_WHITE;
+        cfg_btn_hint_submit->text = NULL;
+        cfg_btn_hint_submit->is_text = 0;
+        cfg_btn_hint_submit->tex_path = "assets/img/buttons/validate1.png";
+        cfg_btn_hint_submit->callback = game_button_click;
+        btn_hint_submit = button_create(context->renderer, 0, cfg_btn_hint_submit);
+        if (!btn_hint_submit) loading_fails++;
+        free(cfg_btn_hint_submit);
     } else {
         loading_fails++;
     }
 
     InputConfig* cfg_hint_input = input_config_init();
     if (cfg_hint_input) {
-        cfg_hint_input->x = 0;
+        cfg_hint_input->x = -30;
         cfg_hint_input->y = -450;
         cfg_hint_input->w = 500;
         cfg_hint_input->h = 64;
@@ -194,16 +184,14 @@ int game_init(AppContext * context) {
         cfg_hint_input->placeholders = HINT_INPUT_PLACEHOLDERS;
         cfg_hint_input->placeholder_count = 1;
         cfg_hint_input->maxlen = 50;
+        cfg_hint_input->disabled = 1;
         cfg_hint_input->centered = 1;
-        cfg_hint_input->on_submit = hint_on_submit;
         cfg_hint_input->allowed_pattern = "^[A-Za-z]$";
         cfg_hint_input->submit_pattern = "^[A-Za-z]{50}$";
         cfg_hint_input->bg_path = "assets/img/inputs/empty.png";
         cfg_hint_input->bg_padding = 16;
         hint_input = input_create(context->renderer, INPUT_HINT, cfg_hint_input);
-        if (!hint_input) {
-            loading_fails++;
-        }
+        if (!hint_input) loading_fails++;
         free(cfg_hint_input);
     } else {
         loading_fails++;
@@ -211,24 +199,23 @@ int game_init(AppContext * context) {
 
     InputConfig* cfg_hint_count_input = input_config_init();
     if (cfg_hint_count_input) {
-        cfg_hint_count_input->x = 300;
+        cfg_hint_count_input->x = 270;
         cfg_hint_count_input->y = -450;
-        cfg_hint_count_input->w = 70;
+        cfg_hint_count_input->w = 64;
         cfg_hint_count_input->h = 64;
         cfg_hint_count_input->font_path = FONT_LARABIE;
         cfg_hint_count_input->font_size = 24;
         cfg_hint_count_input->placeholders = HINT_COUNT_INPUT_PLACEHOLDERS;
         cfg_hint_count_input->placeholder_count = 3;
         cfg_hint_count_input->maxlen = 1;
+        cfg_hint_count_input->disabled = 1;
         cfg_hint_count_input->centered = 1;
         cfg_hint_count_input->allowed_pattern = "^[0-9]$";
         cfg_hint_count_input->submit_pattern = "^[0-9]{1}$";
         cfg_hint_count_input->bg_path = "assets/img/inputs/empty.png";
         cfg_hint_count_input->bg_padding = 10;
         hint_count_input = input_create(context->renderer, INPUT_HINT_COUNT, cfg_hint_count_input);
-        if (!hint_count_input) {
-            loading_fails++;
-        }
+        if (!hint_count_input) loading_fails++;
         free(cfg_hint_count_input);
     } else {
         loading_fails++;
@@ -251,9 +238,7 @@ int game_init(AppContext * context) {
         cfg_chat_input->bg_path = "assets/img/inputs/empty.png";
         cfg_chat_input->bg_padding = 16;
         chat_input = input_create(context->renderer, INPUT_CHAT, cfg_chat_input);
-        if (!chat_input) {
-            loading_fails++;
-        }
+        if (!chat_input) loading_fails++;
         free(cfg_chat_input);
     } else {
         loading_fails++;
@@ -302,9 +287,7 @@ int game_init(AppContext * context) {
         cfg_blue_panel->titlebar_color = TEAM_BLUE_COLOR;
         cfg_blue_panel->bg_color = (SDL_Color){20, 20, 20, 220};
         blue_panel = window_create(0, cfg_blue_panel);
-        if (!blue_panel) {
-            loading_fails++;
-        }
+        if (!blue_panel) loading_fails++;
         free(cfg_blue_panel);
     } else {
         loading_fails++;
@@ -321,9 +304,7 @@ int game_init(AppContext * context) {
         cfg_red_panel->bg_color = (SDL_Color){20, 20, 20, 220};
         cfg_red_panel->titlebar_color = TEAM_RED_COLOR;
         red_panel = window_create(1, cfg_red_panel);
-        if (!red_panel) {
-            loading_fails++;
-        }
+        if (!red_panel) loading_fails++;
         free(cfg_red_panel);
     } else {
         loading_fails++;
@@ -340,9 +321,7 @@ int game_init(AppContext * context) {
         cfg_history_blue->titlebar_color = TEAM_BLUE_COLOR;
         cfg_history_blue->bg_color = (SDL_Color){20, 20, 20, 220};
         history_window_blue = window_create(0, cfg_history_blue);
-        if (!history_window_blue) {
-            loading_fails++;
-        }
+        if (!history_window_blue) loading_fails++;
         free(cfg_history_blue);
     } else {
         loading_fails++;
@@ -359,9 +338,7 @@ int game_init(AppContext * context) {
         cfg_history_red->titlebar_color = TEAM_RED_COLOR;
         cfg_history_red->bg_color = (SDL_Color){20, 20, 20, 220};
         history_window_red = window_create(1, cfg_history_red);
-        if (!history_window_red) {
-            loading_fails++;
-        }
+        if (!history_window_red) loading_fails++;
         free(cfg_history_red);
     } else {
         loading_fails++;
@@ -379,9 +356,7 @@ int game_init(AppContext * context) {
         cfg_hint_window->titlebar_color = COL_GRAY;
         cfg_hint_window->bg_color = (SDL_Color){20, 20, 20, 220};
         hint_window = window_create(1, cfg_hint_window);
-        if (!hint_window) {
-            loading_fails++;
-        }
+        if (!hint_window) loading_fails++;
         free(cfg_hint_window);
     } else {
         loading_fails++;
@@ -580,12 +555,16 @@ void game_display(AppContext * context) {
             (context->lobby->game->state == GAMESTATE_TURN_BLUE_SPY && context->player_team == TEAM_BLUE)
         ) {
             if (hint_input) {
-                window_place_input(hint_window, hint_input, -40, -15);
+                window_place_input(hint_window, hint_input, -70, -15);
                 input_render(context->renderer, hint_input);
             }
             if (hint_count_input) {
-                window_place_input(hint_window, hint_count_input, 260, -15);
+                window_place_input(hint_window, hint_count_input, 215, -15);
                 input_render(context->renderer, hint_count_input);
+            }
+            if (btn_hint_submit) {
+                window_place_button(hint_window, btn_hint_submit, 285, -15);
+                button_render(context->renderer, btn_hint_submit);
             }
         } else {
             update_text(context, txt_turn_label, turn_text);
@@ -609,6 +588,7 @@ int game_free() {
     if (card_f_blue) { free_image(card_f_blue); card_f_blue = NULL; }
     if (card_black) { free_image(card_black); card_black = NULL; }
     if (btn_quit_game) { button_destroy(btn_quit_game); btn_quit_game = NULL; }
+    if (btn_hint_submit) { button_destroy(btn_hint_submit); btn_hint_submit = NULL; }
     if (hint_input) { input_destroy(hint_input); hint_input = NULL; }
     if (hint_count_input) { input_destroy(hint_count_input); hint_count_input = NULL; }
     if (chat_input) { input_destroy(chat_input); chat_input = NULL; }

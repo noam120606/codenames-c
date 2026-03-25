@@ -52,6 +52,7 @@ typedef enum {
  * @param init_text Texte initial à afficher dans l'input. Si NULL ou chaîne vide, l'input commence vide.
  * @param rect Rectangle SDL calculé automatiquement à partir de x/y/w/h, utilisé pour le rendu et la détection de clics.
  * @param text Buffer de texte saisi, géré en interne par l'input.
+ * @param disabled Indique si la pression de la touche entrée est désactivée (1) ou non (0).
  * @param len Longueur actuelle du texte saisi.
  * @param cursor_pos Position actuelle du curseur dans le texte (index entre 0 et len).
  * @param focused Indique si l'input est actuellement focalisé (1) ou non (0).
@@ -89,6 +90,7 @@ typedef struct InputConfig {
     const char* init_text;
     SDL_Rect rect;
     char* text;
+    int disabled;
     int len;
     int cursor_pos;
     int focused;

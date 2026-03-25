@@ -17,6 +17,9 @@ static void input_clear_selection_internal(Input* in);
 static void input_submit_internal(AppContext* context, Input* in) {
     if (!in || !in->cfg) return;
 
+    // Requis pour les inputs du mot indice et le nombre de mots.
+    if (in->cfg->disabled) return;
+
     if (in->cfg->submit_pattern && in->cfg->text) {
         regex_t regex;
         if (regcomp(&regex, in->cfg->submit_pattern, REG_EXTENDED | REG_NOSUB) == 0) {
@@ -83,6 +86,7 @@ InputConfig* input_config_init() {
 
     cfg->rect = (SDL_Rect){0, 0, 0, 0};
     cfg->text = NULL;
+    cfg->disabled = 0;
     cfg->len = 0;
     cfg->cursor_pos = 0;
     cfg->focused = 0;
