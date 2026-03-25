@@ -1,8 +1,9 @@
 #include "../lib/all.h"
 
-#define FILTER_DEFAULT_CUTOFF_HZ 1200.0f
+/* Constantes internes du module audio. */
 #define AUDIO_PI 3.14159265358979323846f
 
+/* Etat d'un filtre passe-bas appliqué en continu sur un canal. */
 typedef struct {
     int active;
     float alpha;
@@ -10,33 +11,52 @@ typedef struct {
     float previous_right;
 } ChannelFilterState;
 
+/* Etat d'un filtre passe-bas interpolé (fade in/out par filtre). */
+typedef struct {
+    int active;
+    Uint32 start_ticks;
+    Uint32 duration_ms;
+    float start_alpha;
+    float end_alpha;
+    int deactivate_on_complete;
+    float previous_left;
+    float previous_right;
+} ChannelFadeFilterState;
+
+/* Etat global interne du module audio. */
 static Mix_Chunk* sounds[MAX_SOUNDS];
 static int sound_channels[MAX_SOUNDS];
 static SoundConfig sound_cfgs[MAX_SOUNDS];
 static int type_volumes[2] = {MIX_MAX_VOLUME, MIX_MAX_VOLUME};
 static SoundID channel_sound_ids[MAX_SOUNDS];
 static ChannelFilterState channel_filters[MAX_SOUNDS];
+static ChannelFadeFilterState channel_fade_filters[MAX_SOUNDS];
 
+/* Clamp un volume SDL_mixer dans [0, MIX_MAX_VOLUME]. */
 static int clamp_volume(int volume) {
     if (volume < 0) return 0;
     if (volume > MIX_MAX_VOLUME) return MIX_MAX_VOLUME;
     return volume;
 }
 
+/* Vérifie qu'un SoundID est dans la plage valide. */
 static int is_valid_sound_id(SoundID id) {
     return id >= 0 && id < MAX_SOUNDS;
 }
 
+/* Vérifie qu'une catégorie audio est valide. */
 static int is_valid_kind(AudioSoundKind kind) {
     return kind == AUDIO_SOUND_KIND_MUSIC || kind == AUDIO_SOUND_KIND_SFX;
 }
 
+/* Calcule le volume final appliqué au canal (volume son * volume type). */
 static int compute_effective_volume(SoundID id) {
     SoundConfig* cfg = &sound_cfgs[id];
     int kind_volume = type_volumes[cfg->kind];
     return (cfg->volume * kind_volume) / MIX_MAX_VOLUME;
 }
 
+/* Convertit une fréquence de coupure (Hz) en coefficient alpha du passe-bas. */
 static float compute_low_pass_alpha(float cutoff_hz) {
     int frequency = 0;
     Uint16 format = 0;
@@ -47,7 +67,7 @@ static float compute_low_pass_alpha(float cutoff_hz) {
     }
 
     if (cutoff_hz <= 0.0f) {
-        cutoff_hz = FILTER_DEFAULT_CUTOFF_HZ;
+        cutoff_hz = AUDIO_FILTER_DEFAULT_CUTOFF_HZ;
     }
 
     float dt = 1.0f / (float)frequency;
@@ -55,10 +75,7 @@ static float compute_low_pass_alpha(float cutoff_hz) {
     return dt / (rc + dt);
 }
 
-/* Charge un fichier audio de façon sûre : vérifie d'abord son existence
- * pour éviter les erreurs Mix_LoadWAV_RW with NULL src lorsque le chemin
- * est absent. Retourne NULL si le fichier n'existe pas ou si le chargement échoue.
- */
+/* Charge un son de manière sûre: vérifie la présence du fichier avant chargement. */
 static Mix_Chunk* load_wav_safe(const char* path) {
     if (!path || access(path, R_OK) != 0) {
         /* fichier non trouvé */
@@ -68,6 +85,7 @@ static Mix_Chunk* load_wav_safe(const char* path) {
     return c;
 }
 
+/* Callback SDL_mixer: applique un passe-bas fixe sur le flux stéréo du canal. */
 static void low_pass_effect(int channel, void* stream, int len, void* udata) {
     (void)channel;
 
@@ -92,6 +110,47 @@ static void low_pass_effect(int channel, void* stream, int len, void* udata) {
     }
 }
 
+/* Callback SDL_mixer: applique un passe-bas interpolé pour un fade par filtre. */
+static void fade_low_pass_effect(int channel, void* stream, int len, void* udata) {
+    (void)channel;
+
+    ChannelFadeFilterState* state = (ChannelFadeFilterState*)udata;
+    if (!state || !state->active || !stream || len <= 0) {
+        return;
+    }
+
+    Uint32 now = SDL_GetTicks();
+    Uint32 elapsed = now - state->start_ticks;
+    float t = 1.0f;
+    if (state->duration_ms > 0) {
+        t = (float)elapsed / (float)state->duration_ms;
+        if (t < 0.0f) t = 0.0f;
+        if (t > 1.0f) t = 1.0f;
+    }
+
+    float alpha = state->start_alpha + (state->end_alpha - state->start_alpha) * t;
+
+    Sint16* samples = (Sint16*)stream;
+    int sample_count = len / (int)sizeof(Sint16);
+
+    for (int i = 0; i < sample_count; i += 2) {
+        float left_in = (float)samples[i];
+        state->previous_left += alpha * (left_in - state->previous_left);
+        samples[i] = (Sint16)state->previous_left;
+
+        if (i + 1 < sample_count) {
+            float right_in = (float)samples[i + 1];
+            state->previous_right += alpha * (right_in - state->previous_right);
+            samples[i + 1] = (Sint16)state->previous_right;
+        }
+    }
+
+    if (t >= 1.0f && state->deactivate_on_complete) {
+        state->active = 0;
+    }
+}
+
+/* Réinitialise l'état interne d'un canal audio. */
 static void reset_channel_state(int channel) {
     if (channel < 0 || channel >= MAX_SOUNDS) {
         return;
@@ -102,8 +161,18 @@ static void reset_channel_state(int channel) {
     channel_filters[channel].alpha = 0.0f;
     channel_filters[channel].previous_left = 0.0f;
     channel_filters[channel].previous_right = 0.0f;
+
+    channel_fade_filters[channel].active = 0;
+    channel_fade_filters[channel].start_ticks = 0;
+    channel_fade_filters[channel].duration_ms = 0;
+    channel_fade_filters[channel].start_alpha = 0.0f;
+    channel_fade_filters[channel].end_alpha = 0.0f;
+    channel_fade_filters[channel].deactivate_on_complete = 0;
+    channel_fade_filters[channel].previous_left = 0.0f;
+    channel_fade_filters[channel].previous_right = 0.0f;
 }
 
+/* (Ré)applique le filtre configuré pour un son sur son canal de lecture. */
 static void apply_channel_filter(int channel, SoundID id) {
     if (channel < 0 || channel >= MAX_SOUNDS || !is_valid_sound_id(id)) {
         return;
@@ -142,7 +211,7 @@ static void apply_channel_filter(int channel, SoundID id) {
 }
 
 int audio_init() {
-    /* Si l'audio est désactivé via la variable d'environnement, ne rien faire. */
+    /* Si l'audio est désactivé via la variable d'environnement, ignorer l'init. */
     {
         const char* v = getenv("CODENAMES_AUDIO_DISABLED");
         if (v && strcmp(v, "0") != 0 && v[0] != '\0') {
@@ -165,22 +234,31 @@ int audio_init() {
     type_volumes[AUDIO_SOUND_KIND_MUSIC] = MIX_MAX_VOLUME;
     type_volumes[AUDIO_SOUND_KIND_SFX] = MIX_MAX_VOLUME;
 
-    // Initialize arrays
+    /* Initialisation des tableaux internes. */
     for (int i = 0; i < MAX_SOUNDS; i++) {
         sounds[i] = NULL;
         sound_channels[i] = -1;
         sound_cfgs[i].kind = AUDIO_SOUND_KIND_SFX;
         sound_cfgs[i].volume = MIX_MAX_VOLUME;
         sound_cfgs[i].bypass_filter = 1;
-        sound_cfgs[i].filter_cutoff_hz = FILTER_DEFAULT_CUTOFF_HZ;
+        sound_cfgs[i].filter_cutoff_hz = AUDIO_FILTER_DEFAULT_CUTOFF_HZ;
         channel_sound_ids[i] = -1;
         channel_filters[i].active = 0;
         channel_filters[i].alpha = 0.0f;
         channel_filters[i].previous_left = 0.0f;
         channel_filters[i].previous_right = 0.0f;
+
+        channel_fade_filters[i].active = 0;
+        channel_fade_filters[i].start_ticks = 0;
+        channel_fade_filters[i].duration_ms = 0;
+        channel_fade_filters[i].start_alpha = 0.0f;
+        channel_fade_filters[i].end_alpha = 0.0f;
+        channel_fade_filters[i].deactivate_on_complete = 0;
+        channel_fade_filters[i].previous_left = 0.0f;
+        channel_fade_filters[i].previous_right = 0.0f;
     }
 
-    // Load menu music as a chunk so it can be played on a channel
+    /* Chargement des sons. */
     sound_cfgs[MUSIC_MENU_LOBBY].kind = AUDIO_SOUND_KIND_MUSIC;
     sound_cfgs[MUSIC_MENU_LOBBY].kind = AUDIO_SOUND_KIND_MUSIC;
     sounds[MUSIC_MENU_LOBBY] = load_wav_safe("assets/audio/music_menu_lobby.ogg");
@@ -217,24 +295,103 @@ int audio_init() {
 }
 
 void audio_play(SoundID id, int loops) {
+    (void)audio_play_with_fade(id, loops, 0, AUDIO_FADE_IN_BY_VOLUME, NULL);
+}
+
+int audio_play_with_fade(
+    SoundID id,
+    int loops,
+    int fade_in_ms,
+    AudioFadeInType fade_type,
+    const AudioFadeInFilterParams* filter_params
+) {
     if (!is_valid_sound_id(id) || !sounds[id]) {
-        return;
+        return EXIT_FAILURE;
     }
 
-    int channel = Mix_PlayChannel(-1, sounds[id], loops);
+    int channel = -1;
+    if (fade_in_ms > 0 && fade_type == AUDIO_FADE_IN_BY_VOLUME) {
+        channel = Mix_FadeInChannel(-1, sounds[id], loops, fade_in_ms);
+    } else {
+        channel = Mix_PlayChannel(-1, sounds[id], loops);
+    }
+
     if (channel < 0) {
         printf("Erreur Mix_PlayChannel: %s\n", Mix_GetError());
-        return;
+        return EXIT_FAILURE;
     }
 
     if (channel >= MAX_SOUNDS) {
-        return;
+        Mix_HaltChannel(channel);
+        return EXIT_FAILURE;
     }
 
     sound_channels[id] = channel;
     channel_sound_ids[channel] = id;
     Mix_Volume(channel, compute_effective_volume(id));
-    apply_channel_filter(channel, id);
+
+    if (fade_in_ms <= 0 || fade_type == AUDIO_FADE_IN_BY_VOLUME) {
+        apply_channel_filter(channel, id);
+        return EXIT_SUCCESS;
+    }
+
+    if (fade_type == AUDIO_FADE_IN_BY_FILTER) {
+        AudioFilterType filter_type = AUDIO_FILTER_LOW_PASS;
+        float start_cutoff_hz = AUDIO_FILTER_MIN_CUTOFF_HZ;
+        float end_cutoff_hz = sound_cfgs[id].bypass_filter
+            ? AUDIO_FILTER_MAX_CUTOFF_HZ
+            : sound_cfgs[id].filter_cutoff_hz;
+
+        if (filter_params) {
+            filter_type = filter_params->filter_type;
+            start_cutoff_hz = filter_params->start_cutoff_hz;
+            end_cutoff_hz = filter_params->end_cutoff_hz;
+        }
+
+        if (filter_type != AUDIO_FILTER_LOW_PASS) {
+            Mix_HaltChannel(channel);
+            reset_channel_state(channel);
+            sound_channels[id] = -1;
+            return EXIT_FAILURE;
+        }
+
+        if (start_cutoff_hz <= 0.0f) {
+            start_cutoff_hz = AUDIO_FILTER_MIN_CUTOFF_HZ;
+        }
+        if (end_cutoff_hz <= 0.0f) {
+            end_cutoff_hz = sound_cfgs[id].bypass_filter
+                ? AUDIO_FILTER_MAX_CUTOFF_HZ
+                : (sound_cfgs[id].filter_cutoff_hz > 0.0f
+                    ? sound_cfgs[id].filter_cutoff_hz
+                    : AUDIO_FILTER_DEFAULT_CUTOFF_HZ);
+        }
+
+        Mix_UnregisterAllEffects(channel);
+
+        channel_fade_filters[channel].active = 1;
+        channel_fade_filters[channel].start_ticks = SDL_GetTicks();
+        channel_fade_filters[channel].duration_ms = (Uint32)fade_in_ms;
+        channel_fade_filters[channel].start_alpha = compute_low_pass_alpha(start_cutoff_hz);
+        channel_fade_filters[channel].end_alpha = compute_low_pass_alpha(end_cutoff_hz);
+        channel_fade_filters[channel].deactivate_on_complete = sound_cfgs[id].bypass_filter ? 1 : 0;
+        channel_fade_filters[channel].previous_left = 0.0f;
+        channel_fade_filters[channel].previous_right = 0.0f;
+
+        if (Mix_RegisterEffect(channel, fade_low_pass_effect, NULL, &channel_fade_filters[channel]) == 0) {
+            printf("Erreur Mix_RegisterEffect: %s\n", Mix_GetError());
+            Mix_HaltChannel(channel);
+            reset_channel_state(channel);
+            sound_channels[id] = -1;
+            return EXIT_FAILURE;
+        }
+
+        return EXIT_SUCCESS;
+    }
+
+    Mix_HaltChannel(channel);
+    reset_channel_state(channel);
+    sound_channels[id] = -1;
+    return EXIT_FAILURE;
 }
 
 int audio_set_sound_config(SoundID id, const SoundConfig* cfg) {
@@ -246,7 +403,7 @@ int audio_set_sound_config(SoundID id, const SoundConfig* cfg) {
     sound_cfgs[id].volume = clamp_volume(sound_cfgs[id].volume);
     sound_cfgs[id].bypass_filter = sound_cfgs[id].bypass_filter ? 1 : 0;
     if (sound_cfgs[id].filter_cutoff_hz <= 0.0f) {
-        sound_cfgs[id].filter_cutoff_hz = FILTER_DEFAULT_CUTOFF_HZ;
+        sound_cfgs[id].filter_cutoff_hz = AUDIO_FILTER_DEFAULT_CUTOFF_HZ;
     }
 
     int channel = sound_channels[id];
@@ -284,7 +441,7 @@ int audio_set_filter(SoundID id, AudioFilterType filter_type, float cutoff_frequ
     }
 
     if (filter_type == AUDIO_FILTER_LOW_PASS) {
-        cfg.filter_cutoff_hz = cutoff_frequency > 0.0f ? cutoff_frequency : FILTER_DEFAULT_CUTOFF_HZ;
+        cfg.filter_cutoff_hz = cutoff_frequency > 0.0f ? cutoff_frequency : AUDIO_FILTER_DEFAULT_CUTOFF_HZ;
         cfg.bypass_filter = 0;
     } else if (filter_type == AUDIO_FILTER_NONE) {
         cfg.bypass_filter = 1;
@@ -315,17 +472,97 @@ void audio_set_type_volume(AudioSoundKind kind, int volume) {
 }
 
 void audio_stop(SoundID id) {
+    (void)audio_stop_with_fade(id, 0, AUDIO_FADE_OUT_BY_VOLUME, NULL);
+}
+
+int audio_stop_with_fade(
+    SoundID id,
+    int fade_out_ms,
+    AudioFadeOutType fade_type,
+    const AudioFadeOutFilterParams* filter_params
+) {
     if (!is_valid_sound_id(id) || sound_channels[id] == -1) {
-        return;
+        return EXIT_FAILURE;
     }
 
     int channel = sound_channels[id];
-    if (channel >= 0 && channel < MAX_SOUNDS) {
+    if (channel < 0 || channel >= MAX_SOUNDS) {
+        sound_channels[id] = -1;
+        return EXIT_FAILURE;
+    }
+
+    if (!Mix_Playing(channel)) {
+        reset_channel_state(channel);
+        sound_channels[id] = -1;
+        return EXIT_SUCCESS;
+    }
+
+    if (fade_out_ms <= 0) {
         Mix_UnregisterAllEffects(channel);
         Mix_HaltChannel(channel);
         reset_channel_state(channel);
         sound_channels[id] = -1;
+        return EXIT_SUCCESS;
     }
+
+    if (fade_type == AUDIO_FADE_OUT_BY_VOLUME) {
+        Mix_UnregisterAllEffects(channel);
+        channel_fade_filters[channel].active = 0;
+
+        if (Mix_FadeOutChannel(channel, fade_out_ms) == 0) {
+            Mix_HaltChannel(channel);
+            reset_channel_state(channel);
+            sound_channels[id] = -1;
+        }
+        return EXIT_SUCCESS;
+    }
+
+    if (fade_type == AUDIO_FADE_OUT_BY_FILTER) {
+        AudioFilterType filter_type = AUDIO_FILTER_LOW_PASS;
+        float start_cutoff_hz = sound_cfgs[id].filter_cutoff_hz;
+        float end_cutoff_hz = AUDIO_FILTER_DEFAULT_CUTOFF_HZ;
+
+        if (filter_params) {
+            filter_type = filter_params->filter_type;
+            start_cutoff_hz = filter_params->start_cutoff_hz;
+            end_cutoff_hz = filter_params->end_cutoff_hz;
+        }
+
+        if (filter_type != AUDIO_FILTER_LOW_PASS) {
+            return EXIT_FAILURE;
+        }
+
+        if (start_cutoff_hz <= 0.0f) {
+            start_cutoff_hz = sound_cfgs[id].filter_cutoff_hz > 0.0f
+                ? sound_cfgs[id].filter_cutoff_hz
+                : AUDIO_FILTER_DEFAULT_CUTOFF_HZ;
+        }
+        if (end_cutoff_hz <= 0.0f) {
+            end_cutoff_hz = AUDIO_FILTER_MIN_CUTOFF_HZ;
+        }
+
+        Mix_UnregisterAllEffects(channel);
+
+        channel_fade_filters[channel].active = 1;
+        channel_fade_filters[channel].start_ticks = SDL_GetTicks();
+        channel_fade_filters[channel].duration_ms = (Uint32)fade_out_ms;
+        channel_fade_filters[channel].start_alpha = compute_low_pass_alpha(start_cutoff_hz);
+        channel_fade_filters[channel].end_alpha = compute_low_pass_alpha(end_cutoff_hz);
+        channel_fade_filters[channel].deactivate_on_complete = 0;
+        channel_fade_filters[channel].previous_left = 0.0f;
+        channel_fade_filters[channel].previous_right = 0.0f;
+
+        if (Mix_RegisterEffect(channel, fade_low_pass_effect, NULL, &channel_fade_filters[channel]) == 0) {
+            printf("Erreur Mix_RegisterEffect: %s\n", Mix_GetError());
+            channel_fade_filters[channel].active = 0;
+            return EXIT_FAILURE;
+        }
+
+        Mix_ExpireChannel(channel, fade_out_ms);
+        return EXIT_SUCCESS;
+    }
+
+    return EXIT_FAILURE;
 }
 
 int audio_is_playing(SoundID id) {

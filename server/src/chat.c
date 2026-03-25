@@ -86,7 +86,7 @@ int request_send_chat(Codenames* codenames, TcpClient* client, char* message, Ar
 
     // Diffuse le message de chat à tous les joueurs du lobby
     char msg[512];
-    format_to(msg, sizeof(msg), "%d %s: %s", MSG_SENDCHAT, args.argv[0], args.argv[1]);
+    format_to(msg, sizeof(msg), "%d %s %s", MSG_SENDCHAT, args.argv[0], args.argv[1]);
     if (chat_push(&lobby->chat, msg) != EXIT_SUCCESS) {
         printf("Failed to store chat message in lobby %d history\n", lobby->id);
     }

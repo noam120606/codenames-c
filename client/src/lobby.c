@@ -1,6 +1,7 @@
 #include "../lib/all.h"
 
 static int lobby_filter_applied = 0;
+
 Button* btn_red_agent = NULL;
 Button* btn_red_spy = NULL;
 Button* btn_blue_agent = NULL;
@@ -263,7 +264,7 @@ void lobby_display(AppContext* context) {
 
     /* Application d'un filtre sur la musique du menu (une seule fois) */
     if (!lobby_filter_applied) {
-        audio_set_filter(MUSIC_MENU_LOBBY, AUDIO_FILTER_LOW_PASS, 1700);
+        audio_set_filter(MUSIC_MENU_LOBBY, AUDIO_FILTER_LOW_PASS, 1600);
         lobby_filter_applied = 1;
     }
 
