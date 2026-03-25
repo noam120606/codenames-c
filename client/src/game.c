@@ -527,7 +527,7 @@ void game_render_cards(AppContext * context) {
 void game_display(AppContext * context) {
 
     if (!audio_is_playing(MUSIC_GAME)) {
-        audio_play(MUSIC_GAME, -1);
+        audio_play_with_fade(MUSIC_GAME, -1, 2000, AUDIO_FADE_IN_BY_VOLUME, NULL);
     }
 
     game_render_cards(context);

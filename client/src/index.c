@@ -220,7 +220,7 @@ int main(int argc, char* argv[]){
                 
                 // Couper la musique de game si elle est encore en train de jouer
                 if (audio_is_playing(MUSIC_GAME)) {
-                    audio_stop_with_fade(MUSIC_GAME, 1000, AUDIO_FADE_OUT_BY_VOLUME, NULL); // Fondu de 1s pour éviter une coupure brutale
+                    audio_stop_with_fade(MUSIC_GAME, 2000, AUDIO_FADE_OUT_BY_VOLUME, NULL); // Fondu de 2s pour éviter une coupure brutale
                 }
 
                 display_background(&context);
@@ -231,7 +231,7 @@ int main(int argc, char* argv[]){
                 
                 // Couper la musique de game si elle est encore en train de jouer
                 if (audio_is_playing(MUSIC_GAME)) {
-                    audio_stop_with_fade(MUSIC_GAME, 1000, AUDIO_FADE_OUT_BY_VOLUME, NULL); // Fondu de 1s pour éviter une coupure brutale
+                    audio_stop_with_fade(MUSIC_GAME, 2000, AUDIO_FADE_OUT_BY_VOLUME, NULL); // Fondu de 2s pour éviter une coupure brutale
                 }
 
                 display_background(&context);
@@ -245,7 +245,7 @@ int main(int argc, char* argv[]){
                 }
                 // Couper une fois la musique de lobby si elle est encore en train de jouer
                 if (audio_is_playing(MUSIC_MENU_LOBBY)) {
-                    audio_stop_with_fade(MUSIC_MENU_LOBBY, 1000, AUDIO_FADE_OUT_BY_VOLUME, NULL); // Fondu de 1s pour éviter une coupure brutale
+                    audio_stop_with_fade(MUSIC_MENU_LOBBY, 2000, AUDIO_FADE_OUT_BY_VOLUME, NULL); // Fondu de 2s pour éviter une coupure brutale
                 }
                 
                 display_background(&context);

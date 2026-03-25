@@ -1,7 +1,5 @@
 #include "../lib/all.h"
 
-static int lobby_filter_applied = 0;
-
 Button* btn_red_agent = NULL;
 Button* btn_red_spy = NULL;
 Button* btn_blue_agent = NULL;
@@ -85,9 +83,8 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
         context->player_team = TEAM_NONE;
         context->lobby->id = -1;
 
-        /* Retirer le filtre audio en quittant le lobby */
+        /* Retirer le filtre audio en quittant le lobby. */
         audio_set_filter(MUSIC_MENU_LOBBY, AUDIO_FILTER_NONE, 0);
-        lobby_filter_applied = 0;
         context->app_state = APP_STATE_MENU;
         printf("Returned to menu\n");
     }
@@ -262,10 +259,13 @@ void lobby_display(AppContext* context) {
     /* Réinitialiser le compteur d'index de texte joueur */
     current_player_text_index = 0;
 
-    /* Application d'un filtre sur la musique du menu (une seule fois) */
-    if (!lobby_filter_applied) {
-        audio_set_filter(MUSIC_MENU_LOBBY, AUDIO_FILTER_LOW_PASS, 1600);
-        lobby_filter_applied = 1;
+    /* Appliquer le filtre lobby uniquement si nécessaire, selon l'état audio réel. */
+    AudioFilterType current_filter = AUDIO_FILTER_NONE;
+    float current_cutoff = 0.0f;
+    if (audio_get_filter(MUSIC_MENU_LOBBY, &current_filter, &current_cutoff) == EXIT_SUCCESS) {
+        if (current_filter != AUDIO_FILTER_LOW_PASS || current_cutoff != 1600.0f) {
+            audio_set_filter(MUSIC_MENU_LOBBY, AUDIO_FILTER_LOW_PASS, 1600.0f);
+        }
     }
 
     /* Afficher le code et l'id du lobby */

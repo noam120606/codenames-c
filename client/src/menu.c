@@ -236,7 +236,7 @@ void menu_display(AppContext * context) {
 
 
     if (!audio_is_playing(MUSIC_MENU_LOBBY)) {
-        audio_play(MUSIC_MENU_LOBBY, -1);
+        audio_play_with_fade(MUSIC_MENU_LOBBY, -1, 2000, AUDIO_FADE_IN_BY_VOLUME, NULL);
     }
     
 

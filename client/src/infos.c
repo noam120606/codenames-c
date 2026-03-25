@@ -322,7 +322,7 @@ void infos_display(AppContext* context) {
         window_to_logical(context, mouse_x, mouse_y, &logical_mouse_x, &logical_mouse_y);
         
         // Constantes pour le positionnement
-        const int TRIGGER_OPEN_X = 20; // Seuil X pour déclencher l'animation
+        const int TRIGGER_OPEN_X = 50; // Seuil X pour déclencher l'animation
         const int TRIGGER_CLOSE_X = 240; // Seuil X pour refermer l'animation
         const int BASE_X = -900; // Position visible du bandeau
         const int HIDDEN_X = -1300; // Position hors écran (caché)

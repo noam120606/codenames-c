@@ -153,6 +153,16 @@ int audio_set_sound_volume(SoundID id, int volume);
 int audio_set_filter(SoundID id, AudioFilterType filter_type, float cutoff_frequency);
 
 /**
+ * @brief Récupère le filtre actuellement configuré pour un son.
+ * @param id Identifiant du son.
+ * @param out_filter_type Pointeur de sortie recevant le type de filtre.
+ * @param out_cutoff_frequency Pointeur de sortie recevant la fréquence de coupure en Hz
+ * (peut être NULL si non nécessaire).
+ * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE sinon.
+ */
+int audio_get_filter(SoundID id, AudioFilterType* out_filter_type, float* out_cutoff_frequency);
+
+/**
  * @brief Définit le volume global d'une catégorie de sons.
  * @param kind Catégorie de son ciblée (musique ou effet sonore).
  * @param volume Volume dans [0, MIX_MAX_VOLUME].

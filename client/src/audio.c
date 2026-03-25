@@ -452,6 +452,21 @@ int audio_set_filter(SoundID id, AudioFilterType filter_type, float cutoff_frequ
     return audio_set_sound_config(id, &cfg);
 }
 
+int audio_get_filter(SoundID id, AudioFilterType* out_filter_type, float* out_cutoff_frequency) {
+    SoundConfig cfg;
+    if (!out_filter_type || audio_get_sound_config(id, &cfg) != EXIT_SUCCESS) {
+        return EXIT_FAILURE;
+    }
+
+    *out_filter_type = cfg.bypass_filter ? AUDIO_FILTER_NONE : AUDIO_FILTER_LOW_PASS;
+
+    if (out_cutoff_frequency) {
+        *out_cutoff_frequency = cfg.filter_cutoff_hz;
+    }
+
+    return EXIT_SUCCESS;
+}
+
 void audio_set_type_volume(AudioSoundKind kind, int volume) {
     if (!is_valid_kind(kind)) {
         return;
