@@ -85,18 +85,17 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
 
         char* text = hint_input->cfg->text;
         int nb_hint = (int)atoi(hint_count_input->cfg->text);
-
-        printf("Hint input submitted: %s\n", text ? text : "");
-        
-        /* Envoi de l'indice au serveur */
         int valid = valid_hint(text, context->lobby->game->words);
-        // On stocke cette chaine : "Vous avez soumis le mot : " et on lui ajoute "text"
-        char title[64];
         
-
-        if (text && valid) {
-            format_to(title, sizeof(title), "Vous avez soumis le mot : %s", text ? text : "");
-            window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&COL_DARK_GREEN); // Réinitialiser la couleur du label de soumission
+        
+        
+        
+        char title[64];
+        /* Envoi de l'indice au serveur */
+        // On stocke cette chaine : "Vous avez soumis le mot : " et on lui ajoute "text" et "en nb_hint"
+        if (text && nb_hint && valid) {
+            format_to(title, sizeof(title), "Vous avez soumis le mot : %s en %d", text ? text : "", nb_hint);
+            window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&COL_DARK_GREEN); // Mettre à jour la couleur du label de soumission pour indiquer que le mot est valide
             window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)title); // Mettre à jour le label de soumission
             char msg[64];
             format_to(msg, sizeof(msg), "%d %d %s", MSG_SUBMIT_HINT, nb_hint, text);
@@ -105,6 +104,10 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
             window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&COL_RED); // Mettre à jour la couleur du label de soumission pour indiquer qu'aucun mot n'a été saisi
             window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)"Vous n'avez pas saisi de mot"); // Mettre à jour le label de soumission pour indiquer qu'aucun mot n'a été saisi
             printf("Invalid hint submitted: %s\n", text ? text : "");
+        } else if(nb_hint == NULL) {
+            window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&COL_RED); // Mettre à jour la couleur du label de soumission pour indiquer que le nombre d'indices est invalide
+            window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)"Vous n'avez pas saisi de nombre d'indices"); // Mettre à jour le label de soumission pour indiquer que le nombre d'indices est invalide
+            printf("No hint count submitted\n");
         } else {
             format_to(title, sizeof(title), "Le mot : %s est invalide", text ? text : "");
             window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&COL_RED); // Mettre à jour la couleur du label de soumission pour indiquer que le mot est invalide
@@ -141,25 +144,25 @@ int game_init(AppContext * context) {
     int loading_fails = 0;
 
     // Chargement image
-    card_h_classic = load_image(context->renderer, "assets/img/cards/none/H.png");
+    card_h_classic = load_image(context->renderer, "assets/img/cards/none/H_r217.png");
     if (!card_h_classic) loading_fails++;
 
-    card_f_classic = load_image(context->renderer, "assets/img/cards/none/F.png");
+    card_f_classic = load_image(context->renderer, "assets/img/cards/none/F_r217.png");
     if (!card_f_classic) loading_fails++;
 
-    card_h_red = load_image(context->renderer, "assets/img/cards/red/H.png");
+    card_h_red = load_image(context->renderer, "assets/img/cards/red/H_r217.png");
     if (!card_h_red) loading_fails++;
 
-    card_f_red = load_image(context->renderer, "assets/img/cards/red/F.png");
+    card_f_red = load_image(context->renderer, "assets/img/cards/red/F_r217.png");
     if (!card_f_red) loading_fails++;
 
-    card_h_blue = load_image(context->renderer, "assets/img/cards/blue/H.png");
+    card_h_blue = load_image(context->renderer, "assets/img/cards/blue/H_r217.png");
     if (!card_h_blue) loading_fails++;
 
-    card_f_blue = load_image(context->renderer, "assets/img/cards/blue/F.png");
+    card_f_blue = load_image(context->renderer, "assets/img/cards/blue/F_r217.png");
     if (!card_f_blue) loading_fails++;
 
-    card_black = load_image(context->renderer, "assets/img/cards/black/B.png");
+    card_black = load_image(context->renderer, "assets/img/cards/black/B_r217.png");
     if (!card_black) loading_fails++;
 
     ButtonConfig* cfg_btn_quit_game = button_config_init();
@@ -234,8 +237,8 @@ int game_init(AppContext * context) {
         cfg_hint_count_input->maxlen = 1;
         cfg_hint_count_input->disabled = 1;
         cfg_hint_count_input->centered = 1;
-        cfg_hint_count_input->allowed_pattern = "^[0-9]$";
-        cfg_hint_count_input->submit_pattern = "^[0-9]{1}$";
+        cfg_hint_count_input->allowed_pattern = "^[1-9]$";
+        cfg_hint_count_input->submit_pattern = "^[1-9]{1}$";
         cfg_hint_count_input->bg_path = "assets/img/inputs/square.png";
         cfg_hint_count_input->bg_padding = 10;
         hint_count_input = input_create(context->renderer, INPUT_HINT_COUNT, cfg_hint_count_input);
@@ -249,7 +252,7 @@ int game_init(AppContext * context) {
     if (cfg_chat_input) {
         cfg_chat_input->x = 750;
         cfg_chat_input->y = 450;
-        cfg_chat_input->w = 350;
+        cfg_chat_input->w = 348; // Légerement plus petit que la largeur de la fenêtre pour laisser un peu de marge
         cfg_chat_input->h = 48;
         cfg_chat_input->font_path = FONT_LARABIE;
         cfg_chat_input->font_size = 24;
@@ -411,14 +414,14 @@ static void render_team_member_in_panel(AppContext* context, Window* panel, SDL_
     if (!context || !panel || !icon || !txt || !spy_row || !agent_row) return;
 
     const int POS_X = 0;
-    const int SPY_BASE_Y = 50;
-    const int AGENT_BASE_Y = 25;
+    const int AGENT_BASE_Y = 65;
+    const int SPY_BASE_Y = -85; // Ecart de 150 entre la position de l'espion et des agents
     const int ROW_GAP = 36;
 
     int row = (role == ROLE_SPY) ? *spy_row : *agent_row;
     int icon_y = ((role == ROLE_SPY) ? SPY_BASE_Y : AGENT_BASE_Y) + (row * ROW_GAP);
 
-    window_display_image(context->renderer, panel, icon, POS_X, icon_y+20, 0.20f, 0, SDL_FLIP_NONE, 1, 255);
+    window_display_image(context->renderer, panel, icon, POS_X, icon_y+25, 0.20f, 0, SDL_FLIP_NONE, 1, 255);
 
     update_text(context, txt, name ? name : "???");
     window_place_text(panel, txt, POS_X, icon_y);
@@ -431,15 +434,15 @@ static void render_team_member_in_panel(AppContext* context, Window* panel, SDL_
 static void render_team_panel_content(AppContext* context, Window* panel, Team team, SDL_Texture* icon, Text* txt_spy_label, Text* txt_agents_label, Text** player_texts, int* player_index) {
     if (!context || !panel || !txt_spy_label || !txt_agents_label || !player_texts || !player_index) return;
 
-    int spy_row = 25;
-    int agent_row = 125;
+    int spy_row = 0;
+    int agent_row = 0;
 
     update_text(context, txt_spy_label, "Espions :");
     window_place_text(panel, txt_spy_label, 0, -25);
     display_text(context, txt_spy_label);
 
     update_text(context, txt_agents_label, "Agents :");
-    window_place_text(panel, txt_agents_label, 0, 125);
+    window_place_text(panel, txt_agents_label, 0, 125); // Ecart de 150 entre la position de l'espion et des agents
     display_text(context, txt_agents_label);
 
     *player_index = 0;
@@ -621,6 +624,9 @@ void game_display(AppContext * context) {
     if (chat_window) {
         window_render(context->renderer, chat_window);
         window_place_input(chat_window, chat_input, 0, -75);
+        if (chat_input) {
+            input_render(context->renderer, chat_input);
+        }
     }
 
     game_render_team_windows(context);
