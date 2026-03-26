@@ -93,6 +93,8 @@ WindowConfig* window_config_init(void) {
 	cfg->bg_color = (SDL_Color){20, 20, 20, 220}; // Noir semi-transparent par défaut
 	cfg->border_color = (SDL_Color){230, 230, 230, 255}; // Blanc par défaut
 	cfg->titlebar_color = (SDL_Color){40, 40, 100, 255}; // Bleu par défaut
+	cfg->window_texture = NULL;
+	cfg->titlebar_texture = NULL;
 	cfg->title = NULL;
 	cfg->border_thickness = 2;
 	cfg->titlebar_h = 36;
@@ -150,6 +152,12 @@ Window* window_create(int id, const WindowConfig* cfg_in) {
 void window_destroy(Window* win) {
 	if (!win) return;
 	if (win->cfg) {
+		if (win->cfg->window_texture == win->cfg->titlebar_texture) {
+			if (win->cfg->window_texture) free_image(win->cfg->window_texture);
+		} else {
+			if (win->cfg->window_texture) free_image(win->cfg->window_texture);
+			if (win->cfg->titlebar_texture) free_image(win->cfg->titlebar_texture);
+		}
 		free(win->cfg->title);
 	}
 	free(win->cfg);
@@ -206,8 +214,12 @@ void window_render(SDL_Renderer* renderer, const Window* win) {
 
 	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 
-	SDL_SetRenderDrawColor(renderer, cfg->bg_color.r, cfg->bg_color.g, cfg->bg_color.b, cfg->bg_color.a);
-	SDL_RenderFillRect(renderer, &cfg->rect);
+	if (cfg->window_texture) {
+		SDL_RenderCopy(renderer, cfg->window_texture, NULL, &cfg->rect);
+	} else {
+		SDL_SetRenderDrawColor(renderer, cfg->bg_color.r, cfg->bg_color.g, cfg->bg_color.b, cfg->bg_color.a);
+		SDL_RenderFillRect(renderer, &cfg->rect);
+	}
 
 	if (cfg->titlebar_h > 0) {
 		SDL_Rect titlebar = {
@@ -216,22 +228,28 @@ void window_render(SDL_Renderer* renderer, const Window* win) {
 			.w = cfg->rect.w,
 			.h = cfg->titlebar_h
 		};
-		SDL_SetRenderDrawColor(renderer, cfg->titlebar_color.r, cfg->titlebar_color.g, cfg->titlebar_color.b, cfg->titlebar_color.a);
-		SDL_RenderFillRect(renderer, &titlebar);
+		if (cfg->titlebar_texture) {
+			SDL_RenderCopy(renderer, cfg->titlebar_texture, NULL, &titlebar);
+		} else {
+			SDL_SetRenderDrawColor(renderer, cfg->titlebar_color.r, cfg->titlebar_color.g, cfg->titlebar_color.b, cfg->titlebar_color.a);
+			SDL_RenderFillRect(renderer, &titlebar);
+		}
 		window_render_title(renderer, cfg);
 	}
 
-	int border = clamp_non_negative(cfg->border_thickness);
-	SDL_SetRenderDrawColor(renderer, cfg->border_color.r, cfg->border_color.g, cfg->border_color.b, cfg->border_color.a);
-	for (int i = 0; i < border; i++) {
-		SDL_Rect r = {
-			.x = cfg->rect.x + i,
-			.y = cfg->rect.y + i,
-			.w = cfg->rect.w - (2 * i),
-			.h = cfg->rect.h - (2 * i)
-		};
-		if (r.w <= 0 || r.h <= 0) break;
-		SDL_RenderDrawRect(renderer, &r);
+	if (!cfg->window_texture) {
+		int border = clamp_non_negative(cfg->border_thickness);
+		SDL_SetRenderDrawColor(renderer, cfg->border_color.r, cfg->border_color.g, cfg->border_color.b, cfg->border_color.a);
+		for (int i = 0; i < border; i++) {
+			SDL_Rect r = {
+				.x = cfg->rect.x + i,
+				.y = cfg->rect.y + i,
+				.w = cfg->rect.w - (2 * i),
+				.h = cfg->rect.h - (2 * i)
+			};
+			if (r.w <= 0 || r.h <= 0) break;
+			SDL_RenderDrawRect(renderer, &r);
+		}
 	}
 }
 
@@ -251,6 +269,8 @@ int window_edit_cfg(Window* win, WindowCfgKey key, intptr_t value) {
 		case WIN_CFG_BG_COLOR: cfg->bg_color = *((SDL_Color*)value); break;
 		case WIN_CFG_BORDER_COLOR: cfg->border_color = *((SDL_Color*)value); break;
 		case WIN_CFG_TITLEBAR_COLOR: cfg->titlebar_color = *((SDL_Color*)value); break;
+		case WIN_CFG_WINDOW_TEXTURE: cfg->window_texture = (SDL_Texture*)value; break;
+		case WIN_CFG_TITLEBAR_TEXTURE: cfg->titlebar_texture = (SDL_Texture*)value; break;
 		case WIN_CFG_TITLE:
 			if (window_set_title(cfg, (const char*)value) != EXIT_SUCCESS) return EXIT_FAILURE;
 			break;

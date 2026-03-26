@@ -21,6 +21,8 @@ typedef struct Text Text;
  * @param bg_color Couleur de fond de la fenêtre (RGBA).
  * @param border_color Couleur de la bordure de la fenêtre (RGBA).
  * @param titlebar_color Couleur de la barre de titre de la fenêtre (RGBA).
+ * @param window_texture Texture de fond de la fenêtre (NULL pour utiliser bg_color).
+ * @param titlebar_texture Texture de la barre de titre (NULL pour utiliser titlebar_color).
  * @param title Titre affiché dans la barre de titre (NULL pour aucun titre).
  * @param border_thickness Épaisseur de la bordure de la fenêtre (en pixels).
  * @param titlebar_h Hauteur de la barre de titre de la fenêtre (en pixels).
@@ -35,6 +37,8 @@ typedef struct WindowConfig {
 	SDL_Color bg_color;
 	SDL_Color border_color;
 	SDL_Color titlebar_color;
+	SDL_Texture* window_texture;
+	SDL_Texture* titlebar_texture;
 	char* title;
 	int border_thickness;
 	int titlebar_h;
@@ -64,6 +68,8 @@ typedef enum WindowCfgKey {
 	WIN_CFG_BG_COLOR,
 	WIN_CFG_BORDER_COLOR,
 	WIN_CFG_TITLEBAR_COLOR,
+	WIN_CFG_WINDOW_TEXTURE,
+	WIN_CFG_TITLEBAR_TEXTURE,
 	WIN_CFG_TITLE,
 	WIN_CFG_BORDER_THICKNESS,
 	WIN_CFG_TITLEBAR_H,
@@ -127,7 +133,8 @@ int window_contains_point(const Window* win, int logical_x, int logical_y);
  * Modifie un champ de config d'une fenêtre.
  * @param win La fenêtre à modifier.
  * @param key La clé de configuration à modifier.
- * @param value La nouvelle valeur.
+ * @param value La nouvelle valeur. Pour `WIN_CFG_WINDOW_TEXTURE` et
+ * `WIN_CFG_TITLEBAR_TEXTURE`, fournir un pointeur `SDL_Texture*` casté en `intptr_t`.
  * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE sinon.
  */
 int window_edit_cfg(Window* win, WindowCfgKey key, intptr_t value);

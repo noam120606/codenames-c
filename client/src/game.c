@@ -394,11 +394,12 @@ int game_init(AppContext * context) {
     if (cfg_chat_window) {
         cfg_chat_window->x = 785;
         cfg_chat_window->y = 450;
-        cfg_chat_window->w = 350;
-        cfg_chat_window->h = 200;
+        cfg_chat_window->w = 350 + 20; // Largeur de la fenêtre + rectification selon la texture choisie
+        cfg_chat_window->h = 200 + 20; // Hauteur de la fenêtre + rectification selon la texture choisie
         cfg_chat_window->title = "";
         cfg_chat_window->movable = 1;
-        cfg_chat_window->titlebar_h = 0; // Pas de barre de titre pour le chat
+        cfg_chat_window->window_texture = load_image(context->renderer, "assets/img/windows/classic.png");
+        cfg_chat_window->titlebar_texture = load_image(context->renderer, "assets/img/windows/titlebar/classic.png"); // A définir
         cfg_chat_window->bg_color = (SDL_Color){20, 20, 20, 220};
         chat_window = window_create(1, cfg_chat_window);
         if (!chat_window) loading_fails++;
