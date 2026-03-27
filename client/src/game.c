@@ -251,8 +251,8 @@ int game_init(AppContext * context) {
     InputConfig* cfg_chat_input = input_config_init();
     if (cfg_chat_input) {
         cfg_chat_input->x = 750;
-        cfg_chat_input->y = 450;
-        cfg_chat_input->w = 348; // Légerement plus petit que la largeur de la fenêtre pour laisser un peu de marge
+        cfg_chat_input->y = 455;
+        cfg_chat_input->w = 338; // Légerement plus petit que la largeur de la fenêtre pour laisser un peu de marge
         cfg_chat_input->h = 48;
         cfg_chat_input->font_path = FONT_LARABIE;
         cfg_chat_input->font_size = 24;
@@ -377,7 +377,7 @@ int game_init(AppContext * context) {
     if (cfg_hint_window) {
         cfg_hint_window->x = 0;
         cfg_hint_window->y = -400;
-        cfg_hint_window->w = 650;
+        cfg_hint_window->w = 675;
         cfg_hint_window->h = 120;
         cfg_hint_window->title = "";
         cfg_hint_window->titlebar_color = COL_GRAY;
@@ -392,14 +392,13 @@ int game_init(AppContext * context) {
     /* Chargement de la fenêtre du chat */
     WindowConfig* cfg_chat_window = window_config_init();
     if (cfg_chat_window) {
-        cfg_chat_window->x = 785;
-        cfg_chat_window->y = 450;
-        cfg_chat_window->w = 350 + 20; // Largeur de la fenêtre + rectification selon la texture choisie
-        cfg_chat_window->h = 200 + 20; // Hauteur de la fenêtre + rectification selon la texture choisie
+        cfg_chat_window->x = 790;
+        cfg_chat_window->y = 440;
+        cfg_chat_window->w = 340;
+        cfg_chat_window->h = 200;
         cfg_chat_window->title = "";
         cfg_chat_window->movable = 1;
-        cfg_chat_window->window_texture = load_image(context->renderer, "assets/img/windows/classic.png");
-        cfg_chat_window->titlebar_texture = load_image(context->renderer, "assets/img/windows/titlebar/classic.png"); // A définir
+        cfg_chat_window->titlebar_h = 0;
         cfg_chat_window->bg_color = (SDL_Color){20, 20, 20, 220};
         chat_window = window_create(1, cfg_chat_window);
         if (!chat_window) loading_fails++;
