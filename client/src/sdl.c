@@ -30,6 +30,16 @@ static void configure_diagnostic_sdl_environment(void) {
     SDL_setenv("XMODIFIERS", "@im=none", 1);
 }
 
+static void configure_windows_audio_backend(void) {
+#ifdef _WIN32
+    const char* audio_driver = getenv("SDL_AUDIODRIVER");
+    if (!audio_driver || audio_driver[0] == '\0') {
+        /* Le backend audio par défaut peut provoquer un crash sur certaines configs Windows. */
+        SDL_setenv("SDL_AUDIODRIVER", "directsound", 1);
+    }
+#endif
+}
+
 static Uint32 get_renderer_flags(void) {
     if (is_truthy_env(getenv("CODENAMES_RENDER_SOFTWARE")) || is_running_under_valgrind()) {
         SDL_SetHint(SDL_HINT_RENDER_DRIVER, "software");
@@ -46,6 +56,7 @@ AppContext init_sdl() {
     printf("WIN_WIDTH = %d, WIN_HEIGHT = %d\n", WIN_WIDTH, WIN_HEIGHT);
 
     configure_diagnostic_sdl_environment();
+    configure_windows_audio_backend();
 
     if (should_use_dummy_audio()) {
         SDL_setenv("SDL_AUDIODRIVER", "dummy", 1);

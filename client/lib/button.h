@@ -4,6 +4,7 @@
 
 #include <stdint.h>
 #include "../SDL2/include/SDL2/SDL.h"
+
 typedef struct AppContext AppContext;
 
 /**

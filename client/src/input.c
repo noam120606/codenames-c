@@ -14,6 +14,20 @@ static Input* input_find_by_id(InputId id) {
 
 static void input_clear_selection_internal(Input* in);
 
+static int regex_match_text(const char* pattern, const char* text) {
+    if (!pattern || !text) return 1;
+
+    CnRegex re;
+    if (cn_regex_compile(&re, pattern) != 0) {
+        /* regex invalide -> conserver le comportement permissif historique */
+        return 1;
+    }
+
+    int ok = (cn_regex_match(&re, text) == 0) ? 1 : 0;
+    cn_regex_free(&re);
+    return ok;
+}
+
 static void input_submit_internal(AppContext* context, Input* in) {
     if (!in || !in->cfg) return;
 
@@ -21,12 +35,7 @@ static void input_submit_internal(AppContext* context, Input* in) {
     if (in->cfg->disabled) return;
 
     if (in->cfg->submit_pattern && in->cfg->text) {
-        regex_t regex;
-        if (regcomp(&regex, in->cfg->submit_pattern, REG_EXTENDED | REG_NOSUB) == 0) {
-            int invalid_submit = (regexec(&regex, in->cfg->text, 0, NULL, 0) != 0);
-            regfree(&regex);
-            if (invalid_submit) return;
-        }
+        if (!regex_match_text(in->cfg->submit_pattern, in->cfg->text)) return;
     }
 
     in->cfg->submitted = 1;
@@ -255,18 +264,13 @@ void input_destroy(Input* in) {
  *  Retourne 1 si le texte est accepté, 0 sinon. */
 static int input_text_allowed(const char* allowed_pattern, const char* txt) {
     if (!allowed_pattern || !txt) return 1;
-    regex_t regex;
-    if (regcomp(&regex, allowed_pattern, REG_EXTENDED | REG_NOSUB) != 0) return 1; /* regex invalide → tout accepter */
     int len = (int)strlen(txt);
-    /* tester chaque caractère individuellement */
     for (int i = 0; i < len; i++) {
         char ch[2] = { txt[i], '\0' };
-        if (regexec(&regex, ch, 0, NULL, 0) != 0) {
-            regfree(&regex);
-            return 0; /* caractère refusé */
+        if (!regex_match_text(allowed_pattern, ch)) {
+            return 0;
         }
     }
-    regfree(&regex);
     return 1;
 }
 

@@ -24,11 +24,14 @@ int format_to(char *buf, size_t size, const char *fmt, ...) {
     return ret;
 }
 
+#ifndef _WIN32
 char* itoa(int value) {
-    static char buffer[20]; 
+    static char buffer[20];
     snprintf(buffer, sizeof(buffer), "%d", value);
     return buffer;
 }
+#endif
+
 
 char* getRandomUsername(void) {
     FILE* f = fopen("assets/misc/usernames.txt", "r");

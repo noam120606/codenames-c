@@ -44,12 +44,13 @@ int number_length(int n);
  */
 int format_to(char *buf, size_t size, const char *fmt, ...);
 
+#ifndef _WIN32
 /**
- * Convertit un entier en chaîne de caractères.
- * @param value Entier à convertir.
- * @return Chaîne de caractères représentant l'entier.
+ * Convertit un entier en chaîne (API historique Linux).
+ * Retourne un buffer statique (non thread-safe).
  */
 char* itoa(int value);
+#endif
 
 /**
  * Retourne un nom d'utilisateur aléatoire (alloué, doit être free()).

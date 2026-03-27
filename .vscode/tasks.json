@@ -5,6 +5,10 @@
       "label": "codenames-c: Run Server",
       "type": "shell",
       "command": "./run.sh",
+      "windows": {
+        "command": "powershell",
+        "args": ["-ExecutionPolicy", "Bypass", "-File", "./run.ps1"]
+      },
       "options": {
         "cwd": "${workspaceFolder}/server"
       },
@@ -18,6 +22,10 @@
       "label": "codenames-c: Run Client",
       "type": "shell",
       "command": "./run.sh",
+      "windows": {
+        "command": "powershell",
+        "args": ["-ExecutionPolicy", "Bypass", "-File", "./run.ps1"]
+      },
       "options": {
         "cwd": "${workspaceFolder}/client"
       },
@@ -31,6 +39,10 @@
       "label": "codenames-c: Run Client with params",
       "type": "shell",
       "command": "./run_with_params.sh",
+      "windows": {
+        "command": "powershell",
+        "args": ["-ExecutionPolicy", "Bypass", "-File", "./run_with_params.ps1"]
+      },
       "options": {
         "cwd": "${workspaceFolder}/client"
       },

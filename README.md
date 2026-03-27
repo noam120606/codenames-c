@@ -85,6 +85,22 @@ sudo apt install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
 
 **Note** : Le script `setup.sh` compilera automatiquement les bibliothèques SDL2 nécessaires dans le dossier `client/SDL2/`.
 
+### Prérequis Windows
+
+Installer SDL2 localement (dans `client/SDL2`) avec le script `setup.ps1`, sans MSYS2 obligatoire.
+
+Prérequis minimaux :
+- PowerShell
+- `tar` (inclus par défaut sur Windows 10/11)
+
+Commande :
+
+```powershell
+powershell -ExecutionPolicy Bypass -File ./setup.ps1
+```
+
+Le script télécharge les paquets MinGW officiels de SDL2, SDL2_image, SDL2_ttf et SDL2_mixer, puis copie automatiquement `include`, `lib` et `bin` dans `client/SDL2/`.
+
 ### Étapes d'installation
 
 1. **Cloner le dépôt**
@@ -98,6 +114,12 @@ sudo apt install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
    chmod +x setup.sh
    ./setup.sh
    ```
+
+  Sous Windows :
+
+  ```powershell
+  powershell -ExecutionPolicy Bypass -File ./setup.ps1
+  ```
    
    Ce script va :
    - Télécharger SDL2 (v2.30.0), SDL_image (v2.8.2), SDL_ttf (v2.22.0), SDL_mixer (v2.8.0)
@@ -145,6 +167,13 @@ cd server
 
 Le serveur démarre par défaut sur le **port 4242** et attend les connexions des clients.
 
+Sous Windows :
+
+```powershell
+cd server
+powershell -ExecutionPolicy Bypass -File ./run.ps1
+```
+
 ### Lancement du client
 
 ```bash
@@ -154,6 +183,13 @@ cd client
 ```
 
 Le client lance une fenêtre graphique **1920x1080** (redimensionnable, minimum 960x540).
+
+Sous Windows :
+
+```powershell
+cd client
+powershell -ExecutionPolicy Bypass -File ./run.ps1
+```
 
 ### Déroulement d'une partie
 

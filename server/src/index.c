@@ -4,6 +4,16 @@ int main(int argc, char* argv[]) {
 
     int port = 0;
     // Parse command line arguments
+#ifdef _WIN32
+    for (int i = 1; i < argc; i++) {
+        if ((strcmp(argv[i], "-p") == 0 || strcmp(argv[i], "--port") == 0) && i + 1 < argc) {
+            port = atoi(argv[++i]);
+        } else {
+            fprintf(stderr, "Usage: %s [-p port]\n", argv[0]);
+            return EXIT_FAILURE;
+        }
+    }
+#else
     int opt;
     while ((opt = getopt(argc, argv, "p:")) != -1) {
         switch (opt) {
@@ -15,6 +25,7 @@ int main(int argc, char* argv[]) {
                 return EXIT_FAILURE;
         }
     }
+#endif
     if (port == 0) {
         fprintf(stderr, "Port number is required. Usage: %s [-p port]\n", argv[0]);
         return EXIT_FAILURE;

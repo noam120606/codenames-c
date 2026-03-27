@@ -1,7 +1,12 @@
 #include "../lib/all.h"
 
 static void set_nonblocking(int socket) {
+#ifdef _WIN32
+    u_long mode = 1;
+    ioctlsocket((SOCKET)socket, FIONBIO, &mode);
+#else
     fcntl(socket, F_SETFL, O_NONBLOCK);
+#endif
 }
 
 TcpServer* tcp_server_create(int port) {
@@ -10,15 +15,31 @@ TcpServer* tcp_server_create(int port) {
 
     server->port = port;
 
+#ifdef _WIN32
+    WSADATA wsa;
+    if (WSAStartup(MAKEWORD(2, 2), &wsa) != 0) {
+        perror("WSAStartup");
+        free(server);
+        return NULL;
+    }
+#endif
+
     server->server_socket = socket(AF_INET, SOCK_STREAM, 0);
     if (server->server_socket < 0) {
         perror("socket");
+#ifdef _WIN32
+        WSACleanup();
+#endif
         free(server);
         return NULL;
     }
 
     int opt = 1;
+#ifdef _WIN32
+    setsockopt(server->server_socket, SOL_SOCKET, SO_REUSEADDR, (const char*)&opt, sizeof(opt));
+#else
     setsockopt(server->server_socket, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
+#endif
 
     struct sockaddr_in addr = {0};
     addr.sin_family = AF_INET;
@@ -27,14 +48,20 @@ TcpServer* tcp_server_create(int port) {
 
     if (bind(server->server_socket, (struct sockaddr*)&addr, sizeof(addr)) < 0) {
         perror("bind");
-        close(server->server_socket);
+        CLOSESOCKET(server->server_socket);
+    #ifdef _WIN32
+        WSACleanup();
+    #endif
         free(server);
         return NULL;
     }
 
     if (listen(server->server_socket, 10) < 0) {
         perror("listen");
-        close(server->server_socket);
+        CLOSESOCKET(server->server_socket);
+    #ifdef _WIN32
+        WSACleanup();
+    #endif
         free(server);
         return NULL;
     }
@@ -50,10 +77,13 @@ void tcp_server_destroy(TcpServer* server) {
 
     for (int i = 0; i < TCP_MAX_CLIENTS; i++) {
         if (server->clients[i].socket > 0)
-            close(server->clients[i].socket);
+            CLOSESOCKET(server->clients[i].socket);
     }
 
-    close(server->server_socket);
+    CLOSESOCKET(server->server_socket);
+#ifdef _WIN32
+    WSACleanup();
+#endif
     free(server);
 }
 
@@ -71,12 +101,12 @@ static void add_client(Codenames* codenames, int client_socket, struct sockaddr_
         }
     }
 
-    close(client_socket);
+    CLOSESOCKET(client_socket);
 }
 
 static void remove_client(Codenames* codenames, TcpClient* client) {
     tcp_on_client_disconnect(codenames, client);
-    close(client->socket);
+    CLOSESOCKET(client->socket);
     memset(client, 0, sizeof(TcpClient));
 }
 

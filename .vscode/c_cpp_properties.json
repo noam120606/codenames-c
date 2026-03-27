@@ -4,16 +4,30 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/client/lib",
-                "${workspaceFolder}/client/SDL2/include",
-                "/usr/include"
+                "${workspaceFolder}/server/lib"
             ],
             "defines": [
                 "_GNU_SOURCE"
             ],
-            "compilerPath": "/usr/bin/gcc",
+            "compilerPath": "gcc",
             "cStandard": "c99",
             "cppStandard": "c++17",
             "intelliSenseMode": "gcc-x64"
+        },
+        {
+            "name": "Windows",
+            "includePath": [
+                "${workspaceFolder}/client/lib",
+                "${workspaceFolder}/server/lib",
+                "C:/mingw/include"
+            ],
+            "defines": [
+                "_WIN32"
+            ],
+            "compilerPath": "C:/mingw/bin/gcc.exe",
+            "cStandard": "c99",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-gcc-x64"
         }
     ],
     "version": 4

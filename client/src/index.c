@@ -28,13 +28,26 @@ int main(int argc, char* argv[]){
     {
         struct stat st = {0};
         if (stat("data", &st) == -1) {
-            if (mkdir("data", 0755) != 0) {
+            if (MKDIR_DATA("data") != 0) {
                 fprintf(stderr, "Warning: could not create 'data' directory: %s\n", strerror(errno));
             }
         }
     }
 
     // Parse command line arguments
+#ifdef _WIN32
+    for (int i = 1; i < argc; i++) {
+        if ((strcmp(argv[i], "-s") == 0 || strcmp(argv[i], "--server") == 0) && i + 1 < argc) {
+            strncpy(ip, argv[++i], sizeof(ip) - 1);
+            ip[sizeof(ip) - 1] = '\0';
+        } else if ((strcmp(argv[i], "-p") == 0 || strcmp(argv[i], "--port") == 0) && i + 1 < argc) {
+            port = atoi(argv[++i]);
+        } else {
+            fprintf(stderr, "Usage: %s [-s server_ip] [-p port]\n", argv[0]);
+            return EXIT_FAILURE;
+        }
+    }
+#else
     int opt;
     while ((opt = getopt(argc, argv, "s:p:")) != -1) {
         switch (opt) {
@@ -50,6 +63,7 @@ int main(int argc, char* argv[]){
                 return EXIT_FAILURE;
         }
     }
+#endif
     if (port == 0) {
         fprintf(stderr, "Port number is required. Usage: %s [-s server_ip] [-p port]\n", argv[0]);
         return EXIT_FAILURE;
@@ -165,7 +179,14 @@ int main(int argc, char* argv[]){
     SDL_Event e;
     int running = 1;
 
-    while (running && tick_tcp(&context) == EXIT_SUCCESS) {
+    while (running) {
+        if (tick_tcp(&context) != EXIT_SUCCESS) {
+            if (context.sock >= 0) {
+                close_tcp(context.sock);
+                context.sock = -1;
+            }
+        }
+
         // Enregistrer le début de la frame
         context.frame_start_time = SDL_GetTicks();
 

@@ -5,17 +5,35 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
-#include <getopt.h>
 #include <ctype.h>
-#include <regex.h>
+
+#ifdef _WIN32
+#include <winsock2.h>
+#include <ws2tcpip.h>
+#include <direct.h>
+#include <io.h>
+#else
+#include <getopt.h>
 #include <unistd.h>
 #include <arpa/inet.h>
 #include <sys/select.h>
+#endif
 
 #include "../SDL2/include/SDL2/SDL.h"
 #include "../SDL2/include/SDL2/SDL_image.h"
 #include "../SDL2/include/SDL2/SDL_ttf.h"
 #include "../SDL2/include/SDL2/SDL_mixer.h"
+
+#ifdef _WIN32
+#ifndef STDIN_FILENO
+#define STDIN_FILENO 0
+#endif
+#define CLOSESOCKET(s) closesocket((SOCKET)(s))
+#define MKDIR_DATA(path) _mkdir(path)
+#else
+#define CLOSESOCKET(s) close(s)
+#define MKDIR_DATA(path) mkdir((path), 0755)
+#endif
 
 #include "../lib/tcp.h"
 #include "../lib/sdl.h"
@@ -38,5 +56,7 @@
 #include "../lib/save.h"
 #include "../lib/window.h"
 #include "../lib/version.h"
+
+#include "../lib/regex_compat.h"
 
 #endif // ALL_H

@@ -5,8 +5,21 @@
 CC       := gcc
 SRC_DIR  := src
 DIR      := build
-TARGET   := $(DIR)/client
 VERSION  := $(shell cat ../VERSION 2>/dev/null || echo "0.0.0")
+
+ifeq ($(OS),Windows_NT)
+TARGET   := $(DIR)/client.exe
+EXTRA_NET_LIBS := -lws2_32
+RPATH_FLAGS :=
+MKDIR_P  := if not exist "$(DIR)" mkdir "$(DIR)"
+RM_RF    := if exist "$(DIR)" rmdir /S /Q "$(DIR)"
+else
+TARGET   := $(DIR)/client
+EXTRA_NET_LIBS :=
+RPATH_FLAGS := -Wl,-rpath,'$$ORIGIN/../SDL2/lib'
+MKDIR_P  := mkdir -p $(DIR)
+RM_RF    := rm -rf $(DIR)
+endif
 
 SDL_CFLAGS_BASE := $(shell pkg-config --cflags sdl2 2>/dev/null || ./SDL2/bin/sdl2-config --cflags 2>/dev/null || echo "-I./SDL2/include")
 SDL_CFLAGS := $(SDL_CFLAGS_BASE) -I./SDL2/include
@@ -17,7 +30,7 @@ SDL_LDFLAGS := $(SDL_LDFLAGS_BASE) -L./SDL2/lib -lSDL2_image -lSDL2_ttf -lSDL2_m
 
 CPPFLAGS := -D_GNU_SOURCE -I./lib $(SDL_CFLAGS) -DCODENAMES_VERSION=\"$(VERSION)\"
 CFLAGS   := -Wall -Wextra -O2 -MMD -MP -finput-charset=UTF-8
-LDFLAGS  := $(SDL_LDFLAGS) -lm -Wl,-rpath,'$$ORIGIN/../SDL2/lib'
+LDFLAGS  := $(SDL_LDFLAGS) -lm $(RPATH_FLAGS) $(EXTRA_NET_LIBS)
 
 # =========================
 # Sources
@@ -42,10 +55,10 @@ $(DIR)/%.o: $(SRC_DIR)/%.c | $(DIR)
 
 # Création dossier build si nécessaire
 $(DIR):
-	mkdir -p $(DIR)
+	$(MKDIR_P)
 
 clean:
-	rm -rf $(DIR)
+	$(RM_RF)
 
 -include $(DEPS)
 

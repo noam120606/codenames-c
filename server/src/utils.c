@@ -128,7 +128,7 @@ char* generate_uuid(const char* uuids_path) {
     {
         struct stat st = {0};
         if (stat("data", &st) == -1) {
-            if (mkdir("data", 0755) != 0) {
+            if (MKDIR_DATA("data") != 0) {
                 perror("Warning: could not create 'data' directory");
             }
         }

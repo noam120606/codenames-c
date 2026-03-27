@@ -1,10 +1,44 @@
 #include "../lib/all.h"
+#ifndef _WIN32
 #include <netinet/tcp.h>
+#endif
 
 #define BUFFER_SIZE 1024
 #define APP_PING_INTERVAL_MS 2000U
 char buffer[BUFFER_SIZE];
 static Uint32 last_app_ping_sent_at = 0;
+
+static int network_initialized = 0;
+
+static int ensure_network_initialized(void) {
+#ifdef _WIN32
+    if (network_initialized) return 0;
+    WSADATA wsa;
+    if (WSAStartup(MAKEWORD(2, 2), &wsa) != 0) {
+        perror("WSAStartup");
+        return -1;
+    }
+#endif
+    network_initialized = 1;
+    return 0;
+}
+
+static char* next_line_token(char* str, char** saveptr) {
+    char* start = str ? str : *saveptr;
+    if (!start || *start == '\0') {
+        if (saveptr) *saveptr = NULL;
+        return NULL;
+    }
+
+    char* end = strchr(start, '\n');
+    if (end) {
+        *end = '\0';
+        if (saveptr) *saveptr = end + 1;
+    } else {
+        if (saveptr) *saveptr = NULL;
+    }
+    return start;
+}
 
 static void maybe_send_app_ping(AppContext* context) {
     if (!context || context->sock < 0) {
@@ -25,6 +59,10 @@ static void maybe_send_app_ping(AppContext* context) {
 
 int init_tcp(const char* server_ip, int port) {
 
+    if (ensure_network_initialized() != 0) {
+        return -1;
+    }
+
     int sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock < 0) {
         perror("socket");
@@ -35,15 +73,25 @@ int init_tcp(const char* server_ip, int port) {
     server_addr.sin_family = AF_INET;
     server_addr.sin_port = htons(port);
 
-    if (inet_pton(AF_INET, server_ip, &server_addr.sin_addr) <= 0) {
-        perror("inet_pton");
-        close(sock);
+#ifdef _WIN32
+    unsigned long ip_addr = inet_addr(server_ip);
+    if (ip_addr == INADDR_NONE && strcmp(server_ip, "255.255.255.255") != 0) {
+        perror("inet_addr");
+        CLOSESOCKET(sock);
         return -1;
     }
+    server_addr.sin_addr.s_addr = ip_addr;
+#else
+    if (inet_pton(AF_INET, server_ip, &server_addr.sin_addr) <= 0) {
+        perror("inet_pton");
+        CLOSESOCKET(sock);
+        return -1;
+    }
+#endif
 
     if (connect(sock, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0) {
         perror("connect");
-        close(sock);
+        CLOSESOCKET(sock);
         return -1;
     }
 
@@ -51,15 +99,18 @@ int init_tcp(const char* server_ip, int port) {
 }
 
 int tick_tcp(AppContext* context) {
+    if (!context || context->sock < 0) {
+        return EXIT_SUCCESS;
+    }
+
     int sock = context->sock;
     maybe_send_app_ping(context);
     
     fd_set readfds;
     FD_ZERO(&readfds);
-    FD_SET(STDIN_FILENO, &readfds);
     FD_SET(sock, &readfds);
 
-    int maxfd = sock > STDIN_FILENO ? sock : STDIN_FILENO;
+    int maxfd = sock;
 
     struct timeval timeout = {.tv_sec = 0, .tv_usec = 0};
     int result = select(maxfd + 1, &readfds, NULL, NULL, &timeout); // Timeout pour avoir une boucle non bloquante
@@ -78,13 +129,13 @@ int tick_tcp(AppContext* context) {
         int bytes = recv(sock, buffer, BUFFER_SIZE - 1, 0);
         if (bytes <= 0) {
             printf("Server disconnected\n");
-            return EXIT_FAILURE;
+            return EXIT_SUCCESS;
         }
         buffer[bytes] = '\0';
 
         // Traiter chaque message séparé par '\n'
         char* saveptr;
-        char* line = strtok_r(buffer, "\n", &saveptr);
+        char* line = next_line_token(buffer, &saveptr);
         while (line != NULL) {
             // Copier la ligne car on_message utilise strtok qui écraserait notre état
             char* line_copy = strdup(line);
@@ -96,7 +147,7 @@ int tick_tcp(AppContext* context) {
                     return ret;
                 }
             }
-            line = strtok_r(NULL, "\n", &saveptr);
+            line = next_line_token(NULL, &saveptr);
         }
 
         return EXIT_SUCCESS;
@@ -107,6 +158,10 @@ int tick_tcp(AppContext* context) {
 }
 
 int get_tcp_ping_ms(int sock) {
+#ifdef _WIN32
+    (void)sock;
+    return -1;
+#else
     if (sock < 0) {
         return -1;
     }
@@ -118,6 +173,7 @@ int get_tcp_ping_ms(int sock) {
     }
 
     return -1;
+#endif
 }
 
 int is_tcp_local_server(int sock) {
@@ -148,13 +204,23 @@ int send_tcp(int sock, const char* payload) {
     }
 
     sprintf(message, "CODENAMES %s", payload);
+#ifdef _WIN32
+    int result = send(sock, message, (int)strlen(message), 0);
+#else
     int result = send(sock, message, strlen(message), MSG_DONTWAIT);
+#endif
     free((void*)message);
 
     return result;
 }
 
 int close_tcp(int sock) {
-    close(sock);
+    CLOSESOCKET(sock);
+#ifdef _WIN32
+    if (network_initialized) {
+        WSACleanup();
+        network_initialized = 0;
+    }
+#endif
     return EXIT_SUCCESS;
 }
