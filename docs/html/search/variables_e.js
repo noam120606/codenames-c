@@ -1,20 +1,9 @@
 var searchData=
 [
-  ['padding_0',['padding',['../structInputConfig.html#a85c28f2890a20b03ae04c058853e25a0',1,'InputConfig']]],
-  ['panel_5fbg_5fcolor_1',['PANEL_BG_COLOR',['../client_2src_2game_8c.html#a4dd13083c17c9ca134c0397a76fa9fef',1,'game.c']]],
-  ['ping_5fms_2',['ping_ms',['../structAppContext.html#a109b81a1fc4136ff7e0ae5727a735975',1,'AppContext']]],
-  ['placeholder_5fcount_3',['placeholder_count',['../structInputConfig.html#ac17ddf41b8e88038bed346eadb8c9321',1,'InputConfig']]],
-  ['placeholder_5findex_4',['placeholder_index',['../structInputConfig.html#a6eff2f134d1d30fb36e347f88a9ac84e',1,'InputConfig']]],
-  ['placeholder_5flast_5ftick_5',['placeholder_last_tick',['../structInputConfig.html#a47271977e3f1a71cb725cfd41f2f9fe8',1,'InputConfig']]],
-  ['placeholders_6',['placeholders',['../structInputConfig.html#aa5ea97e0fdc070fa6395f53866ab8c18',1,'InputConfig']]],
-  ['player_5ficon_5fblue_7',['player_icon_blue',['../client_2src_2game_8c.html#ab62da2a22c36cf86c0aecfa26c5fd379',1,'player_icon_blue:&#160;lobby.c'],['../client_2src_2lobby_8c.html#ab62da2a22c36cf86c0aecfa26c5fd379',1,'player_icon_blue:&#160;lobby.c']]],
-  ['player_5ficon_5fnone_8',['player_icon_none',['../client_2src_2lobby_8c.html#aa44da161781e64a66d791055278de434',1,'lobby.c']]],
-  ['player_5ficon_5fred_9',['player_icon_red',['../client_2src_2game_8c.html#a23f9047fe9c1ab44e55bfdb65496a590',1,'player_icon_red:&#160;lobby.c'],['../client_2src_2lobby_8c.html#a23f9047fe9c1ab44e55bfdb65496a590',1,'player_icon_red:&#160;lobby.c']]],
-  ['player_5fname_10',['player_name',['../structAppContext.html#a30c1cf80cb97e4947d684a813b1ff8fa',1,'AppContext']]],
-  ['player_5frole_11',['player_role',['../structAppContext.html#acdea17bcfc0e068e8cf73241280b1ebe',1,'AppContext']]],
-  ['player_5fteam_12',['player_team',['../structAppContext.html#a02cb522b64d54cadeacd519e4468e3b4',1,'AppContext']]],
-  ['player_5fuuid_13',['player_uuid',['../structAppContext.html#a8e75d9cd35b7645dc8803102396c4f7a',1,'AppContext']]],
-  ['port_14',['port',['../structTcpServer.html#a95fc31ff59f7a0bc013b942e68d07e37',1,'TcpServer']]],
-  ['previous_5fleft_15',['previous_left',['../structChannelFilterState.html#a71196200158d1e0e66e0341bd0205bac',1,'ChannelFilterState']]],
-  ['previous_5fright_16',['previous_right',['../structChannelFilterState.html#ab4f0ae94ff9eac0f48dc4ab65d08a51f',1,'ChannelFilterState']]]
+  ['on_5fchange_0',['on_change',['../structCrossfaderConfig.html#a81f6a411b9700d91bba8797a81aad51d',1,'CrossfaderConfig']]],
+  ['on_5fsubmit_1',['on_submit',['../structInputConfig.html#a42ad1a6ebdc91d2f0101216702c833d6',1,'InputConfig']]],
+  ['opacity_2',['opacity',['../structTextConfig.html#a885890d1361e6c597b16cc02573fabe7',1,'TextConfig']]],
+  ['override_5fcount_3',['override_count',['../background_8c.html#ac984eac65d555c21bdfcb12e3ee3aaf1',1,'background.c']]],
+  ['overrides_4',['overrides',['../background_8c.html#ad2a93d3efa03bab44da6f56b5fed8c6c',1,'background.c']]],
+  ['owner_5fid_5',['owner_id',['../structLobby.html#a201a3357be821cc9646c8588855c663f',1,'Lobby']]]
 ];

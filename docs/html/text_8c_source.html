@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames:  Fichier source de client/src/text.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -35,7 +35,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.14.0 -->
+<!-- Généré par Doxygen 1.16.1 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
@@ -215,14 +215,14 @@ $(function(){initNavTree('text_8c_source.html','',''); });
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordtype">int</span> tex_w = 0, tex_h = 0;</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="comment">/* Point de pivot pour la rotation */</span></div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    SDL_Point center = { tex_w / 2, tex_h / 2 };</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="comment">/* Appliquer l&#39;opacité à la texture du texte */</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    SDL_SetTextureAlphaMod(text-&gt;<a class="code hl_variable" href="structText.html#aea2a82ef1d8b4d448b6b3e524bce2cc2">texture</a>, text-&gt;<a class="code hl_variable" href="structText.html#a1307df06ef768b9163eba109bebe4e0f">cfg</a>.<a class="code hl_variable" href="structTextConfig.html#a885890d1361e6c597b16cc02573fabe7">opacity</a>);</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="comment">/* Appliquer l&#39;opacité à la texture du texte */</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    SDL_SetTextureAlphaMod(text-&gt;<a class="code hl_variable" href="structText.html#aea2a82ef1d8b4d448b6b3e524bce2cc2">texture</a>, text-&gt;<a class="code hl_variable" href="structText.html#a1307df06ef768b9163eba109bebe4e0f">cfg</a>.<a class="code hl_variable" href="structTextConfig.html#a885890d1361e6c597b16cc02573fabe7">opacity</a>);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="comment">/* Appliquer l&#39;opacité */</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    SDL_QueryTexture(text-&gt;<a class="code hl_variable" href="structText.html#aea2a82ef1d8b4d448b6b3e524bce2cc2">texture</a>, NULL, NULL, &amp;tex_w, &amp;tex_h);</div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="comment">/* Appliquer l&#39;opacité */</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    SDL_QueryTexture(text-&gt;<a class="code hl_variable" href="structText.html#aea2a82ef1d8b4d448b6b3e524bce2cc2">texture</a>, NULL, NULL, &amp;tex_w, &amp;tex_h);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="comment">/* Point de pivot pour la rotation */</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    SDL_Point center = { tex_w / 2, tex_h / 2 };</div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="comment">// Centrer le texte dans la fenêtre</span></div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keywordtype">int</span> final_x = (<a class="code hl_define" href="sdl_8h.html#a2e6ef411e0ff00ad889788b6cde701b5">WIN_WIDTH</a> - tex_w) / 2 + text-&gt;<a class="code hl_variable" href="structText.html#a1307df06ef768b9163eba109bebe4e0f">cfg</a>.<a class="code hl_variable" href="structTextConfig.html#a02386a90e9da07ac4788fd7a77245bc9">x</a>;</div>
@@ -280,7 +280,7 @@ $(function(){initNavTree('text_8c_source.html','',''); });
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a href="text_8c.html">text.c</a></li>
-    <li class="footer">Généré le Lundi 23 Mars 2026 18:41:13 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>
 </body>

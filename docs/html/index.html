@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Codenames</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -35,7 +35,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.14.0 -->
+<!-- Généré par Doxygen 1.16.1 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
@@ -89,7 +89,7 @@ $(function(){initNavTree('index.html','',''); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Codenames </div></div>
+  <div class="headertitle"><div class="title"><a class="el" href="structCodenames.html">Codenames</a> </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_README"></a> &lt;header&gt; <img src=".github/logo_lmu.png" alt="Logo Le Mans Université" height="64" class="inline"/> &lt;/header&gt; </p><hr  />
@@ -98,7 +98,7 @@ Codenames - Jeu Multijoueur en C</h1>
 <p>[<img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License" style="pointer-events: none;" class="inline"/>](LICENSE) <a href="https://en.wikipedia.org/wiki/C_(programming_language)"><img src="https://img.shields.io/badge/language-C-blue.svg" alt="Language" style="pointer-events: none;" class="inline"/></a></p>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
 Description</h2>
-<p><b>Codenames</b> est une implémentation complète du célèbre jeu de société en langage C, développée dans le cadre d'un projet universitaire de groupe de 4 étudiants. Le projet est composé de deux applications distinctes :</p>
+<p><b><a class="el" href="structCodenames.html">Codenames</a></b> est une implémentation complète du célèbre jeu de société en langage C, développée dans le cadre d'un projet universitaire de groupe de 4 étudiants. Le projet est composé de deux applications distinctes :</p>
 <ul>
 <li><b>Client graphique</b> : Interface utilisateur développée avec SDL2 (Simple DirectMedia Layer)</li>
 <li><b>Serveur TCP</b> : Gestion multi-lobbies et logique de jeu côté serveur</li>
@@ -166,6 +166,16 @@ Prérequis système</h3>
 <div class="line">sudo apt install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev</div>
 </div><!-- fragment --><p><b>Note</b> : Le script <span class="tt">setup.sh</span> compilera automatiquement les bibliothèques SDL2 nécessaires dans le dossier <span class="tt">client/SDL2/</span>.</p>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
+Prérequis Windows</h3>
+<p>Installer SDL2 localement (dans <span class="tt">client/SDL2</span>) avec le script <span class="tt">setup.ps1</span>, sans MSYS2 obligatoire.</p>
+<p>Prérequis minimaux :</p><ul>
+<li>PowerShell</li>
+<li><span class="tt">tar</span> (inclus par défaut sur Windows 10/11)</li>
+</ul>
+<p>Commande :</p>
+<div class="fragment"><div class="line">powershell -ExecutionPolicy Bypass -File ./setup.ps1</div>
+</div><!-- fragment --><p>Le script télécharge les paquets MinGW officiels de SDL2, SDL2_image, SDL2_ttf et SDL2_mixer, puis copie automatiquement <span class="tt">include</span>, <span class="tt">lib</span> et <span class="tt">bin</span> dans <span class="tt">client/SDL2/</span>.</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
 Étapes d'installation</h3>
 <ol type="1">
 <li><b>Cloner le dépôt</b> <div class="fragment"><div class="line">git clone https://github.com/noam120606/codenames-c.git</div>
@@ -173,6 +183,8 @@ Prérequis système</h3>
 </div><!-- fragment --></li>
 <li><p class="startli"><b>Exécuter le script d'installation</b> </p><div class="fragment"><div class="line">chmod +x setup.sh</div>
 <div class="line">./setup.sh</div>
+</div><!-- fragment --><p class="startli">Sous Windows :</p>
+<div class="fragment"><div class="line">powershell -ExecutionPolicy Bypass -File ./setup.ps1</div>
 </div><!-- fragment --><p class="startli">Ce script va :</p><ul>
 <li>Télécharger SDL2 (v2.30.0), SDL_image (v2.8.2), SDL_ttf (v2.22.0), SDL_mixer (v2.8.0)</li>
 <li>Compiler les bibliothèques dans <span class="tt">client/SDL2/</span></li>
@@ -187,9 +199,9 @@ Prérequis système</h3>
 </div><!-- fragment --></li>
 </ol>
 <hr  />
-<h2 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
 Utilisation</h2>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
 Version automatique à chaque commit</h3>
 <p>Le projet utilise un fichier <span class="tt">VERSION</span> au format <span class="tt">MAJOR.MINOR.PATCH</span>.</p>
 <p>Un hook Git <span class="tt">pre-commit</span> incrémente automatiquement le <span class="tt">PATCH</span> à chaque commit, puis ajoute <span class="tt">VERSION</span> au commit en cours. Cette version est ensuite injectée à la compilation dans la macro C <span class="tt">CODENAMES_VERSION</span> (client et serveur).</p>
@@ -197,24 +209,30 @@ Version automatique à chaque commit</h3>
 <div class="fragment"><div class="line">git config core.hooksPath .githooks</div>
 <div class="line">chmod +x .githooks/pre-commit scripts/bump_version.sh</div>
 </div><!-- fragment --><p>Après compilation, la version est visible au démarrage du client/serveur (logs console).</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
 Lancement du serveur</h3>
 <div class="fragment"><div class="line">cd server</div>
 <div class="line">./run.sh</div>
 <div class="line"># Ou directement : ./build/server</div>
 </div><!-- fragment --><p>Le serveur démarre par défaut sur le <b>port 4242</b> et attend les connexions des clients.</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
+<p>Sous Windows :</p>
+<div class="fragment"><div class="line">cd server</div>
+<div class="line">powershell -ExecutionPolicy Bypass -File ./run.ps1</div>
+</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
 Lancement du client</h3>
 <div class="fragment"><div class="line">cd client</div>
 <div class="line">./run.sh</div>
 <div class="line"># Ou directement : ./build/client</div>
 </div><!-- fragment --><p>Le client lance une fenêtre graphique <b>1920x1080</b> (redimensionnable, minimum 960x540).</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
+<p>Sous Windows :</p>
+<div class="fragment"><div class="line">cd client</div>
+<div class="line">powershell -ExecutionPolicy Bypass -File ./run.ps1</div>
+</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
 Déroulement d'une partie</h3>
 <ol type="1">
 <li><b>Connexion</b> : Le client se connecte au serveur (par défaut localhost:4242)</li>
 <li><b>Menu principal</b> : Créer un nouveau lobby ou rejoindre avec un code</li>
-<li><b>Lobby</b> : Attendre les joueurs et choisir son équipe/rôle</li>
+<li><b><a class="el" href="structLobby.html">Lobby</a></b> : Attendre les joueurs et choisir son équipe/rôle</li>
 <li><b>Partie</b> :<ul>
 <li>Les <b>espions</b> voient la couleur des mots et donnent des indices</li>
 <li>Les <b>agents</b> cliquent sur les mots selon les indices</li>
@@ -224,31 +242,31 @@ Déroulement d'une partie</h3>
 </li>
 </ol>
 <hr  />
-<h2 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
 Documentation</h2>
 <p>La documentation complète du code est générable avec <b>Doxygen</b>.</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
 Générer la documentation</h3>
 <div class="fragment"><div class="line"># Documentation complète (client + serveur)</div>
 <div class="line">doxygen</div>
-</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
+</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
 Consultation</h3>
 <ul>
 <li><b>Documentation complète</b> : <span class="tt">docs/html/index.html</span></li>
 </ul>
 <p>Ouvrez le fichier <span class="tt">index.html</span> dans votre navigateur web pour parcourir la documentation.</p>
 <hr  />
-<h2 class="doxsection"><a class="anchor" id="autotoc_md23"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md24"></a>
 Protocole de Communication Client/Serveur</h2>
 <p>La communication entre le client et le serveur utilise un <b>tunnel TCP</b> initié par le client.</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md24"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md25"></a>
 Format des messages</h3>
 <div class="fragment"><div class="line">CODENAMES [HEADER] [DONNÉES...]</div>
 </div><!-- fragment --><ul>
 <li><b>HEADER</b> : Entier identifiant le type de message</li>
 <li><b>DONNÉES</b> : Variables séparées par des espaces</li>
 </ul>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md25"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md26"></a>
 Exemples de headers</h3>
 <ul>
 <li>Connexion/authentification</li>
@@ -258,11 +276,11 @@ Exemples de headers</h3>
 <li>Synchronisation de l'état de jeu</li>
 <li>Déconnexion</li>
 </ul>
-<p><em>Pour plus de détails, consultez les fichiers <span class="tt">client/lib/tcp.h</span> et <span class="tt">server/lib/message.h</span></em></p>
+<p><em>Pour plus de détails, consultez les fichiers <span class="tt"><a class="el" href="client_2lib_2tcp_8h.html">client/lib/tcp.h</a></span> et <span class="tt"><a class="el" href="server_2lib_2message_8h.html">server/lib/message.h</a></span></em></p>
 <hr  />
-<h2 class="doxsection"><a class="anchor" id="autotoc_md27"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md28"></a>
 Technologies Utilisées</h2>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md28"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md29"></a>
 Client</h3>
 <ul>
 <li><b>Langage</b> : C</li>
@@ -270,14 +288,14 @@ Client</h3>
 <li><b>Audio</b> : SDL_mixer</li>
 <li><b>Build</b> : Make, GCC</li>
 </ul>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md29"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md30"></a>
 Serveur</h3>
 <ul>
 <li><b>Langage</b> : C</li>
 <li><b>Réseau</b> : Sockets TCP POSIX</li>
 <li><b>Build</b> : Make, GCC</li>
 </ul>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md30"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md31"></a>
 Outils</h3>
 <ul>
 <li><b>Documentation</b> : Doxygen</li>
@@ -285,23 +303,23 @@ Outils</h3>
 <li><b>Compilation</b> : GCC avec flags <span class="tt">-Wall -Wextra -O2</span></li>
 </ul>
 <hr  />
-<h2 class="doxsection"><a class="anchor" id="autotoc_md32"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md33"></a>
 Fonctionalitées prévues</h2>
 <p>Consultez le fichier TODO.md pour la liste des fonctionnalités à venir et des bugs connus.</p>
 <hr  />
-<h2 class="doxsection"><a class="anchor" id="autotoc_md34"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md35"></a>
 Contributeurs</h2>
 <table class="doxtable">
 <tr>
 <td align="center"><a href="https://github.com/WolfGang-PRoxa"><img src="https://github.com/WolfGang-PRoxa.png" alt="Romain" width="100px;" class="inline"/><br  />
  <sub><b>Romain</b></sub> </a><br  />
- <sub>Développeur</sub>  </td><td align="center"><a href="https://github.com/noam120606"><img src="https://github.com/noam120606.png" alt="Noam" width="100px;" class="inline"/><br  />
+ <sub>Développeur</sub> </td><td align="center"><a href="https://github.com/noam120606"><img src="https://github.com/noam120606.png" alt="Noam" width="100px;" class="inline"/><br  />
  <sub><b>Noam</b></sub> </a><br  />
- <sub>Développeur</sub>  </td><td align="center"><a href="https://github.com/cloqtn"><img src="https://github.com/cloqtn.png" alt="Chloé" width="100px;" class="inline"/><br  />
+ <sub>Développeur</sub> </td><td align="center"><a href="https://github.com/cloqtn"><img src="https://github.com/cloqtn.png" alt="Chloé" width="100px;" class="inline"/><br  />
  <sub><b>Chloé</b></sub> </a><br  />
- <sub>Développeuse</sub>  </td><td align="center"><a href="https://github.com/kaptainepirate"><img src="https://github.com/kaptainepirate.png" alt="Mathis" width="100px;" class="inline"/><br  />
+ <sub>Développeuse</sub> </td><td align="center"><a href="https://github.com/kaptainepirate"><img src="https://github.com/kaptainepirate.png" alt="Mathis" width="100px;" class="inline"/><br  />
  <sub><b>Mathis</b></sub> </a><br  />
- <sub>Développeur</sub>   </td></tr>
+ <sub>Développeur</sub> </td></tr>
 </table>
 <p><em>Projet développé dans le cadre d'un projet universitaire à l'Université Le Mans</em> </p>
 </div></div><!-- PageDoc -->
@@ -312,7 +330,7 @@ Contributeurs</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Lundi 23 Mars 2026 18:41:14 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>
 </body>

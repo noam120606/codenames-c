@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['active_0',['active',['../structChannelFilterState.html#a73e992fe5b84371476edcb351eed4945',1,'ChannelFilterState::active'],['../structTileAnimation.html#a7f3dc372d7b765c46b9ceb2526b01f51',1,'TileAnimation::active']]],
+  ['active_0',['active',['../structChannelFilterState.html#a73e992fe5b84371476edcb351eed4945',1,'ChannelFilterState::active'],['../structChannelFadeFilterState.html#aaa1dc0fbdef0b154d22e36f97303a169',1,'ChannelFadeFilterState::active'],['../structTileAnimation.html#a7f3dc372d7b765c46b9ceb2526b01f51',1,'TileAnimation::active']]],
   ['addr_1',['addr',['../structTcpClient.html#a16d1db1ab6eb28b277ce51d595050eb8',1,'TcpClient']]],
   ['allowed_5fpattern_2',['allowed_pattern',['../structInputConfig.html#a2ebd806bb0800d1e3cd8f2118f985961',1,'InputConfig']]],
   ['alpha_3',['alpha',['../structChannelFilterState.html#a1348177ecf30a7ab716fd7da76813183',1,'ChannelFilterState']]],

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames:  Fichier source de server/src/utils.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -35,7 +35,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.14.0 -->
+<!-- Généré par Doxygen 1.16.1 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
@@ -233,7 +233,7 @@ $(function(){initNavTree('server_2src_2utils_8c_source.html','',''); });
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    {</div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <span class="keyword">struct </span>stat st = {0};</div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <span class="keywordflow">if</span> (stat(<span class="stringliteral">&quot;data&quot;</span>, &amp;st) == -1) {</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            <span class="keywordflow">if</span> (mkdir(<span class="stringliteral">&quot;data&quot;</span>, 0755) != 0) {</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            <span class="keywordflow">if</span> (<a class="code hl_define" href="client_2lib_2all_8h.html#ae4697e3ac4654939d18ed9bd535ef807">MKDIR_DATA</a>(<span class="stringliteral">&quot;data&quot;</span>) != 0) {</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>                perror(<span class="stringliteral">&quot;Warning: could not create &#39;data&#39; directory&quot;</span>);</div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>            }</div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        }</div>
@@ -267,7 +267,8 @@ $(function(){initNavTree('server_2src_2utils_8c_source.html','',''); });
 <div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="keywordflow">return</span> strdup(uuid);</div>
 <div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>}</div>
 </div>
-<div class="ttc" id="aclient_2src_2tcp_8c_html_af00b615ca097c43dbb02ae3a00ea3a62"><div class="ttname"><a href="client_2src_2tcp_8c.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a></div><div class="ttdeci">char buffer[BUFFER_SIZE]</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2tcp_8c_source.html#l00005">tcp.c:5</a></div></div>
+<div class="ttc" id="aclient_2lib_2all_8h_html_ae4697e3ac4654939d18ed9bd535ef807"><div class="ttname"><a href="client_2lib_2all_8h.html#ae4697e3ac4654939d18ed9bd535ef807">MKDIR_DATA</a></div><div class="ttdeci">#define MKDIR_DATA(path)</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2all_8h_source.html#l00035">all.h:35</a></div></div>
+<div class="ttc" id="aclient_2src_2tcp_8c_html_af00b615ca097c43dbb02ae3a00ea3a62"><div class="ttname"><a href="client_2src_2tcp_8c.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a></div><div class="ttdeci">char buffer[BUFFER_SIZE]</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2tcp_8c_source.html#l00008">tcp.c:8</a></div></div>
 <div class="ttc" id="aclient_2src_2utils_8c_html_acf06ac69f86a58e43477083d3930a4ca"><div class="ttname"><a href="client_2src_2utils_8c.html#acf06ac69f86a58e43477083d3930a4ca">number_length</a></div><div class="ttdeci">int number_length(int n)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2utils_8c_source.html#l00003">utils.c:3</a></div></div>
 <div class="ttc" id="aclient_2src_2utils_8c_html_ade6960f663c739637ee1beaf757c5f24"><div class="ttname"><a href="client_2src_2utils_8c.html#ade6960f663c739637ee1beaf757c5f24">format_to</a></div><div class="ttdeci">int format_to(char *buf, size_t size, const char *fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2utils_8c_source.html#l00017">utils.c:17</a></div></div>
 <div class="ttc" id="aserver_2lib_2all_8h_html"><div class="ttname"><a href="server_2lib_2all_8h.html">all.h</a></div></div>
@@ -285,7 +286,7 @@ $(function(){initNavTree('server_2src_2utils_8c_source.html','',''); });
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a href="dir_a063914ab482288b7b0e1b2fca86158c.html">src</a></li><li class="navelem"><a href="server_2src_2utils_8c.html">utils.c</a></li>
-    <li class="footer">Généré le Lundi 23 Mars 2026 18:41:13 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>
 </body>

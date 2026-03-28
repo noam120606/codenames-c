@@ -33,7 +33,6 @@ var infos_8c =
     [ "cf_sfx", "infos_8c.html#adc5d995eab1f1005ea1c83d5929f57ae", null ],
     [ "current_display_x", "infos_8c.html#aa5c0c9ab93e6e76ba7845cbce2e94b52", null ],
     [ "infos_state", "infos_8c.html#a7529f877faba58638faeeeab49d47068", null ],
-    [ "mouse_was_inside", "infos_8c.html#abf701c92a6aa5a894ba57efe3b4af920", null ],
     [ "rules_line_count", "infos_8c.html#a3f9cb5df846184803ffb556d92a85aa0", null ],
     [ "rules_lines", "infos_8c.html#a455e806e355945510f3da8893a8d981c", null ],
     [ "rules_title", "infos_8c.html#a5377b7365f8ed2b352452fbb2d883eba", null ],

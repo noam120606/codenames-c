@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['y_0',['y',['../structButtonConfig.html#a615d40fe4dca5be9ba798637e52cf626',1,'ButtonConfig::y'],['../structCrossfaderConfig.html#a2bb0569920337a16a869be90f248ef01',1,'CrossfaderConfig::y'],['../structInputConfig.html#a269c33cb4174b6b21a052e194f07d287',1,'InputConfig::y'],['../structTextConfig.html#ae3c6cb130342df178586f1bd48c9002c',1,'TextConfig::y'],['../structWindowConfig.html#a57bbe87e4e57a5a4d266b60ebe8b9cfa',1,'WindowConfig::y']]]
+  ['x_0',['x',['../structButtonConfig.html#afc5488e3a5f6149b74875c3b56bc8096',1,'ButtonConfig::x'],['../structCrossfaderConfig.html#af4933073b118461cb59827ce0cafb149',1,'CrossfaderConfig::x'],['../structInputConfig.html#ab95d7425c4330d058cb84f77149a6612',1,'InputConfig::x'],['../structTextConfig.html#a02386a90e9da07ac4788fd7a77245bc9',1,'TextConfig::x'],['../structWindowConfig.html#aeb7a016c102d49ebeea44be67ebf8e2a',1,'WindowConfig::x']]]
 ];

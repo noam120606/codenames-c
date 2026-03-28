@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier client/lib/lobby.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -35,7 +35,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.14.0 -->
+<!-- Généré par Doxygen 1.16.1 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
@@ -97,38 +97,39 @@ $(function(){initNavTree('client_2lib_2lobby_8h.html','',''); });
 <code>#include &quot;../SDL2/include/SDL2/SDL_ttf.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="button_8h_source.html">../lib/button.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="client_2lib_2user_8h_source.html">../lib/user.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="client_2lib_2chat_8h_source.html">../lib/chat.h</a>&quot;</code><br />
 </div>
 <p><a href="client_2lib_2lobby_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Structures de données</h2></td></tr>
-<tr class="memitem:Lobby" id="r_Lobby"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLobby.html">Lobby</a></td></tr>
+<tr class="memitem:Lobby" id="r_Lobby"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structLobby.html">Lobby</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a67fee069fc4be0b17f7a3a8d185f4416" id="r_a67fee069fc4be0b17f7a3a8d185f4416"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67fee069fc4be0b17f7a3a8d185f4416">MAX_LOBBIES</a>&#160;&#160;&#160;50</td></tr>
-<tr class="memitem:a2c2a303621f66761529e598758d7ef34" id="r_a2c2a303621f66761529e598758d7ef34"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c2a303621f66761529e598758d7ef34">MAX_USERS</a>&#160;&#160;&#160;8</td></tr>
+<tr class="memitem:a67fee069fc4be0b17f7a3a8d185f4416" id="r_a67fee069fc4be0b17f7a3a8d185f4416"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a67fee069fc4be0b17f7a3a8d185f4416">MAX_LOBBIES</a>&#160;&#160;&#160;50</td></tr>
+<tr class="memitem:a2c2a303621f66761529e598758d7ef34" id="r_a2c2a303621f66761529e598758d7ef34"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a2c2a303621f66761529e598758d7ef34">MAX_USERS</a>&#160;&#160;&#160;8</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Définitions de type</h2></td></tr>
-<tr class="memitem:a66b59b004a9832d09c7c6ebf763eec32" id="r_a66b59b004a9832d09c7c6ebf763eec32"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="#a02f4e343ea570764cb2390b12ad37d83">LobbyStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66b59b004a9832d09c7c6ebf763eec32">LobbyStatus</a></td></tr>
-<tr class="memitem:a229c875e4f4c628685491500cddaae31" id="r_a229c875e4f4c628685491500cddaae31"><td class="memItemLeft" align="right" valign="top">typedef struct Lobby&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a229c875e4f4c628685491500cddaae31">Lobby</a></td></tr>
+<tr class="memitem:a66b59b004a9832d09c7c6ebf763eec32" id="r_a66b59b004a9832d09c7c6ebf763eec32"><td class="memItemLeft">typedef enum <a class="el" href="#a02f4e343ea570764cb2390b12ad37d83">LobbyStatus</a>&#160;</td><td class="memItemRight"><a class="el" href="#a66b59b004a9832d09c7c6ebf763eec32">LobbyStatus</a></td></tr>
+<tr class="memitem:a229c875e4f4c628685491500cddaae31" id="r_a229c875e4f4c628685491500cddaae31"><td class="memItemLeft">typedef struct Lobby&#160;</td><td class="memItemRight"><a class="el" href="#a229c875e4f4c628685491500cddaae31">Lobby</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
 Énumérations</h2></td></tr>
-<tr class="memitem:a02f4e343ea570764cb2390b12ad37d83" id="r_a02f4e343ea570764cb2390b12ad37d83"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02f4e343ea570764cb2390b12ad37d83">LobbyStatus</a> { <a class="el" href="#a02f4e343ea570764cb2390b12ad37d83a715a5fc1dd102e417ed4fc5b81477ba4">LB_STATUS_WAITING</a>
+<tr class="memitem:a02f4e343ea570764cb2390b12ad37d83" id="r_a02f4e343ea570764cb2390b12ad37d83"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#a02f4e343ea570764cb2390b12ad37d83">LobbyStatus</a> { <a class="el" href="#a02f4e343ea570764cb2390b12ad37d83a715a5fc1dd102e417ed4fc5b81477ba4">LB_STATUS_WAITING</a>
 , <a class="el" href="#a02f4e343ea570764cb2390b12ad37d83ac5cf08a357894a8e0f8b340d97ff14b9">LB_STATUS_IN_GAME</a>
  }</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a476a04ab63c0037c2eb3524d267237f2" id="r_a476a04ab63c0037c2eb3524d267237f2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a476a04ab63c0037c2eb3524d267237f2">struct_lobby_init</a> (<a class="el" href="structLobby.html">Lobby</a> *lobby, int id, const char *code)</td></tr>
-<tr class="memitem:ad9d31b87647b2da4437664a2855f1661" id="r_ad9d31b87647b2da4437664a2855f1661"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9d31b87647b2da4437664a2855f1661">lobby_init</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
-<tr class="memitem:a2a81a21e07b85e6018556a3704f0a9ca" id="r_a2a81a21e07b85e6018556a3704f0a9ca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a81a21e07b85e6018556a3704f0a9ca">lobby_free</a> ()</td></tr>
-<tr class="memitem:a3c5a3f0e4327fd70c3f73ab15af24666" id="r_a3c5a3f0e4327fd70c3f73ab15af24666"><td class="memItemLeft" align="right" valign="top"><a class="el" href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17">ButtonReturn</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c5a3f0e4327fd70c3f73ab15af24666">lobby_handle_event</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, SDL_Event *event)</td></tr>
-<tr class="memitem:ad39ac60e8d5da1f3eea4b4f09b63a0e7" id="r_ad39ac60e8d5da1f3eea4b4f09b63a0e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad39ac60e8d5da1f3eea4b4f09b63a0e7">lobby_display</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
-<tr class="memitem:a39ceac5357f59820dd671cf026992144" id="r_a39ceac5357f59820dd671cf026992144"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39ceac5357f59820dd671cf026992144">player_display</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structUser.html">User</a> *user, int nb_none, int i_none, int nb_red_spy, int i_red_spy, int nb_red_agent, int i_red_agent, int nb_blue_spy, int i_blue_spy, int nb_blue_agent, int i_blue_agent)</td></tr>
-<tr class="memitem:a0df6e41990f8adc29945f3708a34dd2b" id="r_a0df6e41990f8adc29945f3708a34dd2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0df6e41990f8adc29945f3708a34dd2b">player_icon_pos</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structUser.html">User</a> *user, SDL_Texture *icon, int nb_player, int i_player, int base_x, int base_y)</td></tr>
+<tr class="memitem:a476a04ab63c0037c2eb3524d267237f2" id="r_a476a04ab63c0037c2eb3524d267237f2"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a476a04ab63c0037c2eb3524d267237f2">struct_lobby_init</a> (<a class="el" href="structLobby.html">Lobby</a> *lobby, int id, const char *code)</td></tr>
+<tr class="memitem:ad9d31b87647b2da4437664a2855f1661" id="r_ad9d31b87647b2da4437664a2855f1661"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ad9d31b87647b2da4437664a2855f1661">lobby_init</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="memitem:a2a81a21e07b85e6018556a3704f0a9ca" id="r_a2a81a21e07b85e6018556a3704f0a9ca"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a2a81a21e07b85e6018556a3704f0a9ca">lobby_free</a> ()</td></tr>
+<tr class="memitem:a3c5a3f0e4327fd70c3f73ab15af24666" id="r_a3c5a3f0e4327fd70c3f73ab15af24666"><td class="memItemLeft"><a class="el" href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17">ButtonReturn</a>&#160;</td><td class="memItemRight"><a class="el" href="#a3c5a3f0e4327fd70c3f73ab15af24666">lobby_handle_event</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, SDL_Event *event)</td></tr>
+<tr class="memitem:ad39ac60e8d5da1f3eea4b4f09b63a0e7" id="r_ad39ac60e8d5da1f3eea4b4f09b63a0e7"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ad39ac60e8d5da1f3eea4b4f09b63a0e7">lobby_display</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="memitem:a39ceac5357f59820dd671cf026992144" id="r_a39ceac5357f59820dd671cf026992144"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a39ceac5357f59820dd671cf026992144">player_display</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structUser.html">User</a> *user, int nb_none, int i_none, int nb_red_spy, int i_red_spy, int nb_red_agent, int i_red_agent, int nb_blue_spy, int i_blue_spy, int nb_blue_agent, int i_blue_agent)</td></tr>
+<tr class="memitem:a0df6e41990f8adc29945f3708a34dd2b" id="r_a0df6e41990f8adc29945f3708a34dd2b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a0df6e41990f8adc29945f3708a34dd2b">player_icon_pos</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structUser.html">User</a> *user, SDL_Texture *icon, int nb_player, int i_player, int base_x, int base_y)</td></tr>
 </table>
 <a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentation des macros</h2>
 <a id="a67fee069fc4be0b17f7a3a8d185f4416" name="a67fee069fc4be0b17f7a3a8d185f4416"></a>
@@ -143,9 +144,9 @@ Fonctions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00013">13</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00014">14</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00041">create_lobby()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00042">create_lobby()</a>.</p>
 
 </div>
 </div>
@@ -161,9 +162,9 @@ Fonctions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00014">14</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00015">15</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="sdl_8c_source.html#l00245">destroy_context()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00168">game_render_team_panels()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00063">join_lobby()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00253">lobby_display()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00024">on_message()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00227">struct_lobby_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="sdl_8c_source.html#l00256">destroy_context()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00070">join_lobby()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00257">lobby_display()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00024">on_message()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00434">render_team_panel_content()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00225">struct_lobby_init()</a>.</p>
 
 </div>
 </div>
@@ -188,6 +189,7 @@ Fonctions</h2></td></tr>
     <tr><td class="paramname">users</td><td>tableau de pointeurs vers les joueurs présents. </td></tr>
     <tr><td class="paramname">nb_players</td><td>nombre de joueurs actuellement connectés. </td></tr>
     <tr><td class="paramname">game</td><td>partie associée au lobby (NULL si aucune partie). </td></tr>
+    <tr><td class="paramname">chat</td><td>historique du chat du lobby. </td></tr>
   </table>
   </dd>
 </dl>
@@ -207,8 +209,8 @@ Fonctions</h2></td></tr>
 </div><div class="memdoc">
 <p>États possibles d'un lobby. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">LB_STATUS_WAITING</td><td>lobby en attente (pas encore en partie). </td></tr>
-    <tr><td class="paramname">LB_STATUS_IN_GAME</td><td>lobby actuellement en partie. </td></tr>
+    <tr><td class="paramname"><a class="el" href="#a02f4e343ea570764cb2390b12ad37d83a715a5fc1dd102e417ed4fc5b81477ba4">LB_STATUS_WAITING</a></td><td>lobby en attente (pas encore en partie). </td></tr>
+    <tr><td class="paramname"><a class="el" href="#a02f4e343ea570764cb2390b12ad37d83ac5cf08a357894a8e0f8b340d97ff14b9">LB_STATUS_IN_GAME</a></td><td>lobby actuellement en partie. </td></tr>
   </table>
   </dd>
 </dl>
@@ -229,8 +231,8 @@ Fonctions</h2></td></tr>
 </div><div class="memdoc">
 <p>États possibles d'un lobby. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">LB_STATUS_WAITING</td><td>lobby en attente (pas encore en partie). </td></tr>
-    <tr><td class="paramname">LB_STATUS_IN_GAME</td><td>lobby actuellement en partie. </td></tr>
+    <tr><td class="paramname"><a class="el" href="#a02f4e343ea570764cb2390b12ad37d83a715a5fc1dd102e417ed4fc5b81477ba4">LB_STATUS_WAITING</a></td><td>lobby en attente (pas encore en partie). </td></tr>
+    <tr><td class="paramname"><a class="el" href="#a02f4e343ea570764cb2390b12ad37d83ac5cf08a357894a8e0f8b340d97ff14b9">LB_STATUS_IN_GAME</a></td><td>lobby actuellement en partie. </td></tr>
   </table>
   </dd>
 </dl>
@@ -239,7 +241,7 @@ Fonctions</h2></td></tr>
 <tr><td class="fieldname"><a id="a02f4e343ea570764cb2390b12ad37d83ac5cf08a357894a8e0f8b340d97ff14b9" name="a02f4e343ea570764cb2390b12ad37d83ac5cf08a357894a8e0f8b340d97ff14b9"></a>LB_STATUS_IN_GAME&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00021">21</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00022">22</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
 
 </div>
 </div>
@@ -265,11 +267,11 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00253">253</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00257">257</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8h_source.html#l00038">AUDIO_FILTER_LOW_PASS</a>, <a class="el" href="audio_8c_source.html#l00280">audio_set_filter()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00006">btn_blue_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00007">btn_blue_spy</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00008">btn_launch_game</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00004">btn_red_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00005">btn_red_spy</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00009">btn_return</a>, <a class="el" href="button_8c_source.html#l00226">button_render()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00039">Lobby::code</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00019">current_player_text_index</a>, <a class="el" href="text_8c_source.html#l00102">display_text()</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00017">format_to()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00037">Lobby::id</a>, <a class="el" href="sdl_8h_source.html#l00046">AppContext::lobby</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00003">lobby_filter_applied</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00014">MAX_USERS</a>, <a class="el" href="audio_8h_source.html#l00012">MUSIC_MENU_LOBBY</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00025">User::name</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00361">player_display()</a>, <a class="el" href="sdl_8h_source.html#l00056">AppContext::player_name</a>, <a class="el" href="sdl_8h_source.html#l00048">AppContext::player_role</a>, <a class="el" href="sdl_8h_source.html#l00049">AppContext::player_team</a>, <a class="el" href="sdl_8h_source.html#l00041">AppContext::renderer</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00026">User::role</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00013">ROLE_SPY</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00027">User::team</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00023">TEAM_BLUE</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00021">TEAM_NONE</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00022">TEAM_RED</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00015">txt_lobby_info</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00016">txt_no_role_label</a>, <a class="el" href="text_8c_source.html#l00076">update_text()</a>, <a class="el" href="text_8c_source.html#l00086">update_text_position()</a>, et <a class="el" href="client_2lib_2lobby_8h_source.html#l00041">Lobby::users</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8h_source.html#l00041">AUDIO_FILTER_LOW_PASS</a>, <a class="el" href="audio_8h_source.html#l00040">AUDIO_FILTER_NONE</a>, <a class="el" href="audio_8c_source.html#l00455">audio_get_filter()</a>, <a class="el" href="audio_8c_source.html#l00437">audio_set_filter()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00005">btn_blue_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00006">btn_blue_spy</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00007">btn_launch_game</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00003">btn_red_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00004">btn_red_spy</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00008">btn_return</a>, <a class="el" href="button_8c_source.html#l00238">button_render()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00041">Lobby::code</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00018">current_player_text_index</a>, <a class="el" href="text_8c_source.html#l00102">display_text()</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00017">format_to()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00039">Lobby::id</a>, <a class="el" href="sdl_8h_source.html#l00046">AppContext::lobby</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00015">MAX_USERS</a>, <a class="el" href="audio_8h_source.html#l00015">MUSIC_MENU_LOBBY</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00025">User::name</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00368">player_display()</a>, <a class="el" href="sdl_8h_source.html#l00055">AppContext::player_name</a>, <a class="el" href="sdl_8h_source.html#l00048">AppContext::player_role</a>, <a class="el" href="sdl_8h_source.html#l00049">AppContext::player_team</a>, <a class="el" href="sdl_8h_source.html#l00041">AppContext::renderer</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00026">User::role</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00013">ROLE_SPY</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00027">User::team</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00025">TEAM_BLUE</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00023">TEAM_NONE</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00024">TEAM_RED</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00014">txt_lobby_info</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00015">txt_no_role_label</a>, <a class="el" href="text_8c_source.html#l00076">update_text()</a>, <a class="el" href="text_8c_source.html#l00086">update_text_position()</a>, et <a class="el" href="client_2lib_2lobby_8h_source.html#l00043">Lobby::users</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
 
 </div>
 </div>
@@ -289,11 +291,11 @@ Fonctions</h2></td></tr>
 </div><div class="memdoc">
 <p>Libère les ressources utilisées par le lobby. </p>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00509">509</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00516">516</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2src_2lobby_8c_source.html#l00006">btn_blue_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00007">btn_blue_spy</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00008">btn_launch_game</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00004">btn_red_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00005">btn_red_spy</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00009">btn_return</a>, <a class="el" href="button_8c_source.html#l00184">button_destroy()</a>, <a class="el" href="text_8c_source.html#l00125">destroy_text()</a>, <a class="el" href="sdl_8c_source.html#l00228">free_image()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00017">MAX_PLAYER_TEXTS</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00012">player_icon_blue</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00010">player_icon_none</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00011">player_icon_red</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00015">txt_lobby_info</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00016">txt_no_role_label</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00018">txt_player_names</a>.</p>
+<p class="reference">Références <a class="el" href="client_2src_2lobby_8c_source.html#l00005">btn_blue_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00006">btn_blue_spy</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00007">btn_launch_game</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00003">btn_red_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00004">btn_red_spy</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00008">btn_return</a>, <a class="el" href="button_8c_source.html#l00186">button_destroy()</a>, <a class="el" href="text_8c_source.html#l00125">destroy_text()</a>, <a class="el" href="sdl_8c_source.html#l00239">free_image()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00016">MAX_PLAYER_TEXTS</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00011">player_icon_blue</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00009">player_icon_none</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00010">player_icon_red</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00014">txt_lobby_info</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00015">txt_no_role_label</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00017">txt_player_names</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
 
 </div>
 </div>
@@ -324,11 +326,11 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd><a class="el" href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17">ButtonReturn</a> (BTN_RET_QUIT to exit, BTN_RET_NONE otherwise). </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00347">347</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00354">354</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2src_2lobby_8c_source.html#l00006">btn_blue_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00007">btn_blue_spy</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00008">btn_launch_game</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00004">btn_red_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00005">btn_red_spy</a>, <a class="el" href="button_8h_source.html#l00013">BTN_RET_NONE</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00009">btn_return</a>, et <a class="el" href="button_8c_source.html#l00206">button_handle_event()</a>.</p>
+<p class="reference">Références <a class="el" href="client_2src_2lobby_8c_source.html#l00005">btn_blue_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00006">btn_blue_spy</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00007">btn_launch_game</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00003">btn_red_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00004">btn_red_spy</a>, <a class="el" href="button_8h_source.html#l00014">BTN_RET_NONE</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00008">btn_return</a>, et <a class="el" href="button_8c_source.html#l00208">button_handle_event()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
 
 </div>
 </div>
@@ -354,11 +356,11 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, un code d'erreur sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00096">96</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00094">94</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2src_2lobby_8c_source.html#l00006">btn_blue_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00007">btn_blue_spy</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00008">btn_launch_game</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00004">btn_red_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00005">btn_red_spy</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00009">btn_return</a>, <a class="el" href="button_8c_source.html#l00003">button_config_init()</a>, <a class="el" href="button_8c_source.html#l00028">button_create()</a>, <a class="el" href="button_8h_source.html#l00067">ButtonConfig::callback</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00009">COL_WHITE</a>, <a class="el" href="button_8h_source.html#l00065">ButtonConfig::color</a>, <a class="el" href="text_8c_source.html#l00012">create_text_config()</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00020">FONT_LARABIE</a>, <a class="el" href="button_8h_source.html#l00064">ButtonConfig::font_path</a>, <a class="el" href="button_8h_source.html#l00062">ButtonConfig::h</a>, <a class="el" href="text_8c_source.html#l00068">init_text()</a>, <a class="el" href="sdl_8c_source.html#l00169">load_image()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00022">lobby_button_click()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00017">MAX_PLAYER_TEXTS</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00012">player_icon_blue</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00010">player_icon_none</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00011">player_icon_red</a>, <a class="el" href="sdl_8h_source.html#l00041">AppContext::renderer</a>, <a class="el" href="button_8h_source.html#l00066">ButtonConfig::tex_path</a>, <a class="el" href="button_8h_source.html#l00063">ButtonConfig::text</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00015">txt_lobby_info</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00016">txt_no_role_label</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00018">txt_player_names</a>, <a class="el" href="button_8h_source.html#l00059">ButtonConfig::x</a>, et <a class="el" href="button_8h_source.html#l00060">ButtonConfig::y</a>.</p>
+<p class="reference">Références <a class="el" href="client_2src_2lobby_8c_source.html#l00005">btn_blue_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00006">btn_blue_spy</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00007">btn_launch_game</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00003">btn_red_agent</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00004">btn_red_spy</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00008">btn_return</a>, <a class="el" href="button_8c_source.html#l00003">button_config_init()</a>, <a class="el" href="button_8c_source.html#l00029">button_create()</a>, <a class="el" href="button_8h_source.html#l00069">ButtonConfig::callback</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00011">COL_WHITE</a>, <a class="el" href="button_8h_source.html#l00067">ButtonConfig::color</a>, <a class="el" href="text_8c_source.html#l00012">create_text_config()</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00027">FONT_LARABIE</a>, <a class="el" href="button_8h_source.html#l00066">ButtonConfig::font_path</a>, <a class="el" href="button_8h_source.html#l00064">ButtonConfig::h</a>, <a class="el" href="text_8c_source.html#l00068">init_text()</a>, <a class="el" href="sdl_8c_source.html#l00180">load_image()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00021">lobby_button_click()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00016">MAX_PLAYER_TEXTS</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00011">player_icon_blue</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00009">player_icon_none</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00010">player_icon_red</a>, <a class="el" href="sdl_8h_source.html#l00041">AppContext::renderer</a>, <a class="el" href="button_8h_source.html#l00068">ButtonConfig::tex_path</a>, <a class="el" href="button_8h_source.html#l00065">ButtonConfig::text</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00014">txt_lobby_info</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00015">txt_no_role_label</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00017">txt_player_names</a>, <a class="el" href="button_8h_source.html#l00061">ButtonConfig::x</a>, et <a class="el" href="button_8h_source.html#l00062">ButtonConfig::y</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
 
 </div>
 </div>
@@ -448,11 +450,11 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00361">361</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00368">368</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2lib_2user_8h_source.html#l00025">User::name</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00012">player_icon_blue</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00010">player_icon_none</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00441">player_icon_pos()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00011">player_icon_red</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00026">User::role</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00014">ROLE_AGENT</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00013">ROLE_SPY</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00027">User::team</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00023">TEAM_BLUE</a>, et <a class="el" href="client_2lib_2game_8h_source.html#l00022">TEAM_RED</a>.</p>
+<p class="reference">Références <a class="el" href="client_2lib_2user_8h_source.html#l00025">User::name</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00011">player_icon_blue</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00009">player_icon_none</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00448">player_icon_pos()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00010">player_icon_red</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00026">User::role</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00014">ROLE_AGENT</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00013">ROLE_SPY</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00027">User::team</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00025">TEAM_BLUE</a>, et <a class="el" href="client_2lib_2game_8h_source.html#l00024">TEAM_RED</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2lobby_8c_source.html#l00253">lobby_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2lobby_8c_source.html#l00257">lobby_display()</a>.</p>
 
 </div>
 </div>
@@ -512,11 +514,11 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00441">441</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00448">448</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="sdl_8c_source.html#l00190">display_image()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00428">display_player_name()</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00025">User::name</a>, et <a class="el" href="sdl_8h_source.html#l00041">AppContext::renderer</a>.</p>
+<p class="reference">Références <a class="el" href="sdl_8c_source.html#l00201">display_image()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00435">display_player_name()</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00025">User::name</a>, et <a class="el" href="sdl_8h_source.html#l00041">AppContext::renderer</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2lobby_8c_source.html#l00361">player_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2lobby_8c_source.html#l00368">player_display()</a>.</p>
 
 </div>
 </div>
@@ -553,11 +555,11 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS en cas de succès, EXIT_FAILURE sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00227">227</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00225">225</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2lib_2lobby_8h_source.html#l00039">Lobby::code</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00043">Lobby::game</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00037">Lobby::id</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00022">LB_STATUS_WAITING</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00014">MAX_USERS</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00025">User::name</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00042">Lobby::nb_players</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00038">Lobby::owner_id</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00040">Lobby::status</a>, et <a class="el" href="client_2lib_2lobby_8h_source.html#l00041">Lobby::users</a>.</p>
+<p class="reference">Références <a class="el" href="client_2lib_2lobby_8h_source.html#l00046">Lobby::chat</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00052">chat_clear()</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00007">chat_init()</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00008">CHAT_MAX_MESSAGES</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00041">Lobby::code</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00045">Lobby::game</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00039">Lobby::id</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00023">LB_STATUS_WAITING</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00015">MAX_USERS</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00025">User::name</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00044">Lobby::nb_players</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00040">Lobby::owner_id</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00042">Lobby::status</a>, et <a class="el" href="client_2lib_2lobby_8h_source.html#l00043">Lobby::users</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00040">game_button_click()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00022">lobby_button_click()</a>, et <a class="el" href="client_2src_2message_8c_source.html#l00024">on_message()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00068">game_button_click()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00021">lobby_button_click()</a>, et <a class="el" href="client_2src_2message_8c_source.html#l00024">on_message()</a>.</p>
 
 </div>
 </div>
@@ -575,7 +577,7 @@ Fonctions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a href="client_2lib_2lobby_8h.html">lobby.h</a></li>
-    <li class="footer">Généré le Lundi 23 Mars 2026 18:41:13 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>
 </body>

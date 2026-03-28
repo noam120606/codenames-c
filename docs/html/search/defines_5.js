@@ -8,5 +8,6 @@ var searchData=
   ['max_5fresources_5',['MAX_RESOURCES',['../ressources_8h.html#a036c05ee5aeca0a55276156cd8870adc',1,'ressources.h']]],
   ['max_5fsounds_6',['MAX_SOUNDS',['../audio_8h.html#a7bbdbdcfece918fba0f794f7419cd6ac',1,'audio.h']]],
   ['max_5fteam_5fplayers_7',['MAX_TEAM_PLAYERS',['../client_2src_2game_8c.html#a2cfd47dd773bbdfd91bf22b13c727f77',1,'game.c']]],
-  ['max_5fusers_8',['MAX_USERS',['../client_2lib_2lobby_8h.html#a2c2a303621f66761529e598758d7ef34',1,'MAX_USERS:&#160;lobby.h'],['../server_2lib_2lobby_8h.html#a2c2a303621f66761529e598758d7ef34',1,'MAX_USERS:&#160;lobby.h']]]
+  ['max_5fusers_8',['MAX_USERS',['../client_2lib_2lobby_8h.html#a2c2a303621f66761529e598758d7ef34',1,'MAX_USERS:&#160;lobby.h'],['../server_2lib_2lobby_8h.html#a2c2a303621f66761529e598758d7ef34',1,'MAX_USERS:&#160;lobby.h']]],
+  ['mkdir_5fdata_9',['MKDIR_DATA',['../client_2lib_2all_8h.html#ae4697e3ac4654939d18ed9bd535ef807',1,'MKDIR_DATA:&#160;all.h'],['../server_2lib_2all_8h.html#ae4697e3ac4654939d18ed9bd535ef807',1,'MKDIR_DATA:&#160;all.h']]]
 ];

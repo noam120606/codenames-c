@@ -25,6 +25,7 @@ var input_8c =
     [ "next_word_pos", "input_8c.html#a8cde532a8ed8ceb10c31c63cc1407119", null ],
     [ "point_in_rect", "input_8c.html#a1749bca0f8782d5876577e90481bfdef", null ],
     [ "prev_word_pos", "input_8c.html#a7e231c1574642376cefafd5ee753739e", null ],
+    [ "regex_match_text", "input_8c.html#a9d3f9ac0224b6d2aca5ae24955c02dc8", null ],
     [ "input_count", "input_8c.html#a1dcf081f133c58340a448d9d92f0eb31", null ],
     [ "inputs", "input_8c.html#ad1723ac8fb77a41fc83509519767014a", null ]
 ];

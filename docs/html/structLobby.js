@@ -1,5 +1,6 @@
 var structLobby =
 [
+    [ "chat", "structLobby.html#aa3d81618bd4355d37da94317c4846e8c", null ],
     [ "code", "structLobby.html#a92b6139484380e05dac8bf3fc0a2455a", null ],
     [ "game", "structLobby.html#a1567c92b89bc67d97ae4cbbf7034836e", null ],
     [ "id", "structLobby.html#aa61b45b961a54b3f1bb20c926c389e5f", null ],

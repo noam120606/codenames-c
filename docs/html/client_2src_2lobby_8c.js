@@ -17,7 +17,6 @@ var client_2src_2lobby_8c =
     [ "btn_red_spy", "client_2src_2lobby_8c.html#a826bed728c3ac0d6c29a1b585bc93e96", null ],
     [ "btn_return", "client_2src_2lobby_8c.html#ab5d9550c4b6ee353d280eedb9456a0ee", null ],
     [ "current_player_text_index", "client_2src_2lobby_8c.html#acd7ada16665ace9a6e10d7cc09fcaf11", null ],
-    [ "lobby_filter_applied", "client_2src_2lobby_8c.html#a53848c36d7d2c5d1cb42684a92ea2148", null ],
     [ "player_icon_blue", "client_2src_2lobby_8c.html#ab62da2a22c36cf86c0aecfa26c5fd379", null ],
     [ "player_icon_none", "client_2src_2lobby_8c.html#aa44da161781e64a66d791055278de434", null ],
     [ "player_icon_red", "client_2src_2lobby_8c.html#a23f9047fe9c1ab44e55bfdb65496a590", null ],

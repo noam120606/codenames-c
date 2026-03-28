@@ -1,9 +1,10 @@
 var dir_c820a03d7ce2287b7e602f7703757381 =
 [
-    [ "all.h", "client_2lib_2all_8h.html", null ],
+    [ "all.h", "client_2lib_2all_8h.html", "client_2lib_2all_8h" ],
     [ "audio.h", "audio_8h.html", "audio_8h" ],
     [ "background.h", "background_8h.html", "background_8h" ],
     [ "button.h", "button_8h.html", "button_8h" ],
+    [ "chat.h", "client_2lib_2chat_8h.html", "client_2lib_2chat_8h" ],
     [ "crossfader.h", "crossfader_8h.html", "crossfader_8h" ],
     [ "game.h", "client_2lib_2game_8h.html", "client_2lib_2game_8h" ],
     [ "infos.h", "infos_8h.html", "infos_8h" ],
@@ -12,6 +13,7 @@ var dir_c820a03d7ce2287b7e602f7703757381 =
     [ "lobby.h", "client_2lib_2lobby_8h.html", "client_2lib_2lobby_8h" ],
     [ "menu.h", "menu_8h.html", "menu_8h" ],
     [ "message.h", "client_2lib_2message_8h.html", "client_2lib_2message_8h" ],
+    [ "regex_compat.h", "regex__compat_8h.html", "regex__compat_8h" ],
     [ "ressources.h", "ressources_8h.html", "ressources_8h" ],
     [ "save.h", "save_8h.html", "save_8h" ],
     [ "sdl.h", "sdl_8h.html", "sdl_8h" ],

@@ -3,6 +3,7 @@ var client_2lib_2game_8h =
     [ "Word", "structWord.html", "structWord" ],
     [ "Game", "structGame.html", "structGame" ],
     [ "Card", "structCard.html", "structCard" ],
+    [ "NB_WORDS", "client_2lib_2game_8h.html#ab5dd85e42caa80c819f0f75a1a6c4bd9", null ],
     [ "AppState", "client_2lib_2game_8h.html#af18642bfb6229ca25b25c60e12cffa6c", null ],
     [ "Card", "client_2lib_2game_8h.html#a23ff27324f1ac52bcafa4cc91e2c2744", null ],
     [ "GameState", "client_2lib_2game_8h.html#a2185b55f783b76da98f60ddfedae594d", null ],
@@ -15,8 +16,10 @@ var client_2lib_2game_8h =
     ] ],
     [ "GameState", "client_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285", [
       [ "GAMESTATE_WAITING", "client_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a466f1dad3c9d6cdfdce7f1d6d144f932", null ],
-      [ "GAMESTATE_TURN_RED", "client_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285af079481b440a51bd16e0cce30e777204", null ],
-      [ "GAMESTATE_TURN_BLUE", "client_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285ad8fc1a83ebeb07efb9f36d8d77ac39d4", null ],
+      [ "GAMESTATE_TURN_RED_SPY", "client_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285ac6f4aba5b0c4077290c9fb1c9940dfdf", null ],
+      [ "GAMESTATE_TURN_RED_AGENT", "client_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a7bedbddf684940fe57d29de304b8a392", null ],
+      [ "GAMESTATE_TURN_BLUE_SPY", "client_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a8449de81b79b665db58f5a6380c1e413", null ],
+      [ "GAMESTATE_TURN_BLUE_AGENT", "client_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285acaeb5b9f28749e43e9878f40613fa669", null ],
       [ "GAMESTATE_ENDED", "client_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285aa58a7cf5b2690f73ec2359ec09e42095", null ]
     ] ],
     [ "Team", "client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598", [

@@ -22,8 +22,11 @@ var server_2lib_2message_8h =
       [ "MSG_CHOOSE_ROLE", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a165d64b96149e42ee6d282a2f6149edd", null ],
       [ "MSG_STARTGAME", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013aed771684634ec8c5e250a4df7eaf245d", null ],
       [ "MSG_WORDDATA", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013aec68a0846089f260eb423bccc1741f8f", null ],
+      [ "MSG_SUBMIT_HINT", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013affb36f73d5d4771737ce221bcf91811b", null ],
+      [ "MSG_SENDCHAT", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013ac660ea980a12d3674334b2d35eddabdb", null ],
       [ "MSG_REQUESTUUID", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a48572e5982fd99f6677484f5090fa795", null ],
-      [ "MSG_COMPAREVERSION", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013afa28949f4a14ffcda3646bbadc355ab1", null ]
+      [ "MSG_COMPAREVERSION", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013afa28949f4a14ffcda3646bbadc355ab1", null ],
+      [ "MSG_PING", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013aadfe01bd4c9e50a1930619703ba3217d", null ]
     ] ],
     [ "on_leave", "server_2lib_2message_8h.html#add27fff7d2eeb6c5c76aa14d3b06f756", null ],
     [ "on_message", "server_2lib_2message_8h.html#a10a7a0258afe719e66a8ee30cba9c34a", null ],

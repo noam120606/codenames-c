@@ -8,6 +8,7 @@ var structInputConfig =
     [ "border_color", "structInputConfig.html#a1d33057fcc473d299a43ae072049b9a2", null ],
     [ "centered", "structInputConfig.html#acf00f12ca263bcd9da1de9d6f98be42c", null ],
     [ "cursor_pos", "structInputConfig.html#aecc79f29c22f278eed8667823ec65d85", null ],
+    [ "disabled", "structInputConfig.html#a767caad75523f6abe6b1d94f10ef8e5a", null ],
     [ "focused", "structInputConfig.html#ad51635347b3a877be9ddadc6362e76f3", null ],
     [ "font_path", "structInputConfig.html#a084638e298361002ec0d46093204bc35", null ],
     [ "font_size", "structInputConfig.html#a8a0e06aa974f5fd0ce975439e6ee1666", null ],

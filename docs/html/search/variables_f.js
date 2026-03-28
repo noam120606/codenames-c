@@ -1,11 +1,19 @@
 var searchData=
 [
-  ['rect_0',['rect',['../structButtonConfig.html#a499e2e5ebe13589dff7967201b77038c',1,'ButtonConfig::rect'],['../structCrossfaderConfig.html#a4943be4eea5c53d125492ec6e5229a4f',1,'CrossfaderConfig::rect'],['../structInputConfig.html#a9d52b0c0e768b365d8c7f63420d8aebb',1,'InputConfig::rect'],['../structWindowConfig.html#a4169b01a110ca1c4323b342439a3c030',1,'WindowConfig::rect']]],
-  ['red_5fplayer_5ftext_5findex_1',['red_player_text_index',['../client_2src_2game_8c.html#a216feb4db1303c66a65e98d10ee407cf',1,'game.c']]],
-  ['renderer_2',['renderer',['../structAppContext.html#a70a91ad56405a07962fe46fa7f640882',1,'AppContext']]],
-  ['revealed_3',['revealed',['../structWord.html#a0cac07c3eb1ee9ad069181b07b045a00',1,'Word::revealed'],['../structCard.html#a081171770c1dfa99ea73cc9ccc7378f0',1,'Card::revealed']]],
-  ['role_4',['role',['../structUser.html#ab91e66ddd08d2a0a76790374c2861fb8',1,'User']]],
-  ['rules_5fline_5fcount_5',['rules_line_count',['../infos_8c.html#a3f9cb5df846184803ffb556d92a85aa0',1,'infos.c']]],
-  ['rules_5flines_6',['rules_lines',['../infos_8c.html#a455e806e355945510f3da8893a8d981c',1,'infos.c']]],
-  ['rules_5ftitle_7',['rules_title',['../infos_8c.html#a5377b7365f8ed2b352452fbb2d883eba',1,'infos.c']]]
+  ['padding_0',['padding',['../structInputConfig.html#a85c28f2890a20b03ae04c058853e25a0',1,'InputConfig']]],
+  ['ping_5fms_1',['ping_ms',['../structAppContext.html#a109b81a1fc4136ff7e0ae5727a735975',1,'AppContext']]],
+  ['placeholder_5fcount_2',['placeholder_count',['../structInputConfig.html#ac17ddf41b8e88038bed346eadb8c9321',1,'InputConfig']]],
+  ['placeholder_5findex_3',['placeholder_index',['../structInputConfig.html#a6eff2f134d1d30fb36e347f88a9ac84e',1,'InputConfig']]],
+  ['placeholder_5flast_5ftick_4',['placeholder_last_tick',['../structInputConfig.html#a47271977e3f1a71cb725cfd41f2f9fe8',1,'InputConfig']]],
+  ['placeholders_5',['placeholders',['../structInputConfig.html#aa5ea97e0fdc070fa6395f53866ab8c18',1,'InputConfig']]],
+  ['player_5ficon_5fblue_6',['player_icon_blue',['../client_2src_2game_8c.html#ab62da2a22c36cf86c0aecfa26c5fd379',1,'player_icon_blue:&#160;lobby.c'],['../client_2src_2lobby_8c.html#ab62da2a22c36cf86c0aecfa26c5fd379',1,'player_icon_blue:&#160;lobby.c']]],
+  ['player_5ficon_5fnone_7',['player_icon_none',['../client_2src_2lobby_8c.html#aa44da161781e64a66d791055278de434',1,'lobby.c']]],
+  ['player_5ficon_5fred_8',['player_icon_red',['../client_2src_2game_8c.html#a23f9047fe9c1ab44e55bfdb65496a590',1,'player_icon_red:&#160;lobby.c'],['../client_2src_2lobby_8c.html#a23f9047fe9c1ab44e55bfdb65496a590',1,'player_icon_red:&#160;lobby.c']]],
+  ['player_5fname_9',['player_name',['../structAppContext.html#a30c1cf80cb97e4947d684a813b1ff8fa',1,'AppContext']]],
+  ['player_5frole_10',['player_role',['../structAppContext.html#acdea17bcfc0e068e8cf73241280b1ebe',1,'AppContext']]],
+  ['player_5fteam_11',['player_team',['../structAppContext.html#a02cb522b64d54cadeacd519e4468e3b4',1,'AppContext']]],
+  ['player_5fuuid_12',['player_uuid',['../structAppContext.html#a8e75d9cd35b7645dc8803102396c4f7a',1,'AppContext']]],
+  ['port_13',['port',['../structTcpServer.html#a95fc31ff59f7a0bc013b942e68d07e37',1,'TcpServer']]],
+  ['previous_5fleft_14',['previous_left',['../structChannelFilterState.html#a71196200158d1e0e66e0341bd0205bac',1,'ChannelFilterState::previous_left'],['../structChannelFadeFilterState.html#a896103bacc9b0361b9ead1413fdd893c',1,'ChannelFadeFilterState::previous_left']]],
+  ['previous_5fright_15',['previous_right',['../structChannelFilterState.html#ab4f0ae94ff9eac0f48dc4ab65d08a51f',1,'ChannelFilterState::previous_right'],['../structChannelFadeFilterState.html#a04a491001f54bb140a4b232889b6f263',1,'ChannelFadeFilterState::previous_right']]]
 ];

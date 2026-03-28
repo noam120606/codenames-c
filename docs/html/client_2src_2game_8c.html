@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier client/src/game.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -35,7 +35,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.14.0 -->
+<!-- Généré par Doxygen 1.16.1 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
@@ -98,46 +98,61 @@ $(function(){initNavTree('client_2src_2game_8c.html','',''); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a2cfd47dd773bbdfd91bf22b13c727f77" id="r_a2cfd47dd773bbdfd91bf22b13c727f77"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cfd47dd773bbdfd91bf22b13c727f77">MAX_TEAM_PLAYERS</a>&#160;&#160;&#160;8</td></tr>
-<tr class="memitem:af5b5fa19c2e690e24904d81c5692a30d" id="r_af5b5fa19c2e690e24904d81c5692a30d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5b5fa19c2e690e24904d81c5692a30d">NUM_CARDS</a>&#160;&#160;&#160;25</td></tr>
+<tr class="memitem:a2cfd47dd773bbdfd91bf22b13c727f77" id="r_a2cfd47dd773bbdfd91bf22b13c727f77"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a2cfd47dd773bbdfd91bf22b13c727f77">MAX_TEAM_PLAYERS</a>&#160;&#160;&#160;8</td></tr>
+<tr class="memitem:af5b5fa19c2e690e24904d81c5692a30d" id="r_af5b5fa19c2e690e24904d81c5692a30d"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#af5b5fa19c2e690e24904d81c5692a30d">NUM_CARDS</a>&#160;&#160;&#160;25</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a13d4ca1c1cd01084ff6c5918d2c4820f" id="r_a13d4ca1c1cd01084ff6c5918d2c4820f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17">ButtonReturn</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13d4ca1c1cd01084ff6c5918d2c4820f">game_button_click</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structButton.html">Button</a> *button)</td></tr>
-<tr class="memitem:afd3d7f4bdeb22a8fc7a4c284cdbeb919" id="r_afd3d7f4bdeb22a8fc7a4c284cdbeb919"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd3d7f4bdeb22a8fc7a4c284cdbeb919">game_handle_event</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, SDL_Event *e)</td></tr>
-<tr class="memitem:a9f85eab4f1455671d70455e858c74dac" id="r_a9f85eab4f1455671d70455e858c74dac"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f85eab4f1455671d70455e858c74dac">game_init</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
-<tr class="memitem:a386c6773790f1a73405affc2f87f8c09" id="r_a386c6773790f1a73405affc2f87f8c09"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a386c6773790f1a73405affc2f87f8c09">draw_filled_rect</a> (SDL_Renderer *renderer, int x, int y, int w, int h, SDL_Color color)</td></tr>
-<tr class="memitem:a30ee99bf8314872c76775ec9c49129ce" id="r_a30ee99bf8314872c76775ec9c49129ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30ee99bf8314872c76775ec9c49129ce">game_render_team_panels</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
-<tr class="memitem:afc281acdfa1094848747657fcacd03d3" id="r_afc281acdfa1094848747657fcacd03d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc281acdfa1094848747657fcacd03d3">game_render_cards</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
-<tr class="memitem:a113cc37a0ea70f2b9bea4fa5f834a983" id="r_a113cc37a0ea70f2b9bea4fa5f834a983"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a113cc37a0ea70f2b9bea4fa5f834a983">game_display</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
-<tr class="memitem:ae52f5479f34f39bb3de7703f7ba412d6" id="r_ae52f5479f34f39bb3de7703f7ba412d6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae52f5479f34f39bb3de7703f7ba412d6">game_free</a> ()</td></tr>
+<tr class="memitem:ab713c49bf92936d291625fcdeaa29138" id="r_ab713c49bf92936d291625fcdeaa29138"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#ab713c49bf92936d291625fcdeaa29138">chat_on_submit</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, const char *text)</td></tr>
+<tr class="memitem:a13d4ca1c1cd01084ff6c5918d2c4820f" id="r_a13d4ca1c1cd01084ff6c5918d2c4820f"><td class="memItemLeft">static <a class="el" href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17">ButtonReturn</a>&#160;</td><td class="memItemRight"><a class="el" href="#a13d4ca1c1cd01084ff6c5918d2c4820f">game_button_click</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structButton.html">Button</a> *button)</td></tr>
+<tr class="memitem:afd3d7f4bdeb22a8fc7a4c284cdbeb919" id="r_afd3d7f4bdeb22a8fc7a4c284cdbeb919"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#afd3d7f4bdeb22a8fc7a4c284cdbeb919">game_handle_event</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, SDL_Event *e)</td></tr>
+<tr class="memitem:a9f85eab4f1455671d70455e858c74dac" id="r_a9f85eab4f1455671d70455e858c74dac"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a9f85eab4f1455671d70455e858c74dac">game_init</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="memitem:a059783784d0ef92237e1431146e67223" id="r_a059783784d0ef92237e1431146e67223"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a059783784d0ef92237e1431146e67223">render_team_member_in_panel</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structWindow.html">Window</a> *panel, SDL_Texture *icon, <a class="el" href="structText.html">Text</a> *txt, const char *name, <a class="el" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775">UserRole</a> role, int *spy_row, int *agent_row)</td></tr>
+<tr class="memitem:a1b593b2066b8d4df0aa005961c9999d1" id="r_a1b593b2066b8d4df0aa005961c9999d1"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a1b593b2066b8d4df0aa005961c9999d1">render_team_panel_content</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structWindow.html">Window</a> *panel, <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> team, SDL_Texture *icon, <a class="el" href="structText.html">Text</a> *txt_spy_label, <a class="el" href="structText.html">Text</a> *txt_agents_label, <a class="el" href="structText.html">Text</a> **player_texts, int *player_index)</td></tr>
+<tr class="memitem:a91d0deb901f383b3ca862b6b2ab9b1ee" id="r_a91d0deb901f383b3ca862b6b2ab9b1ee"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a91d0deb901f383b3ca862b6b2ab9b1ee">game_render_team_windows</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="memitem:afc281acdfa1094848747657fcacd03d3" id="r_afc281acdfa1094848747657fcacd03d3"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#afc281acdfa1094848747657fcacd03d3">game_render_cards</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="memitem:a113cc37a0ea70f2b9bea4fa5f834a983" id="r_a113cc37a0ea70f2b9bea4fa5f834a983"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a113cc37a0ea70f2b9bea4fa5f834a983">game_display</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="memitem:ae52f5479f34f39bb3de7703f7ba412d6" id="r_ae52f5479f34f39bb3de7703f7ba412d6"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ae52f5479f34f39bb3de7703f7ba412d6">game_free</a> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a433ed37af32bd5c57d9b27aaee38d7b1" id="r_a433ed37af32bd5c57d9b27aaee38d7b1"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a433ed37af32bd5c57d9b27aaee38d7b1">card_h_classic</a></td></tr>
-<tr class="memitem:aff4debb79f9b6edc20084040a2305309" id="r_aff4debb79f9b6edc20084040a2305309"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff4debb79f9b6edc20084040a2305309">card_f_classic</a></td></tr>
-<tr class="memitem:ad25317eec93546f7decab5a783152af9" id="r_ad25317eec93546f7decab5a783152af9"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad25317eec93546f7decab5a783152af9">card_h_red</a></td></tr>
-<tr class="memitem:aa4af26321392c002259085f074c2253e" id="r_aa4af26321392c002259085f074c2253e"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4af26321392c002259085f074c2253e">card_f_red</a></td></tr>
-<tr class="memitem:a5fd900d48ad01a2c51233e0bd781edd6" id="r_a5fd900d48ad01a2c51233e0bd781edd6"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fd900d48ad01a2c51233e0bd781edd6">card_h_blue</a></td></tr>
-<tr class="memitem:ae54bd50311003974405fafa889149ccf" id="r_ae54bd50311003974405fafa889149ccf"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae54bd50311003974405fafa889149ccf">card_f_blue</a></td></tr>
-<tr class="memitem:afe9e4666aaaa438258f01b02d2dd5b50" id="r_afe9e4666aaaa438258f01b02d2dd5b50"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe9e4666aaaa438258f01b02d2dd5b50">card_black</a></td></tr>
-<tr class="memitem:ae55a68275d94f7600af382da9c4b528c" id="r_ae55a68275d94f7600af382da9c4b528c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structButton.html">Button</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae55a68275d94f7600af382da9c4b528c">btn_quit_game</a> = NULL</td></tr>
-<tr class="memitem:a23f9047fe9c1ab44e55bfdb65496a590" id="r_a23f9047fe9c1ab44e55bfdb65496a590"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23f9047fe9c1ab44e55bfdb65496a590">player_icon_red</a></td></tr>
-<tr class="memitem:ab62da2a22c36cf86c0aecfa26c5fd379" id="r_ab62da2a22c36cf86c0aecfa26c5fd379"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab62da2a22c36cf86c0aecfa26c5fd379">player_icon_blue</a></td></tr>
-<tr class="memitem:a70ea3e2052aeba4ae7d6acc392a49d74" id="r_a70ea3e2052aeba4ae7d6acc392a49d74"><td class="memItemLeft" align="right" valign="top">static const SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a70ea3e2052aeba4ae7d6acc392a49d74">TEAM_BLUE_COLOR</a> = {50, 80, 150, 200}</td></tr>
-<tr class="memitem:a7f4bfde91045770a447b91aa657158f1" id="r_a7f4bfde91045770a447b91aa657158f1"><td class="memItemLeft" align="right" valign="top">static const SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f4bfde91045770a447b91aa657158f1">TEAM_RED_COLOR</a> = {150, 50, 50, 200}</td></tr>
-<tr class="memitem:a4dd13083c17c9ca134c0397a76fa9fef" id="r_a4dd13083c17c9ca134c0397a76fa9fef"><td class="memItemLeft" align="right" valign="top">static const SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4dd13083c17c9ca134c0397a76fa9fef">PANEL_BG_COLOR</a> = {30, 30, 30, 180}</td></tr>
-<tr class="memitem:ae84fa88101ef501acd7b14ae78b60daf" id="r_ae84fa88101ef501acd7b14ae78b60daf"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae84fa88101ef501acd7b14ae78b60daf">txt_team_blue_title</a> = NULL</td></tr>
-<tr class="memitem:a23dd2f16818715c840f7e1f7162c6407" id="r_a23dd2f16818715c840f7e1f7162c6407"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23dd2f16818715c840f7e1f7162c6407">txt_team_red_title</a> = NULL</td></tr>
-<tr class="memitem:ac68b638b6c12c89674971b7b3a43b4d2" id="r_ac68b638b6c12c89674971b7b3a43b4d2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac68b638b6c12c89674971b7b3a43b4d2">txt_blue_spy_label</a> = NULL</td></tr>
-<tr class="memitem:a09c3b769e9a9cc3261b0872eef2a02fb" id="r_a09c3b769e9a9cc3261b0872eef2a02fb"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09c3b769e9a9cc3261b0872eef2a02fb">txt_blue_agents_label</a> = NULL</td></tr>
-<tr class="memitem:a6c27e99dfcfbe4f7a4103b5e108a88f9" id="r_a6c27e99dfcfbe4f7a4103b5e108a88f9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c27e99dfcfbe4f7a4103b5e108a88f9">txt_red_spy_label</a> = NULL</td></tr>
-<tr class="memitem:aba3aeba0a29b1b888af7355bfcbff376" id="r_aba3aeba0a29b1b888af7355bfcbff376"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba3aeba0a29b1b888af7355bfcbff376">txt_red_agents_label</a> = NULL</td></tr>
-<tr class="memitem:a9a757d8abb83b57a521d3ae667ce6e77" id="r_a9a757d8abb83b57a521d3ae667ce6e77"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a757d8abb83b57a521d3ae667ce6e77">txt_blue_players</a> [<a class="el" href="#a2cfd47dd773bbdfd91bf22b13c727f77">MAX_TEAM_PLAYERS</a>] = {NULL}</td></tr>
-<tr class="memitem:ae72e1de1134cfcaed1c49040bcf814d0" id="r_ae72e1de1134cfcaed1c49040bcf814d0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae72e1de1134cfcaed1c49040bcf814d0">txt_red_players</a> [<a class="el" href="#a2cfd47dd773bbdfd91bf22b13c727f77">MAX_TEAM_PLAYERS</a>] = {NULL}</td></tr>
-<tr class="memitem:a4436cb927edfbe3e7aa2a72ebc2e6d05" id="r_a4436cb927edfbe3e7aa2a72ebc2e6d05"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4436cb927edfbe3e7aa2a72ebc2e6d05">blue_player_text_index</a> = 0</td></tr>
-<tr class="memitem:a216feb4db1303c66a65e98d10ee407cf" id="r_a216feb4db1303c66a65e98d10ee407cf"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a216feb4db1303c66a65e98d10ee407cf">red_player_text_index</a> = 0</td></tr>
-<tr class="memitem:af249ba2d639bfbb1a976cb68fb9324b7" id="r_af249ba2d639bfbb1a976cb68fb9324b7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af249ba2d639bfbb1a976cb68fb9324b7">txt_card_words</a> [<a class="el" href="#af5b5fa19c2e690e24904d81c5692a30d">NUM_CARDS</a>] = {NULL}</td></tr>
+<tr class="memitem:a433ed37af32bd5c57d9b27aaee38d7b1" id="r_a433ed37af32bd5c57d9b27aaee38d7b1"><td class="memItemLeft">SDL_Texture *&#160;</td><td class="memItemRight"><a class="el" href="#a433ed37af32bd5c57d9b27aaee38d7b1">card_h_classic</a></td></tr>
+<tr class="memitem:aff4debb79f9b6edc20084040a2305309" id="r_aff4debb79f9b6edc20084040a2305309"><td class="memItemLeft">SDL_Texture *&#160;</td><td class="memItemRight"><a class="el" href="#aff4debb79f9b6edc20084040a2305309">card_f_classic</a></td></tr>
+<tr class="memitem:ad25317eec93546f7decab5a783152af9" id="r_ad25317eec93546f7decab5a783152af9"><td class="memItemLeft">SDL_Texture *&#160;</td><td class="memItemRight"><a class="el" href="#ad25317eec93546f7decab5a783152af9">card_h_red</a></td></tr>
+<tr class="memitem:aa4af26321392c002259085f074c2253e" id="r_aa4af26321392c002259085f074c2253e"><td class="memItemLeft">SDL_Texture *&#160;</td><td class="memItemRight"><a class="el" href="#aa4af26321392c002259085f074c2253e">card_f_red</a></td></tr>
+<tr class="memitem:a5fd900d48ad01a2c51233e0bd781edd6" id="r_a5fd900d48ad01a2c51233e0bd781edd6"><td class="memItemLeft">SDL_Texture *&#160;</td><td class="memItemRight"><a class="el" href="#a5fd900d48ad01a2c51233e0bd781edd6">card_h_blue</a></td></tr>
+<tr class="memitem:ae54bd50311003974405fafa889149ccf" id="r_ae54bd50311003974405fafa889149ccf"><td class="memItemLeft">SDL_Texture *&#160;</td><td class="memItemRight"><a class="el" href="#ae54bd50311003974405fafa889149ccf">card_f_blue</a></td></tr>
+<tr class="memitem:afe9e4666aaaa438258f01b02d2dd5b50" id="r_afe9e4666aaaa438258f01b02d2dd5b50"><td class="memItemLeft">SDL_Texture *&#160;</td><td class="memItemRight"><a class="el" href="#afe9e4666aaaa438258f01b02d2dd5b50">card_black</a></td></tr>
+<tr class="memitem:ae55a68275d94f7600af382da9c4b528c" id="r_ae55a68275d94f7600af382da9c4b528c"><td class="memItemLeft"><a class="el" href="structButton.html">Button</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ae55a68275d94f7600af382da9c4b528c">btn_quit_game</a> = NULL</td></tr>
+<tr class="memitem:ad2cdaa21293e186edd8a6982bec86eda" id="r_ad2cdaa21293e186edd8a6982bec86eda"><td class="memItemLeft"><a class="el" href="structButton.html">Button</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ad2cdaa21293e186edd8a6982bec86eda">btn_hint_submit</a> = NULL</td></tr>
+<tr class="memitem:a50f7c3a317fb69ffb8e5aaa4bbff4c33" id="r_a50f7c3a317fb69ffb8e5aaa4bbff4c33"><td class="memItemLeft"><a class="el" href="structInput.html">Input</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a50f7c3a317fb69ffb8e5aaa4bbff4c33">hint_input</a> = NULL</td></tr>
+<tr class="memitem:aa85560ed942fb33295031e1cd86d0271" id="r_aa85560ed942fb33295031e1cd86d0271"><td class="memItemLeft"><a class="el" href="structInput.html">Input</a> *&#160;</td><td class="memItemRight"><a class="el" href="#aa85560ed942fb33295031e1cd86d0271">hint_count_input</a> = NULL</td></tr>
+<tr class="memitem:a322f0309fbca4e5e4b8aa0eff73cfbfb" id="r_a322f0309fbca4e5e4b8aa0eff73cfbfb"><td class="memItemLeft"><a class="el" href="structInput.html">Input</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a322f0309fbca4e5e4b8aa0eff73cfbfb">chat_input</a> = NULL</td></tr>
+<tr class="memitem:a9d43a0226a1c1375f95f982e539f42cc" id="r_a9d43a0226a1c1375f95f982e539f42cc"><td class="memItemLeft">static const char *&#160;</td><td class="memItemRight"><a class="el" href="#a9d43a0226a1c1375f95f982e539f42cc">HINT_INPUT_PLACEHOLDERS</a> [] = {&quot;Entrez un mot&quot;}</td></tr>
+<tr class="memitem:ac151a1d8fc1994c12caa6e3ab8c0d2c9" id="r_ac151a1d8fc1994c12caa6e3ab8c0d2c9"><td class="memItemLeft">static const char *&#160;</td><td class="memItemRight"><a class="el" href="#ac151a1d8fc1994c12caa6e3ab8c0d2c9">HINT_COUNT_INPUT_PLACEHOLDERS</a> [] = {&quot;1&quot;,&quot;2&quot;,&quot;3&quot;}</td></tr>
+<tr class="memitem:a186c8c7fcfed64cf4bc2caa97b65944a" id="r_a186c8c7fcfed64cf4bc2caa97b65944a"><td class="memItemLeft">static const char *&#160;</td><td class="memItemRight"><a class="el" href="#a186c8c7fcfed64cf4bc2caa97b65944a">CHAT_INPUT_PLACEHOLDERS</a> [] = {&quot;Chattez ici ...&quot;}</td></tr>
+<tr class="memitem:a85d9b02b7de329d3108091db600f5a53" id="r_a85d9b02b7de329d3108091db600f5a53"><td class="memItemLeft"><a class="el" href="structWindow.html">Window</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a85d9b02b7de329d3108091db600f5a53">blue_panel</a> = NULL</td></tr>
+<tr class="memitem:ab6afd5e7d984cee1802863cf639b7062" id="r_ab6afd5e7d984cee1802863cf639b7062"><td class="memItemLeft"><a class="el" href="structWindow.html">Window</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ab6afd5e7d984cee1802863cf639b7062">red_panel</a> = NULL</td></tr>
+<tr class="memitem:a7a1385342c339ddee9866543a6d6077e" id="r_a7a1385342c339ddee9866543a6d6077e"><td class="memItemLeft"><a class="el" href="structWindow.html">Window</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a7a1385342c339ddee9866543a6d6077e">history_window_blue</a> = NULL</td></tr>
+<tr class="memitem:a119abc0bc03a3a9648a2a1bb43370033" id="r_a119abc0bc03a3a9648a2a1bb43370033"><td class="memItemLeft"><a class="el" href="structWindow.html">Window</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a119abc0bc03a3a9648a2a1bb43370033">history_window_red</a> = NULL</td></tr>
+<tr class="memitem:ac69371d432e938283c5f497ec81a71c0" id="r_ac69371d432e938283c5f497ec81a71c0"><td class="memItemLeft"><a class="el" href="structWindow.html">Window</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ac69371d432e938283c5f497ec81a71c0">hint_window</a> = NULL</td></tr>
+<tr class="memitem:ade8ab62517421365fee4ceae5eae79b7" id="r_ade8ab62517421365fee4ceae5eae79b7"><td class="memItemLeft"><a class="el" href="structWindow.html">Window</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ade8ab62517421365fee4ceae5eae79b7">chat_window</a> = NULL</td></tr>
+<tr class="memitem:a23f9047fe9c1ab44e55bfdb65496a590" id="r_a23f9047fe9c1ab44e55bfdb65496a590"><td class="memItemLeft">SDL_Texture *&#160;</td><td class="memItemRight"><a class="el" href="#a23f9047fe9c1ab44e55bfdb65496a590">player_icon_red</a></td></tr>
+<tr class="memitem:ab62da2a22c36cf86c0aecfa26c5fd379" id="r_ab62da2a22c36cf86c0aecfa26c5fd379"><td class="memItemLeft">SDL_Texture *&#160;</td><td class="memItemRight"><a class="el" href="#ab62da2a22c36cf86c0aecfa26c5fd379">player_icon_blue</a></td></tr>
+<tr class="memitem:a70ea3e2052aeba4ae7d6acc392a49d74" id="r_a70ea3e2052aeba4ae7d6acc392a49d74"><td class="memItemLeft">static const SDL_Color&#160;</td><td class="memItemRight"><a class="el" href="#a70ea3e2052aeba4ae7d6acc392a49d74">TEAM_BLUE_COLOR</a> = {50, 80, 150, 200}</td></tr>
+<tr class="memitem:a7f4bfde91045770a447b91aa657158f1" id="r_a7f4bfde91045770a447b91aa657158f1"><td class="memItemLeft">static const SDL_Color&#160;</td><td class="memItemRight"><a class="el" href="#a7f4bfde91045770a447b91aa657158f1">TEAM_RED_COLOR</a> = {150, 50, 50, 200}</td></tr>
+<tr class="memitem:ae84fa88101ef501acd7b14ae78b60daf" id="r_ae84fa88101ef501acd7b14ae78b60daf"><td class="memItemLeft">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ae84fa88101ef501acd7b14ae78b60daf">txt_team_blue_title</a> = NULL</td></tr>
+<tr class="memitem:a23dd2f16818715c840f7e1f7162c6407" id="r_a23dd2f16818715c840f7e1f7162c6407"><td class="memItemLeft">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a23dd2f16818715c840f7e1f7162c6407">txt_team_red_title</a> = NULL</td></tr>
+<tr class="memitem:ac68b638b6c12c89674971b7b3a43b4d2" id="r_ac68b638b6c12c89674971b7b3a43b4d2"><td class="memItemLeft">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ac68b638b6c12c89674971b7b3a43b4d2">txt_blue_spy_label</a> = NULL</td></tr>
+<tr class="memitem:a09c3b769e9a9cc3261b0872eef2a02fb" id="r_a09c3b769e9a9cc3261b0872eef2a02fb"><td class="memItemLeft">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a09c3b769e9a9cc3261b0872eef2a02fb">txt_blue_agents_label</a> = NULL</td></tr>
+<tr class="memitem:a6c27e99dfcfbe4f7a4103b5e108a88f9" id="r_a6c27e99dfcfbe4f7a4103b5e108a88f9"><td class="memItemLeft">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a6c27e99dfcfbe4f7a4103b5e108a88f9">txt_red_spy_label</a> = NULL</td></tr>
+<tr class="memitem:aba3aeba0a29b1b888af7355bfcbff376" id="r_aba3aeba0a29b1b888af7355bfcbff376"><td class="memItemLeft">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight"><a class="el" href="#aba3aeba0a29b1b888af7355bfcbff376">txt_red_agents_label</a> = NULL</td></tr>
+<tr class="memitem:af310e3279f8fedce9402f663f81b84ac" id="r_af310e3279f8fedce9402f663f81b84ac"><td class="memItemLeft">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight"><a class="el" href="#af310e3279f8fedce9402f663f81b84ac">txt_turn_label</a> = NULL</td></tr>
+<tr class="memitem:a9a757d8abb83b57a521d3ae667ce6e77" id="r_a9a757d8abb83b57a521d3ae667ce6e77"><td class="memItemLeft">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a9a757d8abb83b57a521d3ae667ce6e77">txt_blue_players</a> [<a class="el" href="#a2cfd47dd773bbdfd91bf22b13c727f77">MAX_TEAM_PLAYERS</a>] = {NULL}</td></tr>
+<tr class="memitem:ae72e1de1134cfcaed1c49040bcf814d0" id="r_ae72e1de1134cfcaed1c49040bcf814d0"><td class="memItemLeft">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ae72e1de1134cfcaed1c49040bcf814d0">txt_red_players</a> [<a class="el" href="#a2cfd47dd773bbdfd91bf22b13c727f77">MAX_TEAM_PLAYERS</a>] = {NULL}</td></tr>
+<tr class="memitem:a4436cb927edfbe3e7aa2a72ebc2e6d05" id="r_a4436cb927edfbe3e7aa2a72ebc2e6d05"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a4436cb927edfbe3e7aa2a72ebc2e6d05">blue_player_text_index</a> = 0</td></tr>
+<tr class="memitem:a216feb4db1303c66a65e98d10ee407cf" id="r_a216feb4db1303c66a65e98d10ee407cf"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a216feb4db1303c66a65e98d10ee407cf">red_player_text_index</a> = 0</td></tr>
+<tr class="memitem:af249ba2d639bfbb1a976cb68fb9324b7" id="r_af249ba2d639bfbb1a976cb68fb9324b7"><td class="memItemLeft">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight"><a class="el" href="#af249ba2d639bfbb1a976cb68fb9324b7">txt_card_words</a> [<a class="el" href="#af5b5fa19c2e690e24904d81c5692a30d">NUM_CARDS</a>] = {NULL}</td></tr>
 </table>
 <a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentation des macros</h2>
 <a id="a2cfd47dd773bbdfd91bf22b13c727f77" name="a2cfd47dd773bbdfd91bf22b13c727f77"></a>
@@ -152,9 +167,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00030">30</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00048">48</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00392">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00064">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00168">game_render_team_panels()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00434">render_team_panel_content()</a>.</p>
 
 </div>
 </div>
@@ -170,15 +185,15 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00037">37</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00055">55</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00392">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00064">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00316">game_render_cards()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00482">game_render_cards()</a>.</p>
 
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
-<a id="a386c6773790f1a73405affc2f87f8c09" name="a386c6773790f1a73405affc2f87f8c09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a386c6773790f1a73405affc2f87f8c09">&#9670;&#160;</a></span>draw_filled_rect()</h2>
+<a id="ab713c49bf92936d291625fcdeaa29138" name="ab713c49bf92936d291625fcdeaa29138"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab713c49bf92936d291625fcdeaa29138">&#9670;&#160;</a></span>chat_on_submit()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -187,34 +202,14 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void draw_filled_rect </td>
+          <td class="memname">void chat_on_submit </td>
           <td>(</td>
-          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>w</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>h</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">SDL_Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span>&#160;)</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>text</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -224,11 +219,11 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00156">156</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00059">59</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00015">WIN_HEIGHT</a>, et <a class="el" href="sdl_8h_source.html#l00014">WIN_WIDTH</a>.</p>
+<p class="reference">Références <a class="el" href="client_2src_2utils_8c_source.html#l00017">format_to()</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00040">MSG_SENDCHAT</a>, <a class="el" href="sdl_8h_source.html#l00055">AppContext::player_name</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00198">send_tcp()</a>, et <a class="el" href="sdl_8h_source.html#l00045">AppContext::sock</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00168">game_render_team_panels()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>.</p>
 
 </div>
 </div>
@@ -259,11 +254,11 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00040">40</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00068">68</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00047">AppContext::app_state</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00049">APP_STATE_MENU</a>, <a class="el" href="client_2src_2game_8c_source.html#l00010">btn_quit_game</a>, <a class="el" href="button_8h_source.html#l00013">BTN_RET_NONE</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00017">format_to()</a>, <a class="el" href="sdl_8h_source.html#l00046">AppContext::lobby</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00029">MSG_LEAVELOBBY</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00122">send_tcp()</a>, <a class="el" href="sdl_8h_source.html#l00045">AppContext::sock</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00227">struct_lobby_init()</a>.</p>
+<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00047">AppContext::app_state</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00051">APP_STATE_MENU</a>, <a class="el" href="audio_8h_source.html#l00040">AUDIO_FILTER_NONE</a>, <a class="el" href="audio_8c_source.html#l00437">audio_set_filter()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00012">btn_hint_submit</a>, <a class="el" href="client_2src_2game_8c_source.html#l00011">btn_quit_game</a>, <a class="el" href="button_8h_source.html#l00014">BTN_RET_NONE</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00020">COL_DARK_GREEN</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00016">COL_RED</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00017">format_to()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00045">Lobby::game</a>, <a class="el" href="client_2src_2game_8c_source.html#l00015">hint_count_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00014">hint_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00026">hint_window</a>, <a class="el" href="sdl_8h_source.html#l00046">AppContext::lobby</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00032">MSG_LEAVELOBBY</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00039">MSG_SUBMIT_HINT</a>, <a class="el" href="audio_8h_source.html#l00015">MUSIC_MENU_LOBBY</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00198">send_tcp()</a>, <a class="el" href="sdl_8h_source.html#l00045">AppContext::sock</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00225">struct_lobby_init()</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00172">valid_hint()</a>, <a class="el" href="window_8h_source.html#l00073">WIN_CFG_TITLE</a>, <a class="el" href="window_8h_source.html#l00070">WIN_CFG_TITLEBAR_COLOR</a>, <a class="el" href="window_8c_source.html#l00256">window_edit_cfg()</a>, et <a class="el" href="client_2lib_2game_8h_source.html#l00082">Game::words</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00064">game_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>.</p>
 
 </div>
 </div>
@@ -288,11 +283,11 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00377">377</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00543">543</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8c_source.html#l00331">audio_is_playing()</a>, <a class="el" href="audio_8c_source.html#l00219">audio_play()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00010">btn_quit_game</a>, <a class="el" href="button_8c_source.html#l00226">button_render()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00316">game_render_cards()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00168">game_render_team_panels()</a>, <a class="el" href="audio_8h_source.html#l00013">MUSIC_GAME</a>, et <a class="el" href="sdl_8h_source.html#l00041">AppContext::renderer</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8h_source.html#l00065">AUDIO_FADE_IN_BY_VOLUME</a>, <a class="el" href="audio_8c_source.html#l00583">audio_is_playing()</a>, <a class="el" href="audio_8c_source.html#l00301">audio_play_with_fade()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00022">blue_panel</a>, <a class="el" href="client_2src_2game_8c_source.html#l00012">btn_hint_submit</a>, <a class="el" href="client_2src_2game_8c_source.html#l00011">btn_quit_game</a>, <a class="el" href="button_8c_source.html#l00238">button_render()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00016">chat_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00027">chat_window</a>, <a class="el" href="text_8c_source.html#l00102">display_text()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00045">Lobby::game</a>, <a class="el" href="client_2src_2game_8c_source.html#l00482">game_render_cards()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00471">game_render_team_windows()</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00071">GAMESTATE_TURN_BLUE_AGENT</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00070">GAMESTATE_TURN_BLUE_SPY</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00069">GAMESTATE_TURN_RED_AGENT</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00068">GAMESTATE_TURN_RED_SPY</a>, <a class="el" href="client_2src_2game_8c_source.html#l00015">hint_count_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00014">hint_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00026">hint_window</a>, <a class="el" href="client_2src_2game_8c_source.html#l00024">history_window_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00025">history_window_red</a>, <a class="el" href="input_8c_source.html#l00414">input_render()</a>, <a class="el" href="sdl_8h_source.html#l00046">AppContext::lobby</a>, <a class="el" href="audio_8h_source.html#l00016">MUSIC_GAME</a>, <a class="el" href="sdl_8h_source.html#l00048">AppContext::player_role</a>, <a class="el" href="sdl_8h_source.html#l00049">AppContext::player_team</a>, <a class="el" href="client_2src_2game_8c_source.html#l00023">red_panel</a>, <a class="el" href="sdl_8h_source.html#l00041">AppContext::renderer</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00013">ROLE_SPY</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00084">Game::state</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00025">TEAM_BLUE</a>, <a class="el" href="client_2src_2game_8c_source.html#l00034">TEAM_BLUE_COLOR</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00024">TEAM_RED</a>, <a class="el" href="client_2src_2game_8c_source.html#l00035">TEAM_RED_COLOR</a>, <a class="el" href="client_2src_2game_8c_source.html#l00045">txt_turn_label</a>, <a class="el" href="text_8c_source.html#l00076">update_text()</a>, <a class="el" href="text_8c_source.html#l00092">update_text_color()</a>, <a class="el" href="window_8c_source.html#l00303">window_place_button()</a>, <a class="el" href="window_8c_source.html#l00329">window_place_input()</a>, <a class="el" href="window_8c_source.html#l00350">window_place_text()</a>, et <a class="el" href="window_8c_source.html#l00210">window_render()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
 
 </div>
 </div>
@@ -310,13 +305,13 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Libère les ressources utilisées par le jeu. </p><dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, un code d'erreur sinon. </dd></dl>
+<p>Libère les ressources utilisées par le jeu. </p><dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, le nombre d'erreur sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00392">392</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00636">636</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2src_2game_8c_source.html#l00010">btn_quit_game</a>, <a class="el" href="button_8c_source.html#l00184">button_destroy()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00009">card_black</a>, <a class="el" href="client_2src_2game_8c_source.html#l00008">card_f_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00004">card_f_classic</a>, <a class="el" href="client_2src_2game_8c_source.html#l00006">card_f_red</a>, <a class="el" href="client_2src_2game_8c_source.html#l00007">card_h_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00003">card_h_classic</a>, <a class="el" href="client_2src_2game_8c_source.html#l00005">card_h_red</a>, <a class="el" href="text_8c_source.html#l00125">destroy_text()</a>, <a class="el" href="sdl_8c_source.html#l00228">free_image()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00030">MAX_TEAM_PLAYERS</a>, <a class="el" href="client_2src_2game_8c_source.html#l00037">NUM_CARDS</a>, <a class="el" href="client_2src_2game_8c_source.html#l00025">txt_blue_agents_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00031">txt_blue_players</a>, <a class="el" href="client_2src_2game_8c_source.html#l00024">txt_blue_spy_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00038">txt_card_words</a>, <a class="el" href="client_2src_2game_8c_source.html#l00027">txt_red_agents_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00032">txt_red_players</a>, <a class="el" href="client_2src_2game_8c_source.html#l00026">txt_red_spy_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00022">txt_team_blue_title</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00023">txt_team_red_title</a>.</p>
+<p class="reference">Références <a class="el" href="client_2src_2game_8c_source.html#l00022">blue_panel</a>, <a class="el" href="client_2src_2game_8c_source.html#l00012">btn_hint_submit</a>, <a class="el" href="client_2src_2game_8c_source.html#l00011">btn_quit_game</a>, <a class="el" href="button_8c_source.html#l00186">button_destroy()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00009">card_black</a>, <a class="el" href="client_2src_2game_8c_source.html#l00008">card_f_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00004">card_f_classic</a>, <a class="el" href="client_2src_2game_8c_source.html#l00006">card_f_red</a>, <a class="el" href="client_2src_2game_8c_source.html#l00007">card_h_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00003">card_h_classic</a>, <a class="el" href="client_2src_2game_8c_source.html#l00005">card_h_red</a>, <a class="el" href="client_2src_2game_8c_source.html#l00016">chat_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00027">chat_window</a>, <a class="el" href="text_8c_source.html#l00125">destroy_text()</a>, <a class="el" href="sdl_8c_source.html#l00239">free_image()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00015">hint_count_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00014">hint_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00026">hint_window</a>, <a class="el" href="client_2src_2game_8c_source.html#l00024">history_window_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00025">history_window_red</a>, <a class="el" href="input_8c_source.html#l00241">input_destroy()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00048">MAX_TEAM_PLAYERS</a>, <a class="el" href="client_2src_2game_8c_source.html#l00055">NUM_CARDS</a>, <a class="el" href="client_2src_2game_8c_source.html#l00023">red_panel</a>, <a class="el" href="client_2src_2game_8c_source.html#l00041">txt_blue_agents_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00049">txt_blue_players</a>, <a class="el" href="client_2src_2game_8c_source.html#l00040">txt_blue_spy_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00056">txt_card_words</a>, <a class="el" href="client_2src_2game_8c_source.html#l00043">txt_red_agents_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00050">txt_red_players</a>, <a class="el" href="client_2src_2game_8c_source.html#l00042">txt_red_spy_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00038">txt_team_blue_title</a>, <a class="el" href="client_2src_2game_8c_source.html#l00039">txt_team_red_title</a>, <a class="el" href="client_2src_2game_8c_source.html#l00045">txt_turn_label</a>, et <a class="el" href="window_8c_source.html#l00152">window_destroy()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
 
 </div>
 </div>
@@ -346,11 +341,11 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00057">57</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00122">122</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2src_2game_8c_source.html#l00010">btn_quit_game</a>, et <a class="el" href="button_8c_source.html#l00206">button_handle_event()</a>.</p>
+<p class="reference">Références <a class="el" href="client_2src_2game_8c_source.html#l00022">blue_panel</a>, <a class="el" href="client_2src_2game_8c_source.html#l00012">btn_hint_submit</a>, <a class="el" href="client_2src_2game_8c_source.html#l00011">btn_quit_game</a>, <a class="el" href="button_8c_source.html#l00208">button_handle_event()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00016">chat_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00027">chat_window</a>, <a class="el" href="client_2src_2game_8c_source.html#l00015">hint_count_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00014">hint_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00026">hint_window</a>, <a class="el" href="client_2src_2game_8c_source.html#l00024">history_window_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00025">history_window_red</a>, <a class="el" href="input_8c_source.html#l00281">input_handle_event()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00023">red_panel</a>, et <a class="el" href="window_8c_source.html#l00172">window_handle_event()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
 
 </div>
 </div>
@@ -374,13 +369,13 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, un code d'erreur sinon. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, le nombre d'erreur sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00064">64</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00142">142</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2src_2game_8c_source.html#l00010">btn_quit_game</a>, <a class="el" href="button_8c_source.html#l00003">button_config_init()</a>, <a class="el" href="button_8c_source.html#l00028">button_create()</a>, <a class="el" href="button_8h_source.html#l00067">ButtonConfig::callback</a>, <a class="el" href="client_2src_2game_8c_source.html#l00009">card_black</a>, <a class="el" href="client_2src_2game_8c_source.html#l00008">card_f_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00004">card_f_classic</a>, <a class="el" href="client_2src_2game_8c_source.html#l00006">card_f_red</a>, <a class="el" href="client_2src_2game_8c_source.html#l00007">card_h_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00003">card_h_classic</a>, <a class="el" href="client_2src_2game_8c_source.html#l00005">card_h_red</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00010">COL_BLACK</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00009">COL_WHITE</a>, <a class="el" href="button_8h_source.html#l00065">ButtonConfig::color</a>, <a class="el" href="text_8c_source.html#l00012">create_text_config()</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00020">FONT_LARABIE</a>, <a class="el" href="button_8h_source.html#l00064">ButtonConfig::font_path</a>, <a class="el" href="client_2src_2game_8c_source.html#l00040">game_button_click()</a>, <a class="el" href="button_8h_source.html#l00062">ButtonConfig::h</a>, <a class="el" href="text_8c_source.html#l00068">init_text()</a>, <a class="el" href="sdl_8c_source.html#l00169">load_image()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00030">MAX_TEAM_PLAYERS</a>, <a class="el" href="client_2src_2game_8c_source.html#l00037">NUM_CARDS</a>, <a class="el" href="sdl_8h_source.html#l00041">AppContext::renderer</a>, <a class="el" href="button_8h_source.html#l00063">ButtonConfig::text</a>, <a class="el" href="client_2src_2game_8c_source.html#l00025">txt_blue_agents_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00031">txt_blue_players</a>, <a class="el" href="client_2src_2game_8c_source.html#l00024">txt_blue_spy_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00038">txt_card_words</a>, <a class="el" href="client_2src_2game_8c_source.html#l00027">txt_red_agents_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00032">txt_red_players</a>, <a class="el" href="client_2src_2game_8c_source.html#l00026">txt_red_spy_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00022">txt_team_blue_title</a>, <a class="el" href="client_2src_2game_8c_source.html#l00023">txt_team_red_title</a>, <a class="el" href="button_8h_source.html#l00059">ButtonConfig::x</a>, et <a class="el" href="button_8h_source.html#l00060">ButtonConfig::y</a>.</p>
+<p class="reference">Références <a class="el" href="input_8h_source.html#l00088">InputConfig::allowed_pattern</a>, <a class="el" href="window_8h_source.html#l00037">WindowConfig::bg_color</a>, <a class="el" href="input_8h_source.html#l00087">InputConfig::bg_padding</a>, <a class="el" href="input_8h_source.html#l00086">InputConfig::bg_path</a>, <a class="el" href="client_2src_2game_8c_source.html#l00022">blue_panel</a>, <a class="el" href="client_2src_2game_8c_source.html#l00012">btn_hint_submit</a>, <a class="el" href="client_2src_2game_8c_source.html#l00011">btn_quit_game</a>, <a class="el" href="button_8c_source.html#l00003">button_config_init()</a>, <a class="el" href="button_8c_source.html#l00029">button_create()</a>, <a class="el" href="button_8h_source.html#l00069">ButtonConfig::callback</a>, <a class="el" href="client_2src_2game_8c_source.html#l00009">card_black</a>, <a class="el" href="client_2src_2game_8c_source.html#l00008">card_f_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00004">card_f_classic</a>, <a class="el" href="client_2src_2game_8c_source.html#l00006">card_f_red</a>, <a class="el" href="client_2src_2game_8c_source.html#l00007">card_h_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00003">card_h_classic</a>, <a class="el" href="client_2src_2game_8c_source.html#l00005">card_h_red</a>, <a class="el" href="input_8h_source.html#l00085">InputConfig::centered</a>, <a class="el" href="client_2src_2game_8c_source.html#l00016">chat_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00020">CHAT_INPUT_PLACEHOLDERS</a>, <a class="el" href="client_2src_2game_8c_source.html#l00059">chat_on_submit()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00027">chat_window</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00012">COL_BLACK</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00014">COL_GRAY</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00011">COL_WHITE</a>, <a class="el" href="button_8h_source.html#l00067">ButtonConfig::color</a>, <a class="el" href="text_8c_source.html#l00012">create_text_config()</a>, <a class="el" href="input_8h_source.html#l00093">InputConfig::disabled</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00027">FONT_LARABIE</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00028">FONT_NOTO</a>, <a class="el" href="button_8h_source.html#l00066">ButtonConfig::font_path</a>, <a class="el" href="input_8h_source.html#l00074">InputConfig::font_path</a>, <a class="el" href="input_8h_source.html#l00075">InputConfig::font_size</a>, <a class="el" href="client_2src_2game_8c_source.html#l00068">game_button_click()</a>, <a class="el" href="button_8h_source.html#l00064">ButtonConfig::h</a>, <a class="el" href="input_8h_source.html#l00073">InputConfig::h</a>, <a class="el" href="window_8h_source.html#l00034">WindowConfig::h</a>, <a class="el" href="client_2src_2game_8c_source.html#l00015">hint_count_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00019">HINT_COUNT_INPUT_PLACEHOLDERS</a>, <a class="el" href="client_2src_2game_8c_source.html#l00014">hint_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00018">HINT_INPUT_PLACEHOLDERS</a>, <a class="el" href="client_2src_2game_8c_source.html#l00026">hint_window</a>, <a class="el" href="client_2src_2game_8c_source.html#l00024">history_window_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00025">history_window_red</a>, <a class="el" href="text_8c_source.html#l00068">init_text()</a>, <a class="el" href="input_8h_source.html#l00018">INPUT_CHAT</a>, <a class="el" href="input_8c_source.html#l00069">input_config_init()</a>, <a class="el" href="input_8c_source.html#l00153">input_create()</a>, <a class="el" href="input_8h_source.html#l00016">INPUT_HINT</a>, <a class="el" href="input_8h_source.html#l00017">INPUT_HINT_COUNT</a>, <a class="el" href="button_8h_source.html#l00076">ButtonConfig::is_text</a>, <a class="el" href="sdl_8c_source.html#l00180">load_image()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00048">MAX_TEAM_PLAYERS</a>, <a class="el" href="input_8h_source.html#l00079">InputConfig::maxlen</a>, <a class="el" href="window_8h_source.html#l00035">WindowConfig::movable</a>, <a class="el" href="client_2src_2game_8c_source.html#l00055">NUM_CARDS</a>, <a class="el" href="input_8h_source.html#l00105">InputConfig::on_submit</a>, <a class="el" href="input_8h_source.html#l00077">InputConfig::placeholder_count</a>, <a class="el" href="input_8h_source.html#l00076">InputConfig::placeholders</a>, <a class="el" href="client_2src_2game_8c_source.html#l00023">red_panel</a>, <a class="el" href="sdl_8h_source.html#l00041">AppContext::renderer</a>, <a class="el" href="input_8h_source.html#l00089">InputConfig::submit_pattern</a>, <a class="el" href="client_2src_2game_8c_source.html#l00034">TEAM_BLUE_COLOR</a>, <a class="el" href="client_2src_2game_8c_source.html#l00035">TEAM_RED_COLOR</a>, <a class="el" href="button_8h_source.html#l00068">ButtonConfig::tex_path</a>, <a class="el" href="button_8h_source.html#l00065">ButtonConfig::text</a>, <a class="el" href="window_8h_source.html#l00042">WindowConfig::title</a>, <a class="el" href="window_8h_source.html#l00039">WindowConfig::titlebar_color</a>, <a class="el" href="window_8h_source.html#l00044">WindowConfig::titlebar_h</a>, <a class="el" href="client_2src_2game_8c_source.html#l00041">txt_blue_agents_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00049">txt_blue_players</a>, <a class="el" href="client_2src_2game_8c_source.html#l00040">txt_blue_spy_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00056">txt_card_words</a>, <a class="el" href="client_2src_2game_8c_source.html#l00043">txt_red_agents_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00050">txt_red_players</a>, <a class="el" href="client_2src_2game_8c_source.html#l00042">txt_red_spy_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00038">txt_team_blue_title</a>, <a class="el" href="client_2src_2game_8c_source.html#l00039">txt_team_red_title</a>, <a class="el" href="client_2src_2game_8c_source.html#l00045">txt_turn_label</a>, <a class="el" href="button_8h_source.html#l00063">ButtonConfig::w</a>, <a class="el" href="input_8h_source.html#l00072">InputConfig::w</a>, <a class="el" href="window_8h_source.html#l00033">WindowConfig::w</a>, <a class="el" href="window_8c_source.html#l00083">window_config_init()</a>, <a class="el" href="window_8c_source.html#l00127">window_create()</a>, <a class="el" href="button_8h_source.html#l00061">ButtonConfig::x</a>, <a class="el" href="input_8h_source.html#l00070">InputConfig::x</a>, <a class="el" href="window_8h_source.html#l00031">WindowConfig::x</a>, <a class="el" href="button_8h_source.html#l00062">ButtonConfig::y</a>, <a class="el" href="input_8h_source.html#l00071">InputConfig::y</a>, et <a class="el" href="window_8h_source.html#l00032">WindowConfig::y</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
 
 </div>
 </div>
@@ -399,38 +394,194 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00316">316</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00482">482</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2src_2game_8c_source.html#l00009">card_black</a>, <a class="el" href="client_2src_2game_8c_source.html#l00008">card_f_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00004">card_f_classic</a>, <a class="el" href="client_2src_2game_8c_source.html#l00006">card_f_red</a>, <a class="el" href="client_2src_2game_8c_source.html#l00007">card_h_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00003">card_h_classic</a>, <a class="el" href="client_2src_2game_8c_source.html#l00005">card_h_red</a>, <a class="el" href="sdl_8c_source.html#l00190">display_image()</a>, <a class="el" href="text_8c_source.html#l00102">display_text()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00043">Lobby::game</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00037">Word::gender</a>, <a class="el" href="sdl_8h_source.html#l00046">AppContext::lobby</a>, <a class="el" href="client_2src_2game_8c_source.html#l00037">NUM_CARDS</a>, <a class="el" href="sdl_8h_source.html#l00048">AppContext::player_role</a>, <a class="el" href="sdl_8h_source.html#l00041">AppContext::renderer</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00038">Word::revealed</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00014">ROLE_AGENT</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00013">ROLE_SPY</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00036">Word::team</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00024">TEAM_BLACK</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00023">TEAM_BLUE</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00021">TEAM_NONE</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00022">TEAM_RED</a>, <a class="el" href="client_2src_2game_8c_source.html#l00038">txt_card_words</a>, <a class="el" href="text_8c_source.html#l00076">update_text()</a>, <a class="el" href="text_8c_source.html#l00086">update_text_position()</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00035">Word::word</a>, et <a class="el" href="client_2lib_2game_8h_source.html#l00076">Game::words</a>.</p>
+<p class="reference">Références <a class="el" href="client_2src_2game_8c_source.html#l00009">card_black</a>, <a class="el" href="client_2src_2game_8c_source.html#l00008">card_f_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00004">card_f_classic</a>, <a class="el" href="client_2src_2game_8c_source.html#l00006">card_f_red</a>, <a class="el" href="client_2src_2game_8c_source.html#l00007">card_h_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00003">card_h_classic</a>, <a class="el" href="client_2src_2game_8c_source.html#l00005">card_h_red</a>, <a class="el" href="sdl_8c_source.html#l00201">display_image()</a>, <a class="el" href="text_8c_source.html#l00102">display_text()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00045">Lobby::game</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00039">Word::gender</a>, <a class="el" href="sdl_8h_source.html#l00046">AppContext::lobby</a>, <a class="el" href="client_2src_2game_8c_source.html#l00055">NUM_CARDS</a>, <a class="el" href="sdl_8h_source.html#l00048">AppContext::player_role</a>, <a class="el" href="sdl_8h_source.html#l00041">AppContext::renderer</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00040">Word::revealed</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00014">ROLE_AGENT</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00013">ROLE_SPY</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00038">Word::team</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00026">TEAM_BLACK</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00025">TEAM_BLUE</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00023">TEAM_NONE</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00024">TEAM_RED</a>, <a class="el" href="client_2src_2game_8c_source.html#l00056">txt_card_words</a>, <a class="el" href="text_8c_source.html#l00076">update_text()</a>, <a class="el" href="text_8c_source.html#l00086">update_text_position()</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00037">Word::word</a>, et <a class="el" href="client_2lib_2game_8h_source.html#l00082">Game::words</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00377">game_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>.</p>
 
 </div>
 </div>
-<a id="a30ee99bf8314872c76775ec9c49129ce" name="a30ee99bf8314872c76775ec9c49129ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a30ee99bf8314872c76775ec9c49129ce">&#9670;&#160;</a></span>game_render_team_panels()</h2>
+<a id="a91d0deb901f383b3ca862b6b2ab9b1ee" name="a91d0deb901f383b3ca862b6b2ab9b1ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91d0deb901f383b3ca862b6b2ab9b1ee">&#9670;&#160;</a></span>game_render_team_windows()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void game_render_team_panels </td>
+          <td class="memname">void game_render_team_windows </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00168">168</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00471">471</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2src_2game_8c_source.html#l00033">blue_player_text_index</a>, <a class="el" href="sdl_8c_source.html#l00190">display_image()</a>, <a class="el" href="text_8c_source.html#l00102">display_text()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00156">draw_filled_rect()</a>, <a class="el" href="sdl_8h_source.html#l00046">AppContext::lobby</a>, <a class="el" href="client_2src_2game_8c_source.html#l00030">MAX_TEAM_PLAYERS</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00014">MAX_USERS</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00025">User::name</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00042">Lobby::nb_players</a>, <a class="el" href="client_2src_2game_8c_source.html#l00019">PANEL_BG_COLOR</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00012">player_icon_blue</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00011">player_icon_red</a>, <a class="el" href="sdl_8h_source.html#l00056">AppContext::player_name</a>, <a class="el" href="sdl_8h_source.html#l00048">AppContext::player_role</a>, <a class="el" href="sdl_8h_source.html#l00049">AppContext::player_team</a>, <a class="el" href="client_2src_2game_8c_source.html#l00034">red_player_text_index</a>, <a class="el" href="sdl_8h_source.html#l00041">AppContext::renderer</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00026">User::role</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00014">ROLE_AGENT</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00013">ROLE_SPY</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00027">User::team</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00023">TEAM_BLUE</a>, <a class="el" href="client_2src_2game_8c_source.html#l00017">TEAM_BLUE_COLOR</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00022">TEAM_RED</a>, <a class="el" href="client_2src_2game_8c_source.html#l00018">TEAM_RED_COLOR</a>, <a class="el" href="client_2src_2game_8c_source.html#l00025">txt_blue_agents_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00031">txt_blue_players</a>, <a class="el" href="client_2src_2game_8c_source.html#l00024">txt_blue_spy_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00027">txt_red_agents_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00032">txt_red_players</a>, <a class="el" href="client_2src_2game_8c_source.html#l00026">txt_red_spy_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00022">txt_team_blue_title</a>, <a class="el" href="client_2src_2game_8c_source.html#l00023">txt_team_red_title</a>, <a class="el" href="text_8c_source.html#l00076">update_text()</a>, <a class="el" href="text_8c_source.html#l00086">update_text_position()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00041">Lobby::users</a>, et <a class="el" href="sdl_8h_source.html#l00014">WIN_WIDTH</a>.</p>
+<p class="reference">Références <a class="el" href="client_2src_2game_8c_source.html#l00022">blue_panel</a>, <a class="el" href="client_2src_2game_8c_source.html#l00051">blue_player_text_index</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00011">player_icon_blue</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00010">player_icon_red</a>, <a class="el" href="client_2src_2game_8c_source.html#l00023">red_panel</a>, <a class="el" href="client_2src_2game_8c_source.html#l00052">red_player_text_index</a>, <a class="el" href="client_2src_2game_8c_source.html#l00434">render_team_panel_content()</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00025">TEAM_BLUE</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00024">TEAM_RED</a>, <a class="el" href="client_2src_2game_8c_source.html#l00041">txt_blue_agents_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00049">txt_blue_players</a>, <a class="el" href="client_2src_2game_8c_source.html#l00040">txt_blue_spy_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00043">txt_red_agents_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00050">txt_red_players</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00042">txt_red_spy_label</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00377">game_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>.</p>
+
+</div>
+</div>
+<a id="a059783784d0ef92237e1431146e67223" name="a059783784d0ef92237e1431146e67223"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a059783784d0ef92237e1431146e67223">&#9670;&#160;</a></span>render_team_member_in_panel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void render_team_member_in_panel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structWindow.html">Window</a> *</td>          <td class="paramname"><span class="paramname"><em>panel</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Texture *</td>          <td class="paramname"><span class="paramname"><em>icon</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structText.html">Text</a> *</td>          <td class="paramname"><span class="paramname"><em>txt</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775">UserRole</a></td>          <td class="paramname"><span class="paramname"><em>role</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>spy_row</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>agent_row</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00413">413</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="text_8c_source.html#l00102">display_text()</a>, <a class="el" href="sdl_8h_source.html#l00041">AppContext::renderer</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00013">ROLE_SPY</a>, <a class="el" href="text_8c_source.html#l00076">update_text()</a>, <a class="el" href="window_8c_source.html#l00375">window_display_image()</a>, et <a class="el" href="window_8c_source.html#l00350">window_place_text()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00434">render_team_panel_content()</a>.</p>
+
+</div>
+</div>
+<a id="a1b593b2066b8d4df0aa005961c9999d1" name="a1b593b2066b8d4df0aa005961c9999d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b593b2066b8d4df0aa005961c9999d1">&#9670;&#160;</a></span>render_team_panel_content()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void render_team_panel_content </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structWindow.html">Window</a> *</td>          <td class="paramname"><span class="paramname"><em>panel</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a></td>          <td class="paramname"><span class="paramname"><em>team</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Texture *</td>          <td class="paramname"><span class="paramname"><em>icon</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structText.html">Text</a> *</td>          <td class="paramname"><span class="paramname"><em>txt_spy_label</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structText.html">Text</a> *</td>          <td class="paramname"><span class="paramname"><em>txt_agents_label</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structText.html">Text</a> **</td>          <td class="paramname"><span class="paramname"><em>player_texts</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>player_index</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00434">434</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="text_8c_source.html#l00102">display_text()</a>, <a class="el" href="sdl_8h_source.html#l00046">AppContext::lobby</a>, <a class="el" href="client_2src_2game_8c_source.html#l00048">MAX_TEAM_PLAYERS</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00015">MAX_USERS</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00025">User::name</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00044">Lobby::nb_players</a>, <a class="el" href="sdl_8h_source.html#l00055">AppContext::player_name</a>, <a class="el" href="sdl_8h_source.html#l00048">AppContext::player_role</a>, <a class="el" href="sdl_8h_source.html#l00049">AppContext::player_team</a>, <a class="el" href="client_2src_2game_8c_source.html#l00413">render_team_member_in_panel()</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00026">User::role</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00027">User::team</a>, <a class="el" href="text_8c_source.html#l00076">update_text()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00043">Lobby::users</a>, et <a class="el" href="window_8c_source.html#l00350">window_place_text()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00471">game_render_team_windows()</a>.</p>
 
 </div>
 </div>
 <a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Documentation des variables</h2>
+<a id="a85d9b02b7de329d3108091db600f5a53" name="a85d9b02b7de329d3108091db600f5a53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85d9b02b7de329d3108091db600f5a53">&#9670;&#160;</a></span>blue_panel</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structWindow.html">Window</a>* blue_panel = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00022">22</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00122">game_handle_event()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00471">game_render_team_windows()</a>.</p>
+
+</div>
+</div>
 <a id="a4436cb927edfbe3e7aa2a72ebc2e6d05" name="a4436cb927edfbe3e7aa2a72ebc2e6d05"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4436cb927edfbe3e7aa2a72ebc2e6d05">&#9670;&#160;</a></span>blue_player_text_index</h2>
 
@@ -451,9 +602,27 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00033">33</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00051">51</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00168">game_render_team_panels()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00471">game_render_team_windows()</a>.</p>
+
+</div>
+</div>
+<a id="ad2cdaa21293e186edd8a6982bec86eda" name="ad2cdaa21293e186edd8a6982bec86eda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2cdaa21293e186edd8a6982bec86eda">&#9670;&#160;</a></span>btn_hint_submit</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structButton.html">Button</a>* btn_hint_submit = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00012">12</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00068">game_button_click()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00122">game_handle_event()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>.</p>
 
 </div>
 </div>
@@ -469,9 +638,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00010">10</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00011">11</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00040">game_button_click()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00377">game_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00392">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00057">game_handle_event()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00064">game_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00068">game_button_click()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00122">game_handle_event()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>.</p>
 
 </div>
 </div>
@@ -489,7 +658,7 @@ Variables</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00009">9</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00392">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00064">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00316">game_render_cards()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00482">game_render_cards()</a>.</p>
 
 </div>
 </div>
@@ -507,7 +676,7 @@ Variables</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00008">8</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00392">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00064">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00316">game_render_cards()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00482">game_render_cards()</a>.</p>
 
 </div>
 </div>
@@ -525,7 +694,7 @@ Variables</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00004">4</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00392">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00064">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00316">game_render_cards()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00482">game_render_cards()</a>.</p>
 
 </div>
 </div>
@@ -543,7 +712,7 @@ Variables</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00006">6</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00392">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00064">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00316">game_render_cards()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00482">game_render_cards()</a>.</p>
 
 </div>
 </div>
@@ -561,7 +730,7 @@ Variables</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00007">7</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00392">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00064">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00316">game_render_cards()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00482">game_render_cards()</a>.</p>
 
 </div>
 </div>
@@ -579,7 +748,7 @@ Variables</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00003">3</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00392">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00064">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00316">game_render_cards()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00482">game_render_cards()</a>.</p>
 
 </div>
 </div>
@@ -597,12 +766,30 @@ Variables</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00005">5</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00392">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00064">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00316">game_render_cards()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00482">game_render_cards()</a>.</p>
 
 </div>
 </div>
-<a id="a4dd13083c17c9ca134c0397a76fa9fef" name="a4dd13083c17c9ca134c0397a76fa9fef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4dd13083c17c9ca134c0397a76fa9fef">&#9670;&#160;</a></span>PANEL_BG_COLOR</h2>
+<a id="a322f0309fbca4e5e4b8aa0eff73cfbfb" name="a322f0309fbca4e5e4b8aa0eff73cfbfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a322f0309fbca4e5e4b8aa0eff73cfbfb">&#9670;&#160;</a></span>chat_input</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structInput.html">Input</a>* chat_input = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00016">16</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00122">game_handle_event()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>.</p>
+
+</div>
+</div>
+<a id="a186c8c7fcfed64cf4bc2caa97b65944a" name="a186c8c7fcfed64cf4bc2caa97b65944a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a186c8c7fcfed64cf4bc2caa97b65944a">&#9670;&#160;</a></span>CHAT_INPUT_PLACEHOLDERS</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -611,7 +798,69 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const SDL_Color PANEL_BG_COLOR = {30, 30, 30, 180}</td>
+          <td class="memname">const char* CHAT_INPUT_PLACEHOLDERS[] = {&quot;Chattez ici ...&quot;}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00020">20</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>.</p>
+
+</div>
+</div>
+<a id="ade8ab62517421365fee4ceae5eae79b7" name="ade8ab62517421365fee4ceae5eae79b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade8ab62517421365fee4ceae5eae79b7">&#9670;&#160;</a></span>chat_window</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structWindow.html">Window</a>* chat_window = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00027">27</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00122">game_handle_event()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>.</p>
+
+</div>
+</div>
+<a id="aa85560ed942fb33295031e1cd86d0271" name="aa85560ed942fb33295031e1cd86d0271"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa85560ed942fb33295031e1cd86d0271">&#9670;&#160;</a></span>hint_count_input</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structInput.html">Input</a>* hint_count_input = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00015">15</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00068">game_button_click()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00122">game_handle_event()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>.</p>
+
+</div>
+</div>
+<a id="ac151a1d8fc1994c12caa6e3ab8c0d2c9" name="ac151a1d8fc1994c12caa6e3ab8c0d2c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac151a1d8fc1994c12caa6e3ab8c0d2c9">&#9670;&#160;</a></span>HINT_COUNT_INPUT_PLACEHOLDERS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* HINT_COUNT_INPUT_PLACEHOLDERS[] = {&quot;1&quot;,&quot;2&quot;,&quot;3&quot;}</td>
         </tr>
       </table>
   </td>
@@ -623,7 +872,105 @@ Variables</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00019">19</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00168">game_render_team_panels()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>.</p>
+
+</div>
+</div>
+<a id="a50f7c3a317fb69ffb8e5aaa4bbff4c33" name="a50f7c3a317fb69ffb8e5aaa4bbff4c33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50f7c3a317fb69ffb8e5aaa4bbff4c33">&#9670;&#160;</a></span>hint_input</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structInput.html">Input</a>* hint_input = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00014">14</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00068">game_button_click()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00122">game_handle_event()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>.</p>
+
+</div>
+</div>
+<a id="a9d43a0226a1c1375f95f982e539f42cc" name="a9d43a0226a1c1375f95f982e539f42cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d43a0226a1c1375f95f982e539f42cc">&#9670;&#160;</a></span>HINT_INPUT_PLACEHOLDERS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* HINT_INPUT_PLACEHOLDERS[] = {&quot;Entrez un mot&quot;}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00018">18</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>.</p>
+
+</div>
+</div>
+<a id="ac69371d432e938283c5f497ec81a71c0" name="ac69371d432e938283c5f497ec81a71c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac69371d432e938283c5f497ec81a71c0">&#9670;&#160;</a></span>hint_window</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structWindow.html">Window</a>* hint_window = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00026">26</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00068">game_button_click()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00122">game_handle_event()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>.</p>
+
+</div>
+</div>
+<a id="a7a1385342c339ddee9866543a6d6077e" name="a7a1385342c339ddee9866543a6d6077e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a1385342c339ddee9866543a6d6077e">&#9670;&#160;</a></span>history_window_blue</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structWindow.html">Window</a>* history_window_blue = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00024">24</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00122">game_handle_event()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>.</p>
+
+</div>
+</div>
+<a id="a119abc0bc03a3a9648a2a1bb43370033" name="a119abc0bc03a3a9648a2a1bb43370033"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a119abc0bc03a3a9648a2a1bb43370033">&#9670;&#160;</a></span>history_window_red</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structWindow.html">Window</a>* history_window_red = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00025">25</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00122">game_handle_event()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>.</p>
 
 </div>
 </div>
@@ -647,9 +994,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00012">12</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00011">11</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00168">game_render_team_panels()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00509">lobby_free()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00096">lobby_init()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00361">player_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00471">game_render_team_windows()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00516">lobby_free()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00094">lobby_init()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00368">player_display()</a>.</p>
 
 </div>
 </div>
@@ -673,9 +1020,27 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00011">11</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2lobby_8c_source.html#l00010">10</a> du fichier <a class="el" href="client_2src_2lobby_8c_source.html">lobby.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00168">game_render_team_panels()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00509">lobby_free()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00096">lobby_init()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00361">player_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00471">game_render_team_windows()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00516">lobby_free()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00094">lobby_init()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00368">player_display()</a>.</p>
+
+</div>
+</div>
+<a id="ab6afd5e7d984cee1802863cf639b7062" name="ab6afd5e7d984cee1802863cf639b7062"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6afd5e7d984cee1802863cf639b7062">&#9670;&#160;</a></span>red_panel</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structWindow.html">Window</a>* red_panel = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00023">23</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00122">game_handle_event()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00471">game_render_team_windows()</a>.</p>
 
 </div>
 </div>
@@ -699,9 +1064,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00034">34</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00052">52</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00168">game_render_team_panels()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00471">game_render_team_windows()</a>.</p>
 
 </div>
 </div>
@@ -725,9 +1090,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00017">17</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00034">34</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00168">game_render_team_panels()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>.</p>
 
 </div>
 </div>
@@ -751,9 +1116,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00018">18</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00035">35</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00168">game_render_team_panels()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>.</p>
 
 </div>
 </div>
@@ -777,9 +1142,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00025">25</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00041">41</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00392">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00064">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00168">game_render_team_panels()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00471">game_render_team_windows()</a>.</p>
 
 </div>
 </div>
@@ -803,9 +1168,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00031">31</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00049">49</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00392">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00064">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00168">game_render_team_panels()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00471">game_render_team_windows()</a>.</p>
 
 </div>
 </div>
@@ -829,9 +1194,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00024">24</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00040">40</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00392">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00064">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00168">game_render_team_panels()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00471">game_render_team_windows()</a>.</p>
 
 </div>
 </div>
@@ -855,9 +1220,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00038">38</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00056">56</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00392">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00064">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00316">game_render_cards()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00482">game_render_cards()</a>.</p>
 
 </div>
 </div>
@@ -881,9 +1246,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00027">27</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00043">43</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00392">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00064">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00168">game_render_team_panels()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00471">game_render_team_windows()</a>.</p>
 
 </div>
 </div>
@@ -907,9 +1272,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00032">32</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00050">50</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00392">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00064">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00168">game_render_team_panels()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00471">game_render_team_windows()</a>.</p>
 
 </div>
 </div>
@@ -933,9 +1298,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00026">26</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00042">42</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00392">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00064">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00168">game_render_team_panels()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00471">game_render_team_windows()</a>.</p>
 
 </div>
 </div>
@@ -959,9 +1324,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00022">22</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00038">38</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00392">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00064">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00168">game_render_team_panels()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>.</p>
 
 </div>
 </div>
@@ -985,9 +1350,35 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00023">23</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00039">39</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00392">game_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00064">game_init()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00168">game_render_team_panels()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>.</p>
+
+</div>
+</div>
+<a id="af310e3279f8fedce9402f663f81b84ac" name="af310e3279f8fedce9402f663f81b84ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af310e3279f8fedce9402f663f81b84ac">&#9670;&#160;</a></span>txt_turn_label</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structText.html">Text</a>* txt_turn_label = NULL</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00045">45</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>.</p>
 
 </div>
 </div>
@@ -1005,7 +1396,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a href="client_2src_2game_8c.html">game.c</a></li>
-    <li class="footer">Généré le Lundi 23 Mars 2026 18:41:14 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>
 </body>

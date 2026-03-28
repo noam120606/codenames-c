@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier server/src/tcp.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -35,7 +35,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.14.0 -->
+<!-- Généré par Doxygen 1.16.1 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
@@ -98,17 +98,17 @@ $(function(){initNavTree('server_2src_2tcp_8c.html','',''); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:acf486d14d64714fac4a2bc4d0673f6be" id="r_acf486d14d64714fac4a2bc4d0673f6be"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf486d14d64714fac4a2bc4d0673f6be">set_nonblocking</a> (int socket)</td></tr>
-<tr class="memitem:a391f747d7efe0143c7379257b4ef11e6" id="r_a391f747d7efe0143c7379257b4ef11e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTcpServer.html">TcpServer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a391f747d7efe0143c7379257b4ef11e6">tcp_server_create</a> (int port)</td></tr>
-<tr class="memitem:a87ee33923925e6b9e2a68d31affb96cc" id="r_a87ee33923925e6b9e2a68d31affb96cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87ee33923925e6b9e2a68d31affb96cc">tcp_server_destroy</a> (<a class="el" href="structTcpServer.html">TcpServer</a> *server)</td></tr>
-<tr class="memitem:a634f7fcba40e3fbe4787e2f43e35d108" id="r_a634f7fcba40e3fbe4787e2f43e35d108"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a634f7fcba40e3fbe4787e2f43e35d108">add_client</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, int client_socket, struct sockaddr_in addr)</td></tr>
-<tr class="memitem:a841ceb2f029aa0c11c7cf4062cbc87bf" id="r_a841ceb2f029aa0c11c7cf4062cbc87bf"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a841ceb2f029aa0c11c7cf4062cbc87bf">remove_client</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client)</td></tr>
-<tr class="memitem:a502d691574df99a3251b25dfc19cb927" id="r_a502d691574df99a3251b25dfc19cb927"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a502d691574df99a3251b25dfc19cb927">tcp_disconnect</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client)</td></tr>
-<tr class="memitem:a5a0faa5148ca1f09b46e80d27c318542" id="r_a5a0faa5148ca1f09b46e80d27c318542"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a0faa5148ca1f09b46e80d27c318542">tcp_server_tick</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames)</td></tr>
-<tr class="memitem:ae3efc44467ee08b4d29bcc4ef7886119" id="r_ae3efc44467ee08b4d29bcc4ef7886119"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3efc44467ee08b4d29bcc4ef7886119">tcp_send_to_client</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, int client_id, const char *message)</td></tr>
-<tr class="memitem:a55c99d36c3c04576b30e38c0eac2f83d" id="r_a55c99d36c3c04576b30e38c0eac2f83d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55c99d36c3c04576b30e38c0eac2f83d">tcp_on_client_connect</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client)</td></tr>
-<tr class="memitem:a4e3564e7cb720d84f2d8b2f1385e1c50" id="r_a4e3564e7cb720d84f2d8b2f1385e1c50"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4e3564e7cb720d84f2d8b2f1385e1c50">tcp_on_client_disconnect</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client)</td></tr>
-<tr class="memitem:adffbce60e9acd77a4071c627e70d1431" id="r_adffbce60e9acd77a4071c627e70d1431"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adffbce60e9acd77a4071c627e70d1431">tcp_on_client_message</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client, char *message)</td></tr>
+<tr class="memitem:acf486d14d64714fac4a2bc4d0673f6be" id="r_acf486d14d64714fac4a2bc4d0673f6be"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#acf486d14d64714fac4a2bc4d0673f6be">set_nonblocking</a> (int socket)</td></tr>
+<tr class="memitem:a391f747d7efe0143c7379257b4ef11e6" id="r_a391f747d7efe0143c7379257b4ef11e6"><td class="memItemLeft"><a class="el" href="structTcpServer.html">TcpServer</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a391f747d7efe0143c7379257b4ef11e6">tcp_server_create</a> (int port)</td></tr>
+<tr class="memitem:a87ee33923925e6b9e2a68d31affb96cc" id="r_a87ee33923925e6b9e2a68d31affb96cc"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a87ee33923925e6b9e2a68d31affb96cc">tcp_server_destroy</a> (<a class="el" href="structTcpServer.html">TcpServer</a> *server)</td></tr>
+<tr class="memitem:a634f7fcba40e3fbe4787e2f43e35d108" id="r_a634f7fcba40e3fbe4787e2f43e35d108"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a634f7fcba40e3fbe4787e2f43e35d108">add_client</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, int client_socket, struct sockaddr_in addr)</td></tr>
+<tr class="memitem:a841ceb2f029aa0c11c7cf4062cbc87bf" id="r_a841ceb2f029aa0c11c7cf4062cbc87bf"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a841ceb2f029aa0c11c7cf4062cbc87bf">remove_client</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client)</td></tr>
+<tr class="memitem:a502d691574df99a3251b25dfc19cb927" id="r_a502d691574df99a3251b25dfc19cb927"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a502d691574df99a3251b25dfc19cb927">tcp_disconnect</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client)</td></tr>
+<tr class="memitem:a5a0faa5148ca1f09b46e80d27c318542" id="r_a5a0faa5148ca1f09b46e80d27c318542"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a5a0faa5148ca1f09b46e80d27c318542">tcp_server_tick</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames)</td></tr>
+<tr class="memitem:ae3efc44467ee08b4d29bcc4ef7886119" id="r_ae3efc44467ee08b4d29bcc4ef7886119"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ae3efc44467ee08b4d29bcc4ef7886119">tcp_send_to_client</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, int client_id, const char *message)</td></tr>
+<tr class="memitem:a55c99d36c3c04576b30e38c0eac2f83d" id="r_a55c99d36c3c04576b30e38c0eac2f83d"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a55c99d36c3c04576b30e38c0eac2f83d">tcp_on_client_connect</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client)</td></tr>
+<tr class="memitem:a4e3564e7cb720d84f2d8b2f1385e1c50" id="r_a4e3564e7cb720d84f2d8b2f1385e1c50"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a4e3564e7cb720d84f2d8b2f1385e1c50">tcp_on_client_disconnect</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client)</td></tr>
+<tr class="memitem:adffbce60e9acd77a4071c627e70d1431" id="r_adffbce60e9acd77a4071c627e70d1431"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#adffbce60e9acd77a4071c627e70d1431">tcp_on_client_message</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client, char *message)</td></tr>
 </table>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
 <a id="a634f7fcba40e3fbe4787e2f43e35d108" name="a634f7fcba40e3fbe4787e2f43e35d108"></a>
@@ -143,11 +143,11 @@ Fonctions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00060">60</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00090">90</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="server_2lib_2tcp_8h_source.html#l00017">TcpClient::addr</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00029">TcpServer::clients</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00015">TcpClient::id</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00003">set_nonblocking()</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00016">TcpClient::socket</a>, <a class="el" href="codenames_8h_source.html#l00014">Codenames::tcp</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00006">TCP_MAX_CLIENTS</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00152">tcp_on_client_connect()</a>.</p>
+<p class="reference">Références <a class="el" href="server_2lib_2tcp_8h_source.html#l00022">TcpClient::addr</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00034">TcpServer::clients</a>, <a class="el" href="client_2lib_2all_8h_source.html#l00034">CLOSESOCKET</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00020">TcpClient::id</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00003">set_nonblocking()</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00021">TcpClient::socket</a>, <a class="el" href="codenames_8h_source.html#l00014">Codenames::tcp</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00011">TCP_MAX_CLIENTS</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00182">tcp_on_client_connect()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2tcp_8c_source.html#l00087">tcp_server_tick()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2tcp_8c_source.html#l00117">tcp_server_tick()</a>.</p>
 
 </div>
 </div>
@@ -178,11 +178,11 @@ Fonctions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00077">77</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00107">107</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="server_2lib_2tcp_8h_source.html#l00016">TcpClient::socket</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00157">tcp_on_client_disconnect()</a>.</p>
+<p class="reference">Références <a class="el" href="client_2lib_2all_8h_source.html#l00034">CLOSESOCKET</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00021">TcpClient::socket</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00187">tcp_on_client_disconnect()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2tcp_8c_source.html#l00083">tcp_disconnect()</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00162">tcp_on_client_message()</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00087">tcp_server_tick()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2tcp_8c_source.html#l00113">tcp_disconnect()</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00192">tcp_on_client_message()</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00117">tcp_server_tick()</a>.</p>
 
 </div>
 </div>
@@ -211,7 +211,7 @@ Fonctions</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00003">3</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2tcp_8c_source.html#l00060">add_client()</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00007">tcp_server_create()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2tcp_8c_source.html#l00090">add_client()</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00012">tcp_server_create()</a>.</p>
 
 </div>
 </div>
@@ -241,9 +241,9 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00083">83</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00113">113</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="server_2src_2tcp_8c_source.html#l00077">remove_client()</a>.</p>
+<p class="reference">Références <a class="el" href="server_2src_2tcp_8c_source.html#l00107">remove_client()</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="server_2src_2version_8c_source.html#l00024">on_version_compare()</a>.</p>
 
@@ -268,9 +268,9 @@ Fonctions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00152">152</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00182">182</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2tcp_8c_source.html#l00060">add_client()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2tcp_8c_source.html#l00090">add_client()</a>.</p>
 
 </div>
 </div>
@@ -293,11 +293,11 @@ Fonctions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00157">157</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00187">187</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="server_2src_2message_8c_source.html#l00051">on_leave()</a>.</p>
+<p class="reference">Références <a class="el" href="server_2src_2message_8c_source.html#l00064">on_leave()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2tcp_8c_source.html#l00077">remove_client()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2tcp_8c_source.html#l00107">remove_client()</a>.</p>
 
 </div>
 </div>
@@ -325,11 +325,11 @@ Fonctions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00162">162</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00192">192</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="server_2lib_2tcp_8h_source.html#l00015">TcpClient::id</a>, <a class="el" href="client_2src_2message_8c_source.html#l00024">on_message()</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00077">remove_client()</a>, <a class="el" href="server_2src_2utils_8c_source.html#l00046">starts_with()</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00135">tcp_send_to_client()</a>.</p>
+<p class="reference">Références <a class="el" href="server_2lib_2tcp_8h_source.html#l00020">TcpClient::id</a>, <a class="el" href="client_2src_2message_8c_source.html#l00024">on_message()</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00107">remove_client()</a>, <a class="el" href="server_2src_2utils_8c_source.html#l00046">starts_with()</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00165">tcp_send_to_client()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2tcp_8c_source.html#l00087">tcp_server_tick()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2tcp_8c_source.html#l00117">tcp_server_tick()</a>.</p>
 
 </div>
 </div>
@@ -366,11 +366,11 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, valeur négative en cas d'erreur. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00135">135</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00165">165</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="server_2lib_2tcp_8h_source.html#l00029">TcpServer::clients</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00015">TcpClient::id</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00016">TcpClient::socket</a>, <a class="el" href="codenames_8h_source.html#l00014">Codenames::tcp</a>, et <a class="el" href="server_2lib_2tcp_8h_source.html#l00006">TCP_MAX_CLIENTS</a>.</p>
+<p class="reference">Références <a class="el" href="server_2lib_2tcp_8h_source.html#l00034">TcpServer::clients</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00020">TcpClient::id</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00021">TcpClient::socket</a>, <a class="el" href="codenames_8h_source.html#l00014">Codenames::tcp</a>, et <a class="el" href="server_2lib_2tcp_8h_source.html#l00011">TCP_MAX_CLIENTS</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00147">destroy_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00015">destroy_lobby_callback()</a>, <a class="el" href="server_2src_2message_8c_source.html#l00051">on_leave()</a>, <a class="el" href="server_2src_2version_8c_source.html#l00024">on_version_compare()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00301">request_choose_role()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00160">request_create_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00192">request_join_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00244">request_leave_lobby()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00110">request_start_game()</a>, <a class="el" href="uuid_8c_source.html#l00003">request_uuid()</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00162">tcp_on_client_message()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00154">destroy_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00015">destroy_lobby_callback()</a>, <a class="el" href="server_2src_2message_8c_source.html#l00064">on_leave()</a>, <a class="el" href="server_2src_2message_8c_source.html#l00024">on_message()</a>, <a class="el" href="server_2src_2version_8c_source.html#l00024">on_version_compare()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00310">request_choose_role()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00168">request_create_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00200">request_join_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00252">request_leave_lobby()</a>, <a class="el" href="server_2src_2chat_8c_source.html#l00060">request_send_chat()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00110">request_start_game()</a>, <a class="el" href="uuid_8c_source.html#l00003">request_uuid()</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00192">tcp_on_client_message()</a>.</p>
 
 </div>
 </div>
@@ -396,9 +396,9 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Pointeur vers <a class="el" href="structTcpServer.html">TcpServer</a>, ou NULL en cas d'erreur. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00007">7</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00012">12</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="server_2lib_2tcp_8h_source.html#l00028">TcpServer::port</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00027">TcpServer::server_socket</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00003">set_nonblocking()</a>.</p>
+<p class="reference">Références <a class="el" href="client_2lib_2all_8h_source.html#l00034">CLOSESOCKET</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00033">TcpServer::port</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00032">TcpServer::server_socket</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00003">set_nonblocking()</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="server_2src_2index_8c_source.html#l00003">main()</a>.</p>
 
@@ -425,9 +425,9 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00048">48</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00075">75</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="server_2lib_2tcp_8h_source.html#l00029">TcpServer::clients</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00027">TcpServer::server_socket</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00016">TcpClient::socket</a>, et <a class="el" href="server_2lib_2tcp_8h_source.html#l00006">TCP_MAX_CLIENTS</a>.</p>
+<p class="reference">Références <a class="el" href="server_2lib_2tcp_8h_source.html#l00034">TcpServer::clients</a>, <a class="el" href="client_2lib_2all_8h_source.html#l00034">CLOSESOCKET</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00032">TcpServer::server_socket</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00021">TcpClient::socket</a>, et <a class="el" href="server_2lib_2tcp_8h_source.html#l00011">TCP_MAX_CLIENTS</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="server_2src_2index_8c_source.html#l00003">main()</a>.</p>
 
@@ -454,9 +454,9 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00087">87</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2tcp_8c_source.html#l00117">117</a> du fichier <a class="el" href="server_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="server_2src_2tcp_8c_source.html#l00060">add_client()</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00005">buffer</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00029">TcpServer::clients</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00077">remove_client()</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00027">TcpServer::server_socket</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00016">TcpClient::socket</a>, <a class="el" href="codenames_8h_source.html#l00014">Codenames::tcp</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00007">TCP_BUFFER_SIZE</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00006">TCP_MAX_CLIENTS</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00162">tcp_on_client_message()</a>.</p>
+<p class="reference">Références <a class="el" href="server_2src_2tcp_8c_source.html#l00090">add_client()</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00008">buffer</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00034">TcpServer::clients</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00107">remove_client()</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00032">TcpServer::server_socket</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00021">TcpClient::socket</a>, <a class="el" href="codenames_8h_source.html#l00014">Codenames::tcp</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00012">TCP_BUFFER_SIZE</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00011">TCP_MAX_CLIENTS</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00192">tcp_on_client_message()</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="server_2src_2index_8c_source.html#l00003">main()</a>.</p>
 
@@ -476,7 +476,7 @@ Fonctions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a href="dir_a063914ab482288b7b0e1b2fca86158c.html">src</a></li><li class="navelem"><a href="server_2src_2tcp_8c.html">tcp.c</a></li>
-    <li class="footer">Généré le Lundi 23 Mars 2026 18:41:14 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>
 </body>

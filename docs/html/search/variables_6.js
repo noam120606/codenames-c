@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['h_0',['h',['../structButtonConfig.html#a580d55f023e7e8956cf92843aed9dfdd',1,'ButtonConfig::h'],['../structCrossfaderConfig.html#a159e8fedd130c3bf0bf55050b49134f1',1,'CrossfaderConfig::h'],['../structInputConfig.html#a697c516f016623628c21db6252676cf8',1,'InputConfig::h'],['../structWindowConfig.html#ae77dee27cffeebb236ee14ea03e12d87',1,'WindowConfig::h']]],
-  ['hat_1',['hat',['../background_8c.html#a0a67dc3a4aa5ffe8ea6cda2812d20219',1,'background.c']]],
-  ['head_2',['head',['../structList.html#a5ab8f8003076b3866a7e03b07d921082',1,'List']]],
-  ['hidden_3',['hidden',['../structCrossfaderConfig.html#a08680ac8ae405a2edeb043fe7a5b1d78',1,'CrossfaderConfig::hidden'],['../structWindowConfig.html#aa5ab1c535834d4152c4a3c766a614002',1,'WindowConfig::hidden']]],
-  ['hover_4',['hover',['../structCrossfaderConfig.html#a88009fe282a41c78d145a394e2c1bf5f',1,'CrossfaderConfig']]]
+  ['game_0',['game',['../structLobby.html#a1567c92b89bc67d97ae4cbbf7034836e',1,'Lobby']]],
+  ['gender_1',['gender',['../structWord.html#ad61b210f7346cad6035403bb1d96535c',1,'Word::gender'],['../structCard.html#aeff7604cd7eb372fadb523d12498a1d4',1,'Card::gender']]]
 ];

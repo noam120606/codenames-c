@@ -1,6 +1,7 @@
 var dir_00d910b2a486164e1f2e533045ca4778 =
 [
-    [ "all.h", "server_2lib_2all_8h.html", null ],
+    [ "all.h", "server_2lib_2all_8h.html", "server_2lib_2all_8h" ],
+    [ "chat.h", "server_2lib_2chat_8h.html", "server_2lib_2chat_8h" ],
     [ "codenames.h", "codenames_8h.html", "codenames_8h" ],
     [ "game.h", "server_2lib_2game_8h.html", "server_2lib_2game_8h" ],
     [ "list.h", "server_2lib_2list_8h.html", "server_2lib_2list_8h" ],

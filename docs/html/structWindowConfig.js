@@ -10,9 +10,12 @@ var structWindowConfig =
     [ "hidden", "structWindowConfig.html#aa5ab1c535834d4152c4a3c766a614002", null ],
     [ "movable", "structWindowConfig.html#a9865a84962fd2c44cebf0895f7757832", null ],
     [ "rect", "structWindowConfig.html#a4169b01a110ca1c4323b342439a3c030", null ],
+    [ "title", "structWindowConfig.html#a06eaf570db1c50df64fc96d712f8225c", null ],
     [ "titlebar_color", "structWindowConfig.html#a628d61432cdea5304f90265c4f953921", null ],
     [ "titlebar_h", "structWindowConfig.html#a55215d650c0eaddbbf32d5ad54a383eb", null ],
+    [ "titlebar_texture", "structWindowConfig.html#ae2ce7cea929f7b8c56d13661f8a06814", null ],
     [ "w", "structWindowConfig.html#a4c62d9eb84ce484e1c502d06db9b4b1d", null ],
+    [ "window_texture", "structWindowConfig.html#ad301ef47c2db6a255677ccfbc96fb531", null ],
     [ "x", "structWindowConfig.html#aeb7a016c102d49ebeea44be67ebf8e2a", null ],
     [ "y", "structWindowConfig.html#a57bbe87e4e57a5a4d266b60ebe8b9cfa", null ]
 ];

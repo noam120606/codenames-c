@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier client/src/tcp.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -35,7 +35,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.14.0 -->
+<!-- Généré par Doxygen 1.16.1 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
@@ -99,22 +99,46 @@ $(function(){initNavTree('client_2src_2tcp_8c.html','',''); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a6b20d41d6252e9871430c242cb1a56e7" id="r_a6b20d41d6252e9871430c242cb1a56e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a>&#160;&#160;&#160;1024</td></tr>
+<tr class="memitem:a6b20d41d6252e9871430c242cb1a56e7" id="r_a6b20d41d6252e9871430c242cb1a56e7"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a>&#160;&#160;&#160;1024</td></tr>
+<tr class="memitem:a9e182159ab2d3e41f4d6d51cffc0f074" id="r_a9e182159ab2d3e41f4d6d51cffc0f074"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a9e182159ab2d3e41f4d6d51cffc0f074">APP_PING_INTERVAL_MS</a>&#160;&#160;&#160;2000U</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a6ac472484968ec75f0cc2ca1212e8e4b" id="r_a6ac472484968ec75f0cc2ca1212e8e4b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ac472484968ec75f0cc2ca1212e8e4b">init_tcp</a> (const char *server_ip, int port)</td></tr>
-<tr class="memitem:a494b2c72c94c69643bd9f418c960da71" id="r_a494b2c72c94c69643bd9f418c960da71"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a494b2c72c94c69643bd9f418c960da71">tick_tcp</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
-<tr class="memitem:a1b734946fd4dfcb3d7816a02f8efdbbb" id="r_a1b734946fd4dfcb3d7816a02f8efdbbb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b734946fd4dfcb3d7816a02f8efdbbb">get_tcp_ping_ms</a> (int sock)</td></tr>
-<tr class="memitem:a219aafb1dfd40098b80739d476dcf9cd" id="r_a219aafb1dfd40098b80739d476dcf9cd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a219aafb1dfd40098b80739d476dcf9cd">is_tcp_local_server</a> (int sock)</td></tr>
-<tr class="memitem:a8f805fa6d3692001fb03edcb5a2736cc" id="r_a8f805fa6d3692001fb03edcb5a2736cc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f805fa6d3692001fb03edcb5a2736cc">send_tcp</a> (int sock, const char *payload)</td></tr>
-<tr class="memitem:a39171b188778c75d0b5a82713b417786" id="r_a39171b188778c75d0b5a82713b417786"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39171b188778c75d0b5a82713b417786">close_tcp</a> (int sock)</td></tr>
+<tr class="memitem:a2a6510220fcecbfca0e638a20d9f892a" id="r_a2a6510220fcecbfca0e638a20d9f892a"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a2a6510220fcecbfca0e638a20d9f892a">ensure_network_initialized</a> (void)</td></tr>
+<tr class="memitem:a39ef1a24d9f2afc8c0947c10e06d449f" id="r_a39ef1a24d9f2afc8c0947c10e06d449f"><td class="memItemLeft">static char *&#160;</td><td class="memItemRight"><a class="el" href="#a39ef1a24d9f2afc8c0947c10e06d449f">next_line_token</a> (char *str, char **saveptr)</td></tr>
+<tr class="memitem:a5c4835049770ca4ba10cdcd260e4ecfa" id="r_a5c4835049770ca4ba10cdcd260e4ecfa"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a5c4835049770ca4ba10cdcd260e4ecfa">maybe_send_app_ping</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="memitem:a6ac472484968ec75f0cc2ca1212e8e4b" id="r_a6ac472484968ec75f0cc2ca1212e8e4b"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a6ac472484968ec75f0cc2ca1212e8e4b">init_tcp</a> (const char *server_ip, int port)</td></tr>
+<tr class="memitem:a494b2c72c94c69643bd9f418c960da71" id="r_a494b2c72c94c69643bd9f418c960da71"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a494b2c72c94c69643bd9f418c960da71">tick_tcp</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="memitem:a1b734946fd4dfcb3d7816a02f8efdbbb" id="r_a1b734946fd4dfcb3d7816a02f8efdbbb"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a1b734946fd4dfcb3d7816a02f8efdbbb">get_tcp_ping_ms</a> (int sock)</td></tr>
+<tr class="memitem:a219aafb1dfd40098b80739d476dcf9cd" id="r_a219aafb1dfd40098b80739d476dcf9cd"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a219aafb1dfd40098b80739d476dcf9cd">is_tcp_local_server</a> (int sock)</td></tr>
+<tr class="memitem:a8f805fa6d3692001fb03edcb5a2736cc" id="r_a8f805fa6d3692001fb03edcb5a2736cc"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a8f805fa6d3692001fb03edcb5a2736cc">send_tcp</a> (int sock, const char *payload)</td></tr>
+<tr class="memitem:a39171b188778c75d0b5a82713b417786" id="r_a39171b188778c75d0b5a82713b417786"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a39171b188778c75d0b5a82713b417786">close_tcp</a> (int sock)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:af00b615ca097c43dbb02ae3a00ea3a62" id="r_af00b615ca097c43dbb02ae3a00ea3a62"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a> [<a class="el" href="#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a>]</td></tr>
+<tr class="memitem:af00b615ca097c43dbb02ae3a00ea3a62" id="r_af00b615ca097c43dbb02ae3a00ea3a62"><td class="memItemLeft">char&#160;</td><td class="memItemRight"><a class="el" href="#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a> [<a class="el" href="#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a>]</td></tr>
+<tr class="memitem:ab1fc4add329fc83a17b0655120998615" id="r_ab1fc4add329fc83a17b0655120998615"><td class="memItemLeft">static Uint32&#160;</td><td class="memItemRight"><a class="el" href="#ab1fc4add329fc83a17b0655120998615">last_app_ping_sent_at</a> = 0</td></tr>
+<tr class="memitem:a633f47b896cdfa0248874b4bb65daa3d" id="r_a633f47b896cdfa0248874b4bb65daa3d"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a633f47b896cdfa0248874b4bb65daa3d">network_initialized</a> = 0</td></tr>
 </table>
 <a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentation des macros</h2>
+<a id="a9e182159ab2d3e41f4d6d51cffc0f074" name="a9e182159ab2d3e41f4d6d51cffc0f074"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e182159ab2d3e41f4d6d51cffc0f074">&#9670;&#160;</a></span>APP_PING_INTERVAL_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_PING_INTERVAL_MS&#160;&#160;&#160;2000U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00007">7</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2tcp_8c_source.html#l00043">maybe_send_app_ping()</a>.</p>
+
+</div>
+</div>
 <a id="a6b20d41d6252e9871430c242cb1a56e7" name="a6b20d41d6252e9871430c242cb1a56e7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6b20d41d6252e9871430c242cb1a56e7">&#9670;&#160;</a></span>BUFFER_SIZE</h2>
 
@@ -127,9 +151,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00004">4</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00006">6</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2tcp_8c_source.html#l00034">tick_tcp()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2tcp_8c_source.html#l00101">tick_tcp()</a>.</p>
 
 </div>
 </div>
@@ -156,9 +180,42 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd><span class="tt">EXIT_SUCCESS</span> en cas de succès, <span class="tt">EXIT_FAILURE</span> en cas d'erreur. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00137">137</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00217">217</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="sdl_8c_source.html#l00245">destroy_context()</a>.</p>
+<p class="reference">Références <a class="el" href="client_2lib_2all_8h_source.html#l00034">CLOSESOCKET</a>, et <a class="el" href="client_2src_2tcp_8c_source.html#l00011">network_initialized</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="sdl_8c_source.html#l00256">destroy_context()</a>, et <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
+
+</div>
+</div>
+<a id="a2a6510220fcecbfca0e638a20d9f892a" name="a2a6510220fcecbfca0e638a20d9f892a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a6510220fcecbfca0e638a20d9f892a">&#9670;&#160;</a></span>ensure_network_initialized()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ensure_network_initialized </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00013">13</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2src_2tcp_8c_source.html#l00011">network_initialized</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2tcp_8c_source.html#l00060">init_tcp()</a>.</p>
 
 </div>
 </div>
@@ -184,9 +241,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Ping en ms, ou -1 si indisponible. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00089">89</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
-
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00445">fps_ping_display()</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00160">160</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
 </div>
 </div>
@@ -217,9 +272,11 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Descripteur de socket, ou valeur négative en cas d'erreur. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00007">7</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00060">60</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>.</p>
+<p class="reference">Références <a class="el" href="client_2lib_2all_8h_source.html#l00034">CLOSESOCKET</a>, et <a class="el" href="client_2src_2tcp_8c_source.html#l00013">ensure_network_initialized()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
 
 </div>
 </div>
@@ -245,9 +302,73 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>1 si local, 0 sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00103">103</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00179">179</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00445">fps_ping_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00440">fps_ping_display()</a>.</p>
+
+</div>
+</div>
+<a id="a5c4835049770ca4ba10cdcd260e4ecfa" name="a5c4835049770ca4ba10cdcd260e4ecfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c4835049770ca4ba10cdcd260e4ecfa">&#9670;&#160;</a></span>maybe_send_app_ping()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void maybe_send_app_ping </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00043">43</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2src_2tcp_8c_source.html#l00007">APP_PING_INTERVAL_MS</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00017">format_to()</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00009">last_app_ping_sent_at</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00043">MSG_PING</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00198">send_tcp()</a>, et <a class="el" href="sdl_8h_source.html#l00045">AppContext::sock</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2tcp_8c_source.html#l00101">tick_tcp()</a>.</p>
+
+</div>
+</div>
+<a id="a39ef1a24d9f2afc8c0947c10e06d449f" name="a39ef1a24d9f2afc8c0947c10e06d449f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39ef1a24d9f2afc8c0947c10e06d449f">&#9670;&#160;</a></span>next_line_token()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * next_line_token </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **</td>          <td class="paramname"><span class="paramname"><em>saveptr</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00026">26</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2tcp_8c_source.html#l00101">tick_tcp()</a>.</p>
 
 </div>
 </div>
@@ -278,9 +399,9 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd><span class="tt">EXIT_SUCCESS</span> en cas de succès, <span class="tt">EXIT_FAILURE</span> en cas d'erreur. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00122">122</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00198">198</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00031">code_on_submit()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00040">game_button_click()</a>, <a class="el" href="client_2src_2version_8c_source.html#l00003">load_version()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00022">lobby_button_click()</a>, <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>, et <a class="el" href="menu_8c_source.html#l00053">menu_button_click()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00059">chat_on_submit()</a>, <a class="el" href="menu_8c_source.html#l00031">code_on_submit()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00068">game_button_click()</a>, <a class="el" href="client_2src_2version_8c_source.html#l00003">load_version()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00021">lobby_button_click()</a>, <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00043">maybe_send_app_ping()</a>, et <a class="el" href="menu_8c_source.html#l00053">menu_button_click()</a>.</p>
 
 </div>
 </div>
@@ -306,11 +427,11 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd><span class="tt">EXIT_SUCCESS</span> en cas de succès, <span class="tt">EXIT_FAILURE</span> en cas d'erreur. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00034">34</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00101">101</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2src_2tcp_8c_source.html#l00005">buffer</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00004">BUFFER_SIZE</a>, <a class="el" href="client_2src_2message_8c_source.html#l00024">on_message()</a>, et <a class="el" href="sdl_8h_source.html#l00045">AppContext::sock</a>.</p>
+<p class="reference">Références <a class="el" href="client_2src_2tcp_8c_source.html#l00008">buffer</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00006">BUFFER_SIZE</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00043">maybe_send_app_ping()</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00026">next_line_token()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00024">on_message()</a>, et <a class="el" href="sdl_8h_source.html#l00045">AppContext::sock</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00007">main()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
 
 </div>
 </div>
@@ -327,9 +448,61 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00005">5</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00008">8</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2game_8c_source.html#l00017">fetchWords()</a>, <a class="el" href="server_2src_2utils_8c_source.html#l00076">generate_code()</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00027">itoa()</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00087">tcp_server_tick()</a>, et <a class="el" href="client_2src_2tcp_8c_source.html#l00034">tick_tcp()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2game_8c_source.html#l00017">fetchWords()</a>, <a class="el" href="server_2src_2utils_8c_source.html#l00076">generate_code()</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00028">itoa()</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00117">tcp_server_tick()</a>, et <a class="el" href="client_2src_2tcp_8c_source.html#l00101">tick_tcp()</a>.</p>
+
+</div>
+</div>
+<a id="ab1fc4add329fc83a17b0655120998615" name="ab1fc4add329fc83a17b0655120998615"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1fc4add329fc83a17b0655120998615">&#9670;&#160;</a></span>last_app_ping_sent_at</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Uint32 last_app_ping_sent_at = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00009">9</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2tcp_8c_source.html#l00043">maybe_send_app_ping()</a>.</p>
+
+</div>
+</div>
+<a id="a633f47b896cdfa0248874b4bb65daa3d" name="a633f47b896cdfa0248874b4bb65daa3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a633f47b896cdfa0248874b4bb65daa3d">&#9670;&#160;</a></span>network_initialized</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int network_initialized = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00011">11</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2tcp_8c_source.html#l00217">close_tcp()</a>, et <a class="el" href="client_2src_2tcp_8c_source.html#l00013">ensure_network_initialized()</a>.</p>
 
 </div>
 </div>
@@ -347,7 +520,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a href="client_2src_2tcp_8c.html">tcp.c</a></li>
-    <li class="footer">Généré le Lundi 23 Mars 2026 18:41:14 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>
 </body>

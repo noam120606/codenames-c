@@ -5,6 +5,7 @@ var structButtonConfig =
     [ "font_path", "structButtonConfig.html#ae32f49c4d3e22b68a69c14ae999d91eb", null ],
     [ "h", "structButtonConfig.html#a580d55f023e7e8956cf92843aed9dfdd", null ],
     [ "is_hovered", "structButtonConfig.html#a880e0e6159d5a0849a4595c82f3afb4d", null ],
+    [ "is_pressed", "structButtonConfig.html#a698f8e4254e20031d79afa84bd1f061e", null ],
     [ "is_text", "structButtonConfig.html#aa9d18f2d56d0a538d77cf9eb1a23e7fe", null ],
     [ "rect", "structButtonConfig.html#a499e2e5ebe13589dff7967201b77038c", null ],
     [ "tex_path", "structButtonConfig.html#a327b253ead22320578675d9934faad44", null ],

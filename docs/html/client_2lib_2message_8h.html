@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier client/lib/message.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -35,7 +35,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.14.0 -->
+<!-- Généré par Doxygen 1.16.1 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
@@ -97,16 +97,16 @@ $(function(){initNavTree('client_2lib_2message_8h.html','',''); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Structures de données</h2></td></tr>
-<tr class="memitem:Arguments" id="r_Arguments"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structArguments.html">Arguments</a></td></tr>
+<tr class="memitem:Arguments" id="r_Arguments"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structArguments.html">Arguments</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Définitions de type</h2></td></tr>
-<tr class="memitem:a551dec83c55825ee5e7bfa1ad5609551" id="r_a551dec83c55825ee5e7bfa1ad5609551"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013">MessageType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a551dec83c55825ee5e7bfa1ad5609551">MessageType</a></td></tr>
-<tr class="memitem:ac9817a3ea34e47aa6dd60b6952c57e63" id="r_ac9817a3ea34e47aa6dd60b6952c57e63"><td class="memItemLeft" align="right" valign="top">typedef struct Arguments&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9817a3ea34e47aa6dd60b6952c57e63">Arguments</a></td></tr>
+<tr class="memitem:a551dec83c55825ee5e7bfa1ad5609551" id="r_a551dec83c55825ee5e7bfa1ad5609551"><td class="memItemLeft">typedef enum <a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013">MessageType</a>&#160;</td><td class="memItemRight"><a class="el" href="#a551dec83c55825ee5e7bfa1ad5609551">MessageType</a></td></tr>
+<tr class="memitem:ac9817a3ea34e47aa6dd60b6952c57e63" id="r_ac9817a3ea34e47aa6dd60b6952c57e63"><td class="memItemLeft">typedef struct Arguments&#160;</td><td class="memItemRight"><a class="el" href="#ac9817a3ea34e47aa6dd60b6952c57e63">Arguments</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
 Énumérations</h2></td></tr>
-<tr class="memitem:ac6606ebe91c8ac66a2c314c79f5ab013" id="r_ac6606ebe91c8ac66a2c314c79f5ab013"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013">MessageType</a> { <br />
+<tr class="memitem:ac6606ebe91c8ac66a2c314c79f5ab013" id="r_ac6606ebe91c8ac66a2c314c79f5ab013"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013">MessageType</a> { <br />
 &#160;&#160;<a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013a8de267a33883ee34bdb9880676b6651a">MSG_SERVER_ERROR</a> = -2
 , <a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013afe84a91c5c55549a831dfd14ca66fc8a">MSG_UNKNOWN</a> = -1
 , <a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013ac0b16798f47a9d0c23cbe6a3dc242c0d">MSG_INFO</a>
@@ -122,15 +122,19 @@ Définitions de type</h2></td></tr>
 , <a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013aed771684634ec8c5e250a4df7eaf245d">MSG_STARTGAME</a>
 , <a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013aec68a0846089f260eb423bccc1741f8f">MSG_WORDDATA</a>
 , <br />
-&#160;&#160;<a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013a48572e5982fd99f6677484f5090fa795">MSG_REQUESTUUID</a>
+&#160;&#160;<a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013affb36f73d5d4771737ce221bcf91811b">MSG_SUBMIT_HINT</a>
+, <a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013ac660ea980a12d3674334b2d35eddabdb">MSG_SENDCHAT</a>
+, <a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013a48572e5982fd99f6677484f5090fa795">MSG_REQUESTUUID</a>
 , <a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013afa28949f4a14ffcda3646bbadc355ab1">MSG_COMPAREVERSION</a>
+, <br />
+&#160;&#160;<a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013aadfe01bd4c9e50a1930619703ba3217d">MSG_PING</a>
 <br />
  }</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a9af23a584f59d6ef943508172a8284f5" id="r_a9af23a584f59d6ef943508172a8284f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structArguments.html">Arguments</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9af23a584f59d6ef943508172a8284f5">parse_arguments</a> (char *message)</td></tr>
-<tr class="memitem:ab721dcd31c8851d491ef34ea7ae9dc9e" id="r_ab721dcd31c8851d491ef34ea7ae9dc9e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab721dcd31c8851d491ef34ea7ae9dc9e">on_message</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, char *message)</td></tr>
+<tr class="memitem:a9af23a584f59d6ef943508172a8284f5" id="r_a9af23a584f59d6ef943508172a8284f5"><td class="memItemLeft"><a class="el" href="structArguments.html">Arguments</a>&#160;</td><td class="memItemRight"><a class="el" href="#a9af23a584f59d6ef943508172a8284f5">parse_arguments</a> (char *message)</td></tr>
+<tr class="memitem:ab721dcd31c8851d491ef34ea7ae9dc9e" id="r_ab721dcd31c8851d491ef34ea7ae9dc9e"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ab721dcd31c8851d491ef34ea7ae9dc9e">on_message</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, char *message)</td></tr>
 </table>
 <a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Documentation des définitions de type</h2>
 <a id="ac9817a3ea34e47aa6dd60b6952c57e63" name="ac9817a3ea34e47aa6dd60b6952c57e63"></a>
@@ -167,20 +171,23 @@ Fonctions</h2></td></tr>
 </div><div class="memdoc">
 <p>Types de messages harmonisé client/serveur (aussi appelé HEADER) </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">MSG_SERVER_ERROR</td><td>message d'erreur envoyé par le serveur en cas de problème (ex: format de message invalide, action interdite, etc.). Le message d'erreur est suivi d'une description de l'erreur pour aider au debug. </td></tr>
-    <tr><td class="paramname">MSG_UNKNOWN</td><td>message inconnu. </td></tr>
-    <tr><td class="paramname">MSG_INFO</td><td>message d'information (pour des messages non critiques ou des mises à jour de statut). </td></tr>
-    <tr><td class="paramname">MSG_CREATELOBBY</td><td>message de création de lobby. </td></tr>
-    <tr><td class="paramname">MSG_JOINLOBBY</td><td>message de rejoindre un lobby. </td></tr>
-    <tr><td class="paramname">MSG_LEAVELOBBY</td><td>message de quitter un lobby. </td></tr>
-    <tr><td class="paramname">MSG_LOBBYCLOSED</td><td>message de fermeture de lobby. </td></tr>
-    <tr><td class="paramname">MSG_PLAYERJOINED</td><td>message d'un joueur qui a rejoint le lobby. </td></tr>
-    <tr><td class="paramname">MSG_PLAYERLEFT</td><td>message d'un joueur qui a quitté le lobby. </td></tr>
-    <tr><td class="paramname">MSG_CHOOSE_ROLE</td><td>message de choix de rôle/équipe dans le lobby (pour informer les autres joueurs en temps réel du choix d'un joueur). </td></tr>
-    <tr><td class="paramname">MSG_STARTGAME</td><td>message de démarrage de partie. </td></tr>
-    <tr><td class="paramname">MSG_WORDDATA</td><td>message de données de mots pour la partie (envoyé par le serveur au démarrage de la partie, contient la liste des mots et leur couleur). </td></tr>
-    <tr><td class="paramname">MSG_REQUESTUUID</td><td>message de demande d'UUID (pour le client de demander son UUID au serveur après connexion, si besoin pour le protocole). </td></tr>
-    <tr><td class="paramname">MSG_COMPAREVERSION</td><td>message de comparaison de version (pour le client de comparer sa version avec celle du serveur). </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013a8de267a33883ee34bdb9880676b6651a">MSG_SERVER_ERROR</a></td><td>message d'erreur envoyé par le serveur en cas de problème (ex: format de message invalide, action interdite, etc.). Le message d'erreur est suivi d'une description de l'erreur pour aider au debug. </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013afe84a91c5c55549a831dfd14ca66fc8a">MSG_UNKNOWN</a></td><td>message inconnu. </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013ac0b16798f47a9d0c23cbe6a3dc242c0d">MSG_INFO</a></td><td>message d'information (pour des messages non critiques ou des mises à jour de statut). </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013a0bf951f6070633557526081ff9c09126">MSG_CREATELOBBY</a></td><td>message de création de lobby. </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013ab050c6c555efefa0665c624be338b2e5">MSG_JOINLOBBY</a></td><td>message de rejoindre un lobby. </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013a8df1c70487a3f6c6e727c2a24a543818">MSG_LEAVELOBBY</a></td><td>message de quitter un lobby. </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013ad241e6a214ef89fed912835259455f8b">MSG_LOBBYCLOSED</a></td><td>message de fermeture de lobby. </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013a780e0c0675c808873eb7553b183f25c6">MSG_PLAYERJOINED</a></td><td>message d'un joueur qui a rejoint le lobby. </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013a8459c153aec15b0127febfd3a63ff57e">MSG_PLAYERLEFT</a></td><td>message d'un joueur qui a quitté le lobby. </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013a165d64b96149e42ee6d282a2f6149edd">MSG_CHOOSE_ROLE</a></td><td>message de choix de rôle/équipe dans le lobby (pour informer les autres joueurs en temps réel du choix d'un joueur). </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013aed771684634ec8c5e250a4df7eaf245d">MSG_STARTGAME</a></td><td>message de démarrage de partie. </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013aec68a0846089f260eb423bccc1741f8f">MSG_WORDDATA</a></td><td>message de données de mots pour la partie (envoyé par le serveur au démarrage de la partie, contient la liste des mots et leur couleur). </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013affb36f73d5d4771737ce221bcf91811b">MSG_SUBMIT_HINT</a></td><td>message de soumission du mot indice et du nombre de mots indices. </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013ac660ea980a12d3674334b2d35eddabdb">MSG_SENDCHAT</a></td><td>message d'envoi de message dans le chat. </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013a48572e5982fd99f6677484f5090fa795">MSG_REQUESTUUID</a></td><td>message de demande d'UUID (pour le client de demander son UUID au serveur après connexion, si besoin pour le protocole). </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013afa28949f4a14ffcda3646bbadc355ab1">MSG_COMPAREVERSION</a></td><td>message de comparaison de version (pour le client de comparer sa version avec celle du serveur). </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013aadfe01bd4c9e50a1930619703ba3217d">MSG_PING</a></td><td>message d'echo client/serveur pour mesurer le ping applicatif en temps réel. </td></tr>
   </table>
   </dd>
 </dl>
@@ -201,20 +208,23 @@ Fonctions</h2></td></tr>
 </div><div class="memdoc">
 <p>Types de messages harmonisé client/serveur (aussi appelé HEADER) </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">MSG_SERVER_ERROR</td><td>message d'erreur envoyé par le serveur en cas de problème (ex: format de message invalide, action interdite, etc.). Le message d'erreur est suivi d'une description de l'erreur pour aider au debug. </td></tr>
-    <tr><td class="paramname">MSG_UNKNOWN</td><td>message inconnu. </td></tr>
-    <tr><td class="paramname">MSG_INFO</td><td>message d'information (pour des messages non critiques ou des mises à jour de statut). </td></tr>
-    <tr><td class="paramname">MSG_CREATELOBBY</td><td>message de création de lobby. </td></tr>
-    <tr><td class="paramname">MSG_JOINLOBBY</td><td>message de rejoindre un lobby. </td></tr>
-    <tr><td class="paramname">MSG_LEAVELOBBY</td><td>message de quitter un lobby. </td></tr>
-    <tr><td class="paramname">MSG_LOBBYCLOSED</td><td>message de fermeture de lobby. </td></tr>
-    <tr><td class="paramname">MSG_PLAYERJOINED</td><td>message d'un joueur qui a rejoint le lobby. </td></tr>
-    <tr><td class="paramname">MSG_PLAYERLEFT</td><td>message d'un joueur qui a quitté le lobby. </td></tr>
-    <tr><td class="paramname">MSG_CHOOSE_ROLE</td><td>message de choix de rôle/équipe dans le lobby (pour informer les autres joueurs en temps réel du choix d'un joueur). </td></tr>
-    <tr><td class="paramname">MSG_STARTGAME</td><td>message de démarrage de partie. </td></tr>
-    <tr><td class="paramname">MSG_WORDDATA</td><td>message de données de mots pour la partie (envoyé par le serveur au démarrage de la partie, contient la liste des mots et leur couleur). </td></tr>
-    <tr><td class="paramname">MSG_REQUESTUUID</td><td>message de demande d'UUID (pour le client de demander son UUID au serveur après connexion, si besoin pour le protocole). </td></tr>
-    <tr><td class="paramname">MSG_COMPAREVERSION</td><td>message de comparaison de version (pour le client de comparer sa version avec celle du serveur). </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013a8de267a33883ee34bdb9880676b6651a">MSG_SERVER_ERROR</a></td><td>message d'erreur envoyé par le serveur en cas de problème (ex: format de message invalide, action interdite, etc.). Le message d'erreur est suivi d'une description de l'erreur pour aider au debug. </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013afe84a91c5c55549a831dfd14ca66fc8a">MSG_UNKNOWN</a></td><td>message inconnu. </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013ac0b16798f47a9d0c23cbe6a3dc242c0d">MSG_INFO</a></td><td>message d'information (pour des messages non critiques ou des mises à jour de statut). </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013a0bf951f6070633557526081ff9c09126">MSG_CREATELOBBY</a></td><td>message de création de lobby. </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013ab050c6c555efefa0665c624be338b2e5">MSG_JOINLOBBY</a></td><td>message de rejoindre un lobby. </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013a8df1c70487a3f6c6e727c2a24a543818">MSG_LEAVELOBBY</a></td><td>message de quitter un lobby. </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013ad241e6a214ef89fed912835259455f8b">MSG_LOBBYCLOSED</a></td><td>message de fermeture de lobby. </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013a780e0c0675c808873eb7553b183f25c6">MSG_PLAYERJOINED</a></td><td>message d'un joueur qui a rejoint le lobby. </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013a8459c153aec15b0127febfd3a63ff57e">MSG_PLAYERLEFT</a></td><td>message d'un joueur qui a quitté le lobby. </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013a165d64b96149e42ee6d282a2f6149edd">MSG_CHOOSE_ROLE</a></td><td>message de choix de rôle/équipe dans le lobby (pour informer les autres joueurs en temps réel du choix d'un joueur). </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013aed771684634ec8c5e250a4df7eaf245d">MSG_STARTGAME</a></td><td>message de démarrage de partie. </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013aec68a0846089f260eb423bccc1741f8f">MSG_WORDDATA</a></td><td>message de données de mots pour la partie (envoyé par le serveur au démarrage de la partie, contient la liste des mots et leur couleur). </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013affb36f73d5d4771737ce221bcf91811b">MSG_SUBMIT_HINT</a></td><td>message de soumission du mot indice et du nombre de mots indices. </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013ac660ea980a12d3674334b2d35eddabdb">MSG_SENDCHAT</a></td><td>message d'envoi de message dans le chat. </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013a48572e5982fd99f6677484f5090fa795">MSG_REQUESTUUID</a></td><td>message de demande d'UUID (pour le client de demander son UUID au serveur après connexion, si besoin pour le protocole). </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013afa28949f4a14ffcda3646bbadc355ab1">MSG_COMPAREVERSION</a></td><td>message de comparaison de version (pour le client de comparer sa version avec celle du serveur). </td></tr>
+    <tr><td class="paramname"><a class="el" href="#ac6606ebe91c8ac66a2c314c79f5ab013aadfe01bd4c9e50a1930619703ba3217d">MSG_PING</a></td><td>message d'echo client/serveur pour mesurer le ping applicatif en temps réel. </td></tr>
   </table>
   </dd>
 </dl>
@@ -231,11 +241,14 @@ Fonctions</h2></td></tr>
 <tr><td class="fieldname"><a id="ac6606ebe91c8ac66a2c314c79f5ab013a165d64b96149e42ee6d282a2f6149edd" name="ac6606ebe91c8ac66a2c314c79f5ab013a165d64b96149e42ee6d282a2f6149edd"></a>MSG_CHOOSE_ROLE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ac6606ebe91c8ac66a2c314c79f5ab013aed771684634ec8c5e250a4df7eaf245d" name="ac6606ebe91c8ac66a2c314c79f5ab013aed771684634ec8c5e250a4df7eaf245d"></a>MSG_STARTGAME&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ac6606ebe91c8ac66a2c314c79f5ab013aec68a0846089f260eb423bccc1741f8f" name="ac6606ebe91c8ac66a2c314c79f5ab013aec68a0846089f260eb423bccc1741f8f"></a>MSG_WORDDATA&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac6606ebe91c8ac66a2c314c79f5ab013affb36f73d5d4771737ce221bcf91811b" name="ac6606ebe91c8ac66a2c314c79f5ab013affb36f73d5d4771737ce221bcf91811b"></a>MSG_SUBMIT_HINT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac6606ebe91c8ac66a2c314c79f5ab013ac660ea980a12d3674334b2d35eddabdb" name="ac6606ebe91c8ac66a2c314c79f5ab013ac660ea980a12d3674334b2d35eddabdb"></a>MSG_SENDCHAT&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ac6606ebe91c8ac66a2c314c79f5ab013a48572e5982fd99f6677484f5090fa795" name="ac6606ebe91c8ac66a2c314c79f5ab013a48572e5982fd99f6677484f5090fa795"></a>MSG_REQUESTUUID&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ac6606ebe91c8ac66a2c314c79f5ab013afa28949f4a14ffcda3646bbadc355ab1" name="ac6606ebe91c8ac66a2c314c79f5ab013afa28949f4a14ffcda3646bbadc355ab1"></a>MSG_COMPAREVERSION&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac6606ebe91c8ac66a2c314c79f5ab013aadfe01bd4c9e50a1930619703ba3217d" name="ac6606ebe91c8ac66a2c314c79f5ab013aadfe01bd4c9e50a1930619703ba3217d"></a>MSG_PING&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2message_8h_source.html#l00023">23</a> du fichier <a class="el" href="client_2lib_2message_8h_source.html">message.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2message_8h_source.html#l00026">26</a> du fichier <a class="el" href="client_2lib_2message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -269,9 +282,9 @@ Fonctions</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="client_2src_2message_8c_source.html#l00024">24</a> du fichier <a class="el" href="client_2src_2message_8c_source.html">message.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00047">AppContext::app_state</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00051">APP_STATE_PLAYING</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00046">Arguments::argc</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00047">Arguments::argv</a>, <a class="el" href="client_2src_2user_8c_source.html#l00003">create_user()</a>, <a class="el" href="client_2src_2user_8c_source.html#l00024">destroy_user()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00003">fetch_header()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00043">Lobby::game</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00037">Word::gender</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00037">Lobby::id</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00024">User::id</a>, <a class="el" href="sdl_8h_source.html#l00046">AppContext::lobby</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00014">MAX_USERS</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00033">MSG_CHOOSE_ROLE</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00027">MSG_CREATELOBBY</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00026">MSG_INFO</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00028">MSG_JOINLOBBY</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00029">MSG_LEAVELOBBY</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00030">MSG_LOBBYCLOSED</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00031">MSG_PLAYERJOINED</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00032">MSG_PLAYERLEFT</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00036">MSG_REQUESTUUID</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00024">MSG_SERVER_ERROR</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00034">MSG_STARTGAME</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00025">MSG_UNKNOWN</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00035">MSG_WORDDATA</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00042">Lobby::nb_players</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00077">Game::nb_words</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00003">number_length()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00009">parse_arguments()</a>, <a class="el" href="sdl_8h_source.html#l00055">AppContext::player_uuid</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00038">Word::revealed</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00026">User::role</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00078">Game::state</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00227">struct_lobby_init()</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00027">User::team</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00036">Word::team</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00041">Lobby::users</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00035">Word::word</a>, et <a class="el" href="client_2lib_2game_8h_source.html#l00076">Game::words</a>.</p>
+<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00047">AppContext::app_state</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00053">APP_STATE_PLAYING</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00052">Arguments::argc</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00053">Arguments::argv</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00046">Lobby::chat</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00017">chat_push()</a>, <a class="el" href="client_2src_2user_8c_source.html#l00003">create_user()</a>, <a class="el" href="client_2src_2user_8c_source.html#l00024">destroy_user()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00003">fetch_header()</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00017">format_to()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00045">Lobby::game</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00039">Word::gender</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00039">Lobby::id</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00024">User::id</a>, <a class="el" href="sdl_8h_source.html#l00046">AppContext::lobby</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00015">MAX_USERS</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00036">MSG_CHOOSE_ROLE</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00030">MSG_CREATELOBBY</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00029">MSG_INFO</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00031">MSG_JOINLOBBY</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00032">MSG_LEAVELOBBY</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00033">MSG_LOBBYCLOSED</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00043">MSG_PING</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00034">MSG_PLAYERJOINED</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00035">MSG_PLAYERLEFT</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00041">MSG_REQUESTUUID</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00040">MSG_SENDCHAT</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00027">MSG_SERVER_ERROR</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00037">MSG_STARTGAME</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00039">MSG_SUBMIT_HINT</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00028">MSG_UNKNOWN</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00038">MSG_WORDDATA</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00044">Lobby::nb_players</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00083">Game::nb_words</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00003">number_length()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00009">parse_arguments()</a>, <a class="el" href="sdl_8h_source.html#l00051">AppContext::ping_ms</a>, <a class="el" href="sdl_8h_source.html#l00054">AppContext::player_uuid</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00040">Word::revealed</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00026">User::role</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00084">Game::state</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00225">struct_lobby_init()</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00027">User::team</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00038">Word::team</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00043">Lobby::users</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00037">Word::word</a>, et <a class="el" href="client_2lib_2game_8h_source.html#l00082">Game::words</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2tcp_8c_source.html#l00162">tcp_on_client_message()</a>, et <a class="el" href="client_2src_2tcp_8c_source.html#l00034">tick_tcp()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2tcp_8c_source.html#l00192">tcp_on_client_message()</a>, et <a class="el" href="client_2src_2tcp_8c_source.html#l00101">tick_tcp()</a>.</p>
 
 </div>
 </div>
@@ -315,7 +328,7 @@ Fonctions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a href="client_2lib_2message_8h.html">message.h</a></li>
-    <li class="footer">Généré le Lundi 23 Mars 2026 18:41:13 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>
 </body>

@@ -6,8 +6,10 @@ var server_2lib_2game_8h =
     [ "Team", "server_2lib_2game_8h.html#a66a998123301ec295ccf7a27e19f1723", null ],
     [ "GameState", "server_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285", [
       [ "GAMESTATE_WAITING", "server_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a466f1dad3c9d6cdfdce7f1d6d144f932", null ],
-      [ "GAMESTATE_TURN_RED", "server_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285af079481b440a51bd16e0cce30e777204", null ],
-      [ "GAMESTATE_TURN_BLUE", "server_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285ad8fc1a83ebeb07efb9f36d8d77ac39d4", null ],
+      [ "GAMESTATE_TURN_RED_SPY", "server_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285ac6f4aba5b0c4077290c9fb1c9940dfdf", null ],
+      [ "GAMESTATE_TURN_RED_AGENT", "server_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a7bedbddf684940fe57d29de304b8a392", null ],
+      [ "GAMESTATE_TURN_BLUE_SPY", "server_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a8449de81b79b665db58f5a6380c1e413", null ],
+      [ "GAMESTATE_TURN_BLUE_AGENT", "server_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285acaeb5b9f28749e43e9878f40613fa669", null ],
       [ "GAMESTATE_ENDED", "server_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285aa58a7cf5b2690f73ec2359ec09e42095", null ]
     ] ],
     [ "Team", "server_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598", [

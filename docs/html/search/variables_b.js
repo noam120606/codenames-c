@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['max_0',['max',['../structCrossfaderConfig.html#a90ba335c51a3371c1dbc0f1fca283dde',1,'CrossfaderConfig']]],
-  ['maxlen_1',['maxlen',['../structInputConfig.html#a0403106f5107d41dec1bd89afcd33857',1,'InputConfig']]],
-  ['menu_5flogo_2',['menu_logo',['../menu_8c.html#aad1f91bb5698ea305b1ca57f275097f5',1,'menu.c']]],
-  ['min_3',['min',['../structCrossfaderConfig.html#adc01f08ed17b270ef527edb265036648',1,'CrossfaderConfig']]],
-  ['mouse_5fwas_5finside_4',['mouse_was_inside',['../infos_8c.html#abf701c92a6aa5a894ba57efe3b4af920',1,'infos.c']]],
-  ['movable_5',['movable',['../structWindowConfig.html#a9865a84962fd2c44cebf0895f7757832',1,'WindowConfig']]],
-  ['music_5fvolume_6',['music_volume',['../structAppContext.html#a8691eee497ea679662d39b2926343394',1,'AppContext']]]
+  ['last_5fapp_5fping_5fsent_5fat_0',['last_app_ping_sent_at',['../client_2src_2tcp_8c.html#ab1fc4add329fc83a17b0655120998615',1,'tcp.c']]],
+  ['len_1',['len',['../structInputConfig.html#a60e40831e2bef5a8eb40e11378a2059b',1,'InputConfig']]],
+  ['lens_2',['lens',['../background_8c.html#a46bc688b0fffc839388c748c904460f4',1,'background.c']]],
+  ['list_5fid_5fcounter_3',['list_id_counter',['../client_2src_2list_8c.html#aca5d24e757cc36f97ea62789a309c647',1,'list_id_counter:&#160;list.c'],['../server_2src_2list_8c.html#aca5d24e757cc36f97ea62789a309c647',1,'list_id_counter:&#160;list.c']]],
+  ['lobbies_4',['lobbies',['../structLobbyManager.html#a57abea84d03dd0beb00fa4295b9be5ce',1,'LobbyManager']]],
+  ['lobby_5',['lobby',['../structAppContext.html#a0482118779b050a3a693031790e0ebf6',1,'AppContext::lobby'],['../structCodenames.html#a60e595ede4c21bb5ab8aeead6009726a',1,'Codenames::lobby']]]
 ];

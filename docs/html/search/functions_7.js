@@ -38,6 +38,5 @@ var searchData=
   ['is_5ftruthy_5fenv_35',['is_truthy_env',['../sdl_8c.html#a9f2d1b684a419b75ff6fcf0635369e35',1,'sdl.c']]],
   ['is_5fvalid_5fkind_36',['is_valid_kind',['../audio_8c.html#a04f51f0ed9bfb85eb0156c6e3fc72ea7',1,'audio.c']]],
   ['is_5fvalid_5fsound_5fid_37',['is_valid_sound_id',['../audio_8c.html#aa61a6e34df631d3cd739d2016e6674c7',1,'audio.c']]],
-  ['is_5fword_5ftoo_5fclose_38',['is_word_too_close',['../client_2src_2utils_8c.html#a2d814e171e88c474251ab3e778c99d13',1,'is_word_too_close(const char *input, const char *card_word, int threshold):&#160;utils.c'],['../client_2lib_2utils_8h.html#a2d814e171e88c474251ab3e778c99d13',1,'is_word_too_close(const char *input, const char *card_word, int threshold):&#160;utils.c']]],
-  ['itoa_39',['itoa',['../client_2src_2utils_8c.html#a4421b3b56ef0c8d301e35e23ba17f9d5',1,'itoa(int value):&#160;utils.c'],['../client_2lib_2utils_8h.html#a4421b3b56ef0c8d301e35e23ba17f9d5',1,'itoa(int value):&#160;utils.c']]]
+  ['itoa_38',['itoa',['../client_2src_2utils_8c.html#a4421b3b56ef0c8d301e35e23ba17f9d5',1,'itoa(int value):&#160;utils.c'],['../client_2lib_2utils_8h.html#a4421b3b56ef0c8d301e35e23ba17f9d5',1,'itoa(int value):&#160;utils.c']]]
 ];

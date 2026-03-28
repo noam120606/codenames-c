@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames:  Fichier source de client/src/save.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -35,7 +35,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.14.0 -->
+<!-- Généré par Doxygen 1.16.1 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
@@ -159,12 +159,12 @@ $(function(){initNavTree('save_8c_source.html','',''); });
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                <span class="keywordflow">while</span> (*vp == <span class="charliteral">&#39; &#39;</span>) vp++;</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                <span class="keywordflow">if</span> (strcmp(key_buf, property) == 0) {</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                    strncpy(entries[count].key, key_buf, <span class="keyword">sizeof</span>(entries[count].key) - 1);</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                    strncpy(entries[count].val, value, <span class="keyword">sizeof</span>(entries[count].val) - 1);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                    snprintf(entries[count].key, <span class="keyword">sizeof</span>(entries[count].key), <span class="stringliteral">&quot;%s&quot;</span>, key_buf);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                    snprintf(entries[count].val, <span class="keyword">sizeof</span>(entries[count].val), <span class="stringliteral">&quot;%s&quot;</span>, value);</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                    found = 1;</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                    strncpy(entries[count].key, key_buf, <span class="keyword">sizeof</span>(entries[count].key) - 1);</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                    strncpy(entries[count].val, vp, <span class="keyword">sizeof</span>(entries[count].val) - 1);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                    snprintf(entries[count].key, <span class="keyword">sizeof</span>(entries[count].key), <span class="stringliteral">&quot;%s&quot;</span>, key_buf);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                    snprintf(entries[count].val, <span class="keyword">sizeof</span>(entries[count].val), <span class="stringliteral">&quot;%s&quot;</span>, vp);</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                }</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                count++;</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            }</div>
@@ -174,8 +174,8 @@ $(function(){initNavTree('save_8c_source.html','',''); });
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="comment">// If property was not found, add it</span></div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordflow">if</span> (!found &amp;&amp; count &lt; 64) {</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        strncpy(entries[count].key, property, <span class="keyword">sizeof</span>(entries[count].key) - 1);</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        strncpy(entries[count].val, value, <span class="keyword">sizeof</span>(entries[count].val) - 1);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        snprintf(entries[count].key, <span class="keyword">sizeof</span>(entries[count].key), <span class="stringliteral">&quot;%s&quot;</span>, property);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        snprintf(entries[count].val, <span class="keyword">sizeof</span>(entries[count].val), <span class="stringliteral">&quot;%s&quot;</span>, value);</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        count++;</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    }</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
@@ -203,7 +203,7 @@ $(function(){initNavTree('save_8c_source.html','',''); });
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a href="save_8c.html">save.c</a></li>
-    <li class="footer">Généré le Lundi 23 Mars 2026 18:41:13 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>
 </body>

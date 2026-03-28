@@ -1,10 +1,15 @@
 var searchData=
 [
-  ['id_0',['id',['../structButton.html#ac5a33b0d2f5306780146a85c24cf5219',1,'Button::id'],['../structCrossfader.html#ac4fbc9e091fabe83f685f1bd2bd31c32',1,'Crossfader::id'],['../structInput.html#aa43606556df039a777b92373f4083ee5',1,'Input::id'],['../structList.html#a6c5cf8a2362dde081e6f5b495ac376a0',1,'List::id'],['../structLobby.html#aa61b45b961a54b3f1bb20c926c389e5f',1,'Lobby::id'],['../structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7',1,'User::id'],['../structWindow.html#a262d90498de3ce0b3b6d8ea1c8919b24',1,'Window::id'],['../structTcpClient.html#a28a40517fae053778f34c4c8498b83b6',1,'TcpClient::id']]],
-  ['infos_5fstate_1',['infos_state',['../infos_8c.html#a7529f877faba58638faeeeab49d47068',1,'infos.c']]],
-  ['init_5ftext_2',['init_text',['../structInputConfig.html#adc6756d9b02d406378cd9c71d8c4b976',1,'InputConfig']]],
-  ['input_5fcount_3',['input_count',['../input_8c.html#a1dcf081f133c58340a448d9d92f0eb31',1,'input.c']]],
-  ['inputs_4',['inputs',['../input_8c.html#ad1723ac8fb77a41fc83509519767014a',1,'input.c']]],
-  ['is_5fhovered_5',['is_hovered',['../structButtonConfig.html#a880e0e6159d5a0849a4595c82f3afb4d',1,'ButtonConfig']]],
-  ['is_5ftext_6',['is_text',['../structButtonConfig.html#aa9d18f2d56d0a538d77cf9eb1a23e7fe',1,'ButtonConfig']]]
+  ['h_0',['h',['../structButtonConfig.html#a580d55f023e7e8956cf92843aed9dfdd',1,'ButtonConfig::h'],['../structCrossfaderConfig.html#a159e8fedd130c3bf0bf55050b49134f1',1,'CrossfaderConfig::h'],['../structInputConfig.html#a697c516f016623628c21db6252676cf8',1,'InputConfig::h'],['../structWindowConfig.html#ae77dee27cffeebb236ee14ea03e12d87',1,'WindowConfig::h']]],
+  ['hat_1',['hat',['../background_8c.html#a0a67dc3a4aa5ffe8ea6cda2812d20219',1,'background.c']]],
+  ['head_2',['head',['../structList.html#a5ab8f8003076b3866a7e03b07d921082',1,'List']]],
+  ['hidden_3',['hidden',['../structCrossfaderConfig.html#a08680ac8ae405a2edeb043fe7a5b1d78',1,'CrossfaderConfig::hidden'],['../structWindowConfig.html#aa5ab1c535834d4152c4a3c766a614002',1,'WindowConfig::hidden']]],
+  ['hint_5fcount_5finput_4',['hint_count_input',['../client_2src_2game_8c.html#aa85560ed942fb33295031e1cd86d0271',1,'game.c']]],
+  ['hint_5fcount_5finput_5fplaceholders_5',['HINT_COUNT_INPUT_PLACEHOLDERS',['../client_2src_2game_8c.html#ac151a1d8fc1994c12caa6e3ab8c0d2c9',1,'game.c']]],
+  ['hint_5finput_6',['hint_input',['../client_2src_2game_8c.html#a50f7c3a317fb69ffb8e5aaa4bbff4c33',1,'game.c']]],
+  ['hint_5finput_5fplaceholders_7',['HINT_INPUT_PLACEHOLDERS',['../client_2src_2game_8c.html#a9d43a0226a1c1375f95f982e539f42cc',1,'game.c']]],
+  ['hint_5fwindow_8',['hint_window',['../client_2src_2game_8c.html#ac69371d432e938283c5f497ec81a71c0',1,'game.c']]],
+  ['history_5fwindow_5fblue_9',['history_window_blue',['../client_2src_2game_8c.html#a7a1385342c339ddee9866543a6d6077e',1,'game.c']]],
+  ['history_5fwindow_5fred_10',['history_window_red',['../client_2src_2game_8c.html#a119abc0bc03a3a9648a2a1bb43370033',1,'game.c']]],
+  ['hover_11',['hover',['../structCrossfaderConfig.html#a88009fe282a41c78d145a394e2c1bf5f',1,'CrossfaderConfig']]]
 ];

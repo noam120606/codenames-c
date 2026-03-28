@@ -44,10 +44,12 @@ var input_8h =
       [ "IN_CFG_ON_SUBMIT", "input_8h.html#ae5dc35609c74896e526bbd8a3494ee58abedec46d4ecacf060485ee651efdbd02", null ]
     ] ],
     [ "InputId", "input_8h.html#affb866948fe1eb8a87ca4837b22eccd9", [
-      [ "INPUT_ID_NONE", "input_8h.html#affb866948fe1eb8a87ca4837b22eccd9aaa36a97241ff559ad1034aa288a60726", null ],
-      [ "INPUT_ID_NAME", "input_8h.html#affb866948fe1eb8a87ca4837b22eccd9a59d60aef3ec980ff9804c2c152fc9974", null ],
-      [ "INPUT_ID_JOIN_CODE", "input_8h.html#affb866948fe1eb8a87ca4837b22eccd9a4e103ee157935cc644a1723df4e5c289", null ],
-      [ "INPUT_ID_TCHAT", "input_8h.html#affb866948fe1eb8a87ca4837b22eccd9af825b35ce302a7697720cc22c87ad7b4", null ]
+      [ "INPUT_NONE", "input_8h.html#affb866948fe1eb8a87ca4837b22eccd9ad635d6b1496fa2fba6f87068d4193246", null ],
+      [ "INPUT_NAME", "input_8h.html#affb866948fe1eb8a87ca4837b22eccd9a2220efa7553000fd9229c905d98e8106", null ],
+      [ "INPUT_JOIN_CODE", "input_8h.html#affb866948fe1eb8a87ca4837b22eccd9afea5f6534f12552ddf0feebb98637c4d", null ],
+      [ "INPUT_HINT", "input_8h.html#affb866948fe1eb8a87ca4837b22eccd9af5dafe806bdced747be9800b3732716c", null ],
+      [ "INPUT_HINT_COUNT", "input_8h.html#affb866948fe1eb8a87ca4837b22eccd9af60854a9703d409ee02126838fc3c75e", null ],
+      [ "INPUT_CHAT", "input_8h.html#affb866948fe1eb8a87ca4837b22eccd9a9c373d0c102e8cc844cce7ec7696af41", null ]
     ] ],
     [ "edit_in_cfg", "input_8h.html#a827bf3680c14ed7cff612d6b6ceb8c70", null ],
     [ "input_clear_bg", "input_8h.html#a1f09bab7fb4c182015ed115f1abb1d1a", null ],

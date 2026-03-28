@@ -34,36 +34,37 @@ var NAVTREE =
       [ "Architecture du Projet", "index.html#autotoc_md7", null ],
       [ "Installation", "index.html#autotoc_md9", [
         [ "Prérequis système", "index.html#autotoc_md10", null ],
-        [ "Étapes d'installation", "index.html#autotoc_md11", null ]
+        [ "Prérequis Windows", "index.html#autotoc_md11", null ],
+        [ "Étapes d'installation", "index.html#autotoc_md12", null ]
       ] ],
-      [ "Utilisation", "index.html#autotoc_md13", [
-        [ "Version automatique à chaque commit", "index.html#autotoc_md14", null ],
-        [ "Lancement du serveur", "index.html#autotoc_md15", null ],
-        [ "Lancement du client", "index.html#autotoc_md16", null ],
-        [ "Déroulement d'une partie", "index.html#autotoc_md17", null ]
+      [ "Utilisation", "index.html#autotoc_md14", [
+        [ "Version automatique à chaque commit", "index.html#autotoc_md15", null ],
+        [ "Lancement du serveur", "index.html#autotoc_md16", null ],
+        [ "Lancement du client", "index.html#autotoc_md17", null ],
+        [ "Déroulement d'une partie", "index.html#autotoc_md18", null ]
       ] ],
-      [ "Documentation", "index.html#autotoc_md19", [
-        [ "Générer la documentation", "index.html#autotoc_md20", null ],
-        [ "Consultation", "index.html#autotoc_md21", null ]
+      [ "Documentation", "index.html#autotoc_md20", [
+        [ "Générer la documentation", "index.html#autotoc_md21", null ],
+        [ "Consultation", "index.html#autotoc_md22", null ]
       ] ],
-      [ "Protocole de Communication Client/Serveur", "index.html#autotoc_md23", [
-        [ "Format des messages", "index.html#autotoc_md24", null ],
-        [ "Exemples de headers", "index.html#autotoc_md25", null ]
+      [ "Protocole de Communication Client/Serveur", "index.html#autotoc_md24", [
+        [ "Format des messages", "index.html#autotoc_md25", null ],
+        [ "Exemples de headers", "index.html#autotoc_md26", null ]
       ] ],
-      [ "Technologies Utilisées", "index.html#autotoc_md27", [
-        [ "Client", "index.html#autotoc_md28", null ],
-        [ "Serveur", "index.html#autotoc_md29", null ],
-        [ "Outils", "index.html#autotoc_md30", null ]
+      [ "Technologies Utilisées", "index.html#autotoc_md28", [
+        [ "Client", "index.html#autotoc_md29", null ],
+        [ "Serveur", "index.html#autotoc_md30", null ],
+        [ "Outils", "index.html#autotoc_md31", null ]
       ] ],
-      [ "Fonctionalitées prévues", "index.html#autotoc_md32", null ],
-      [ "Contributeurs", "index.html#autotoc_md34", null ]
+      [ "Fonctionalitées prévues", "index.html#autotoc_md33", null ],
+      [ "Contributeurs", "index.html#autotoc_md35", null ]
     ] ],
     [ "Structures de données", "annotated.html", [
       [ "Structures de données", "annotated.html", "annotated_dup" ],
       [ "Index des structures de données", "classes.html", null ],
       [ "Champs de donnée", "functions.html", [
-        [ "Tout", "functions.html", null ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "Tout", "functions.html", "functions_dup" ],
+        [ "Variables", "functions_vars.html", "functions_vars" ]
       ] ]
     ] ],
     [ "Fichiers", "files.html", [
@@ -84,10 +85,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"client_2src_2game_8c.html#a23f9047fe9c1ab44e55bfdb65496a590",
-"index.html#autotoc_md28",
-"server_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598a097bdc2bb8d24f733c06f0be9b66bc3d",
-"structCrossfaderConfig.html#a159e8fedd130c3bf0bf55050b49134f1"
+"client_2lib_2user_8h.html#a064a2c5e2528af581f38d07fbbaa8e5a",
+"functions_b.html",
+"input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a980fd10a1b1b74f753379d12cd878c8d",
+"server_2src_2chat_8c.html#a1623ddd50bbb887235d7baed5358fcb0",
+"structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';

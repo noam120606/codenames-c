@@ -1,6 +1,7 @@
 var sdl_8c =
 [
     [ "configure_diagnostic_sdl_environment", "sdl_8c.html#a3043f28d64a3da3c6d93503f414188f4", null ],
+    [ "configure_windows_audio_backend", "sdl_8c.html#a75620c72d5315a52b70d6edefb4112c5", null ],
     [ "destroy_context", "sdl_8c.html#a287c6280bfa12f44b321d22d6450a125", null ],
     [ "display_image", "sdl_8c.html#af2c6b730c5804f9e1d59476c6b24e93d", null ],
     [ "free_image", "sdl_8c.html#a40dc301c542ead27211aba1d2169b2fa", null ],

@@ -1,5 +1,6 @@
 var dir_a063914ab482288b7b0e1b2fca86158c =
 [
+    [ "chat.c", "server_2src_2chat_8c.html", "server_2src_2chat_8c" ],
     [ "game.c", "server_2src_2game_8c.html", "server_2src_2game_8c" ],
     [ "index.c", "server_2src_2index_8c.html", "server_2src_2index_8c" ],
     [ "list.c", "server_2src_2list_8c.html", "server_2src_2list_8c" ],

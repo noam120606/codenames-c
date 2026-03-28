@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['on_5fchange_0',['on_change',['../structCrossfaderConfig.html#a81f6a411b9700d91bba8797a81aad51d',1,'CrossfaderConfig']]],
-  ['on_5fsubmit_1',['on_submit',['../structInputConfig.html#a42ad1a6ebdc91d2f0101216702c833d6',1,'InputConfig']]],
-  ['opacity_2',['opacity',['../structTextConfig.html#a885890d1361e6c597b16cc02573fabe7',1,'TextConfig']]],
-  ['override_5fcount_3',['override_count',['../background_8c.html#ac984eac65d555c21bdfcb12e3ee3aaf1',1,'background.c']]],
-  ['overrides_4',['overrides',['../background_8c.html#ad2a93d3efa03bab44da6f56b5fed8c6c',1,'background.c']]],
-  ['owner_5fid_5',['owner_id',['../structLobby.html#a201a3357be821cc9646c8588855c663f',1,'Lobby']]]
+  ['name_0',['name',['../structUser.html#ae1faef3d602da4c65e7571e751f775f2',1,'User']]],
+  ['name_5finput_1',['name_input',['../menu_8c.html#a298a8ce12d85797bd5f97a976411985a',1,'menu.c']]],
+  ['nb_5fplayers_2',['nb_players',['../structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1',1,'Lobby']]],
+  ['nb_5fresources_3',['nb_resources',['../structResources.html#a1812e80e43137385b06b313c67e7088a',1,'Resources']]],
+  ['nb_5fwords_4',['nb_words',['../structGame.html#acc24e04bea9e0c2a413f257055150654',1,'Game']]],
+  ['network_5finitialized_5',['network_initialized',['../client_2src_2tcp_8c.html#a633f47b896cdfa0248874b4bb65daa3d',1,'tcp.c']]],
+  ['next_6',['next',['../structListNode.html#a232112b6981e0fa380e985d199d1f7b3',1,'ListNode']]]
 ];

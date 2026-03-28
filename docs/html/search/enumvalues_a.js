@@ -10,9 +10,12 @@ var searchData=
   ['win_5fcfg_5fhidden_7',['WIN_CFG_HIDDEN',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6a5c358dbbb364eda48ab25f921937accb',1,'window.h']]],
   ['win_5fcfg_5fmovable_8',['WIN_CFG_MOVABLE',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6aea66d2e7c95a103cc3958f0c905ab44a',1,'window.h']]],
   ['win_5fcfg_5frect_9',['WIN_CFG_RECT',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6aa1af741d39920a019c04e816f8a1c75d',1,'window.h']]],
-  ['win_5fcfg_5ftitlebar_5fcolor_10',['WIN_CFG_TITLEBAR_COLOR',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6a89725346c9bf91c6846178518886412f',1,'window.h']]],
-  ['win_5fcfg_5ftitlebar_5fh_11',['WIN_CFG_TITLEBAR_H',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6a529fb1f4385ad2c82fded3916ac7b7e5',1,'window.h']]],
-  ['win_5fcfg_5fw_12',['WIN_CFG_W',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6ac1210040192bd7423d0f217f3f79bc22',1,'window.h']]],
-  ['win_5fcfg_5fx_13',['WIN_CFG_X',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6aa278ef9ab26cdbffdbb7d53a0074e577',1,'window.h']]],
-  ['win_5fcfg_5fy_14',['WIN_CFG_Y',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6a4f005d6d43c1a47b9b961b5196e30085',1,'window.h']]]
+  ['win_5fcfg_5ftitle_10',['WIN_CFG_TITLE',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6a531531ac0e0e850a3da8f416c9952bfa',1,'window.h']]],
+  ['win_5fcfg_5ftitlebar_5fcolor_11',['WIN_CFG_TITLEBAR_COLOR',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6a89725346c9bf91c6846178518886412f',1,'window.h']]],
+  ['win_5fcfg_5ftitlebar_5fh_12',['WIN_CFG_TITLEBAR_H',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6a529fb1f4385ad2c82fded3916ac7b7e5',1,'window.h']]],
+  ['win_5fcfg_5ftitlebar_5ftexture_13',['WIN_CFG_TITLEBAR_TEXTURE',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6a48e8065abbf9cdb196cb929da0c72525',1,'window.h']]],
+  ['win_5fcfg_5fw_14',['WIN_CFG_W',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6ac1210040192bd7423d0f217f3f79bc22',1,'window.h']]],
+  ['win_5fcfg_5fwindow_5ftexture_15',['WIN_CFG_WINDOW_TEXTURE',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6a7371680984ac8f6aab739d077d075957',1,'window.h']]],
+  ['win_5fcfg_5fx_16',['WIN_CFG_X',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6aa278ef9ab26cdbffdbb7d53a0074e577',1,'window.h']]],
+  ['win_5fcfg_5fy_17',['WIN_CFG_Y',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6a4f005d6d43c1a47b9b961b5196e30085',1,'window.h']]]
 ];
