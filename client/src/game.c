@@ -440,32 +440,105 @@ int game_init(AppContext * context) {
     return loading_fails;
 }
 
-static void render_team_member_in_panel(AppContext* context, Window* panel, SDL_Texture* icon, Text* txt, const char* name, UserRole role, int* spy_row, int* agent_row) {
-    if (!context || !panel || !icon || !txt || !spy_row || !agent_row) return;
+typedef struct TeamPanelMember {
+    Text* txt;
+    const char* name;
+} TeamPanelMember;
 
-    const int POS_X = 0;
-    const int AGENT_BASE_Y = 65;
-    const int SPY_BASE_Y = -85; // Ecart de 150 entre la position de l'espion et des agents
-    const int ROW_GAP = 36;
+static int compute_panel_member_position(int nb_player, int i_player, int base_x, int base_y, int* out_x, int* out_y) {
+    if (!out_x || !out_y) return 0;
+    if (nb_player < 1 || nb_player > 8) return 0;
+    if (i_player < 0 || i_player >= nb_player) return 0;
 
-    int row = (role == ROLE_SPY) ? *spy_row : *agent_row;
-    int icon_y = ((role == ROLE_SPY) ? SPY_BASE_Y : AGENT_BASE_Y) + (row * ROW_GAP);
+    const int spacing_x = 55;
+    const int spacing_y = 42;
 
-    window_display_image(context->renderer, panel, icon, POS_X, icon_y+25, 0.20f, 0, SDL_FLIP_NONE, 1, 255);
+    int first_line_count = 0;
+    switch (nb_player) {
+        case 1: first_line_count = 1; break;
+        case 2: first_line_count = 2; break;
+        case 3: first_line_count = 3; break;
+        case 4: first_line_count = 4; break;
+        case 5: first_line_count = 3; break;
+        case 6: first_line_count = 3; break;
+        case 7: first_line_count = 4; break;
+        case 8: first_line_count = 4; break;
+        default: return 0;
+    }
+
+    int second_line_count = nb_player - first_line_count;
+    int is_second_line = (i_player >= first_line_count);
+    int line_count = is_second_line ? second_line_count : first_line_count;
+    int line_index = is_second_line ? (i_player - first_line_count) : i_player;
+
+    *out_y = is_second_line ? (base_y - spacing_y) : base_y;
+
+    switch (line_count) {
+        case 1:
+            *out_x = base_x;
+            break;
+        case 2:
+            *out_x = base_x + ((line_index == 0) ? -spacing_x : spacing_x);
+            break;
+        case 3:
+            *out_x = base_x + (line_index - 1) * spacing_x;
+            break;
+        case 4:
+            *out_x = base_x + (line_index * spacing_x) - (int)(1.5f * spacing_x);
+            break;
+        default:
+            return 0;
+    }
+
+    return 1;
+}
+
+static void render_team_member_in_panel(AppContext* context, Window* panel, SDL_Texture* icon, Text* txt, const char* name, int nb_player, int i_player, int base_y) {
+    if (!context || !panel || !icon || !txt) return;
+
+    int pos_x = 0;
+    int text_y = base_y;
+    if (!compute_panel_member_position(nb_player, i_player, 0, base_y, &pos_x, &text_y)) return;
+
+    window_display_image(context->renderer, panel, icon, pos_x, text_y + 25, 0.20f, 0, SDL_FLIP_NONE, 1, 255);
 
     update_text(context, txt, name ? name : "???");
-    window_place_text(panel, txt, POS_X, icon_y);
+    window_place_text(panel, txt, pos_x, text_y);
     display_text(context, txt);
+}
 
-    if (role == ROLE_SPY) (*spy_row)++;
-    else (*agent_row)++;
+static void add_member_to_panel_group(Text** player_texts, int* player_index, TeamPanelMember* spies, int* spy_count, TeamPanelMember* agents, int* agent_count, UserRole role, const char* name) {
+    if (!player_texts || !player_index || !spies || !spy_count || !agents || !agent_count) return;
+    if (*player_index >= MAX_TEAM_PLAYERS) return;
+
+    Text* txt = player_texts[*player_index];
+    (*player_index)++;
+    if (!txt) return;
+
+    const char* safe_name = name ? name : "???";
+    if (role == ROLE_SPY) {
+        if (*spy_count >= MAX_TEAM_PLAYERS) return;
+        spies[*spy_count].txt = txt;
+        spies[*spy_count].name = safe_name;
+        (*spy_count)++;
+    } else {
+        if (*agent_count >= MAX_TEAM_PLAYERS) return;
+        agents[*agent_count].txt = txt;
+        agents[*agent_count].name = safe_name;
+        (*agent_count)++;
+    }
 }
 
 static void render_team_panel_content(AppContext* context, Window* panel, Team team, SDL_Texture* icon, Text* txt_spy_label, Text* txt_agents_label, Text** player_texts, int* player_index) {
     if (!context || !panel || !txt_spy_label || !txt_agents_label || !player_texts || !player_index) return;
 
-    int spy_row = 0;
-    int agent_row = 0;
+    const int SPY_BASE_Y = -85;
+    const int AGENT_BASE_Y = 65;
+
+    TeamPanelMember spy_members[MAX_TEAM_PLAYERS] = {0};
+    TeamPanelMember agent_members[MAX_TEAM_PLAYERS] = {0};
+    int spy_count = 0;
+    int agent_count = 0;
 
     update_text(context, txt_spy_label, "Espions :");
     window_place_text(panel, txt_spy_label, 0, -25);
@@ -479,22 +552,24 @@ static void render_team_panel_content(AppContext* context, Window* panel, Team t
 
     if (!context->lobby) return;
 
-    if (context->player_team == team && *player_index < MAX_TEAM_PLAYERS) {
-        Text* txt = player_texts[*player_index];
+    if (context->player_team == team) {
         const char* local_name = context->player_name ? context->player_name : "Moi";
-        // Les membres sont placés en fonctions des étiquettes des rôles
-        render_team_member_in_panel(context, panel, icon, txt, local_name, context->player_role, &spy_row, &agent_row);
-        (*player_index)++;
+        add_member_to_panel_group(player_texts, player_index, spy_members, &spy_count, agent_members, &agent_count, context->player_role, local_name);
     }
 
     for (int i = 0; i < context->lobby->nb_players && i < MAX_USERS; i++) {
         User* u = context->lobby->users[i];
-        if (!u || u->team != team || *player_index >= MAX_TEAM_PLAYERS) continue;
+        if (!u || u->team != team) continue;
 
-        Text* txt = player_texts[*player_index];
-        // Les membres sont placés en fonctions des étiquettes des rôles
-        render_team_member_in_panel(context, panel, icon, txt, u->name ? u->name : "???", u->role, &spy_row, &agent_row);
-        (*player_index)++;
+        add_member_to_panel_group(player_texts, player_index, spy_members, &spy_count, agent_members, &agent_count, u->role, u->name ? u->name : "???");
+    }
+
+    for (int i = 0; i < spy_count; i++) {
+        render_team_member_in_panel(context, panel, icon, spy_members[i].txt, spy_members[i].name, spy_count, i, SPY_BASE_Y);
+    }
+
+    for (int i = 0; i < agent_count; i++) {
+        render_team_member_in_panel(context, panel, icon, agent_members[i].txt, agent_members[i].name, agent_count, i, AGENT_BASE_Y);
     }
 }
 
