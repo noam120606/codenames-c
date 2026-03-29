@@ -17,6 +17,123 @@ static Text* txt_no_role_label = NULL;
 static Text* txt_player_names[MAX_PLAYER_TEXTS] = {NULL};
 static int current_player_text_index = 0;
 
+typedef struct PlayerPlacementCounters {
+    int nb_none;
+    int nb_red_spy;
+    int nb_red_agent;
+    int nb_blue_spy;
+    int nb_blue_agent;
+    int i_none;
+    int i_red_spy;
+    int i_red_agent;
+    int i_blue_spy;
+    int i_blue_agent;
+} PlayerPlacementCounters;
+
+static void count_player_for_layout(const User* user, PlayerPlacementCounters* counters) {
+    if (!user || !counters) return;
+
+    const char* name = user->name ? user->name : "Unknown";
+    switch (user->team) {
+        case TEAM_RED:
+            user->role == ROLE_SPY ? counters->nb_red_spy++ : counters->nb_red_agent++;
+            break;
+        case TEAM_BLUE:
+            user->role == ROLE_SPY ? counters->nb_blue_spy++ : counters->nb_blue_agent++;
+            break;
+        case TEAM_NONE:
+            counters->nb_none++;
+            break;
+        default:
+            printf("Warning: User %s has invalid team %d\n", name, user->team);
+            break;
+    }
+}
+
+static void advance_player_layout_index(const User* user, PlayerPlacementCounters* counters) {
+    if (!user || !counters) return;
+
+    const char* name = user->name ? user->name : "Unknown";
+    switch (user->team) {
+        case TEAM_RED:
+            user->role == ROLE_SPY ? counters->i_red_spy++ : counters->i_red_agent++;
+            break;
+        case TEAM_BLUE:
+            user->role == ROLE_SPY ? counters->i_blue_spy++ : counters->i_blue_agent++;
+            break;
+        case TEAM_NONE:
+            counters->i_none++;
+            break;
+        default:
+            printf("Warning: User %s has invalid team %d\n", name, user->team);
+            break;
+    }
+}
+
+static int compute_player_icon_position(int nb_player, int i_player, int base_x, int base_y, int* out_x, int* out_y) {
+    if (!out_x || !out_y) return 0;
+
+    const int spacing_x = 80;
+    const int spacing_y = 80;
+
+    if (nb_player < 1 || nb_player > 8) {
+        printf("Too many players for lobby display: %d\n", nb_player);
+        return 0;
+    }
+
+    if (i_player < 0 || i_player >= nb_player) {
+        return 0;
+    }
+
+    int first_line_count = 0;
+    switch (nb_player) {
+        case 1: first_line_count = 1; break;
+        case 2: first_line_count = 2; break;
+        case 3: first_line_count = 3; break;
+        case 4: first_line_count = 4; break;
+        case 5: first_line_count = 3; break;
+        case 6: first_line_count = 3; break;
+        case 7: first_line_count = 4; break;
+        case 8: first_line_count = 4; break;
+        default: return 0;
+    }
+
+    int second_line_count = nb_player - first_line_count;
+
+    int line_count = 0;
+    int line_index = 0;
+    int is_second_line = (i_player >= first_line_count);
+
+    if (is_second_line) {
+        line_count = second_line_count;
+        line_index = i_player - first_line_count;
+        *out_y = base_y - spacing_y;
+    } else {
+        line_count = first_line_count;
+        line_index = i_player;
+        *out_y = base_y;
+    }
+
+    switch (line_count) {
+        case 1:
+            *out_x = base_x;
+            break;
+        case 2:
+            *out_x = base_x + ((line_index == 0) ? -spacing_x : spacing_x);
+            break;
+        case 3:
+            *out_x = base_x + (line_index - 1) * spacing_x;
+            break;
+        case 4:
+            *out_x = base_x + (line_index * spacing_x) - (int)(1.5f * spacing_x);
+            break;
+        default:
+            return 0;
+    }
+
+    return 1;
+}
+
 /* Callback pour boutons du lobby (choix de rôle / équipe) */
 static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
     if (!context || !button) return BTN_RET_NONE;
@@ -291,62 +408,41 @@ void lobby_display(AppContext* context) {
     button_render(context->renderer, btn_launch_game);
     button_render(context->renderer, btn_return);
 
-    // Comptage des joueurs par rôle/équipe
-    int nb_none = 0;
-    int nb_red_spy = 0;
-    int nb_red_agent = 0;
-    int nb_blue_spy = 0;
-    int nb_blue_agent = 0;
-
-    // Indices des joueurs
-    int i_none = 0;
-    int i_red_spy = 0;
-    int i_red_agent = 0;
-    int i_blue_spy = 0;
-    int i_blue_agent = 0;
+    // Comptage des joueurs par rôle/équipe et indices d'affichage
+    PlayerPlacementCounters counters = {0};
 
     // Comptage du joueur local
     User user = {-1, context->player_name, context->player_role, context->player_team};
 
-    switch(user.team) {
-        case TEAM_RED: user.role == ROLE_SPY ? nb_red_spy++ : nb_red_agent++; break;
-        case TEAM_BLUE: user.role == ROLE_SPY ? nb_blue_spy++ : nb_blue_agent++; break;
-        case TEAM_NONE: nb_none++; break;
-        default: printf("Warning: User %s has invalid team %d\n", user.name, user.team); break;
-    }
+    count_player_for_layout(&user, &counters);
 
     // Comptage des joueurs distants
     for (int i = 0; i < MAX_USERS; i++) {
-        User* user = context->lobby->users[i];
-        if (!user) continue;
-        switch(user->team) {
-            case TEAM_RED: user->role == ROLE_SPY ? nb_red_spy++ : nb_red_agent++; break;
-            case TEAM_BLUE: user->role == ROLE_SPY ? nb_blue_spy++ : nb_blue_agent++; break;
-            case TEAM_NONE: nb_none++; break;
-            default: printf("Warning: User %s has invalid team %d\n", user->name, user->team); break;
-        }
+        User* remote_user = context->lobby->users[i];
+        if (!remote_user) continue;
+        count_player_for_layout(remote_user, &counters);
     }
 
     // Affichage du joueur local
-    player_display(context, &user, nb_none, 0, nb_red_spy, 0, nb_red_agent, 0, nb_blue_spy, 0, nb_blue_agent, 0);
-    switch(user.team) {
-        case TEAM_RED: user.role == ROLE_SPY ? i_red_spy++ : i_red_agent++; break;
-        case TEAM_BLUE: user.role == ROLE_SPY ? i_blue_spy++ : i_blue_agent++; break;
-        case TEAM_NONE: i_none++; break;
-        default: printf("Warning: User %s has invalid team %d\n", user.name, user.team); break;
-    }
+    player_display(context, &user,
+        counters.nb_none, counters.i_none,
+        counters.nb_red_spy, counters.i_red_spy,
+        counters.nb_red_agent, counters.i_red_agent,
+        counters.nb_blue_spy, counters.i_blue_spy,
+        counters.nb_blue_agent, counters.i_blue_agent);
+    advance_player_layout_index(&user, &counters);
 
     // Affichage des joueurs distants
     for (int i = 0; i < MAX_USERS; i++) {
-        User* user = context->lobby->users[i];
-        if (!user) continue;
-        player_display(context, user, nb_none, i_none, nb_red_spy, i_red_spy, nb_red_agent, i_red_agent, nb_blue_spy, i_blue_spy, nb_blue_agent, i_blue_agent);
-        switch(user->team) {
-            case TEAM_RED: user->role == ROLE_SPY ? i_red_spy++ : i_red_agent++; break;
-            case TEAM_BLUE: user->role == ROLE_SPY ? i_blue_spy++ : i_blue_agent++; break;
-            case TEAM_NONE: i_none++; break;
-            default: printf("Warning: User %s has invalid team %d\n", user->name, user->team); break;
-        }
+        User* remote_user = context->lobby->users[i];
+        if (!remote_user) continue;
+        player_display(context, remote_user,
+            counters.nb_none, counters.i_none,
+            counters.nb_red_spy, counters.i_red_spy,
+            counters.nb_red_agent, counters.i_red_agent,
+            counters.nb_blue_spy, counters.i_blue_spy,
+            counters.nb_blue_agent, counters.i_blue_agent);
+        advance_player_layout_index(remote_user, &counters);
     }
 
 }
@@ -372,7 +468,8 @@ void player_display(AppContext* context, User* user, int nb_none, int i_none, in
     SDL_Texture* icon = NULL;
     int base_x = 0;
     int base_y = 0;
-    int index = 0;
+    int nb_player = 0;
+    int i_player = 0;
 
     // Positions des boutons (mêmes que dans lobby_init)
     const int center_none_x = 0;
@@ -390,45 +487,45 @@ void player_display(AppContext* context, User* user, int nb_none, int i_none, in
         base_x = center_red_x;
         if (user->role == ROLE_SPY) {
             base_y = center_spy_y + offset_y;
-            index = nb_red_spy;
-            player_icon_pos(context, user, icon, nb_red_spy, i_red_spy, base_x, base_y);
+            nb_player = nb_red_spy;
+            i_player = i_red_spy;
         } else if (user->role == ROLE_AGENT) {
             base_y = center_agent_y + offset_y;
-            index = nb_red_agent;
-            player_icon_pos(context, user, icon, nb_red_agent, i_red_agent, base_x, base_y);
+            nb_player = nb_red_agent;
+            i_player = i_red_agent;
         } else {
             // Rôle non assigné mais équipe rouge
             base_y = center_none_x;
-            index = nb_none;
-            /* draw unassigned red-team player using the same positioning routine */
-            player_icon_pos(context, user, icon, nb_none, i_none, base_x, base_y);
+            nb_player = nb_none;
+            i_player = i_none;
         }
     } else if (user->team == TEAM_BLUE) {
         icon = player_icon_blue;
         base_x = center_blue_x;
         if (user->role == ROLE_SPY) {
             base_y = center_spy_y + offset_y;
-            index = nb_blue_spy;
-            player_icon_pos(context, user, icon, nb_blue_spy, i_blue_spy, base_x, base_y);
+            nb_player = nb_blue_spy;
+            i_player = i_blue_spy;
         } else if (user->role == ROLE_AGENT) {
             base_y = center_agent_y + offset_y;
-            index = nb_blue_agent;
-            player_icon_pos(context, user, icon, nb_blue_agent, i_blue_agent, base_x, base_y);
+            nb_player = nb_blue_agent;
+            i_player = i_blue_agent;
         } else {
             // Rôle non assigné mais équipe bleue
             base_y = center_none_x;
-            index = i_none;
-            /* draw unassigned blue-team player */
-            player_icon_pos(context, user, icon, nb_none, i_none, base_x, base_y);
+            nb_player = nb_none;
+            i_player = i_none;
         }
     } else {
         // Équipe non assignée (TEAM_NONE) - afficher au centre
         icon = player_icon_none;
         base_x = center_none_x;
         base_y = center_none_y + offset_y;
-        index = nb_none;
-    player_icon_pos(context, user, icon, nb_none, i_none, base_x, base_y);
+        nb_player = nb_none;
+        i_player = i_none;
     }
+
+    player_icon_pos(context, user, icon, nb_player, i_player, base_x, base_y);
 }
 
 /* Affiche le nom d'un joueur en utilisant les textes pré-alloués */
@@ -459,58 +556,14 @@ void player_icon_pos(AppContext* context, User* user, SDL_Texture* icon, int nb_
         return;
     }
 
-    // Décalage horizontal entre chaque joueur du même rôle
-    const int spacing_x = 80;
-    const int spacing_y = 80;
-
-    if(nb_player > 0 && nb_player <= 4){ // Les joueurs sont affichés sur 1 étage (à la suite)
-        int x = base_x -spacing_x * 2 + spacing_x / 2 + i_player * spacing_x;
-        int y = base_y;
-        // Afficher l'icône puis du pseudo
-        display_image(context->renderer, icon, x, y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
-        display_player_name(context, user->name, x, y - 25);
-    } else if(nb_player > 4 && nb_player <= 8){ // Les joueurs sont affichés sur 2 étages
-        if(nb_player % 2){
-            if(i_player <= 4){
-                int x = base_x -spacing_x * 2 + spacing_x / 2 + i_player * spacing_x;
-                int y = base_y;
-                display_image(context->renderer, icon, x, y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
-                display_player_name(context, user->name, x, y - 25);
-            } else {
-                int x = base_x -spacing_x * 2 + spacing_x / 2 + (i_player - 4) * spacing_x;
-                int y = base_y - spacing_y;
-                display_image(context->renderer, icon, x, y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
-                display_player_name(context, user->name, x, y - 25);
-            }
-        } else if(nb_player == 5){
-            if(i_player < 3){ // On affiche 3 joueurs au premier étage
-                int x = base_x -spacing_x * 1.5 + i_player * spacing_x;
-                int y = base_y;
-                display_image(context->renderer, icon, x, y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
-                display_player_name(context, user->name, x, y - 25);
-            } else { // On affiche 2 joueurs au deuxième étage
-                int x = base_x -spacing_x * 2 + spacing_x / 2 + i_player * spacing_x;
-                int y = base_y - spacing_y;
-                display_image(context->renderer, icon, x, y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
-                display_player_name(context, user->name, x, y - 25);
-            }
-        } else if(nb_player == 7){
-            if(i_player < 4){ // On affiche 4 joueurs au premier étage
-                int x = base_x -spacing_x * 2 + spacing_x / 2 + i_player * spacing_x;
-                int y = base_y;
-                display_image(context->renderer, icon, x, y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
-                display_player_name(context, user->name, x, y - 25);
-            } else { // On affiche 3 joueurs au deuxième étage
-                int x = base_x -spacing_x * 1.5 + (i_player - 4) * spacing_x;
-                int y = base_y - spacing_y;
-                display_image(context->renderer, icon, x, y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
-                display_player_name(context, user->name, x, y - 25);
-            }
-        }
-    } else {
-        printf("Too many players for lobby display: %d\n", nb_player);
+    int x = 0;
+    int y = 0;
+    if (!compute_player_icon_position(nb_player, i_player, base_x, base_y, &x, &y)) {
         return;
     }
+
+    display_image(context->renderer, icon, x, y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
+    display_player_name(context, user->name, x, y - 25);
 }
 
 int lobby_free(){
