@@ -69,11 +69,19 @@ static void hint_on_submit(AppContext* context, const char* text) {
 }
 
 static void hint_count_on_submit(AppContext* context, const char* text) {
-    (void)context;
     (void)text;
-    if (hint_input) {
+
+    const char* hint_text = (hint_input && hint_input->cfg) ? hint_input->cfg->text : NULL;
+
+    // On vérifie que le champ de saisie du mot indice n'est pas vide avant d'exécuter l'action du bouton de soumission de l'indice.
+    if (hint_text && strlen(hint_text) > 0) {
+        if (btn_hint_submit && btn_hint_submit->cfg && btn_hint_submit->cfg->callback) {
+            btn_hint_submit->cfg->callback(context, btn_hint_submit);
+        }
+    } else if (hint_input && hint_input->cfg) {
+        // Si le champ de saisie du mot indice est vide, on focus sur le champ de saisie du mot indice pour inviter l'utilisateur à saisir un mot indice.
         hint_input->cfg->focused = 1;
-        hint_input->cfg->cursor_pos = strlen(hint_input->cfg->text);
+        hint_input->cfg->cursor_pos = hint_input->cfg->text ? strlen(hint_input->cfg->text) : 0;
     }
 }
 
@@ -107,8 +115,6 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
         char* text = hint_input->cfg->text;
         int nb_hint = (int)atoi(hint_count_input->cfg->text);
         int valid = valid_hint(text, context->lobby->game->words);
-        
-        
         
         
         char title[64];
@@ -232,7 +238,6 @@ int game_init(AppContext * context) {
         cfg_hint_input->placeholders = HINT_INPUT_PLACEHOLDERS;
         cfg_hint_input->placeholder_count = 1;
         cfg_hint_input->maxlen = 50;
-        cfg_hint_input->disabled = 0;
         cfg_hint_input->clear_on_submit = 0;
         cfg_hint_input->centered = 1;
         cfg_hint_input->allowed_pattern = "^[A-Za-zéèêëàâäåæçîïìùûüÿœ]$";
@@ -258,12 +263,13 @@ int game_init(AppContext * context) {
         cfg_hint_count_input->placeholders = HINT_COUNT_INPUT_PLACEHOLDERS;
         cfg_hint_count_input->placeholder_count = 3;
         cfg_hint_count_input->maxlen = 1;
-        cfg_hint_count_input->disabled = 1;
+        cfg_hint_count_input->clear_on_submit = 0;
         cfg_hint_count_input->centered = 1;
         cfg_hint_count_input->allowed_pattern = "^[1-9]$";
         cfg_hint_count_input->submit_pattern = "^[1-9]{1}$";
         cfg_hint_count_input->bg_path = "assets/img/inputs/square.png";
         cfg_hint_count_input->bg_padding = 10;
+        cfg_hint_count_input->on_submit = hint_count_on_submit;
         hint_count_input = input_create(context->renderer, INPUT_HINT_COUNT, cfg_hint_count_input);
         if (!hint_count_input) loading_fails++;
         free(cfg_hint_count_input);

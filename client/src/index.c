@@ -35,41 +35,41 @@ int main(int argc, char* argv[]){
     }
 
     // Parse command line arguments
-#ifdef _WIN32
-    for (int i = 1; i < argc; i++) {
-        if ((strcmp(argv[i], "-s") == 0 || strcmp(argv[i], "--server") == 0) && i + 1 < argc) {
-            strncpy(ip, argv[++i], sizeof(ip) - 1);
-            ip[sizeof(ip) - 1] = '\0';
-        } else if ((strcmp(argv[i], "-p") == 0 || strcmp(argv[i], "--port") == 0) && i + 1 < argc) {
-            port = atoi(argv[++i]);
-        } else {
-            fprintf(stderr, "Usage: %s [-s server_ip] [-p port]\n", argv[0]);
-            return EXIT_FAILURE;
-        }
-    }
-#else
-    int opt;
-    while ((opt = getopt(argc, argv, "s:p:")) != -1) {
-        switch (opt) {
-            case 's':
-                strncpy(ip, optarg, sizeof(ip) - 1);
+    #ifdef _WIN32
+        for (int i = 1; i < argc; i++) {
+            if ((strcmp(argv[i], "-s") == 0 || strcmp(argv[i], "--server") == 0) && i + 1 < argc) {
+                strncpy(ip, argv[++i], sizeof(ip) - 1);
                 ip[sizeof(ip) - 1] = '\0';
-                break;
-            case 'p':
-                port = atoi(optarg);
-                break;
-            default:
+            } else if ((strcmp(argv[i], "-p") == 0 || strcmp(argv[i], "--port") == 0) && i + 1 < argc) {
+                port = atoi(argv[++i]);
+            } else {
                 fprintf(stderr, "Usage: %s [-s server_ip] [-p port]\n", argv[0]);
                 return EXIT_FAILURE;
+            }
         }
-    }
-#endif
+    #else
+        int opt;
+        while ((opt = getopt(argc, argv, "s:p:")) != -1) {
+            switch (opt) {
+                case 's':
+                    strncpy(ip, optarg, sizeof(ip) - 1);
+                    ip[sizeof(ip) - 1] = '\0';
+                    break;
+                case 'p':
+                    port = atoi(optarg);
+                    break;
+                default:
+                    fprintf(stderr, "Usage: %s [-s server_ip] [-p port]\n", argv[0]);
+                    return EXIT_FAILURE;
+            }
+        }
+    #endif
     if (port == 0) {
         fprintf(stderr, "Port number is required. Usage: %s [-s server_ip] [-p port]\n", argv[0]);
         return EXIT_FAILURE;
     }
 
-    printf("Starting Codenames Client...");
+    printf("Starting Codenames Client...\n");
 
     Resources* resources = init_resources();
     if (!resources) {
@@ -219,9 +219,10 @@ int main(int argc, char* argv[]){
 
                 case APP_STATE_MENU:
                     btn_ret = menu_handle_event(&context, &e);
-                    if (btn_ret == BTN_RET_QUIT) running = 0; break;
-                    default: break;
-    
+                    if (btn_ret == BTN_RET_QUIT) {
+                        running = 0;
+                    } break;
+
                 case APP_STATE_LOBBY: lobby_handle_event(&context, &e); break;
                 case APP_STATE_PLAYING: game_handle_event(&context, &e); break;
                 case APP_STATE_PAUSED: break;
