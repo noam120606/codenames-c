@@ -291,7 +291,9 @@ int game_init(AppContext * context) {
         cfg_chat_input->centered = 1;
         cfg_chat_input->allowed_pattern = NULL;
         cfg_chat_input->submit_pattern = NULL;
+        cfg_chat_input->submit_sound = "assets/audio/sfx/input/submit.ogg";
         cfg_chat_input->keep_focus_on_submit = 1;
+        cfg_chat_input->submit_pattern = "^.{1,50}$"; // Accepter tout texte de 1 à 50 caractères
         cfg_chat_input->bg_path = "assets/img/inputs/empty.png";
         cfg_chat_input->bg_padding = 16;
         cfg_chat_input->on_submit = chat_on_submit;
@@ -695,7 +697,7 @@ void game_render_cards(AppContext * context) {
 void game_display(AppContext * context) {
 
     if (!audio_is_playing(MUSIC_GAME)) {
-        audio_play_with_fade(MUSIC_GAME, -1, 2000, AUDIO_FADE_IN_BY_VOLUME, NULL);
+        audio_play_with_fade(MUSIC_GAME, -1, 1500, AUDIO_FADE_IN_BY_VOLUME, NULL);
     }
 
     game_render_cards(context);

@@ -49,6 +49,7 @@ typedef enum {
  * @param bg_padding Padding à appliquer avec l'image de fond (>= 0). Ignoré si `bg_path` est NULL. Si -1, le padding est calculé automatiquement pour centrer le contenu dans l'image de fond.
  * @param allowed_pattern Regex POSIX étendue appliquée à chaque caractère saisi. Si NULL, tout caractère est accepté. Ex: "^[A-Za-z0-9]$"
  * @param submit_pattern Regex POSIX étendue appliquée au texte complet au moment de la soumission. Si définie et non satisfaite, la soumission est ignorée. Ex: "^[0-9]{5}$"
+ * @param submit_sound Chemin vers un son joué à la soumission valide de l'input. Si NULL, aucun son n'est joué.
  * @param init_text Texte initial à afficher dans l'input. Si NULL ou chaîne vide, l'input commence vide.
  * @param rect Rectangle SDL calculé automatiquement à partir de x/y/w/h, utilisé pour le rendu et la détection de clics.
  * @param text Buffer de texte saisi, géré en interne par l'input.
@@ -64,6 +65,7 @@ typedef enum {
  * @param sel_len Longueur de la sélection de texte (0 si aucune sélection).
  * @param sel_anchor Index d'ancrage de la sélection, utilisé pour étendre la sélection lors du déplacement du curseur avec Shift.
  * @param submitted_text Texte qui a été soumis lors de la dernière soumission. Peut être utilisé pour afficher le texte soumis ou pour d'autres logiques de jeu.
+ * @param submit_sound_chunk Chunk SDL_mixer chargé à partir de `submit_sound`, géré en interne par l'input.
  * @param placeholder_index Index du placeholder actuellement affiché (si l'input est vide), utilisé pour faire défiler les placeholders.
  * @param placeholder_last_tick Timestamp du dernier changement de placeholder, utilisé pour faire défiler les placeholders à intervalles réguliers.
  * @param on_submit Fonction de rappel à appeler lorsque l'input est soumis (par exemple, en appuyant sur Entrée). La fonction doit prendre un `AppContext*` (contexte SDL) et un `const char*` (le texte soumis) et retourner void. Si NULL, aucune fonction ne sera appelée lors de la soumission.
@@ -89,6 +91,7 @@ typedef struct InputConfig {
     int bg_padding;        /**< Padding à appliquer avec l'image de fond (>= 0). Ignoré si bg_path est NULL. -1 = auto. */
     const char* allowed_pattern; /**< Regex POSIX étendue appliquée à chaque caractère saisi. NULL = tout accepter. Ex: "^[A-Za-z0-9]$" */
     const char* submit_pattern;  /**< Regex POSIX étendue appliquée au texte complet au submit. NULL = pas de validation de soumission. Ex: "^[0-9]{5}$" */
+    const char* submit_sound;    /**< Chemin vers un son joué lors d'une soumission valide. NULL = aucun son. */
     const char* init_text;
     SDL_Rect rect;
     char* text;
@@ -104,6 +107,7 @@ typedef struct InputConfig {
     int sel_len;
     int sel_anchor;
     char* submitted_text;
+    Mix_Chunk* submit_sound_chunk; /**< Chunk audio chargé à partir de submit_sound, libéré par input_destroy. */
     int placeholder_index;
     Uint32 placeholder_last_tick;
     void (*on_submit)(AppContext*, const char*);
@@ -141,6 +145,7 @@ typedef enum InputCfgKey {
     IN_CFG_BG_PADDING,
     IN_CFG_ALLOWED_PATTERN,
     IN_CFG_SUBMIT_PATTERN,
+    IN_CFG_SUBMIT_SOUND,
     IN_CFG_INIT_TEXT,
     IN_CFG_RECT,
     IN_CFG_TEXT,

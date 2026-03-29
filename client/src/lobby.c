@@ -470,6 +470,10 @@ int struct_lobby_init(Lobby* lobby, int id, const char* code) {
 
 void lobby_display(AppContext* context) {
 
+    if (!audio_is_playing(MUSIC_MENU_LOBBY)) {
+        audio_play_with_fade(MUSIC_MENU_LOBBY, -1, 1500, AUDIO_FADE_IN_BY_VOLUME, NULL);
+    }
+
     /* Réinitialiser le compteur d'index de texte joueur */
     current_player_text_index = 0;
 

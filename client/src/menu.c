@@ -146,6 +146,7 @@ int menu_init(AppContext * context) {
         cfg_in_name->on_submit = name_on_submit;
         cfg_in_name->allowed_pattern = "^[a-zA-Z0-9_é]*$"; // Autoriser uniquement les caractères alphanumériques et les underscores
         cfg_in_name->submit_pattern = "^[a-zA-Z0-9_é]{3,16}$";
+        cfg_in_name->submit_sound = "assets/audio/sfx/input/submit.ogg";
         cfg_in_name->bg_path = "assets/img/inputs/empty.png";
         cfg_in_name->bg_padding = 24;
         name_input = input_create(context->renderer, INPUT_NAME, cfg_in_name);
@@ -218,6 +219,7 @@ int menu_init(AppContext * context) {
         cfg_in_code->on_submit = code_on_submit;
         cfg_in_code->allowed_pattern = "^[0-9]$";
         cfg_in_code->submit_pattern = "^[0-9]{5}$";
+        cfg_in_code->submit_sound = "assets/audio/sfx/input/submit.ogg";
         cfg_in_code->bg_path = "assets/img/inputs/empty.png";
         cfg_in_code->bg_padding = 24;
         code_input = input_create(context->renderer, INPUT_JOIN_CODE, cfg_in_code);

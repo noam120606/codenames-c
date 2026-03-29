@@ -28,6 +28,30 @@ static int regex_match_text(const char* pattern, const char* text) {
     return ok;
 }
 
+static void input_reload_submit_sound(Input* in) {
+    if (!in || !in->cfg) return;
+
+    if (in->cfg->submit_sound_chunk) {
+        Mix_FreeChunk(in->cfg->submit_sound_chunk);
+        in->cfg->submit_sound_chunk = NULL;
+    }
+
+    if (!in->cfg->submit_sound || in->cfg->submit_sound[0] == '\0') return;
+
+    in->cfg->submit_sound_chunk = Mix_LoadWAV(in->cfg->submit_sound);
+    if (!in->cfg->submit_sound_chunk) {
+        printf("input submit sound load failed (%s): %s\n", in->cfg->submit_sound, Mix_GetError());
+    }
+}
+
+static void input_play_submit_sound(Input* in) {
+    if (!in || !in->cfg || !in->cfg->submit_sound_chunk) return;
+
+    if (Mix_PlayChannel(-1, in->cfg->submit_sound_chunk, 0) < 0) {
+        printf("input submit sound play failed (%s): %s\n", in->cfg->submit_sound ? in->cfg->submit_sound : "", Mix_GetError());
+    }
+}
+
 static void input_submit_internal(AppContext* context, Input* in) {
     if (!in || !in->cfg) return;
 
@@ -51,6 +75,8 @@ static void input_submit_internal(AppContext* context, Input* in) {
     }
 
     const char* submitted = in->cfg->submitted_text ? in->cfg->submitted_text : in->cfg->text;
+
+    input_play_submit_sound(in);
 
     if (in->cfg->on_submit) in->cfg->on_submit(context, submitted);
 
@@ -110,6 +136,7 @@ InputConfig* input_config_init() {
     cfg->bg_padding = -1;
     cfg->allowed_pattern = NULL;
     cfg->submit_pattern = NULL;
+    cfg->submit_sound = NULL;
     cfg->init_text = NULL;
     cfg->on_submit = NULL;
 
@@ -127,6 +154,7 @@ InputConfig* input_config_init() {
     cfg->sel_len = 0;
     cfg->sel_anchor = 0;
     cfg->submitted_text = NULL;
+    cfg->submit_sound_chunk = NULL;
     cfg->placeholder_index = 0;
     cfg->placeholder_last_tick = 0;
 
@@ -204,6 +232,7 @@ Input* input_create(SDL_Renderer* renderer, InputId id, const InputConfig* cfg_i
     in->cfg->sel_anchor = 0;
     in->cfg->placeholder_index = 0;
     in->cfg->placeholder_last_tick = SDL_GetTicks();
+    in->cfg->submit_sound_chunk = NULL;
 
     /* Conversion coordonnées relatives au centre -> écran.
      * x positif = droite, y positif = haut.
@@ -255,6 +284,9 @@ Input* input_create(SDL_Renderer* renderer, InputId id, const InputConfig* cfg_i
         input_set_bg(in, renderer, in->cfg->bg_path, in->cfg->bg_padding);
     }
 
+    /* preload submit sound if configured */
+    input_reload_submit_sound(in);
+
     inputs[input_count++] = in;
 
     return in;
@@ -276,6 +308,7 @@ void input_destroy(Input* in) {
         if (in->cfg->text) free(in->cfg->text);
         if (in->cfg->bg_texture) free_image(in->cfg->bg_texture);
         if (in->cfg->submitted_text) free(in->cfg->submitted_text);
+        if (in->cfg->submit_sound_chunk) Mix_FreeChunk(in->cfg->submit_sound_chunk);
         /* submitted_label and placeholders are not owned (const pointers) */
         free(in->cfg);
     }
@@ -776,6 +809,10 @@ int edit_in_cfg(InputId id, InputCfgKey key, intptr_t value) {
             return EXIT_SUCCESS;
         case IN_CFG_SUBMIT_PATTERN:
             in->cfg->submit_pattern = (const char*)value;
+            return EXIT_SUCCESS;
+        case IN_CFG_SUBMIT_SOUND:
+            in->cfg->submit_sound = (const char*)value;
+            input_reload_submit_sound(in);
             return EXIT_SUCCESS;
         case IN_CFG_INIT_TEXT:
             in->cfg->init_text = (const char*)value;
