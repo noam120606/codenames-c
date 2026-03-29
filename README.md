@@ -191,6 +191,20 @@ cd client
 powershell -ExecutionPolicy Bypass -File ./run.ps1
 ```
 
+Pour lancer plusieurs clients en parallele (tests) :
+
+```powershell
+cd client
+powershell -ExecutionPolicy Bypass -File ./run_with_params.ps1
+```
+
+Exemple (4 clients) :
+
+```powershell
+cd client
+powershell -ExecutionPolicy Bypass -File ./run_with_params.ps1 -ServerIp 127.0.0.1 -Instances 4
+```
+
 ### Déroulement d'une partie
 
 1. **Connexion** : Le client se connecte au serveur (par défaut localhost:4242)

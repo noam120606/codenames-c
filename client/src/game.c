@@ -456,8 +456,8 @@ static int compute_panel_member_position(int nb_player, int i_player, int base_x
     if (nb_player < 1 || nb_player > 8) return 0;
     if (i_player < 0 || i_player >= nb_player) return 0;
 
-    const int spacing_x = 55;
-    const int spacing_y = 42;
+    const int spacing_x = 60;
+    const int spacing_y = 64;
 
     int first_line_count = 0;
     switch (nb_player) {
@@ -484,7 +484,11 @@ static int compute_panel_member_position(int nb_player, int i_player, int base_x
             *out_x = base_x;
             break;
         case 2:
-            *out_x = base_x + ((line_index == 0) ? -spacing_x : spacing_x);
+            if (is_second_line) {
+                *out_x = base_x + ((line_index == 0) ? -spacing_x/2 : spacing_x/2); // Pour les 2 joueurs de la deuxième ligne : cas avec 5 joueurs.
+            } else {
+                *out_x = base_x + ((line_index == 0) ? -spacing_x : spacing_x);
+            }
             break;
         case 3:
             *out_x = base_x + (line_index - 1) * spacing_x;

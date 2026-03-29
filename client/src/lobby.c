@@ -128,7 +128,11 @@ static int compute_player_icon_position(int nb_player, int i_player, int base_x,
             *out_x = base_x;
             break;
         case 2:
-            *out_x = base_x + ((line_index == 0) ? -spacing_x : spacing_x);
+            if (is_second_line) {
+                *out_x = base_x + ((line_index == 0) ? -spacing_x/2 : spacing_x/2); // Pour les 2 joueurs de la deuxième ligne : cas avec 5 joueurs.
+            } else {
+                *out_x = base_x + ((line_index == 0) ? -spacing_x : spacing_x);
+            }
             break;
         case 3:
             *out_x = base_x + (line_index - 1) * spacing_x;
@@ -604,18 +608,18 @@ void player_display(AppContext* context, User* user, int nb_none, int i_none, in
 
     if (user->team == TEAM_RED) {
         icon = player_icon_red;
-        if (user->role == ROLE_SPY) {
-            /* Conserve la disposition actuelle: espions rouges dans la fenêtre basse. */
-            target_window = role_red_agent_window;
-            base_rel_y = 10;
-            nb_player = nb_red_spy;
-            i_player = i_red_spy;
-        } else if (user->role == ROLE_AGENT) {
+        if (user->role == ROLE_AGENT) {
             /* Conserve la disposition actuelle: agents rouges dans la fenêtre haute. */
-            target_window = role_red_spy_window;
+            target_window = role_red_agent_window;
             base_rel_y = 10;
             nb_player = nb_red_agent;
             i_player = i_red_agent;
+        } else if (user->role == ROLE_SPY) {
+            /* Conserve la disposition actuelle: espions rouges dans la fenêtre basse. */
+            target_window = role_red_spy_window;
+            base_rel_y = 10;
+            nb_player = nb_red_spy;
+            i_player = i_red_spy;
         } else {
             // Rôle non assigné mais équipe rouge
             target_window = role_none_window;
@@ -625,18 +629,18 @@ void player_display(AppContext* context, User* user, int nb_none, int i_none, in
         }
     } else if (user->team == TEAM_BLUE) {
         icon = player_icon_blue;
-        if (user->role == ROLE_SPY) {
-            /* Conserve la disposition actuelle: espions bleus dans la fenêtre basse. */
-            target_window = role_blue_agent_window;
-            base_rel_y = 10;
-            nb_player = nb_blue_spy;
-            i_player = i_blue_spy;
-        } else if (user->role == ROLE_AGENT) {
+        if (user->role == ROLE_AGENT) {
             /* Conserve la disposition actuelle: agents bleus dans la fenêtre haute. */
-            target_window = role_blue_spy_window;
+            target_window = role_blue_agent_window;
             base_rel_y = 10;
             nb_player = nb_blue_agent;
             i_player = i_blue_agent;
+        } else if (user->role == ROLE_SPY) {
+            /* Conserve la disposition actuelle: espions bleus dans la fenêtre basse. */
+            target_window = role_blue_spy_window;
+            base_rel_y = 10;
+            nb_player = nb_blue_spy;
+            i_player = i_blue_spy;
         } else {
             target_window = role_none_window;
             base_rel_y = 15;

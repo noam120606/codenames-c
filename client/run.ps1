@@ -1,7 +1,20 @@
+param(
+    [string]$ServerIp = $env:SERVER_IP,
+    [int]$Port = 4242,
+    [switch]$NoBuild,
+    [switch]$BuildOnly
+)
+
 $ErrorActionPreference = 'Stop'
 
-$port = 4242
-$serverIp = if ($env:SERVER_IP) { $env:SERVER_IP } else { '127.0.0.1' }
+if ([string]::IsNullOrWhiteSpace($ServerIp)) {
+    $ServerIp = '127.0.0.1'
+}
+
+if ($BuildOnly -and $NoBuild) {
+    throw 'Cannot use -BuildOnly with -NoBuild.'
+}
+
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $root
 
@@ -41,24 +54,33 @@ if ($localSdlBin) {
     $env:PATH = "$($localSdlBin.Path);$env:PATH"
 }
 
-$sources = Get-ChildItem -Path './src' -Filter '*.c' | ForEach-Object { $_.FullName }
-if ($sources.Count -eq 0) {
-    throw 'No client source files found in src/.'
+if (-not $NoBuild) {
+    $sources = Get-ChildItem -Path './src' -Filter '*.c' | ForEach-Object { $_.FullName }
+    if ($sources.Count -eq 0) {
+        throw 'No client source files found in src/.'
+    }
+
+    $compileArgs = @()
+    $compileArgs += $sources
+    $compileArgs += @('-Wall', '-Wextra', '-O2', '-finput-charset=UTF-8', '-I./lib')
+    $compileArgs += $sdlCFlags
+    $compileArgs += @('-o', './build/client.exe')
+    $compileArgs += $sdlLdFlags
+    $compileArgs += @('-lws2_32', '-lm')
+
+    Write-Host 'Compiling client...'
+    & gcc @compileArgs
+    if ($LASTEXITCODE -ne 0) {
+        throw "Client build failed with code $LASTEXITCODE"
+    }
+} elseif (-not (Test-Path './build/client.exe')) {
+    throw 'No compiled client found at ./build/client.exe. Run once without -NoBuild.'
 }
 
-$compileArgs = @()
-$compileArgs += $sources
-$compileArgs += @('-Wall', '-Wextra', '-O2', '-finput-charset=UTF-8', '-I./lib')
-$compileArgs += $sdlCFlags
-$compileArgs += @('-o', './build/client.exe')
-$compileArgs += $sdlLdFlags
-$compileArgs += @('-lws2_32', '-lm')
-
-Write-Host 'Compiling client...'
-& gcc @compileArgs
-if ($LASTEXITCODE -ne 0) {
-    throw "Client build failed with code $LASTEXITCODE"
+if ($BuildOnly) {
+    Write-Host 'Client compiled successfully (build-only mode).'
+    return
 }
 
-Write-Host "Starting client against $serverIp`:$port..."
-& ./build/client.exe -s $serverIp -p $port
+Write-Host "Starting client against $ServerIp`:$Port..."
+& ./build/client.exe -s $ServerIp -p $Port
