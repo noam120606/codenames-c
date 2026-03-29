@@ -435,7 +435,7 @@ int game_init(AppContext * context) {
         cfg_chat_window->title = "";
         cfg_chat_window->movable = 1;
         cfg_chat_window->titlebar_h = 0;
-        cfg_chat_window->bg_color = (SDL_Color){20, 20, 20, 220};
+        cfg_chat_window->bg_color = (SDL_Color){20, 20, 20, 240};
         chat_window = window_create(1, cfg_chat_window);
         if (!chat_window) loading_fails++;
         free(cfg_chat_window);

@@ -23,6 +23,10 @@ typedef enum {
     SOUND_CARD_FRIEND,     /**< Son de révélation carte alliée. */
     SOUND_CARD_NONE,       /**< Son de révélation carte neutre. */
     SOUND_CARD_ASSASSIN,   /**< Son de révélation carte assassin. */
+    SOUND_VICTORY,         /**< Son de victoire. */
+    SOUND_DEFEAT,          /**< Son de défaite. */
+    SOUND_INFO_OPEN,       /**< Son d'ouverture d'une infobulle. */
+    SOUND_INFO_CLOSE,      /**< Son de fermeture d'une infobulle. */
 } SoundID;
 
 /**

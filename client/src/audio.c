@@ -261,31 +261,51 @@ int audio_init() {
     /* Chargement des sons. */
     sound_cfgs[MUSIC_MENU_LOBBY].kind = AUDIO_SOUND_KIND_MUSIC;
     sound_cfgs[MUSIC_MENU_LOBBY].kind = AUDIO_SOUND_KIND_MUSIC;
-    sounds[MUSIC_MENU_LOBBY] = load_wav_safe("assets/audio/music_menu_lobby.ogg");
+    sounds[MUSIC_MENU_LOBBY] = load_wav_safe("assets/audio/music/menu_lobby.ogg");
     if (!sounds[MUSIC_MENU_LOBBY]) {
         /* affiche un message plus explicite si le fichier est manquant ou le chargement a échoué */
-        if (access("assets/audio/music_menu_lobby.ogg", R_OK) != 0) {
-            printf("Audio absent: assets/audio/music_menu_lobby.ogg\n");
+        if (access("assets/audio/music/menu_lobby.ogg", R_OK) != 0) {
+            printf("Audio absent: assets/audio/music/menu_lobby.ogg\n");
         } else {
             printf("Erreur Mix_LoadWAV: %s\n", Mix_GetError());
         }
     }
 
     sound_cfgs[MUSIC_GAME].kind = AUDIO_SOUND_KIND_MUSIC;
-    sounds[MUSIC_GAME] = load_wav_safe("assets/audio/music_game.ogg");
+    sounds[MUSIC_GAME] = load_wav_safe("assets/audio/music/game.ogg");
     if (!sounds[MUSIC_GAME]) {
-        if (access("assets/audio/music_game.ogg", R_OK) != 0) {
-            printf("Audio absent: assets/audio/music_game.ogg\n");
+        if (access("assets/audio/music/game.ogg", R_OK) != 0) {
+            printf("Audio absent: assets/audio/music/game.ogg\n");
         } else {
             printf("Erreur Mix_LoadWAV: %s\n", Mix_GetError());
         }
     }
 
     sound_cfgs[SOUND_BUTTON_CLICKED].kind = AUDIO_SOUND_KIND_SFX;
-    sounds[SOUND_BUTTON_CLICKED] = load_wav_safe("assets/audio/sound_button_clicked.ogg");
+    sounds[SOUND_BUTTON_CLICKED] = load_wav_safe("assets/audio/sfx/button/clicked.ogg");
     if (!sounds[SOUND_BUTTON_CLICKED]) {
-        if (access("assets/audio/sound_button_clicked.ogg", R_OK) != 0) {
-            printf("Audio absent: assets/audio/sound_button_clicked.ogg\n");
+        if (access("assets/audio/sfx/button/clicked.ogg", R_OK) != 0) {
+            printf("Audio absent: assets/audio/sfx/button/clicked.ogg\n");
+        } else {
+            printf("Erreur Mix_LoadWAV: %s\n", Mix_GetError());
+        }
+    }
+
+    sound_cfgs[SOUND_INFO_OPEN].kind = AUDIO_SOUND_KIND_SFX;
+    sounds[SOUND_INFO_OPEN] = load_wav_safe("assets/audio/sfx/whoosh_open.ogg");
+    if( !sounds[SOUND_INFO_OPEN]) {
+        if (access("assets/audio/sfx/whoosh_open.ogg", R_OK) != 0) {
+            printf("Audio absent: assets/audio/sfx/whoosh_open.ogg\n");
+        } else {
+            printf("Erreur Mix_LoadWAV: %s\n", Mix_GetError());
+        }
+    }
+
+    sound_cfgs[SOUND_INFO_CLOSE].kind = AUDIO_SOUND_KIND_SFX;
+    sounds[SOUND_INFO_CLOSE] = load_wav_safe("assets/audio/sfx/whoosh_close.ogg");
+    if( !sounds[SOUND_INFO_CLOSE]) {
+        if (access("assets/audio/sfx/whoosh_close.ogg", R_OK) != 0) {
+            printf("Audio absent: assets/audio/sfx/whoosh_close.ogg\n");
         } else {
             printf("Erreur Mix_LoadWAV: %s\n", Mix_GetError());
         }
@@ -521,6 +541,10 @@ int audio_stop_with_fade(
     }
 
     if (fade_type == AUDIO_FADE_OUT_BY_VOLUME) {
+        if (Mix_FadingChannel(channel) == MIX_FADING_OUT) {
+            return EXIT_SUCCESS;
+        }
+
         Mix_UnregisterAllEffects(channel);
         channel_fade_filters[channel].active = 0;
 

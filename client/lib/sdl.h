@@ -53,7 +53,7 @@ typedef struct AppContext {
     int sound_effects_volume;  /**< Volume des effets sonores (0-128). */
     char* player_uuid;         /**< UUID unique du joueur. */
     char* player_name;         /**< Nom du joueur. */
-    char version[16];             /**< Version du jeu (chargée depuis VERSION). */
+    char version[16];          /**< Version du jeu (chargée depuis VERSION). */
 } AppContext;
 
 /**

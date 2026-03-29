@@ -219,17 +219,21 @@ int init_infos(AppContext* context) {
 
 // Démarre l'animation d'apparition
 void infos_display_show_animation(AppContext* context) {
+    (void)context;
     if (infos_state != INFOS_VISIBLE && infos_state != INFOS_SHOWING) {
         infos_state = INFOS_SHOWING;
         animation_start_time = SDL_GetTicks();
+        audio_play(SOUND_INFO_OPEN, 0);
     }
 }
 
 // Démarre l'animation de disparition
 void infos_display_hide_animation(AppContext* context) {
+    (void)context;
     if (infos_state != INFOS_HIDDEN && infos_state != INFOS_HIDING) {
         infos_state = INFOS_HIDING;
         animation_start_time = SDL_GetTicks();
+        audio_play(SOUND_INFO_CLOSE, 0);
     }
 }
 
@@ -335,13 +339,11 @@ void infos_display(AppContext* context) {
         // Gérer les transitions d'état basées sur la souris
         if (infos_state == INFOS_HIDDEN && mouse_x < TRIGGER_OPEN_X) {
             // La souris vient d'entrer : déclencher l'apparition
-            infos_state = INFOS_SHOWING;
-            animation_start_time = SDL_GetTicks();
+            infos_display_show_animation(context);
         } 
         else if (infos_state == INFOS_VISIBLE && mouse_x > TRIGGER_CLOSE_X) {
             // La souris vient de sortir : déclencher la disparition
-            infos_state = INFOS_HIDING;
-            animation_start_time = SDL_GetTicks();
+            infos_display_hide_animation(context);
         }
         
         // Gérer les animations en cours

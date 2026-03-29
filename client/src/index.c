@@ -5,6 +5,39 @@
 #include <errno.h>
 #include <string.h>
 
+// Applique les transitions audio une seule fois au changement d'état.
+static void handle_app_state_audio_transition(AppContext* context, AppState previous_state, AppState new_state) {
+    if (!context || previous_state == new_state) {
+        return;
+    }
+
+    // Réapplique les volumes utilisateur pour éviter un volume de canal résiduel après un fade.
+    audio_set_type_volume(AUDIO_SOUND_KIND_MUSIC, context->music_volume);
+    audio_set_type_volume(AUDIO_SOUND_KIND_SFX, context->sound_effects_volume);
+
+    if (new_state == APP_STATE_MENU || new_state == APP_STATE_LOBBY) {
+        if (audio_is_playing(MUSIC_GAME)) {
+            audio_stop_with_fade(MUSIC_GAME, 1000, AUDIO_FADE_OUT_BY_VOLUME, NULL);
+        }
+    }
+
+    if (new_state == APP_STATE_PLAYING) {
+        if (audio_is_playing(MUSIC_MENU_LOBBY)) {
+            audio_stop_with_fade(MUSIC_MENU_LOBBY, 750, AUDIO_FADE_OUT_BY_VOLUME, NULL);
+        }
+    }
+
+    if (new_state == APP_STATE_MENU) {
+        // En menu, on retire toujours le filtre lobby pour récupérer un son normal.
+        audio_set_filter(MUSIC_MENU_LOBBY, AUDIO_FILTER_NONE, 0.0f);
+
+        // Si on revient du jeu, purge la piste menu/lobby potentiellement encore en fade-out.
+        if (previous_state == APP_STATE_PLAYING && audio_is_playing(MUSIC_MENU_LOBBY)) {
+            audio_stop(MUSIC_MENU_LOBBY);
+        }
+    }
+}
+
 int main(int argc, char* argv[]){
 
     const float target_fps = 60.0f;
@@ -178,6 +211,7 @@ int main(int argc, char* argv[]){
 
     SDL_Event e;
     int running = 1;
+    AppState previous_app_state = context.app_state;
 
     while (running) {
         if (tick_tcp(&context) != EXIT_SUCCESS) {
@@ -229,6 +263,9 @@ int main(int argc, char* argv[]){
             }
         }
 
+        handle_app_state_audio_transition(&context, previous_app_state, context.app_state);
+        previous_app_state = context.app_state;
+
         // Pré Rendu - Utiliser la couleur du background
         SDL_SetRenderDrawColor(context.renderer, context.bg_color.r, context.bg_color.g, context.bg_color.b, context.bg_color.a);
         SDL_RenderClear(context.renderer);
@@ -237,22 +274,12 @@ int main(int argc, char* argv[]){
         switch (context.app_state) {
             case APP_STATE_MENU:
                 context.bg_color = (SDL_Color){50, 50, 50, 255}; // Gris par défaut
-                
-                // Couper la musique de game si elle est encore en train de jouer
-                if (audio_is_playing(MUSIC_GAME)) {
-                    audio_stop_with_fade(MUSIC_GAME, 2000, AUDIO_FADE_OUT_BY_VOLUME, NULL); // Fondu de 2s pour éviter une coupure brutale
-                }
 
                 display_background(&context);
                 menu_display(&context);
                 break;
             case APP_STATE_LOBBY:
                 context.bg_color = (SDL_Color){50, 50, 50, 255};  // Gris par défaut
-                
-                // Couper la musique de game si elle est encore en train de jouer
-                if (audio_is_playing(MUSIC_GAME)) {
-                    audio_stop_with_fade(MUSIC_GAME, 2000, AUDIO_FADE_OUT_BY_VOLUME, NULL); // Fondu de 2s pour éviter une coupure brutale
-                }
 
                 display_background(&context);
                 lobby_display(&context);
@@ -262,10 +289,6 @@ int main(int argc, char* argv[]){
                     context.bg_color = (SDL_Color){80, 30, 30, 255}; // Rouge sombre pour l'équipe rouge
                 } else {
                     context.bg_color = (SDL_Color){40, 40, 80, 255}; // Bleu sombre pour l'équipe bleue
-                }
-                // Couper une fois la musique de lobby si elle est encore en train de jouer
-                if (audio_is_playing(MUSIC_MENU_LOBBY)) {
-                    audio_stop_with_fade(MUSIC_MENU_LOBBY, 2000, AUDIO_FADE_OUT_BY_VOLUME, NULL); // Fondu de 2s pour éviter une coupure brutale
                 }
                 
                 display_background(&context);
