@@ -55,6 +55,10 @@ static int red_player_text_index = 0;
 #define NUM_CARDS 25
 static Text* txt_card_words[NUM_CARDS] = {NULL};
 
+/* Textes pour l'affichage des derniers messages du chat */
+#define CHAT_VISIBLE_MESSAGES 10
+static Text* txt_chat_messages[CHAT_VISIBLE_MESSAGES] = {NULL};
+
 
 static void chat_on_submit(AppContext* context, const char* text) {
     printf("Chat input submitted: %s\n", text ? text : "");
@@ -301,7 +305,13 @@ int game_init(AppContext * context) {
     /* Textes pour les mots des cartes */
     for (int i = 0; i < NUM_CARDS; i++) {
         txt_card_words[i] = init_text(context, " ", 
-            create_text_config(FONT_LARABIE, 18, COL_BLACK, 0, 0, 0, 255));
+            create_text_config(FONT_LARABIE, 20, COL_BLACK, 0, 0, 0, 255));
+    }
+
+    /* Textes pour les messages du chat */
+    for (int i = 0; i < CHAT_VISIBLE_MESSAGES; i++) {
+        txt_chat_messages[i] = init_text(context, " ", 
+            create_text_config(FONT_LARABIE, 12, COL_WHITE, 0, 0, 0, 255));
     }
 
     /* Chargement de la fenêtre de l'équipe bleue */
@@ -479,6 +489,43 @@ static void game_render_team_windows(AppContext* context) {
     }
 }
 
+static void game_render_chat_messages(AppContext* context) {
+    if (!context || !context->lobby || !chat_window) return;
+
+    const int total_messages = chat_size(&context->lobby->chat);
+    const int visible_messages = (total_messages < CHAT_VISIBLE_MESSAGES) ? total_messages : CHAT_VISIBLE_MESSAGES;
+    const int start_index = total_messages - visible_messages;
+    const int bottom_line_y = -42; // Le message le plus récent reste en bas du chat
+    const int line_gap = 14;
+    const int left_padding = 8;
+
+    for (int i = 0; i < CHAT_VISIBLE_MESSAGES; i++) {
+        Text* txt = txt_chat_messages[i];
+        if (!txt) continue;
+
+        if (i >= visible_messages) {
+            update_text(context, txt, " ");
+            continue;
+        }
+
+        const int chat_index = start_index + i;
+        const char* message = chat_get(&context->lobby->chat, chat_index);
+
+        update_text(context, txt, message ? message : " ");
+
+        int text_w = 0;
+        if (txt->texture) {
+            SDL_QueryTexture(txt->texture, NULL, NULL, &text_w, NULL);
+        }
+
+        // window_place_text centre le texte: on compense avec text_w/2 pour ancrer le bord gauche.
+        int rel_x = -(chat_window->cfg->w / 2) + left_padding + (text_w / 2);
+        int rel_y = bottom_line_y + ((visible_messages - 1 - i) * line_gap);
+        window_place_text(chat_window, txt, rel_x, rel_y);
+        display_text(context, txt);
+    }
+}
+
 void game_render_cards(AppContext * context) {
     int x=-400;
     int y=-250;
@@ -623,8 +670,9 @@ void game_display(AppContext * context) {
     }
     if (chat_window) {
         window_render(context->renderer, chat_window);
-        window_place_input(chat_window, chat_input, 0, -75);
+        game_render_chat_messages(context);
         if (chat_input) {
+            window_place_input(chat_window, chat_input, 0, -75);
             input_render(context->renderer, chat_input);
         }
     }
@@ -669,6 +717,10 @@ int game_free() {
     
     for (int i = 0; i < NUM_CARDS; i++) {
         destroy_text(txt_card_words[i]); txt_card_words[i] = NULL;
+    }
+
+    for (int i = 0; i < CHAT_VISIBLE_MESSAGES; i++) {
+        destroy_text(txt_chat_messages[i]); txt_chat_messages[i] = NULL;
     }
     
     return EXIT_SUCCESS;
