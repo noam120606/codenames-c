@@ -43,6 +43,7 @@
 #include "../lib/infos.h"
 #include "../lib/text.h"
 #include "../lib/input.h"
+#include "../lib/window.h"
 #include "../lib/audio.h"
 #include "../lib/crossfader.h"
 #include "../lib/message.h"
@@ -54,7 +55,6 @@
 #include "../lib/chat.h"
 #include "../lib/ressources.h"
 #include "../lib/save.h"
-#include "../lib/window.h"
 #include "../lib/version.h"
 
 #include "../lib/regex_compat.h"

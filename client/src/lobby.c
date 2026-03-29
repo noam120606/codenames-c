@@ -6,6 +6,13 @@ Button* btn_blue_agent = NULL;
 Button* btn_blue_spy = NULL;
 Button* btn_launch_game = NULL;
 Button* btn_return = NULL;
+
+Window* role_none_window = NULL;
+Window* role_red_spy_window = NULL;
+Window* role_red_agent_window = NULL;
+Window* role_blue_spy_window = NULL;
+Window* role_blue_agent_window = NULL;
+
 SDL_Texture* player_icon_none = NULL;
 SDL_Texture* player_icon_red = NULL;
 SDL_Texture* player_icon_blue = NULL;
@@ -316,11 +323,82 @@ int lobby_init(AppContext* context) {
         free(cfg_btn_return);
     } else loading_fails++;
 
+    WindowConfig* cfg_role_none_window = window_config_init();
+    if (cfg_role_none_window) {
+        cfg_role_none_window->x = 0;
+        cfg_role_none_window->y = 425;
+        cfg_role_none_window->w = 450;
+        cfg_role_none_window->h = 200;
+        cfg_role_none_window->title = "Joueur(s) sans rôle :";
+        cfg_role_none_window->bg_color = (SDL_Color){20, 20, 20, 220};
+        cfg_role_none_window->titlebar_color = COL_GRAY;
+        role_none_window = window_create(0, cfg_role_none_window);
+        if (!role_none_window) loading_fails++;
+        free(cfg_role_none_window);
+    } else loading_fails++;
+
+    WindowConfig* cfg_role_red_spy_window = window_config_init();
+    if (cfg_role_red_spy_window) {
+        cfg_role_red_spy_window->x = -450;
+        cfg_role_red_spy_window->y = 250;
+        cfg_role_red_spy_window->w = 300;
+        cfg_role_red_spy_window->h = 250;
+        cfg_role_red_spy_window->title = "";
+        cfg_role_red_spy_window-> movable = 1;
+        cfg_role_red_spy_window->bg_color = (SDL_Color){150, 50, 50, 220};
+        cfg_role_red_spy_window->titlebar_h = 0;
+        role_red_spy_window = window_create(0, cfg_role_red_spy_window);
+        if (!role_red_spy_window) loading_fails++;
+        free(cfg_role_red_spy_window);
+    } else loading_fails++;
+
+    WindowConfig* cfg_role_red_agent_window = window_config_init();
+    if (cfg_role_red_agent_window) {
+        cfg_role_red_agent_window->x = -450;
+        cfg_role_red_agent_window->y = -75;
+        cfg_role_red_agent_window->w = 300;
+        cfg_role_red_agent_window->h = 250;
+        cfg_role_red_agent_window->title = "";
+        cfg_role_red_agent_window->bg_color = (SDL_Color){150, 50, 50, 220};
+        cfg_role_red_agent_window->titlebar_h = 0;
+        role_red_agent_window = window_create(0, cfg_role_red_agent_window);
+        if (!role_red_agent_window) loading_fails++;
+        free(cfg_role_red_agent_window);
+    } else loading_fails++;
+
+    WindowConfig* cfg_role_blue_spy_window = window_config_init();
+    if (cfg_role_blue_spy_window) {
+        cfg_role_blue_spy_window->x = 450;
+        cfg_role_blue_spy_window->y = 250;
+        cfg_role_blue_spy_window->w = 300;
+        cfg_role_blue_spy_window->h = 250;
+        cfg_role_blue_spy_window->title = "";
+        cfg_role_blue_spy_window->bg_color = (SDL_Color){50, 50, 150, 220};
+        cfg_role_blue_spy_window->titlebar_h = 0;
+        role_blue_spy_window = window_create(0, cfg_role_blue_spy_window);
+        if (!role_blue_spy_window) loading_fails++;
+        free(cfg_role_blue_spy_window);
+    } else loading_fails++;
+
+    WindowConfig* cfg_role_blue_agent_window = window_config_init();
+    if (cfg_role_blue_agent_window) {
+        cfg_role_blue_agent_window->x = 450;
+        cfg_role_blue_agent_window->y = -75;
+        cfg_role_blue_agent_window->w = 300;
+        cfg_role_blue_agent_window->h = 250;
+        cfg_role_blue_agent_window->title = "";
+        cfg_role_blue_agent_window->bg_color = (SDL_Color){50, 50, 150, 220};
+        cfg_role_blue_agent_window->titlebar_h = 0;
+        role_blue_agent_window = window_create(0, cfg_role_blue_agent_window);
+        if (!role_blue_agent_window) loading_fails++;
+        free(cfg_role_blue_agent_window);
+    } else loading_fails++;
+
     /* Initialisation des textes optimisés */
     txt_lobby_info = init_text(context, "Lobby",
         create_text_config(FONT_LARABIE, 36, COL_WHITE, 0, -250, 0, 255));
     
-    txt_no_role_label = init_text(context, "Joueur(s) sans rôle :",
+    txt_no_role_label = init_text(context, "",
         create_text_config(FONT_LARABIE, 18, COL_WHITE, 0, 500, 0, 255));
     
     /* Pré-allouer les textes pour les noms de joueurs */
@@ -399,14 +477,42 @@ void lobby_display(AppContext* context) {
     // Affichage des joueurs sans rôle
     display_text(context, txt_no_role_label);
 
-    /* afficher la liste des joueurs ici (nécessite que le client reçoive la liste du serveur). */
+    if (btn_red_agent) button_render(context->renderer, btn_red_agent);
+    if (btn_red_spy) button_render(context->renderer, btn_red_spy);
+    if (btn_blue_agent) button_render(context->renderer, btn_blue_agent);
+    if (btn_blue_spy) button_render(context->renderer, btn_blue_spy);
+    if (btn_launch_game) button_render(context->renderer, btn_launch_game);
+    if (btn_return) button_render(context->renderer, btn_return);
 
-    button_render(context->renderer, btn_red_agent);
-    button_render(context->renderer, btn_red_spy);
-    button_render(context->renderer, btn_blue_agent);
-    button_render(context->renderer, btn_blue_spy);
-    button_render(context->renderer, btn_launch_game);
-    button_render(context->renderer, btn_return);
+    if (role_none_window) window_render(context->renderer, role_none_window);
+    if (role_red_spy_window) {
+        window_render(context->renderer, role_red_spy_window);
+        if (btn_red_agent) {
+            window_place_button(role_red_spy_window, btn_red_agent, 0, 80);
+            button_render(context->renderer, btn_red_agent);
+        }
+    }
+    if (role_red_agent_window) {
+        window_render(context->renderer, role_red_agent_window);
+        if (btn_red_spy) {
+            window_place_button(role_red_agent_window, btn_red_spy, 0, 80);
+            button_render(context->renderer, btn_red_spy);
+        }
+    }
+    if (role_blue_spy_window) {
+        window_render(context->renderer, role_blue_spy_window);
+        if (btn_blue_agent) {
+            window_place_button(role_blue_spy_window, btn_blue_agent, 0, 80);
+            button_render(context->renderer, btn_blue_agent);
+        }
+    }
+    if (role_blue_agent_window) {
+        window_render(context->renderer, role_blue_agent_window);
+        if (btn_blue_spy) {
+            window_place_button(role_blue_agent_window, btn_blue_spy, 0, 80);
+            button_render(context->renderer, btn_blue_spy);
+        }
+    }
 
     // Comptage des joueurs par rôle/équipe et indices d'affichage
     PlayerPlacementCounters counters = {0};
@@ -447,18 +553,21 @@ void lobby_display(AppContext* context) {
 
 }
 
-ButtonReturn lobby_handle_event(AppContext* context, SDL_Event* e) {
-    if (!context || !e) return BTN_RET_NONE;
+void lobby_handle_event(AppContext* context, SDL_Event* e) {
+    if (!context || !e) return;
 
-    ButtonReturn ret = BTN_RET_NONE;
-    ButtonReturn r;
-    if (btn_red_agent)  { r = button_handle_event(context, btn_red_agent, e);  if (r != BTN_RET_NONE) ret = r; }
-    if (btn_red_spy)    { r = button_handle_event(context, btn_red_spy, e);    if (r != BTN_RET_NONE) ret = r; }
-    if (btn_blue_agent) { r = button_handle_event(context, btn_blue_agent, e); if (r != BTN_RET_NONE) ret = r; }
-    if (btn_blue_spy)   { r = button_handle_event(context, btn_blue_spy, e);   if (r != BTN_RET_NONE) ret = r; }
-    if (btn_launch_game) { r = button_handle_event(context, btn_launch_game, e); if (r != BTN_RET_NONE) ret = r; }
-    if (btn_return)     { r = button_handle_event(context, btn_return, e);     if (r != BTN_RET_NONE) ret = r; }
-    return ret;
+    if (btn_red_agent) button_handle_event(context, btn_red_agent, e);
+    if (btn_red_spy) button_handle_event(context, btn_red_spy, e);
+    if (btn_blue_agent) button_handle_event(context, btn_blue_agent, e);
+    if (btn_blue_spy) button_handle_event(context, btn_blue_spy, e);
+    if (btn_launch_game) button_handle_event(context, btn_launch_game, e);
+    if (btn_return) button_handle_event(context, btn_return, e);
+
+    if (role_none_window) window_handle_event(context, role_none_window, e);
+    if (role_red_spy_window) window_handle_event(context, role_red_spy_window, e);
+    if (role_red_agent_window) window_handle_event(context, role_red_agent_window, e);
+    if (role_blue_spy_window) window_handle_event(context, role_blue_spy_window, e);
+    if (role_blue_agent_window) window_handle_event(context, role_blue_agent_window, e);
 }
 
 void player_display(AppContext* context, User* user, int nb_none, int i_none, int nb_red_spy, int i_red_spy, int nb_red_agent, int i_red_agent, int nb_blue_spy, int i_blue_spy, int nb_blue_agent, int i_blue_agent) {
@@ -466,83 +575,66 @@ void player_display(AppContext* context, User* user, int nb_none, int i_none, in
     if (!user->name) return;
 
     SDL_Texture* icon = NULL;
-    int base_x = 0;
-    int base_y = 0;
+    Window* target_window = NULL;
+    int base_rel_x = 0;
+    int base_rel_y = 0;
     int nb_player = 0;
     int i_player = 0;
 
-    // Positions des boutons (mêmes que dans lobby_init)
-    const int center_none_x = 0;
-    const int center_none_y = 500;
-    const int center_red_x = -400;
-    const int center_blue_x = 400;
-    const int center_agent_y = 260;
-    const int center_spy_y = 0;
-
-    // Décalages
-    const int offset_y = -80;
-
     if (user->team == TEAM_RED) {
         icon = player_icon_red;
-        base_x = center_red_x;
         if (user->role == ROLE_SPY) {
-            base_y = center_spy_y + offset_y;
+            /* Conserve la disposition actuelle: espions rouges dans la fenêtre basse. */
+            target_window = role_red_agent_window;
+            base_rel_y = 10;
             nb_player = nb_red_spy;
             i_player = i_red_spy;
         } else if (user->role == ROLE_AGENT) {
-            base_y = center_agent_y + offset_y;
+            /* Conserve la disposition actuelle: agents rouges dans la fenêtre haute. */
+            target_window = role_red_spy_window;
+            base_rel_y = 10;
             nb_player = nb_red_agent;
             i_player = i_red_agent;
         } else {
             // Rôle non assigné mais équipe rouge
-            base_y = center_none_x;
+            target_window = role_none_window;
+            base_rel_y = 15;
             nb_player = nb_none;
             i_player = i_none;
         }
     } else if (user->team == TEAM_BLUE) {
         icon = player_icon_blue;
-        base_x = center_blue_x;
         if (user->role == ROLE_SPY) {
-            base_y = center_spy_y + offset_y;
+            /* Conserve la disposition actuelle: espions bleus dans la fenêtre basse. */
+            target_window = role_blue_agent_window;
+            base_rel_y = 10;
             nb_player = nb_blue_spy;
             i_player = i_blue_spy;
         } else if (user->role == ROLE_AGENT) {
-            base_y = center_agent_y + offset_y;
+            /* Conserve la disposition actuelle: agents bleus dans la fenêtre haute. */
+            target_window = role_blue_spy_window;
+            base_rel_y = 10;
             nb_player = nb_blue_agent;
             i_player = i_blue_agent;
         } else {
-            // Rôle non assigné mais équipe bleue
-            base_y = center_none_x;
+            target_window = role_none_window;
+            base_rel_y = 15;
             nb_player = nb_none;
             i_player = i_none;
         }
     } else {
         // Équipe non assignée (TEAM_NONE) - afficher au centre
         icon = player_icon_none;
-        base_x = center_none_x;
-        base_y = center_none_y + offset_y;
+        target_window = role_none_window;
+        base_rel_y = 15;
         nb_player = nb_none;
         i_player = i_none;
     }
 
-    player_icon_pos(context, user, icon, nb_player, i_player, base_x, base_y);
+    player_icon_pos(context, user, icon, target_window, nb_player, i_player, base_rel_x, base_rel_y);
 }
 
-/* Affiche le nom d'un joueur en utilisant les textes pré-alloués */
-static void display_player_name(AppContext* context, const char* name, int x, int y) {
-    if (current_player_text_index >= MAX_PLAYER_TEXTS) return;
-    if (!name) return;
-    
-    Text* txt = txt_player_names[current_player_text_index];
-    if (txt) {
-        update_text(context, txt, name);
-        update_text_position(txt, x, y);
-        display_text(context, txt);
-    }
-    current_player_text_index++;
-}
-
-void player_icon_pos(AppContext* context, User* user, SDL_Texture* icon, int nb_player, int i_player, int base_x, int base_y) {
+void player_icon_pos(AppContext* context, User* user, SDL_Texture* icon, Window* target_window, int nb_player, int i_player, int base_rel_x, int base_rel_y) {
     if (!context){
         printf("Invalid context\n");
         return;
@@ -555,15 +647,29 @@ void player_icon_pos(AppContext* context, User* user, SDL_Texture* icon, int nb_
         printf("Invalid icon\n");
         return;
     }
-
-    int x = 0;
-    int y = 0;
-    if (!compute_player_icon_position(nb_player, i_player, base_x, base_y, &x, &y)) {
+    if (!target_window) {
+        printf("Invalid target window\n");
         return;
     }
 
-    display_image(context->renderer, icon, x, y, 0.25, 0, SDL_FLIP_NONE, 1, 255);
-    display_player_name(context, user->name, x, y - 25);
+    int x = 0;
+    int y = 0;
+    if (!compute_player_icon_position(nb_player, i_player, base_rel_x, base_rel_y, &x, &y)) {
+        return;
+    }
+
+    window_display_image(context->renderer, target_window, icon, x, y, 0.25f, 0, SDL_FLIP_NONE, 1, 255);
+
+    if (current_player_text_index >= MAX_PLAYER_TEXTS) return;
+    if (!user->name) return;
+
+    Text* txt = txt_player_names[current_player_text_index];
+    if (txt) {
+        update_text(context, txt, user->name);
+        window_place_text(target_window, txt, x, y - 25);
+        display_text(context, txt);
+    }
+    current_player_text_index++;
 }
 
 int lobby_free(){
@@ -575,6 +681,12 @@ int lobby_free(){
     if (btn_blue_spy)   { button_destroy(btn_blue_spy);   btn_blue_spy = NULL; }
     if (btn_launch_game) { button_destroy(btn_launch_game); btn_launch_game = NULL; }
     if (btn_return)     { button_destroy(btn_return);     btn_return = NULL; }
+
+    if (role_none_window) { window_destroy(role_none_window); role_none_window = NULL; }
+    if (role_red_spy_window) { window_destroy(role_red_spy_window); role_red_spy_window = NULL; }
+    if (role_red_agent_window) { window_destroy(role_red_agent_window); role_red_agent_window = NULL; }
+    if (role_blue_spy_window) { window_destroy(role_blue_spy_window); role_blue_spy_window = NULL; }
+    if (role_blue_agent_window) { window_destroy(role_blue_agent_window); role_blue_agent_window = NULL; }
 
     if (player_icon_none) { free_image(player_icon_none); player_icon_none = NULL; }
     if (player_icon_red)  { free_image(player_icon_red);  player_icon_red = NULL; }

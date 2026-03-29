@@ -6,6 +6,8 @@
 #include "../SDL2/include/SDL2/SDL_ttf.h"
 
 typedef struct AppContext AppContext;
+typedef struct Window Window;
+
 #include "../lib/button.h"
 #include "../lib/user.h"
 #include "../lib/chat.h"
@@ -68,12 +70,11 @@ int lobby_init(AppContext* context);
 int lobby_free();
 
 /**
- * Gère les événements du lobby (boutons, etc.).
+ * Gère les événements du lobby (boutons, windows, etc.).
  * @param context Contexte SDL.
  * @param event Événement SDL à traiter.
- * @return ButtonReturn (BTN_RET_QUIT to exit, BTN_RET_NONE otherwise).
  */
-ButtonReturn lobby_handle_event(AppContext* context, SDL_Event* event);
+void lobby_handle_event(AppContext* context, SDL_Event* event);
 
 /**
  * Affiche le lobby.
@@ -103,11 +104,12 @@ void player_display(AppContext* context, User* user, int nb_none, int i_none, in
  * @param context Contexte SDL.
  * @param user Utilisateur dont l'icône doit être positionnée.
  * @param icon Texture de l'icône à afficher.
+ * @param target_window Fenêtre cible de rendu (positionnement relatif).
  * @param nb_player Nombre de joueurs de ce type.
  * @param i_player Indice du joueur de ce type.
- * @param base_x Position de base en X.
- * @param base_y Position de base en Y.
+ * @param base_rel_x Position de base en X relative au centre de la fenêtre.
+ * @param base_rel_y Position de base en Y relative au centre de la fenêtre.
  */
-void player_icon_pos(AppContext* context, User* user, SDL_Texture* icon, int nb_player, int i_player, int base_x, int base_y);
+void player_icon_pos(AppContext* context, User* user, SDL_Texture* icon, Window* target_window, int nb_player, int i_player, int base_rel_x, int base_rel_y);
 
 #endif // LOBBY_H

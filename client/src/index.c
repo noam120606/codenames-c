@@ -220,11 +220,9 @@ int main(int argc, char* argv[]){
                 case APP_STATE_MENU:
                     btn_ret = menu_handle_event(&context, &e);
                     if (btn_ret == BTN_RET_QUIT) running = 0; break;
+                    default: break;
     
-                case APP_STATE_LOBBY: 
-                    btn_ret = lobby_handle_event(&context, &e);
-                    if (btn_ret == BTN_RET_QUIT) running = 0; break;
-                
+                case APP_STATE_LOBBY: lobby_handle_event(&context, &e); break;
                 case APP_STATE_PLAYING: game_handle_event(&context, &e); break;
                 case APP_STATE_PAUSED: break;
             }
