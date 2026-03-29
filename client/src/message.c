@@ -221,7 +221,14 @@ int on_message(AppContext* context, char* message) {
             }
 
             char* sender = (char*)args.argv[0];
-            char* chat_message = (char*)args.argv[1];
+            char chat_message[448];
+            chat_message[0] = '\0';
+            for (int i = 1; i < args.argc; i++) {
+                if (i > 1) {
+                    strncat(chat_message, " ", sizeof(chat_message) - strlen(chat_message) - 1);
+                }
+                strncat(chat_message, (char*)args.argv[i], sizeof(chat_message) - strlen(chat_message) - 1);
+            }
 
             char full_message[512];
             format_to(full_message, sizeof(full_message), "%s: %s", sender, chat_message);

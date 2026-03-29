@@ -53,6 +53,8 @@ typedef enum {
  * @param rect Rectangle SDL calculé automatiquement à partir de x/y/w/h, utilisé pour le rendu et la détection de clics.
  * @param text Buffer de texte saisi, géré en interne par l'input.
  * @param disabled Indique si la pression de la touche entrée est désactivée (1) ou non (0).
+ * @param clear_on_submit Indique si le texte est vidé après soumission (1) ou conservé (0).
+ * @param keep_focus_on_submit Indique si l'input conserve le focus après soumission (1) ou le perd (0).
  * @param len Longueur actuelle du texte saisi.
  * @param cursor_pos Position actuelle du curseur dans le texte (index entre 0 et len).
  * @param focused Indique si l'input est actuellement focalisé (1) ou non (0).
@@ -91,6 +93,8 @@ typedef struct InputConfig {
     SDL_Rect rect;
     char* text;
     int disabled;
+    int clear_on_submit;
+    int keep_focus_on_submit;
     int len;
     int cursor_pos;
     int focused;
@@ -142,6 +146,8 @@ typedef enum InputCfgKey {
     IN_CFG_TEXT,
     IN_CFG_LEN,
     IN_CFG_CURSOR_POS,
+    IN_CFG_CLEAR_ON_SUBMIT,
+    IN_CFG_KEEP_FOCUS_ON_SUBMIT,
     IN_CFG_FOCUSED,
     IN_CFG_SUBMITTED,
     IN_CFG_BG_TEXTURE,
@@ -215,7 +221,7 @@ void input_clear_submitted(Input* in);
 /**
  * Soumet le texte courant de l'input (même comportement qu'appuyer sur Entrée).
  * Marque l'input comme soumis, appelle le callback `on_submit` si défini,
- * puis vide le texte courant de l'input.
+ * puis vide le texte courant de l'input si `clear_on_submit` vaut 1.
  * @param context Contexte SDL passé au callback de soumission.
  * @param in Pointeur vers l'input.
  */

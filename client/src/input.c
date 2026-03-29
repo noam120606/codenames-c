@@ -54,15 +54,35 @@ static void input_submit_internal(AppContext* context, Input* in) {
 
     if (in->cfg->on_submit) in->cfg->on_submit(context, submitted);
 
-    if (in->cfg->text && in->cfg->maxlen > 0) {
-        in->cfg->text[0] = '\0';
+    if (in->cfg->clear_on_submit) {
+        if (in->cfg->text && in->cfg->maxlen > 0) {
+            in->cfg->text[0] = '\0';
+        }
+        in->cfg->len = 0;
+        in->cfg->cursor_pos = 0;
     }
-    in->cfg->len = 0;
-    in->cfg->cursor_pos = 0;
+
     input_clear_selection_internal(in);
 
-    in->cfg->focused = 0;
-    SDL_StopTextInput();
+    if (in->cfg->keep_focus_on_submit) {
+        for (int i = 0; i < input_count; ++i) {
+            if (!inputs[i] || !inputs[i]->cfg) continue;
+            inputs[i]->cfg->focused = (inputs[i] == in) ? 1 : 0;
+        }
+    } else {
+        in->cfg->focused = 0;
+    }
+
+    int has_focused_input = 0;
+    for (int i = 0; i < input_count; ++i) {
+        if (inputs[i] && inputs[i]->cfg && inputs[i]->cfg->focused) {
+            has_focused_input = 1;
+            break;
+        }
+    }
+
+    if (has_focused_input) SDL_StartTextInput();
+    else SDL_StopTextInput();
 }
 
 /** Initialise une InputConfig avec des valeurs par défaut. */
@@ -96,6 +116,8 @@ InputConfig* input_config_init() {
     cfg->rect = (SDL_Rect){0, 0, 0, 0};
     cfg->text = NULL;
     cfg->disabled = 0;
+    cfg->clear_on_submit = 1;
+    cfg->keep_focus_on_submit = 0;
     cfg->len = 0;
     cfg->cursor_pos = 0;
     cfg->focused = 0;
@@ -786,6 +808,12 @@ int edit_in_cfg(InputId id, InputCfgKey key, intptr_t value) {
             in->cfg->cursor_pos = (int)value;
             if (in->cfg->cursor_pos < 0) in->cfg->cursor_pos = 0;
             if (in->cfg->cursor_pos > in->cfg->len) in->cfg->cursor_pos = in->cfg->len;
+            return EXIT_SUCCESS;
+        case IN_CFG_CLEAR_ON_SUBMIT:
+            in->cfg->clear_on_submit = ((int)value != 0);
+            return EXIT_SUCCESS;
+        case IN_CFG_KEEP_FOCUS_ON_SUBMIT:
+            in->cfg->keep_focus_on_submit = ((int)value != 0);
             return EXIT_SUCCESS;
         case IN_CFG_FOCUSED:
             in->cfg->focused = ((int)value != 0);

@@ -59,6 +59,23 @@ static Text* txt_card_words[NUM_CARDS] = {NULL};
 #define CHAT_VISIBLE_MESSAGES 10
 static Text* txt_chat_messages[CHAT_VISIBLE_MESSAGES] = {NULL};
 
+static void hint_on_submit(AppContext* context, const char* text) {
+    (void)context;
+    (void)text;
+    if (hint_count_input) {
+        hint_count_input->cfg->focused = 1;
+        hint_count_input->cfg->cursor_pos = strlen(hint_count_input->cfg->text);
+    }
+}
+
+static void hint_count_on_submit(AppContext* context, const char* text) {
+    (void)context;
+    (void)text;
+    if (hint_input) {
+        hint_input->cfg->focused = 1;
+        hint_input->cfg->cursor_pos = strlen(hint_input->cfg->text);
+    }
+}
 
 static void chat_on_submit(AppContext* context, const char* text) {
     printf("Chat input submitted: %s\n", text ? text : "");
@@ -108,7 +125,7 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
             window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&COL_RED); // Mettre à jour la couleur du label de soumission pour indiquer qu'aucun mot n'a été saisi
             window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)"Vous n'avez pas saisi de mot"); // Mettre à jour le label de soumission pour indiquer qu'aucun mot n'a été saisi
             printf("Invalid hint submitted: %s\n", text ? text : "");
-        } else if(nb_hint == NULL) {
+        } else if(nb_hint <= 0) {
             window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&COL_RED); // Mettre à jour la couleur du label de soumission pour indiquer que le nombre d'indices est invalide
             window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)"Vous n'avez pas saisi de nombre d'indices"); // Mettre à jour le label de soumission pour indiquer que le nombre d'indices est invalide
             printf("No hint count submitted\n");
@@ -215,12 +232,14 @@ int game_init(AppContext * context) {
         cfg_hint_input->placeholders = HINT_INPUT_PLACEHOLDERS;
         cfg_hint_input->placeholder_count = 1;
         cfg_hint_input->maxlen = 50;
-        cfg_hint_input->disabled = 1;
+        cfg_hint_input->disabled = 0;
+        cfg_hint_input->clear_on_submit = 0;
         cfg_hint_input->centered = 1;
-        cfg_hint_input->allowed_pattern = "^[A-Za-z]$";
-        cfg_hint_input->submit_pattern = "^[A-Za-z]{50}$";
+        cfg_hint_input->allowed_pattern = "^[A-Za-zéèêëàâäåæçîïìùûüÿœ]$";
+        cfg_hint_input->submit_pattern = "^[A-Za-zéèêëàâäåæçîïìùûüÿœ]{1,50}$";
         cfg_hint_input->bg_path = "assets/img/inputs/empty.png";
         cfg_hint_input->bg_padding = 16;
+        cfg_hint_input->on_submit = hint_on_submit;
         hint_input = input_create(context->renderer, INPUT_HINT, cfg_hint_input);
         if (!hint_input) loading_fails++;
         free(cfg_hint_input);
@@ -266,6 +285,7 @@ int game_init(AppContext * context) {
         cfg_chat_input->centered = 1;
         cfg_chat_input->allowed_pattern = NULL;
         cfg_chat_input->submit_pattern = NULL;
+        cfg_chat_input->keep_focus_on_submit = 1;
         cfg_chat_input->bg_path = "assets/img/inputs/empty.png";
         cfg_chat_input->bg_padding = 16;
         cfg_chat_input->on_submit = chat_on_submit;
@@ -305,7 +325,7 @@ int game_init(AppContext * context) {
     /* Textes pour les mots des cartes */
     for (int i = 0; i < NUM_CARDS; i++) {
         txt_card_words[i] = init_text(context, " ", 
-            create_text_config(FONT_LARABIE, 20, COL_BLACK, 0, 0, 0, 255));
+            create_text_config(FONT_LARABIE, 22, COL_BLACK, 0, 0, 0, 255));
     }
 
     /* Textes pour les messages du chat */

@@ -84,9 +84,19 @@ int request_send_chat(Codenames* codenames, TcpClient* client, char* message, Ar
         return EXIT_FAILURE;
     }
 
+    // Pour que le message puisse contenir des espaces, on reconstruit le message à partir de tous les arguments après le premier (le nom de l'expéditeur)
+    char rebuilt_message[448];
+    rebuilt_message[0] = '\0';
+    for (int i = 1; i < args.argc; i++) {
+        if (i > 1) {
+            strncat(rebuilt_message, " ", sizeof(rebuilt_message) - strlen(rebuilt_message) - 1);
+        }
+        strncat(rebuilt_message, (char*)args.argv[i], sizeof(rebuilt_message) - strlen(rebuilt_message) - 1);
+    }
+
     // Diffuse le message de chat à tous les joueurs du lobby
     char msg[512];
-    format_to(msg, sizeof(msg), "%d %s %s", MSG_SENDCHAT, args.argv[0], args.argv[1]);
+    format_to(msg, sizeof(msg), "%d %s %s", MSG_SENDCHAT, args.argv[0], rebuilt_message);
     if (chat_push(&lobby->chat, msg) != EXIT_SUCCESS) {
         printf("Failed to store chat message in lobby %d history\n", lobby->id);
     }
