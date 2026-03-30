@@ -1,3 +1,8 @@
+/**
+ * @file lobby.h
+ * @brief Gestion du lobby (salle d'attente avant la partie) côté client.
+ */
+
 #ifndef LOBBY_H
 #define LOBBY_H
 
@@ -66,6 +71,7 @@ int lobby_init(AppContext* context);
 
 /**
  * Libère les ressources utilisées par le lobby.
+ * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE sinon.
  */
 int lobby_free();
 

@@ -1,3 +1,8 @@
+/**
+ * @file message.h
+ * @brief Définition des types de messages et traitement des messages réseau côté serveur.
+ */
+
 #ifndef MESSAGE_H
 #define MESSAGE_H
 
@@ -43,6 +48,12 @@ typedef enum MessageType {
     MSG_PING,
 } MessageType;
 
+/**
+ * Codes d'erreur de message.
+ * @param MSG_ERR_NONE Aucune erreur.
+ * @param MSG_ERR_INVALID_FORMAT Format de message invalide.
+ * @param MSG_ERR_UNKNOWN_TYPE Type de message inconnu.
+ */
 typedef enum MessageError {
     MSG_ERR_NONE,
     MSG_ERR_INVALID_FORMAT,
@@ -60,9 +71,9 @@ typedef struct Arguments {
 } Arguments;
 
 /**
- * Extrait le type de message (HEADER) d'un message brut.
- * @param message message brut reçu du client.
- * @return le type de message extrait, ou MSG_UNKNOWN si le format est invalide.
+ * Extrait les arguments d'un message brut.
+ * @param message Message brut reçu du client.
+ * @return Structure Arguments contenant les arguments extraits.
  */
 Arguments parse_arguments(char* message);
 

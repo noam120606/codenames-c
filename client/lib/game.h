@@ -1,3 +1,8 @@
+/**
+ * @file game.h
+ * @brief Définitions et structures pour la gestion de la partie de Codenames côté client.
+ */
+
 #ifndef GAME_H
 #define GAME_H
 
