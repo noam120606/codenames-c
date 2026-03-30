@@ -5,8 +5,6 @@
 int main(int argc, char* argv[]) {
 
     const float target_fps = 60.0f;
-    char ip[16] = "127.0.0.1";
-    int port = 0;
     /* Nombre de frames avant fermeture automatique (0 pour désactiver)
      * - peut être configuré via la variable d'environnement CODENAMES_AUTOCLOSE_FRAMES
      * utile pour les tests de fuite mémoire afin de ne pas laisser la fenêtre ouverte indéfiniment.

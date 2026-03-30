@@ -66,31 +66,61 @@ int main(int argc, char* argv[]) {
     // Initialisation des valeurs de context pour les tests de l'affichage des cartes
     context.player_role = ROLE_SPY;
 
-    int gender = rand() % 2, i = 0;
+    int gender = rand() % 2; /* 0 = homme, 1 = femme */
+    int i = 0;
 
-    strcpy(context.lobby->game->words[0].word, "Test");
+    /* Ensure a Game structure and its words buffer exist before writing to them.
+     * In the real client these are created when a MSG_STARTGAME message is handled.
+     */
+    context.lobby->game = malloc(sizeof(Game));
+    if (!context.lobby->game) {
+        printf("Failed to allocate game for test\n");
+        cleanup_resources(resources);
+        return EXIT_FAILURE;
+    }
+    context.lobby->game->nb_words = NB_WORDS;
+    context.lobby->game->state = GAMESTATE_WAITING;
+    context.lobby->game->words = malloc(sizeof(Word) * context.lobby->game->nb_words);
+    if (!context.lobby->game->words) {
+        printf("Failed to allocate game words for test\n");
+        free(context.lobby->game);
+        context.lobby->game = NULL;
+        cleanup_resources(resources);
+        return EXIT_FAILURE;
+    }
+
+    /* Initialize words in black card */
+    strncpy(context.lobby->game->words[0].word, "Test", sizeof(context.lobby->game->words[0].word) - 1);
+    context.lobby->game->words[0].word[sizeof(context.lobby->game->words[0].word) - 1] = '\0';
     context.lobby->game->words[0].team = TEAM_BLACK;
     context.lobby->game->words[0].revealed = 0;
-    context.lobby->game->words[0].gender = gender++; // 0 = homme, 1 = femme
+    context.lobby->game->words[0].gender = (gender++ % 2);
 
-
+    /* Initialize words in red cards */
     for (i = 1; i < 9; i++) {
-        strcpy(context.lobby->game->words[i].word, "Test");
-        context.lobby->game->words[i].team = TEAM_BLACK;
+        strncpy(context.lobby->game->words[i].word, "Test", sizeof(context.lobby->game->words[i].word) - 1);
+        context.lobby->game->words[i].word[sizeof(context.lobby->game->words[i].word) - 1] = '\0';
+        context.lobby->game->words[i].team = TEAM_RED;
         context.lobby->game->words[i].revealed = 0;
-        context.lobby->game->words[i].gender = gender++; // 0 = homme, 1 = femme
+        context.lobby->game->words[i].gender = (gender++) % 2; 
     }
-    for (i = 9; i < 17; i++) {
-        strcpy(context.lobby->game->words[i].word, "Test");
-        context.lobby->game->words[i].team = TEAM_BLACK;
+
+    /* Initialize words in blue cards */
+    for (i = 9; i < 18; i++) {
+        strncpy(context.lobby->game->words[i].word, "Test", sizeof(context.lobby->game->words[i].word) - 1);
+        context.lobby->game->words[i].word[sizeof(context.lobby->game->words[i].word) - 1] = '\0';
+        context.lobby->game->words[i].team = TEAM_BLUE;
         context.lobby->game->words[i].revealed = 0;
-        context.lobby->game->words[i].gender = gender++; // 0 = homme, 1 = femme
+        context.lobby->game->words[i].gender = (gender++) % 2; 
     }
-    for (i = 17; i < 25; i++) {
-        strcpy(context.lobby->game->words[i].word, "Test");
-        context.lobby->game->words[i].team = TEAM_BLACK;
+
+    /* Initialize words in neutral cards */
+    for (i = 18; i < 25; i++) {
+        strncpy(context.lobby->game->words[i].word, "Test", sizeof(context.lobby->game->words[i].word) - 1);
+        context.lobby->game->words[i].word[sizeof(context.lobby->game->words[i].word) - 1] = '\0';
+        context.lobby->game->words[i].team = TEAM_NONE;
         context.lobby->game->words[i].revealed = 0;
-        context.lobby->game->words[i].gender = gender++; // 0 = homme, 1 = femme
+        context.lobby->game->words[i].gender = (gender++) % 2; 
     }
 
 
@@ -115,16 +145,10 @@ int main(int argc, char* argv[]) {
                 }
             }
             game_handle_event(&context, &e);
-            background_handle_event(&context, &e);
         }
-
-        // Couleur rouge pour le jeu
-        background_set_color(80, 30, 30);
-        SDL_Color bg = background_get_color();
-        SDL_SetRenderDrawColor(context.renderer, bg.r, bg.g, bg.b, bg.a);
+        
+        SDL_SetRenderDrawColor(context.renderer, 50, 50, 50, 255);
         SDL_RenderClear(context.renderer);
-
-        display_background(&context);
         game_render_cards(&context);
 
         // Post Rendu

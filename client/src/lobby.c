@@ -43,6 +43,11 @@ static void count_player_for_layout(const User* user, PlayerPlacementCounters* c
     if (!user || !counters) return;
 
     const char* name = user->name ? user->name : "Unknown";
+    if (user->role == ROLE_NONE) {
+        counters->nb_none++;
+        return;
+    }
+
     switch (user->team) {
         case TEAM_RED:
             user->role == ROLE_SPY ? counters->nb_red_spy++ : counters->nb_red_agent++;
@@ -63,6 +68,11 @@ static void advance_player_layout_index(const User* user, PlayerPlacementCounter
     if (!user || !counters) return;
 
     const char* name = user->name ? user->name : "Unknown";
+    if (user->role == ROLE_NONE) {
+        counters->i_none++;
+        return;
+    }
+
     switch (user->team) {
         case TEAM_RED:
             user->role == ROLE_SPY ? counters->i_red_spy++ : counters->i_red_agent++;

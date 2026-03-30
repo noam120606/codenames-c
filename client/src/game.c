@@ -43,6 +43,7 @@ static Text* txt_red_spy_label = NULL;
 static Text* txt_red_agents_label = NULL;
 
 static Text* txt_turn_label = NULL;
+static Text* txt_hint_display = NULL;
 
 /* Textes pour les noms de joueurs (max 8 par équipe) */
 #define MAX_TEAM_PLAYERS 8
@@ -101,6 +102,8 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
         /* Retirer le filtre audio en quittant game */
         audio_set_filter(MUSIC_MENU_LOBBY, AUDIO_FILTER_NONE, 0);
         context->app_state = APP_STATE_MENU;
+        context->player_role = ROLE_NONE;
+        context->player_team = TEAM_NONE;
 
         struct_lobby_init(context->lobby, -1, "");
         char msg[16];
@@ -321,6 +324,9 @@ int game_init(AppContext * context) {
 
     txt_turn_label = init_text(context, "", 
         create_text_config(FONT_LARABIE, 32, COL_WHITE, 0, 0, 0, 255));
+
+    txt_hint_display = init_text(context, "", 
+        create_text_config(FONT_LARABIE, 28, COL_WHITE, 0, 0, 0, 255));
 
     /* Textes pour les noms de joueurs */
     for (int i = 0; i < MAX_TEAM_PLAYERS; i++) {
@@ -768,10 +774,28 @@ void game_display(AppContext * context) {
                 button_render(context->renderer, btn_hint_submit);
             }
         } else {
-            update_text(context, txt_turn_label, turn_text);
-            update_text_color(context, txt_turn_label, color_text);
-            window_place_text(hint_window, txt_turn_label, 0, -16);
-            display_text(context, txt_turn_label);
+            /* Affichage du tour et de l'indice si disponible */
+            int has_hint = (context->lobby->game->current_hint[0] != '\0' && context->lobby->game->current_hint_count > 0);
+            
+            if (has_hint) {
+                /* Affichage de l'indice en grand */
+                char hint_text[128];
+                format_to(hint_text, sizeof(hint_text), "%s (%d)", 
+                    context->lobby->game->current_hint, 
+                    context->lobby->game->current_hint_count);
+                update_text(context, txt_hint_display, hint_text);
+                update_text_color(context, txt_hint_display, COL_WHITE);
+                window_place_text(hint_window, txt_hint_display, 0, -16);
+                hint_window->cfg->title = "L'indice est :";
+                hint_window->cfg->titlebar_color = color_text;
+                display_text(context, txt_hint_display);
+            } else {
+                /* Affichage du tour seulement */
+                update_text(context, txt_turn_label, turn_text);
+                update_text_color(context, txt_turn_label, color_text);
+                window_place_text(hint_window, txt_turn_label, 0, -16);
+                display_text(context, txt_turn_label);
+            }
         }
 
     }
@@ -816,6 +840,7 @@ int game_free() {
     destroy_text(txt_red_spy_label); txt_red_spy_label = NULL;
     destroy_text(txt_red_agents_label); txt_red_agents_label = NULL;
     destroy_text(txt_turn_label); txt_turn_label = NULL;
+    destroy_text(txt_hint_display); txt_hint_display = NULL;
 
     for (int i = 0; i < MAX_TEAM_PLAYERS; i++) {
         destroy_text(txt_blue_players[i]); txt_blue_players[i] = NULL;

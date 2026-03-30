@@ -5,8 +5,6 @@
 int main(int argc, char* argv[]) {
 
     const float target_fps = 60.0f;
-    char ip[16] = "127.0.0.1";
-    int port = 0;
     /* Nombre de frames avant fermeture automatique (0 pour désactiver)
      * - peut être configuré via la variable d'environnement CODENAMES_AUTOCLOSE_FRAMES
      * utile pour les tests de fuite mémoire afin de ne pas laisser la fenêtre ouverte indéfiniment.
@@ -52,9 +50,9 @@ int main(int argc, char* argv[]) {
 
     InputConfig* cfg_input = input_config_init();
     if (cfg_input) {
-        cfg_input->x = -500;
-        cfg_input->y = 500;
-        cfg_input->w = 250;
+        cfg_input->x = 0;
+        cfg_input->y = 0;
+        cfg_input->w = 300;
         cfg_input->h = 60;
         cfg_input->font_path = FONT_LARABIE;
         cfg_input->font_size = 28;
@@ -62,8 +60,15 @@ int main(int argc, char* argv[]) {
         cfg_input->maxlen = 16;
         cfg_input->bg_path = "assets/img/inputs/empty.png";
         cfg_input->bg_padding = 24;
-        inputs[0] = input_create(context.renderer, INPUT_ID_NAME, cfg_input);
+        inputs[0] = input_create(context.renderer, INPUT_NAME, cfg_input);
         free(cfg_input);
+    }
+
+    if (inputs[0]) {
+        const char* input = input_get_text(inputs[0]);
+        if (input && input[0] != '\0') {
+            input_submit(&context, inputs[0]);
+        }
     }
 
 
@@ -90,13 +95,16 @@ int main(int argc, char* argv[]) {
                     if (is_fs) toggle_fullscreen(&context);
                 }
             }
+            for (int i = 0; i < NB_INPUTS; i++) {
+                if (inputs[i]) input_handle_event(&context, inputs[i], &e);
+            }
         }
 
         SDL_SetRenderDrawColor(context.renderer, 50, 50, 50, 255);
         SDL_RenderClear(context.renderer);
 
         for (int i = 0; i < NB_INPUTS; i++) {
-            if (inputs[i]) input_render(&context, inputs[i]);
+            if (inputs[i]) input_render(context.renderer, inputs[i]);
         }
 
         // Post Rendu
