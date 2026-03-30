@@ -110,4 +110,15 @@ void shuffleWords(Word* words, int count);
  */
 int request_start_game(Codenames* codenames, TcpClient* client, char* message, Arguments args);
 
+/**
+ * Traite la soumission d'un indice par un espion.
+ * Le serveur redistribue l'indice à tous les autres joueurs du lobby.
+ * @param codenames Contexte principal du serveur.
+ * @param client Client TCP ayant envoyé la demande (l'espion).
+ * @param message Message brut reçu du client.
+ * @param args Arguments extraits du message (nb_hint, hint_word).
+ * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur.
+ */
+int request_submit_hint(Codenames* codenames, TcpClient* client, char* message, Arguments args);
+
 #endif // GAME_H

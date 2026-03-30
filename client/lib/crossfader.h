@@ -16,10 +16,9 @@ typedef struct AppContext AppContext;
 #define MAX_CROSSFADERS 32
 
 /**
- * Configuration pour créer un `Crossfader`.
+ * @brief Configuration pour créer un `Crossfader`.
  * Tous les champs ont des valeurs par défaut définies via `crossfader_config_init`.
  * La structure peut être modifiée à tout moment et passée à `crossfader_create`.
- * @
  */
 typedef struct CrossfaderConfig {
     /* --- champs configurables par l'utilisateur --- */
