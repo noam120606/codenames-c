@@ -786,8 +786,8 @@ void game_display(AppContext * context) {
                 update_text(context, txt_hint_display, hint_text);
                 update_text_color(context, txt_hint_display, COL_WHITE);
                 window_place_text(hint_window, txt_hint_display, 0, -16);
-                hint_window->cfg->title = "L'indice est :";
-                hint_window->cfg->titlebar_color = color_text;
+                window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)"L'indice est :");
+                window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&color_text);
                 display_text(context, txt_hint_display);
             } else {
                 /* Affichage du tour seulement */
