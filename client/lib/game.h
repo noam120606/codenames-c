@@ -11,6 +11,8 @@
 #include "../SDL2/include/SDL2/SDL_ttf.h"
 
 typedef struct AppContext AppContext;
+typedef struct Word Word;
+
 #include "../lib/button.h"
 
 #define NB_WORDS 25
@@ -30,20 +32,6 @@ typedef enum Team {
     TEAM_BLUE,
     TEAM_BLACK
 } Team;
-
-/**
- * Représente un mot dans la grille de Codenames.
- *
- * @param word texte du mot (terminé par \0).
- * @param team équipe à laquelle le mot appartient (TEAM_*).
- * @param revealed 0 si caché, 1 si révélé.
- */
-typedef struct {
-    char word[32];
-    Team team;
-    int gender;
-    int revealed;
-} Word;
 
 /**
  * État de l'application.
@@ -92,21 +80,6 @@ typedef struct {
     char current_hint[64];
     int current_hint_count;
 } Game;
-
-/**
- * Représente un mot dans la grille de Codenames.
- *
- * @param word texte du mot (terminé par \0).
- * @param team équipe à laquelle le mot appartient (TEAM_*).
- * @param revealed 0 si caché, 1 si révélé.
- * @param gender genre du mot (0 pour masculin, 1 pour féminin).
- */
-typedef struct Card {
-    char word[32];
-    Team team;
-    int revealed;
-    int gender;
-} Card;
 
 /**
  * Gère les événements du menu.

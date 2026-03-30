@@ -33,6 +33,12 @@ static const SDL_Color COL_MAGENTA = (SDL_Color){255, 0, 255, 255};
 #define FONT_NOTO "assets/fonts/NotoSansSymbols.ttf"
 #define FONT_BEBASKAI "assets/fonts/BebasKai.otf"
 
+typedef enum Booleen {
+    false,
+    true,
+} Booleen;
+
+#define NUM_CARDS 25
 
 /**
  * Calcule la longueur d'un entier en nombre de chiffres.
@@ -82,6 +88,8 @@ int levenshtein(const char* s1, const char* s2);
  * @return 1 si input contient card_word ou vice versa, 0 sinon.
  */
 int word_contains(const char* input, const char* card_word);
+
+#include "../lib/word.h"
 
 /**
  * Vérifie si un indice de mot est valide par rapport à une liste de mots de carte.

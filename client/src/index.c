@@ -201,6 +201,15 @@ int main(int argc, char* argv[]){
         cleanup_resources(resources);
         return EXIT_FAILURE;
     } else add_destroy_resource(resources, lobby_free);
+
+    int word_loading_fails = init_words(&context);
+    if (word_loading_fails > 0) {
+        printf("Failed to load %d word resource(s)\n", word_loading_fails);
+        word_free();
+        cleanup_resources(resources);
+        return EXIT_FAILURE;
+    } else add_destroy_resource(resources, word_free);
+
     int game_loading_fails = game_init(&context);
     if (game_loading_fails > 0) {
         printf("Failed to load %d game resource(s)\n", game_loading_fails);
