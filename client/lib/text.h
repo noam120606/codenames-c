@@ -9,14 +9,14 @@
 #include "sdl.h"
 
 /**
- * Configuration structure for text rendering.
- * @param font_path Path to the TTF font file.
- * @param font_size Size of the font.
- * @param color Color of the text.
- * @param x X position of the text.
- * @param y Y position of the text.
- * @param angle Rotation angle of the text.
- * @param opacity Opacity of the text.
+ * Structure de configuration pour le rendu de texte.
+ * @param font_path Chemin vers le fichier de police TTF.
+ * @param font_size Taille de la police.
+ * @param color Couleur du texte.
+ * @param x Position X du texte.
+ * @param y Position Y du texte.
+ * @param angle Angle de rotation du texte.
+ * @param opacity Opacité du texte.
  */
 typedef struct TextConfig {
     const char* font_path;
@@ -29,10 +29,10 @@ typedef struct TextConfig {
 } TextConfig;
 
 /**
- * Structure for rendering text.
- * @param content The string content of the text.
- * @param cfg Configuration settings for the text rendering.
- * @param texture The SDL_Texture used for rendering the text.
+ * Structure pour le rendu de texte.
+ * @param content Contenu textuel de la chaîne.
+ * @param cfg Paramètres de configuration pour le rendu du texte.
+ * @param texture Texture SDL utilisée pour le rendu du texte.
  */
 typedef struct Text {
     char* content;
@@ -41,85 +41,85 @@ typedef struct Text {
 } Text;
 
 /**
- * Load a TTF font.
- * @param font_path Path to the TTF font file.
- * @param size Size of the font.
- * @return Pointer to the loaded TTF_Font, or NULL on failure.
+ * Charge une police TTF.
+ * @param font_path Chemin vers le fichier de police TTF.
+ * @param size Taille de la police.
+ * @return Pointeur vers la police TTF_Font chargée, ou NULL en cas d'échec.
  */
 TTF_Font* load_font(const char* font_path, int size);
 
 /**
- * Create a text configuration.
- * @param font_path Path to the TTF font file.
- * @param size Size of the font.
- * @param color Color of the text.
- * @param x X position of the text.
- * @param y Y position of the text.
- * @param angle Rotation angle of the text.
- * @param opacity Opacity of the text.
- * @return A TextConfig structure initialized with the provided values.
+ * Crée une configuration de texte.
+ * @param font_path Chemin vers le fichier de police TTF.
+ * @param size Taille de la police.
+ * @param color Couleur du texte.
+ * @param x Position X du texte.
+ * @param y Position Y du texte.
+ * @param angle Angle de rotation du texte.
+ * @param opacity Opacité du texte.
+ * @return Structure TextConfig initialisée avec les valeurs fournies.
  */
 TextConfig create_text_config(const char* font_path, int size, SDL_Color color, int x, int y, double angle, Uint8 opacity);
 
 /**
- * Reload a text object.
- * @param context The application context.
- * @param text The text object to reload.
+ * Recharge un objet texte.
+ * @param context Contexte de l'application.
+ * @param text Objet texte à recharger.
  */
 void reload_text(AppContext* context, Text* text);
 
 /**
- * Create a text object.
- * @param content The string content of the text.
- * @param cfg Configuration settings for the text rendering.
- * @return A pointer to the created Text object, or NULL on failure.
+ * Crée un objet texte.
+ * @param content Contenu textuel de la chaîne.
+ * @param cfg Paramètres de configuration pour le rendu du texte.
+ * @return Pointeur vers l'objet Text créé, ou NULL en cas d'échec.
  */
 Text* create_text(const char* content, TextConfig cfg);
 
 /**
- * Initialize a text object.
- * @param context The application context.
- * @param content The string content of the text.
- * @param cfg Configuration settings for the text rendering.
- * @return A pointer to the initialized Text object, or NULL on failure.
+ * Initialise un objet texte.
+ * @param context Contexte de l'application.
+ * @param content Contenu textuel de la chaîne.
+ * @param cfg Paramètres de configuration pour le rendu du texte.
+ * @return Pointeur vers l'objet Text initialisé, ou NULL en cas d'échec.
  */
 Text* init_text(AppContext* context, const char* content, TextConfig cfg);
 
 /**
- * Update the content of a text object.
- * @param context The application context.
- * @param text The text object to update.
- * @param new_content The new content for the text object.
+ * Met à jour le contenu d'un objet texte.
+ * @param context Contexte de l'application.
+ * @param text Objet texte à mettre à jour.
+ * @param new_content Nouveau contenu pour l'objet texte.
  */
 void update_text(AppContext* context, Text* text, const char* new_content);
 
 /**
- * Update the position of a text object.
- * @param text The text object to update.
- * @param x The new X position of the text.
- * @param y The new Y position of the text.
+ * Met à jour la position d'un objet texte.
+ * @param text Objet texte à mettre à jour.
+ * @param x Nouvelle position X du texte.
+ * @param y Nouvelle position Y du texte.
  */
 void update_text_position(Text* text, int x, int y);
 
 /**
- * Update the color of a text object.
- * @param context The application context.
- * @param text The text object to update.
- * @param color The new color for the text object.
+ * Met à jour la couleur d'un objet texte.
+ * @param context Contexte de l'application.
+ * @param text Objet texte à mettre à jour.
+ * @param color Nouvelle couleur pour l'objet texte.
  */
 void update_text_color(AppContext* context, Text* text, SDL_Color color);
 
 /**
- * Display a text object.
- * @param context The application context.
- * @param text The text object to display.
+ * Affiche un objet texte.
+ * @param context Contexte de l'application.
+ * @param text Objet texte à afficher.
  */
 void display_text(AppContext* context, Text* text);
 
 /**
- * Destroy a text object.
- * @param text The text object to destroy.
- * @return 0 on success, -1 on failure.
+ * Détruit un objet texte et libère ses ressources.
+ * @param text Objet texte à détruire.
+ * @return 0 en cas de succès, -1 en cas d'échec.
  */
 int destroy_text(Text* text);
 

@@ -71,6 +71,7 @@ int lobby_init(AppContext* context);
 
 /**
  * Libère les ressources utilisées par le lobby.
+ * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE sinon.
  */
 int lobby_free();
 

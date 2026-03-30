@@ -86,6 +86,7 @@ char** fetchWords();
  * Génère un tableau de mots pour une partie.
  * Les mots sont sélectionnés aléatoirement et associés à une équipe.
  * @param count Le nombre de mots à générer.
+ * @param start_team L'équipe qui commence la partie.
  * @return Un tableau de Word contenant les mots générés,
  *         ou NULL en cas d'erreur. La gestion mémoire est à la
  *         charge de l'appelant.

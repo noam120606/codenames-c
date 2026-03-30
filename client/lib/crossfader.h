@@ -79,10 +79,15 @@ typedef enum CrfdCfgKey {
     CRFD_CFG_KNOB_TEXTURE,
 } CrfdCfgKey;
 
-/** Initialise une `CrossfaderConfig` avec des valeurs par défaut. */
+/**
+ * Initialise une `CrossfaderConfig` avec des valeurs par défaut.
+ * @return Pointeur vers la configuration allouée, ou NULL en cas d'échec.
+ */
 CrossfaderConfig* crossfader_config_init(void);
 
-/* Initialize crossfader subsystem */
+/**
+ * Initialise le sous-système des crossfaders.
+ */
 void crossfaders_init(void);
 
 /**
@@ -96,41 +101,52 @@ void crossfaders_init(void);
  */
 Crossfader* crossfader_create(SDL_Renderer* renderer, int id, const CrossfaderConfig* cfg);
 
-/* Render all registered crossfaders */
+/**
+ * Affiche tous les crossfaders enregistrés.
+ * @param renderer Renderer SDL.
+ */
 void crossfaders_render(SDL_Renderer* renderer);
 
-/** Handle events for all crossfaders (mouse motion, clicks). Must be called from the main event loop.
- * @param ctx SDL context, passed to callbacks.
- * @param event SDL event to handle.
+/**
+ * Gère les événements pour tous les crossfaders (mouvement de la souris, clics).
+ * Doit être appelé depuis la boucle principale d'événements.
+ * @param ctx Contexte SDL, passé aux callbacks.
+ * @param event Événement SDL à traiter.
  */
 void crossfaders_handle_event(AppContext* ctx, SDL_Event* event);
 
-/** Get crossfader by id.
- * @param id Crossfader id.
- * @return Pointer to the crossfader with the given id, or NULL if not found.
+/**
+ * Récupère un crossfader par son identifiant.
+ * @param id Identifiant du crossfader.
+ * @return Pointeur vers le crossfader avec l'id donné, ou NULL si non trouvé.
  */
 Crossfader* crossfader_get(int id);
 
-/** Get value of a crossfader by id.
- * @param id Crossfader id.
- * @return Value of the crossfader with the given id, or 0 if not found.
+/**
+ * Récupère la valeur d'un crossfader par son identifiant.
+ * @param id Identifiant du crossfader.
+ * @return Valeur du crossfader avec l'id donné, ou 0 si non trouvé.
  */
 int crossfader_get_value(int id);
+
 /** 
- * Set value of a crossfader by id. Will be clamped to [min, max] and trigger on_change if different from current value.
- * @param id Crossfader id.
- * @param value New value to set.
- * @return EXIT_SUCCESS if the value was set successfully, EXIT_FAILURE if the crossfader with the given id was not found.
+ * Définit la valeur d'un crossfader par son identifiant.
+ * La valeur sera limitée à [min, max] et déclenchera on_change si différente de la valeur actuelle.
+ * @param id Identifiant du crossfader.
+ * @param value Nouvelle valeur à définir.
+ * @return EXIT_SUCCESS si la valeur a été définie avec succès, EXIT_FAILURE si le crossfader n'a pas été trouvé.
  */
 int crossfader_set_value(int id, int value);
 
-/** Set callback for a crossfader.
- * @param cf Crossfader pointer.
- * @param cb Callback function.
+/**
+ * Définit le callback d'un crossfader.
+ * @param cf Pointeur vers le crossfader.
+ * @param cb Fonction callback à appeler lors du changement de valeur.
  */
 void crossfader_set_on_change(Crossfader* cf, void (*cb)(AppContext*, int));
 
-/** Free all crossfaders.
+/**
+ * Libère tous les crossfaders.
  */
 void crossfaders_free(void);
 

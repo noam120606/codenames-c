@@ -8,40 +8,41 @@
 
 /**
  * Initialise l'arrière-plan.
- * @param context The SDL context containing the renderer.
- * @return The number of loading failures (0 if successful).
+ * @param context Contexte SDL contenant le renderer.
+ * @return Nombre d'échecs de chargement (0 si succès).
  */
 int init_background(AppContext * context);
 
 /**
- * Display the background.
- * @param context The SDL context containing the renderer.
+ * Affiche l'arrière-plan.
+ * @param context Contexte SDL contenant le renderer.
  */
 void display_background(AppContext * context);
 
 /**
- * Handle a SDL event for the background (click cycles the symbol of the clicked tile).
- * @param context The SDL context.
- * @param e       The SDL event to process.
+ * Gère un événement SDL pour l'arrière-plan (le clic change le symbole de la tuile cliquée).
+ * @param context Contexte SDL.
+ * @param e Événement SDL à traiter.
  */
 void background_handle_event(AppContext* context, SDL_Event* e);
 
 /**
- * Destroy the background.
+ * Détruit l'arrière-plan et libère les ressources.
+ * @return 0 en cas de succès.
  */
 int destroy_background();
 
 /**
- * Set the background color.
- * @param r Red component (0-255)
- * @param g Green component (0-255)
- * @param b Blue component (0-255)
+ * Définit la couleur de l'arrière-plan.
+ * @param r Composante rouge (0-255).
+ * @param g Composante verte (0-255).
+ * @param b Composante bleue (0-255).
  */
 void background_set_color(Uint8 r, Uint8 g, Uint8 b);
 
 /**
- * Get the current background color.
- * @return The current SDL_Color of the background.
+ * Récupère la couleur actuelle de l'arrière-plan.
+ * @return Couleur SDL_Color de l'arrière-plan.
  */
 SDL_Color background_get_color(void);
 

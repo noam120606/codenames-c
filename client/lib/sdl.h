@@ -106,6 +106,7 @@ void toggle_fullscreen(AppContext* context);
 /**
  * Détruit la fenêtre et le renderer, et quitte SDL.
  * @param context Le AppContext à détruire.
+ * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur.
  */
 int destroy_context(AppContext* context);
 

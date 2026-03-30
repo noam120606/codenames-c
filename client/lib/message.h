@@ -59,17 +59,17 @@ typedef struct Arguments {
 } Arguments;
 
 /**
- * Extrait le type de message (HEADER) d'un message brut.
- * @param message message brut reçu du client.
- * @return le type de message extrait, ou MSG_UNKNOWN si le format est invalide.
+ * Extrait les arguments d'un message brut.
+ * @param message Message brut reçu du client.
+ * @return Structure Arguments contenant les arguments extraits.
  */
 Arguments parse_arguments(char* message);
 
 /**
  * Traite un message reçu du serveur.
- * @param context contexte SDL du client, nécessaire pour certaines opérations (ex: mise à jour de l'interface).
- * @param message message brut reçu du serveur.
- * @return `EXIT_SUCCESS` en cas de succès, `EXIT_FAILURE` en cas d'erreur.
+ * @param context Contexte SDL du client, nécessaire pour certaines opérations (ex: mise à jour de l'interface).
+ * @param message Message brut reçu du serveur.
+ * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur.
  */
 int on_message(AppContext* context, char* message);
 

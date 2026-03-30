@@ -37,6 +37,8 @@ static const SDL_Color COL_MAGENTA = (SDL_Color){255, 0, 255, 255};
 
 /**
  * Calcule la longueur d'un entier en nombre de chiffres.
+ * @param n Entier à analyser.
+ * @return Nombre de chiffres nécessaires pour représenter n.
  */
 int number_length(int n);
 
@@ -53,37 +55,40 @@ int format_to(char *buf, size_t size, const char *fmt, ...);
 /**
  * Convertit un entier en chaîne (API historique Linux).
  * Retourne un buffer statique (non thread-safe).
+ * @param value Entier à convertir.
+ * @return Pointeur vers la chaîne représentant l'entier.
  */
 char* itoa(int value);
 #endif
 
 /**
- * Retourne un nom d'utilisateur aléatoire (alloué, doit être free()).
+ * Retourne un nom d'utilisateur aléatoire.
  * Lit le fichier `assets/misc/usernames.txt`.
+ * @return Pointeur vers le nom (alloué dynamiquement, doit être free()).
  */
 char* getRandomUsername(void);
 
 /**
- * Calcule la distance de Levenshtein entre deux chaînes (insensible à la casse)
- * @param s1 Première chaîne
- * @param s2 Deuxième chaîne
- * @return Distance de Levenshtein (0 = identique, plus c'est grand plus c'est différent)
+ * Calcule la distance de Levenshtein entre deux chaînes (insensible à la casse).
+ * @param s1 Première chaîne.
+ * @param s2 Deuxième chaîne.
+ * @return Distance de Levenshtein (0 = identique, plus c'est grand plus c'est différent).
  */
 int levenshtein(const char* s1, const char* s2);
 
 /**
- * Vérifie si un mot contient un autre mot (sous-chaîne, insensible à la casse)
- * @param input Le mot entré
- * @param card_word Le mot de la carte
- * @return 1 si input contient card_word ou vice versa, 0 sinon
+ * Vérifie si un mot contient un autre mot (sous-chaîne, insensible à la casse).
+ * @param input Le mot entré.
+ * @param card_word Le mot de la carte.
+ * @return 1 si input contient card_word ou vice versa, 0 sinon.
  */
 int word_contains(const char* input, const char* card_word);
 
 /**
- * Vérifie si un indice de mot est valide par rapport à une liste de mots de carte
- * @param hint Le mot à vérifier
- * @param card_words La liste des mots de carte
- * @return 1 si le mot est valide, 0 sinon
+ * Vérifie si un indice de mot est valide par rapport à une liste de mots de carte.
+ * @param hint Le mot à vérifier.
+ * @param card_words La liste des mots de carte.
+ * @return 1 si le mot est valide, 0 sinon.
  */
 int valid_hint(const char* hint, Word card_words[NB_WORDS]);
 

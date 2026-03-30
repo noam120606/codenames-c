@@ -10,12 +10,12 @@
 #include "../lib/message.h"
 
 /**
- * Handle a request for a UUID.
- * @param codenames The Codenames instance.
- * @param client The client requesting the UUID.
- * @param message The message containing the request.
- * @param args The arguments for the request.
- * @return EXIT_SUCCESS on success, or EXIT_FAILURE on error.
+ * Traite une requête d'UUID d'un client.
+ * @param codenames Instance du serveur Codenames.
+ * @param client Client demandant l'UUID.
+ * @param message Message contenant la requête.
+ * @param args Arguments de la requête.
+ * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur.
  */
 int request_uuid(Codenames* codenames, TcpClient* client, char* message, Arguments args);
 

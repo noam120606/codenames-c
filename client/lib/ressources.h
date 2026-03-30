@@ -11,14 +11,15 @@
 #define MAX_RESOURCES 16
 
 /**
- * Typedef pour la fonction callback d'un bouton.
- * @param button_id L'ID du bouton qui a été cliqué.
+ * Typedef pour la fonction de destruction de ressource.
+ * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE sinon.
  */
 typedef int(*DestroyFunction)(void);
 
 /**
- * Typedef pour la fonction callback de destruction du contexte SDL.
+ * Typedef pour la fonction de destruction du contexte SDL.
  * @param context Le contexte SDL à détruire.
+ * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE sinon.
  */
 typedef int(*DestroyContext)(AppContext*);
 
