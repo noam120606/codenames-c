@@ -167,3 +167,69 @@ int request_start_game(Codenames* codenames, TcpClient* client, char* message, A
 
     return EXIT_SUCCESS;
 }
+
+int request_submit_hint(Codenames* codenames, TcpClient* client, char* message, Arguments args) {
+    (void)message;
+    
+    // Vérifie que le client est bien dans un lobby
+    Lobby* lobby = find_lobby_by_playerid(codenames->lobby, client->id);
+    if (!lobby) {
+        printf("Client %d is not in a lobby\n", client->id);
+        char msg[64];
+        format_to(msg, sizeof(msg), "%d %s", MSG_SERVER_ERROR, "You must be in a lobby to submit a hint");
+        tcp_send_to_client(codenames, client->id, msg);
+        return EXIT_FAILURE;
+    }
+
+    // Vérifie que le lobby est bien en partie
+    if (lobby->status != LB_STATUS_IN_GAME || !lobby->game) {
+        printf("Lobby %d is not in game\n", lobby->id);
+        char msg[64];
+        format_to(msg, sizeof(msg), "%d %s", MSG_SERVER_ERROR, "No game in progress");
+        tcp_send_to_client(codenames, client->id, msg);
+        return EXIT_FAILURE;
+    }
+
+    // Vérifie que c'est bien le tour d'un espion
+    if (lobby->game->state != GAMESTATE_TURN_RED_SPY && lobby->game->state != GAMESTATE_TURN_BLUE_SPY) {
+        printf("It's not the spy's turn in lobby %d\n", lobby->id);
+        char msg[64];
+        format_to(msg, sizeof(msg), "%d %s", MSG_SERVER_ERROR, "It's not the spy's turn");
+        tcp_send_to_client(codenames, client->id, msg);
+        return EXIT_FAILURE;
+    }
+
+    // Vérifie les arguments: nb_hint et hint_word
+    if (args.argc < 2) {
+        printf("Invalid submit hint from client %d: \"%s\"\n", client->id, message);
+        char msg[64];
+        format_to(msg, sizeof(msg), "%d %s", MSG_SERVER_ERROR, "Invalid hint format");
+        tcp_send_to_client(codenames, client->id, msg);
+        return EXIT_FAILURE;
+    }
+
+    int nb_hint = atoi((char*)args.argv[0]);
+    char* hint_word = (char*)args.argv[1];
+
+    printf("Client %d submitted hint: %s (%d)\n", client->id, hint_word, nb_hint);
+
+    // Change le gamestate de SPY à AGENT
+    GameState new_state;
+    if (lobby->game->state == GAMESTATE_TURN_RED_SPY) {
+        new_state = GAMESTATE_TURN_RED_AGENT;
+    } else {
+        new_state = GAMESTATE_TURN_BLUE_AGENT;
+    }
+    lobby->game->state = new_state;
+
+    printf("Game state changed to %d in lobby %d\n", new_state, lobby->id);
+
+    // Diffuse l'indice et le nouveau gamestate à tous les joueurs du lobby
+    char msg[128];
+    format_to(msg, sizeof(msg), "%d %d %s %d", MSG_SUBMIT_HINT, nb_hint, hint_word, new_state);
+    for (int i = 0; i < lobby->nb_players; i++) {
+        tcp_send_to_client(codenames, lobby->users[i]->id, msg);
+    }
+
+    return EXIT_SUCCESS;
+}

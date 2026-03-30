@@ -77,11 +77,15 @@ typedef enum GameState {
  * @param words tableau dynamique de Word (taille nb_words).
  * @param nb_words nombre de mots dans la grille.
  * @param state état courant de la partie (GAMESTATE_*).
+ * @param current_hint mot indice actuel donné par l'espion.
+ * @param current_hint_count nombre de mots associés à l'indice actuel.
  */
 typedef struct {
     Word* words;
     int nb_words;
     GameState state;
+    char current_hint[64];
+    int current_hint_count;
 } Game;
 
 /**

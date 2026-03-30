@@ -158,6 +158,8 @@ int on_message(AppContext* context, char* message) {
             }
             game->state = (GameState)atoi((char*)args.argv[0]);
             game->nb_words = atoi((char*)args.argv[1]);
+            game->current_hint[0] = '\0';
+            game->current_hint_count = 0;
             printf("Starting game with state %d and %d words\n", game->state, game->nb_words);
             game->words = (Word*)malloc(sizeof(Word) * game->nb_words);
             if (!game->words) {
@@ -199,16 +201,25 @@ int on_message(AppContext* context, char* message) {
         }
 
         case MSG_SUBMIT_HINT: {
-            if (args.argc < 2) {
+            if (args.argc < 3) {
                 printf("Invalid submit hint message from server: \"%s\"\n", message);
                 if (args.argv) free(args.argv);
                 return EXIT_FAILURE;
             }
 
-            char* hint = (char*)args.argv[0];
-            int nb_guesses = atoi((char*)args.argv[1]);
+            int nb_guesses = atoi((char*)args.argv[0]);
+            char* hint = (char*)args.argv[1];
+            GameState new_state = (GameState)atoi((char*)args.argv[2]);
 
-            printf("Hint submitted: %s with %d guesses\n", hint, nb_guesses);
+            printf("Hint received: %s with %d guesses, new state: %d\n", hint, nb_guesses, new_state);
+
+            // Stocker l'indice et mettre à jour le gamestate
+            if (context->lobby && context->lobby->game) {
+                strncpy(context->lobby->game->current_hint, hint, sizeof(context->lobby->game->current_hint) - 1);
+                context->lobby->game->current_hint[sizeof(context->lobby->game->current_hint) - 1] = '\0';
+                context->lobby->game->current_hint_count = nb_guesses;
+                context->lobby->game->state = new_state;
+            }
             
             break;
         }
