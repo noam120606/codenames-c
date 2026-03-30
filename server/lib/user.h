@@ -1,3 +1,8 @@
+/**
+ * @file user.h
+ * @brief Représentation d'un joueur connecté côté serveur.
+ */
+
 #ifndef USER_H
 #define USER_H
 

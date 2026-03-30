@@ -1,3 +1,7 @@
+/**
+ * @file button.h
+ * @brief Gestion des boutons interactifs de l'interface graphique.
+ */
 
 #ifndef BUTTON_H
 #define BUTTON_H

@@ -1,3 +1,8 @@
+/**
+ * @file all.h
+ * @brief En-tête principal regroupant tous les includes du serveur.
+ */
+
 #ifndef ALL_H
 #define ALL_H
 

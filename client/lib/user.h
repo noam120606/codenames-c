@@ -1,3 +1,8 @@
+/**
+ * @file user.h
+ * @brief Représentation d'un joueur et gestion des rôles/équipes.
+ */
+
 #ifndef USER_H
 #define USER_H
 

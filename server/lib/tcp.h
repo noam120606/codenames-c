@@ -1,3 +1,8 @@
+/**
+ * @file tcp.h
+ * @brief Serveur TCP et gestion des connexions clients.
+ */
+
 #ifndef TCP_H
 #define TCP_H
 
@@ -76,10 +81,28 @@ void tcp_server_tick(Codenames* codenames);
  */
 int tcp_send_to_client(Codenames* codenames, int client_id, const char* message);
 
-/* Callbacks (à override si besoin) */
+/* Callbacks (à surcharger si besoin) */
 
+/**
+ * Callback appelé lors de la connexion d'un client.
+ * @param codenames Contexte principal du serveur.
+ * @param client Client qui vient de se connecter.
+ */
 void tcp_on_client_connect(Codenames* codenames, TcpClient* client);
+
+/**
+ * Callback appelé lors de la déconnexion d'un client.
+ * @param codenames Contexte principal du serveur.
+ * @param client Client qui vient de se déconnecter.
+ */
 void tcp_on_client_disconnect(Codenames* codenames, TcpClient* client);
+
+/**
+ * Callback appelé lors de la réception d'un message d'un client.
+ * @param codenames Contexte principal du serveur.
+ * @param client Client ayant envoyé le message.
+ * @param message Message reçu.
+ */
 void tcp_on_client_message(Codenames* codenames, TcpClient* client, char* message);
 
 #endif // TCP_H
