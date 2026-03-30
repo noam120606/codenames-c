@@ -1,3 +1,8 @@
+/**
+ * @file codenames.h
+ * @brief Structure principale du serveur Codenames.
+ */
+
 #ifndef CODENAMES_H
 #define CODENAMES_H
 

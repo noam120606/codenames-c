@@ -1,3 +1,8 @@
+/**
+ * @file game.h
+ * @brief Définitions et structures pour la gestion de la partie de Codenames côté client.
+ */
+
 #ifndef GAME_H
 #define GAME_H
 
@@ -135,6 +140,12 @@ void game_handle_event(AppContext * context, SDL_Event * event);
  * @param context Contexte SDL.
  */
 void game_display(AppContext * context);
+
+/**
+ * Rendu des cartes du jeu.
+ * @param context Contexte SDL.
+ */
+void game_render_cards(AppContext * context);
 
 
 #endif // GAME_H

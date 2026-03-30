@@ -1,3 +1,8 @@
+/**
+ * @file input.h
+ * @brief Gestion des champs de saisie de texte interactifs.
+ */
+
 #ifndef INPUT_H
 #define INPUT_H
 
@@ -167,7 +172,10 @@ typedef enum InputCfgKey {
 
 
 
-/** Initialise une `InputConfig` avec des valeurs par défaut. */
+/**
+ * Initialise une `InputConfig` avec des valeurs par défaut.
+ * @return Pointeur vers la configuration allouée, ou NULL en cas d'échec.
+ */
 InputConfig* input_config_init();
 
 /**

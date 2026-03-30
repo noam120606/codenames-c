@@ -1,3 +1,8 @@
+/**
+ * @file utils.h
+ * @brief Fonctions utilitaires du serveur (aléatoire, formatage, UUID).
+ */
+
 #ifndef UTILS_H
 #define UTILS_H
 

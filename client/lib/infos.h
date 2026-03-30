@@ -1,3 +1,8 @@
+/**
+ * @file infos.h
+ * @brief Affichage des informations à l'écran (FPS, ping, volume).
+ */
+
 #ifndef INFOS_H
 #define INFOS_H
 
@@ -52,6 +57,7 @@ void fps_ping_display(AppContext* context, int display_x);
 
 /**
  * Libère les ressources utilisées pour l'affichage des informations.
+ * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur.
  */
 int infos_free();
 

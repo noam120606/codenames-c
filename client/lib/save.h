@@ -1,3 +1,8 @@
+/**
+ * @file save.h
+ * @brief Gestion de la sauvegarde et lecture des propriétés du joueur.
+ */
+
 #ifndef SAVE_H
 #define SAVE_H
 
@@ -6,25 +11,25 @@
 #include <string.h>
 
 /**
- * Opens the properties file with the given mode.
- * @param mode The mode to open the file with (e.g., "r" for read, "w" for write).
- * @return A pointer to the opened file, or NULL on failure.
+ * Ouvre le fichier de propriétés avec le mode spécifié.
+ * @param mode Mode d'ouverture du fichier (ex: "r" pour lecture, "w" pour écriture).
+ * @return Pointeur vers le fichier ouvert, ou NULL en cas d'échec.
  */
 FILE* open_properties(const char* mode);
 
 /**
- * Reads a property from the properties file.
- * @param buf The buffer to store the property value.
- * @param property The name of the property to read.
- * @return EXIT_SUCCESS on success, or EXIT_FAILURE on error.
+ * Lit une propriété depuis le fichier de propriétés.
+ * @param buf Buffer pour stocker la valeur de la propriété.
+ * @param property Nom de la propriété à lire.
+ * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur.
  */
 int read_property(char* buf, const char* property);
 
 /**
- * Writes a property to the properties file.
- * @param property The name of the property to write.
- * @param value The value of the property to write.
- * @return EXIT_SUCCESS on success, or EXIT_FAILURE on error.
+ * Écrit une propriété dans le fichier de propriétés.
+ * @param property Nom de la propriété à écrire.
+ * @param value Valeur de la propriété à écrire.
+ * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur.
  */
 int write_property(const char* property, const char* value);
 

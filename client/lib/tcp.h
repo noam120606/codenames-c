@@ -1,10 +1,15 @@
+/**
+ * @file tcp.h
+ * @brief Communication TCP avec le serveur de jeu.
+ */
+
 #ifndef TCP_H
 #define TCP_H
 
 #include "sdl.h"
 
 /**
- *  Initialise une connexion TCP vers le serveur.
+ * Initialise une connexion TCP vers le serveur.
  * @param server_ip Adresse IP du serveur.
  * @param port Port du serveur.
  * @return Descripteur de socket, ou valeur négative en cas d'erreur.
@@ -13,8 +18,8 @@ int init_tcp(const char* server_ip, int port);
 
 /**
  * Traite les événements réseau côté client (réception, etc.).
- * @param sock Descripteur de socket.
- * @return `EXIT_SUCCESS` en cas de succès, `EXIT_FAILURE` en cas d'erreur.
+ * @param context Contexte de l'application.
+ * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur.
  */
 int tick_tcp(AppContext* context);
 

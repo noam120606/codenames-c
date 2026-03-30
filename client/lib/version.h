@@ -1,3 +1,8 @@
+/**
+ * @file version.h
+ * @brief Gestion de la version du client.
+ */
+
 #ifndef VERSION_H
 #define VERSION_H
 

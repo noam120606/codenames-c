@@ -1,3 +1,8 @@
+/**
+ * @file audio.h
+ * @brief Gestion du système audio du client (musiques, effets sonores, filtres).
+ */
+
 #ifndef AUDIO_H
 #define AUDIO_H
 
