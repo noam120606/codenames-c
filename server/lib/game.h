@@ -1,3 +1,8 @@
+/**
+ * @file game.h
+ * @brief Logique de la partie de Codenames côté serveur.
+ */
+
 #ifndef GAME_H
 #define GAME_H
 

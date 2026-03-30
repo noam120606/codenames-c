@@ -1,4 +1,7 @@
-
+/**
+ * @file chat.h
+ * @brief Gestion du système de chat en jeu côté client.
+ */
 
 #ifndef CLIENT_CHAT_H
 #define CLIENT_CHAT_H

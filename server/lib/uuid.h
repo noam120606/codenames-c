@@ -1,3 +1,8 @@
+/**
+ * @file uuid.h
+ * @brief Gestion des identifiants uniques (UUID) des joueurs.
+ */
+
 #ifndef UUID_H
 #define UUID_H
 

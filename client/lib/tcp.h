@@ -1,3 +1,8 @@
+/**
+ * @file tcp.h
+ * @brief Communication TCP avec le serveur de jeu.
+ */
+
 #ifndef TCP_H
 #define TCP_H
 

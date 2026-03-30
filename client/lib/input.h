@@ -1,3 +1,8 @@
+/**
+ * @file input.h
+ * @brief Gestion des champs de saisie de texte interactifs.
+ */
+
 #ifndef INPUT_H
 #define INPUT_H
 

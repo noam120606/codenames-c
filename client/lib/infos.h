@@ -1,3 +1,8 @@
+/**
+ * @file infos.h
+ * @brief Affichage des informations à l'écran (FPS, ping, volume).
+ */
+
 #ifndef INFOS_H
 #define INFOS_H
 

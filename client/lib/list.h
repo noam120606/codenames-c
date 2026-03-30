@@ -1,3 +1,8 @@
+/**
+ * @file list.h
+ * @brief Implémentation d'une liste chaînée générique.
+ */
+
 #ifndef LIST_H
 #define LIST_H
 

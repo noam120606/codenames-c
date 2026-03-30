@@ -1,3 +1,8 @@
+/**
+ * @file menu.h
+ * @brief Gestion du menu principal du jeu.
+ */
+
 #ifndef MENU_H
 #define MENU_H
 

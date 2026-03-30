@@ -1,3 +1,8 @@
+/**
+ * @file regex_compat.h
+ * @brief Couche de compatibilité pour les expressions régulières (POSIX/Windows).
+ */
+
 #ifndef REGEX_COMPAT_H
 #define REGEX_COMPAT_H
 

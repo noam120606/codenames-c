@@ -1,3 +1,8 @@
+/**
+ * @file utils.h
+ * @brief Fonctions utilitaires diverses (formatage, couleurs, chaînes).
+ */
+
 #ifndef UTILS_H
 #define UTILS_H
 

@@ -1,3 +1,8 @@
+/**
+ * @file crossfader.h
+ * @brief Gestion des curseurs de réglage (volume, paramètres).
+ */
+
 #ifndef CROSSFADER_H
 #define CROSSFADER_H
 

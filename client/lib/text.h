@@ -1,3 +1,8 @@
+/**
+ * @file text.h
+ * @brief Rendu et gestion du texte à l'écran.
+ */
+
 #ifndef TEXT_H
 #define TEXT_H
 

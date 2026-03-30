@@ -1,3 +1,8 @@
+/**
+ * @file message.h
+ * @brief Définition des types de messages et traitement des messages réseau côté serveur.
+ */
+
 #ifndef MESSAGE_H
 #define MESSAGE_H
 

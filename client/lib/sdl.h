@@ -1,3 +1,8 @@
+/**
+ * @file sdl.h
+ * @brief Initialisation SDL et contexte principal de l'application.
+ */
+
 #ifndef SDL_H
 #define SDL_H
 

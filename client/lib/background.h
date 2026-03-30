@@ -1,8 +1,13 @@
+/**
+ * @file background.h
+ * @brief Gestion de l'arrière-plan animé du client.
+ */
+
 #ifndef BACKGROUND_H
 #define BACKGROUND_H
 
 /**
- * Initialize the background.
+ * Initialise l'arrière-plan.
  * @param context The SDL context containing the renderer.
  * @return The number of loading failures (0 if successful).
  */

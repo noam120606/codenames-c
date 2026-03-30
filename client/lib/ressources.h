@@ -1,3 +1,8 @@
+/**
+ * @file ressources.h
+ * @brief Gestionnaire de ressources et libération mémoire automatique.
+ */
+
 #ifndef RESSOURCES_H
 #define RESSOURCES_H
 

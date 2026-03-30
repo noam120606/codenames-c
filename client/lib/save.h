@@ -1,3 +1,8 @@
+/**
+ * @file save.h
+ * @brief Gestion de la sauvegarde et lecture des propriétés du joueur.
+ */
+
 #ifndef SAVE_H
 #define SAVE_H
 

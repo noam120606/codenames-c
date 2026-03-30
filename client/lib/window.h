@@ -1,3 +1,8 @@
+/**
+ * @file window.h
+ * @brief Gestion des fenêtres UI (pop-ups, panneaux déplaçables).
+ */
+
 #ifndef WINDOW_H
 #define WINDOW_H
 

@@ -1,3 +1,8 @@
+/**
+ * @file lobby.h
+ * @brief Gestion du lobby (salle d'attente avant la partie) côté client.
+ */
+
 #ifndef LOBBY_H
 #define LOBBY_H
 

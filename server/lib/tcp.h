@@ -1,3 +1,8 @@
+/**
+ * @file tcp.h
+ * @brief Serveur TCP et gestion des connexions clients.
+ */
+
 #ifndef TCP_H
 #define TCP_H
 
