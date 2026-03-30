@@ -35,6 +35,7 @@ static void code_on_submit(AppContext* context, const char* text) {
         format_to(trame, sizeof(trame), "%d %s %s", MSG_JOINLOBBY, text, context->player_name ? context->player_name : "NONE");
         send_tcp(context->sock, trame);
         context->player_role = ROLE_NONE;
+        context->player_team = TEAM_NONE;
     }
 }
 
@@ -58,6 +59,7 @@ ButtonReturn menu_button_click(AppContext* context, Button* button) {
         format_to(trame, sizeof(trame), "%d %s", MSG_CREATELOBBY, context->player_name ? context->player_name : "NONE");
         send_tcp(context->sock, trame);
         context->player_role = ROLE_NONE;
+        context->player_team = TEAM_NONE;
     } else if (button == btn_quit) {
         return BTN_RET_QUIT;
     }

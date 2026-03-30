@@ -101,6 +101,8 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
         /* Retirer le filtre audio en quittant game */
         audio_set_filter(MUSIC_MENU_LOBBY, AUDIO_FILTER_NONE, 0);
         context->app_state = APP_STATE_MENU;
+        context->player_role = ROLE_NONE;
+        context->player_team = TEAM_NONE;
 
         struct_lobby_init(context->lobby, -1, "");
         char msg[16];
