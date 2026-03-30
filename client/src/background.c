@@ -16,7 +16,7 @@ static SDL_Color bg_color = {50, 50, 50, 255};
 #define BG_TILE_H    (BG_SYMBOL_H + BG_SPACING)
 #define BG_EXTRA     15
 #define BG_SPEED     0.55f
-#define BG_SPEED_LOBBY_FACTOR 0.67f
+#define BG_SPEED_LOBBY_FACTOR 0.6f
 #define BG_SIZE      0.12f
 #define BG_ANIM_FRAMES 14
 #define BG_ANIM_POP    0.18f
