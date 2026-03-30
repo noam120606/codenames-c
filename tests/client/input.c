@@ -45,23 +45,30 @@ int main(int argc, char* argv[]) {
     }
 
     /* Initialisation des inputs pour les tests */
-    #define NB_INPUTS 1
+    #define NB_INPUTS 7
     Input* inputs[NB_INPUTS] = { NULL };
+
+
+    int input_height_indice = 0;
+    int nb_input = NB_INPUTS;
+    while(nb_input>=4){
+        nb_input-=4;
+        input_height_indice++;
+    }
 
     InputConfig* cfg_input = input_config_init();
     if (cfg_input) {
-        cfg_input->x = 0;
-        cfg_input->y = 0;
-        cfg_input->w = 300;
+        cfg_input->x = 20-WIN_WIDTH/2;
+        cfg_input->y = (cfg_input->h+40*input_height_indice)/2;
+        cfg_input->w = (WIN_WIDTH/4)-40;
         cfg_input->h = 60;
         cfg_input->font_path = FONT_LARABIE;
         cfg_input->font_size = 28;
-        cfg_input->submitted_label = "Input 1 : ";
+        cfg_input->submitted_label = "Input 0 : ";
         cfg_input->maxlen = 16;
         cfg_input->bg_path = "assets/img/inputs/empty.png";
         cfg_input->bg_padding = 24;
         inputs[0] = input_create(context.renderer, INPUT_NAME, cfg_input);
-        free(cfg_input);
     }
 
     if (inputs[0]) {
@@ -71,6 +78,30 @@ int main(int argc, char* argv[]) {
         }
     }
 
+    InputConfig* cfg_input_suivant;
+
+    for (int i = 1; i < NB_INPUTS; i++) {
+        cfg_input_suivant = cfg_input;
+        if (cfg_input_suivant) {
+            cfg_input_suivant->x += WIN_WIDTH/4 + 20;
+            if ((cfg_input_suivant->x + cfg_input_suivant->w) > WIN_WIDTH/2) {
+                cfg_input_suivant->x = 20-WIN_WIDTH/2;
+                cfg_input_suivant->y -= cfg_input_suivant->h - 20;
+            }
+            char * text_input = malloc(32);
+            sprintf(text_input, "Input %d : ", i);
+            cfg_input_suivant->submitted_label = text_input;
+            inputs[i] = input_create(context.renderer, INPUT_NAME, cfg_input_suivant);
+        }
+
+        if (inputs[i]) {
+            const char* input = input_get_text(inputs[i]);
+            if (input && input[0] != '\0') {
+                input_submit(&context, inputs[i ]);
+            }
+        }
+    }
+    free(cfg_input_suivant);
 
     SDL_Event e;
     int running = 1;

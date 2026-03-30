@@ -329,8 +329,9 @@ int audio_play_with_fade(
         return EXIT_FAILURE;
     }
 
+    int effective_volume = compute_effective_volume(id);
     int channel = -1;
-    if (fade_in_ms > 0 && fade_type == AUDIO_FADE_IN_BY_VOLUME) {
+    if (fade_in_ms > 0 && fade_type == AUDIO_FADE_IN_BY_VOLUME && effective_volume > 0) {
         channel = Mix_FadeInChannel(-1, sounds[id], loops, fade_in_ms);
     } else {
         channel = Mix_PlayChannel(-1, sounds[id], loops);
@@ -348,7 +349,7 @@ int audio_play_with_fade(
 
     sound_channels[id] = channel;
     channel_sound_ids[channel] = id;
-    Mix_Volume(channel, compute_effective_volume(id));
+    Mix_Volume(channel, effective_volume);
 
     if (fade_in_ms <= 0 || fade_type == AUDIO_FADE_IN_BY_VOLUME) {
         apply_channel_filter(channel, id);

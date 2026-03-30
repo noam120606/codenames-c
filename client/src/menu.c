@@ -148,7 +148,6 @@ int menu_init(AppContext * context) {
         cfg_in_name->on_submit = name_on_submit;
         cfg_in_name->allowed_pattern = "^[a-zA-Z0-9_é]*$"; // Autoriser uniquement les caractères alphanumériques et les underscores
         cfg_in_name->submit_pattern = "^[a-zA-Z0-9_é]{3,16}$";
-        cfg_in_name->submit_sound = "assets/audio/sfx/input/submit.ogg";
         cfg_in_name->bg_path = "assets/img/inputs/empty.png";
         cfg_in_name->bg_padding = 24;
         name_input = input_create(context->renderer, INPUT_NAME, cfg_in_name);
@@ -202,6 +201,12 @@ int menu_init(AppContext * context) {
                 fclose(uf);
             }
         }
+    }
+
+    // Après le chargement du nom du joueur dans l'input, on change la config du son de soumission pour éviter de jouer le son à chaque lancement du menu (car le nom est automatiquement soumis au chargement s'il existe).
+    if (name_input) {
+        printf("Setting submit sound for name input\n");
+        edit_in_cfg(INPUT_NAME, IN_CFG_SUBMIT_SOUND, (intptr_t)"assets/audio/sfx/input/submit.ogg");
     }
 
     static const char* code_placeholders[] = {"CODE"};
