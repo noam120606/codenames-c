@@ -14,6 +14,24 @@ static Input* input_find_by_id(InputId id) {
 
 static void input_clear_selection_internal(Input* in);
 
+static int utf8_is_continuation_byte(unsigned char c) {
+    return (c & 0xC0) == 0x80;
+}
+
+static int utf8_prev_char_pos(const char* text, int pos) {
+    if (!text || pos <= 0) return 0;
+    int i = pos - 1;
+    while (i > 0 && utf8_is_continuation_byte((unsigned char)text[i])) i--;
+    return i;
+}
+
+static int utf8_next_char_pos(const char* text, int len, int pos) {
+    if (!text || pos >= len) return len;
+    int i = pos + 1;
+    while (i < len && utf8_is_continuation_byte((unsigned char)text[i])) i++;
+    return i;
+}
+
 static int regex_match_text(const char* pattern, const char* text) {
     if (!pattern || !text) return 1;
 
@@ -397,9 +415,12 @@ void input_handle_event(AppContext* context, Input* in, SDL_Event* e) {
                 }
             } else {
                 if (in->cfg->cursor_pos > 0 && in->cfg->len > 0) {
-                    memmove(in->cfg->text + in->cfg->cursor_pos - 1, in->cfg->text + in->cfg->cursor_pos, in->cfg->len - in->cfg->cursor_pos + 1);
-                    in->cfg->cursor_pos--;
-                    in->cfg->len--;
+                    int np = utf8_prev_char_pos(in->cfg->text, in->cfg->cursor_pos);
+                    int del = in->cfg->cursor_pos - np;
+                    memmove(in->cfg->text + np, in->cfg->text + in->cfg->cursor_pos, in->cfg->len - in->cfg->cursor_pos + 1);
+                    in->cfg->cursor_pos = np;
+                    in->cfg->len -= del;
+                    in->cfg->text[in->cfg->len] = '\0';
                 }
             }
             input_clear_selection_internal(in);
@@ -416,8 +437,10 @@ void input_handle_event(AppContext* context, Input* in, SDL_Event* e) {
                 }
             } else {
                 if (in->cfg->cursor_pos < in->cfg->len && in->cfg->len > 0) {
-                    memmove(in->cfg->text + in->cfg->cursor_pos, in->cfg->text + in->cfg->cursor_pos + 1, in->cfg->len - in->cfg->cursor_pos);
-                    in->cfg->len--;
+                    int np = utf8_next_char_pos(in->cfg->text, in->cfg->len, in->cfg->cursor_pos);
+                    int del = np - in->cfg->cursor_pos;
+                    memmove(in->cfg->text + in->cfg->cursor_pos, in->cfg->text + np, in->cfg->len - np + 1);
+                    in->cfg->len -= del;
                     in->cfg->text[in->cfg->len] = '\0';
                 }
             }
@@ -425,7 +448,7 @@ void input_handle_event(AppContext* context, Input* in, SDL_Event* e) {
         } else if (k == SDLK_LEFT) {
             int newpos = in->cfg->cursor_pos;
             if (mod & KMOD_CTRL) newpos = prev_word_pos(in, in->cfg->cursor_pos);
-            else if (in->cfg->cursor_pos > 0) newpos = in->cfg->cursor_pos - 1;
+            else if (in->cfg->cursor_pos > 0) newpos = utf8_prev_char_pos(in->cfg->text, in->cfg->cursor_pos);
 
             if (mod & KMOD_SHIFT) {
                 if (!input_has_selection(in)) {
@@ -444,7 +467,7 @@ void input_handle_event(AppContext* context, Input* in, SDL_Event* e) {
         } else if (k == SDLK_RIGHT) {
             int newpos = in->cfg->cursor_pos;
             if (mod & KMOD_CTRL) newpos = next_word_pos(in, in->cfg->cursor_pos);
-            else if (in->cfg->cursor_pos < in->cfg->len) newpos = in->cfg->cursor_pos + 1;
+            else if (in->cfg->cursor_pos < in->cfg->len) newpos = utf8_next_char_pos(in->cfg->text, in->cfg->len, in->cfg->cursor_pos);
 
             if (mod & KMOD_SHIFT) {
                 if (!input_has_selection(in)) {
