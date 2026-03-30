@@ -202,13 +202,13 @@ int main(int argc, char* argv[]){
         return EXIT_FAILURE;
     } else add_destroy_resource(resources, lobby_free);
 
-    int word_loading_fails = init_words(&context);
-    if (word_loading_fails > 0) {
-        printf("Failed to load %d word resource(s)\n", word_loading_fails);
-        word_free();
+    int card_loading_fails = init_cards(&context);
+    if (card_loading_fails > 0) {
+        printf("Failed to load %d card resource(s)\n", card_loading_fails);
+        card_free();
         cleanup_resources(resources);
         return EXIT_FAILURE;
-    } else add_destroy_resource(resources, word_free);
+    } else add_destroy_resource(resources, card_free);
 
     int game_loading_fails = game_init(&context);
     if (game_loading_fails > 0) {

@@ -169,7 +169,7 @@ int word_contains(const char* input, const char* card_word) {
     return result;
 }
 
-int valid_hint(const char* hint, Word card_words[NB_WORDS]) {
+int valid_hint(const char* hint, Card card_words[NB_WORDS]) {
     if (!hint) return 0;
 
     for (int i = 0; i < NB_WORDS; i++) {

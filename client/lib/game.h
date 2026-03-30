@@ -11,7 +11,7 @@
 #include "../SDL2/include/SDL2/SDL_ttf.h"
 
 typedef struct AppContext AppContext;
-typedef struct Word Word;
+typedef struct Card Card;
 
 #include "../lib/button.h"
 
@@ -67,19 +67,26 @@ typedef enum GameState {
 
 /**
  * Représente une partie de Codenames.
- * @param words tableau dynamique de Word (taille nb_words).
+ * @param cards tableau dynamique de Card (taille nb_words).
  * @param nb_words nombre de mots dans la grille.
  * @param state état courant de la partie (GAMESTATE_*).
  * @param current_hint mot indice actuel donné par l'espion.
  * @param current_hint_count nombre de mots associés à l'indice actuel.
  */
 typedef struct {
-    Word* words;
+    Card* cards;
     int nb_words;
     GameState state;
     char current_hint[64];
     int current_hint_count;
 } Game;
+
+/**
+ * Vérifie si c'est le tour du joueur.
+ * @param context Contexte de l'application.
+ * @return 1 si c'est le tour du joueur, 0 sinon.
+ */
+int my_turn(AppContext* context);
 
 /**
  * Gère les événements du menu.

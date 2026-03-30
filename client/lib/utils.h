@@ -89,7 +89,7 @@ int levenshtein(const char* s1, const char* s2);
  */
 int word_contains(const char* input, const char* card_word);
 
-#include "../lib/word.h"
+#include "../lib/card.h"
 
 /**
  * Vérifie si un indice de mot est valide par rapport à une liste de mots de carte.
@@ -97,6 +97,6 @@ int word_contains(const char* input, const char* card_word);
  * @param card_words La liste des mots de carte.
  * @return 1 si le mot est valide, 0 sinon.
  */
-int valid_hint(const char* hint, Word card_words[NB_WORDS]);
+int valid_hint(const char* hint, Card card_words[NB_WORDS]);
 
 #endif // UTILS_H

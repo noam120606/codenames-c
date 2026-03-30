@@ -1,40 +1,48 @@
 /**
- * @file word.h
+ * @file card.h
  * @brief Définitions et structures pour la gestion des cartes dans Codenames côté client.
  */
 
-#ifndef WORD_H
-#define WORD_H
+#ifndef CARD_H
+#define CARD_H
 
 #include "../lib/game.h"
 #include "../lib/utils.h"
 
-typedef enum WordType {
-    WT_MALE,
-    WT_FEMALE,
-    WT_CAT,
-    WT_DOG,
-} WordType;
+typedef enum CardType {
+    CT_MALE,
+    CT_FEMALE,
+    CT_CAT,
+    CT_DOG,
+} CardType;
+
 
 /**
  * Représente un mot dans la grille de Codenames.
- *
+ * @param x position x de la carte.
+ * @param y position y de la carte.
  * @param word texte du mot (terminé par \0).
  * @param team équipe à laquelle le mot appartient (TEAM_*).
  * @param type type de mot (masculin, féminin, etc.) pour l'affichage de la carte.
  * @param revealed 0 si caché, 1 si révélé.
  * @param selected 0 si non sélectionné, 1 si sélectionné.
+ * @param is_pressed 0 si non pressé, 1 si pressé.
+ * @param is_hovered 0 si non survolé, 1 si survolé.
  */
-typedef struct Word {
+typedef struct Card {
+    int x;
+    int y;
     char word[32];
     Team team;
-    WordType type;
+    CardType type;
     Booleen revealed;
     Booleen selected;
-} Word;
+    Booleen is_pressed;
+    Booleen is_hovered;
+} Card;
 
-int init_words(AppContext * context);
+int init_cards(AppContext * context);
 void game_render_cards(AppContext * context);
-int word_free();
+int card_free();
 
-#endif // WORD_H
+#endif // CARD_H

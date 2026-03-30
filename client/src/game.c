@@ -48,6 +48,14 @@ static int red_player_text_index = 0;
 #define CHAT_VISIBLE_MESSAGES 10
 static Text* txt_chat_messages[CHAT_VISIBLE_MESSAGES] = {NULL};
 
+int my_turn(AppContext* context) {
+    switch (context->player_role) {
+        case ROLE_SPY: return context->lobby->game->state == (context->player_team == TEAM_RED ? GAMESTATE_TURN_RED_SPY : GAMESTATE_TURN_BLUE_SPY);
+        case ROLE_AGENT: return context->lobby->game->state == (context->player_team == TEAM_RED ? GAMESTATE_TURN_RED_AGENT : GAMESTATE_TURN_BLUE_AGENT);
+        default: return 0;
+    }
+}
+
 static void hint_on_submit(AppContext* context, const char* text) {
     (void)context;
     (void)text;
@@ -105,7 +113,7 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
 
         char* text = hint_input->cfg->text;
         int nb_hint = (int)atoi(hint_count_input->cfg->text);
-        int valid = valid_hint(text, context->lobby->game->words);
+        int valid = valid_hint(text, context->lobby->game->cards);
         
         
         char title[64];
@@ -606,6 +614,7 @@ void game_display(AppContext * context) {
     }
 
     game_render_cards(context);
+
     if (btn_quit_game) {
         button_render(context->renderer, btn_quit_game);
     }
@@ -656,10 +665,7 @@ void game_display(AppContext * context) {
                 break;
         }
 
-        if (context->player_role == ROLE_SPY && (
-            (context->lobby->game->state == GAMESTATE_TURN_RED_SPY && context->player_team == TEAM_RED) ||
-            (context->lobby->game->state == GAMESTATE_TURN_BLUE_SPY && context->player_team == TEAM_BLUE)
-        )) {
+        if (context->player_role == ROLE_SPY && my_turn(context)) {
             if (hint_input) {
                 window_place_input(hint_window, hint_input, -70, -15);
                 input_render(context->renderer, hint_input);

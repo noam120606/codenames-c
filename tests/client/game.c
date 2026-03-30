@@ -80,47 +80,47 @@ int main(int argc, char* argv[]) {
     }
     context.lobby->game->nb_words = NB_WORDS;
     context.lobby->game->state = GAMESTATE_WAITING;
-    context.lobby->game->words = malloc(sizeof(Word) * context.lobby->game->nb_words);
-    if (!context.lobby->game->words) {
-        printf("Failed to allocate game words for test\n");
+    context.lobby->game->cards = malloc(sizeof(Card) * context.lobby->game->nb_words);
+    if (!context.lobby->game->cards) {
+        printf("Failed to allocate game cards for test\n");
         free(context.lobby->game);
         context.lobby->game = NULL;
         cleanup_resources(resources);
         return EXIT_FAILURE;
     }
 
-    /* Initialize words in black card */
-    strncpy(context.lobby->game->words[0].word, "Test", sizeof(context.lobby->game->words[0].word) - 1);
-    context.lobby->game->words[0].word[sizeof(context.lobby->game->words[0].word) - 1] = '\0';
-    context.lobby->game->words[0].team = TEAM_BLACK;
-    context.lobby->game->words[0].revealed = 0;
-    context.lobby->game->words[0].gender = (gender++ % 2);
+    /* Initialize cards in black card */
+    strncpy(context.lobby->game->cards[0].word, "Test", sizeof(context.lobby->game->cards[0].word) - 1);
+    context.lobby->game->cards[0].word[sizeof(context.lobby->game->cards[0].word) - 1] = '\0';
+    context.lobby->game->cards[0].team = TEAM_BLACK;
+    context.lobby->game->cards[0].revealed = 0;
+    context.lobby->game->cards[0].type = (gender++ % 2);
 
-    /* Initialize words in red cards */
+    /* Initialize cards in red cards */
     for (i = 1; i < 9; i++) {
-        strncpy(context.lobby->game->words[i].word, "Test", sizeof(context.lobby->game->words[i].word) - 1);
-        context.lobby->game->words[i].word[sizeof(context.lobby->game->words[i].word) - 1] = '\0';
-        context.lobby->game->words[i].team = TEAM_RED;
-        context.lobby->game->words[i].revealed = 0;
-        context.lobby->game->words[i].gender = (gender++) % 2; 
+        strncpy(context.lobby->game->cards[i].word, "Test", sizeof(context.lobby->game->cards[i].word) - 1);
+        context.lobby->game->cards[i].word[sizeof(context.lobby->game->cards[i].word) - 1] = '\0';
+        context.lobby->game->cards[i].team = TEAM_RED;
+        context.lobby->game->cards[i].revealed = 0;
+        context.lobby->game->cards[i].type = (gender++) % 2; 
     }
 
-    /* Initialize words in blue cards */
+    /* Initialize cards in blue cards */
     for (i = 9; i < 18; i++) {
-        strncpy(context.lobby->game->words[i].word, "Test", sizeof(context.lobby->game->words[i].word) - 1);
-        context.lobby->game->words[i].word[sizeof(context.lobby->game->words[i].word) - 1] = '\0';
-        context.lobby->game->words[i].team = TEAM_BLUE;
-        context.lobby->game->words[i].revealed = 0;
-        context.lobby->game->words[i].gender = (gender++) % 2; 
+        strncpy(context.lobby->game->cards[i].word, "Test", sizeof(context.lobby->game->cards[i].word) - 1);
+        context.lobby->game->cards[i].word[sizeof(context.lobby->game->cards[i].word) - 1] = '\0';
+        context.lobby->game->cards[i].team = TEAM_BLUE;
+        context.lobby->game->cards[i].revealed = 0;
+        context.lobby->game->cards[i].type = (gender++) % 2; 
     }
 
-    /* Initialize words in neutral cards */
+    /* Initialize cards in neutral cards */
     for (i = 18; i < 25; i++) {
-        strncpy(context.lobby->game->words[i].word, "Test", sizeof(context.lobby->game->words[i].word) - 1);
-        context.lobby->game->words[i].word[sizeof(context.lobby->game->words[i].word) - 1] = '\0';
-        context.lobby->game->words[i].team = TEAM_NONE;
-        context.lobby->game->words[i].revealed = 0;
-        context.lobby->game->words[i].gender = (gender++) % 2; 
+        strncpy(context.lobby->game->cards[i].word, "Test", sizeof(context.lobby->game->cards[i].word) - 1);
+        context.lobby->game->cards[i].word[sizeof(context.lobby->game->cards[i].word) - 1] = '\0';
+        context.lobby->game->cards[i].team = TEAM_NONE;
+        context.lobby->game->cards[i].revealed = 0;
+        context.lobby->game->cards[i].type = (gender++) % 2; 
     }
 
 

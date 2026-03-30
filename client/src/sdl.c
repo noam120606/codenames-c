@@ -288,7 +288,7 @@ int destroy_context(AppContext* context) {
             }
         }
         if (context->lobby->game) {
-            free(context->lobby->game->words);
+            free(context->lobby->game->cards);
             free(context->lobby->game);
             context->lobby->game = NULL;
         }

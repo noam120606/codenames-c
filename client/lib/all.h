@@ -61,7 +61,7 @@
 #include "../lib/ressources.h"
 #include "../lib/save.h"
 #include "../lib/version.h"
-#include "../lib/word.h"
+#include "../lib/card.h"
 
 #include "../lib/regex_compat.h"
 

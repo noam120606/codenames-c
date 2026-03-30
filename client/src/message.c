@@ -161,9 +161,9 @@ int on_message(AppContext* context, char* message) {
             game->current_hint[0] = '\0';
             game->current_hint_count = 0;
             printf("Starting game with state %d and %d words\n", game->state, game->nb_words);
-            game->words = (Word*)malloc(sizeof(Word) * game->nb_words);
-            if (!game->words) {
-                printf("Failed to allocate memory for game words\n");
+            game->cards = (Card*)malloc(sizeof(Card) * game->nb_words);
+            if (!game->cards) {
+                printf("Failed to allocate memory for game cards\n");
                 free(game);
                 return EXIT_FAILURE;
             }
@@ -188,10 +188,10 @@ int on_message(AppContext* context, char* message) {
 
             printf("Word data received: %s (Team: %d, Revealed: %d)\n", word, team, revealed);
 
-            strcpy(context->lobby->game->words[wordid].word, word);
-            context->lobby->game->words[wordid].team = team;
-            context->lobby->game->words[wordid].revealed = revealed;
-            context->lobby->game->words[wordid].type = rand() % 2; // 0 = homme, 1 = femme
+            strcpy(context->lobby->game->cards[wordid].word, word);
+            context->lobby->game->cards[wordid].team = team;
+            context->lobby->game->cards[wordid].revealed = revealed;
+            context->lobby->game->cards[wordid].type = rand() % 4; // 0 = homme, 1 = femme
 
             if (wordid == context->lobby->game->nb_words - 1) {
                 context->app_state = APP_STATE_PLAYING;

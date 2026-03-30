@@ -12,7 +12,7 @@ SDL_Texture* card_black;
 /* Textes pour les mots des cartes (25 cartes) */
 static Text* txt_card_words[NUM_CARDS] = {NULL};
 
-int init_words(AppContext * context) {
+int init_cards(AppContext * context) {
 
     int loading_fails = 0;
 
@@ -47,6 +47,20 @@ int init_words(AppContext * context) {
     return loading_fails;
 }
 
+int card_render(AppContext* context, Card* cards) {
+    if (!context || !cards) return -1;
+
+    // Rendu de la carte en fonction de son état
+    // if (cards->is_hovered) {
+    //     // Afficher la carte survolée
+    // } else if (cards->is_pressed) {
+    //     // Afficher la carte pressée
+    // } else {
+    //     // Afficher la carte par défaut
+    // }
+
+    return 0;
+}
 
 void game_render_cards(AppContext * context) {
     int x=-400;
@@ -54,26 +68,26 @@ void game_render_cards(AppContext * context) {
     int card_index = 0;
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
-            Word word = context->lobby->game->words[i*5 + j];
+            Card card = context->lobby->game->cards[i*5 + j];
 
-            if(context->player_role == ROLE_SPY && !word.revealed) {
-                switch (word.team) {
+            if(context->player_role == ROLE_SPY && !card.revealed) {
+                switch (card.team) {
                     case TEAM_NONE:
-                        if (word.type) {
+                        if (card.type) {
                             display_image(context->renderer, card_f_classic, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
                         }else{
                             display_image(context->renderer, card_h_classic, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
                         }
                         break;
                     case TEAM_RED:
-                        if (word.type) {
+                        if (card.type) {
                             display_image(context->renderer, card_f_red, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
                         }else{
                             display_image(context->renderer, card_h_red, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
                         }
                         break;
                     case TEAM_BLUE:
-                        if (word.type) {
+                        if (card.type) {
                             display_image(context->renderer, card_f_blue, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
                         }else{
                             display_image(context->renderer, card_h_blue, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
@@ -84,20 +98,20 @@ void game_render_cards(AppContext * context) {
                     default:
                         break;
                 }
-            }else if (context->player_role == ROLE_AGENT && !word.revealed) {
-                if (word.type) {
+            }else if (context->player_role == ROLE_AGENT && !card.revealed) {
+                if (card.type) {
                     display_image(context->renderer, card_f_classic, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
                 }else{
                     display_image(context->renderer, card_h_classic, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
                 }
             }
-            else if (word.revealed) {
+            else if (card.revealed) {
                 // Attente des images des cartes "révélées"
             }
             
             /* Affichage du mot de la carte avec le nouveau système */
             if (card_index < NUM_CARDS && txt_card_words[card_index]) {
-                update_text(context, txt_card_words[card_index], word.word);
+                update_text(context, txt_card_words[card_index], card.word);
                 update_text_position(txt_card_words[card_index], x, y - 22);
                 display_text(context, txt_card_words[card_index]);
             }
@@ -109,7 +123,7 @@ void game_render_cards(AppContext * context) {
     }
 }
 
-int word_free() {
+int card_free() {
     if (card_h_classic) { free_image(card_h_classic); card_h_classic = NULL; }
     if (card_f_classic) { free_image(card_f_classic); card_f_classic = NULL; }
     if (card_h_red) { free_image(card_h_red); card_h_red = NULL; }
@@ -121,4 +135,5 @@ int word_free() {
     for (int i = 0; i < NUM_CARDS; i++) {
         destroy_text(txt_card_words[i]); txt_card_words[i] = NULL;
     }
+    return 0;
 }
