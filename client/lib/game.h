@@ -132,5 +132,11 @@ void game_handle_event(AppContext * context, SDL_Event * event);
  */
 void game_display(AppContext * context);
 
+/**
+ * Rendu des cartes du jeu.
+ * @param context Contexte SDL.
+ */
+void game_render_cards(AppContext * context);
+
 
 #endif // GAME_H
