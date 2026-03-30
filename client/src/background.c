@@ -16,9 +16,14 @@ static SDL_Color bg_color = {50, 50, 50, 255};
 #define BG_TILE_H    (BG_SYMBOL_H + BG_SPACING)
 #define BG_EXTRA     15
 #define BG_SPEED     0.55f
+#define BG_SPEED_LOBBY_FACTOR 0.67f
 #define BG_SIZE      0.12f
 #define BG_ANIM_FRAMES 14
 #define BG_ANIM_POP    0.18f
+
+/* Mouvement continu du fond (évite les sauts quand la vitesse change selon l'état). */
+static float bg_motion = 0.0f;
+static long bg_motion_last_clock = -1;
 
 /* Table des états surchargés par clic.  */
 #define MAX_OVERRIDES 512
@@ -109,6 +114,29 @@ static int world_phase(int scaled_time, int tile_size) {
     return 2 * (scaled_time / (tile_size * 2));
 }
 
+static float background_speed(const AppContext* context) {
+    if (context && context->app_state == APP_STATE_LOBBY) {
+        return BG_SPEED * BG_SPEED_LOBBY_FACTOR;
+    }
+    return BG_SPEED;
+}
+
+static int background_scaled_time(const AppContext* context) {
+    if (!context) return 0;
+
+    if (bg_motion_last_clock < 0) {
+        bg_motion_last_clock = context->clock;
+    }
+
+    long delta = context->clock - bg_motion_last_clock;
+    if (delta > 0) {
+        bg_motion += (float)delta * background_speed(context);
+        bg_motion_last_clock = context->clock;
+    }
+
+    return (int)bg_motion;
+}
+
 static void window_to_logical(AppContext* context, int wx, int wy, int* lx, int* ly) {
     if (!lx || !ly) return;
 
@@ -154,7 +182,7 @@ void display_background(AppContext* context) {
     const int cols = (WIN_WIDTH  / BG_TILE_W) + BG_EXTRA;
     const int rows = (WIN_HEIGHT / BG_TILE_H) + BG_EXTRA;
 
-    const int scaled_time = (int)(context->clock * BG_SPEED);
+    const int scaled_time = background_scaled_time(context);
     const int offset_x = scaled_time % (BG_TILE_W * 2);
     const int offset_y = scaled_time % (BG_TILE_H * 2);
     const int phase_x  = world_phase(scaled_time, BG_TILE_W);
@@ -226,7 +254,7 @@ void display_background(AppContext* context) {
 void background_handle_event(AppContext* context, SDL_Event* e) {
     if (e->type != SDL_MOUSEBUTTONDOWN || e->button.button != SDL_BUTTON_LEFT) return;
 
-    const int scaled_time = (int)(context->clock * BG_SPEED);
+    const int scaled_time = background_scaled_time(context);
     const int offset_x = scaled_time % (BG_TILE_W * 2);
     const int offset_y = scaled_time % (BG_TILE_H * 2);
     const int phase_x  = world_phase(scaled_time, BG_TILE_W);
@@ -287,7 +315,9 @@ int destroy_background() {
     if (spyglasses) { free_image(spyglasses); spyglasses = NULL; }
     override_count = 0;
     memset(animations, 0, sizeof(animations));
-    bg_color = (SDL_Color){50, 50, 50, 255}; // Reset to default
+    bg_motion = 0.0f;
+    bg_motion_last_clock = -1;
+    bg_color = (SDL_Color){50, 50, 50, 255}; // Reset à la couleur par défaut
     return EXIT_SUCCESS;
 }
 
