@@ -339,7 +339,7 @@ int game_init(AppContext * context) {
     /* Textes pour les mots des cartes */
     for (int i = 0; i < NUM_CARDS; i++) {
         txt_card_words[i] = init_text(context, " ", 
-            create_text_config(FONT_LARABIE, 22, COL_BLACK, 0, 0, 0, 255));
+            create_text_config(FONT_BEBASKAI, 28, COL_BLACK, 0, 0, 0, 255));
     }
 
     /* Textes pour les messages du chat */

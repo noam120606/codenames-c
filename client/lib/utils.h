@@ -31,8 +31,7 @@ static const SDL_Color COL_MAGENTA = (SDL_Color){255, 0, 255, 255};
 
 #define FONT_LARABIE "assets/fonts/larabiefont.otf"
 #define FONT_NOTO "assets/fonts/NotoSansSymbols.ttf"
-
-
+#define FONT_BEBASKAI "assets/fonts/BebasKai.otf"
 
 
 /**
