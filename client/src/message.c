@@ -277,6 +277,19 @@ int on_message(AppContext* context, char* message) {
             break;
         }
 
+        case MSG_SEND_CLIENT_ID: {
+            if (args.argc < 1) {
+                printf("Invalid client id message from server: \"%s\"\n", message);
+                if (args.argv) free(args.argv);
+                return EXIT_FAILURE;
+            }
+
+            context->player_id = atoi((char*)args.argv[0]);
+            printf("Assigned client ID: %d\n", context->player_id);
+
+            break;
+        }
+
         case MSG_PING: {
             if (args.argc < 1) {
                 break;

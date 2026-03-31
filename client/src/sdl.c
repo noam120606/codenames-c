@@ -34,7 +34,7 @@ static void configure_windows_audio_backend(void) {
 #ifdef _WIN32
     const char* audio_driver = getenv("SDL_AUDIODRIVER");
     if (!audio_driver || audio_driver[0] == '\0') {
-        /* Le backend audio par défaut peut provoquer un crash sur certaines configs Windows. */
+        // Le backend audio par défaut peut provoquer un crash sur certaines configs Windows.
         SDL_setenv("SDL_AUDIODRIVER", "directsound", 1);
     }
 #endif
@@ -177,6 +177,7 @@ AppContext init_sdl() {
     context.lobby->id = -1;
     context.frame_start_time = 0;
     context.ping_ms = -1;
+    context.player_id = -1;
     context.app_state = APP_STATE_MENU;
     context.music_volume = MIX_MAX_VOLUME;
     context.sound_effects_volume = MIX_MAX_VOLUME;

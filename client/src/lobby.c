@@ -548,7 +548,10 @@ void lobby_display(AppContext* context) {
     }
 
     if (game_options_window) {
-        window_render(context->renderer, game_options_window);
+        if (context->lobby->owner_id == context->player_id) {
+            // Afficher les options de jeu uniquement pour le propriétaire du lobby
+            window_render(context->renderer, game_options_window);
+        }
     }
 
     // Comptage des joueurs par rôle/équipe et indices d'affichage

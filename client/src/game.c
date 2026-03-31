@@ -63,6 +63,15 @@ static void hint_on_submit(AppContext* context, const char* text) {
         hint_count_input->cfg->focused = 1;
         hint_count_input->cfg->cursor_pos = strlen(hint_count_input->cfg->text);
     }
+    // Attendre que le joueur ne presse plus la touche Entrée
+    while (TRUE) {
+        SDL_Event e;
+        if (SDL_PollEvent(&e)) {
+            if (e.type == SDL_KEYUP && e.key.keysym.sym == SDLK_RETURN) {
+                break;
+            }
+        }
+    }
 }
 
 static void hint_count_on_submit(AppContext* context, const char* text) {

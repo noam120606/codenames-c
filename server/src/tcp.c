@@ -180,8 +180,12 @@ int tcp_send_to_client(Codenames* codenames, int client_id, const char* message)
 }
 
 void tcp_on_client_connect(Codenames* codenames, TcpClient* client) {
-    // printf("Client connected: ID=%d IP=%s\n", client->id, inet_ntoa(client->addr.sin_addr));
-    // tcp_send_to_client(codenames, client->id, "Welcome to the server!\n");
+    char response[64];
+    format_to(response, sizeof(response), "%d %d", MSG_SEND_CLIENT_ID, client->id);
+
+    if (tcp_send_to_client(codenames, client->id, response) < 0) {
+        printf("Failed to send client ID to client %d\n", client->id);
+    }
 }
 
 void tcp_on_client_disconnect(Codenames* codenames, TcpClient* client) {
