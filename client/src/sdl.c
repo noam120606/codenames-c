@@ -82,6 +82,28 @@ AppContext init_sdl() {
     SDL_SetWindowMinimumSize(win, WIN_MIN_WIDTH, WIN_MIN_HEIGHT);
 
     context.window = win;
+    context.windowed_width = WIN_WIDTH;
+    context.windowed_height = WIN_HEIGHT;
+    context.windowed_x = -1;
+    context.windowed_y = -1;
+    context.last_fullscreen_toggle_ms = 0;
+
+    {
+        int display_index = SDL_GetWindowDisplayIndex(win);
+        SDL_DisplayMode current_mode;
+        if (display_index >= 0 && SDL_GetCurrentDisplayMode(display_index, &current_mode) == 0) {
+            int windowed_width = (current_mode.w * 9) / 10;
+            int windowed_height = (current_mode.h * 9) / 10;
+
+            if (windowed_width < WIN_MIN_WIDTH) windowed_width = WIN_MIN_WIDTH;
+            if (windowed_height < WIN_MIN_HEIGHT) windowed_height = WIN_MIN_HEIGHT;
+            if (windowed_width > current_mode.w) windowed_width = current_mode.w;
+            if (windowed_height > current_mode.h) windowed_height = current_mode.h;
+
+            context.windowed_width = windowed_width;
+            context.windowed_height = windowed_height;
+        }
+    }
 
     // Create SDL renderer
     printf("Creating SDL renderer...\n");
@@ -244,12 +266,48 @@ void free_image(SDL_Texture* texture) {
 
 void toggle_fullscreen(AppContext* context) {
     if (!context || !context->window) return;
+
+    Uint32 now = SDL_GetTicks();
+    if (context->last_fullscreen_toggle_ms != 0 && now - context->last_fullscreen_toggle_ms < 180) {
+        return;
+    }
+    context->last_fullscreen_toggle_ms = now;
+
     Uint32 flags = SDL_GetWindowFlags(context->window);
     int is_fullscreen = (flags & SDL_WINDOW_FULLSCREEN_DESKTOP) || (flags & SDL_WINDOW_FULLSCREEN);
+
+    if (!is_fullscreen) {
+        int is_maximized = (flags & SDL_WINDOW_MAXIMIZED) != 0;
+        if (!is_maximized) {
+            int w = 0, h = 0;
+            int x = 0, y = 0;
+            SDL_GetWindowSize(context->window, &w, &h);
+            SDL_GetWindowPosition(context->window, &x, &y);
+            if (w >= WIN_MIN_WIDTH && h >= WIN_MIN_HEIGHT) {
+                context->windowed_width = w;
+                context->windowed_height = h;
+            }
+            context->windowed_x = x;
+            context->windowed_y = y;
+        }
+    }
+
     SDL_SetWindowFullscreen(context->window, is_fullscreen ? 0 : SDL_WINDOW_FULLSCREEN_DESKTOP);
+
     if (is_fullscreen) {
-        // Recentrer la fenêtre après être sorti du plein écran
-        SDL_SetWindowPosition(context->window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
+        /* Sous Windows, on normalise explicitement l'état fenêtré pour éviter
+           les incohérences de bouton maximiser/restaurer après un aller-retour. */
+        #ifdef _WIN32
+        SDL_RestoreWindow(context->window);
+        #endif
+        if (context->windowed_width >= WIN_MIN_WIDTH && context->windowed_height >= WIN_MIN_HEIGHT) {
+            SDL_SetWindowSize(context->window, context->windowed_width, context->windowed_height);
+        }
+        if (context->windowed_x >= 0 && context->windowed_y >= 0) {
+            SDL_SetWindowPosition(context->window, context->windowed_x, context->windowed_y);
+        } else {
+            SDL_SetWindowPosition(context->window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
+        }
     }
 }
 

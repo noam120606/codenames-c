@@ -56,6 +56,11 @@ typedef struct AppContext {
     int ping_ms;
     int music_volume;          /**< Volume de la musique (0-128). */
     int sound_effects_volume;  /**< Volume des effets sonores (0-128). */
+    int windowed_width;        /**< Largeur de référence en mode fenêtré. */
+    int windowed_height;       /**< Hauteur de référence en mode fenêtré. */
+    int windowed_x;            /**< Position X en mode fenêtré (-1 pour centré). */
+    int windowed_y;            /**< Position Y en mode fenêtré (-1 pour centré). */
+    Uint32 last_fullscreen_toggle_ms; /**< Horodatage de la dernière bascule plein écran. */
     char* player_uuid;         /**< UUID unique du joueur. */
     char* player_name;         /**< Nom du joueur. */
     char version[16];          /**< Version du jeu (chargée depuis VERSION). */

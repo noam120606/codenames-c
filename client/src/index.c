@@ -237,9 +237,11 @@ int main(int argc, char* argv[]){
             if (e.type == SDL_QUIT) {
                 running = 0;
             }
-            if (e.type == SDL_KEYDOWN && (e.key.keysym.sym == SDLK_F11 || e.key.keysym.sym == SDLK_ESCAPE)) {
+            if (e.type == SDL_KEYDOWN && e.key.repeat == 0
+                && (e.key.keysym.sym == SDLK_F11 || e.key.keysym.sym == SDLK_ESCAPE)) {
                 toggle_fullscreen(&context);
             }
+            #ifndef _WIN32
             if (e.type == SDL_WINDOWEVENT) {
                 if (e.window.event == SDL_WINDOWEVENT_MAXIMIZED) {
                     toggle_fullscreen(&context);
@@ -249,6 +251,7 @@ int main(int argc, char* argv[]){
                     if (is_fs) toggle_fullscreen(&context);
                 }
             }
+            #endif
             /* Le bandeau infos (crossfaders volume) est toujours actif */
             infos_handle_event(&context, &e);
 
