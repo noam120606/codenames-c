@@ -190,8 +190,11 @@ int on_message(AppContext* context, char* message) {
 
             strcpy(context->lobby->game->cards[wordid].word, word);
             context->lobby->game->cards[wordid].team = team;
-            context->lobby->game->cards[wordid].revealed = revealed;
             context->lobby->game->cards[wordid].type = rand() % 4; // 0 = homme, 1 = femme
+            context->lobby->game->cards[wordid].revealed = revealed;
+            context->lobby->game->cards[wordid].selected = false;
+            context->lobby->game->cards[wordid].is_pressed = false;
+            context->lobby->game->cards[wordid].is_hovered = false;
 
             if (wordid == context->lobby->game->nb_words - 1) {
                 context->app_state = APP_STATE_PLAYING;

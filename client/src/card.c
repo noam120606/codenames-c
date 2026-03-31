@@ -1,13 +1,24 @@
 #include "../lib/all.h"
 
 /* Images des cartes */
-SDL_Texture* card_h_classic;
-SDL_Texture* card_f_classic;
-SDL_Texture* card_h_red;
-SDL_Texture* card_f_red;
-SDL_Texture* card_h_blue;
-SDL_Texture* card_f_blue;
 SDL_Texture* card_black;
+SDL_Texture* card_black_revealed;
+SDL_Texture* card_blue_h;
+SDL_Texture* card_blue_f;
+SDL_Texture* card_blue_h_revealed;
+SDL_Texture* card_blue_f_revealed;
+SDL_Texture* card_blue_c_revealed;
+SDL_Texture* card_blue_d_revealed;
+SDL_Texture* card_red_h;
+SDL_Texture* card_red_f;
+SDL_Texture* card_red_h_revealed;
+SDL_Texture* card_red_f_revealed;
+SDL_Texture* card_red_c_revealed;
+SDL_Texture* card_red_d_revealed;
+SDL_Texture* card_none_h;
+SDL_Texture* card_none_f;
+SDL_Texture* card_none_h_revealed;
+SDL_Texture* card_none_f_revealed;
 
 /* Textes pour les mots des cartes (25 cartes) */
 static Text* txt_card_words[NUM_CARDS] = {NULL};
@@ -17,26 +28,42 @@ int init_cards(AppContext * context) {
     int loading_fails = 0;
 
     // Chargement image
-    card_h_classic = load_image(context->renderer, "assets/img/cards/none/H_r217.png");
-    if (!card_h_classic) loading_fails++;
-
-    card_f_classic = load_image(context->renderer, "assets/img/cards/none/F_r217.png");
-    if (!card_f_classic) loading_fails++;
-
-    card_h_red = load_image(context->renderer, "assets/img/cards/red/H_r217.png");
-    if (!card_h_red) loading_fails++;
-
-    card_f_red = load_image(context->renderer, "assets/img/cards/red/F_r217.png");
-    if (!card_f_red) loading_fails++;
-
-    card_h_blue = load_image(context->renderer, "assets/img/cards/blue/H_r217.png");
-    if (!card_h_blue) loading_fails++;
-
-    card_f_blue = load_image(context->renderer, "assets/img/cards/blue/F_r217.png");
-    if (!card_f_blue) loading_fails++;
-
     card_black = load_image(context->renderer, "assets/img/cards/black/B_r217.png");
     if (!card_black) loading_fails++;
+    card_black_revealed = load_image(context->renderer, "assets/img/cards/black/revealed/B_r217.png");
+    if (!card_black_revealed) loading_fails++;
+    card_blue_h = load_image(context->renderer, "assets/img/cards/blue/H_r217.png");
+    if (!card_blue_h) loading_fails++;
+    card_blue_f = load_image(context->renderer, "assets/img/cards/blue/F_r217.png");
+    if (!card_blue_f) loading_fails++;
+    card_blue_h_revealed = load_image(context->renderer, "assets/img/cards/blue/revealed/H_r217.png");
+    if (!card_blue_h_revealed) loading_fails++;
+    card_blue_f_revealed = load_image(context->renderer, "assets/img/cards/blue/revealed/F_r217.png");
+    if (!card_blue_f_revealed) loading_fails++;
+    card_blue_c_revealed = load_image(context->renderer, "assets/img/cards/blue/revealed/C_r217.png");
+    if (!card_blue_c_revealed) loading_fails++;
+    card_blue_d_revealed = load_image(context->renderer, "assets/img/cards/blue/revealed/D_r217.png");
+    if (!card_blue_d_revealed) loading_fails++;
+    card_red_h = load_image(context->renderer, "assets/img/cards/red/H_r217.png");
+    if (!card_red_h) loading_fails++;
+    card_red_f = load_image(context->renderer, "assets/img/cards/red/F_r217.png");
+    if (!card_red_f) loading_fails++;
+    card_red_h_revealed = load_image(context->renderer, "assets/img/cards/red/revealed/H_r217.png");
+    if (!card_red_h_revealed) loading_fails++;
+    card_red_f_revealed = load_image(context->renderer, "assets/img/cards/red/revealed/F_r217.png");
+    if (!card_red_f_revealed) loading_fails++;
+    card_red_c_revealed = load_image(context->renderer, "assets/img/cards/red/revealed/C_r217.png");
+    if (!card_red_c_revealed) loading_fails++;
+    card_red_d_revealed = load_image(context->renderer, "assets/img/cards/red/revealed/D_r217.png");
+    if (!card_red_d_revealed) loading_fails++;
+    card_none_h = load_image(context->renderer, "assets/img/cards/none/H_r217.png");
+    if (!card_none_h) loading_fails++;
+    card_none_f = load_image(context->renderer, "assets/img/cards/none/F_r217.png");
+    if (!card_none_f) loading_fails++;
+    card_none_h_revealed = load_image(context->renderer, "assets/img/cards/none/revealed/H_r217.png");
+    if (!card_none_h_revealed) loading_fails++;
+    card_none_f_revealed = load_image(context->renderer, "assets/img/cards/none/revealed/F_r217.png");
+    if (!card_none_f_revealed) loading_fails++;
 
     /* Textes pour les mots des cartes */
     for (int i = 0; i < NUM_CARDS; i++) {
@@ -47,75 +74,102 @@ int init_cards(AppContext * context) {
     return loading_fails;
 }
 
-int card_render(AppContext* context, Card* cards) {
-    if (!context || !cards) return -1;
+static int card_render(AppContext* context, Card* card, int x, int y, int index) {
+    if (!context || !card) return EXIT_FAILURE;
 
-    // Rendu de la carte en fonction de son état
-    // if (cards->is_hovered) {
-    //     // Afficher la carte survolée
-    // } else if (cards->is_pressed) {
-    //     // Afficher la carte pressée
-    // } else {
-    //     // Afficher la carte par défaut
-    // }
+    // Definition de la texture utilisé
+    SDL_Texture* texture = NULL;
+    if (card->revealed) {
+        switch (card->team) {
+            case TEAM_NONE:
+                switch (card->type) {
+                    case CT_MALE: case CT_CAT: texture = card_none_h_revealed; break;
+                    case CT_FEMALE: case CT_DOG: texture = card_none_f_revealed; break;
+                    default: return EXIT_FAILURE;
+                } break;
+            case TEAM_RED:
+                switch (card->type) {
+                    case CT_MALE: texture = card_red_h_revealed; break;
+                    case CT_FEMALE: texture = card_red_f_revealed; break;
+                    case CT_CAT: texture = card_red_c_revealed; break;
+                    case CT_DOG: texture = card_red_d_revealed; break;
+                    default: return EXIT_FAILURE;
+                } break;
+            case TEAM_BLUE:
+                switch (card->type) {
+                    case CT_MALE: texture = card_blue_h_revealed; break;
+                    case CT_FEMALE: texture = card_blue_f_revealed; break;
+                    case CT_CAT: texture = card_blue_c_revealed; break;
+                    case CT_DOG: texture = card_blue_d_revealed; break;
+                    default: return EXIT_FAILURE;
+                } break;
+            case TEAM_BLACK:
+                texture = card_black_revealed;
+                break;
+            default:
+                return EXIT_FAILURE;
+        }
+    } else {
+        if (context->player_role == ROLE_SPY) {
+            switch (card->team) {
+                case TEAM_NONE:
+                    texture = card->type % 2 ? card_none_f : card_none_h;
+                    break;
+                case TEAM_RED:
+                    texture = card->type % 2 ? card_red_f : card_red_h;
+                    break;
+                case TEAM_BLUE:
+                    texture = card->type % 2 ? card_blue_f : card_blue_h;
+                    break;
+                case TEAM_BLACK:
+                    texture = card_black;
+                    break;
+                default:
+                    return EXIT_FAILURE;
+            }
+        } else {
+            texture = card->type % 2 ? card_none_f : card_none_h;
+        }
+    }
 
-    return 0;
+    SDL_Rect render_rect = {
+        .x = (WIN_WIDTH - 190) / 2 + x,
+        .y = (WIN_HEIGHT - 120) / 2 - y,
+        .w = 190,
+        .h = 120
+    };
+
+    if (card->is_pressed && card->is_hovered) {
+        render_rect.x += 2;
+        render_rect.y += 2;
+        render_rect.w -= 4;
+        render_rect.h -= 2;
+    } else if (card->is_hovered) {
+        render_rect.x -= 4;
+        render_rect.y -= 2;
+        render_rect.w += 8;
+        render_rect.h += 4;
+    }
+    
+    SDL_RenderCopyEx(context->renderer, texture, NULL, &render_rect, 0, NULL, SDL_FLIP_NONE);
+
+    if (!card->revealed && txt_card_words[index]) {
+        update_text(context, txt_card_words[index], card->word);
+        update_text_position(txt_card_words[index], x, y - 25);
+        display_text(context, txt_card_words[index]);
+    }
+
+    return EXIT_SUCCESS;
 }
 
 void game_render_cards(AppContext * context) {
     int x=-400;
     int y=-250;
-    int card_index = 0;
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
-            Card card = context->lobby->game->cards[i*5 + j];
-
-            if(context->player_role == ROLE_SPY && !card.revealed) {
-                switch (card.team) {
-                    case TEAM_NONE:
-                        if (card.type) {
-                            display_image(context->renderer, card_f_classic, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
-                        }else{
-                            display_image(context->renderer, card_h_classic, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
-                        }
-                        break;
-                    case TEAM_RED:
-                        if (card.type) {
-                            display_image(context->renderer, card_f_red, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
-                        }else{
-                            display_image(context->renderer, card_h_red, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
-                        }
-                        break;
-                    case TEAM_BLUE:
-                        if (card.type) {
-                            display_image(context->renderer, card_f_blue, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
-                        }else{
-                            display_image(context->renderer, card_h_blue, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
-                        }
-                        break;
-                    case TEAM_BLACK:
-                        display_image(context->renderer, card_black, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
-                    default:
-                        break;
-                }
-            }else if (context->player_role == ROLE_AGENT && !card.revealed) {
-                if (card.type) {
-                    display_image(context->renderer, card_f_classic, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
-                }else{
-                    display_image(context->renderer, card_h_classic, x, y, 0.04, 0, SDL_FLIP_NONE, 1, 255);
-                }
-            }
-            else if (card.revealed) {
-                // Attente des images des cartes "révélées"
-            }
-            
-            /* Affichage du mot de la carte avec le nouveau système */
-            if (card_index < NUM_CARDS && txt_card_words[card_index]) {
-                update_text(context, txt_card_words[card_index], card.word);
-                update_text_position(txt_card_words[card_index], x, y - 22);
-                display_text(context, txt_card_words[card_index]);
-            }
-            card_index++;
+            int card_index = i*5 + j;
+            Card card = context->lobby->game->cards[card_index];
+            card_render(context, &card, x, y, card_index);
             x += 200;
         }
         x = -400;
@@ -124,16 +178,28 @@ void game_render_cards(AppContext * context) {
 }
 
 int card_free() {
-    if (card_h_classic) { free_image(card_h_classic); card_h_classic = NULL; }
-    if (card_f_classic) { free_image(card_f_classic); card_f_classic = NULL; }
-    if (card_h_red) { free_image(card_h_red); card_h_red = NULL; }
-    if (card_f_red) { free_image(card_f_red); card_f_red = NULL; }
-    if (card_h_blue) { free_image(card_h_blue); card_h_blue = NULL; }
-    if (card_f_blue) { free_image(card_f_blue); card_f_blue = NULL; }
     if (card_black) { free_image(card_black); card_black = NULL; }
+    if (card_black_revealed) { free_image(card_black_revealed); card_black_revealed = NULL; }
+    if (card_blue_h) { free_image(card_blue_h); card_blue_h = NULL; }
+    if (card_blue_f) { free_image(card_blue_f); card_blue_f = NULL; }
+    if (card_blue_h_revealed) { free_image(card_blue_h_revealed); card_blue_h_revealed = NULL; }
+    if (card_blue_f_revealed) { free_image(card_blue_f_revealed); card_blue_f_revealed = NULL; }
+    if (card_blue_c_revealed) { free_image(card_blue_c_revealed); card_blue_c_revealed = NULL; }
+    if (card_blue_d_revealed) { free_image(card_blue_d_revealed); card_blue_d_revealed = NULL; }
+    if (card_red_h) { free_image(card_red_h); card_red_h = NULL; }
+    if (card_red_f) { free_image(card_red_f); card_red_f = NULL; }
+    if (card_red_h_revealed) { free_image(card_red_h_revealed); card_red_h_revealed = NULL; }
+    if (card_red_f_revealed) { free_image(card_red_f_revealed); card_red_f_revealed = NULL; }
+    if (card_red_c_revealed) { free_image(card_red_c_revealed); card_red_c_revealed = NULL; }
+    if (card_red_d_revealed) { free_image(card_red_d_revealed); card_red_d_revealed = NULL; }
+    if (card_none_h) { free_image(card_none_h); card_none_h = NULL; }
+    if (card_none_f) { free_image(card_none_f); card_none_f = NULL; }
+    if (card_none_h_revealed) { free_image(card_none_h_revealed); card_none_h_revealed = NULL; }
+    if (card_none_f_revealed) { free_image(card_none_f_revealed); card_none_f_revealed = NULL; }
 
     for (int i = 0; i < NUM_CARDS; i++) {
         destroy_text(txt_card_words[i]); txt_card_words[i] = NULL;
     }
+
     return 0;
 }

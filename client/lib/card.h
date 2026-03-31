@@ -19,8 +19,6 @@ typedef enum CardType {
 
 /**
  * Représente un mot dans la grille de Codenames.
- * @param x position x de la carte.
- * @param y position y de la carte.
  * @param word texte du mot (terminé par \0).
  * @param team équipe à laquelle le mot appartient (TEAM_*).
  * @param type type de mot (masculin, féminin, etc.) pour l'affichage de la carte.
@@ -30,8 +28,6 @@ typedef enum CardType {
  * @param is_hovered 0 si non survolé, 1 si survolé.
  */
 typedef struct Card {
-    int x;
-    int y;
     char word[32];
     Team team;
     CardType type;
