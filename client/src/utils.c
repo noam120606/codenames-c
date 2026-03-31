@@ -76,12 +76,6 @@ char* getRandomUsername(void) {
     return result;
 }
 
-/**
- * Calcule la distance de Levenshtein entre deux chaînes (insensible à la casse)
- * @param s1 Première chaîne
- * @param s2 Deuxième chaîne
- * @return Distance de Levenshtein (0 = identique, plus c'est grand plus c'est différent)
- */
 int levenshtein(const char* s1, const char* s2) {
     if (!s1 || !s2) return -1;
     
@@ -137,12 +131,6 @@ int levenshtein(const char* s1, const char* s2) {
     return result;
 }
 
-/**
- * Vérifie si un mot contient un autre mot (sous-chaîne, insensible à la casse)
- * @param input Le mot entré
- * @param card_word Le mot de la carte
- * @return 1 si input contient card_word ou vice versa, 0 sinon
- */
 int word_contains(const char* input, const char* card_word) {
     if (!input || !card_word) return 0;
     

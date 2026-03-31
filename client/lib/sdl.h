@@ -28,51 +28,57 @@ typedef struct Card Card;
  * @param window Fenêtre SDL.
  * @param renderer Renderer SDL associé à la fenêtre.
  * @param bg_color Couleur de fond de la fenêtre.
- * @param clock Nombre de frame écoulé depuis le début de l'application.
- * @param fps Nombre de frames par seconde (calculé à partir du clock).
- * @param sock Identifiant socket.
  * @param lobby Pointeur vers la structure de lobby.
  * @param app_state État actuel du jeu (menu, lobby, partie, etc.).
  * @param player_role Rôle du joueur (ROLE_AGENT ou ROLE_SPY).
  * @param player_team Équipe du joueur (TEAM_RED, TEAM_BLUE, TEAM_NONE).
- * @param frame_start_time Timestamp du début de la frame actuelle (en ms).
+ * @param sock Identifiant socket.
  * @param ping_ms Ping TCP courant en millisecondes (-1 si indisponible).
  * @param player_id Identifiant numerique attribue par le serveur (-1 si inconnu).
+ * @param clock Nombre de frame écoulé depuis le début de l'application.
+ * @param fps Nombre de frames par seconde (calculé à partir du clock).
+ * @param frame_start_time Timestamp du début de la frame actuelle (en ms).
+ * @param last_fullscreen_toggle_ms Timestamp du dernier basculement plein écran (en ms, pour éviter les basculements rapides accidentels).
+ * @param player_uuid UUID unique du joueur (persisté dans datas/uuid).
+ * @param player_name Nom du joueur (persisté dans datas/name).
+ * @param version Version du jeu (chargée depuis VERSION).
  * @param music_volume Volume de la musique (0-128).
  * @param sound_effects_volume Volume des effets sonores (0-128).
  * @param windowed_width Largeur de la fenêtre en mode fenêtré (pour restaurer après un plein écran).
  * @param windowed_height Hauteur de la fenêtre en mode fenêtré (pour restaurer après un plein écran).
  * @param windowed_x Position x de la fenêtre en mode fenêtré (pour restaurer après un plein écran).
  * @param windowed_y Position y de la fenêtre en mode fenêtré (pour restaurer après un plein écran).
- * @param last_fullscreen_toggle_ms Timestamp du dernier basculement plein écran (en ms, pour éviter les basculements rapides accidentels).
- * @param player_uuid UUID unique du joueur (persisté dans datas/uuid).
- * @param player_name Nom du joueur (persisté dans datas/name).
- * @param version Version du jeu (chargée depuis VERSION).
  */
 typedef struct AppContext {
     SDL_Window* window;
     SDL_Renderer* renderer;
     SDL_Color bg_color;
-    long clock;
-    float fps;
-    int sock;
+
     Lobby* lobby;
     AppState app_state;
-    UserRole player_role; 
-    Team player_team; 
-    Uint32 frame_start_time;
+    UserRole player_role;
+    Team player_team;
+
+    int sock;
     int ping_ms;
     int player_id;
+
+    long clock;
+    float fps;
+    Uint32 frame_start_time;
+    Uint32 last_fullscreen_toggle_ms;
+
+    char* player_uuid;
+    char* player_name;
+    char version[16];
+
     int music_volume;
     int sound_effects_volume;
+
     int windowed_width;
     int windowed_height;
     int windowed_x;
     int windowed_y;
-    Uint32 last_fullscreen_toggle_ms;
-    char* player_uuid;
-    char* player_name;
-    char version[16];
 } AppContext;
 
 /**

@@ -500,7 +500,7 @@ void lobby_display(AppContext* context) {
     char buf[128];
     format_to(buf, sizeof(buf), "Lobby %d  •  Code : %s",
               context->lobby->id,
-              context->lobby->code ? context->lobby->code : "----");
+              context->lobby->code[0] != '\0' ? context->lobby->code : "----");
 
     /* Affichage centré horizontalement, position verticale relative */
     update_text(context, txt_lobby_info, buf);

@@ -209,7 +209,7 @@ int init_infos(AppContext* context) {
         create_text_config(FONT_LARABIE, 22, COL_WHITE, 0, 230, 0, 255));
 
     /* Texte de version */
-    if (context && context->version) {
+    if (context && context->version[0] != '\0') {
         txt_version = init_text(context, context->version,
             create_text_config(FONT_LARABIE, 14, COL_WHITE, 0, -500, 0, 255));
     }
