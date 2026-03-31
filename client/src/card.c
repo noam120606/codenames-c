@@ -74,6 +74,50 @@ int init_cards(AppContext * context) {
     return loading_fails;
 }
 
+static int is_mouse_over_card(Card* card, int mouseX, int mouseY) {
+    return mouseX >= card->rect.x && mouseX <= card->rect.x + card->rect.w && mouseY >= card->rect.y && mouseY <= card->rect.y + card->rect.h;
+}
+
+static int card_handle_event(AppContext* context, SDL_Event* event, Card* card) {
+    if (!context || !event || !card) return EXIT_FAILURE;
+
+    if (event->type == SDL_MOUSEMOTION) {
+        int mouseX = event->motion.x;
+        int mouseY = event->motion.y;
+        card->is_hovered = is_mouse_over_card(card, mouseX, mouseY);
+    } else if (event->type == SDL_MOUSEBUTTONDOWN && event->button.button == SDL_BUTTON_LEFT) {
+        int mouseX = event->button.x;
+        int mouseY = event->button.y;
+        int is_over = is_mouse_over_card(card, mouseX, mouseY);
+        card->is_hovered = is_over;
+        card->is_pressed = is_over;
+    } else if (event->type == SDL_MOUSEBUTTONUP && event->button.button == SDL_BUTTON_LEFT) {
+        int mouseX = event->button.x;
+        int mouseY = event->button.y;
+        int is_over = is_mouse_over_card(card, mouseX, mouseY);
+        int should_trigger = card->is_pressed && is_over;
+
+        card->is_hovered = is_over;
+        card->is_pressed = false;
+
+        if (should_trigger && card->is_pressed) {
+            audio_play(SOUND_BUTTON_CLICKED, 0);
+            return EXIT_SUCCESS;
+        }
+    }
+    return EXIT_SUCCESS;
+}
+
+int cards_handle_event(AppContext* context, SDL_Event* event) {
+    if (!context || !event) return EXIT_FAILURE;
+
+    for (int i = 0; i < NUM_CARDS; i++) {
+        card_handle_event(context, event, &context->lobby->game->cards[i]);
+    }
+
+    return EXIT_SUCCESS;
+}
+
 static int card_render(AppContext* context, Card* card, int x, int y, int index) {
     if (!context || !card) return EXIT_FAILURE;
 
@@ -103,36 +147,24 @@ static int card_render(AppContext* context, Card* card, int x, int y, int index)
                     case CT_DOG: texture = card_blue_d_revealed; break;
                     default: return EXIT_FAILURE;
                 } break;
-            case TEAM_BLACK:
-                texture = card_black_revealed;
-                break;
-            default:
-                return EXIT_FAILURE;
+            case TEAM_BLACK: texture = card_black_revealed; break;
+            default: return EXIT_FAILURE;
         }
     } else {
         if (context->player_role == ROLE_SPY) {
             switch (card->team) {
-                case TEAM_NONE:
-                    texture = card->type % 2 ? card_none_f : card_none_h;
-                    break;
-                case TEAM_RED:
-                    texture = card->type % 2 ? card_red_f : card_red_h;
-                    break;
-                case TEAM_BLUE:
-                    texture = card->type % 2 ? card_blue_f : card_blue_h;
-                    break;
-                case TEAM_BLACK:
-                    texture = card_black;
-                    break;
-                default:
-                    return EXIT_FAILURE;
+                case TEAM_NONE: texture = card->type % 2 ? card_none_f : card_none_h; break;
+                case TEAM_RED: texture = card->type % 2 ? card_red_f : card_red_h; break;
+                case TEAM_BLUE: texture = card->type % 2 ? card_blue_f : card_blue_h; break;
+                case TEAM_BLACK: texture = card_black; break;
+                default: return EXIT_FAILURE;
             }
         } else {
             texture = card->type % 2 ? card_none_f : card_none_h;
         }
     }
 
-    SDL_Rect render_rect = {
+    card->rect = (SDL_Rect){
         .x = (WIN_WIDTH - 190) / 2 + x,
         .y = (WIN_HEIGHT - 120) / 2 - y,
         .w = 190,
@@ -140,18 +172,18 @@ static int card_render(AppContext* context, Card* card, int x, int y, int index)
     };
 
     if (card->is_pressed && card->is_hovered) {
-        render_rect.x += 2;
-        render_rect.y += 2;
-        render_rect.w -= 4;
-        render_rect.h -= 2;
+        card->rect.x += 2;
+        card->rect.y += 2;
+        card->rect.w -= 4;
+        card->rect.h -= 2;
     } else if (card->is_hovered) {
-        render_rect.x -= 4;
-        render_rect.y -= 2;
-        render_rect.w += 8;
-        render_rect.h += 4;
+        card->rect.x -= 4;
+        card->rect.y -= 2;
+        card->rect.w += 8;
+        card->rect.h += 4;
     }
     
-    SDL_RenderCopyEx(context->renderer, texture, NULL, &render_rect, 0, NULL, SDL_FLIP_NONE);
+    SDL_RenderCopyEx(context->renderer, texture, NULL, &card->rect, 0, NULL, SDL_FLIP_NONE);
 
     if (!card->revealed && txt_card_words[index]) {
         update_text(context, txt_card_words[index], card->word);
@@ -168,8 +200,7 @@ void game_render_cards(AppContext * context) {
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
             int card_index = i*5 + j;
-            Card card = context->lobby->game->cards[card_index];
-            card_render(context, &card, x, y, card_index);
+            card_render(context, context->lobby->game->cards + card_index, x, y, card_index);
             x += 200;
         }
         x = -400;

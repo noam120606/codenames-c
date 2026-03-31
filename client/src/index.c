@@ -270,7 +270,7 @@ int main(int argc, char* argv[]){
                     } break;
 
                 case APP_STATE_LOBBY: lobby_handle_event(&context, &e); break;
-                case APP_STATE_PLAYING: game_handle_event(&context, &e); break;
+                case APP_STATE_PLAYING: game_handle_event(&context, &e); cards_handle_event(&context, &e); break;
                 case APP_STATE_PAUSED: break;
             }
         }
