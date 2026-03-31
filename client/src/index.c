@@ -268,9 +268,13 @@ int main(int argc, char* argv[]){
                     if (btn_ret == BTN_RET_QUIT) {
                         running = 0;
                     } break;
-
                 case APP_STATE_LOBBY: lobby_handle_event(&context, &e); break;
-                case APP_STATE_PLAYING: game_handle_event(&context, &e); cards_handle_event(&context, &e); break;
+                case APP_STATE_PLAYING:
+                    game_handle_event(&context, &e);
+                    if (context.app_state == APP_STATE_PLAYING) {
+                        cards_handle_event(&context, &e);
+                    }
+                    break;
                 case APP_STATE_PAUSED: break;
             }
         }

@@ -20,6 +20,8 @@ SDL_Texture* card_none_f;
 SDL_Texture* card_none_h_revealed;
 SDL_Texture* card_none_f_revealed;
 
+SDL_Texture* guess_icon;
+
 /* Textes pour les mots des cartes (25 cartes) */
 static Text* txt_card_words[NUM_CARDS] = {NULL};
 
@@ -65,6 +67,9 @@ int init_cards(AppContext * context) {
     card_none_f_revealed = load_image(context->renderer, "assets/img/cards/none/revealed/F_r217.png");
     if (!card_none_f_revealed) loading_fails++;
 
+    guess_icon = load_image(context->renderer, "assets/img/cards/guess.png");
+    if (!guess_icon) loading_fails++;
+
     /* Textes pour les mots des cartes */
     for (int i = 0; i < NUM_CARDS; i++) {
         txt_card_words[i] = init_text(context, " ", 
@@ -72,6 +77,24 @@ int init_cards(AppContext * context) {
     }
 
     return loading_fails;
+}
+
+static int card_handle_click(AppContext* context, Card* card) {
+    if (!context || !card) return EXIT_FAILURE;
+
+    card->selected = !card->selected;
+    printf("Card \"%s\" selected: %d\n", card->word, card->selected);
+
+    /* Trame de guess de carte
+    char message[64];
+    format_to(message, sizeof(message), "%d %d", CARD_GUESS, (int)(card - context->lobby->game->cards));
+    if (send_tcp(context->sock, message) != EXIT_SUCCESS) {
+        printf("Failed to send click_card message to server\n");
+        return EXIT_FAILURE;
+    }
+    */
+
+    return EXIT_SUCCESS;
 }
 
 static int is_mouse_over_card(Card* card, int mouseX, int mouseY) {
@@ -100,69 +123,69 @@ static int card_handle_event(AppContext* context, SDL_Event* event, Card* card) 
         card->is_hovered = is_over;
         card->is_pressed = false;
 
-        if (should_trigger && card->is_pressed) {
+        if (should_trigger) {
             audio_play(SOUND_BUTTON_CLICKED, 0);
-            return EXIT_SUCCESS;
+            return card_handle_click(context, card);
         }
     }
     return EXIT_SUCCESS;
 }
 
 int cards_handle_event(AppContext* context, SDL_Event* event) {
-    if (!context || !event) return EXIT_FAILURE;
+    if (!context || !event || !context->lobby || !context->lobby->game) return EXIT_FAILURE;
 
     for (int i = 0; i < NUM_CARDS; i++) {
-        card_handle_event(context, event, &context->lobby->game->cards[i]);
+        card_handle_event(context, event, context->lobby->game->cards + i);
     }
 
     return EXIT_SUCCESS;
 }
 
-static int card_render(AppContext* context, Card* card, int x, int y, int index) {
-    if (!context || !card) return EXIT_FAILURE;
-
-    // Definition de la texture utilisé
-    SDL_Texture* texture = NULL;
+static SDL_Texture* get_card_texture(AppContext* context, Card* card) {
     if (card->revealed) {
         switch (card->team) {
             case TEAM_NONE:
                 switch (card->type) {
-                    case CT_MALE: case CT_CAT: texture = card_none_h_revealed; break;
-                    case CT_FEMALE: case CT_DOG: texture = card_none_f_revealed; break;
-                    default: return EXIT_FAILURE;
+                    case CT_MALE: case CT_CAT: return card_none_h_revealed; break;
+                    case CT_FEMALE: case CT_DOG: return card_none_f_revealed; break;
+                    default: return NULL;
                 } break;
             case TEAM_RED:
                 switch (card->type) {
-                    case CT_MALE: texture = card_red_h_revealed; break;
-                    case CT_FEMALE: texture = card_red_f_revealed; break;
-                    case CT_CAT: texture = card_red_c_revealed; break;
-                    case CT_DOG: texture = card_red_d_revealed; break;
-                    default: return EXIT_FAILURE;
+                    case CT_MALE: return card_red_h_revealed; break;
+                    case CT_FEMALE: return card_red_f_revealed; break;
+                    case CT_CAT: return card_red_c_revealed; break;
+                    case CT_DOG: return card_red_d_revealed; break;
+                    default: return NULL;
                 } break;
             case TEAM_BLUE:
                 switch (card->type) {
-                    case CT_MALE: texture = card_blue_h_revealed; break;
-                    case CT_FEMALE: texture = card_blue_f_revealed; break;
-                    case CT_CAT: texture = card_blue_c_revealed; break;
-                    case CT_DOG: texture = card_blue_d_revealed; break;
-                    default: return EXIT_FAILURE;
+                    case CT_MALE: return card_blue_h_revealed; break;
+                    case CT_FEMALE: return card_blue_f_revealed; break;
+                    case CT_CAT: return card_blue_c_revealed; break;
+                    case CT_DOG: return card_blue_d_revealed; break;
+                    default: return NULL;
                 } break;
-            case TEAM_BLACK: texture = card_black_revealed; break;
-            default: return EXIT_FAILURE;
+            case TEAM_BLACK: return card_black_revealed; break;
+            default: return NULL;
         }
     } else {
         if (context->player_role == ROLE_SPY) {
             switch (card->team) {
-                case TEAM_NONE: texture = card->type % 2 ? card_none_f : card_none_h; break;
-                case TEAM_RED: texture = card->type % 2 ? card_red_f : card_red_h; break;
-                case TEAM_BLUE: texture = card->type % 2 ? card_blue_f : card_blue_h; break;
-                case TEAM_BLACK: texture = card_black; break;
-                default: return EXIT_FAILURE;
+                case TEAM_NONE: return card->type % 2 ? card_none_f : card_none_h; break;
+                case TEAM_RED: return card->type % 2 ? card_red_f : card_red_h; break;
+                case TEAM_BLUE: return card->type % 2 ? card_blue_f : card_blue_h; break;
+                case TEAM_BLACK: return card_black; break;
+                default: return NULL;
             }
         } else {
-            texture = card->type % 2 ? card_none_f : card_none_h;
+            return card->type % 2 ? card_none_f : card_none_h;
         }
     }
+} 
+
+static int card_render(AppContext* context, Card* card, int x, int y, int index) {
+    if (!context || !card) return EXIT_FAILURE;
 
     card->rect = (SDL_Rect){
         .x = (WIN_WIDTH - 190) / 2 + x,
@@ -183,7 +206,17 @@ static int card_render(AppContext* context, Card* card, int x, int y, int index)
         card->rect.h += 4;
     }
     
-    SDL_RenderCopyEx(context->renderer, texture, NULL, &card->rect, 0, NULL, SDL_FLIP_NONE);
+    SDL_RenderCopyEx(context->renderer, get_card_texture(context, card), NULL, &card->rect, 0, NULL, SDL_FLIP_NONE);
+
+    if (card->selected) {
+        SDL_Rect guess_rect = {
+            .x = card->rect.x + card->rect.w - 30,
+            .y = card->rect.y,
+            .w = 30,
+            .h = 30
+        };
+        SDL_RenderCopyEx(context->renderer, guess_icon, NULL, &guess_rect, 0, NULL, SDL_FLIP_NONE);
+    }
 
     if (!card->revealed && txt_card_words[index]) {
         update_text(context, txt_card_words[index], card->word);
@@ -227,6 +260,8 @@ int card_free() {
     if (card_none_f) { free_image(card_none_f); card_none_f = NULL; }
     if (card_none_h_revealed) { free_image(card_none_h_revealed); card_none_h_revealed = NULL; }
     if (card_none_f_revealed) { free_image(card_none_f_revealed); card_none_f_revealed = NULL; }
+
+    if (guess_icon) { free_image(guess_icon); guess_icon = NULL; }
 
     for (int i = 0; i < NUM_CARDS; i++) {
         destroy_text(txt_card_words[i]); txt_card_words[i] = NULL;
