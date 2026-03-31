@@ -42,9 +42,31 @@ typedef struct Card {
     Booleen is_hovered;
 } Card;
 
+/**
+ * Initialise les textures des cartes et les textes associés.
+ * @param context contexte de l'application, utilisé pour le rendu et la création de textures.
+ * @return le nombre de chargements ayant échoué (0 si tout a réussi).
+ */
 int init_cards(AppContext * context);
+
+/**
+ * Gère les événements liés aux cartes (clics, survols, etc.).
+ * @param context contexte de l'application, utilisé pour accéder à l'état du jeu et des cartes.
+ * @param event événement SDL à traiter.
+ * @return EXIT_SUCCESS si l'événement a été traité avec succès, EXIT_FAILURE sinon.
+ */
 int cards_handle_event(AppContext* context, SDL_Event* event);
+
+/**
+ * Rend les cartes à l'écran en fonction de leur état (révélées, sélectionnées, etc.).
+ * @param context contexte de l'application, utilisé pour le rendu et l'accès à l'état
+ */
 void game_render_cards(AppContext * context);
+
+/**
+ * Libère les ressources associées aux cartes (textures, textes, etc.).
+ * @return EXIT_SUCCESS si les ressources ont été libérées avec succès, EXIT_FAILURE sinon.
+ */
 int card_free();
 
 #endif // CARD_H

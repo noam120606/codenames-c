@@ -135,7 +135,9 @@ int cards_handle_event(AppContext* context, SDL_Event* event) {
     if (!context || !event || !context->lobby || !context->lobby->game) return EXIT_FAILURE;
 
     for (int i = 0; i < NUM_CARDS; i++) {
-        card_handle_event(context, event, context->lobby->game->cards + i);
+        if (context->player_role == ROLE_AGENT && my_turn(context) && !context->lobby->game->cards[i].revealed) {
+            card_handle_event(context, event, context->lobby->game->cards + i);
+        } 
     }
 
     return EXIT_SUCCESS;
