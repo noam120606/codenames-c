@@ -6,6 +6,7 @@ Button* btn_blue_agent = NULL;
 Button* btn_blue_spy = NULL;
 Button* btn_launch_game = NULL;
 Button* btn_return = NULL;
+Button* btn_words_difficulty_switch = NULL;
 
 Window* role_none_window = NULL;
 Window* role_red_agent_window = NULL;
@@ -22,6 +23,7 @@ SDL_Texture* player_icon_blue = NULL;
 /* Textes optimisés pour le lobby */
 static Text* txt_lobby_info = NULL;
 static Text* txt_no_role_label = NULL;
+static Text* txt_difficulty_label = NULL;
 #define MAX_PLAYER_TEXTS 16
 static Text* txt_player_names[MAX_PLAYER_TEXTS] = {NULL};
 static int current_player_text_index = 0;
@@ -227,6 +229,14 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
         audio_set_filter(MUSIC_MENU_LOBBY, AUDIO_FILTER_NONE, 0);
         context->app_state = APP_STATE_MENU;
         printf("Returned to menu\n");
+    } else if (button == btn_words_difficulty_switch) {
+        // Alterne entre facile et difficile
+        WordsDifficulty new_difficulty = (context->lobby->words_difficulty == WORDS_DIFFICULTY_EASY) ? 
+            WORDS_DIFFICULTY_HARD : WORDS_DIFFICULTY_EASY;
+        char msg[16];
+        format_to(msg, sizeof(msg), "%d %d", MSG_SET_WORDS_DIFFICULTY, new_difficulty);
+        send_tcp(context->sock, msg);
+        printf("Switched difficulty to: %s\n", new_difficulty == WORDS_DIFFICULTY_HARD ? "HARD" : "EASY");
     }
     return BTN_RET_NONE;
 }
@@ -339,6 +349,20 @@ int lobby_init(AppContext* context) {
         free(cfg_btn_return);
     } else loading_fails++;
 
+    /* Bouton switch de difficulté */
+    ButtonConfig* cfg_btn_words_difficulty_switch = button_config_init();
+    if (cfg_btn_words_difficulty_switch) {
+        cfg_btn_words_difficulty_switch->x         = 0;
+        cfg_btn_words_difficulty_switch->y         = 0;
+        cfg_btn_words_difficulty_switch->h         = 48;
+        cfg_btn_words_difficulty_switch->font_path = FONT_LARABIE;
+        cfg_btn_words_difficulty_switch->color     = COL_WHITE;
+        cfg_btn_words_difficulty_switch->text      = "Changer";
+        cfg_btn_words_difficulty_switch->callback  = lobby_button_click;
+        btn_words_difficulty_switch = button_create(context->renderer, 0, cfg_btn_words_difficulty_switch);
+        free(cfg_btn_words_difficulty_switch);
+    } else loading_fails++;
+
     WindowConfig* cfg_role_none_window = window_config_init();
     if (cfg_role_none_window) {
         cfg_role_none_window->x = 0;
@@ -429,6 +453,9 @@ int lobby_init(AppContext* context) {
     
     txt_no_role_label = init_text(context, "",
         create_text_config(FONT_LARABIE, 18, COL_WHITE, 0, 500, 0, 255));
+
+    txt_difficulty_label = init_text(context, "Difficulté des mots : Facile",
+        create_text_config(FONT_LARABIE, 20, COL_WHITE, 0, 0, 0, 255));
     
     /* Pré-allouer les textes pour les noms de joueurs */
     for (int i = 0; i < MAX_PLAYER_TEXTS; i++) {
@@ -465,6 +492,7 @@ int struct_lobby_init(Lobby* lobby, int id, const char* code) {
     lobby->nb_players = 0;
     lobby->owner_id = -1;
     lobby->game = NULL;
+    lobby->words_difficulty = WORDS_DIFFICULTY_EASY;
     strcpy(lobby->code, code);
 
     for (int i = 0; i < MAX_USERS; i++) {
@@ -551,6 +579,21 @@ void lobby_display(AppContext* context) {
         if (context->lobby->owner_id == context->player_id) {
             // Afficher les options de jeu uniquement pour le propriétaire du lobby
             window_render(context->renderer, game_options_window);
+            
+            // Affichage du texte label de difficulté actuelle
+            if (txt_difficulty_label) {
+                const char* diff_text = (context->lobby->words_difficulty == WORDS_DIFFICULTY_HARD) ? 
+                    "Difficulté : Difficile" : "Difficulté : Facile";
+                update_text(context, txt_difficulty_label, diff_text);
+                window_place_text(game_options_window, txt_difficulty_label, 0, 50);
+                display_text(context, txt_difficulty_label);
+            }
+            
+            // Affichage du bouton switch de difficulté
+            if (btn_words_difficulty_switch) {
+                window_place_button(game_options_window, btn_words_difficulty_switch, 0, 75);
+                button_render(context->renderer, btn_words_difficulty_switch);
+            }
         }
     }
 
@@ -602,6 +645,7 @@ void lobby_handle_event(AppContext* context, SDL_Event* e) {
     if (btn_blue_spy) button_handle_event(context, btn_blue_spy, e);
     if (btn_launch_game) button_handle_event(context, btn_launch_game, e);
     if (btn_return) button_handle_event(context, btn_return, e);
+    if (btn_words_difficulty_switch) button_handle_event(context, btn_words_difficulty_switch, e);
 
     if (role_none_window) window_handle_event(context, role_none_window, e);
     if (role_red_agent_window) window_handle_event(context, role_red_agent_window, e);
@@ -723,6 +767,7 @@ int lobby_free(){
     if (btn_blue_spy)   { button_destroy(btn_blue_spy);   btn_blue_spy = NULL; }
     if (btn_launch_game) { button_destroy(btn_launch_game); btn_launch_game = NULL; }
     if (btn_return)     { button_destroy(btn_return);     btn_return = NULL; }
+    if (btn_words_difficulty_switch) { button_destroy(btn_words_difficulty_switch); btn_words_difficulty_switch = NULL; }
 
     if (role_none_window) { window_destroy(role_none_window); role_none_window = NULL; }
     if (role_red_agent_window) { window_destroy(role_red_agent_window); role_red_agent_window = NULL; }
@@ -739,6 +784,7 @@ int lobby_free(){
     /* Libération des textes optimisés */
     destroy_text(txt_lobby_info); txt_lobby_info = NULL;
     destroy_text(txt_no_role_label); txt_no_role_label = NULL;
+    destroy_text(txt_difficulty_label); txt_difficulty_label = NULL;
     
     for (int i = 0; i < MAX_PLAYER_TEXTS; i++) {
         destroy_text(txt_player_names[i]);

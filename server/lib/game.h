@@ -9,6 +9,16 @@
 #include "../lib/message.h"
 
 /**
+ * Niveaux de difficulté du jeu.
+ * @param WORDS_DIFFICULTY_EASY Difficulté facile (wordlist.txt).
+ * @param WORDS_DIFFICULTY_HARD Difficulté difficile (wordlist_hard.txt).
+ */
+typedef enum WordsDifficulty {
+    WORDS_DIFFICULTY_EASY = 0,
+    WORDS_DIFFICULTY_HARD = 1
+} WordsDifficulty;
+
+/**
  * TEAM est utilisé à la fois pour catégoriser les mots dans la grille et pour assigner les joueurs à une équipe.
  * Catégories de mots dans la grille de Codenames.
  * Les mots sont classés en 4 catégories :
@@ -74,24 +84,25 @@ typedef struct {
 int init_game_manager();
 
 /**
- * Récupère tous les mots dans assets/wordlist.txt.
- * Chaque ligne du fichier est traitée comme un mot.
+ * Récupère tous les mots selon la difficulté choisie.
+ * @param difficulty Niveau de difficulté (DIFFICULTY_EASY ou DIFFICULTY_HARD).
  * @return Un tableau de chaînes (char*) contenant les mots,
  *         ou NULL en cas d'erreur. La gestion mémoire est à la
  *         charge de l'appelant.
  */
-char** fetchWords();
+char** fetchWords(WordsDifficulty difficulty);
 
 /**
  * Génère un tableau de mots pour une partie.
  * Les mots sont sélectionnés aléatoirement et associés à une équipe.
  * @param count Le nombre de mots à générer.
  * @param start_team L'équipe qui commence la partie.
+ * @param difficulty Niveau de difficulté de la partie.
  * @return Un tableau de Word contenant les mots générés,
  *         ou NULL en cas d'erreur. La gestion mémoire est à la
  *         charge de l'appelant.
  */
-Word* generateWords(int count, Team start_team);
+Word* generateWords(int count, Team start_team, WordsDifficulty difficulty);
 
 /**
  * Mélange un tableau de mots in-place (Fisher-Yates).
@@ -120,5 +131,16 @@ int request_start_game(Codenames* codenames, TcpClient* client, char* message, A
  * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur.
  */
 int request_submit_hint(Codenames* codenames, TcpClient* client, char* message, Arguments args);
+
+/**
+ * Traite la demande de changement de difficulté d'un lobby.
+ * Seul le propriétaire du lobby peut changer la difficulté.
+ * @param codenames Contexte principal du serveur.
+ * @param client Client TCP ayant envoyé la demande.
+ * @param message Message brut reçu du client.
+ * @param args Arguments extraits du message (difficulty: 0=facile, 1=difficile).
+ * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur.
+ */
+int request_set_words_difficulty(Codenames* codenames, TcpClient* client, char* message, Arguments args);
 
 #endif // GAME_H

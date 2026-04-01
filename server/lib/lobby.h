@@ -38,6 +38,7 @@ typedef enum LobbyStatus {
  * @param nb_players nombre de joueurs actuellement connectés.
  * @param game partie associée au lobby (NULL si aucune partie).
  * @param chat historique du chat du lobby.
+ * @param words_difficulty niveau de difficulté choisi pour la partie.
  */
 typedef struct Lobby {
     int id;
@@ -48,6 +49,7 @@ typedef struct Lobby {
     int nb_players;
     Game* game;
     Chat chat;
+    WordsDifficulty words_difficulty;
 } Lobby;
 
 /** 

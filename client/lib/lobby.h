@@ -22,6 +22,16 @@ typedef struct Window Window;
 #define MAX_USERS 8
 
 /**
+ * Niveaux de difficulté du jeu.
+ * @param WORDS_DIFFICULTY_EASY Difficulté facile (wordlist.txt).
+ * @param WORDS_DIFFICULTY_HARD Difficulté difficile (wordlist_hard.txt).
+ */
+typedef enum WordsDifficulty {
+    WORDS_DIFFICULTY_EASY = 0,
+    WORDS_DIFFICULTY_HARD = 1
+} WordsDifficulty;
+
+/**
  * États possibles d'un lobby.
  * @param LB_STATUS_WAITING lobby en attente (pas encore en partie).
  * @param LB_STATUS_IN_GAME lobby actuellement en partie.
@@ -41,6 +51,7 @@ typedef enum LobbyStatus {
  * @param nb_players nombre de joueurs actuellement connectés.
  * @param game partie associée au lobby (NULL si aucune partie).
  * @param chat historique du chat du lobby.
+ * @param words_difficulty niveau de difficulté choisi pour la partie.
  */
 typedef struct Lobby {
     int id;
@@ -51,6 +62,7 @@ typedef struct Lobby {
     int nb_players;
     Game* game;
     Chat chat;
+    WordsDifficulty words_difficulty;
 } Lobby;
 
 /**
