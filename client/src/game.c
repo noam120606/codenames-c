@@ -7,7 +7,7 @@ Input* hint_input = NULL;
 Input* hint_count_input = NULL;
 Input* chat_input = NULL;
 
-static const char* HINT_INPUT_PLACEHOLDERS[] = {"Entrez un mot"};
+static const char* HINT_INPUT_PLACEHOLDERS[] = {"Entrez un mot indice"};
 static const char* HINT_COUNT_INPUT_PLACEHOLDERS[] = {"1","2","3"};
 static const char* CHAT_INPUT_PLACEHOLDERS[] = {"Chattez ici ..."};
 
