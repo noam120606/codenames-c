@@ -28,6 +28,7 @@
  * @param MSG_COMPAREVERSION message de comparaison de version (pour le client de comparer sa version avec celle du serveur).
  * @param MSG_PING message d'echo client/serveur pour mesurer le ping applicatif en temps réel.
  * @param MSG_SEND_CLIENT_ID message envoyé automatiquement par le serveur à la connexion, contient l'identifiant numérique du client.
+ * @param MSG_SET_WORDS_DIFFICULTY message pour changer la difficulté de la partie (0 = facile, 1 = difficile).
  */
 typedef enum MessageType {
     MSG_SERVER_ERROR = -2,
@@ -48,6 +49,7 @@ typedef enum MessageType {
     MSG_COMPAREVERSION,
     MSG_PING,
     MSG_SEND_CLIENT_ID,
+    MSG_SET_WORDS_DIFFICULTY,
 } MessageType;
 
 /**

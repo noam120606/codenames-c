@@ -65,6 +65,8 @@ int on_message(AppContext* context, char* message) {
                 return EXIT_FAILURE;
             }
             struct_lobby_init(context->lobby, atoi((char*)args.argv[0]), (char*)args.argv[1]);
+            // Le créateur du lobby en est automatiquement le propriétaire
+            context->lobby->owner_id = context->player_id;
             break;
 
         case MSG_JOINLOBBY:
@@ -302,6 +304,20 @@ int on_message(AppContext* context, char* message) {
             Uint32 now = SDL_GetTicks();
             context->ping_ms = (int)(now - sent_at);
             
+            break;
+        }
+
+        case MSG_SET_WORDS_DIFFICULTY: {
+            if (args.argc < 1) {
+                printf("Invalid set words difficulty message from server: \"%s\"\n", message);
+                if (args.argv) free(args.argv);
+                return EXIT_FAILURE;
+            }
+
+            int words_difficulty = atoi((char*)args.argv[0]);
+            context->lobby->words_difficulty = (WordsDifficulty)words_difficulty;
+            printf("Lobby words difficulty changed to %s\n", words_difficulty == WORDS_DIFFICULTY_HARD ? "hard" : "easy");
+
             break;
         }
 
