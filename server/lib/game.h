@@ -69,11 +69,13 @@ typedef enum GameState {
  * Représente une partie de Codenames.
  * @param words tableau dynamique de Word (taille nb_words).
  * @param nb_words nombre de mots dans la grille.
+ * @param can_guess Nombre de mots devinables par les agents dans le tour en cours (déterminé par l'indice donné par l'espion).
  * @param state état courant de la partie (GAMESTATE_*).
  */
 typedef struct {
     Word* words;
     int nb_words;
+    int can_guess;
     GameState state;
 } Game;
 
@@ -131,6 +133,17 @@ int request_start_game(Codenames* codenames, TcpClient* client, char* message, A
  * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur.
  */
 int request_submit_hint(Codenames* codenames, TcpClient* client, char* message, Arguments args);
+
+/**
+ * Traite la soumission d'une carte devinée par un agent.
+ * Le serveur vérifie la validité de la carte, met à jour l'état du jeu et diffuse les changements à tous les joueurs du lobby.
+ * @param codenames Contexte principal du serveur.
+ * @param client Client TCP ayant envoyé la demande (l'agent).
+ * @param message Message brut reçu du client.
+ * @param args Arguments extraits du message (card_index).
+ * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur.
+ */
+int request_guess_card(Codenames* codenames, TcpClient* client, char* message, Arguments args);
 
 /**
  * Traite la demande de changement de difficulté d'un lobby.

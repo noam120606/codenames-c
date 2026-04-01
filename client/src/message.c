@@ -229,6 +229,27 @@ int on_message(AppContext* context, char* message) {
             break;
         }
 
+        case MSG_GUESS_CARD: {
+            if (args.argc < 2) {
+                printf("Invalid guess card message from server: \"%s\"\n", message);
+                if (args.argv) free(args.argv);
+                return EXIT_FAILURE;
+            }
+
+            int word_index = atoi((char*)args.argv[0]);
+            GameState new_state = (GameState)atoi((char*)args.argv[1]);
+
+            printf("Card guessed: %d, new state: %d\n", word_index, new_state);
+
+            // Mettre à jour la carte et le gamestate
+            if (context->lobby && context->lobby->game && word_index >= 0 && word_index < NUM_CARDS) {
+                (context->lobby->game->cards+word_index)->revealed = 1;
+                context->lobby->game->state = new_state;
+            }
+            
+            break;
+        }
+
         case MSG_SENDCHAT: {
             if (args.argc < 2) {
                 printf("Invalid chat message from server: \"%s\"\n", message);

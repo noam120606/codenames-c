@@ -84,14 +84,14 @@ static int card_handle_click(AppContext* context, Card* card, Booleen is_guess_i
 
     if (card->selected && is_guess_icon) {
         printf("Card \"%s\" guessed!\n", card->word);
-        /* Trame de guess de carte
+
         char message[64];
-        format_to(message, sizeof(message), "%d %d", CARD_GUESS, (int)(card - context->lobby->game->cards));
+        format_to(message, sizeof(message), "%d %d", MSG_GUESS_CARD, (int)(card - context->lobby->game->cards));
         if (send_tcp(context->sock, message) != EXIT_SUCCESS) {
             printf("Failed to send click_card message to server\n");
             return EXIT_FAILURE;
         }
-        */
+        
         card->selected = false;
         card->revealed = true;
     } else {
@@ -143,11 +143,9 @@ int cards_handle_event(AppContext* context, SDL_Event* event) {
     if (!context || !event || !context->lobby || !context->lobby->game) return EXIT_FAILURE;
 
     for (int i = 0; i < NUM_CARDS; i++) {
-        // Condition en commentaire pour le developpement, a retirer après
-        // Elle gere qui peut ou non cliquer sur les cartes
-        //if (context->player_role == ROLE_AGENT && my_turn(context) && !context->lobby->game->cards[i].revealed) {
+        if (context->player_role == ROLE_AGENT && my_turn(context) && !context->lobby->game->cards[i].revealed) {
             card_handle_event(context, event, context->lobby->game->cards + i);
-        //} 
+        } 
     }
 
     return EXIT_SUCCESS;

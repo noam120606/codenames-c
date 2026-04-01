@@ -245,12 +245,114 @@ int request_submit_hint(Codenames* codenames, TcpClient* client, char* message, 
         new_state = GAMESTATE_TURN_BLUE_AGENT;
     }
     lobby->game->state = new_state;
+    lobby->game->can_guess = nb_hint + 1;
 
     printf("Game state changed to %d in lobby %d\n", new_state, lobby->id);
 
     // Diffuse l'indice et le nouveau gamestate à tous les joueurs du lobby
     char msg[128];
     format_to(msg, sizeof(msg), "%d %d %s %d", MSG_SUBMIT_HINT, nb_hint, hint_word, new_state);
+    for (int i = 0; i < lobby->nb_players; i++) {
+        tcp_send_to_client(codenames, lobby->users[i]->id, msg);
+    }
+
+    return EXIT_SUCCESS;
+}
+
+int request_guess_card(Codenames* codenames, TcpClient* client, char* message, Arguments args) {
+    (void)message;
+
+    // Vérifie que le client est bien dans un lobby
+    Lobby* lobby = find_lobby_by_playerid(codenames->lobby, client->id);
+    if (!lobby) {
+        printf("Client %d is not in a lobby\n", client->id);
+        char msg[64];
+        format_to(msg, sizeof(msg), "%d %s", MSG_SERVER_ERROR, "You must be in a lobby to guess a card");
+        tcp_send_to_client(codenames, client->id, msg);
+        return EXIT_FAILURE;
+    }
+
+    // Vérifie que le lobby est bien en partie
+    if (lobby->status != LB_STATUS_IN_GAME || !lobby->game) {
+        printf("Lobby %d is not in game\n", lobby->id);
+        char msg[64];
+        format_to(msg, sizeof(msg), "%d %s", MSG_SERVER_ERROR, "No game in progress");
+        tcp_send_to_client(codenames, client->id, msg);
+        return EXIT_FAILURE;
+    }
+
+    // Vérifie que c'est bien le tour d'un agent
+    if (lobby->game->state != GAMESTATE_TURN_RED_AGENT && lobby->game->state != GAMESTATE_TURN_BLUE_AGENT) {
+        printf("It's not the agent's turn in lobby %d\n", lobby->id);
+        char msg[64];
+        format_to(msg, sizeof(msg), "%d %s", MSG_SERVER_ERROR, "It's not the agent's turn");
+        tcp_send_to_client(codenames, client->id, msg);
+        return EXIT_FAILURE;
+    }
+
+    // Vérifie les arguments: card_index
+    if (args.argc < 1) {
+        printf("Invalid guess card from client %d: \"%s\"\n", client->id, message);
+        char msg[64];
+        format_to(msg, sizeof(msg), "%d %s", MSG_SERVER_ERROR, "Invalid card index");
+        tcp_send_to_client(codenames, client->id, msg);
+        return EXIT_FAILURE;
+    }
+
+    int word_index = atoi((char*)args.argv[0]);
+    if (word_index < 0 || word_index >= 25) {
+        printf("Invalid word index from client %d: %d\n", client->id, word_index);
+        char msg[64];
+        format_to(msg, sizeof(msg), "%d %s", MSG_SERVER_ERROR, "Invalid word index");
+        tcp_send_to_client(codenames, client->id, msg);
+        return EXIT_FAILURE;
+    }
+
+    if (lobby->game->can_guess <= 0) {
+        printf("No guesses left for client %d in lobby %d\n", client->id, lobby->id);
+        char msg[64];
+        format_to(msg, sizeof(msg), "%d %s", MSG_SERVER_ERROR, "No guesses left");
+        tcp_send_to_client(codenames, client->id, msg);
+        return EXIT_FAILURE;
+    }
+
+    Word* word = lobby->game->words + word_index;
+
+    // Vérifie que la carte n'est pas déjà révélée
+    if (word->revealed) {
+        printf("Word \"%s\" is already revealed\n", word->word);
+        char msg[64];
+        format_to(msg, sizeof(msg), "%d %s", MSG_SERVER_ERROR, "Word is already revealed");
+        tcp_send_to_client(codenames, client->id, msg);
+        return EXIT_FAILURE;
+    }
+
+    // Révèle la carte
+    lobby->game->can_guess--;
+    word->revealed = 1;
+
+    printf("Word \"%s\" guessed by client %d\n", word->word, client->id);
+
+    // Change le gamestate de AGENT à SPY
+    GameState new_state = lobby->game->state;
+    int current_team = (lobby->game->state == GAMESTATE_TURN_RED_AGENT) ? TEAM_RED : TEAM_BLUE;
+    if (lobby->game->can_guess <= 0 || word->team != current_team) {
+        if (lobby->game->state == GAMESTATE_TURN_RED_AGENT) {
+            new_state = GAMESTATE_TURN_BLUE_SPY;
+        } else if (lobby->game->state == GAMESTATE_TURN_BLUE_AGENT) {
+            new_state = GAMESTATE_TURN_RED_SPY;
+        }
+    }
+    if (word->team == TEAM_BLACK) {
+        new_state = GAMESTATE_ENDED;
+    }
+    lobby->game->state = new_state;
+
+    printf("Game state changed to %d in lobby %d\n", new_state, lobby->id);
+
+    // Diffuse la carte révélée et le nouveau gamestate à tous les joueurs du lobby
+    char msg[64];
+    format_to(msg, sizeof(msg), "%d %d %d", MSG_GUESS_CARD, word_index, new_state);
     for (int i = 0; i < lobby->nb_players; i++) {
         tcp_send_to_client(codenames, lobby->users[i]->id, msg);
     }
