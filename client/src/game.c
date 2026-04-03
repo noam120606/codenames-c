@@ -790,6 +790,9 @@ void game_display(AppContext * context) {
                 update_text(context, txt_hint_display, hint_text);
                 update_text_color(context, txt_hint_display, COL_WHITE);
                 window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)"La partie est terminée !");
+                window_place_button(hint_window, btn_return_lobby, 375, 20);
+                button_render(context->renderer, btn_return_lobby);
+
                 display_text(context, txt_hint_display);
             } else {
                 /* Affichage du tour seulement */

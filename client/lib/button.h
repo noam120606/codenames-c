@@ -80,7 +80,31 @@ typedef struct ButtonConfig {
     int is_text;
     SDL_Rect text_rect;
     SDL_Texture* text_texture;
+    SDL_Renderer* renderer;
+    int text_dirty;
 } ButtonConfig;
+
+/**
+ * Clés de configuration modifiables via `button_edit_cfg`.
+ */
+typedef enum ButtonCfgKey {
+    BTN_CFG_X = 100,
+    BTN_CFG_Y,
+    BTN_CFG_W,
+    BTN_CFG_H,
+    BTN_CFG_TEXT,
+    BTN_CFG_FONT_PATH,
+    BTN_CFG_COLOR,
+    BTN_CFG_TEX_PATH,
+    BTN_CFG_CALLBACK,
+    BTN_CFG_RECT,
+    BTN_CFG_TEXTURE,
+    BTN_CFG_IS_HOVERED,
+    BTN_CFG_IS_PRESSED,
+    BTN_CFG_IS_TEXT,
+    BTN_CFG_TEXT_RECT,
+    BTN_CFG_TEXT_TEXTURE,
+} ButtonCfgKey;
 
 /**
  * Structure représentant un bouton.
@@ -133,5 +157,16 @@ ButtonReturn button_handle_event(AppContext* context, Button* button, SDL_Event*
  * @return EXIT_SUCCESS si le rendu a réussi, sinon EXIT_FAILURE.
  */
 int button_render(SDL_Renderer* renderer, Button* button);
+
+/**
+ * Modifie un champ de configuration d'un bouton.
+ * @param button Le bouton à modifier.
+ * @param key Le champ de configuration ciblé.
+ * @param value Nouvelle valeur (entier direct pour les champs int/bool,
+ * pointeur casté en `intptr_t` pour les champs pointeurs et adresses de
+ * structures pour `BTN_CFG_COLOR` / `BTN_CFG_RECT` / `BTN_CFG_TEXT_RECT`).
+ * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE sinon.
+ */
+int button_edit_cfg(Button* button, ButtonCfgKey key, intptr_t value);
 
 #endif // BUTTON_H

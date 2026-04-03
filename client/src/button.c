@@ -22,6 +22,8 @@ ButtonConfig* button_config_init(void) {
     cfg->is_text = 0;
     cfg->text_rect = (SDL_Rect){0, 0, 0, 0};
     cfg->text_texture = NULL;
+    cfg->renderer = NULL;
+    cfg->text_dirty = 0;
 
     return cfg;
 }
@@ -50,6 +52,8 @@ Button* button_create(SDL_Renderer* renderer, int id, const ButtonConfig* cfg_in
     button->cfg->is_pressed = 0;
     button->cfg->texture = NULL;
     button->cfg->text_texture = NULL;
+    button->cfg->renderer = renderer;
+    button->cfg->text_dirty = 0;
 
     int x = button->cfg->x;
     int y = button->cfg->y;
@@ -205,6 +209,64 @@ static int is_mouse_over_button(Button* button, int mouseX, int mouseY) {
             mouseY <= button->cfg->rect.y + button->cfg->rect.h);
 }
 
+static int button_rebuild_text_texture(Button* button, SDL_Renderer* renderer) {
+    if (!button || !button->cfg || !button->cfg->is_text) return EXIT_FAILURE;
+    if (!button->cfg->font_path) return EXIT_FAILURE;
+
+    if (!renderer) renderer = button->cfg->renderer;
+    if (!renderer) return EXIT_FAILURE;
+
+    const char* text = button->cfg->text ? button->cfg->text : "";
+
+    TTF_Font* font = TTF_OpenFont(button->cfg->font_path, 128);
+    if (!font) return EXIT_FAILURE;
+
+    SDL_Surface* text_surf = TTF_RenderUTF8_Blended(font, text, button->cfg->color);
+    TTF_CloseFont(font);
+    if (!text_surf) return EXIT_FAILURE;
+
+    SDL_Texture* new_text_texture = SDL_CreateTextureFromSurface(renderer, text_surf);
+    if (!new_text_texture) {
+        SDL_FreeSurface(text_surf);
+        return EXIT_FAILURE;
+    }
+
+    if (button->cfg->text_texture) SDL_DestroyTexture(button->cfg->text_texture);
+    button->cfg->text_texture = new_text_texture;
+
+    int text_tex_w = text_surf->w;
+    int text_tex_h = text_surf->h;
+    SDL_FreeSurface(text_surf);
+
+    int padding = 16;
+    SDL_Rect text_rect;
+    text_rect.h = button->cfg->h - 2 * padding;
+    if (text_rect.h <= 0) text_rect.h = button->cfg->h;
+
+    double scale = (text_tex_h > 0) ? ((double)text_rect.h / (double)text_tex_h) : 1.0;
+    text_rect.w = (int)(text_tex_w * scale);
+
+    int max_text_w = button->cfg->w - 2 * padding;
+    if (max_text_w < 1) max_text_w = 1;
+    if (text_rect.w > max_text_w) {
+        if (text_tex_w > 0) {
+            double scale2 = (double)max_text_w / (double)text_tex_w;
+            text_rect.w = max_text_w;
+            text_rect.h = (int)(text_tex_h * scale2);
+            if (text_rect.h <= 0) text_rect.h = 1;
+        } else {
+            text_rect.w = max_text_w;
+        }
+    }
+
+    text_rect.x = button->cfg->x + (button->cfg->w - text_rect.w) / 2;
+    text_rect.y = button->cfg->y + (button->cfg->h - text_rect.h) / 2;
+    button->cfg->text_rect = text_rect;
+
+    button->cfg->text_dirty = 0;
+    return EXIT_SUCCESS;
+}
+
 ButtonReturn button_handle_event(AppContext* context, Button* button, SDL_Event* event) {
     if (!button || !button->cfg || !event) return BTN_RET_NONE;
 
@@ -241,6 +303,13 @@ int button_render(SDL_Renderer* renderer, Button* button) {
     ButtonConfig* cfg = button->cfg;
     if (!cfg->texture) return EXIT_FAILURE;
 
+    if (cfg->renderer != renderer) cfg->renderer = renderer;
+    if (cfg->is_text && cfg->text_dirty) {
+        if (button_rebuild_text_texture(button, renderer) != EXIT_SUCCESS) {
+            return EXIT_FAILURE;
+        }
+    }
+
     /* Grandir le bouton au survol */
     SDL_Rect render_rect = cfg->rect;
     SDL_Rect text_rect = cfg->text_rect;
@@ -275,4 +344,88 @@ int button_render(SDL_Renderer* renderer, Button* button) {
     }
 
     return EXIT_SUCCESS;
+}
+
+int button_edit_cfg(Button* button, ButtonCfgKey key, intptr_t value) {
+    if (!button || !button->cfg) return EXIT_FAILURE;
+
+    ButtonConfig* cfg = button->cfg;
+
+    switch (key) {
+        case BTN_CFG_X:
+            cfg->x = (int)value;
+            cfg->rect.x = (int)value;
+            if (cfg->is_text) cfg->text_rect.x = cfg->x + (cfg->w - cfg->text_rect.w) / 2;
+            return EXIT_SUCCESS;
+        case BTN_CFG_Y:
+            cfg->y = (int)value;
+            cfg->rect.y = (int)value;
+            if (cfg->is_text) cfg->text_rect.y = cfg->y + (cfg->h - cfg->text_rect.h) / 2;
+            return EXIT_SUCCESS;
+        case BTN_CFG_W:
+            cfg->w = (int)value;
+            cfg->rect.w = (int)value;
+            if (cfg->is_text) cfg->text_rect.x = cfg->x + (cfg->w - cfg->text_rect.w) / 2;
+            return EXIT_SUCCESS;
+        case BTN_CFG_H:
+            cfg->h = (int)value;
+            cfg->rect.h = (int)value;
+            if (cfg->is_text) cfg->text_rect.y = cfg->y + (cfg->h - cfg->text_rect.h) / 2;
+            return EXIT_SUCCESS;
+        case BTN_CFG_TEXT:
+            if (cfg->text == (const char*)value) return EXIT_SUCCESS;
+            if (cfg->text && (const char*)value && strcmp(cfg->text, (const char*)value) == 0) return EXIT_SUCCESS;
+            cfg->text = (const char*)value;
+            if (cfg->is_text) {
+                cfg->text_dirty = 1;
+            }
+            return EXIT_SUCCESS;
+        case BTN_CFG_FONT_PATH:
+            cfg->font_path = (const char*)value;
+            return EXIT_SUCCESS;
+        case BTN_CFG_COLOR:
+            if (!value) return EXIT_FAILURE;
+            cfg->color = *(const SDL_Color*)value;
+            return EXIT_SUCCESS;
+        case BTN_CFG_TEX_PATH:
+            cfg->tex_path = (const char*)value;
+            return EXIT_SUCCESS;
+        case BTN_CFG_CALLBACK:
+            cfg->callback = (ButtonCallback)value;
+            return EXIT_SUCCESS;
+        case BTN_CFG_RECT:
+            if (!value) return EXIT_FAILURE;
+            cfg->rect = *(const SDL_Rect*)value;
+            cfg->x = cfg->rect.x;
+            cfg->y = cfg->rect.y;
+            cfg->w = cfg->rect.w;
+            cfg->h = cfg->rect.h;
+            if (cfg->is_text) {
+                cfg->text_rect.x = cfg->x + (cfg->w - cfg->text_rect.w) / 2;
+                cfg->text_rect.y = cfg->y + (cfg->h - cfg->text_rect.h) / 2;
+            }
+            return EXIT_SUCCESS;
+        case BTN_CFG_TEXTURE:
+            cfg->texture = (SDL_Texture*)value;
+            return EXIT_SUCCESS;
+        case BTN_CFG_IS_HOVERED:
+            cfg->is_hovered = ((int)value != 0);
+            return EXIT_SUCCESS;
+        case BTN_CFG_IS_PRESSED:
+            cfg->is_pressed = ((int)value != 0);
+            return EXIT_SUCCESS;
+        case BTN_CFG_IS_TEXT:
+            cfg->is_text = ((int)value != 0);
+            return EXIT_SUCCESS;
+        case BTN_CFG_TEXT_RECT:
+            if (!value) return EXIT_FAILURE;
+            cfg->text_rect = *(const SDL_Rect*)value;
+            return EXIT_SUCCESS;
+        case BTN_CFG_TEXT_TEXTURE:
+            cfg->text_texture = (SDL_Texture*)value;
+            cfg->text_dirty = 0;
+            return EXIT_SUCCESS;
+        default:
+            return EXIT_FAILURE;
+    }
 }

@@ -237,6 +237,7 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
         format_to(msg, sizeof(msg), "%d %d", MSG_SET_WORDS_DIFFICULTY, new_difficulty);
         send_tcp(context->sock, msg);
         printf("Switched difficulty to: %s\n", new_difficulty == WORDS_DIFFICULTY_HARD ? "HARD" : "EASY");
+        context->lobby->words_difficulty = new_difficulty;
     }
     return BTN_RET_NONE;
 }
@@ -357,7 +358,7 @@ int lobby_init(AppContext* context) {
         cfg_btn_words_difficulty_switch->h         = 48;
         cfg_btn_words_difficulty_switch->font_path = FONT_LARABIE;
         cfg_btn_words_difficulty_switch->color     = COL_WHITE;
-        cfg_btn_words_difficulty_switch->text      = "Changer";
+        cfg_btn_words_difficulty_switch->text      = context->lobby->words_difficulty == WORDS_DIFFICULTY_EASY ? "Facile" : "Difficile";
         cfg_btn_words_difficulty_switch->callback  = lobby_button_click;
         btn_words_difficulty_switch = button_create(context->renderer, 0, cfg_btn_words_difficulty_switch);
         free(cfg_btn_words_difficulty_switch);
@@ -582,16 +583,16 @@ void lobby_display(AppContext* context) {
             
             // Affichage du texte label de difficulté actuelle
             if (txt_difficulty_label) {
-                const char* diff_text = (context->lobby->words_difficulty == WORDS_DIFFICULTY_HARD) ? 
-                    "Difficulté : Difficile" : "Difficulté : Facile";
+                const char* diff_text = "Difficulté :";
                 update_text(context, txt_difficulty_label, diff_text);
-                window_place_text(game_options_window, txt_difficulty_label, 0, 50);
+                window_place_text(game_options_window, txt_difficulty_label, -100, 75);
                 display_text(context, txt_difficulty_label);
             }
             
             // Affichage du bouton switch de difficulté
             if (btn_words_difficulty_switch) {
-                window_place_button(game_options_window, btn_words_difficulty_switch, 0, 75);
+                button_edit_cfg(btn_words_difficulty_switch, BTN_CFG_TEXT, (intptr_t)(context->lobby->words_difficulty == WORDS_DIFFICULTY_EASY ? "Facile" : "Difficile"));
+                window_place_button(game_options_window, btn_words_difficulty_switch, 75, 75);
                 button_render(context->renderer, btn_words_difficulty_switch);
             }
         }
