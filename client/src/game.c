@@ -122,7 +122,7 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
 
         if (context->player_role == ROLE_AGENT) {
             char msg[64];
-            format_to(msg, sizeof(msg), "%d -1 skip", MSG_SUBMIT_HINT);
+            format_to(msg, sizeof(msg), "%d -1", MSG_GUESS_CARD);
             send_tcp(context->sock, msg);
             return BTN_RET_NONE;
         }

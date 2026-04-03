@@ -245,6 +245,7 @@ int on_message(AppContext* context, char* message) {
             if (context->lobby && context->lobby->game) {
                 if (word_index >= 0 && word_index < context->lobby->game->nb_words) {
                     (context->lobby->game->cards+word_index)->revealed = 1;
+                    (context->lobby->game->cards+word_index)->selected = false;
                 }
                 context->lobby->game->state = new_state;
             }
