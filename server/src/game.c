@@ -132,6 +132,9 @@ int destroy_game(Game* game) {
 }
 
 int request_start_game(Codenames* codenames, TcpClient* client, char* message, Arguments args) {
+    (void)message;
+    (void)args;
+
     // Vérifie que le client est bien dans un lobby
     Lobby* lobby = find_lobby_by_ownerid(codenames->lobby, client->id);
     if (!lobby) {
@@ -365,11 +368,11 @@ int request_guess_card(Codenames* codenames, TcpClient* client, char* message, A
 
     printf("Word \"%s\" guessed by client %d\n", word->word, client->id);
 
-    Team winner;
+    Team winner = TEAM_NONE;
 
     // Change le gamestate de AGENT à SPY
     GameState new_state = lobby->game->state;
-    int current_team = (lobby->game->state == GAMESTATE_TURN_RED_AGENT) ? TEAM_RED : TEAM_BLUE;
+    Team current_team = (lobby->game->state == GAMESTATE_TURN_RED_AGENT) ? TEAM_RED : TEAM_BLUE;
     if (lobby->game->can_guess <= 0 || word->team != current_team) {
         if (lobby->game->state == GAMESTATE_TURN_RED_AGENT) {
             new_state = GAMESTATE_TURN_BLUE_SPY;
