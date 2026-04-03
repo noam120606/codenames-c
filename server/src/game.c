@@ -259,6 +259,16 @@ int request_submit_hint(Codenames* codenames, TcpClient* client, char* message, 
     return EXIT_SUCCESS;
 }
 
+int count_remaining_words(Game* game, Team team) {
+    int count = 0;
+    for (int i = 0; i < game->nb_words; i++) {
+        if (game->words[i].team == team && !game->words[i].revealed) {
+            count++;
+        }
+    }
+    return count;
+}
+
 int request_guess_card(Codenames* codenames, TcpClient* client, char* message, Arguments args) {
     (void)message;
 
@@ -366,6 +376,9 @@ int request_guess_card(Codenames* codenames, TcpClient* client, char* message, A
         }
     }
     if (word->team == TEAM_BLACK) {
+        new_state = GAMESTATE_ENDED;
+    }
+    if (count_remaining_words(lobby->game, TEAM_RED) == 0 || count_remaining_words(lobby->game, TEAM_BLUE) == 0) {
         new_state = GAMESTATE_ENDED;
     }
     lobby->game->state = new_state;
