@@ -91,6 +91,18 @@ static void hint_count_on_submit(AppContext* context, const char* text) {
     }
 }
 
+// Réinitialiser le champ de saisie du mot indice et du compteur d'indices après l'envoi du message
+static void clear_hint_inputs(){
+    if (hint_input && hint_input->cfg) {
+        hint_input->cfg->text[0] = '\0';
+        hint_input->cfg->cursor_pos = 0;
+    }
+    if (hint_count_input && hint_count_input->cfg) {
+        hint_count_input->cfg->text[0] = '\0';
+        hint_count_input->cfg->cursor_pos = 0;
+    }
+}
+
 static void chat_on_submit(AppContext* context, const char* text) {
     printf("Chat input submitted: %s\n", text ? text : "");
     if (text && strlen(text) > 0) {
@@ -116,6 +128,7 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
         send_tcp(context->sock, msg);
 
         printf("Left game and returned to menu\n");
+        clear_hint_inputs();
     }
 
     if (button == btn_hint_submit) {
@@ -142,6 +155,7 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
             char msg[64];
             format_to(msg, sizeof(msg), "%d %d %s", MSG_SUBMIT_HINT, nb_hint, text);
             send_tcp(context->sock, msg);
+            clear_hint_inputs();
         } else if(text == NULL || strlen(text) == 0) {
             window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&COL_RED); // Mettre à jour la couleur du label de soumission pour indiquer qu'aucun mot n'a été saisi
             window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)"Vous n'avez pas saisi de mot"); // Mettre à jour le label de soumission pour indiquer qu'aucun mot n'a été saisi
