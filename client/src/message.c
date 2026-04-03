@@ -239,6 +239,22 @@ int on_message(AppContext* context, char* message) {
             int word_index = atoi((char*)args.argv[0]);
             GameState new_state = (GameState)atoi((char*)args.argv[1]);
 
+            // Partie terminée
+            if (args.argc >= 3) {
+                context->lobby->game->winner = (Team)atoi((char*)args.argv[2]);
+                if (
+                    (context->lobby->game->winner == TEAM_RED && context->player_team == TEAM_RED) ||
+                    (context->lobby->game->winner == TEAM_BLUE && context->player_team == TEAM_BLUE)
+                ) {
+                    char nb_win[16];
+                    read_property(nb_win, "WIN_COUNT");
+                    int win_count = nb_win ? atoi(nb_win) + 1 : 1;
+                    format_to(nb_win, sizeof(nb_win), "%d", win_count);
+                    write_property("WIN_COUNT", nb_win);
+                }
+                
+            } 
+
             if (new_state != context->lobby->game->state) {
                 for (int i = 0; i < context->lobby->game->nb_words; i++) {
                     context->lobby->game->cards[i].selected = false;

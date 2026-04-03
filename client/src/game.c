@@ -110,6 +110,18 @@ static void chat_on_submit(AppContext* context, const char* text) {
     }
 }
 
+static int count_remaining_words(AppContext* context, Team team) {
+    int count = 0;
+    if (context->lobby && context->lobby->game) {
+        for (int i = 0; i < context->lobby->game->nb_words; i++) {
+            if ((context->lobby->game->cards[i].team == team) && !context->lobby->game->cards[i].revealed) {
+                count++;
+            }
+        }
+    }
+    return count;
+}
+
 static ButtonReturn game_button_click(AppContext* context, Button* button) {
     if (!context || !button) return BTN_RET_NONE;
 
@@ -715,7 +727,10 @@ void game_display(AppContext * context) {
             /* Affichage du tour et de l'indice si disponible */
             int has_hint = (context->lobby->game->current_hint[0] != '\0' && context->lobby->game->current_hint_count > 0);
             
-            if (has_hint) {
+            if (has_hint && 
+                (context->lobby->game->state == GAMESTATE_TURN_BLUE_AGENT && (context->player_team == TEAM_RED || context->player_role == ROLE_AGENT)) ||
+                (context->lobby->game->state == GAMESTATE_TURN_RED_AGENT && (context->player_team == TEAM_BLUE || context->player_role == ROLE_AGENT))
+            ) {
                 /* Affichage de l'indice en grand */
                 char hint_text[128];
                 format_to(hint_text, sizeof(hint_text), "%s (%d)", 
@@ -727,6 +742,14 @@ void game_display(AppContext * context) {
                 window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)"L'indice est :");
                 window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&color_text);
                 display_text(context, txt_hint_display);
+            } else if (context->lobby->game->state == GAMESTATE_ENDED) {
+                // Affichage du message de fin de partie
+                char hint_text[128];
+                format_to(hint_text, sizeof(hint_text), "L'équipe %s a gagné !", context->lobby->game->winner == TEAM_BLUE ? "bleue" : "rouge");
+                update_text(context, txt_hint_display, hint_text);
+                update_text_color(context, txt_hint_display, COL_WHITE);
+                window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)"La partie est terminée !");
+                display_text(context, txt_hint_display);
             } else {
                 /* Affichage du tour seulement */
                 update_text(context, txt_turn_label, turn_text);
@@ -735,7 +758,6 @@ void game_display(AppContext * context) {
                 display_text(context, txt_turn_label);
             }
         }
-
     }
     if (chat_window) {
         window_render(context->renderer, chat_window);

@@ -365,6 +365,8 @@ int request_guess_card(Codenames* codenames, TcpClient* client, char* message, A
 
     printf("Word \"%s\" guessed by client %d\n", word->word, client->id);
 
+    Team winner;
+
     // Change le gamestate de AGENT à SPY
     GameState new_state = lobby->game->state;
     int current_team = (lobby->game->state == GAMESTATE_TURN_RED_AGENT) ? TEAM_RED : TEAM_BLUE;
@@ -377,9 +379,15 @@ int request_guess_card(Codenames* codenames, TcpClient* client, char* message, A
     }
     if (word->team == TEAM_BLACK) {
         new_state = GAMESTATE_ENDED;
+        winner = (current_team == TEAM_RED) ? TEAM_BLUE : TEAM_RED;
     }
-    if (count_remaining_words(lobby->game, TEAM_RED) == 0 || count_remaining_words(lobby->game, TEAM_BLUE) == 0) {
+    if (count_remaining_words(lobby->game, TEAM_RED) == 0) {
         new_state = GAMESTATE_ENDED;
+        winner = TEAM_RED;
+    }
+    if (count_remaining_words(lobby->game, TEAM_BLUE) == 0) {
+        new_state = GAMESTATE_ENDED;
+        winner = TEAM_BLUE;
     }
     lobby->game->state = new_state;
 
@@ -387,7 +395,7 @@ int request_guess_card(Codenames* codenames, TcpClient* client, char* message, A
 
     // Diffuse la carte révélée et le nouveau gamestate à tous les joueurs du lobby
     char msg[64];
-    format_to(msg, sizeof(msg), "%d %d %d", MSG_GUESS_CARD, word_index, new_state);
+    format_to(msg, sizeof(msg), "%d %d %d %d", MSG_GUESS_CARD, word_index, new_state, winner);
     for (int i = 0; i < lobby->nb_players; i++) {
         tcp_send_to_client(codenames, lobby->users[i]->id, msg);
     }

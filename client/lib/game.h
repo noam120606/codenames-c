@@ -72,6 +72,7 @@ typedef enum GameState {
  * @param state état courant de la partie (GAMESTATE_*).
  * @param current_hint mot indice actuel donné par l'espion.
  * @param current_hint_count nombre de mots associés à l'indice actuel.
+ * @param winner équipe gagnante (TEAM_RED, TEAM_BLUE ou TEAM_NONE si pas encore déterminée).
  */
 typedef struct {
     Card* cards;
@@ -79,6 +80,7 @@ typedef struct {
     GameState state;
     char current_hint[64];
     int current_hint_count;
+    Team winner;
 } Game;
 
 /**
