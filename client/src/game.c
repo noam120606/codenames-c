@@ -94,11 +94,13 @@ static void hint_count_on_submit(AppContext* context, const char* text) {
 // Réinitialiser le champ de saisie du mot indice et du compteur d'indices après l'envoi du message
 static void clear_hint_inputs(){
     if (hint_input && hint_input->cfg) {
-        hint_input->cfg->text[0] = '\0';
+        free(hint_input->cfg->text);
+        hint_input->cfg->text = strdup("");
         hint_input->cfg->cursor_pos = 0;
     }
     if (hint_count_input && hint_count_input->cfg) {
-        hint_count_input->cfg->text[0] = '\0';
+        free(hint_count_input->cfg->text);
+        hint_count_input->cfg->text = strdup("");
         hint_count_input->cfg->cursor_pos = 0;
     }
 }
