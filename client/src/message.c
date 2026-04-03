@@ -239,13 +239,18 @@ int on_message(AppContext* context, char* message) {
             int word_index = atoi((char*)args.argv[0]);
             GameState new_state = (GameState)atoi((char*)args.argv[1]);
 
+            if (new_state != context->lobby->game->state) {
+                for (int i = 0; i < context->lobby->game->nb_words; i++) {
+                    context->lobby->game->cards[i].selected = false;
+                }
+            }
+
             printf("Card guessed: %d, new state: %d\n", word_index, new_state);
 
             // Mettre à jour la carte et le gamestate
             if (context->lobby && context->lobby->game) {
                 if (word_index >= 0 && word_index < context->lobby->game->nb_words) {
                     (context->lobby->game->cards+word_index)->revealed = 1;
-                    (context->lobby->game->cards+word_index)->selected = false;
                 }
                 context->lobby->game->state = new_state;
             }
