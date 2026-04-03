@@ -718,11 +718,6 @@ void game_display(AppContext * context) {
                 window_place_button(hint_window, btn_hint_submit, 285, -15);
                 button_render(context->renderer, btn_hint_submit);
             }
-        } else if (context->player_role == ROLE_AGENT && my_turn(context)) {
-            if (btn_hint_submit) {
-                window_place_button(hint_window, btn_hint_submit, 0, -15);
-                button_render(context->renderer, btn_hint_submit);
-            }
         } else {
             /* Affichage du tour et de l'indice si disponible */
             int has_hint = (context->lobby->game->current_hint[0] != '\0' && context->lobby->game->current_hint_count > 0);
@@ -742,6 +737,13 @@ void game_display(AppContext * context) {
                 window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)"L'indice est :");
                 window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&color_text);
                 display_text(context, txt_hint_display);
+
+                if (context->player_role == ROLE_AGENT && my_turn(context)) {
+                    if (btn_hint_submit) {
+                        window_place_button(hint_window, btn_hint_submit, 285, -15);
+                        button_render(context->renderer, btn_hint_submit);
+                    }
+                }
             } else if (context->lobby->game->state == GAMESTATE_ENDED) {
                 // Affichage du message de fin de partie
                 char hint_text[128];
