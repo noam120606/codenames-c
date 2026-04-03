@@ -300,7 +300,7 @@ int request_guess_card(Codenames* codenames, TcpClient* client, char* message, A
     }
 
     int word_index = atoi((char*)args.argv[0]);
-    if (word_index < 0 || word_index >= 25) {
+    if (word_index < -1 || word_index >= 25) {
         printf("Invalid word index from client %d: %d\n", client->id, word_index);
         char msg[64];
         format_to(msg, sizeof(msg), "%d %s", MSG_SERVER_ERROR, "Invalid word index");
@@ -314,6 +314,28 @@ int request_guess_card(Codenames* codenames, TcpClient* client, char* message, A
         format_to(msg, sizeof(msg), "%d %s", MSG_SERVER_ERROR, "No guesses left");
         tcp_send_to_client(codenames, client->id, msg);
         return EXIT_FAILURE;
+    }
+
+    if (word_index == -1) {
+        printf("Client %d ended their turn in lobby %d\n", client->id, lobby->id);
+        // Change le gamestate de AGENT à SPY
+        GameState new_state;
+        if (lobby->game->state == GAMESTATE_TURN_RED_AGENT) {
+            new_state = GAMESTATE_TURN_BLUE_SPY;
+        } else {
+            new_state = GAMESTATE_TURN_RED_SPY;
+        }
+        lobby->game->state = new_state;
+
+        printf("Game state changed to %d in lobby %d\n", new_state, lobby->id);
+
+        // Diffuse le nouveau gamestate à tous les joueurs du lobby
+        char msg[32];
+        format_to(msg, sizeof(msg), "%d %d %d", MSG_GUESS_CARD, -1, new_state);
+        for (int i = 0; i < lobby->nb_players; i++) {
+            tcp_send_to_client(codenames, lobby->users[i]->id, msg);
+        }
+        return EXIT_SUCCESS;
     }
 
     Word* word = lobby->game->words + word_index;

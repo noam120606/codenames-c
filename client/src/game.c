@@ -120,6 +120,13 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
 
     if (button == btn_hint_submit) {
 
+        if (context->player_role == ROLE_AGENT) {
+            char msg[64];
+            format_to(msg, sizeof(msg), "%d -1 skip", MSG_SUBMIT_HINT);
+            send_tcp(context->sock, msg);
+            return BTN_RET_NONE;
+        }
+
         char* text = hint_input->cfg->text;
         int nb_hint = (int)atoi(hint_count_input->cfg->text);
         int valid = valid_hint(text, context->lobby->game->cards);
@@ -685,6 +692,11 @@ void game_display(AppContext * context) {
             }
             if (btn_hint_submit) {
                 window_place_button(hint_window, btn_hint_submit, 285, -15);
+                button_render(context->renderer, btn_hint_submit);
+            }
+        } else if (context->player_role == ROLE_AGENT && my_turn(context)) {
+            if (btn_hint_submit) {
+                window_place_button(hint_window, btn_hint_submit, 0, -15);
                 button_render(context->renderer, btn_hint_submit);
             }
         } else {

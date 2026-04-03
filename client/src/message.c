@@ -242,8 +242,10 @@ int on_message(AppContext* context, char* message) {
             printf("Card guessed: %d, new state: %d\n", word_index, new_state);
 
             // Mettre à jour la carte et le gamestate
-            if (context->lobby && context->lobby->game && word_index >= 0 && word_index < NUM_CARDS) {
-                (context->lobby->game->cards+word_index)->revealed = 1;
+            if (context->lobby && context->lobby->game) {
+                if (word_index >= 0 && word_index < context->lobby->game->nb_words) {
+                    (context->lobby->game->cards+word_index)->revealed = 1;
+                }
                 context->lobby->game->state = new_state;
             }
             
