@@ -153,6 +153,8 @@ int on_message(AppContext* context, char* message) {
                 return EXIT_FAILURE;
             }
 
+            if (context->lobby->game) game_struct_free(context);
+
             Game* game = (Game*)malloc(sizeof(Game));
             if (!game) {
                 printf("Failed to allocate memory for game\n");

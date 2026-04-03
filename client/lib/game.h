@@ -91,6 +91,13 @@ typedef struct {
 int my_turn(AppContext* context);
 
 /**
+ * Libère les ressources utilisées par la structure de jeu.
+ * @param context Contexte de l'application contenant la structure de jeu à libérer.
+ * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE si le contexte ou la structure de jeu est invalide.
+ */
+int game_struct_free(AppContext* context);
+
+/**
  * Gère les événements du menu.
  * @param context Contexte SDL.
  * @param e Événement SDL à traiter.

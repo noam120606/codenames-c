@@ -2,6 +2,7 @@
 
 Button* btn_quit_game = NULL;
 Button* btn_hint_submit = NULL;
+Button* btn_return_lobby = NULL;
 
 Input* hint_input = NULL;
 Input* hint_count_input = NULL;
@@ -47,14 +48,6 @@ static int red_player_text_index = 0;
 /* Textes pour l'affichage des derniers messages du chat */
 #define CHAT_VISIBLE_MESSAGES 10
 static Text* txt_chat_messages[CHAT_VISIBLE_MESSAGES] = {NULL};
-
-int my_turn(AppContext* context) {
-    switch (context->player_role) {
-        case ROLE_SPY: return context->lobby->game->state == (context->player_team == TEAM_RED ? GAMESTATE_TURN_RED_SPY : GAMESTATE_TURN_BLUE_SPY);
-        case ROLE_AGENT: return context->lobby->game->state == (context->player_team == TEAM_RED ? GAMESTATE_TURN_RED_AGENT : GAMESTATE_TURN_BLUE_AGENT);
-        default: return 0;
-    }
-}
 
 static void hint_on_submit(AppContext* context, const char* text) {
     (void)context;
@@ -139,6 +132,8 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
 
         printf("Left game and returned to menu\n");
         clear_hint_inputs();
+
+        return BTN_RET_QUIT;
     }
 
     if (button == btn_hint_submit) {
@@ -180,13 +175,43 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
             window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)title); // Mettre à jour le label de soumission pour indiquer que le mot est invalide
             printf("Invalid hint submitted: %s\n", text ? text : "");
         }
+
+        return BTN_RET_NONE;
+    }
+
+    if (button == btn_return_lobby) {
+        context->app_state = APP_STATE_LOBBY;
+        printf("Returned to lobby\n");
+        clear_hint_inputs();
+        game_struct_free(context);
+        return BTN_RET_NONE;
     }
 
     return BTN_RET_NONE;
 }
 
+int my_turn(AppContext* context) {
+    switch (context->player_role) {
+        case ROLE_SPY: return context->lobby->game->state == (context->player_team == TEAM_RED ? GAMESTATE_TURN_RED_SPY : GAMESTATE_TURN_BLUE_SPY);
+        case ROLE_AGENT: return context->lobby->game->state == (context->player_team == TEAM_RED ? GAMESTATE_TURN_RED_AGENT : GAMESTATE_TURN_BLUE_AGENT);
+        default: return 0;
+    }
+}
+
+int game_struct_free(AppContext* context) {
+    if (!context || !context->lobby || !context->lobby->game) return EXIT_FAILURE;
+    free(context->lobby->game->cards);
+    free(context->lobby->game);
+    context->lobby->game = NULL;
+    return EXIT_SUCCESS;
+}
+
 void game_handle_event(AppContext* context, SDL_Event* e) {
     if (!context || !e) return;
+
+    if (btn_quit_game) button_handle_event(context, btn_quit_game, e);
+    if (btn_hint_submit) button_handle_event(context, btn_hint_submit, e);
+    if (btn_return_lobby) button_handle_event(context, btn_return_lobby, e);
 
     if (hint_input) input_handle_event(context, hint_input, e);
     if (hint_count_input) input_handle_event(context, hint_count_input, e);
@@ -200,9 +225,6 @@ void game_handle_event(AppContext* context, SDL_Event* e) {
     if (hint_window) window_handle_event(context, hint_window, e);
 
     if (chat_window) window_handle_event(context, chat_window, e);
-
-    if (btn_quit_game) button_handle_event(context, btn_quit_game, e);
-    if (btn_hint_submit) button_handle_event(context, btn_hint_submit, e);
 }
 
 int game_init(AppContext * context) {
@@ -240,6 +262,23 @@ int game_init(AppContext * context) {
         btn_hint_submit = button_create(context->renderer, 0, cfg_btn_hint_submit);
         if (!btn_hint_submit) loading_fails++;
         free(cfg_btn_hint_submit);
+    } else {
+        loading_fails++;
+    }
+
+    ButtonConfig* cfg_btn_return_lobby = button_config_init();
+    if (cfg_btn_return_lobby) {
+        cfg_btn_return_lobby->x = 0;
+        cfg_btn_return_lobby->y = 0;
+        cfg_btn_return_lobby->w = 200;
+        cfg_btn_return_lobby->h = 64;
+        cfg_btn_return_lobby->font_path = FONT_LARABIE;
+        cfg_btn_return_lobby->color = COL_WHITE;
+        cfg_btn_return_lobby->text = "Retour au lobby";
+        cfg_btn_return_lobby->callback = game_button_click;
+        btn_return_lobby = button_create(context->renderer, 0, cfg_btn_return_lobby);
+        if (!btn_return_lobby) loading_fails++;
+        free(cfg_btn_return_lobby);
     } else {
         loading_fails++;
     }
@@ -777,6 +816,7 @@ void game_display(AppContext * context) {
 int game_free() {
     if (btn_quit_game) { button_destroy(btn_quit_game); btn_quit_game = NULL; }
     if (btn_hint_submit) { button_destroy(btn_hint_submit); btn_hint_submit = NULL; }
+    if (btn_return_lobby) { button_destroy(btn_return_lobby); btn_return_lobby = NULL; }
     if (hint_input) { input_destroy(hint_input); hint_input = NULL; }
     if (hint_count_input) { input_destroy(hint_count_input); hint_count_input = NULL; }
     if (chat_input) { input_destroy(chat_input); chat_input = NULL; }
