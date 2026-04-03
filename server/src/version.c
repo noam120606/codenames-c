@@ -22,6 +22,8 @@ void load_version(Codenames* codenames) {
 }
 
 int on_version_compare(Codenames* codenames, TcpClient* client, char* message, Arguments args) {
+    (void)message;
+
     if (args.argc < 1) {
         printf("Invalid version compare message from client %d\n", client->id);
         return EXIT_FAILURE;

@@ -242,7 +242,7 @@ int on_message(AppContext* context, char* message) {
             GameState new_state = (GameState)atoi((char*)args.argv[1]);
 
             // Partie terminée
-            if (args.argc >= 3) {
+            if (args.argc >= 3 && new_state == GAMESTATE_ENDED) {
                 context->lobby->game->winner = (Team)atoi((char*)args.argv[2]);
                 if (
                     (context->lobby->game->winner == TEAM_RED && context->player_team == TEAM_RED) ||
@@ -250,7 +250,7 @@ int on_message(AppContext* context, char* message) {
                 ) {
                     char nb_win[16];
                     read_property(nb_win, "WIN_COUNT");
-                    int win_count = nb_win ? atoi(nb_win) + 1 : 1;
+                    int win_count = strcmp(nb_win, "")!=0 ? atoi(nb_win) + 1 : 1;
                     format_to(nb_win, sizeof(nb_win), "%d", win_count);
                     write_property("WIN_COUNT", nb_win);
                 }

@@ -103,18 +103,6 @@ static void chat_on_submit(AppContext* context, const char* text) {
     }
 }
 
-static int count_remaining_words(AppContext* context, Team team) {
-    int count = 0;
-    if (context->lobby && context->lobby->game) {
-        for (int i = 0; i < context->lobby->game->nb_words; i++) {
-            if ((context->lobby->game->cards[i].team == team) && !context->lobby->game->cards[i].revealed) {
-                count++;
-            }
-        }
-    }
-    return count;
-}
-
 static ButtonReturn game_button_click(AppContext* context, Button* button) {
     if (!context || !button) return BTN_RET_NONE;
 
@@ -182,7 +170,6 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
     if (button == btn_return_lobby) {
         context->app_state = APP_STATE_LOBBY;
         printf("Returned to lobby\n");
-        clear_hint_inputs();
         game_struct_free(context);
         return BTN_RET_NONE;
     }
@@ -761,9 +748,10 @@ void game_display(AppContext * context) {
             /* Affichage du tour et de l'indice si disponible */
             int has_hint = (context->lobby->game->current_hint[0] != '\0' && context->lobby->game->current_hint_count > 0);
             
-            if (has_hint && 
+            if (has_hint && (
                 (context->lobby->game->state == GAMESTATE_TURN_BLUE_AGENT && (context->player_team == TEAM_RED || context->player_role == ROLE_AGENT)) ||
                 (context->lobby->game->state == GAMESTATE_TURN_RED_AGENT && (context->player_team == TEAM_BLUE || context->player_role == ROLE_AGENT))
+                )
             ) {
                 /* Affichage de l'indice en grand */
                 char hint_text[128];
