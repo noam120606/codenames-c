@@ -31,6 +31,15 @@ typedef struct Text Text;
  * @param title Titre affiché dans la barre de titre (NULL pour aucun titre).
  * @param border_thickness Épaisseur de la bordure de la fenêtre (en pixels).
  * @param titlebar_h Hauteur de la barre de titre de la fenêtre (en pixels).
+ * @param scrollable Active la zone scrollable (1 = active, 0 = inactive).
+ * @param scroll_x1 Coordonnée X du premier point de la zone scrollable (relative au centre de la fenêtre).
+ * @param scroll_y1 Coordonnée Y du premier point de la zone scrollable (relative au centre de la fenêtre).
+ * @param scroll_x2 Coordonnée X du second point de la zone scrollable (relative au centre de la fenêtre).
+ * @param scroll_y2 Coordonnée Y du second point de la zone scrollable (relative au centre de la fenêtre).
+ * @param scroll_offset Offset de scroll courant (unité logique libre selon l'écran).
+ * @param scroll_min Valeur minimale autorisée pour scroll_offset.
+ * @param scroll_max Valeur maximale autorisée pour scroll_offset.
+ * @param scroll_step Pas appliqué à chaque cran de molette.
  */
 typedef struct WindowConfig {
 	int x;
@@ -47,8 +56,17 @@ typedef struct WindowConfig {
 	char* title;
 	int border_thickness;
 	int titlebar_h;
+	int scrollable;
+	int scroll_x1;
+	int scroll_y1;
+	int scroll_x2;
+	int scroll_y2;
+	int scroll_offset;
+	int scroll_min;
+	int scroll_max;
+	int scroll_step;
 
-	/* Etat runtime */
+	/* Etat d'exécution */
 	SDL_Rect rect;
 	int dragging;
 	int drag_offset_x;
@@ -82,6 +100,15 @@ typedef enum WindowCfgKey {
 	WIN_CFG_DRAGGING,
 	WIN_CFG_DRAG_OFFSET_X,
 	WIN_CFG_DRAG_OFFSET_Y,
+	WIN_CFG_SCROLLABLE,
+	WIN_CFG_SCROLL_X1,
+	WIN_CFG_SCROLL_Y1,
+	WIN_CFG_SCROLL_X2,
+	WIN_CFG_SCROLL_Y2,
+	WIN_CFG_SCROLL_OFFSET,
+	WIN_CFG_SCROLL_MIN,
+	WIN_CFG_SCROLL_MAX,
+	WIN_CFG_SCROLL_STEP,
 } WindowCfgKey;
 
 /** Initialise une configuration de fenêtre avec des valeurs par défaut.
@@ -143,6 +170,15 @@ int window_contains_point(const Window* win, int logical_x, int logical_y);
  * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE sinon.
  */
 int window_edit_cfg(Window* win, WindowCfgKey key, intptr_t value);
+
+/**
+ * Calcule le rectangle écran de la zone scrollable d'une fenêtre.
+ * La zone est définie par deux points relatifs au centre de la fenêtre.
+ * @param win Fenêtre de référence.
+ * @param out_rect Reçoit le rectangle écran calculé.
+ * @return EXIT_SUCCESS si la zone est valide et active, EXIT_FAILURE sinon.
+ */
+int window_get_scrollable_zone_rect(const Window* win, SDL_Rect* out_rect);
 
 /**
  * Convertit une position locale de contenu de fenêtre en coordonnées logiques globales.

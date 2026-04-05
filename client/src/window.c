@@ -9,9 +9,76 @@ static int clamp_positive(int value, int fallback) {
 	return value;
 }
 
+static int clamp_between(int value, int min_value, int max_value) {
+	if (min_value > max_value) {
+		int tmp = min_value;
+		min_value = max_value;
+		max_value = tmp;
+	}
+
+	if (value < min_value) return min_value;
+	if (value > max_value) return max_value;
+	return value;
+}
+
 static int point_in_rect(int x, int y, const SDL_Rect* r) {
 	if (!r) return 0;
 	return x >= r->x && x < (r->x + r->w) && y >= r->y && y < (r->y + r->h);
+}
+
+static void window_normalize_scroll_cfg(WindowConfig* cfg) {
+	if (!cfg) return;
+
+	if (cfg->scroll_min > cfg->scroll_max) {
+		int tmp = cfg->scroll_min;
+		cfg->scroll_min = cfg->scroll_max;
+		cfg->scroll_max = tmp;
+	}
+
+	cfg->scroll_step = clamp_positive(cfg->scroll_step, 1);
+	cfg->scroll_offset = clamp_between(cfg->scroll_offset, cfg->scroll_min, cfg->scroll_max);
+}
+
+static int window_scrollable_zone_rect_from_cfg(const WindowConfig* cfg, SDL_Rect* out_rect) {
+	if (!cfg || !out_rect || !cfg->scrollable) return EXIT_FAILURE;
+
+	int center_x = cfg->rect.x + (cfg->rect.w / 2);
+	int center_y = cfg->rect.y + (cfg->rect.h / 2);
+
+	/* x vers la droite, y vers le haut (repère local fenêtre) */
+	int p1_x = center_x + cfg->scroll_x1;
+	int p1_y = center_y - cfg->scroll_y1;
+	int p2_x = center_x + cfg->scroll_x2;
+	int p2_y = center_y - cfg->scroll_y2;
+
+	int left = (p1_x < p2_x) ? p1_x : p2_x;
+	int right = (p1_x > p2_x) ? p1_x : p2_x;
+	int top = (p1_y < p2_y) ? p1_y : p2_y;
+	int bottom = (p1_y > p2_y) ? p1_y : p2_y;
+
+	out_rect->x = left;
+	out_rect->y = top;
+	out_rect->w = right - left;
+	out_rect->h = bottom - top;
+
+	if (out_rect->w <= 0 || out_rect->h <= 0) return EXIT_FAILURE;
+	return EXIT_SUCCESS;
+}
+
+static void window_to_logical_coords(const AppContext* ctx, int wx, int wy, int* lx, int* ly) {
+	if (!lx || !ly) return;
+
+	if (!ctx || !ctx->renderer) {
+		*lx = wx;
+		*ly = wy;
+		return;
+	}
+
+	float logical_x = (float)wx;
+	float logical_y = (float)wy;
+	SDL_RenderWindowToLogical(ctx->renderer, wx, wy, &logical_x, &logical_y);
+	*lx = (int)lroundf(logical_x);
+	*ly = (int)lroundf(logical_y);
 }
 
 static int window_content_origin_screen(const Window* win, int* out_x, int* out_y) {
@@ -98,6 +165,15 @@ WindowConfig* window_config_init(void) {
 	cfg->title = NULL;
 	cfg->border_thickness = 2;
 	cfg->titlebar_h = 36;
+	cfg->scrollable = 0;
+	cfg->scroll_x1 = 0;
+	cfg->scroll_y1 = 0;
+	cfg->scroll_x2 = 0;
+	cfg->scroll_y2 = 0;
+	cfg->scroll_offset = 0;
+	cfg->scroll_min = 0;
+	cfg->scroll_max = 0;
+	cfg->scroll_step = 1;
 	cfg->dragging = 0;
 	cfg->drag_offset_x = 0;
 	cfg->drag_offset_y = 0;
@@ -122,6 +198,8 @@ void window_update_rect(Window* win) {
 	cfg->rect.h = cfg->h;
 	cfg->rect.x = (WIN_WIDTH / 2) + cfg->x - (cfg->w / 2);
 	cfg->rect.y = (WIN_HEIGHT / 2) - cfg->y - (cfg->h / 2);
+
+	window_normalize_scroll_cfg(cfg);
 }
 
 Window* window_create(int id, const WindowConfig* cfg_in) {
@@ -169,6 +247,11 @@ int window_contains_point(const Window* win, int logical_x, int logical_y) {
 	return point_in_rect(logical_x, logical_y, &win->cfg->rect);
 }
 
+int window_get_scrollable_zone_rect(const Window* win, SDL_Rect* out_rect) {
+	if (!win || !win->cfg || !out_rect) return EXIT_FAILURE;
+	return window_scrollable_zone_rect_from_cfg(win->cfg, out_rect);
+}
+
 void window_handle_event(AppContext* ctx, Window* win, SDL_Event* event) {
 	if (!ctx || !win || !win->cfg || !event) return;
 
@@ -202,6 +285,29 @@ void window_handle_event(AppContext* ctx, Window* win, SDL_Event* event) {
 		cfg->x = new_rect_x + (cfg->w / 2) - (WIN_WIDTH / 2);
 		cfg->y = (WIN_HEIGHT / 2) - (new_rect_y + (cfg->h / 2));
 		window_update_rect(win);
+	} else if (event->type == SDL_MOUSEWHEEL) {
+		if (!cfg->scrollable) return;
+
+		int raw_mx = 0;
+		int raw_my = 0;
+		SDL_GetMouseState(&raw_mx, &raw_my);
+
+		int mx = raw_mx;
+		int my = raw_my;
+		window_to_logical_coords(ctx, raw_mx, raw_my, &mx, &my);
+
+		SDL_Rect zone = {0};
+		if (window_scrollable_zone_rect_from_cfg(cfg, &zone) != EXIT_SUCCESS) return;
+		if (!point_in_rect(mx, my, &zone)) return;
+
+		int wheel_y = event->wheel.y;
+		if (event->wheel.direction == SDL_MOUSEWHEEL_FLIPPED) {
+			wheel_y = -wheel_y;
+		}
+		if (wheel_y == 0) return;
+
+		cfg->scroll_offset += wheel_y * cfg->scroll_step;
+		window_normalize_scroll_cfg(cfg);
 	} else if (event->type == SDL_MOUSEBUTTONUP && event->button.button == SDL_BUTTON_LEFT) {
 		cfg->dragging = 0;
 	}
@@ -280,12 +386,23 @@ int window_edit_cfg(Window* win, WindowCfgKey key, intptr_t value) {
 		case WIN_CFG_DRAGGING: cfg->dragging = ((int)value != 0); break;
 		case WIN_CFG_DRAG_OFFSET_X: cfg->drag_offset_x = (int)value; break;
 		case WIN_CFG_DRAG_OFFSET_Y: cfg->drag_offset_y = (int)value; break;
+		case WIN_CFG_SCROLLABLE: cfg->scrollable = ((int)value != 0); break;
+		case WIN_CFG_SCROLL_X1: cfg->scroll_x1 = (int)value; break;
+		case WIN_CFG_SCROLL_Y1: cfg->scroll_y1 = (int)value; break;
+		case WIN_CFG_SCROLL_X2: cfg->scroll_x2 = (int)value; break;
+		case WIN_CFG_SCROLL_Y2: cfg->scroll_y2 = (int)value; break;
+		case WIN_CFG_SCROLL_OFFSET: cfg->scroll_offset = (int)value; break;
+		case WIN_CFG_SCROLL_MIN: cfg->scroll_min = (int)value; break;
+		case WIN_CFG_SCROLL_MAX: cfg->scroll_max = (int)value; break;
+		case WIN_CFG_SCROLL_STEP: cfg->scroll_step = (int)value; break;
 		default:
 			return EXIT_FAILURE;
 	}
 
 	if (need_rect_refresh) {
 		window_update_rect(win);
+	} else {
+		window_normalize_scroll_cfg(cfg);
 	}
 
 	return EXIT_SUCCESS;

@@ -490,6 +490,15 @@ int game_init(AppContext * context) {
         cfg_chat_window->movable = 1;
         cfg_chat_window->titlebar_h = 0;
         cfg_chat_window->bg_color = (SDL_Color){20, 20, 20, 240};
+        cfg_chat_window->scrollable = 1;
+        cfg_chat_window->scroll_x1 = -(cfg_chat_window->w / 2) + 4;
+        cfg_chat_window->scroll_y1 = (cfg_chat_window->h / 2) - 4;
+        cfg_chat_window->scroll_x2 = (cfg_chat_window->w / 2) - 4;
+        cfg_chat_window->scroll_y2 = -(cfg_chat_window->h / 2) + 4;
+        cfg_chat_window->scroll_step = 1;
+        cfg_chat_window->scroll_min = 0;
+        cfg_chat_window->scroll_max = 0;
+        cfg_chat_window->scroll_offset = 0;
         chat_window = window_create(1, cfg_chat_window);
         if (!chat_window) loading_fails++;
         free(cfg_chat_window);
@@ -651,12 +660,29 @@ static void game_render_team_windows(AppContext* context) {
 static void game_render_chat_messages(AppContext* context) {
     if (!context || !context->lobby || !chat_window) return;
 
+    // Calculer les paramètres de scroll en fonction du nombre total de messages dans le chat et du nombre de messages visibles
     const int total_messages = chat_size(&context->lobby->chat);
+    int max_scroll_offset = total_messages - CHAT_VISIBLE_MESSAGES;
+    if (max_scroll_offset < 0) max_scroll_offset = 0;
+
+    window_edit_cfg(chat_window, WIN_CFG_SCROLL_MIN, 0);
+    window_edit_cfg(chat_window, WIN_CFG_SCROLL_MAX, max_scroll_offset);
+
+    // L'offset de scroll est géré par la fenêtre elle-même, on le récupère pour calculer l'index du message à afficher en bas du chat
+    int scroll_offset = chat_window->cfg ? chat_window->cfg->scroll_offset : 0;
     const int visible_messages = (total_messages < CHAT_VISIBLE_MESSAGES) ? total_messages : CHAT_VISIBLE_MESSAGES;
-    const int start_index = total_messages - visible_messages;
+    int start_index = total_messages - visible_messages - scroll_offset;
+    if (start_index < 0) start_index = 0;
     const int bottom_line_y = -42; // Le message le plus récent reste en bas du chat
     const int line_gap = 14;
     const int left_padding = 8;
+
+    // Appliquer le clipping pour la zone de chat
+    SDL_Rect chat_clip = {0};
+    int has_clip = (window_get_scrollable_zone_rect(chat_window, &chat_clip) == EXIT_SUCCESS);
+    if (has_clip) {
+        SDL_RenderSetClipRect(context->renderer, &chat_clip);
+    }
 
     for (int i = 0; i < CHAT_VISIBLE_MESSAGES; i++) {
         Text* txt = txt_chat_messages[i];
@@ -682,6 +708,10 @@ static void game_render_chat_messages(AppContext* context) {
         int rel_y = bottom_line_y + ((visible_messages - 1 - i) * line_gap);
         window_place_text(chat_window, txt, rel_x, rel_y);
         display_text(context, txt);
+    }
+
+    if (has_clip) {
+        SDL_RenderSetClipRect(context->renderer, NULL);
     }
 }
 
