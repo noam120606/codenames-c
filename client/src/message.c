@@ -164,6 +164,9 @@ int on_message(AppContext* context, char* message) {
             game->nb_words = atoi((char*)args.argv[1]);
             game->current_hint[0] = '\0';
             game->current_hint_count = 0;
+            game->winner = TEAM_NONE;
+            history_reset(&game->red_history);
+            history_reset(&game->blue_history);
             printf("Starting game with state %d and %d words\n", game->state, game->nb_words);
             game->cards = (Card*)malloc(sizeof(Card) * game->nb_words);
             if (!game->cards) {
@@ -217,6 +220,13 @@ int on_message(AppContext* context, char* message) {
             int nb_guesses = atoi((char*)args.argv[0]);
             char* hint = (char*)args.argv[1];
             GameState new_state = (GameState)atoi((char*)args.argv[2]);
+            GameState previous_state = GAMESTATE_WAITING;
+
+            if (context->lobby && context->lobby->game) {
+                previous_state = context->lobby->game->state;
+            }
+
+            Team active_team = history_team_from_agent_state(new_state);
 
             printf("Hint received: %s with %d guesses, new state: %d\n", hint, nb_guesses, new_state);
 
@@ -226,6 +236,24 @@ int on_message(AppContext* context, char* message) {
                 context->lobby->game->current_hint[sizeof(context->lobby->game->current_hint) - 1] = '\0';
                 context->lobby->game->current_hint_count = nb_guesses;
                 context->lobby->game->state = new_state;
+
+                if (active_team != TEAM_NONE) {
+                    int should_start_turn = 0;
+                    if (active_team == TEAM_RED && previous_state == GAMESTATE_TURN_RED_SPY) {
+                        should_start_turn = 1;
+                    } else if (active_team == TEAM_BLUE && previous_state == GAMESTATE_TURN_BLUE_SPY) {
+                        should_start_turn = 1;
+                    } else {
+                        History* history = history_get_for_team(context->lobby->game, active_team);
+                        if (!history || history->turn_count <= 0) {
+                            should_start_turn = 1;
+                        }
+                    }
+
+                    if (should_start_turn) {
+                        history_start_turn(context, active_team, hint);
+                    }
+                }
             }
             
             break;
@@ -240,6 +268,10 @@ int on_message(AppContext* context, char* message) {
 
             int word_index = atoi((char*)args.argv[0]);
             GameState new_state = (GameState)atoi((char*)args.argv[1]);
+            Team active_team = TEAM_NONE;
+            if (context->lobby && context->lobby->game) {
+                active_team = history_team_from_agent_state(context->lobby->game->state);
+            }
 
             // Partie terminée
             if (args.argc >= 3 && new_state == GAMESTATE_ENDED) {
@@ -268,9 +300,15 @@ int on_message(AppContext* context, char* message) {
             // Mettre à jour la carte et le gamestate
             if (context->lobby && context->lobby->game) {
                 if (word_index >= 0 && word_index < context->lobby->game->nb_words) {
+                    if (active_team != TEAM_NONE) {
+                        history_append_revealed_word(context, active_team, context->lobby->game->cards[word_index].word);
+                    }
+
                     (context->lobby->game->cards+word_index)->revealed = true;
                     (context->lobby->game->cards+word_index)->is_hovered = false;
                     (context->lobby->game->cards+word_index)->selected = false;
+                } else if (word_index == -1 && active_team != TEAM_NONE) {
+                    history_ensure_turn(context, active_team, context->lobby->game->current_hint);
                 }
                 context->lobby->game->state = new_state;
             }

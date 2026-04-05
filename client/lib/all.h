@@ -58,6 +58,7 @@
 #include "../lib/user.h"
 #include "../lib/lobby.h"
 #include "../lib/chat.h"
+#include "../lib/history.h"
 #include "../lib/ressources.h"
 #include "../lib/save.h"
 #include "../lib/version.h"
