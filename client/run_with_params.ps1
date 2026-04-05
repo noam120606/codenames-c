@@ -16,9 +16,9 @@ if ([string]::IsNullOrWhiteSpace($ServerIp)) {
 }
 
 if ($Instances -le 0) {
-    $instancesRaw = Read-Host "Nombre de clients a lancer (par defaut: 2)"
+    $instancesRaw = Read-Host "Nombre de clients a lancer (par defaut: 1)"
     if ([string]::IsNullOrWhiteSpace($instancesRaw)) {
-        $Instances = 2
+        $Instances = 1
     } else {
         [int]$parsedInstances = 0
         if (-not [int]::TryParse($instancesRaw, [ref]$parsedInstances) -or $parsedInstances -lt 1) {

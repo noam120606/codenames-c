@@ -152,7 +152,7 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
             window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&COL_DARK_GREEN); // Mettre à jour la couleur du label de soumission pour indiquer que le mot est valide
             window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)title); // Mettre à jour le label de soumission
             char msg[64];
-            format_to(msg, sizeof(msg), "%d %d %s", MSG_SUBMIT_HINT, nb_hint, text);
+            format_to(msg, sizeof(msg), "%d %s %d %s", MSG_SUBMIT_HINT, context->player_name ? context->player_name : "Unknown", nb_hint, text);
             send_tcp(context->sock, msg);
             clear_hint_inputs();
         } else if(text == NULL || strlen(text) == 0) {
@@ -396,18 +396,18 @@ int game_init(AppContext * context) {
 
     /* Textes pour les messages du chat */
     for (int i = 0; i < CHAT_VISIBLE_MESSAGES; i++) {
-        txt_chat_messages[i] = init_text(context, " ", 
-            create_text_config(FONT_BEBASKAI, 12, COL_WHITE, 0, 0, 0, 255));
+        txt_chat_messages[i] = init_text(context, " ",
+            create_text_config(FONT_NOTO, 14, COL_WHITE, 0, 0, 0, 255));
     }
 
     /* Textes pour les lignes d'historique des équipes */
     for (int i = 0; i < HISTORY_VISIBLE_LINES; i++) {
         txt_history_blue_lines[i] = init_text(context, " ",
-            create_text_config(FONT_BEBASKAI, 14, COL_WHITE, 0, 0, 0, 255));
+            create_text_config(FONT_NOTO, 18, COL_WHITE, 0, 0, 0, 255));
         if (!txt_history_blue_lines[i]) loading_fails++;
 
         txt_history_red_lines[i] = init_text(context, " ",
-            create_text_config(FONT_BEBASKAI, 14, COL_WHITE, 0, 0, 0, 255));
+            create_text_config(FONT_NOTO, 18, COL_WHITE, 0, 0, 0, 255));
         if (!txt_history_red_lines[i]) loading_fails++;
     }
 
@@ -709,7 +709,7 @@ static void game_render_chat_messages(AppContext* context) {
     int start_index = total_messages - visible_messages - scroll_offset;
     if (start_index < 0) start_index = 0;
     const int bottom_line_y = -42; // Le message le plus récent reste en bas du chat
-    const int line_gap = 14;
+    const int line_gap = 15;
     const int left_padding = 8;
 
     // Appliquer le clipping pour la zone de chat
@@ -767,7 +767,7 @@ static void game_render_team_history(AppContext* context, Window* history_window
     int start_index = total_lines - visible_lines - scroll_offset;
     if (start_index < 0) start_index = 0;
 
-    const int line_gap = 18;
+    const int line_gap = 20;
     const int left_padding = 8;
     const int top_padding = 10;
     int top_line_y = (history_window->cfg->h / 2) - history_window->cfg->titlebar_h - top_padding;

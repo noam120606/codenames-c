@@ -117,13 +117,13 @@ int history_build_lines(const History* history, char lines[][HISTORY_LINE_SIZE],
 
     int line_count = 0;
     if (!history || history->turn_count <= 0) {
-        line_count = history_push_line(lines, max_lines, line_count, "Aucun tour pour cette equipe.");
+        line_count = history_push_line(lines, max_lines, line_count, "Aucun tour joué pour le moment.");
         return line_count;
     }
 
     for (int i_turn = 0; i_turn < history->turn_count; i_turn++) {
         const Turn* turn = &history->turns[i_turn];
-        const char* player_name = (turn->spy_name[0] != '\0') ? turn->spy_name : "Equipe";
+        const char* spy_name = (turn->spy_name[0] != '\0') ? turn->spy_name : "Equipe";
 
         char header[HISTORY_LINE_SIZE];
         format_to(
@@ -131,7 +131,7 @@ int history_build_lines(const History* history, char lines[][HISTORY_LINE_SIZE],
             sizeof(header),
             "Tour %d - %s a soumis %s en %d",
             i_turn + 1,
-            player_name,
+            spy_name,
             (turn->hint[0] != '\0') ? turn->hint : "???",
             turn->hint_count
         );

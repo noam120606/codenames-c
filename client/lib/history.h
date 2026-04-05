@@ -14,6 +14,32 @@ typedef struct AppContext AppContext;
 #define HISTORY_LINE_SIZE 128
 
 /**
+ * Représente un tour de jeu pour une équipe.
+ * @param spy_name Nom du joueur qui a soumis l'indice.
+ * @param hint_count Nombre de mots associés à l'indice (0 si indisponible).
+ * @param agent_name Nom du joueur qui a révélé le(s) mot(s) du tour (vide si inconnu).
+ * @param hint Indice soumis par l'espion (vide si indisponible).
+ * @param revealed_words Mots révélés pendant ce tour (tableau de taille NB_WORDS).
+ */
+typedef struct Turn {
+	char spy_name[32];
+	int hint_count;
+	char agent_name[32];
+	char hint[64];
+	char revealed_words[NB_WORDS][64];
+} Turn;
+
+/**
+ * Historique des tours pour une équipe.
+ * @param turns Tableau des tours enregistrés.
+ * @param turn_count Nombre de tours actuellement stockés.
+ */
+typedef struct History {
+	Turn turns[NB_WORDS];
+	int turn_count;
+} History;
+
+/**
  * Retourne l'historique associé à une équipe.
  * @param game Partie cible.
  * @param team Équipe cible (TEAM_RED ou TEAM_BLUE).

@@ -226,19 +226,20 @@ int request_submit_hint(Codenames* codenames, TcpClient* client, char* message, 
         return EXIT_FAILURE;
     }
 
-    // Vérifie les arguments: nb_hint et hint_word
-    if (args.argc < 2) {
-        printf("Invalid submit hint from client %d: \"%s\"\n", client->id, message);
+    // Vérifie les arguments: spy_name, nb_hint et hint_word
+    if (args.argc < 3) {
+        printf("Invalid submit hint from client %d : \"%s\"\n", client->id, message);
         char msg[64];
         format_to(msg, sizeof(msg), "%d %s", MSG_SERVER_ERROR, "Invalid hint format");
         tcp_send_to_client(codenames, client->id, msg);
         return EXIT_FAILURE;
     }
 
-    int nb_hint = atoi((char*)args.argv[0]);
-    char* hint_word = (char*)args.argv[1];
+    char* spy_name = (char*)args.argv[0];
+    int nb_hint = atoi((char*)args.argv[1]);
+    char* hint_word = (char*)args.argv[2];
 
-    printf("Client %d submitted hint: %s (%d)\n", client->id, hint_word, nb_hint);
+    printf("Client %d (%s) submitted hint: %s (%d)\n", client->id, spy_name, hint_word, nb_hint);
 
     // Change le gamestate de SPY à AGENT
     GameState new_state;
@@ -254,7 +255,7 @@ int request_submit_hint(Codenames* codenames, TcpClient* client, char* message, 
 
     // Diffuse l'indice et le nouveau gamestate à tous les joueurs du lobby
     char msg[128];
-    format_to(msg, sizeof(msg), "%d %d %s %d", MSG_SUBMIT_HINT, nb_hint, hint_word, new_state);
+    format_to(msg, sizeof(msg), "%d %s %d %s %d", MSG_SUBMIT_HINT, spy_name, nb_hint, hint_word, new_state);
     for (int i = 0; i < lobby->nb_players; i++) {
         tcp_send_to_client(codenames, lobby->users[i]->id, msg);
     }

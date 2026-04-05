@@ -211,15 +211,16 @@ int on_message(AppContext* context, char* message) {
         }
 
         case MSG_SUBMIT_HINT: {
-            if (args.argc < 3) {
+            if (args.argc < 4) {
                 printf("Invalid submit hint message from server: \"%s\"\n", message);
                 if (args.argv) free(args.argv);
                 return EXIT_FAILURE;
             }
 
-            int nb_guesses = atoi((char*)args.argv[0]);
-            char* hint = (char*)args.argv[1];
-            GameState new_state = (GameState)atoi((char*)args.argv[2]);
+            char* spy_name = (char*)args.argv[0];
+            int nb_guesses = atoi((char*)args.argv[1]);
+            char* hint = (char*)args.argv[2];
+            GameState new_state = (GameState)atoi((char*)args.argv[3]);
             GameState previous_state = GAMESTATE_WAITING;
 
             if (context->lobby && context->lobby->game) {
@@ -228,7 +229,7 @@ int on_message(AppContext* context, char* message) {
 
             Team active_team = history_team_from_agent_state(new_state);
 
-            printf("Hint received: %s with %d guesses, new state: %d\n", hint, nb_guesses, new_state);
+            printf("Hint received from %s: %s with %d guesses, new state: %d\n", spy_name, hint, nb_guesses, new_state);
 
             // Stocker l'indice et mettre à jour le gamestate
             if (context->lobby && context->lobby->game) {
@@ -252,6 +253,17 @@ int on_message(AppContext* context, char* message) {
 
                     if (should_start_turn) {
                         history_start_turn(context, active_team, hint, nb_guesses);
+
+                        /* Le serveur fournit le nom de l'espion: on l'applique au tour créé. */
+                        History* history = history_get_for_team(context->lobby->game, active_team);
+                        if (history && history->turn_count > 0 && spy_name && spy_name[0] != '\0') {
+                            Turn* turn = &history->turns[history->turn_count - 1];
+                            strncpy(turn->spy_name, spy_name, sizeof(turn->spy_name) - 1);
+                            turn->spy_name[sizeof(turn->spy_name) - 1] = '\0';
+                            strncpy(turn->hint, hint, sizeof(turn->hint) - 1);
+                            turn->hint[sizeof(turn->hint) - 1] = '\0';
+                            turn->hint_count = nb_guesses;
+                        }
                     }
                 }
             }
@@ -339,12 +351,12 @@ int on_message(AppContext* context, char* message) {
             }
 
             char full_message[512];
-            format_to(full_message, sizeof(full_message), "%s: %s", sender, chat_message);
+            format_to(full_message, sizeof(full_message), "%s : %s", sender, chat_message);
             if (chat_push(&context->lobby->chat, full_message) != EXIT_SUCCESS) {
                 printf("Failed to store chat message in lobby history\n");
             }
 
-            printf("%s: %s\n", sender, chat_message);
+            printf("%s : %s\n", sender, chat_message);
             
             break;
         }
