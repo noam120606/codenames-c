@@ -196,12 +196,24 @@ int game_struct_free(AppContext* context) {
 void game_handle_event(AppContext* context, SDL_Event* e) {
     if (!context || !e) return;
 
-    if (btn_quit_game) button_handle_event(context, btn_quit_game, e);
-    if (btn_hint_submit) button_handle_event(context, btn_hint_submit, e);
-    if (btn_return_lobby) button_handle_event(context, btn_return_lobby, e);
+    // Déterminer les éléments à gérer en fonction de l'état du jeu et du rôle du joueur
+    int has_game = (context->lobby && context->lobby->game);
+    int is_my_turn = has_game ? my_turn(context) : 0;
+    int show_spy_hint_controls = (context->player_role == ROLE_SPY && is_my_turn);
+    int has_hint = has_game && (context->lobby->game->current_hint[0] != '\0' && context->lobby->game->current_hint_count > 0);
+    int show_hint_for_agents_or_opponents = has_game && has_hint && (
+        (context->lobby->game->state == GAMESTATE_TURN_BLUE_AGENT && (context->player_team == TEAM_RED || context->player_role == ROLE_AGENT)) ||
+        (context->lobby->game->state == GAMESTATE_TURN_RED_AGENT && (context->player_team == TEAM_BLUE || context->player_role == ROLE_AGENT))
+    );
+    int show_agent_hint_button = (show_hint_for_agents_or_opponents && context->player_role == ROLE_AGENT && is_my_turn);
+    int show_return_lobby_button = (has_game && context->lobby->game->state == GAMESTATE_ENDED);
 
-    if (hint_input) input_handle_event(context, hint_input, e);
-    if (hint_count_input) input_handle_event(context, hint_count_input, e);
+    if (btn_quit_game) button_handle_event(context, btn_quit_game, e);
+    if (btn_hint_submit && (show_spy_hint_controls || show_agent_hint_button)) button_handle_event(context, btn_hint_submit, e);
+    if (btn_return_lobby && show_return_lobby_button) button_handle_event(context, btn_return_lobby, e);
+
+    if (hint_input && show_spy_hint_controls) input_handle_event(context, hint_input, e);
+    if (hint_count_input && show_spy_hint_controls) input_handle_event(context, hint_count_input, e);
     if (chat_input) input_handle_event(context, chat_input, e);
 
     if (blue_panel) window_handle_event(context, blue_panel, e);
@@ -236,11 +248,11 @@ int game_init(AppContext * context) {
 
     ButtonConfig* cfg_btn_hint_submit = button_config_init();
     if (cfg_btn_hint_submit) {
-        cfg_btn_hint_submit->x = 30;
+        cfg_btn_hint_submit->x = 300;
         cfg_btn_hint_submit->y = -450;
         cfg_btn_hint_submit->w = 64;
         cfg_btn_hint_submit->h = 64;
-        cfg_btn_hint_submit->font_path = FONT_NOTO; // inclus les emojis
+        cfg_btn_hint_submit->font_path = FONT_LARABIE;
         cfg_btn_hint_submit->color = COL_WHITE;
         cfg_btn_hint_submit->text = NULL;
         cfg_btn_hint_submit->is_text = 0;
