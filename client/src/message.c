@@ -251,7 +251,7 @@ int on_message(AppContext* context, char* message) {
                     }
 
                     if (should_start_turn) {
-                        history_start_turn(context, active_team, hint);
+                        history_start_turn(context, active_team, hint, nb_guesses);
                     }
                 }
             }
@@ -308,7 +308,12 @@ int on_message(AppContext* context, char* message) {
                     (context->lobby->game->cards+word_index)->is_hovered = false;
                     (context->lobby->game->cards+word_index)->selected = false;
                 } else if (word_index == -1 && active_team != TEAM_NONE) {
-                    history_ensure_turn(context, active_team, context->lobby->game->current_hint);
+                    history_ensure_turn(
+                        context,
+                        active_team,
+                        context->lobby->game->current_hint,
+                        context->lobby->game->current_hint_count
+                    );
                 }
                 context->lobby->game->state = new_state;
             }

@@ -50,7 +50,7 @@ static int red_player_text_index = 0;
 static Text* txt_chat_messages[CHAT_VISIBLE_MESSAGES] = {NULL};
 
 /* Textes pour l'affichage de l'historique des tours */
-#define HISTORY_VISIBLE_LINES 16
+#define HISTORY_VISIBLE_LINES 14
 #define HISTORY_MAX_LINES ((NB_WORDS * 2) + 4) // Max 2 tours par équipe + 4 lignes de séparation et d'information
 static Text* txt_history_blue_lines[HISTORY_VISIBLE_LINES] = {NULL};
 static Text* txt_history_red_lines[HISTORY_VISIBLE_LINES] = {NULL};
@@ -750,55 +750,11 @@ static void game_render_chat_messages(AppContext* context) {
     }
 }
 
-static int history_push_line(char lines[][128], int max_lines, int current_count, const char* line) {
-    if (!lines || max_lines <= 0 || current_count < 0 || !line) return current_count;
-    if (current_count >= max_lines) return current_count;
-
-    strncpy(lines[current_count], line, 127);
-    lines[current_count][127] = '\0';
-    return current_count + 1;
-}
-
-static int build_team_history_lines(const History* history, char lines[][128], int max_lines) {
-    if (!lines || max_lines <= 0) return 0;
-
-    int line_count = 0;
-    if (!history || history->turn_count <= 0) {
-        line_count = history_push_line(lines, max_lines, line_count, "Aucun tour pour cette equipe.");
-        return line_count;
-    }
-
-    for (int i_turn = 0; i_turn < history->turn_count; i_turn++) {
-        const Turn* turn = &history->turns[i_turn];
-        const char* player_name = (turn->spy_name[0] != '\0') ? turn->spy_name : "Equipe";
-
-        char header[128];
-        format_to(header, sizeof(header), "Tour %d - %s a soumis %s en %d", i_turn + 1, player_name, (turn->hint[0] != '\0') ? turn->hint : "???", turn->hint_count);
-        line_count = history_push_line(lines, max_lines, line_count, header);
-
-        int words_added = 0;
-        for (int i_word = 0; i_word < NB_WORDS; i_word++) {
-            if (turn->revealed_words[i_word][0] == '\0') continue;
-
-            char word_line[128];
-            format_to(word_line, sizeof(word_line), "  - %s", turn->revealed_words[i_word]);
-            line_count = history_push_line(lines, max_lines, line_count, word_line);
-            words_added++;
-        }
-
-        if (words_added == 0) {
-            line_count = history_push_line(lines, max_lines, line_count, "  - Aucun mot révélé");
-        }
-    }
-
-    return line_count;
-}
-
 static void game_render_team_history(AppContext* context, Window* history_window, const History* history, Text** history_texts) {
     if (!context || !history_window || !history || !history_texts) return;
 
-    char lines[HISTORY_MAX_LINES][128] = {{0}};
-    int total_lines = build_team_history_lines(history, lines, HISTORY_MAX_LINES);
+    char lines[HISTORY_MAX_LINES][HISTORY_LINE_SIZE] = {{0}};
+    int total_lines = history_build_lines(history, lines, HISTORY_MAX_LINES);
 
     int max_scroll_offset = total_lines - HISTORY_VISIBLE_LINES;
     if (max_scroll_offset < 0) max_scroll_offset = 0;
@@ -811,7 +767,7 @@ static void game_render_team_history(AppContext* context, Window* history_window
     int start_index = total_lines - visible_lines - scroll_offset;
     if (start_index < 0) start_index = 0;
 
-    const int line_gap = 16;
+    const int line_gap = 18;
     const int left_padding = 8;
     const int top_padding = 10;
     int top_line_y = (history_window->cfg->h / 2) - history_window->cfg->titlebar_h - top_padding;

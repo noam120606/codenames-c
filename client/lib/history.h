@@ -10,6 +10,9 @@
 
 typedef struct AppContext AppContext;
 
+/** Taille maximale (en octets) d'une ligne d'historique formatée. */
+#define HISTORY_LINE_SIZE 128
+
 /**
  * Retourne l'historique associé à une équipe.
  * @param game Partie cible.
@@ -37,8 +40,9 @@ void history_reset(History* history);
  * @param context Contexte applicatif.
  * @param team Équipe concernée.
  * @param hint Indice associé au tour (peut être NULL).
+ * @param hint_count Nombre associé à l'indice (0 si indisponible).
  */
-void history_start_turn(AppContext* context, Team team, const char* hint);
+void history_start_turn(AppContext* context, Team team, const char* hint, int hint_count);
 
 /**
  * Garantit qu'au moins un tour existe pour l'équipe.
@@ -46,8 +50,9 @@ void history_start_turn(AppContext* context, Team team, const char* hint);
  * @param context Contexte applicatif.
  * @param team Équipe concernée.
  * @param hint Indice à associer au tour créé (peut être NULL).
+ * @param hint_count Nombre associé à l'indice (0 si indisponible).
  */
-void history_ensure_turn(AppContext* context, Team team, const char* hint);
+void history_ensure_turn(AppContext* context, Team team, const char* hint, int hint_count);
 
 /**
  * Ajoute un mot révélé au dernier tour de l'équipe.
@@ -57,5 +62,14 @@ void history_ensure_turn(AppContext* context, Team team, const char* hint);
  * @param word Mot révélé à enregistrer.
  */
 void history_append_revealed_word(AppContext* context, Team team, const char* word);
+
+/**
+ * Construit des lignes prêtes à afficher pour un historique d'équipe.
+ * @param history Historique source.
+ * @param lines Tampon de sortie de type [max_lines][HISTORY_LINE_SIZE].
+ * @param max_lines Nombre de lignes disponibles dans le tampon.
+ * @return Nombre de lignes réellement écrites.
+ */
+int history_build_lines(const History* history, char lines[][HISTORY_LINE_SIZE], int max_lines);
 
 #endif /* HISTORY_H */
