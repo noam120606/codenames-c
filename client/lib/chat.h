@@ -14,7 +14,8 @@ typedef struct Text Text;
 
 #define CHAT_MAX_MESSAGES 100
 #define CHAT_LINE_SIZE 256
-#define CHAT_MAX_RENDER_LINES (CHAT_MAX_MESSAGES * 4)
+#define CHAT_WRAP_LINES_PER_MESSAGE 4
+#define CHAT_MAX_RENDER_LINES (CHAT_MAX_MESSAGES * CHAT_WRAP_LINES_PER_MESSAGE)
 #define CHAT_FONT_PATH_MAX 260
 
 /**
@@ -91,6 +92,8 @@ void chat_submit_message(AppContext* context, const char* text);
 
 /**
  * Rend les messages du chat dans une fenêtre scrollable avec retour à la ligne automatique.
+ * Les messages au format "Pseudo : texte" colorent le pseudo selon l'equipe du joueur
+ * quand elle est connue (rouge/bleu), sinon le texte reste blanc.
  * @param context Contexte applicatif.
  * @param chat_window Fenêtre de chat cible.
  * @param chat_texts Tableau de Text* utilisé pour afficher les lignes visibles.

@@ -292,7 +292,7 @@ int history_build_lines(const History* history, char lines[][HISTORY_LINE_SIZE],
         }
 
         if (words_added == 0) {
-            line_count = history_push_line(lines, max_lines, line_count, "  - Aucun mot revele");
+            line_count = history_push_line(lines, max_lines, line_count, "  - Aucun mot révélé");
         }
     }
 

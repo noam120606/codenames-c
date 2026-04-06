@@ -1,7 +1,125 @@
 #include "../lib/all.h"
 
+static Text* chat_colored_prefix_text = NULL;
+
+static const SDL_Color CHAT_TEAM_BLUE_COLOR = {50, 80, 150, 255};
+static const SDL_Color CHAT_TEAM_RED_COLOR = {150, 50, 50, 255};
+
+static const int CHAT_LINE_GAP = 15;
+static const int CHAT_LEFT_PADDING = 8;
+static const int CHAT_RIGHT_PADDING = 8;
+static const int CHAT_BOTTOM_LINE_Y = -42;
+
+static int chat_font_path_equals(const char* a, const char* b) {
+	const char* left = a ? a : "";
+	const char* right = b ? b : "";
+	return strcmp(left, right) == 0;
+}
+
+static int chat_text_width(const Text* text) {
+	int width = 0;
+	if (text && text->texture) {
+		SDL_QueryTexture(text->texture, NULL, NULL, &width, NULL);
+	}
+	return width;
+}
+
+static int chat_left_anchored_rel_x(const Window* chat_window, int text_width) {
+	if (!chat_window || !chat_window->cfg) return 0;
+	return -(chat_window->cfg->w / 2) + CHAT_LEFT_PADDING + (text_width / 2);
+}
+
+static int chat_left_anchored_rel_x_with_offset(const Window* chat_window, int text_width, int left_offset) {
+	return chat_left_anchored_rel_x(chat_window, text_width) + left_offset;
+}
+
 static void free_chat_message(void* data) {
 	free(data);
+}
+
+static Team chat_find_team_by_player_name(const AppContext* context, const char* player_name) {
+	if (!context || !player_name || player_name[0] == '\0') return TEAM_NONE;
+
+	if (context->player_name && strcmp(context->player_name, player_name) == 0) {
+		return context->player_team;
+	}
+
+	if (!context->lobby) return TEAM_NONE;
+
+	for (int i = 0; i < MAX_USERS; i++) {
+		User* user = context->lobby->users[i];
+		if (!user || !user->name) continue;
+		if (strcmp(user->name, player_name) == 0) {
+			return user->team;
+		}
+	}
+
+	return TEAM_NONE;
+}
+
+static SDL_Color chat_team_to_color(Team team) {
+	switch (team) {
+		case TEAM_RED:
+			return CHAT_TEAM_RED_COLOR;
+		case TEAM_BLUE:
+			return CHAT_TEAM_BLUE_COLOR;
+		default:
+			return COL_WHITE;
+	}
+}
+
+static int chat_extract_sender_prefix(const char* line, char* sender, int sender_size, int* prefix_len) {
+	if (!line || !sender || sender_size <= 1 || !prefix_len) return EXIT_FAILURE;
+
+	const char* separator = strstr(line, " : ");
+	if (!separator || separator <= line) return EXIT_FAILURE;
+
+	int sender_len = (int)(separator - line);
+	if (sender_len <= 0 || sender_len >= sender_size) return EXIT_FAILURE;
+
+	memcpy(sender, line, (size_t)sender_len);
+	sender[sender_len] = '\0';
+
+	// Inclut " :" pour colorer le pseudo et son séparateur immédiat.
+	*prefix_len = sender_len + 2;
+	return EXIT_SUCCESS;
+}
+
+static Text* chat_get_colored_prefix_text(AppContext* context, const char* font_path, int font_size, Uint8 opacity) {
+	if (!context || !font_path || font_path[0] == '\0' || font_size <= 0) return NULL;
+
+	if (!chat_colored_prefix_text) {
+		TextConfig cfg = create_text_config(font_path, font_size, COL_WHITE, 0, 0, 0.0, opacity);
+		chat_colored_prefix_text = init_text(context, " ", cfg);
+		return chat_colored_prefix_text;
+	}
+
+	if (chat_colored_prefix_text->cfg.font_size != font_size ||
+		!chat_font_path_equals(chat_colored_prefix_text->cfg.font_path, font_path)) {
+		chat_colored_prefix_text->cfg.font_path = font_path;
+		chat_colored_prefix_text->cfg.font_size = font_size;
+		reload_text(context, chat_colored_prefix_text);
+	}
+
+	chat_colored_prefix_text->cfg.opacity = opacity;
+	return chat_colored_prefix_text;
+}
+
+static int chat_render_sender_prefix(AppContext* context, const Window* chat_window, const char* prefix_text, Team sender_team, int rel_y, Text* colored_prefix) {
+	if (!context || !chat_window || !prefix_text || !colored_prefix) return 0;
+	if (sender_team != TEAM_RED && sender_team != TEAM_BLUE) return 0;
+
+	update_text_color(context, colored_prefix, chat_team_to_color(sender_team));
+	if (!colored_prefix->content || strcmp(colored_prefix->content, prefix_text) != 0) {
+		update_text(context, colored_prefix, prefix_text);
+	}
+
+	int prefix_width = chat_text_width(colored_prefix);
+	int prefix_rel_x = chat_left_anchored_rel_x(chat_window, prefix_width);
+	window_place_text(chat_window, colored_prefix, prefix_rel_x, rel_y);
+	display_text(context, colored_prefix);
+
+	return prefix_width;
 }
 
 static void chat_wrap_cache_invalidate(Chat* chat) {
@@ -13,12 +131,6 @@ static void chat_touch(Chat* chat) {
 	if (!chat) return;
 	chat->revision++;
 	chat->wrap_cache.is_valid = 0;
-}
-
-static int chat_font_path_equals(const char* a, const char* b) {
-	const char* left = a ? a : "";
-	const char* right = b ? b : "";
-	return strcmp(left, right) == 0;
 }
 
 static void chat_set_font_path(char* dst, int dst_size, const char* src) {
@@ -84,6 +196,11 @@ void chat_clear(Chat* chat) {
 	if (chat->messages) {
 		list_destroy(chat->messages, free_chat_message);
 		chat->messages = NULL;
+	}
+
+	if (chat_colored_prefix_text) {
+		destroy_text(chat_colored_prefix_text);
+		chat_colored_prefix_text = NULL;
 	}
 
 	chat->max_messages = 0;
@@ -271,19 +388,20 @@ void chat_render_messages(AppContext* context, Window* chat_window, Text** chat_
 	Chat* chat = &context->lobby->chat;
 	if (!chat || !chat->messages) return;
 
-	const int line_gap = 15;
-	const int left_padding = 8;
-	const int right_padding = 8;
-	const int bottom_line_y = -42; // La ligne la plus récente reste en bas du chat
-	int max_text_width = chat_window->cfg->w - left_padding - right_padding;
+	// La ligne la plus recente reste en bas du chat.
+	int max_text_width = chat_window->cfg->w - CHAT_LEFT_PADDING - CHAT_RIGHT_PADDING;
 	if (max_text_width < 32) max_text_width = 32;
 
 	const char* font_path = NULL;
 	int font_size = 0;
+	Uint8 font_opacity = 255;
 	if (chat_texts[0]) {
 		font_path = chat_texts[0]->cfg.font_path;
 		font_size = chat_texts[0]->cfg.font_size;
+		font_opacity = chat_texts[0]->cfg.opacity;
 	}
+
+	Text* colored_prefix = chat_get_colored_prefix_text(context, font_path, font_size, font_opacity);
 
 	int total_lines = chat_build_wrapped_lines_cached(chat, font_path, font_size, max_text_width);
 	const char (*lines)[CHAT_LINE_SIZE] = chat->wrap_cache.lines;
@@ -321,18 +439,47 @@ void chat_render_messages(AppContext* context, Window* chat_window, Text** chat_
 
 		const char* line = lines[start_index + i];
 		const char* safe_line = line ? line : " ";
-		if (!txt->content || strcmp(txt->content, safe_line) != 0) {
-			update_text(context, txt, safe_line);
+		const char* white_line = safe_line;
+		int white_left_offset = 0;
+		int rel_y = CHAT_BOTTOM_LINE_Y + ((rendered_lines - 1 - i) * CHAT_LINE_GAP);
+
+		if (colored_prefix) {
+			char sender_name[CHAT_LINE_SIZE];
+			int prefix_len = 0;
+			if (chat_extract_sender_prefix(safe_line, sender_name, CHAT_LINE_SIZE, &prefix_len) == EXIT_SUCCESS) {
+				Team sender_team = chat_find_team_by_player_name(context, sender_name);
+				if (sender_team == TEAM_RED || sender_team == TEAM_BLUE) {
+					if (prefix_len >= CHAT_LINE_SIZE) {
+						prefix_len = CHAT_LINE_SIZE - 1;
+					}
+
+					char prefix_text[CHAT_LINE_SIZE];
+					memcpy(prefix_text, safe_line, (size_t)prefix_len);
+					prefix_text[prefix_len] = '\0';
+
+					white_line = safe_line + prefix_len;
+					if (!white_line || white_line[0] == '\0') {
+						white_line = " ";
+					}
+
+					white_left_offset = chat_render_sender_prefix(
+						context,
+						chat_window,
+						prefix_text,
+						sender_team,
+						rel_y,
+						colored_prefix
+					);
+				}
+			}
 		}
 
-		int text_w = 0;
-		if (txt->texture) {
-			SDL_QueryTexture(txt->texture, NULL, NULL, &text_w, NULL);
+		if (!txt->content || strcmp(txt->content, white_line) != 0) {
+			update_text(context, txt, white_line);
 		}
 
 		// window_place_text centre le texte: on compense avec text_w/2 pour ancrer le bord gauche.
-		int rel_x = -(chat_window->cfg->w / 2) + left_padding + (text_w / 2);
-		int rel_y = bottom_line_y + ((rendered_lines - 1 - i) * line_gap);
+		int rel_x = chat_left_anchored_rel_x_with_offset(chat_window, chat_text_width(txt), white_left_offset);
 		window_place_text(chat_window, txt, rel_x, rel_y);
 		display_text(context, txt);
 	}
