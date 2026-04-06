@@ -64,6 +64,7 @@ typedef enum {
  * @param keep_focus_on_submit Indique si l'input conserve le focus après soumission (1) ou le perd (0).
  * @param len Longueur actuelle du texte saisi.
  * @param cursor_pos Position actuelle du curseur dans le texte (index entre 0 et len).
+ * @param view_start Index du premier octet visible dans le champ (défilement horizontal interne).
  * @param focused Indique si l'input est actuellement focalisé (1) ou non (0).
  * @param submitted Indique si l'input a été soumis (1) ou non (0). Peut être utilisé pour déclencher des actions après la soumission.
  * @param bg_texture Texture SDL de l'image de fond, chargée automatiquement si `bg_path` est défini. Doit être libérée lors de la destruction de l'input.
@@ -110,6 +111,7 @@ typedef struct InputConfig {
     int keep_focus_on_submit;
     int len;
     int cursor_pos;
+    int view_start;
     int focused;
     int submitted;
     SDL_Texture* bg_texture;
