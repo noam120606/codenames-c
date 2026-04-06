@@ -274,8 +274,6 @@ int count_remaining_words(Game* game, Team team) {
 }
 
 int request_guess_card(Codenames* codenames, TcpClient* client, char* message, Arguments args) {
-    (void)message;
-
     // Vérifie que le client est bien dans un lobby
     Lobby* lobby = find_lobby_by_playerid(codenames->lobby, client->id);
     if (!lobby) {
@@ -295,6 +293,8 @@ int request_guess_card(Codenames* codenames, TcpClient* client, char* message, A
         return EXIT_FAILURE;
     }
 
+    User* guessing_user = find_user_by_id(lobby, client->id);
+
     // Vérifie que c'est bien le tour d'un agent
     if (lobby->game->state != GAMESTATE_TURN_RED_AGENT && lobby->game->state != GAMESTATE_TURN_BLUE_AGENT) {
         printf("It's not the agent's turn in lobby %d\n", lobby->id);
@@ -311,6 +311,14 @@ int request_guess_card(Codenames* codenames, TcpClient* client, char* message, A
         format_to(msg, sizeof(msg), "%d %s", MSG_SERVER_ERROR, "Invalid card index");
         tcp_send_to_client(codenames, client->id, msg);
         return EXIT_FAILURE;
+    }
+
+    const char* guessing_name = (args.argc >= 2) ? (char*)args.argv[1] : NULL;
+    if ((!guessing_name || guessing_name[0] == '\0') && guessing_user && guessing_user->name && guessing_user->name[0] != '\0') {
+        guessing_name = guessing_user->name;
+    }
+    if (!guessing_name || guessing_name[0] == '\0') {
+        guessing_name = "Agent";
     }
 
     int word_index = atoi((char*)args.argv[0]);
@@ -344,8 +352,8 @@ int request_guess_card(Codenames* codenames, TcpClient* client, char* message, A
         printf("Game state changed to %d in lobby %d\n", new_state, lobby->id);
 
         // Diffuse le nouveau gamestate à tous les joueurs du lobby
-        char msg[32];
-        format_to(msg, sizeof(msg), "%d %d %d", MSG_GUESS_CARD, -1, new_state);
+        char msg[128];
+        format_to(msg, sizeof(msg), "%d %d %d %s", MSG_GUESS_CARD, -1, new_state, guessing_name);
         for (int i = 0; i < lobby->nb_players; i++) {
             tcp_send_to_client(codenames, lobby->users[i]->id, msg);
         }
@@ -398,8 +406,8 @@ int request_guess_card(Codenames* codenames, TcpClient* client, char* message, A
     printf("Game state changed to %d in lobby %d\n", new_state, lobby->id);
 
     // Diffuse la carte révélée et le nouveau gamestate à tous les joueurs du lobby
-    char msg[64];
-    format_to(msg, sizeof(msg), "%d %d %d %d", MSG_GUESS_CARD, word_index, new_state, winner);
+    char msg[128];
+    format_to(msg, sizeof(msg), "%d %d %d %d %s", MSG_GUESS_CARD, word_index, new_state, winner, guessing_name);
     for (int i = 0; i < lobby->nb_players; i++) {
         tcp_send_to_client(codenames, lobby->users[i]->id, msg);
     }

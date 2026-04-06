@@ -126,7 +126,8 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
 
         if (context->player_role == ROLE_AGENT) {
             char msg[64];
-            format_to(msg, sizeof(msg), "%d -1", MSG_GUESS_CARD);
+            const char* agent_name = (context->player_name && context->player_name[0] != '\0') ? context->player_name : "Unknown";
+            format_to(msg, sizeof(msg), "%d -1 %s", MSG_GUESS_CARD, agent_name);
             send_tcp(context->sock, msg);
             return BTN_NONE;
         }

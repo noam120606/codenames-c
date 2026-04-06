@@ -19,6 +19,20 @@ static const char* history_find_team_spy_name(const AppContext* context, Team te
     return NULL;
 }
 
+static const char* history_find_team_agent_name(const AppContext* context, Team team) {
+    if (!context || !context->lobby) return NULL;
+
+    for (int i = 0; i < MAX_USERS; i++) {
+        User* user = context->lobby->users[i];
+        if (!user || !user->name) continue;
+        if (user->team == team && user->role == ROLE_AGENT) {
+            return user->name;
+        }
+    }
+
+    return NULL;
+}
+
 static void history_touch(History* history) {
     if (!history) return;
     history->revision++;
@@ -177,7 +191,7 @@ void history_start_turn(AppContext* context, Team team, const char* hint, int hi
 
     const char* spy_name = history_find_team_spy_name(context, team);
     if (!spy_name || spy_name[0] == '\0') {
-        spy_name = "Vous avez";
+        spy_name = "L'espion";
     }
 
     strncpy(turn->spy_name, spy_name, sizeof(turn->spy_name) - 1);
@@ -204,7 +218,7 @@ void history_ensure_turn(AppContext* context, Team team, const char* hint, int h
     history_start_turn(context, team, hint, hint_count);
 }
 
-void history_append_revealed_word(AppContext* context, Team team, const char* word) {
+void history_append_revealed_word(AppContext* context, Team team, const char* word, const char* agent_name) {
     if (!context || !context->lobby || !context->lobby->game) return;
     if (!word || word[0] == '\0') return;
 
@@ -223,6 +237,16 @@ void history_append_revealed_word(AppContext* context, Team team, const char* wo
     if (history->turn_count <= 0) return;
 
     Turn* turn = &history->turns[history->turn_count - 1];
+    const char* resolved_agent_name = agent_name;
+    if (!resolved_agent_name || resolved_agent_name[0] == '\0') {
+        resolved_agent_name = history_find_team_agent_name(context, team);
+    }
+
+    if (resolved_agent_name && resolved_agent_name[0] != '\0') {
+        strncpy(turn->agent_name, resolved_agent_name, sizeof(turn->agent_name) - 1);
+        turn->agent_name[sizeof(turn->agent_name) - 1] = '\0';
+    }
+
     for (int i = 0; i < NB_WORDS; i++) {
         if (turn->revealed_words[i][0] == '\0') {
             strncpy(turn->revealed_words[i], word, sizeof(turn->revealed_words[i]) - 1);
@@ -268,6 +292,7 @@ int history_build_lines(const History* history, char lines[][HISTORY_LINE_SIZE],
     for (int i_turn = 0; i_turn < history->turn_count; i_turn++) {
         const Turn* turn = &history->turns[i_turn];
         const char* spy_name = (turn->spy_name[0] != '\0') ? turn->spy_name : "Equipe";
+        const char* agent_name = (turn->agent_name[0] != '\0') ? turn->agent_name : "L'agent";
 
         char header[HISTORY_LINE_SIZE];
         format_to(
@@ -280,6 +305,20 @@ int history_build_lines(const History* history, char lines[][HISTORY_LINE_SIZE],
             turn->hint_count
         );
         line_count = history_push_line(lines, max_lines, line_count, header);
+
+        int has_revealed_words = 0;
+        for (int i_word = 0; i_word < NB_WORDS; i_word++) {
+            if (turn->revealed_words[i_word][0] != '\0') {
+                has_revealed_words = 1;
+                break;
+            }
+        }
+
+        if (has_revealed_words) {
+            char agent_header[HISTORY_LINE_SIZE];
+            format_to(agent_header, sizeof(agent_header), "%s a choisi :", agent_name);
+            line_count = history_push_line(lines, max_lines, line_count, agent_header);
+        }
 
         int words_added = 0;
         for (int i_word = 0; i_word < NB_WORDS; i_word++) {

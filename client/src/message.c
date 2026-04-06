@@ -253,12 +253,14 @@ int on_message(AppContext* context, char* message) {
 
                     if (should_start_turn) {
                         history_start_turn(context, active_team, hint, nb_guesses);
+                    } else {
+                        history_ensure_turn(context, active_team, hint, nb_guesses);
+                    }
 
-                        /* Le serveur fournit le nom de l'espion: on l'applique au tour créé. */
-                        History* history = history_get_for_team(context->lobby->game, active_team);
-                        if (history && history->turn_count > 0 && spy_name && spy_name[0] != '\0') {
-                            history_update_last_turn(history, spy_name, hint, nb_guesses);
-                        }
+                    /* Le serveur fournit le nom de l'espion: on l'applique systématiquement au dernier tour. */
+                    History* history = history_get_for_team(context->lobby->game, active_team);
+                    if (history && history->turn_count > 0) {
+                        history_update_last_turn(history, spy_name, hint, nb_guesses);
                     }
                 }
             }
@@ -275,6 +277,12 @@ int on_message(AppContext* context, char* message) {
 
             int word_index = atoi((char*)args.argv[0]);
             GameState new_state = (GameState)atoi((char*)args.argv[1]);
+            const char* guessing_agent_name = NULL;
+            if (args.argc >= 4) {
+                guessing_agent_name = (char*)args.argv[3];
+            } else if (word_index == -1 && args.argc >= 3) {
+                guessing_agent_name = (char*)args.argv[2];
+            }
             Team active_team = TEAM_NONE;
             if (context->lobby && context->lobby->game) {
                 active_team = history_team_from_agent_state(context->lobby->game->state);
@@ -302,13 +310,23 @@ int on_message(AppContext* context, char* message) {
                 }
             }
 
-            printf("Card guessed: %d, new state: %d\n", word_index, new_state);
+            printf(
+                "Card guessed: %d by %s, new state: %d\n",
+                word_index,
+                guessing_agent_name ? guessing_agent_name : "unknown",
+                new_state
+            );
 
             // Mettre à jour la carte et le gamestate
             if (context->lobby && context->lobby->game) {
                 if (word_index >= 0 && word_index < context->lobby->game->nb_words) {
                     if (active_team != TEAM_NONE) {
-                        history_append_revealed_word(context, active_team, context->lobby->game->cards[word_index].word);
+                        history_append_revealed_word(
+                            context,
+                            active_team,
+                            context->lobby->game->cards[word_index].word,
+                            guessing_agent_name
+                        );
                     }
 
                     (context->lobby->game->cards+word_index)->revealed = true;

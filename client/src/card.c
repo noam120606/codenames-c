@@ -86,7 +86,8 @@ static int card_handle_click(AppContext* context, Card* card, Booleen is_guess_i
         printf("Card \"%s\" guessed!\n", card->word);
 
         char message[64];
-        format_to(message, sizeof(message), "%d %d", MSG_GUESS_CARD, (int)(card - context->lobby->game->cards));
+        const char* agent_name = (context->player_name && context->player_name[0] != '\0') ? context->player_name : "Unknown";
+        format_to(message, sizeof(message), "%d %d %s", MSG_GUESS_CARD, (int)(card - context->lobby->game->cards), agent_name);
         if (send_tcp(context->sock, message) != EXIT_SUCCESS) {
             printf("Failed to send click_card message to server\n");
             return EXIT_FAILURE;

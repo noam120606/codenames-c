@@ -17,7 +17,7 @@ typedef struct AppContext AppContext;
  * Nombre maximal de lignes logiques produites par history_build_lines.
  * Une ligne logique peut ensuite être découpée en plusieurs lignes d'affichage.
  */
-#define HISTORY_MAX_BASE_LINES ((NB_WORDS * 2) + 4)
+#define HISTORY_MAX_BASE_LINES ((NB_WORDS * 3) + 4)
 
 /** Nombre maximal de lignes d'affichage après wrapping. */
 #define HISTORY_MAX_RENDER_LINES (HISTORY_MAX_BASE_LINES * 4)
@@ -114,8 +114,9 @@ void history_ensure_turn(AppContext* context, Team team, const char* hint, int h
  * @param context Contexte applicatif.
  * @param team Équipe concernée.
  * @param word Mot révélé à enregistrer.
+ * @param agent_name Nom de l'agent ayant révélé le mot (peut être NULL).
  */
-void history_append_revealed_word(AppContext* context, Team team, const char* word);
+void history_append_revealed_word(AppContext* context, Team team, const char* word, const char* agent_name);
 
 /**
  * Met à jour les métadonnées du dernier tour (nom espion/indice/compte) et invalide le cache associé.
