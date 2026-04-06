@@ -56,6 +56,16 @@ static int compute_effective_volume(SoundID id) {
     return (cfg->volume * kind_volume) / MIX_MAX_VOLUME;
 }
 
+/* Retourne le premier canal libre, ou -1 s'il n'y en a pas. */
+static int find_available_channel(void) {
+    for (int i = 0; i < MAX_SOUNDS; ++i) {
+        if (!Mix_Playing(i) && !Mix_Paused(i)) {
+            return i;
+        }
+    }
+    return -1;
+}
+
 /* Convertit une fréquence de coupure (Hz) en coefficient alpha du passe-bas. */
 static float compute_low_pass_alpha(float cutoff_hz) {
     int frequency = 0;
@@ -330,9 +340,19 @@ int audio_play_with_fade(
     }
 
     int effective_volume = compute_effective_volume(id);
+    int is_volume_fade_in = (fade_in_ms > 0 && fade_type == AUDIO_FADE_IN_BY_VOLUME && effective_volume > 0);
     int channel = -1;
-    if (fade_in_ms > 0 && fade_type == AUDIO_FADE_IN_BY_VOLUME && effective_volume > 0) {
-        channel = Mix_FadeInChannel(-1, sounds[id], loops, fade_in_ms);
+    int requested_channel = -1;
+
+    if (is_volume_fade_in) {
+        /* SDL_mixer fait varier le volume pendant un fade-in :
+           on applique donc le volume cible avant Mix_FadeInChannel. */
+        requested_channel = find_available_channel();
+        if (requested_channel >= 0) {
+            Mix_Volume(requested_channel, effective_volume);
+        }
+
+        channel = Mix_FadeInChannel(requested_channel, sounds[id], loops, fade_in_ms);
     } else {
         channel = Mix_PlayChannel(-1, sounds[id], loops);
     }
@@ -349,7 +369,9 @@ int audio_play_with_fade(
 
     sound_channels[id] = channel;
     channel_sound_ids[channel] = id;
-    Mix_Volume(channel, effective_volume);
+    if (!is_volume_fade_in || requested_channel < 0) {
+        Mix_Volume(channel, effective_volume);
+    }
 
     if (fade_in_ms <= 0 || fade_type == AUDIO_FADE_IN_BY_VOLUME) {
         apply_channel_filter(channel, id);
