@@ -51,9 +51,10 @@ static Text* txt_chat_messages[CHAT_VISIBLE_LINES] = {NULL};
 
 /* Textes pour l'affichage de l'historique des tours */
 #define HISTORY_VISIBLE_LINES 14
-#define HISTORY_MAX_LINES ((NB_WORDS * 2) + 4) // Max 2 tours par équipe + 4 lignes de séparation et d'information
 static Text* txt_history_blue_lines[HISTORY_VISIBLE_LINES] = {NULL};
 static Text* txt_history_red_lines[HISTORY_VISIBLE_LINES] = {NULL};
+static HistoryWrapCache history_cache_blue = {0};
+static HistoryWrapCache history_cache_red = {0};
 
 static void hint_on_submit(AppContext* context, const char* text) {
     (void)context;
@@ -226,6 +227,9 @@ void game_handle_event(AppContext* context, SDL_Event* e) {
 int game_init(AppContext * context) {
 
     int loading_fails = 0;
+
+    history_wrap_cache_invalidate(&history_cache_blue);
+    history_wrap_cache_invalidate(&history_cache_red);
 
     ButtonConfig* cfg_btn_quit_game = button_config_init();
     if (cfg_btn_quit_game) {
@@ -683,11 +687,31 @@ static void game_render_team_windows(AppContext* context) {
     }
 }
 
-static void game_render_team_history(AppContext* context, Window* history_window, const History* history, Text** history_texts) {
-    if (!context || !history_window || !history || !history_texts) return;
+static void game_render_team_history(AppContext* context, Window* history_window, const History* history, Text** history_texts, HistoryWrapCache* history_cache) {
+    if (!context || !history_window || !history || !history_texts || !history_window->cfg || !history_cache) return;
 
-    char lines[HISTORY_MAX_LINES][HISTORY_LINE_SIZE] = {{0}};
-    int total_lines = history_build_lines(history, lines, HISTORY_MAX_LINES);
+    const int line_gap = 20;
+    const int left_padding = 8;
+    const int right_padding = 8;
+    const int top_padding = 10;
+    int max_text_width = history_window->cfg->w - left_padding - right_padding;
+    if (max_text_width < 32) max_text_width = 32;
+
+    const char* font_path = NULL;
+    int font_size = 0;
+    if (history_texts[0]) {
+        font_path = history_texts[0]->cfg.font_path;
+        font_size = history_texts[0]->cfg.font_size;
+    }
+
+    int total_lines = history_build_wrapped_lines_cached(
+        history,
+        font_path,
+        font_size,
+        max_text_width,
+        history_cache
+    );
+    const char (*lines)[HISTORY_LINE_SIZE] = history_cache->lines;
 
     int max_scroll_offset = total_lines - HISTORY_VISIBLE_LINES;
     if (max_scroll_offset < 0) max_scroll_offset = 0;
@@ -695,14 +719,14 @@ static void game_render_team_history(AppContext* context, Window* history_window
     window_edit_cfg(history_window, WIN_CFG_SCROLL_MIN, 0);
     window_edit_cfg(history_window, WIN_CFG_SCROLL_MAX, max_scroll_offset);
 
-    int scroll_offset = history_window->cfg ? history_window->cfg->scroll_offset : 0;
+    int scroll_offset = history_window->cfg->scroll_offset;
+    if (scroll_offset < 0) scroll_offset = 0;
+    if (scroll_offset > max_scroll_offset) scroll_offset = max_scroll_offset;
+
     const int visible_lines = (total_lines < HISTORY_VISIBLE_LINES) ? total_lines : HISTORY_VISIBLE_LINES;
     int start_index = total_lines - visible_lines - scroll_offset;
     if (start_index < 0) start_index = 0;
 
-    const int line_gap = 20;
-    const int left_padding = 8;
-    const int top_padding = 10;
     int top_line_y = (history_window->cfg->h / 2) - history_window->cfg->titlebar_h - top_padding;
 
     SDL_Rect history_clip = {0};
@@ -716,12 +740,17 @@ static void game_render_team_history(AppContext* context, Window* history_window
         if (!txt) continue;
 
         if (i >= visible_lines || (start_index + i) >= total_lines) {
-            update_text(context, txt, " ");
+            if (!txt->content || strcmp(txt->content, " ") != 0) {
+                update_text(context, txt, " ");
+            }
             continue;
         }
 
         const char* line = lines[start_index + i];
-        update_text(context, txt, line);
+        const char* safe_line = line ? line : " ";
+        if (!txt->content || strcmp(txt->content, safe_line) != 0) {
+            update_text(context, txt, safe_line);
+        }
 
         int text_w = 0;
         if (txt->texture) {
@@ -765,13 +794,13 @@ void game_display(AppContext * context) {
     if (history_window_blue) {
         window_render(context->renderer, history_window_blue);
         if (context->lobby && context->lobby->game) {
-            game_render_team_history(context, history_window_blue, &context->lobby->game->blue_history, txt_history_blue_lines);
+            game_render_team_history(context, history_window_blue, &context->lobby->game->blue_history, txt_history_blue_lines, &history_cache_blue);
         }
     }
     if (history_window_red) {
         window_render(context->renderer, history_window_red);
         if (context->lobby && context->lobby->game) {
-            game_render_team_history(context, history_window_red, &context->lobby->game->red_history, txt_history_red_lines);
+            game_render_team_history(context, history_window_red, &context->lobby->game->red_history, txt_history_red_lines, &history_cache_red);
         }
     }
 
@@ -913,6 +942,9 @@ int game_free() {
         destroy_text(txt_history_blue_lines[i]); txt_history_blue_lines[i] = NULL;
         destroy_text(txt_history_red_lines[i]); txt_history_red_lines[i] = NULL;
     }
+
+    history_wrap_cache_invalidate(&history_cache_blue);
+    history_wrap_cache_invalidate(&history_cache_red);
     
     return EXIT_SUCCESS;
 }

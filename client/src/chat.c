@@ -1,10 +1,32 @@
 #include "../lib/all.h"
 
-#define CHAT_LINE_SIZE 256
-#define CHAT_MAX_RENDER_LINES (CHAT_MAX_MESSAGES * 4)
-
 static void free_chat_message(void* data) {
 	free(data);
+}
+
+static void chat_wrap_cache_invalidate(Chat* chat) {
+	if (!chat) return;
+	memset(&chat->wrap_cache, 0, sizeof(ChatWrapCache));
+}
+
+static void chat_touch(Chat* chat) {
+	if (!chat) return;
+	chat->revision++;
+	chat->wrap_cache.is_valid = 0;
+}
+
+static int chat_font_path_equals(const char* a, const char* b) {
+	const char* left = a ? a : "";
+	const char* right = b ? b : "";
+	return strcmp(left, right) == 0;
+}
+
+static void chat_set_font_path(char* dst, int dst_size, const char* src) {
+	if (!dst || dst_size <= 0) return;
+
+	const char* value = src ? src : "";
+	strncpy(dst, value, (size_t)dst_size - 1);
+	dst[dst_size - 1] = '\0';
 }
 
 int chat_init(Chat* chat, int max_messages) {
@@ -14,6 +36,8 @@ int chat_init(Chat* chat, int max_messages) {
 	if (!chat->messages) return EXIT_FAILURE;
 
 	chat->max_messages = max_messages;
+	chat->revision = 1;
+	chat_wrap_cache_invalidate(chat);
 	return EXIT_SUCCESS;
 }
 
@@ -39,6 +63,8 @@ int chat_push(Chat* chat, const char* message) {
 		free(oldest);
 	}
 
+	chat_touch(chat);
+
 	return EXIT_SUCCESS;
 }
 
@@ -53,11 +79,15 @@ int chat_size(Chat* chat) {
 }
 
 void chat_clear(Chat* chat) {
-	if (!chat || !chat->messages) return;
+	if (!chat) return;
 
-	list_destroy(chat->messages, free_chat_message);
-	chat->messages = NULL;
+	if (chat->messages) {
+		list_destroy(chat->messages, free_chat_message);
+		chat->messages = NULL;
+	}
+
 	chat->max_messages = 0;
+	chat_touch(chat);
 }
 
 void chat_submit_message(AppContext* context, const char* text) {
@@ -183,11 +213,63 @@ static int chat_append_wrapped_lines(const char* message, TTF_Font* font, int ma
 	return current_count;
 }
 
+static int chat_build_wrapped_lines_cached(Chat* chat, const char* font_path, int font_size, int max_text_width) {
+	if (!chat) return 0;
+
+	if (max_text_width < 1) {
+		max_text_width = 1;
+	}
+
+	ChatWrapCache* cache = &chat->wrap_cache;
+	unsigned int source_revision = chat->revision;
+
+	int cache_hit =
+		cache->is_valid &&
+		cache->source_revision == source_revision &&
+		cache->max_text_width == max_text_width &&
+		cache->font_size == font_size &&
+		chat_font_path_equals(cache->font_path, font_path);
+
+	if (cache_hit) {
+		return cache->total_lines;
+	}
+
+	TTF_Font* chat_font = NULL;
+	if (font_path && font_path[0] != '\0' && font_size > 0) {
+		chat_font = TTF_OpenFont(font_path, font_size);
+	}
+
+	const int total_messages = chat_size(chat);
+	int total_lines = 0;
+	for (int i_msg = 0; i_msg < total_messages && total_lines < CHAT_MAX_RENDER_LINES; i_msg++) {
+		const char* message = chat_get(chat, i_msg);
+		total_lines = chat_append_wrapped_lines(message, chat_font, max_text_width, cache->lines, CHAT_MAX_RENDER_LINES, total_lines);
+	}
+
+	if (chat_font) {
+		TTF_CloseFont(chat_font);
+	}
+
+	if (total_lines <= 0) {
+		cache->lines[0][0] = '\0';
+		total_lines = 1;
+	}
+
+	cache->source_revision = source_revision;
+	cache->max_text_width = max_text_width;
+	cache->font_size = font_size;
+	chat_set_font_path(cache->font_path, CHAT_FONT_PATH_MAX, font_path);
+	cache->total_lines = total_lines;
+	cache->is_valid = 1;
+
+	return total_lines;
+}
+
 void chat_render_messages(AppContext* context, Window* chat_window, Text** chat_texts, int visible_lines) {
 	if (!context || !context->lobby || !chat_window || !chat_window->cfg || !chat_texts || visible_lines <= 0) return;
 
-	char lines[CHAT_MAX_RENDER_LINES][CHAT_LINE_SIZE] = {{0}};
-	const int total_messages = chat_size(&context->lobby->chat);
+	Chat* chat = &context->lobby->chat;
+	if (!chat || !chat->messages) return;
 
 	const int line_gap = 15;
 	const int left_padding = 8;
@@ -196,25 +278,15 @@ void chat_render_messages(AppContext* context, Window* chat_window, Text** chat_
 	int max_text_width = chat_window->cfg->w - left_padding - right_padding;
 	if (max_text_width < 32) max_text_width = 32;
 
-	TTF_Font* chat_font = NULL;
-	if (chat_texts[0] && chat_texts[0]->cfg.font_path && chat_texts[0]->cfg.font_size > 0) {
-		chat_font = TTF_OpenFont(chat_texts[0]->cfg.font_path, chat_texts[0]->cfg.font_size);
+	const char* font_path = NULL;
+	int font_size = 0;
+	if (chat_texts[0]) {
+		font_path = chat_texts[0]->cfg.font_path;
+		font_size = chat_texts[0]->cfg.font_size;
 	}
 
-	int total_lines = 0;
-	for (int i_msg = 0; i_msg < total_messages && total_lines < CHAT_MAX_RENDER_LINES; i_msg++) {
-		const char* message = chat_get(&context->lobby->chat, i_msg);
-		total_lines = chat_append_wrapped_lines(message, chat_font, max_text_width, lines, CHAT_MAX_RENDER_LINES, total_lines);
-	}
-
-	if (chat_font) {
-		TTF_CloseFont(chat_font);
-	}
-
-	if (total_lines <= 0) {
-		lines[0][0] = '\0';
-		total_lines = 1;
-	}
+	int total_lines = chat_build_wrapped_lines_cached(chat, font_path, font_size, max_text_width);
+	const char (*lines)[CHAT_LINE_SIZE] = chat->wrap_cache.lines;
 
 	int max_scroll_offset = total_lines - visible_lines;
 	if (max_scroll_offset < 0) max_scroll_offset = 0;
@@ -241,12 +313,17 @@ void chat_render_messages(AppContext* context, Window* chat_window, Text** chat_
 		if (!txt) continue;
 
 		if (i >= rendered_lines || (start_index + i) >= total_lines) {
-			update_text(context, txt, " ");
+			if (!txt->content || strcmp(txt->content, " ") != 0) {
+				update_text(context, txt, " ");
+			}
 			continue;
 		}
 
 		const char* line = lines[start_index + i];
-		update_text(context, txt, line ? line : " ");
+		const char* safe_line = line ? line : " ";
+		if (!txt->content || strcmp(txt->content, safe_line) != 0) {
+			update_text(context, txt, safe_line);
+		}
 
 		int text_w = 0;
 		if (txt->texture) {

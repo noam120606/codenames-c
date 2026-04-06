@@ -257,12 +257,7 @@ int on_message(AppContext* context, char* message) {
                         /* Le serveur fournit le nom de l'espion: on l'applique au tour créé. */
                         History* history = history_get_for_team(context->lobby->game, active_team);
                         if (history && history->turn_count > 0 && spy_name && spy_name[0] != '\0') {
-                            Turn* turn = &history->turns[history->turn_count - 1];
-                            strncpy(turn->spy_name, spy_name, sizeof(turn->spy_name) - 1);
-                            turn->spy_name[sizeof(turn->spy_name) - 1] = '\0';
-                            strncpy(turn->hint, hint, sizeof(turn->hint) - 1);
-                            turn->hint[sizeof(turn->hint) - 1] = '\0';
-                            turn->hint_count = nb_guesses;
+                            history_update_last_turn(history, spy_name, hint, nb_guesses);
                         }
                     }
                 }
