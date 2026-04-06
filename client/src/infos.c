@@ -326,8 +326,8 @@ void infos_display(AppContext* context) {
         window_to_logical(context, mouse_x, mouse_y, &logical_mouse_x, &logical_mouse_y);
         
         // Constantes pour le positionnement
-        const int TRIGGER_OPEN_X = 50; // Seuil X pour déclencher l'animation
-        const int TRIGGER_CLOSE_X = 350; // Seuil X pour refermer l'animation
+        const int TRIGGER_OPEN_X = 40; // Seuil X pour déclencher l'animation
+        const int TRIGGER_CLOSE_X = 280; // Seuil X pour refermer l'animation
         const int BASE_X = -900; // Position visible du bandeau
         const int HIDDEN_X = -1300; // Position hors écran (caché)
 
@@ -337,11 +337,12 @@ void infos_display(AppContext* context) {
         int display_x = HIDDEN_X;
         
         // Gérer les transitions d'état basées sur la souris
-        if (infos_state == INFOS_HIDDEN && mouse_x < TRIGGER_OPEN_X) {
+        // Utiliser la coordonnée logique pour rester cohérent avec le rendu après resize.
+        if (infos_state == INFOS_HIDDEN && logical_mouse_x < TRIGGER_OPEN_X) {
             // La souris vient d'entrer : déclencher l'apparition
             infos_display_show_animation(context);
         } 
-        else if (infos_state == INFOS_VISIBLE && mouse_x > TRIGGER_CLOSE_X) {
+        else if (infos_state == INFOS_VISIBLE && logical_mouse_x > TRIGGER_CLOSE_X) {
             // La souris vient de sortir : déclencher la disparition
             infos_display_hide_animation(context);
         }
