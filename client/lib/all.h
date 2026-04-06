@@ -43,6 +43,7 @@
 #include "../lib/tcp.h"
 #include "../lib/sdl.h"
 #include "../lib/menu.h"
+#include "../lib/tuto.h"
 #include "../lib/button.h"
 #include "../lib/background.h"
 #include "../lib/infos.h"

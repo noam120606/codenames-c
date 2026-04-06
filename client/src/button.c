@@ -268,7 +268,7 @@ static int button_rebuild_text_texture(Button* button, SDL_Renderer* renderer) {
 }
 
 ButtonReturn button_handle_event(AppContext* context, Button* button, SDL_Event* event) {
-    if (!button || !button->cfg || !event) return BTN_RET_NONE;
+    if (!button || !button->cfg || !event) return BTN_NONE;
 
     if (event->type == SDL_MOUSEMOTION) {
         int mouseX = event->motion.x;
@@ -294,7 +294,7 @@ ButtonReturn button_handle_event(AppContext* context, Button* button, SDL_Event*
             return button->cfg->callback(context, button);
         }
     }
-    return BTN_RET_NONE;
+    return BTN_NONE;
 }
 
 int button_render(SDL_Renderer* renderer, Button* button) {

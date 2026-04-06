@@ -15,11 +15,27 @@ typedef struct AppContext AppContext;
  * Valeurs de retour des callbacks de boutons.
  */
 typedef enum ButtonReturn {
-    BTN_RET_NONE,
-    BTN_RET_QUIT,
+    BTN_NONE,
+    BTN_CREATE_LOBBY,
+    BTN_JOIN_LOBBY,
+    BTN_MENU_TUTO,
+    BTN_TUTO_NEXT,
+    BTN_TUTO_PREV,
+    BTN_MENU_SOCIAL,
+    BTN_MENU_QUIT,
+    BTN_LOBBY_RED_AGENT,
+    BTN_LOBBY_RED_SPY,
+    BTN_LOBBY_BLUE_AGENT,
+    BTN_LOBBY_BLUE_SPY,
+    BTN_LOBBY_WORDS_DIFFICULTY_SWITCH,
+    BTN_LOBBY_LAUNCH_GAME,
+    BTN_LOBBY_RETURN,
+    BTN_GAME_VALIDATE_HINT,
+    BTN_GAME_VALIDATE_GUESS,
+    BTN_GAME_RETURN_LOBBY,
 } ButtonReturn;
 
-/* Déclaration anticipée pour le typedef de callback. */
+// Déclaration anticipée pour le typedef de callback.
 typedef struct Button Button;
 
 /**

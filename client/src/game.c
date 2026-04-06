@@ -102,7 +102,7 @@ static void clear_hint_inputs(){
 }
 
 static ButtonReturn game_button_click(AppContext* context, Button* button) {
-    if (!context || !button) return BTN_RET_NONE;
+    if (!context || !button) return BTN_NONE;
 
     if (button == btn_quit_game) {
         /* Retirer le filtre audio en quittant game */
@@ -119,7 +119,7 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
         printf("Left game and returned to menu\n");
         clear_hint_inputs();
 
-        return BTN_RET_QUIT;
+        return BTN_GAME_RETURN_LOBBY;
     }
 
     if (button == btn_hint_submit) {
@@ -128,7 +128,7 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
             char msg[64];
             format_to(msg, sizeof(msg), "%d -1", MSG_GUESS_CARD);
             send_tcp(context->sock, msg);
-            return BTN_RET_NONE;
+            return BTN_NONE;
         }
 
         char* text = hint_input->cfg->text;
@@ -162,17 +162,17 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
             printf("Invalid hint submitted: %s\n", text ? text : "");
         }
 
-        return BTN_RET_NONE;
+        return BTN_NONE;
     }
 
     if (button == btn_return_lobby) {
         context->app_state = APP_STATE_LOBBY;
         printf("Returned to lobby\n");
         game_struct_free(context);
-        return BTN_RET_NONE;
+        return BTN_NONE;
     }
 
-    return BTN_RET_NONE;
+    return BTN_NONE;
 }
 
 int my_turn(AppContext* context) {
@@ -240,7 +240,7 @@ int game_init(AppContext * context) {
         cfg_btn_quit_game->color = COL_WHITE;
         cfg_btn_quit_game->text = "Quitter la partie";
         cfg_btn_quit_game->callback = game_button_click;
-        btn_quit_game = button_create(context->renderer, 0, cfg_btn_quit_game);
+        btn_quit_game = button_create(context->renderer, BTN_GAME_RETURN_LOBBY, cfg_btn_quit_game);
         if (!btn_quit_game) loading_fails++;
         free(cfg_btn_quit_game);
     } else {
@@ -259,7 +259,7 @@ int game_init(AppContext * context) {
         cfg_btn_hint_submit->is_text = 0;
         cfg_btn_hint_submit->tex_path = "assets/img/buttons/validate1.png";
         cfg_btn_hint_submit->callback = game_button_click;
-        btn_hint_submit = button_create(context->renderer, 0, cfg_btn_hint_submit);
+        btn_hint_submit = button_create(context->renderer, BTN_GAME_VALIDATE_HINT, cfg_btn_hint_submit);
         if (!btn_hint_submit) loading_fails++;
         free(cfg_btn_hint_submit);
     } else {
@@ -276,7 +276,7 @@ int game_init(AppContext * context) {
         cfg_btn_return_lobby->color = COL_WHITE;
         cfg_btn_return_lobby->text = "Retour au lobby";
         cfg_btn_return_lobby->callback = game_button_click;
-        btn_return_lobby = button_create(context->renderer, 0, cfg_btn_return_lobby);
+        btn_return_lobby = button_create(context->renderer, BTN_GAME_RETURN_LOBBY, cfg_btn_return_lobby);
         if (!btn_return_lobby) loading_fails++;
         free(cfg_btn_return_lobby);
     } else {
@@ -416,7 +416,7 @@ int game_init(AppContext * context) {
         cfg_blue_panel->title = "Equipe bleue";
         cfg_blue_panel->titlebar_color = TEAM_BLUE_COLOR;
         cfg_blue_panel->bg_color = (SDL_Color){20, 20, 20, 220};
-        blue_panel = window_create(0, cfg_blue_panel);
+        blue_panel = window_create(WINDOW_GAME_BLUE_PANEL, cfg_blue_panel);
         if (!blue_panel) loading_fails++;
         free(cfg_blue_panel);
     } else {
@@ -433,7 +433,7 @@ int game_init(AppContext * context) {
         cfg_red_panel->title = "Equipe rouge";
         cfg_red_panel->bg_color = (SDL_Color){20, 20, 20, 220};
         cfg_red_panel->titlebar_color = TEAM_RED_COLOR;
-        red_panel = window_create(1, cfg_red_panel);
+        red_panel = window_create(WINDOW_GAME_RED_PANEL, cfg_red_panel);
         if (!red_panel) loading_fails++;
         free(cfg_red_panel);
     } else {
@@ -459,7 +459,7 @@ int game_init(AppContext * context) {
         cfg_history_blue->scroll_min = 0;
         cfg_history_blue->scroll_max = 0;
         cfg_history_blue->scroll_offset = 0;
-        history_window_blue = window_create(0, cfg_history_blue);
+        history_window_blue = window_create(WINDOW_GAME_HISTORY_BLUE, cfg_history_blue);
         if (!history_window_blue) loading_fails++;
         free(cfg_history_blue);
     } else {
@@ -485,7 +485,7 @@ int game_init(AppContext * context) {
         cfg_history_red->scroll_min = 0;
         cfg_history_red->scroll_max = 0;
         cfg_history_red->scroll_offset = 0;
-        history_window_red = window_create(1, cfg_history_red);
+        history_window_red = window_create(WINDOW_GAME_HISTORY_RED, cfg_history_red);
         if (!history_window_red) loading_fails++;
         free(cfg_history_red);
     } else {
@@ -502,7 +502,7 @@ int game_init(AppContext * context) {
         cfg_hint_window->title = "";
         cfg_hint_window->titlebar_color = COL_GRAY;
         cfg_hint_window->bg_color = (SDL_Color){20, 20, 20, 220};
-        hint_window = window_create(1, cfg_hint_window);
+        hint_window = window_create(WINDOW_GAME_HINT, cfg_hint_window);
         if (!hint_window) loading_fails++;
         free(cfg_hint_window);
     } else {
@@ -529,7 +529,7 @@ int game_init(AppContext * context) {
         cfg_chat_window->scroll_min = 0;
         cfg_chat_window->scroll_max = 0;
         cfg_chat_window->scroll_offset = 0;
-        chat_window = window_create(1, cfg_chat_window);
+        chat_window = window_create(WINDOW_GAME_CHAT, cfg_chat_window);
         if (!chat_window) loading_fails++;
         free(cfg_chat_window);
     } else {

@@ -15,6 +15,27 @@ typedef struct Input Input;
 typedef struct Text Text;
 
 /**
+ * Identifiants des différents types de fenêtres.
+ */
+typedef enum {
+    WINDOW_NONE = 0,
+    WINDOW_MENU,
+	WINDOW_TUTO,
+	WINDOW_LOBBY_ROLE_NONE,
+	WINDOW_LOBBY_BLUE_AGENTS,
+	WINDOW_LOBBY_BLUE_SPY,
+	WINDOW_LOBBY_RED_AGENTS,
+	WINDOW_LOBBY_RED_SPY,
+	WINDOW_LOBBY_GAME_OPTIONS,
+	WINDOW_GAME_BLUE_PANEL,
+	WINDOW_GAME_RED_PANEL,
+	WINDOW_GAME_HISTORY_BLUE,
+	WINDOW_GAME_HISTORY_RED,
+	WINDOW_GAME_HINT,
+	WINDOW_GAME_CHAT,
+} WindowId;
+
+/**
  * Configuration d'une fenêtre UI.
  * Les coordonnées x/y sont relatives au centre logique de l'écran.
  * @param x Position horizontale relative au centre de l'écran (en pixels).

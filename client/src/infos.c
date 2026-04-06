@@ -327,7 +327,7 @@ void infos_display(AppContext* context) {
         
         // Constantes pour le positionnement
         const int TRIGGER_OPEN_X = 50; // Seuil X pour déclencher l'animation
-        const int TRIGGER_CLOSE_X = 330; // Seuil X pour refermer l'animation
+        const int TRIGGER_CLOSE_X = 350; // Seuil X pour refermer l'animation
         const int BASE_X = -900; // Position visible du bandeau
         const int HIDDEN_X = -1300; // Position hors écran (caché)
 
