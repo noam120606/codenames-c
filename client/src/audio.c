@@ -49,6 +49,14 @@ static int is_valid_kind(AudioSoundKind kind) {
     return kind == AUDIO_SOUND_KIND_MUSIC || kind == AUDIO_SOUND_KIND_SFX;
 }
 
+/* Vérifie qu'un canal est actuellement associé au SoundID attendu. */
+static int is_channel_bound_to_sound(int channel, SoundID id) {
+    if (channel < 0 || channel >= MAX_SOUNDS || !is_valid_sound_id(id)) {
+        return 0;
+    }
+    return channel_sound_ids[channel] == id;
+}
+
 /* Calcule le volume final appliqué au canal (volume son * volume type). */
 static int compute_effective_volume(SoundID id) {
     SoundConfig* cfg = &sound_cfgs[id];
@@ -367,6 +375,18 @@ int audio_play_with_fade(
         return EXIT_FAILURE;
     }
 
+    /* Désassocie l'ancien son lié à ce canal, si nécessaire. */
+    if (is_valid_sound_id(channel_sound_ids[channel]) && channel_sound_ids[channel] != id) {
+        sound_channels[channel_sound_ids[channel]] = -1;
+    }
+
+    /* Si ce son était associé à un autre canal, on retire l'ancienne association. */
+    if (sound_channels[id] >= 0 && sound_channels[id] < MAX_SOUNDS && sound_channels[id] != channel) {
+        if (channel_sound_ids[sound_channels[id]] == id) {
+            channel_sound_ids[sound_channels[id]] = -1;
+        }
+    }
+
     sound_channels[id] = channel;
     channel_sound_ids[channel] = id;
     if (!is_volume_fade_in || requested_channel < 0) {
@@ -450,9 +470,13 @@ int audio_set_sound_config(SoundID id, const SoundConfig* cfg) {
     }
 
     int channel = sound_channels[id];
-    if (channel >= 0 && channel < MAX_SOUNDS && Mix_Playing(channel)) {
-        Mix_Volume(channel, compute_effective_volume(id));
-        apply_channel_filter(channel, id);
+    if (channel >= 0 && channel < MAX_SOUNDS) {
+        if (!is_channel_bound_to_sound(channel, id)) {
+            sound_channels[id] = -1;
+        } else if (Mix_Playing(channel)) {
+            Mix_Volume(channel, compute_effective_volume(id));
+            apply_channel_filter(channel, id);
+        }
     }
 
     return EXIT_SUCCESS;
@@ -523,7 +547,16 @@ void audio_set_type_volume(AudioSoundKind kind, int volume) {
         }
 
         int channel = sound_channels[i];
-        if (channel >= 0 && channel < MAX_SOUNDS && Mix_Playing(channel)) {
+        if (channel < 0 || channel >= MAX_SOUNDS) {
+            continue;
+        }
+
+        if (!is_channel_bound_to_sound(channel, i)) {
+            sound_channels[i] = -1;
+            continue;
+        }
+
+        if (Mix_Playing(channel)) {
             Mix_Volume(channel, compute_effective_volume(i));
         }
     }
@@ -545,6 +578,11 @@ int audio_stop_with_fade(
 
     int channel = sound_channels[id];
     if (channel < 0 || channel >= MAX_SOUNDS) {
+        sound_channels[id] = -1;
+        return EXIT_FAILURE;
+    }
+
+    if (!is_channel_bound_to_sound(channel, id)) {
         sound_channels[id] = -1;
         return EXIT_FAILURE;
     }
@@ -633,6 +671,11 @@ int audio_is_playing(SoundID id) {
     }
 
     int channel = sound_channels[id];
+    if (!is_channel_bound_to_sound(channel, id)) {
+        sound_channels[id] = -1;
+        return 0;
+    }
+
     if (channel >= 0 && channel < MAX_SOUNDS && Mix_Playing(channel)) {
         return 1;
     }
