@@ -1,5 +1,8 @@
 #include "../lib/all.h"
 
+#define CHAT_LINE_SIZE 256
+#define CHAT_MAX_RENDER_LINES (CHAT_MAX_MESSAGES * 4)
+
 static void free_chat_message(void* data) {
 	free(data);
 }
@@ -55,4 +58,209 @@ void chat_clear(Chat* chat) {
 	list_destroy(chat->messages, free_chat_message);
 	chat->messages = NULL;
 	chat->max_messages = 0;
+}
+
+void chat_submit_message(AppContext* context, const char* text) {
+	if (!context) return;
+
+	printf("Chat input submitted: %s\n", text ? text : "");
+	if (text && text[0] != '\0') {
+		char msg[512];
+		format_to(msg, sizeof(msg), "%d %s %s", MSG_SENDCHAT, context->player_name ? context->player_name : "Unknown", text);
+		send_tcp(context->sock, msg);
+	}
+}
+
+static int chat_append_wrapped_lines(const char* message, TTF_Font* font, int max_text_width, char out_lines[][CHAT_LINE_SIZE], int max_lines, int current_count) {
+	if (!out_lines || max_lines <= 0 || current_count < 0 || current_count >= max_lines) return current_count;
+
+	const char* cursor = (message && message[0] != '\0') ? message : " ";
+	const char* message_start = cursor;
+	const char* sender_separator = strstr(message_start, " : ");
+	int min_first_line_len = 0;
+	int is_first_chunk = 1;
+
+	if (sender_separator && sender_separator > message_start && sender_separator[3] != '\0') {
+		// Évite de couper juste après "pseudo :" quand on peut encore afficher au moins 1 caractère du contenu.
+		min_first_line_len = (int)(sender_separator - message_start) + 4;
+	}
+
+	while (cursor[0] != '\0' && current_count < max_lines) {
+		if (!font) {
+			strncpy(out_lines[current_count], cursor, CHAT_LINE_SIZE - 1);
+			out_lines[current_count][CHAT_LINE_SIZE - 1] = '\0';
+			current_count++;
+			break;
+		}
+
+		int full_width = 0;
+		if (TTF_SizeUTF8(font, cursor, &full_width, NULL) != 0 || full_width <= max_text_width) {
+			strncpy(out_lines[current_count], cursor, CHAT_LINE_SIZE - 1);
+			out_lines[current_count][CHAT_LINE_SIZE - 1] = '\0';
+			current_count++;
+			break;
+		}
+
+		int remaining_len = (int)strlen(cursor);
+		int best_fit_len = 0;
+		int best_space_break = -1;
+
+		for (int i_char = 0; i_char < remaining_len;) {
+			unsigned char c = (unsigned char)cursor[i_char];
+			int char_len = 1;
+			if ((c & 0x80) == 0x00) char_len = 1;
+			else if ((c & 0xE0) == 0xC0) char_len = 2;
+			else if ((c & 0xF0) == 0xE0) char_len = 3;
+			else if ((c & 0xF8) == 0xF0) char_len = 4;
+
+			if (i_char + char_len > remaining_len) {
+				char_len = 1;
+			}
+
+			int candidate_len = i_char + char_len;
+			if (candidate_len >= CHAT_LINE_SIZE) {
+				candidate_len = CHAT_LINE_SIZE - 1;
+			}
+
+			char probe[CHAT_LINE_SIZE];
+			memcpy(probe, cursor, candidate_len);
+			probe[candidate_len] = '\0';
+
+			int probe_width = 0;
+			if (TTF_SizeUTF8(font, probe, &probe_width, NULL) != 0 || probe_width > max_text_width) {
+				break;
+			}
+
+			best_fit_len = candidate_len;
+			if (cursor[i_char] == ' ') {
+				best_space_break = i_char;
+			}
+
+			if (candidate_len >= CHAT_LINE_SIZE - 1) {
+				break;
+			}
+
+			i_char += char_len;
+		}
+
+		int split_at = (best_space_break > 0) ? best_space_break : best_fit_len;
+		if (is_first_chunk && min_first_line_len > 0 && split_at < min_first_line_len && best_fit_len >= min_first_line_len) {
+			split_at = best_fit_len;
+		}
+		if (split_at <= 0) {
+			unsigned char first = (unsigned char)cursor[0];
+			if ((first & 0x80) == 0x00) split_at = 1;
+			else if ((first & 0xE0) == 0xC0) split_at = 2;
+			else if ((first & 0xF0) == 0xE0) split_at = 3;
+			else if ((first & 0xF8) == 0xF0) split_at = 4;
+			else split_at = 1;
+		}
+
+		if (split_at > remaining_len) split_at = remaining_len;
+
+		int write_len = split_at;
+		while (write_len > 0 && cursor[write_len - 1] == ' ') {
+			write_len--;
+		}
+		if (write_len <= 0) {
+			write_len = split_at;
+		}
+		if (write_len >= CHAT_LINE_SIZE) {
+			write_len = CHAT_LINE_SIZE - 1;
+		}
+
+		memcpy(out_lines[current_count], cursor, write_len);
+		out_lines[current_count][write_len] = '\0';
+		current_count++;
+
+		cursor += split_at;
+		while (cursor[0] == ' ') {
+			cursor++;
+		}
+		is_first_chunk = 0;
+	}
+
+	return current_count;
+}
+
+void chat_render_messages(AppContext* context, Window* chat_window, Text** chat_texts, int visible_lines) {
+	if (!context || !context->lobby || !chat_window || !chat_window->cfg || !chat_texts || visible_lines <= 0) return;
+
+	char lines[CHAT_MAX_RENDER_LINES][CHAT_LINE_SIZE] = {{0}};
+	const int total_messages = chat_size(&context->lobby->chat);
+
+	const int line_gap = 15;
+	const int left_padding = 8;
+	const int right_padding = 8;
+	const int bottom_line_y = -42; // La ligne la plus récente reste en bas du chat
+	int max_text_width = chat_window->cfg->w - left_padding - right_padding;
+	if (max_text_width < 32) max_text_width = 32;
+
+	TTF_Font* chat_font = NULL;
+	if (chat_texts[0] && chat_texts[0]->cfg.font_path && chat_texts[0]->cfg.font_size > 0) {
+		chat_font = TTF_OpenFont(chat_texts[0]->cfg.font_path, chat_texts[0]->cfg.font_size);
+	}
+
+	int total_lines = 0;
+	for (int i_msg = 0; i_msg < total_messages && total_lines < CHAT_MAX_RENDER_LINES; i_msg++) {
+		const char* message = chat_get(&context->lobby->chat, i_msg);
+		total_lines = chat_append_wrapped_lines(message, chat_font, max_text_width, lines, CHAT_MAX_RENDER_LINES, total_lines);
+	}
+
+	if (chat_font) {
+		TTF_CloseFont(chat_font);
+	}
+
+	if (total_lines <= 0) {
+		lines[0][0] = '\0';
+		total_lines = 1;
+	}
+
+	int max_scroll_offset = total_lines - visible_lines;
+	if (max_scroll_offset < 0) max_scroll_offset = 0;
+
+	window_edit_cfg(chat_window, WIN_CFG_SCROLL_MIN, 0);
+	window_edit_cfg(chat_window, WIN_CFG_SCROLL_MAX, max_scroll_offset);
+
+	int scroll_offset = chat_window->cfg->scroll_offset;
+	if (scroll_offset < 0) scroll_offset = 0;
+	if (scroll_offset > max_scroll_offset) scroll_offset = max_scroll_offset;
+
+	const int rendered_lines = (total_lines < visible_lines) ? total_lines : visible_lines;
+	int start_index = total_lines - rendered_lines - scroll_offset;
+	if (start_index < 0) start_index = 0;
+
+	SDL_Rect chat_clip = {0};
+	int has_clip = (window_get_scrollable_zone_rect(chat_window, &chat_clip) == EXIT_SUCCESS);
+	if (has_clip) {
+		SDL_RenderSetClipRect(context->renderer, &chat_clip);
+	}
+
+	for (int i = 0; i < visible_lines; i++) {
+		Text* txt = chat_texts[i];
+		if (!txt) continue;
+
+		if (i >= rendered_lines || (start_index + i) >= total_lines) {
+			update_text(context, txt, " ");
+			continue;
+		}
+
+		const char* line = lines[start_index + i];
+		update_text(context, txt, line ? line : " ");
+
+		int text_w = 0;
+		if (txt->texture) {
+			SDL_QueryTexture(txt->texture, NULL, NULL, &text_w, NULL);
+		}
+
+		// window_place_text centre le texte: on compense avec text_w/2 pour ancrer le bord gauche.
+		int rel_x = -(chat_window->cfg->w / 2) + left_padding + (text_w / 2);
+		int rel_y = bottom_line_y + ((rendered_lines - 1 - i) * line_gap);
+		window_place_text(chat_window, txt, rel_x, rel_y);
+		display_text(context, txt);
+	}
+
+	if (has_clip) {
+		SDL_RenderSetClipRect(context->renderer, NULL);
+	}
 }

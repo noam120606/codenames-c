@@ -46,8 +46,8 @@ static int blue_player_text_index = 0;
 static int red_player_text_index = 0;
 
 /* Textes pour l'affichage des derniers messages du chat */
-#define CHAT_VISIBLE_MESSAGES 10
-static Text* txt_chat_messages[CHAT_VISIBLE_MESSAGES] = {NULL};
+#define CHAT_VISIBLE_LINES 10
+static Text* txt_chat_messages[CHAT_VISIBLE_LINES] = {NULL};
 
 /* Textes pour l'affichage de l'historique des tours */
 #define HISTORY_VISIBLE_LINES 14
@@ -97,15 +97,6 @@ static void clear_hint_inputs(){
     }
     if (hint_count_input && hint_count_input->cfg) {
         input_set_text(hint_count_input, "");
-    }
-}
-
-static void chat_on_submit(AppContext* context, const char* text) {
-    printf("Chat input submitted: %s\n", text ? text : "");
-    if (text && strlen(text) > 0) {
-        char msg[512];
-        format_to(msg, sizeof(msg), "%d %s %s", MSG_SENDCHAT, context->player_name ? context->player_name : "Unknown", text);
-        send_tcp(context->sock, msg);
     }
 }
 
@@ -348,16 +339,16 @@ int game_init(AppContext * context) {
         cfg_chat_input->font_size = 24;
         cfg_chat_input->placeholders = CHAT_INPUT_PLACEHOLDERS;
         cfg_chat_input->placeholder_count = 1;
-        cfg_chat_input->maxlen = 50;
+        cfg_chat_input->maxlen = 512;
         cfg_chat_input->centered = 1;
         cfg_chat_input->allowed_pattern = NULL;
         cfg_chat_input->submit_pattern = NULL;
         cfg_chat_input->submit_sound = "assets/audio/sfx/input/submit.ogg";
         cfg_chat_input->keep_focus_on_submit = 1;
-        cfg_chat_input->submit_pattern = "^.{1,50}$"; // Accepter tout texte de 1 à 50 caractères
+        cfg_chat_input->submit_pattern = "^.{1,512}$"; // Accepter tout texte de 1 à 512 caractères
         cfg_chat_input->bg_path = "assets/img/inputs/empty.png";
         cfg_chat_input->bg_padding = 16;
-        cfg_chat_input->on_submit = chat_on_submit;
+        cfg_chat_input->on_submit = chat_submit_message;
         chat_input = input_create(context->renderer, INPUT_CHAT, cfg_chat_input);
         if (!chat_input) loading_fails++;
         free(cfg_chat_input);
@@ -395,7 +386,7 @@ int game_init(AppContext * context) {
     }
 
     /* Textes pour les messages du chat */
-    for (int i = 0; i < CHAT_VISIBLE_MESSAGES; i++) {
+    for (int i = 0; i < CHAT_VISIBLE_LINES; i++) {
         txt_chat_messages[i] = init_text(context, " ",
             create_text_config(FONT_NOTO, 14, COL_WHITE, 0, 0, 0, 255));
     }
@@ -692,64 +683,6 @@ static void game_render_team_windows(AppContext* context) {
     }
 }
 
-static void game_render_chat_messages(AppContext* context) {
-    if (!context || !context->lobby || !chat_window) return;
-
-    // Calculer les paramètres de scroll en fonction du nombre total de messages dans le chat et du nombre de messages visibles
-    const int total_messages = chat_size(&context->lobby->chat);
-    int max_scroll_offset = total_messages - CHAT_VISIBLE_MESSAGES;
-    if (max_scroll_offset < 0) max_scroll_offset = 0;
-
-    window_edit_cfg(chat_window, WIN_CFG_SCROLL_MIN, 0);
-    window_edit_cfg(chat_window, WIN_CFG_SCROLL_MAX, max_scroll_offset);
-
-    // L'offset de scroll est géré par la fenêtre elle-même, on le récupère pour calculer l'index du message à afficher en bas du chat
-    int scroll_offset = chat_window->cfg ? chat_window->cfg->scroll_offset : 0;
-    const int visible_messages = (total_messages < CHAT_VISIBLE_MESSAGES) ? total_messages : CHAT_VISIBLE_MESSAGES;
-    int start_index = total_messages - visible_messages - scroll_offset;
-    if (start_index < 0) start_index = 0;
-    const int bottom_line_y = -42; // Le message le plus récent reste en bas du chat
-    const int line_gap = 15;
-    const int left_padding = 8;
-
-    // Appliquer le clipping pour la zone de chat
-    SDL_Rect chat_clip = {0};
-    int has_clip = (window_get_scrollable_zone_rect(chat_window, &chat_clip) == EXIT_SUCCESS);
-    if (has_clip) {
-        SDL_RenderSetClipRect(context->renderer, &chat_clip);
-    }
-
-    for (int i = 0; i < CHAT_VISIBLE_MESSAGES; i++) {
-        Text* txt = txt_chat_messages[i];
-        if (!txt) continue;
-
-        if (i >= visible_messages) {
-            update_text(context, txt, " ");
-            continue;
-        }
-
-        const int chat_index = start_index + i;
-        const char* message = chat_get(&context->lobby->chat, chat_index);
-
-        update_text(context, txt, message ? message : " ");
-
-        int text_w = 0;
-        if (txt->texture) {
-            SDL_QueryTexture(txt->texture, NULL, NULL, &text_w, NULL);
-        }
-
-        // window_place_text centre le texte: on compense avec text_w/2 pour ancrer le bord gauche.
-        int rel_x = -(chat_window->cfg->w / 2) + left_padding + (text_w / 2);
-        int rel_y = bottom_line_y + ((visible_messages - 1 - i) * line_gap);
-        window_place_text(chat_window, txt, rel_x, rel_y);
-        display_text(context, txt);
-    }
-
-    if (has_clip) {
-        SDL_RenderSetClipRect(context->renderer, NULL);
-    }
-}
-
 static void game_render_team_history(AppContext* context, Window* history_window, const History* history, Text** history_texts) {
     if (!context || !history_window || !history || !history_texts) return;
 
@@ -932,7 +865,7 @@ void game_display(AppContext * context) {
     }
     if (chat_window) {
         window_render(context->renderer, chat_window);
-        game_render_chat_messages(context);
+        chat_render_messages(context, chat_window, txt_chat_messages, CHAT_VISIBLE_LINES);
         if (chat_input) {
             window_place_input(chat_window, chat_input, 0, -75);
             input_render(context->renderer, chat_input);
@@ -972,7 +905,7 @@ int game_free() {
         destroy_text(txt_red_players[i]); txt_red_players[i] = NULL;
     }
 
-    for (int i = 0; i < CHAT_VISIBLE_MESSAGES; i++) {
+    for (int i = 0; i < CHAT_VISIBLE_LINES; i++) {
         destroy_text(txt_chat_messages[i]); txt_chat_messages[i] = NULL;
     }
 

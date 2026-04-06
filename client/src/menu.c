@@ -146,7 +146,7 @@ int menu_init(AppContext * context) {
         cfg_in_name->maxlen = 16;
         cfg_in_name->save_player_data = 1;
         cfg_in_name->on_submit = name_on_submit;
-        cfg_in_name->allowed_pattern = "^[a-zA-Z0-9_zéèêëàâäåæçîïìùûüÿœ]*$"; // Autoriser uniquement les caractères alphanumériques et les underscores
+        cfg_in_name->allowed_pattern = "^[a-zA-Z0-9_zéèêëàâäåæçîïìùûüÿœ]*$";
         cfg_in_name->submit_pattern = "^[a-zA-Z0-9_zéèêëàâäåæçîïìùûüÿœ]{3,16}$";
         cfg_in_name->bg_path = "assets/img/inputs/empty.png";
         cfg_in_name->bg_padding = 24;
@@ -209,7 +209,7 @@ int menu_init(AppContext * context) {
         edit_in_cfg(INPUT_NAME, IN_CFG_SUBMIT_SOUND, (intptr_t)"assets/audio/sfx/input/submit.ogg");
     }
 
-    static const char* code_placeholders[] = {"CODE"};
+    static const char* code_placeholders[] = {"CODE : #####"};
     InputConfig* cfg_in_code = input_config_init();
     if (cfg_in_code) {
         cfg_in_code->x = 300;

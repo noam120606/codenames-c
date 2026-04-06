@@ -13,6 +13,10 @@ static Input* input_find_by_id(InputId id) {
 }
 
 static void input_clear_selection_internal(Input* in);
+static void input_reset_history_navigation(Input* in);
+static void input_set_text_internal(Input* in, const char* text, int reset_history_navigation);
+static void input_history_push(Input* in, const char* submitted_text);
+static int input_history_navigate(Input* in, int direction);
 
 static int utf8_is_continuation_byte(unsigned char c) {
     return (c & 0xC0) == 0x80;
@@ -94,6 +98,8 @@ static void input_submit_internal(AppContext* context, Input* in) {
 
     const char* submitted = in->cfg->submitted_text ? in->cfg->submitted_text : in->cfg->text;
 
+    input_history_push(in, submitted);
+
     input_play_submit_sound(in);
 
     if (in->cfg->on_submit) in->cfg->on_submit(context, submitted);
@@ -172,6 +178,10 @@ InputConfig* input_config_init() {
     cfg->sel_len = 0;
     cfg->sel_anchor = 0;
     cfg->submitted_text = NULL;
+    for (int i = 0; i < INPUT_HISTORY_MAX; i++) cfg->history[i] = NULL;
+    cfg->history_count = 0;
+    cfg->history_index = 0;
+    cfg->history_draft_text = NULL;
     cfg->submit_sound_chunk = NULL;
     cfg->placeholder_index = 0;
     cfg->placeholder_last_tick = 0;
@@ -184,6 +194,101 @@ static void input_clear_selection_internal(Input* in) {
     in->cfg->sel_start = 0;
     in->cfg->sel_len = 0;
     in->cfg->sel_anchor = 0;
+}
+
+static void input_reset_history_navigation(Input* in) {
+    if (!in || !in->cfg) return;
+    if (in->cfg->history_draft_text) {
+        free(in->cfg->history_draft_text);
+        in->cfg->history_draft_text = NULL;
+    }
+    in->cfg->history_index = in->cfg->history_count;
+}
+
+static void input_set_text_internal(Input* in, const char* text, int reset_history_navigation) {
+    if (!in || !in->cfg || !in->cfg->text) return;
+    if (!text) text = "";
+    if (in->cfg->maxlen <= 0) return;
+
+    strncpy(in->cfg->text, text, (size_t)in->cfg->maxlen);
+    in->cfg->text[in->cfg->maxlen] = '\0';
+    in->cfg->len = (int)strlen(in->cfg->text);
+    in->cfg->cursor_pos = in->cfg->len;
+    input_clear_selection_internal(in);
+
+    if (reset_history_navigation) {
+        input_reset_history_navigation(in);
+    }
+}
+
+static void input_history_push(Input* in, const char* submitted_text) {
+    if (!in || !in->cfg) return;
+
+    if (!submitted_text || submitted_text[0] == '\0') {
+        input_reset_history_navigation(in);
+        return;
+    }
+
+    if (in->cfg->history_count > 0) {
+        const char* last = in->cfg->history[in->cfg->history_count - 1];
+        if (last && strcmp(last, submitted_text) == 0) {
+            input_reset_history_navigation(in);
+            return;
+        }
+    }
+
+    char* copy = strdup(submitted_text);
+    if (!copy) {
+        input_reset_history_navigation(in);
+        return;
+    }
+
+    if (in->cfg->history_count >= INPUT_HISTORY_MAX) {
+        free(in->cfg->history[0]);
+        memmove(&in->cfg->history[0], &in->cfg->history[1], sizeof(in->cfg->history[0]) * (INPUT_HISTORY_MAX - 1));
+        in->cfg->history[INPUT_HISTORY_MAX - 1] = copy;
+        in->cfg->history_count = INPUT_HISTORY_MAX;
+    } else {
+        in->cfg->history[in->cfg->history_count] = copy;
+        in->cfg->history_count++;
+    }
+
+    input_reset_history_navigation(in);
+}
+
+static int input_history_navigate(Input* in, int direction) {
+    if (!in || !in->cfg || in->cfg->history_count <= 0) return 0;
+
+    if (direction < 0) {
+        if (in->cfg->history_index == in->cfg->history_count) {
+            if (in->cfg->history_draft_text) {
+                free(in->cfg->history_draft_text);
+                in->cfg->history_draft_text = NULL;
+            }
+            in->cfg->history_draft_text = strdup(in->cfg->text ? in->cfg->text : "");
+        }
+
+        if (in->cfg->history_index > 0) in->cfg->history_index--;
+    } else if (direction > 0) {
+        if (in->cfg->history_index >= in->cfg->history_count) return 0;
+        in->cfg->history_index++;
+    } else {
+        return 0;
+    }
+
+    if (in->cfg->history_index >= in->cfg->history_count) {
+        const char* draft = in->cfg->history_draft_text ? in->cfg->history_draft_text : "";
+        input_set_text_internal(in, draft, 0);
+        if (in->cfg->history_draft_text) {
+            free(in->cfg->history_draft_text);
+            in->cfg->history_draft_text = NULL;
+        }
+    } else {
+        const char* history_value = in->cfg->history[in->cfg->history_index];
+        input_set_text_internal(in, history_value ? history_value : "", 0);
+    }
+
+    return 1;
 }
 
 static int input_has_selection(Input* in) {
@@ -248,6 +353,10 @@ Input* input_create(SDL_Renderer* renderer, InputId id, const InputConfig* cfg_i
     in->cfg->sel_start = 0;
     in->cfg->sel_len = 0;
     in->cfg->sel_anchor = 0;
+    for (int i = 0; i < INPUT_HISTORY_MAX; i++) in->cfg->history[i] = NULL;
+    in->cfg->history_count = 0;
+    in->cfg->history_index = 0;
+    in->cfg->history_draft_text = NULL;
     in->cfg->placeholder_index = 0;
     in->cfg->placeholder_last_tick = SDL_GetTicks();
     in->cfg->submit_sound_chunk = NULL;
@@ -326,6 +435,11 @@ void input_destroy(Input* in) {
         if (in->cfg->text) free(in->cfg->text);
         if (in->cfg->bg_texture) free_image(in->cfg->bg_texture);
         if (in->cfg->submitted_text) free(in->cfg->submitted_text);
+        if (in->cfg->history_draft_text) free(in->cfg->history_draft_text);
+        for (int i = 0; i < INPUT_HISTORY_MAX; i++) {
+            if (in->cfg->history[i]) free(in->cfg->history[i]);
+            in->cfg->history[i] = NULL;
+        }
         if (in->cfg->submit_sound_chunk) Mix_FreeChunk(in->cfg->submit_sound_chunk);
         /* submitted_label and placeholders are not owned (const pointers) */
         free(in->cfg);
@@ -387,6 +501,7 @@ void input_handle_event(AppContext* context, Input* in, SDL_Event* e) {
         memcpy(in->cfg->text + in->cfg->cursor_pos, txt, add);
         in->cfg->cursor_pos += add;
         in->cfg->len += add;
+        input_reset_history_navigation(in);
     }
 
     if (e->type == SDL_KEYDOWN) {
@@ -401,9 +516,17 @@ void input_handle_event(AppContext* context, Input* in, SDL_Event* e) {
             return;
         }
 
+        if (k == SDLK_UP) {
+            if (input_history_navigate(in, -1)) return;
+        } else if (k == SDLK_DOWN) {
+            if (input_history_navigate(in, 1)) return;
+        }
+
         if (k == SDLK_BACKSPACE) {
+            int text_changed = 0;
             if (input_has_selection(in)) {
                 input_delete_selection(in);
+                text_changed = 1;
             } else if (mod & KMOD_CTRL) {
                 int np = prev_word_pos(in, in->cfg->cursor_pos);
                 int del = in->cfg->cursor_pos - np;
@@ -412,6 +535,7 @@ void input_handle_event(AppContext* context, Input* in, SDL_Event* e) {
                     in->cfg->len -= del;
                     in->cfg->cursor_pos = np;
                     in->cfg->text[in->cfg->len] = '\0';
+                    text_changed = 1;
                 }
             } else {
                 if (in->cfg->cursor_pos > 0 && in->cfg->len > 0) {
@@ -421,12 +545,16 @@ void input_handle_event(AppContext* context, Input* in, SDL_Event* e) {
                     in->cfg->cursor_pos = np;
                     in->cfg->len -= del;
                     in->cfg->text[in->cfg->len] = '\0';
+                    text_changed = 1;
                 }
             }
+            if (text_changed) input_reset_history_navigation(in);
             input_clear_selection_internal(in);
         } else if (k == SDLK_DELETE) {
+            int text_changed = 0;
             if (input_has_selection(in)) {
                 input_delete_selection(in);
+                text_changed = 1;
             } else if (mod & KMOD_CTRL) {
                 int np = next_word_pos(in, in->cfg->cursor_pos);
                 int del = np - in->cfg->cursor_pos;
@@ -434,6 +562,7 @@ void input_handle_event(AppContext* context, Input* in, SDL_Event* e) {
                     memmove(in->cfg->text + in->cfg->cursor_pos, in->cfg->text + np, in->cfg->len - np + 1);
                     in->cfg->len -= del;
                     in->cfg->text[in->cfg->len] = '\0';
+                    text_changed = 1;
                 }
             } else {
                 if (in->cfg->cursor_pos < in->cfg->len && in->cfg->len > 0) {
@@ -442,8 +571,10 @@ void input_handle_event(AppContext* context, Input* in, SDL_Event* e) {
                     memmove(in->cfg->text + in->cfg->cursor_pos, in->cfg->text + np, in->cfg->len - np + 1);
                     in->cfg->len -= del;
                     in->cfg->text[in->cfg->len] = '\0';
+                    text_changed = 1;
                 }
             }
+            if (text_changed) input_reset_history_navigation(in);
             input_clear_selection_internal(in);
         } else if (k == SDLK_LEFT) {
             int newpos = in->cfg->cursor_pos;
@@ -683,13 +814,8 @@ void input_submit(AppContext* context, Input* in) {
 }
 
 void input_set_text(Input* in, const char* text) {
-    if (!in || !text) return;
-    strncpy(in->cfg->text, text, in->cfg->maxlen);
-    in->cfg->text[in->cfg->maxlen] = '\0';
-    in->cfg->len = strlen(in->cfg->text);
-    in->cfg->cursor_pos = in->cfg->len;
-    in->cfg->sel_anchor = 0;
-    input_clear_selection_internal(in);
+    if (!in) return;
+    input_set_text_internal(in, text ? text : "", 1);
 }
 
 void input_set_on_submit(Input* in, void (*cb)(AppContext*, const char*)) {
