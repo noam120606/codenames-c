@@ -909,10 +909,26 @@ void game_display(AppContext * context) {
                 }
             } else if (context->lobby->game->state == GAMESTATE_ENDED) {
                 // Affichage du message de fin de partie
-                char hint_text[128];
-                format_to(hint_text, sizeof(hint_text), "L'équipe %s a gagné !", context->lobby->game->winner == TEAM_BLUE ? "bleue" : "rouge");
-                update_text(context, txt_hint_display, hint_text);
-                update_text_color(context, txt_hint_display, COL_WHITE);
+                char endGame_text[128];
+                format_to(endGame_text, sizeof(endGame_text), "L'équipe %s a gagné !", context->lobby->game->winner == TEAM_BLUE ? "bleue" : "rouge");
+                update_text(context, txt_hint_display, endGame_text);
+                if (context->lobby->game->winner == TEAM_BLUE) {
+                    update_text_color(context, txt_hint_display, TEAM_BLUE_COLOR);
+                } else {
+                    update_text_color(context, txt_hint_display, TEAM_RED_COLOR);
+                }
+                // Affichage des noms des joueurs gagnants juste en dessous du message de fin de partie
+                char winners_text[256] = "Bravo aux gagnants : ";
+                int winner_count = 0;
+                for (int i = 0; i < context->lobby->nb_players && i < MAX_USERS; i++) {
+                    User* u = context->lobby->users[i];
+                    if (!u || u->team != context->lobby->game->winner) continue;
+                    if (winner_count > 0) {
+                        strncat(winners_text, " - ", sizeof(winners_text) - strlen(winners_text) - 1);
+                    }
+                    strncat(winners_text, u->name ? u->name : "???", sizeof(winners_text) - strlen(winners_text) - 1);
+                    winner_count++;
+                }
                 window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)"La partie est terminée !");
                 window_place_button(hint_window, btn_return_lobby, 450, 0);
                 button_render(context->renderer, btn_return_lobby);

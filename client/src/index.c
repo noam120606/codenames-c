@@ -286,25 +286,26 @@ int main(int argc, char* argv[]){
         SDL_SetRenderDrawColor(context.renderer, context.bg_color.r, context.bg_color.g, context.bg_color.b, context.bg_color.a);
         SDL_RenderClear(context.renderer);
 
+        float lum_fct = context.global_luminosity;
         // Rendu et logique d'affichage
         switch (context.app_state) {
             case APP_STATE_MENU:
-                context.bg_color = (SDL_Color){50, 50, 50, 255}; // Gris par défaut
+                context.bg_color = (SDL_Color){70*lum_fct, 70*lum_fct, 70*lum_fct, 255}; // Gris par défaut
 
                 display_background(&context);
                 menu_display(&context);
                 break;
             case APP_STATE_LOBBY:
-                context.bg_color = (SDL_Color){50, 50, 50, 255};  // Gris par défaut
+                context.bg_color = (SDL_Color){70*lum_fct, 70*lum_fct, 70*lum_fct, 255};  // Gris par défaut
 
                 display_background(&context);
                 lobby_display(&context);
                 break;
             case APP_STATE_PLAYING:
                 if (context.lobby->game->state == GAMESTATE_TURN_RED_SPY || context.lobby->game->state == GAMESTATE_TURN_RED_AGENT) {
-                    context.bg_color = (SDL_Color){80, 30, 30, 255}; // Rouge sombre pour l'équipe rouge
+                    context.bg_color = (SDL_Color){100*lum_fct, 45*lum_fct, 45*lum_fct, 255}; // Rouge sombre pour l'équipe rouge
                 } else {
-                    context.bg_color = (SDL_Color){40, 40, 80, 255}; // Bleu sombre pour l'équipe bleue
+                    context.bg_color = (SDL_Color){55*lum_fct, 55*lum_fct, 100*lum_fct, 255}; // Bleu sombre pour l'équipe bleue
                 }
                 
                 display_background(&context);

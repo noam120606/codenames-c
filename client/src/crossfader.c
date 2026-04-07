@@ -5,8 +5,9 @@ static Crossfader* crossfaders[MAX_CROSSFADERS];
 static int crossfader_count = 0;
 
 static const char* player_key_for_crossfader_id(int id) {
-    if (id == CROSSFADER_ID_MUSIC_VOLUME) return "MUSIC_VOLUME";
-    if (id == CROSSFADER_ID_SFX_VOLUME) return "SOUND_EFFECTS_VOLUME";
+    if (id == CROSSFADER_MUSIC_VOLUME) return "MUSIC_VOLUME";
+    if (id == CROSSFADER_SFX_VOLUME) return "SOUND_EFFECTS_VOLUME";
+    if (id == CROSSFADER_LUMINOSITY) return "LUMINOSITY";
     return NULL;
 }
 

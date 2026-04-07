@@ -44,6 +44,7 @@ typedef struct Card Card;
  * @param version Version du jeu (chargée depuis VERSION).
  * @param music_volume Volume de la musique (0-128).
  * @param sound_effects_volume Volume des effets sonores (0-128).
+ * @param global_luminosity Facteur de luminosité global (0.0-1.0, 1 par défaut).
  * @param windowed_width Largeur de la fenêtre en mode fenêtré (pour restaurer après un plein écran).
  * @param windowed_height Hauteur de la fenêtre en mode fenêtré (pour restaurer après un plein écran).
  * @param windowed_x Position x de la fenêtre en mode fenêtré (pour restaurer après un plein écran).
@@ -74,6 +75,7 @@ typedef struct AppContext {
 
     int music_volume;
     int sound_effects_volume;
+    float global_luminosity;
 
     int windowed_width;
     int windowed_height;

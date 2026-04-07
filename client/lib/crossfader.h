@@ -16,6 +16,17 @@ typedef struct AppContext AppContext;
 #define MAX_CROSSFADERS 32
 
 /**
+ * ID des crossfaders.
+ */
+typedef enum CrossfaderId {
+    CROSSFADER_NONE,
+    CROSSFADER_MUSIC_VOLUME,
+    CROSSFADER_SFX_VOLUME,
+    CROSSFADER_LUMINOSITY,
+} CrossfaderId;
+
+
+/**
  * @brief Configuration pour créer un `Crossfader`.
  * Tous les champs ont des valeurs par défaut définies via `crossfader_config_init`.
  * La structure peut être modifiée à tout moment et passée à `crossfader_create`.

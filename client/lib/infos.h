@@ -7,12 +7,7 @@
 #define INFOS_H
 
 #include "sdl.h"
-
-/** Identifiants des crossfaders du bandeau infos. */
-#define CROSSFADER_ID_MUSIC_VOLUME    1
-#define CROSSFADER_ID_SFX_VOLUME      2
-
-// INIT INFOS
+#include "crossfader.h"
 
 /**
  * Initialise les ressources pour l'affichage des informations.
@@ -22,8 +17,6 @@
 int init_infos(AppContext* context);
 
 
-// OTHER INFOS
-
 /** 
  * Calcule les FPS (Frames Per Second) et met à jour le champ `fps` du contexte SDL.
  * @param context Contexte SDL contenant le temps écoulé depuis la dernière mise à jour.
@@ -32,8 +25,6 @@ int init_infos(AppContext* context);
  */
 void calculate_fps(AppContext* context, Uint32 current_time);
 
-
-// DISPLAY INFOS
 
 /**
  * Affiche les informations à l'écran.

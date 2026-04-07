@@ -181,6 +181,7 @@ AppContext init_sdl() {
     context.app_state = APP_STATE_MENU;
     context.music_volume = MIX_MAX_VOLUME;
     context.sound_effects_volume = MIX_MAX_VOLUME;
+    context.global_luminosity = 0.67f; // Valeur par défaut de luminosité (67%)
 
     if (audio_init() != EXIT_SUCCESS) {
         printf("audio_init Error\n");

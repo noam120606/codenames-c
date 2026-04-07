@@ -2,9 +2,11 @@
 
 SDL_Texture* bandeau;
 
-// Crossfaders pour le volume
+// Crossfaders pour les volumes
 static Crossfader* cf_music = NULL;
 static Crossfader* cf_sfx = NULL;
+// Crossfader pour la luminosité globale
+static Crossfader* cf_lum = NULL;
 
 // Texte des règles dans le bandeau (chargé depuis rules.txt)
 static const char* rules_title = "RÈGLES DU JEU";
@@ -14,6 +16,7 @@ static int rules_line_count = 0;
 // Textes statiques et dynamiques pour le nouveau système optimisé
 static Text* txt_music_label = NULL;
 static Text* txt_sfx_label = NULL;
+static Text* txt_lum_label = NULL;
 static Text* txt_rules_title = NULL;
 static Text** txt_rules_lines = NULL;
 static Text* txt_fps = NULL;
@@ -49,6 +52,11 @@ static void on_music_volume_change(AppContext* ctx, int new_value) {
 static void on_sfx_volume_change(AppContext* ctx, int new_value) {
     if (ctx) ctx->sound_effects_volume = new_value;
     audio_set_type_volume(AUDIO_SOUND_KIND_SFX, new_value);
+}
+
+static void on_luminosity_change(AppContext* ctx, int new_value) {
+    if (ctx) ctx->global_luminosity = new_value / 100.0f; // Convertir en facteur [0.0-1.0]
+    // Pas de callback nécessaire pour la luminosité, on lit la valeur directement dans le rendu
 }
 
 /* Charge les règles depuis le fichier rules.txt */
@@ -110,7 +118,7 @@ int init_infos(AppContext* context) {
     /* Initialiser le sous-système crossfader */
     crossfaders_init();
 
-    /* Crossfader musique */
+    // Crossfader volume musique
     CrossfaderConfig* cfg_music = crossfader_config_init();
     if (cfg_music) {
         cfg_music->x = 0;  /* repositionné à chaque frame */
@@ -126,7 +134,7 @@ int init_infos(AppContext* context) {
         cfg_music->knob_color = (SDL_Color){0, 200, 220, 255};
         cfg_music->hidden = 1;
         cfg_music->on_change = on_music_volume_change;
-        cf_music = crossfader_create(context->renderer, CROSSFADER_ID_MUSIC_VOLUME, cfg_music);
+        cf_music = crossfader_create(context->renderer, CROSSFADER_MUSIC_VOLUME, cfg_music);
         free(cfg_music);
     }
 
@@ -137,7 +145,7 @@ int init_infos(AppContext* context) {
         context->music_volume = cf_music->cfg->value;
     }
 
-    /* Crossfader effets sonores */
+    // Crossfader volume effets sonores
     CrossfaderConfig* cfg_sfx = crossfader_config_init();
     if (cfg_sfx) {
         cfg_sfx->x = 0;  /* repositionné à chaque frame */
@@ -153,8 +161,34 @@ int init_infos(AppContext* context) {
         cfg_sfx->knob_color = (SDL_Color){0, 200, 220, 255};
         cfg_sfx->hidden = 1;
         cfg_sfx->on_change = on_sfx_volume_change;
-        cf_sfx = crossfader_create(context->renderer, CROSSFADER_ID_SFX_VOLUME, cfg_sfx);
+        cf_sfx = crossfader_create(context->renderer, CROSSFADER_SFX_VOLUME, cfg_sfx);
         free(cfg_sfx);
+    }
+
+    // Crossfader luminosité globale
+    CrossfaderConfig* cfg_lum = crossfader_config_init();
+    if (cfg_lum) {
+        cfg_lum->x = 0;  /* repositionné à chaque frame */
+        cfg_lum->y = 190;
+        cfg_lum->w = 200;
+        cfg_lum->h = 16;
+        cfg_lum->min = 0;
+        cfg_lum->max = 100;
+        cfg_lum->value = (int)(context->global_luminosity * 100); // Convertir en pourcentage entier
+        cfg_lum->save_player_data = 1;
+        cfg_lum->color_0_pct = (SDL_Color){10, 10, 10, 220};
+        cfg_lum->color_100_pct = (SDL_Color){50, 50, 50, 220};
+        cfg_lum->knob_color = (SDL_Color){200, 200, 0, 255};
+        cfg_lum->hidden = 1;
+        cfg_lum->on_change = on_luminosity_change;
+        cf_lum = crossfader_create(context->renderer, CROSSFADER_LUMINOSITY, cfg_lum);
+        free(cfg_lum);
+        if (!cf_lum) {
+            printf("Failed to create global luminosity crossfader\n");
+            loading_fails++;
+        }
+    } else {
+        loading_fails++;
     }
 
     if (!cf_sfx) {
@@ -169,26 +203,8 @@ int init_infos(AppContext* context) {
         audio_set_type_volume(AUDIO_SOUND_KIND_SFX, context->sound_effects_volume);
     }
 
-    
 
     /* Initialisation des textes optimisés */
-    // Textes statiques (labels)
-    txt_music_label = init_text(context, "Musique", 
-        create_text_config(FONT_LARABIE, 18, COL_WHITE, 0, 345, 0, 255));
-    txt_sfx_label = init_text(context, "Effets Sonores", 
-        create_text_config(FONT_LARABIE, 18, COL_WHITE, 0, 275, 0, 255));
-    
-    // Titre et lignes des règles
-    txt_rules_title = init_text(context, rules_title, 
-        create_text_config(FONT_LARABIE, 20, COL_WHITE, 0, 180, 0, 255));
-    
-    if (rules_line_count > 0) {
-        txt_rules_lines = malloc(sizeof(Text*) * rules_line_count);
-        for (int i = 0; i < rules_line_count; i++) {
-            txt_rules_lines[i] = init_text(context, rules_lines[i], 
-                create_text_config(FONT_LARABIE, 14, COL_WHITE, 0, 180 - 35 - (i * 22), 0, 200));
-        }
-    }
     
     // Textes dynamiques (FPS, ping, etc.)
     txt_fps = init_text(context, "FPS : 0.00", 
@@ -205,8 +221,31 @@ int init_infos(AppContext* context) {
     // Barres décoratives
     txt_bar_1 = init_text(context, "______________", 
         create_text_config(FONT_LARABIE, 22, COL_WHITE, 0, 370, 0, 255));
+
+    // Textes statiques (labels)
+    txt_music_label = init_text(context, "Musique", 
+        create_text_config(FONT_LARABIE, 18, COL_WHITE, 0, 345, 0, 255));
+    txt_sfx_label = init_text(context, "Effets Sonores", 
+        create_text_config(FONT_LARABIE, 18, COL_WHITE, 0, 275, 0, 255));
+
     txt_bar_2 = init_text(context, "______________", 
         create_text_config(FONT_LARABIE, 22, COL_WHITE, 0, 230, 0, 255));
+
+    // Texte statique pour la luminosité globale
+    txt_lum_label = init_text(context, "Luminosité", 
+        create_text_config(FONT_LARABIE, 18, COL_WHITE, 0, 220, 0, 255));
+
+    // Titre et lignes des règles
+    txt_rules_title = init_text(context, rules_title, 
+        create_text_config(FONT_LARABIE, 20, COL_WHITE, 0, 180, 0, 255));
+    
+    if (rules_line_count > 0) {
+        txt_rules_lines = malloc(sizeof(Text*) * rules_line_count);
+        for (int i = 0; i < rules_line_count; i++) {
+            txt_rules_lines[i] = init_text(context, rules_lines[i], 
+                create_text_config(FONT_LARABIE, 16, COL_WHITE, 0, 180 - 35 - (i * 22), 0, 200));
+        }
+    }
 
     /* Texte de version */
     if (context && context->version[0] != '\0') {
@@ -313,6 +352,15 @@ static void update_crossfader_positions(int display_x) {
         cf_sfx->cfg->rect.y = sy;
         cf_sfx->cfg->hidden = (infos_state == INFOS_HIDDEN);
     }
+    if (cf_lum && cf_lum->cfg) {
+        int sx = bandeau_to_screen_x(bx, cf_lum->cfg->w);
+        int sy = bandeau_to_screen_y(175, cf_lum->cfg->h);  /* encore en dessous */
+        cf_lum->cfg->x = sx;
+        cf_lum->cfg->y = sy;
+        cf_lum->cfg->rect.x = sx;
+        cf_lum->cfg->rect.y = sy;
+        cf_lum->cfg->hidden = (infos_state == INFOS_HIDDEN);
+    }
 }
 
 // Affiche les informations à l'écran
@@ -389,8 +437,12 @@ void infos_display(AppContext* context) {
             update_text_position(txt_sfx_label, label_x, 275);
             display_text(context, txt_sfx_label);
 
+            update_text_position(txt_lum_label, label_x, 205);
+            display_text(context, txt_lum_label);
+
+
             /* Affichage des règles du jeu */
-            int rules_start_y = 180;
+            int rules_start_y = 140;
             int line_spacing = 22;
 
             // Titre des règles
@@ -501,6 +553,7 @@ int infos_free() {
     /* Libération des textes optimisés */
     destroy_text(txt_music_label); txt_music_label = NULL;
     destroy_text(txt_sfx_label); txt_sfx_label = NULL;
+    destroy_text(txt_lum_label); txt_lum_label = NULL;
     destroy_text(txt_rules_title); txt_rules_title = NULL;
     
     if (txt_rules_lines) {
