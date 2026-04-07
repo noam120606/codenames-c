@@ -1,7 +1,9 @@
 #include "../lib/all.h"
 
-int WORDCOUNT_EASY = 0;
+int WORDCOUNT_NORMAL = 0;
 int WORDCOUNT_HARD = 0;
+int WORDCOUNT_INFO = 0;
+int WORDCOUNT_FREAKY = 0;
 
 /* Initialise les compteurs de mots pour les deux niveaux de difficulté.
    Retourne EXIT_SUCCESS si OK, EXIT_FAILURE en cas d'erreur */
@@ -11,7 +13,7 @@ int init_game_manager() {
         fprintf(stderr, "game_manager: failed to count words in assets/wordlist.txt\n");
         return EXIT_FAILURE;
     }
-    WORDCOUNT_EASY = n;
+    WORDCOUNT_NORMAL = n;
 
     n = count_words("assets/wordlist_hard.txt");
     if (n < 0) {
@@ -20,12 +22,32 @@ int init_game_manager() {
     }
     WORDCOUNT_HARD = n;
 
+    n = count_words("assets/wordlist_info.txt");
+    if (n < 0) {
+        fprintf(stderr, "game_manager: failed to count words in assets/wordlist_info.txt\n");
+        return EXIT_FAILURE;
+    }
+    WORDCOUNT_INFO = n;
+
+    n = count_words("assets/wordlist_freaky.txt");
+    if (n < 0) {
+        fprintf(stderr, "game_manager: failed to count words in assets/wordlist_freaky.txt\n");
+        return EXIT_FAILURE;
+    }
+    WORDCOUNT_FREAKY = n;
+
     return EXIT_SUCCESS;
 }
 
 char** fetchWords(WordsDifficulty words_difficulty) { // Lit le fichier wordlist selon la difficulté
-    const char* filepath = (words_difficulty == WORDS_DIFFICULTY_HARD) ? "assets/wordlist_hard.txt" : "assets/wordlist.txt";
-    int wordcount = (words_difficulty == WORDS_DIFFICULTY_HARD) ? WORDCOUNT_HARD : WORDCOUNT_EASY;
+    const char* filepath = (words_difficulty == WORDS_DIFFICULTY_NORMAL) ? "assets/wordlist.txt" :
+                           (words_difficulty == WORDS_DIFFICULTY_HARD) ? "assets/wordlist_hard.txt" :
+                           (words_difficulty == WORDS_DIFFICULTY_INFO) ? "assets/wordlist_info.txt" :
+                           "assets/wordlist_freaky.txt";
+    int wordcount = (words_difficulty == WORDS_DIFFICULTY_NORMAL) ? WORDCOUNT_NORMAL :
+                    (words_difficulty == WORDS_DIFFICULTY_HARD) ? WORDCOUNT_HARD :
+                    (words_difficulty == WORDS_DIFFICULTY_INFO) ? WORDCOUNT_INFO :
+                    WORDCOUNT_FREAKY;
 
     FILE* file = fopen(filepath, "r");
     if (!file) {
@@ -60,7 +82,10 @@ char** fetchWords(WordsDifficulty words_difficulty) { // Lit le fichier wordlist
 }
 
 Word* generateWords(int count, Team start_team, WordsDifficulty words_difficulty) { //Trouver 25 mots au hasard parmis la liste des mots.
-    int wordcount = (words_difficulty == WORDS_DIFFICULTY_HARD) ? WORDCOUNT_HARD : WORDCOUNT_EASY;
+    int wordcount = (words_difficulty == WORDS_DIFFICULTY_NORMAL) ? WORDCOUNT_NORMAL :
+                    (words_difficulty == WORDS_DIFFICULTY_HARD) ? WORDCOUNT_HARD :
+                    (words_difficulty == WORDS_DIFFICULTY_INFO) ? WORDCOUNT_INFO :
+                    WORDCOUNT_FREAKY;
 
     Word* words = (Word*)malloc(sizeof(Word) * count);
     if (!words) {
@@ -446,7 +471,11 @@ int request_set_words_difficulty(Codenames* codenames, TcpClient* client, char* 
     }
 
     int words_difficulty = atoi((char*)args.argv[0]);
-    if (words_difficulty != WORDS_DIFFICULTY_EASY && words_difficulty != WORDS_DIFFICULTY_HARD) {
+    if (words_difficulty != WORDS_DIFFICULTY_NORMAL && 
+        words_difficulty != WORDS_DIFFICULTY_HARD && 
+        words_difficulty != WORDS_DIFFICULTY_INFO && 
+        words_difficulty != WORDS_DIFFICULTY_FREAKY
+    ) {
         char msg[64];
         format_to(msg, sizeof(msg), "%d %s", MSG_SERVER_ERROR, "Invalid difficulty value");
         tcp_send_to_client(codenames, client->id, msg);
@@ -454,7 +483,7 @@ int request_set_words_difficulty(Codenames* codenames, TcpClient* client, char* 
     }
 
     lobby->words_difficulty = (WordsDifficulty)words_difficulty;
-    printf("Lobby %d words difficulty set to %s\n", lobby->id, words_difficulty == WORDS_DIFFICULTY_EASY ? "easy" : "hard");
+    printf("Lobby %d words difficulty set to %d\n", lobby->id, words_difficulty);
 
     // Informe tous les joueurs du changement de difficulté
     char msg[32];

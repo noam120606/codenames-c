@@ -195,6 +195,11 @@ int on_message(AppContext* context, char* message) {
 
             printf("Word data received: %s (Team: %d, Revealed: %d)\n", word, team, revealed);
 
+            // Prétraitement qui remet les espaces
+            for (int i = 0; word[i] != '\0'; i++) {
+                if (word[i] == '_') word[i] = ' ';
+            }
+            
             strcpy(context->lobby->game->cards[wordid].word, word);
             context->lobby->game->cards[wordid].team = team;
             context->lobby->game->cards[wordid].type = rand() % 4; // 0 = homme, 1 = femme

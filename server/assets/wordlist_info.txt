@@ -30,9 +30,9 @@ Backdoor
 Backend
 Backup
 Balise
-Bande passante
+Bande_passante
 Base64
-Base de données
+Base_de_données
 Batch
 Benchmark
 Bépo
@@ -52,7 +52,7 @@ Cache
 Cadence
 Canal
 Capteur
-Carte mère
+Carte_mère
 Cascade
 Case
 Certificat
@@ -83,7 +83,7 @@ Cryptographie
 Curseur
 Daemon
 Data
-Data mining
+Data_mining
 Datacenter
 Dataset
 Debug
@@ -112,7 +112,7 @@ Entrée
 Environnement
 Erreur
 Escalade
-Espace mémoire
+Espace_mémoire
 Ethernet
 Évaluation
 Exécutable
@@ -121,7 +121,7 @@ Exploit
 Extension
 Failover
 Fichier
-File system
+File_system
 Filtrage
 Firmware
 Flux
@@ -130,7 +130,7 @@ Format
 Framework
 Fragmentation
 Front-end
-Garbage collector
+Garbage_collector
 Gateway
 Générateur
 Gestionnaire
@@ -172,17 +172,17 @@ Lecteur
 Legacy
 Librairie
 Licence
-Ligne de commande
+Ligne_de_commande
 Linker
 Linux
 Liste
-Load balancing
+Load_balancing
 Localhost
 Log
 Logiciel
 Login
 Loop
-Machine virtuelle
+Machine_virtuelle
 Macro
 Mainframe
 Maintenance
@@ -190,8 +190,8 @@ Malware
 Map
 Masque
 Mémoire
-Mémoire cache
-Mémoire vive
+Mémoire_cache
+Mémoire_vive
 Menu
 Métadonnée
 Middleware
@@ -199,7 +199,7 @@ Migration
 Modèle
 Module
 Monitoring
-Mot de passe
+Mot_de_passe
 Multithreading
 NAT
 Navigateur
@@ -210,7 +210,7 @@ Noyau
 Objet
 Obfuscation
 Octet
-Open source
+Open_source
 Opérateur
 Optimisation
 Ordinateur

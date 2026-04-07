@@ -5,7 +5,7 @@ Peta
 Faz
 BIOS
 Weka
-John Pork
+John_Pork
 Kernigan
 Ritchie
 Carpette
@@ -31,35 +31,35 @@ Ping
 Encooore
 Bloquant
 Fourni
-Bien sur
+Bien_sur
 Salé
 Serrano
-Hyyype !
+Hyyype_!
 CP
 Minotaure
-Jack Black
+Jack_Black
 Steve
-Chicken Jockey
-Flint and Steel
-Slime Cube
-Blade for days
-The Nether
-RELEASE !
-Zero limit
+Chicken_Jockey
+Flint_and_Steel
+Slime_Cube
+Blade_for_days
+The_Nether
+RELEASE_!
+Zero_limit
 Dennis
-Coming in hot
-Lava Chicken
-Blue Lobster
-Metal pipe
-Pompe a lait
+Coming_in_hot
+Lava_Chicken
+Blue_Lobster
+Metal_pipe
+Pompe_a_lait
 Maghla
-Big ball bird
-Triple T
+Big_ball_bird
+Triple_T
 Skibidi
 Irlinique
-Lirili larila
+Lirili_larila
 Panz
-Deux from'z
+Deux_from'z
 Cook's
 Quagmire
 Peter
@@ -67,12 +67,12 @@ Stewie
 67
 Bryan
 Retep
-Change Pigment
+Change_Pigment
 Meg
 Herbert
 Cartman
 Giggity
-Dear Diary, Jackpot !
+Dear_Diary,_Jackpot_!
 Dindon
 BépoBalle
 BépoTrou
@@ -90,53 +90,53 @@ Bière
 Circu
 Extinct
 Animals
-Maroon 5
-Tree bird
-Ciao Kombucha
+Maroon_5
+Tree_bird
+Ciao_Kombucha
 Menthe
 Citron
-Fruit du Dragon
-Fruits Rouges
-Gimgembre Hibiscus
+Fruit_du_Dragon
+Fruits_Rouges
+Gimgembre_Hibiscus
 Pêche
 Pastèque
-Mangue Passion
+Mangue_Passion
 Soja
 Matcha
 Déconstruit
 CR
 Solène
-Crash Boursier
-Crash Bandicoot
-Aku Aku
+Crash_Boursier
+Crash_Bandicoot
+Aku_Aku
 OODIBIGAH
 Tortank
 Bouffe-tout
 Wazizi
 Azayim
 Guillaume
-Caius Julius Caesarum
+Caius_Julius_Caesarum
 NoamSQL
 WolfGang_PRoxa
-Kaptaine Pirate
+Kaptaine_Pirate
 Chloé
-Tom Soja
-Will Smithper
+Tom_Soja
+Will_Smithper
 Whisper
 Trousselin
 Yo-kai
-Bah alors
+Bah_alors
 Nache
-Flan di Patti
+Flan_di_Patti
 Kirkification
 Keylogger
 Hacktivist
 тотя
 Wordbox
-Mini Golf
+Mini_Golf
 Andrii
-Silence Stellaire
-T'as ZERO
+Silence_Stellaire
+T'as_ZERO
 Maxime
 Goumin
 Doro
@@ -145,10 +145,10 @@ Bodycount
 Tentafruit
 Fortnite
 Backroom
-Ballerina Capuccina
-Bombardilo Crocodilo
-Capuccino Assassino
-Chimpanzini Bananini
+Ballerina_Capuccina
+Bombardilo_Crocodilo
+Capuccino_Assassino
+Chimpanzini_Bananini
 Eléfraise
 Faf
 Afton
@@ -158,20 +158,20 @@ Bob
 Hopper
 Papa
 Congregation
-Joe Metry Desh
-Stereo Madness
-Can't let go
+Joe_Metry_Desh
+Stereo_Madness
+Can't_let_go
 Jumper
 Dash
 Fingerdash
-Theory of everything
-Electroman Adventures
-Tidal Wave
+Theory_of_everything
+Electroman_Adventures
+Tidal_Wave
 Bloodbath
 Michigun
 Baka
 Wolf
-Oi oi oi
+Oi_oi_oi
 Johan
 Jonathan
 Hautain
@@ -192,8 +192,8 @@ F1
 Gasly
 Gaz
 Smogogo
-Incredible Gassy
-Smurf Cat
+Incredible_Gassy
+Smurf_Cat
 Bowser
 Diddy
 Chris
@@ -209,36 +209,36 @@ Oasis
 Probiotique
 Prépross
 4skin
-Tilted Tower
+Tilted_Tower
 4chan
 IShowSpeed
 Charlie
 Rude
 Chiantos
-Sa vie
+Sa_vie
 Naggers
 Randy
-Miam Mobile
-Freaky Frog
-Crazy Frog
+Miam_Mobile
+Freaky_Frog
+Crazy_Frog
 Cigazouille
 Crapop
 Potofeu
 Commit
 Inde
 Tikka
-Street Food
+Street_Food
 Linganguliguli
 Wazaaaa
 SDL
-Mr Beast
-Furious Jumper
+Mr_Beast
+Furious_Jumper
 Agentgb
 Frigiel
-Fuze III
+Fuze_III
 Norman
 Parkside
-Brico Dépot
+Brico_Dépot
 Pergola
 Marteau
 Etabli
@@ -252,18 +252,18 @@ Gnôle
 Antoine
 Femboy
 Tana
-Take two
+Take_two
 Niveau
 Ultimate
 TCHOLé
 Deuspi
 Griffin
 Fnaf
-Hi, Bye
+Hi,_Bye
 Enjo
 Pom'z
-Beignet Choc
-Beignet Framz
+Beignet_Choc
+Beignet_Framz
 Bouffi
 Farceur
 Psychique
@@ -316,7 +316,7 @@ Frontend
 Backtrack
 Backshot
 Backpack
-Pack de Bières
+Pack_de_Bières
 Romain
 Beau
 Loup
@@ -335,21 +335,21 @@ RAM
 Bépause
 Urnaconda
 Crocho
-Lait Merveilleux
-Boeuf Persillé
+Lait_Merveilleux
+Boeuf_Persillé
 Matsutake
 Blablagel
-Burger Miam
-Spiritzer Y
+Burger_Miam
+Spiritzer_Y
 VoltXtrème
-Riz à la crevette
-Pomme d'amour
-Ramen complet
-Ragoût de tofu
-Thon premier choix
-Barre de chocolat
-Curry du chef
-Galette de riz sucrée
-Grande coupe glaçée
+Riz_à_la_crevette
+Pomme_d'amour
+Ramen_complet
+Ragoût_de_tofu
+Thon_premier_choix
+Barre_de_chocolat
+Curry_du_chef
+Galette_de_riz_sucrée
+Grande_coupe_glaçée
 Oden
-Fruit défendu
+Fruit_défendu

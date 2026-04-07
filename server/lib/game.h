@@ -10,12 +10,16 @@
 
 /**
  * Niveaux de difficulté du jeu.
- * @param WORDS_DIFFICULTY_EASY Difficulté facile (wordlist.txt).
+ * @param WORDS_DIFFICULTY_NORMAL Difficulté normale (wordlist.txt).
  * @param WORDS_DIFFICULTY_HARD Difficulté difficile (wordlist_hard.txt).
+ * @param WORDS_DIFFICULTY_INFO Difficulté informatique (wordlist_info.txt).
+ * @param WORDS_DIFFICULTY_FREAKY Difficulté décalée (wordlist_freaky.txt).
  */
 typedef enum WordsDifficulty {
-    WORDS_DIFFICULTY_EASY = 0,
-    WORDS_DIFFICULTY_HARD = 1
+    WORDS_DIFFICULTY_NORMAL,
+    WORDS_DIFFICULTY_HARD,
+    WORDS_DIFFICULTY_INFO,
+    WORDS_DIFFICULTY_FREAKY
 } WordsDifficulty;
 
 /**

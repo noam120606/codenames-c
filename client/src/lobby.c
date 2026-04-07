@@ -250,7 +250,7 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
         char msg[16];
         format_to(msg, sizeof(msg), "%d %d", MSG_SET_WORDS_DIFFICULTY, context->lobby->words_difficulty);
         send_tcp(context->sock, msg);
-        printf("Switched difficulty to: %s\n", context->lobby->words_difficulty);
+        printf("Switched difficulty to: %d\n", context->lobby->words_difficulty);
     }
     return BTN_NONE;
 }
