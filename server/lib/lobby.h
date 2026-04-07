@@ -92,6 +92,12 @@ int join_lobby(Lobby* lobby, User* user);
  */
 int leave_lobby(Lobby* lobby, User* user);
 
+/** Démarre une partie dans le lobby.
+ * @param lobby Lobby dans lequel démarrer la partie.
+ * @return EXIT_SUCCESS si la partie a démarré avec succès, EXIT_FAILURE si une erreur est survenue (ex: nombre de joueurs insuffisant).
+ */
+User* find_user_by_id(Lobby* lobby, int id);
+
 /** Trouve un lobby par l'identifiant de son propriétaire.
  * @param manager Gestionnaire de lobbies à rechercher.
  * @param owner_id Identifiant du propriétaire du lobby recherché.

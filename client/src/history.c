@@ -51,8 +51,7 @@ static int history_push_line(
     if (!lines || max_lines <= 0 || current_count < 0 || !line) return current_count;
     if (current_count >= max_lines) return current_count;
 
-    strncpy(lines[current_count], line, HISTORY_LINE_SIZE - 1);
-    lines[current_count][HISTORY_LINE_SIZE - 1] = '\0';
+    snprintf(lines[current_count], HISTORY_LINE_SIZE, "%s", line);
 
     if (line_word_teams) {
         line_word_teams[current_count] = line_word_team;

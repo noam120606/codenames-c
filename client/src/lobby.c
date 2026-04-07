@@ -241,8 +241,10 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
             case WORDS_DIFFICULTY_INFO:
                 if (word_contains("67", context->player_name)) {
                     context->lobby->words_difficulty = WORDS_DIFFICULTY_FREAKY;
-                    break;
+                } else {
+                    context->lobby->words_difficulty = WORDS_DIFFICULTY_NORMAL;
                 }
+                break;
             default:
                 context->lobby->words_difficulty = WORDS_DIFFICULTY_NORMAL;
                 break;
