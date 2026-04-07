@@ -230,13 +230,27 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
         context->app_state = APP_STATE_MENU;
         printf("Returned to menu\n");
     } else if (button == btn_words_difficulty_switch) {
-        // Alterne entre facile et difficile
-        WordsDifficulty new_difficulty = (context->lobby->words_difficulty == WORDS_DIFFICULTY_EASY) ? 
-            WORDS_DIFFICULTY_HARD : WORDS_DIFFICULTY_EASY;
+        // Alterne entre normale et difficile
+        switch (context->lobby->words_difficulty) {
+            case WORDS_DIFFICULTY_NORMAL:
+                context->lobby->words_difficulty = WORDS_DIFFICULTY_HARD;
+                break;
+            case WORDS_DIFFICULTY_HARD:
+                context->lobby->words_difficulty = WORDS_DIFFICULTY_INFO;
+                break;
+            case WORDS_DIFFICULTY_INFO:
+                if (word_contains("67", context->player_name)) {
+                    context->lobby->words_difficulty = WORDS_DIFFICULTY_FREAKY;
+                    break;
+                }
+            default:
+                context->lobby->words_difficulty = WORDS_DIFFICULTY_NORMAL;
+                break;
+        }
         char msg[16];
-        format_to(msg, sizeof(msg), "%d %d", MSG_SET_WORDS_DIFFICULTY, new_difficulty);
+        format_to(msg, sizeof(msg), "%d %d", MSG_SET_WORDS_DIFFICULTY, context->lobby->words_difficulty);
         send_tcp(context->sock, msg);
-        printf("Switched difficulty to: %s\n", new_difficulty == WORDS_DIFFICULTY_HARD ? "HARD" : "EASY");
+        printf("Switched difficulty to: %s\n", context->lobby->words_difficulty);
     }
     return BTN_RET_NONE;
 }
@@ -492,7 +506,7 @@ int struct_lobby_init(Lobby* lobby, int id, const char* code) {
     lobby->nb_players = 0;
     lobby->owner_id = -1;
     lobby->game = NULL;
-    lobby->words_difficulty = WORDS_DIFFICULTY_EASY;
+    lobby->words_difficulty = WORDS_DIFFICULTY_NORMAL;
     strcpy(lobby->code, code);
 
     for (int i = 0; i < MAX_USERS; i++) {
