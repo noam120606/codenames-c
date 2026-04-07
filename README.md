@@ -54,7 +54,8 @@ codenames-c/
 │   ├── SDL2/                  # Bibliothèques SDL2 compilées
 │   ├── build/                 # Fichiers compilés
 │   ├── makefile               # Compilation client
-│   └── run.sh                 # Script de lancement client
+│   ├── run.sh                 # Script de lancement client
+│   └── run.ps1                # Script de lancement client sous Windows
 │
 ├── server/                    # Application serveur (TCP)
 │   ├── src/                   # Code source serveur
@@ -62,11 +63,16 @@ codenames-c/
 │   ├── assets/                # Liste de mots
 │   ├── build/                 # Fichiers compilés
 │   ├── makefile               # Compilation serveur
-│   └── run.sh                 # Script de lancement serveur
+│   ├── run.sh                 # Script de lancement serveur 
+│   └── run.ps1                # Script de lancement serveur sous Windows
 │
 ├── docs/                      # Documentation Doxygen générée
 ├── Doxyfile                   # Configuration Doxygen (projet complet)
+├── LICENSE                    # Licence MIT
 ├── setup.sh                   # Script d'installation des dépendances
+├── setup.ps1                  # Script d'installation des dépendances sous Windows
+├── TODO.md                    # Liste des fonctionnalités à venir
+├── VERSION                    # Fichier de version (MAJOR.MINOR.PATCH)
 └── README.md                  # Ce fichier
 ```
 

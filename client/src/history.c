@@ -38,12 +38,30 @@ static void history_touch(History* history) {
     history->revision++;
 }
 
-static int history_push_line(char lines[][HISTORY_LINE_SIZE], int max_lines, int current_count, const char* line) {
+static int history_push_line(
+    char lines[][HISTORY_LINE_SIZE],
+    Team line_word_teams[],
+    int line_has_revealed_word_team[],
+    int max_lines,
+    int current_count,
+    const char* line,
+    Team line_word_team,
+    int has_revealed_word_team
+) {
     if (!lines || max_lines <= 0 || current_count < 0 || !line) return current_count;
     if (current_count >= max_lines) return current_count;
 
     strncpy(lines[current_count], line, HISTORY_LINE_SIZE - 1);
     lines[current_count][HISTORY_LINE_SIZE - 1] = '\0';
+
+    if (line_word_teams) {
+        line_word_teams[current_count] = line_word_team;
+    }
+
+    if (line_has_revealed_word_team) {
+        line_has_revealed_word_team[current_count] = has_revealed_word_team ? 1 : 0;
+    }
+
     return current_count + 1;
 }
 
@@ -160,6 +178,27 @@ static void history_set_font_path(char* dst, int dst_size, const char* src) {
     dst[dst_size - 1] = '\0';
 }
 
+static Team history_normalize_revealed_word_team(Team team) {
+    if (team == TEAM_RED || team == TEAM_BLUE || team == TEAM_BLACK) {
+        return team;
+    }
+    return TEAM_NONE;
+}
+
+static Team history_find_revealed_word_team(const Game* game, const char* word) {
+    if (!game || !game->cards || !word || word[0] == '\0') return TEAM_NONE;
+
+    for (int i = 0; i < game->nb_words; i++) {
+        const Card* card = &game->cards[i];
+        if (!card->word[0]) continue;
+        if (strcmp(card->word, word) == 0) {
+            return history_normalize_revealed_word_team(card->team);
+        }
+    }
+
+    return TEAM_NONE;
+}
+
 History* history_get_for_team(Game* game, Team team) {
     if (!game) return NULL;
     if (team == TEAM_RED) return &game->red_history;
@@ -218,7 +257,7 @@ void history_ensure_turn(AppContext* context, Team team, const char* hint, int h
     history_start_turn(context, team, hint, hint_count);
 }
 
-void history_append_revealed_word(AppContext* context, Team team, const char* word, const char* agent_name) {
+void history_append_revealed_word(AppContext* context, Team team, const char* word, Team revealed_word_team, const char* agent_name) {
     if (!context || !context->lobby || !context->lobby->game) return;
     if (!word || word[0] == '\0') return;
 
@@ -247,10 +286,16 @@ void history_append_revealed_word(AppContext* context, Team team, const char* wo
         turn->agent_name[sizeof(turn->agent_name) - 1] = '\0';
     }
 
+    Team resolved_word_team = history_normalize_revealed_word_team(revealed_word_team);
+    if (resolved_word_team == TEAM_NONE) {
+        resolved_word_team = history_find_revealed_word_team(context->lobby->game, word);
+    }
+
     for (int i = 0; i < NB_WORDS; i++) {
         if (turn->revealed_words[i][0] == '\0') {
             strncpy(turn->revealed_words[i], word, sizeof(turn->revealed_words[i]) - 1);
             turn->revealed_words[i][sizeof(turn->revealed_words[i]) - 1] = '\0';
+            turn->revealed_word_teams[i] = resolved_word_team;
             history_touch(history);
             return;
         }
@@ -280,12 +325,27 @@ int history_update_last_turn(History* history, const char* spy_name, const char*
     return EXIT_SUCCESS;
 }
 
-int history_build_lines(const History* history, char lines[][HISTORY_LINE_SIZE], int max_lines) {
+static int history_build_lines_internal(
+    const History* history,
+    char lines[][HISTORY_LINE_SIZE],
+    Team line_word_teams[],
+    int line_has_revealed_word_team[],
+    int max_lines
+) {
     if (!lines || max_lines <= 0) return 0;
 
     int line_count = 0;
     if (!history || history->turn_count <= 0) {
-        line_count = history_push_line(lines, max_lines, line_count, "Aucun tour joué pour le moment.");
+        line_count = history_push_line(
+            lines,
+            line_word_teams,
+            line_has_revealed_word_team,
+            max_lines,
+            line_count,
+            "Aucun tour joué pour le moment.",
+            TEAM_NONE,
+            0
+        );
         return line_count;
     }
 
@@ -304,7 +364,7 @@ int history_build_lines(const History* history, char lines[][HISTORY_LINE_SIZE],
             (turn->hint[0] != '\0') ? turn->hint : "???",
             turn->hint_count
         );
-        line_count = history_push_line(lines, max_lines, line_count, header);
+        line_count = history_push_line(lines, line_word_teams, line_has_revealed_word_team, max_lines, line_count, header, TEAM_NONE, 0);
 
         int has_revealed_words = 0;
         for (int i_word = 0; i_word < NB_WORDS; i_word++) {
@@ -317,7 +377,7 @@ int history_build_lines(const History* history, char lines[][HISTORY_LINE_SIZE],
         if (has_revealed_words) {
             char agent_header[HISTORY_LINE_SIZE];
             format_to(agent_header, sizeof(agent_header), "%s a choisi :", agent_name);
-            line_count = history_push_line(lines, max_lines, line_count, agent_header);
+            line_count = history_push_line(lines, line_word_teams, line_has_revealed_word_team, max_lines, line_count, agent_header, TEAM_NONE, 0);
         }
 
         int words_added = 0;
@@ -326,16 +386,29 @@ int history_build_lines(const History* history, char lines[][HISTORY_LINE_SIZE],
 
             char word_line[HISTORY_LINE_SIZE];
             format_to(word_line, sizeof(word_line), "  - %s", turn->revealed_words[i_word]);
-            line_count = history_push_line(lines, max_lines, line_count, word_line);
+            line_count = history_push_line(
+                lines,
+                line_word_teams,
+                line_has_revealed_word_team,
+                max_lines,
+                line_count,
+                word_line,
+                history_normalize_revealed_word_team(turn->revealed_word_teams[i_word]),
+                1
+            );
             words_added++;
         }
 
         if (words_added == 0) {
-            line_count = history_push_line(lines, max_lines, line_count, "  - Aucun mot révélé");
+            line_count = history_push_line(lines, line_word_teams, line_has_revealed_word_team, max_lines, line_count, "  - Aucun mot révélé", TEAM_NONE, 0);
         }
     }
 
     return line_count;
+}
+
+int history_build_lines(const History* history, char lines[][HISTORY_LINE_SIZE], int max_lines) {
+    return history_build_lines_internal(history, lines, NULL, NULL, max_lines);
 }
 
 int history_build_wrapped_lines(const History* history, const char* font_path, int font_size, int max_text_width, char lines[][HISTORY_LINE_SIZE], int max_lines) {
@@ -403,14 +476,57 @@ int history_build_wrapped_lines_cached(const History* history, const char* font_
         return cache->total_lines;
     }
 
-    int total_lines = history_build_wrapped_lines(
+    char raw_lines[HISTORY_MAX_BASE_LINES][HISTORY_LINE_SIZE] = {{0}};
+    Team raw_line_word_teams[HISTORY_MAX_BASE_LINES] = {TEAM_NONE};
+    int raw_line_has_word_team[HISTORY_MAX_BASE_LINES] = {0};
+    int raw_line_count = history_build_lines_internal(
         history,
-        font_path,
-        font_size,
-        max_text_width,
-        cache->lines,
-        HISTORY_MAX_RENDER_LINES
+        raw_lines,
+        raw_line_word_teams,
+        raw_line_has_word_team,
+        HISTORY_MAX_BASE_LINES
     );
+
+    TTF_Font* history_font = NULL;
+    if (font_path && font_path[0] != '\0' && font_size > 0) {
+        history_font = TTF_OpenFont(font_path, font_size);
+    }
+
+    for (int i = 0; i < HISTORY_MAX_RENDER_LINES; i++) {
+        cache->line_word_teams[i] = TEAM_NONE;
+        cache->line_has_revealed_word_team[i] = 0;
+    }
+
+    int total_lines = 0;
+    for (int i_line = 0; i_line < raw_line_count && total_lines < HISTORY_MAX_RENDER_LINES; i_line++) {
+        int first_wrapped_index = total_lines;
+        total_lines = history_append_wrapped_line(
+            raw_lines[i_line],
+            history_font,
+            max_text_width,
+            cache->lines,
+            HISTORY_MAX_RENDER_LINES,
+            total_lines
+        );
+
+        Team raw_line_team = history_normalize_revealed_word_team(raw_line_word_teams[i_line]);
+        int has_word_team = raw_line_has_word_team[i_line] ? 1 : 0;
+        for (int i_wrapped = first_wrapped_index; i_wrapped < total_lines && i_wrapped < HISTORY_MAX_RENDER_LINES; i_wrapped++) {
+            cache->line_word_teams[i_wrapped] = raw_line_team;
+            cache->line_has_revealed_word_team[i_wrapped] = has_word_team;
+        }
+    }
+
+    if (history_font) {
+        TTF_CloseFont(history_font);
+    }
+
+    if (total_lines <= 0) {
+        cache->lines[0][0] = '\0';
+        cache->line_word_teams[0] = TEAM_NONE;
+        cache->line_has_revealed_word_team[0] = 0;
+        total_lines = 1;
+    }
 
     cache->source_history = history;
     cache->source_revision = source_revision;

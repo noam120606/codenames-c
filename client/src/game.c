@@ -26,6 +26,10 @@ extern SDL_Texture* player_icon_blue;
 /* Couleurs pour les panneaux d'équipe */
 static const SDL_Color TEAM_BLUE_COLOR = {50, 80, 150, 200};
 static const SDL_Color TEAM_RED_COLOR = {150, 50, 50, 200};
+static const SDL_Color HISTORY_WORD_BLUE_COLOR = {110, 160, 255, 255};
+static const SDL_Color HISTORY_WORD_RED_COLOR = {255, 120, 120, 255};
+static const SDL_Color HISTORY_WORD_BLACK_COLOR = {170, 170, 170, 255};
+static const SDL_Color HISTORY_WORD_NONE_COLOR = {224, 198, 149, 255};
 
 /* Textes optimisés pour le jeu */
 static Text* txt_team_blue_title = NULL;
@@ -50,7 +54,7 @@ static int red_player_text_index = 0;
 static Text* txt_chat_messages[CHAT_VISIBLE_LINES] = {NULL};
 
 /* Textes pour l'affichage de l'historique des tours */
-#define HISTORY_VISIBLE_LINES 14
+#define HISTORY_VISIBLE_LINES 13
 static Text* txt_history_blue_lines[HISTORY_VISIBLE_LINES] = {NULL};
 static Text* txt_history_red_lines[HISTORY_VISIBLE_LINES] = {NULL};
 static HistoryWrapCache history_cache_blue = {0};
@@ -688,6 +692,25 @@ static void game_render_team_windows(AppContext* context) {
     }
 }
 
+static int game_colors_equal(SDL_Color left, SDL_Color right) {
+    return left.r == right.r && left.g == right.g && left.b == right.b && left.a == right.a;
+}
+
+static SDL_Color game_history_word_color(Team word_team) {
+    switch (word_team) {
+        case TEAM_RED:
+            return HISTORY_WORD_RED_COLOR;
+        case TEAM_BLUE:
+            return HISTORY_WORD_BLUE_COLOR;
+        case TEAM_BLACK:
+            return HISTORY_WORD_BLACK_COLOR;
+        case TEAM_NONE:
+            return HISTORY_WORD_NONE_COLOR;
+        default:
+            return COL_WHITE;
+    }
+}
+
 static void game_render_team_history(AppContext* context, Window* history_window, const History* history, Text** history_texts, HistoryWrapCache* history_cache) {
     if (!context || !history_window || !history || !history_texts || !history_window->cfg || !history_cache) return;
 
@@ -741,6 +764,9 @@ static void game_render_team_history(AppContext* context, Window* history_window
         if (!txt) continue;
 
         if (i >= visible_lines || (start_index + i) >= total_lines) {
+            if (!game_colors_equal(txt->cfg.color, COL_WHITE)) {
+                update_text_color(context, txt, COL_WHITE);
+            }
             if (!txt->content || strcmp(txt->content, " ") != 0) {
                 update_text(context, txt, " ");
             }
@@ -749,6 +775,14 @@ static void game_render_team_history(AppContext* context, Window* history_window
 
         const char* line = lines[start_index + i];
         const char* safe_line = line ? line : " ";
+        Team word_team = history_cache->line_word_teams[start_index + i];
+        int has_word_team = history_cache->line_has_revealed_word_team[start_index + i];
+        SDL_Color text_color = has_word_team ? game_history_word_color(word_team) : COL_WHITE;
+
+        if (!game_colors_equal(txt->cfg.color, text_color)) {
+            update_text_color(context, txt, text_color);
+        }
+
         if (!txt->content || strcmp(txt->content, safe_line) != 0) {
             update_text(context, txt, safe_line);
         }
@@ -880,7 +914,7 @@ void game_display(AppContext * context) {
                 update_text(context, txt_hint_display, hint_text);
                 update_text_color(context, txt_hint_display, COL_WHITE);
                 window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)"La partie est terminée !");
-                window_place_button(hint_window, btn_return_lobby, 375, 20);
+                window_place_button(hint_window, btn_return_lobby, 450, 0);
                 button_render(context->renderer, btn_return_lobby);
 
                 display_text(context, txt_hint_display);

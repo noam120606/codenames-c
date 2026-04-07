@@ -325,18 +325,21 @@ int on_message(AppContext* context, char* message) {
             // Mettre à jour la carte et le gamestate
             if (context->lobby && context->lobby->game) {
                 if (word_index >= 0 && word_index < context->lobby->game->nb_words) {
+                    Card* guessed_card = &context->lobby->game->cards[word_index];
+
                     if (active_team != TEAM_NONE) {
                         history_append_revealed_word(
                             context,
                             active_team,
-                            context->lobby->game->cards[word_index].word,
+                            guessed_card->word,
+                            guessed_card->team,
                             guessing_agent_name
                         );
                     }
 
-                    (context->lobby->game->cards+word_index)->revealed = true;
-                    (context->lobby->game->cards+word_index)->is_hovered = false;
-                    (context->lobby->game->cards+word_index)->selected = false;
+                    guessed_card->revealed = true;
+                    guessed_card->is_hovered = false;
+                    guessed_card->selected = false;
                 } else if (word_index == -1 && active_team != TEAM_NONE) {
                     history_ensure_turn(
                         context,
