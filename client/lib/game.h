@@ -6,16 +6,17 @@
 #ifndef GAME_H
 #define GAME_H
 
+#define NB_WORDS 25
+
 #include "../SDL2/include/SDL2/SDL.h"
 #include "../SDL2/include/SDL2/SDL_image.h"
 #include "../SDL2/include/SDL2/SDL_ttf.h"
 
 typedef struct AppContext AppContext;
 typedef struct Card Card;
+typedef struct Game Game;
 
 #include "../lib/button.h"
-
-#define NB_WORDS 25
 
 /**
  * TEAM est utilisé à la fois pour catégoriser les mots dans la grille et pour assigner les joueurs à une équipe.
@@ -65,6 +66,8 @@ typedef enum GameState {
     GAMESTATE_ENDED
 } GameState;
 
+#include "../lib/history.h"
+
 /**
  * Représente une partie de Codenames.
  * @param cards tableau dynamique de Card (taille nb_words).
@@ -72,14 +75,20 @@ typedef enum GameState {
  * @param state état courant de la partie (GAMESTATE_*).
  * @param current_hint mot indice actuel donné par l'espion.
  * @param current_hint_count nombre de mots associés à l'indice actuel.
+ * @param red_history historique des mots révélés par l'équipe rouge (contient les infos sur les tours de jeu).
+ * @param blue_history historique des mots révélés par l'équipe bleue (contient les infos sur les tours de jeu).
+ * @param winner équipe gagnante (TEAM_RED, TEAM_BLUE ou TEAM_NONE si pas encore déterminée).
  */
-typedef struct {
+struct Game {
     Card* cards;
     int nb_words;
     GameState state;
     char current_hint[64];
     int current_hint_count;
-} Game;
+    History red_history;
+    History blue_history;
+    Team winner;
+};
 
 /**
  * Vérifie si c'est le tour du joueur.
@@ -87,6 +96,13 @@ typedef struct {
  * @return 1 si c'est le tour du joueur, 0 sinon.
  */
 int my_turn(AppContext* context);
+
+/**
+ * Libère les ressources utilisées par la structure de jeu.
+ * @param context Contexte de l'application contenant la structure de jeu à libérer.
+ * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE si le contexte ou la structure de jeu est invalide.
+ */
+int game_struct_free(AppContext* context);
 
 /**
  * Gère les événements du menu.

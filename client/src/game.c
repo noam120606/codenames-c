@@ -2,12 +2,13 @@
 
 Button* btn_quit_game = NULL;
 Button* btn_hint_submit = NULL;
+Button* btn_return_lobby = NULL;
 
 Input* hint_input = NULL;
 Input* hint_count_input = NULL;
 Input* chat_input = NULL;
 
-static const char* HINT_INPUT_PLACEHOLDERS[] = {"Entrez un mot"};
+static const char* HINT_INPUT_PLACEHOLDERS[] = {"Entrez un mot indice"};
 static const char* HINT_COUNT_INPUT_PLACEHOLDERS[] = {"1","2","3"};
 static const char* CHAT_INPUT_PLACEHOLDERS[] = {"Chattez ici ..."};
 
@@ -45,16 +46,15 @@ static int blue_player_text_index = 0;
 static int red_player_text_index = 0;
 
 /* Textes pour l'affichage des derniers messages du chat */
-#define CHAT_VISIBLE_MESSAGES 10
-static Text* txt_chat_messages[CHAT_VISIBLE_MESSAGES] = {NULL};
+#define CHAT_VISIBLE_LINES 10
+static Text* txt_chat_messages[CHAT_VISIBLE_LINES] = {NULL};
 
-int my_turn(AppContext* context) {
-    switch (context->player_role) {
-        case ROLE_SPY: return context->lobby->game->state == (context->player_team == TEAM_RED ? GAMESTATE_TURN_RED_SPY : GAMESTATE_TURN_BLUE_SPY);
-        case ROLE_AGENT: return context->lobby->game->state == (context->player_team == TEAM_RED ? GAMESTATE_TURN_RED_AGENT : GAMESTATE_TURN_BLUE_AGENT);
-        default: return 0;
-    }
-}
+/* Textes pour l'affichage de l'historique des tours */
+#define HISTORY_VISIBLE_LINES 14
+static Text* txt_history_blue_lines[HISTORY_VISIBLE_LINES] = {NULL};
+static Text* txt_history_red_lines[HISTORY_VISIBLE_LINES] = {NULL};
+static HistoryWrapCache history_cache_blue = {0};
+static HistoryWrapCache history_cache_red = {0};
 
 static void hint_on_submit(AppContext* context, const char* text) {
     (void)context;
@@ -63,11 +63,11 @@ static void hint_on_submit(AppContext* context, const char* text) {
         hint_count_input->cfg->focused = 1;
         hint_count_input->cfg->cursor_pos = strlen(hint_count_input->cfg->text);
     }
-    // Attendre que le joueur ne presse plus la touche Entrée
+    // Attendre que le joueur ne presse plus la touche Entrée ou Entrée du numpad
     while (true) {
         SDL_Event e;
         if (SDL_PollEvent(&e)) {
-            if (e.type == SDL_KEYUP && e.key.keysym.sym == SDLK_RETURN) {
+            if (e.type == SDL_KEYUP && (e.key.keysym.sym == SDLK_RETURN || e.key.keysym.sym == SDLK_KP_ENTER)) {
                 break;
             }
         }
@@ -91,17 +91,18 @@ static void hint_count_on_submit(AppContext* context, const char* text) {
     }
 }
 
-static void chat_on_submit(AppContext* context, const char* text) {
-    printf("Chat input submitted: %s\n", text ? text : "");
-    if (text && strlen(text) > 0) {
-        char msg[512];
-        format_to(msg, sizeof(msg), "%d %s %s", MSG_SENDCHAT, context->player_name ? context->player_name : "Unknown", text);
-        send_tcp(context->sock, msg);
+// Réinitialiser le champ de saisie du mot indice et du compteur d'indices après l'envoi du message
+static void clear_hint_inputs(){
+    if (hint_input && hint_input->cfg) {
+        input_set_text(hint_input, "");
+    }
+    if (hint_count_input && hint_count_input->cfg) {
+        input_set_text(hint_count_input, "");
     }
 }
 
 static ButtonReturn game_button_click(AppContext* context, Button* button) {
-    if (!context || !button) return BTN_RET_NONE;
+    if (!context || !button) return BTN_NONE;
 
     if (button == btn_quit_game) {
         /* Retirer le filtre audio en quittant game */
@@ -116,9 +117,20 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
         send_tcp(context->sock, msg);
 
         printf("Left game and returned to menu\n");
+        clear_hint_inputs();
+
+        return BTN_GAME_RETURN_LOBBY;
     }
 
     if (button == btn_hint_submit) {
+
+        if (context->player_role == ROLE_AGENT) {
+            char msg[64];
+            const char* agent_name = (context->player_name && context->player_name[0] != '\0') ? context->player_name : "Unknown";
+            format_to(msg, sizeof(msg), "%d -1 %s", MSG_GUESS_CARD, agent_name);
+            send_tcp(context->sock, msg);
+            return BTN_NONE;
+        }
 
         char* text = hint_input->cfg->text;
         int nb_hint = (int)atoi(hint_count_input->cfg->text);
@@ -133,8 +145,9 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
             window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&COL_DARK_GREEN); // Mettre à jour la couleur du label de soumission pour indiquer que le mot est valide
             window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)title); // Mettre à jour le label de soumission
             char msg[64];
-            format_to(msg, sizeof(msg), "%d %d %s", MSG_SUBMIT_HINT, nb_hint, text);
+            format_to(msg, sizeof(msg), "%d %s %d %s", MSG_SUBMIT_HINT, context->player_name ? context->player_name : "Unknown", nb_hint, text);
             send_tcp(context->sock, msg);
+            clear_hint_inputs();
         } else if(text == NULL || strlen(text) == 0) {
             window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&COL_RED); // Mettre à jour la couleur du label de soumission pour indiquer qu'aucun mot n'a été saisi
             window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)"Vous n'avez pas saisi de mot"); // Mettre à jour le label de soumission pour indiquer qu'aucun mot n'a été saisi
@@ -149,16 +162,57 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
             window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)title); // Mettre à jour le label de soumission pour indiquer que le mot est invalide
             printf("Invalid hint submitted: %s\n", text ? text : "");
         }
+
+        return BTN_NONE;
     }
 
-    return BTN_RET_NONE;
+    if (button == btn_return_lobby) {
+        context->app_state = APP_STATE_LOBBY;
+        printf("Returned to lobby\n");
+        game_struct_free(context);
+        return BTN_NONE;
+    }
+
+    return BTN_NONE;
+}
+
+int my_turn(AppContext* context) {
+    switch (context->player_role) {
+        case ROLE_SPY: return context->lobby->game->state == (context->player_team == TEAM_RED ? GAMESTATE_TURN_RED_SPY : GAMESTATE_TURN_BLUE_SPY);
+        case ROLE_AGENT: return context->lobby->game->state == (context->player_team == TEAM_RED ? GAMESTATE_TURN_RED_AGENT : GAMESTATE_TURN_BLUE_AGENT);
+        default: return 0;
+    }
+}
+
+int game_struct_free(AppContext* context) {
+    if (!context || !context->lobby || !context->lobby->game) return EXIT_FAILURE;
+    free(context->lobby->game->cards);
+    free(context->lobby->game);
+    context->lobby->game = NULL;
+    return EXIT_SUCCESS;
 }
 
 void game_handle_event(AppContext* context, SDL_Event* e) {
     if (!context || !e) return;
 
-    if (hint_input) input_handle_event(context, hint_input, e);
-    if (hint_count_input) input_handle_event(context, hint_count_input, e);
+    // Déterminer les éléments à gérer en fonction de l'état du jeu et du rôle du joueur
+    int has_game = (context->lobby && context->lobby->game);
+    int is_my_turn = has_game ? my_turn(context) : 0;
+    int show_spy_hint_controls = (context->player_role == ROLE_SPY && is_my_turn);
+    int has_hint = has_game && (context->lobby->game->current_hint[0] != '\0' && context->lobby->game->current_hint_count > 0);
+    int show_hint_for_agents_or_opponents = has_game && has_hint && (
+        (context->lobby->game->state == GAMESTATE_TURN_BLUE_AGENT && (context->player_team == TEAM_RED || context->player_role == ROLE_AGENT)) ||
+        (context->lobby->game->state == GAMESTATE_TURN_RED_AGENT && (context->player_team == TEAM_BLUE || context->player_role == ROLE_AGENT))
+    );
+    int show_agent_hint_button = (show_hint_for_agents_or_opponents && context->player_role == ROLE_AGENT && is_my_turn);
+    int show_return_lobby_button = (has_game && context->lobby->game->state == GAMESTATE_ENDED);
+
+    if (btn_quit_game) button_handle_event(context, btn_quit_game, e);
+    if (btn_hint_submit && (show_spy_hint_controls || show_agent_hint_button)) button_handle_event(context, btn_hint_submit, e);
+    if (btn_return_lobby && show_return_lobby_button) button_handle_event(context, btn_return_lobby, e);
+
+    if (hint_input && show_spy_hint_controls) input_handle_event(context, hint_input, e);
+    if (hint_count_input && show_spy_hint_controls) input_handle_event(context, hint_count_input, e);
     if (chat_input) input_handle_event(context, chat_input, e);
 
     if (blue_panel) window_handle_event(context, blue_panel, e);
@@ -169,14 +223,14 @@ void game_handle_event(AppContext* context, SDL_Event* e) {
     if (hint_window) window_handle_event(context, hint_window, e);
 
     if (chat_window) window_handle_event(context, chat_window, e);
-
-    if (btn_quit_game) button_handle_event(context, btn_quit_game, e);
-    if (btn_hint_submit) button_handle_event(context, btn_hint_submit, e);
 }
 
 int game_init(AppContext * context) {
 
     int loading_fails = 0;
+
+    history_wrap_cache_invalidate(&history_cache_blue);
+    history_wrap_cache_invalidate(&history_cache_red);
 
     ButtonConfig* cfg_btn_quit_game = button_config_init();
     if (cfg_btn_quit_game) {
@@ -187,7 +241,7 @@ int game_init(AppContext * context) {
         cfg_btn_quit_game->color = COL_WHITE;
         cfg_btn_quit_game->text = "Quitter la partie";
         cfg_btn_quit_game->callback = game_button_click;
-        btn_quit_game = button_create(context->renderer, 0, cfg_btn_quit_game);
+        btn_quit_game = button_create(context->renderer, BTN_GAME_RETURN_LOBBY, cfg_btn_quit_game);
         if (!btn_quit_game) loading_fails++;
         free(cfg_btn_quit_game);
     } else {
@@ -196,19 +250,36 @@ int game_init(AppContext * context) {
 
     ButtonConfig* cfg_btn_hint_submit = button_config_init();
     if (cfg_btn_hint_submit) {
-        cfg_btn_hint_submit->x = 30;
+        cfg_btn_hint_submit->x = 300;
         cfg_btn_hint_submit->y = -450;
         cfg_btn_hint_submit->w = 64;
         cfg_btn_hint_submit->h = 64;
-        cfg_btn_hint_submit->font_path = FONT_NOTO; // inclus les emojis
+        cfg_btn_hint_submit->font_path = FONT_LARABIE;
         cfg_btn_hint_submit->color = COL_WHITE;
         cfg_btn_hint_submit->text = NULL;
         cfg_btn_hint_submit->is_text = 0;
         cfg_btn_hint_submit->tex_path = "assets/img/buttons/validate1.png";
         cfg_btn_hint_submit->callback = game_button_click;
-        btn_hint_submit = button_create(context->renderer, 0, cfg_btn_hint_submit);
+        btn_hint_submit = button_create(context->renderer, BTN_GAME_VALIDATE_HINT, cfg_btn_hint_submit);
         if (!btn_hint_submit) loading_fails++;
         free(cfg_btn_hint_submit);
+    } else {
+        loading_fails++;
+    }
+
+    ButtonConfig* cfg_btn_return_lobby = button_config_init();
+    if (cfg_btn_return_lobby) {
+        cfg_btn_return_lobby->x = 0;
+        cfg_btn_return_lobby->y = 0;
+        cfg_btn_return_lobby->w = 200;
+        cfg_btn_return_lobby->h = 64;
+        cfg_btn_return_lobby->font_path = FONT_LARABIE;
+        cfg_btn_return_lobby->color = COL_WHITE;
+        cfg_btn_return_lobby->text = "Retour au lobby";
+        cfg_btn_return_lobby->callback = game_button_click;
+        btn_return_lobby = button_create(context->renderer, BTN_GAME_RETURN_LOBBY, cfg_btn_return_lobby);
+        if (!btn_return_lobby) loading_fails++;
+        free(cfg_btn_return_lobby);
     } else {
         loading_fails++;
     }
@@ -273,16 +344,16 @@ int game_init(AppContext * context) {
         cfg_chat_input->font_size = 24;
         cfg_chat_input->placeholders = CHAT_INPUT_PLACEHOLDERS;
         cfg_chat_input->placeholder_count = 1;
-        cfg_chat_input->maxlen = 50;
+        cfg_chat_input->maxlen = 512;
         cfg_chat_input->centered = 1;
         cfg_chat_input->allowed_pattern = NULL;
         cfg_chat_input->submit_pattern = NULL;
         cfg_chat_input->submit_sound = "assets/audio/sfx/input/submit.ogg";
         cfg_chat_input->keep_focus_on_submit = 1;
-        cfg_chat_input->submit_pattern = "^.{1,50}$"; // Accepter tout texte de 1 à 50 caractères
+        cfg_chat_input->submit_pattern = "^.{1,512}$"; // Accepter tout texte de 1 à 512 caractères
         cfg_chat_input->bg_path = "assets/img/inputs/empty.png";
         cfg_chat_input->bg_padding = 16;
-        cfg_chat_input->on_submit = chat_on_submit;
+        cfg_chat_input->on_submit = chat_submit_message;
         chat_input = input_create(context->renderer, INPUT_CHAT, cfg_chat_input);
         if (!chat_input) loading_fails++;
         free(cfg_chat_input);
@@ -320,9 +391,20 @@ int game_init(AppContext * context) {
     }
 
     /* Textes pour les messages du chat */
-    for (int i = 0; i < CHAT_VISIBLE_MESSAGES; i++) {
-        txt_chat_messages[i] = init_text(context, " ", 
-            create_text_config(FONT_LARABIE, 12, COL_WHITE, 0, 0, 0, 255));
+    for (int i = 0; i < CHAT_VISIBLE_LINES; i++) {
+        txt_chat_messages[i] = init_text(context, " ",
+            create_text_config(FONT_NOTO, 14, COL_WHITE, 0, 0, 0, 255));
+    }
+
+    /* Textes pour les lignes d'historique des équipes */
+    for (int i = 0; i < HISTORY_VISIBLE_LINES; i++) {
+        txt_history_blue_lines[i] = init_text(context, " ",
+            create_text_config(FONT_NOTO, 18, COL_WHITE, 0, 0, 0, 255));
+        if (!txt_history_blue_lines[i]) loading_fails++;
+
+        txt_history_red_lines[i] = init_text(context, " ",
+            create_text_config(FONT_NOTO, 18, COL_WHITE, 0, 0, 0, 255));
+        if (!txt_history_red_lines[i]) loading_fails++;
     }
 
     /* Chargement de la fenêtre de l'équipe bleue */
@@ -335,7 +417,7 @@ int game_init(AppContext * context) {
         cfg_blue_panel->title = "Equipe bleue";
         cfg_blue_panel->titlebar_color = TEAM_BLUE_COLOR;
         cfg_blue_panel->bg_color = (SDL_Color){20, 20, 20, 220};
-        blue_panel = window_create(0, cfg_blue_panel);
+        blue_panel = window_create(WINDOW_GAME_BLUE_PANEL, cfg_blue_panel);
         if (!blue_panel) loading_fails++;
         free(cfg_blue_panel);
     } else {
@@ -352,7 +434,7 @@ int game_init(AppContext * context) {
         cfg_red_panel->title = "Equipe rouge";
         cfg_red_panel->bg_color = (SDL_Color){20, 20, 20, 220};
         cfg_red_panel->titlebar_color = TEAM_RED_COLOR;
-        red_panel = window_create(1, cfg_red_panel);
+        red_panel = window_create(WINDOW_GAME_RED_PANEL, cfg_red_panel);
         if (!red_panel) loading_fails++;
         free(cfg_red_panel);
     } else {
@@ -369,7 +451,16 @@ int game_init(AppContext * context) {
         cfg_history_blue->title = "Historique bleu";
         cfg_history_blue->titlebar_color = TEAM_BLUE_COLOR;
         cfg_history_blue->bg_color = (SDL_Color){20, 20, 20, 220};
-        history_window_blue = window_create(0, cfg_history_blue);
+        cfg_history_blue->scrollable = 1;
+        cfg_history_blue->scroll_x1 = -(cfg_history_blue->w / 2) + 4;
+        cfg_history_blue->scroll_y1 = (cfg_history_blue->h / 2) - cfg_history_blue->titlebar_h - 4;
+        cfg_history_blue->scroll_x2 = (cfg_history_blue->w / 2) - 4;
+        cfg_history_blue->scroll_y2 = -(cfg_history_blue->h / 2) + 4;
+        cfg_history_blue->scroll_step = 1;
+        cfg_history_blue->scroll_min = 0;
+        cfg_history_blue->scroll_max = 0;
+        cfg_history_blue->scroll_offset = 0;
+        history_window_blue = window_create(WINDOW_GAME_HISTORY_BLUE, cfg_history_blue);
         if (!history_window_blue) loading_fails++;
         free(cfg_history_blue);
     } else {
@@ -386,7 +477,16 @@ int game_init(AppContext * context) {
         cfg_history_red->title = "Historique rouge";
         cfg_history_red->titlebar_color = TEAM_RED_COLOR;
         cfg_history_red->bg_color = (SDL_Color){20, 20, 20, 220};
-        history_window_red = window_create(1, cfg_history_red);
+        cfg_history_red->scrollable = 1;
+        cfg_history_red->scroll_x1 = -(cfg_history_red->w / 2) + 4;
+        cfg_history_red->scroll_y1 = (cfg_history_red->h / 2) - cfg_history_red->titlebar_h - 4;
+        cfg_history_red->scroll_x2 = (cfg_history_red->w / 2) - 4;
+        cfg_history_red->scroll_y2 = -(cfg_history_red->h / 2) + 4;
+        cfg_history_red->scroll_step = 1;
+        cfg_history_red->scroll_min = 0;
+        cfg_history_red->scroll_max = 0;
+        cfg_history_red->scroll_offset = 0;
+        history_window_red = window_create(WINDOW_GAME_HISTORY_RED, cfg_history_red);
         if (!history_window_red) loading_fails++;
         free(cfg_history_red);
     } else {
@@ -403,7 +503,7 @@ int game_init(AppContext * context) {
         cfg_hint_window->title = "";
         cfg_hint_window->titlebar_color = COL_GRAY;
         cfg_hint_window->bg_color = (SDL_Color){20, 20, 20, 220};
-        hint_window = window_create(1, cfg_hint_window);
+        hint_window = window_create(WINDOW_GAME_HINT, cfg_hint_window);
         if (!hint_window) loading_fails++;
         free(cfg_hint_window);
     } else {
@@ -421,7 +521,16 @@ int game_init(AppContext * context) {
         cfg_chat_window->movable = 1;
         cfg_chat_window->titlebar_h = 0;
         cfg_chat_window->bg_color = (SDL_Color){20, 20, 20, 240};
-        chat_window = window_create(1, cfg_chat_window);
+        cfg_chat_window->scrollable = 1;
+        cfg_chat_window->scroll_x1 = -(cfg_chat_window->w / 2) + 4;
+        cfg_chat_window->scroll_y1 = (cfg_chat_window->h / 2) - 4;
+        cfg_chat_window->scroll_x2 = (cfg_chat_window->w / 2) - 4;
+        cfg_chat_window->scroll_y2 = -(cfg_chat_window->h / 2) + 4;
+        cfg_chat_window->scroll_step = 1;
+        cfg_chat_window->scroll_min = 0;
+        cfg_chat_window->scroll_max = 0;
+        cfg_chat_window->scroll_offset = 0;
+        chat_window = window_create(WINDOW_GAME_CHAT, cfg_chat_window);
         if (!chat_window) loading_fails++;
         free(cfg_chat_window);
     } else {
@@ -579,40 +688,84 @@ static void game_render_team_windows(AppContext* context) {
     }
 }
 
-static void game_render_chat_messages(AppContext* context) {
-    if (!context || !context->lobby || !chat_window) return;
+static void game_render_team_history(AppContext* context, Window* history_window, const History* history, Text** history_texts, HistoryWrapCache* history_cache) {
+    if (!context || !history_window || !history || !history_texts || !history_window->cfg || !history_cache) return;
 
-    const int total_messages = chat_size(&context->lobby->chat);
-    const int visible_messages = (total_messages < CHAT_VISIBLE_MESSAGES) ? total_messages : CHAT_VISIBLE_MESSAGES;
-    const int start_index = total_messages - visible_messages;
-    const int bottom_line_y = -42; // Le message le plus récent reste en bas du chat
-    const int line_gap = 14;
+    const int line_gap = 20;
     const int left_padding = 8;
+    const int right_padding = 8;
+    const int top_padding = 10;
+    int max_text_width = history_window->cfg->w - left_padding - right_padding;
+    if (max_text_width < 32) max_text_width = 32;
 
-    for (int i = 0; i < CHAT_VISIBLE_MESSAGES; i++) {
-        Text* txt = txt_chat_messages[i];
+    const char* font_path = NULL;
+    int font_size = 0;
+    if (history_texts[0]) {
+        font_path = history_texts[0]->cfg.font_path;
+        font_size = history_texts[0]->cfg.font_size;
+    }
+
+    int total_lines = history_build_wrapped_lines_cached(
+        history,
+        font_path,
+        font_size,
+        max_text_width,
+        history_cache
+    );
+    const char (*lines)[HISTORY_LINE_SIZE] = history_cache->lines;
+
+    int max_scroll_offset = total_lines - HISTORY_VISIBLE_LINES;
+    if (max_scroll_offset < 0) max_scroll_offset = 0;
+
+    window_edit_cfg(history_window, WIN_CFG_SCROLL_MIN, 0);
+    window_edit_cfg(history_window, WIN_CFG_SCROLL_MAX, max_scroll_offset);
+
+    int scroll_offset = history_window->cfg->scroll_offset;
+    if (scroll_offset < 0) scroll_offset = 0;
+    if (scroll_offset > max_scroll_offset) scroll_offset = max_scroll_offset;
+
+    const int visible_lines = (total_lines < HISTORY_VISIBLE_LINES) ? total_lines : HISTORY_VISIBLE_LINES;
+    int start_index = total_lines - visible_lines - scroll_offset;
+    if (start_index < 0) start_index = 0;
+
+    int top_line_y = (history_window->cfg->h / 2) - history_window->cfg->titlebar_h - top_padding;
+
+    SDL_Rect history_clip = {0};
+    int has_clip = (window_get_scrollable_zone_rect(history_window, &history_clip) == EXIT_SUCCESS);
+    if (has_clip) {
+        SDL_RenderSetClipRect(context->renderer, &history_clip);
+    }
+
+    for (int i = 0; i < HISTORY_VISIBLE_LINES; i++) {
+        Text* txt = history_texts[i];
         if (!txt) continue;
 
-        if (i >= visible_messages) {
-            update_text(context, txt, " ");
+        if (i >= visible_lines || (start_index + i) >= total_lines) {
+            if (!txt->content || strcmp(txt->content, " ") != 0) {
+                update_text(context, txt, " ");
+            }
             continue;
         }
 
-        const int chat_index = start_index + i;
-        const char* message = chat_get(&context->lobby->chat, chat_index);
-
-        update_text(context, txt, message ? message : " ");
+        const char* line = lines[start_index + i];
+        const char* safe_line = line ? line : " ";
+        if (!txt->content || strcmp(txt->content, safe_line) != 0) {
+            update_text(context, txt, safe_line);
+        }
 
         int text_w = 0;
         if (txt->texture) {
             SDL_QueryTexture(txt->texture, NULL, NULL, &text_w, NULL);
         }
 
-        // window_place_text centre le texte: on compense avec text_w/2 pour ancrer le bord gauche.
-        int rel_x = -(chat_window->cfg->w / 2) + left_padding + (text_w / 2);
-        int rel_y = bottom_line_y + ((visible_messages - 1 - i) * line_gap);
-        window_place_text(chat_window, txt, rel_x, rel_y);
+        int rel_x = -(history_window->cfg->w / 2) + left_padding + (text_w / 2);
+        int rel_y = top_line_y - (i * line_gap);
+        window_place_text(history_window, txt, rel_x, rel_y);
         display_text(context, txt);
+    }
+
+    if (has_clip) {
+        SDL_RenderSetClipRect(context->renderer, NULL);
     }
 }
 
@@ -641,9 +794,15 @@ void game_display(AppContext * context) {
     }
     if (history_window_blue) {
         window_render(context->renderer, history_window_blue);
+        if (context->lobby && context->lobby->game) {
+            game_render_team_history(context, history_window_blue, &context->lobby->game->blue_history, txt_history_blue_lines, &history_cache_blue);
+        }
     }
     if (history_window_red) {
         window_render(context->renderer, history_window_red);
+        if (context->lobby && context->lobby->game) {
+            game_render_team_history(context, history_window_red, &context->lobby->game->red_history, txt_history_red_lines, &history_cache_red);
+        }
     }
 
     if (hint_window) {
@@ -691,7 +850,11 @@ void game_display(AppContext * context) {
             /* Affichage du tour et de l'indice si disponible */
             int has_hint = (context->lobby->game->current_hint[0] != '\0' && context->lobby->game->current_hint_count > 0);
             
-            if (has_hint) {
+            if (has_hint && (
+                (context->lobby->game->state == GAMESTATE_TURN_BLUE_AGENT && (context->player_team == TEAM_RED || context->player_role == ROLE_AGENT)) ||
+                (context->lobby->game->state == GAMESTATE_TURN_RED_AGENT && (context->player_team == TEAM_BLUE || context->player_role == ROLE_AGENT))
+                )
+            ) {
                 /* Affichage de l'indice en grand */
                 char hint_text[128];
                 format_to(hint_text, sizeof(hint_text), "%s (%d)", 
@@ -703,6 +866,24 @@ void game_display(AppContext * context) {
                 window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)"L'indice est :");
                 window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&color_text);
                 display_text(context, txt_hint_display);
+
+                if (context->player_role == ROLE_AGENT && my_turn(context)) {
+                    if (btn_hint_submit) {
+                        window_place_button(hint_window, btn_hint_submit, 285, -15);
+                        button_render(context->renderer, btn_hint_submit);
+                    }
+                }
+            } else if (context->lobby->game->state == GAMESTATE_ENDED) {
+                // Affichage du message de fin de partie
+                char hint_text[128];
+                format_to(hint_text, sizeof(hint_text), "L'équipe %s a gagné !", context->lobby->game->winner == TEAM_BLUE ? "bleue" : "rouge");
+                update_text(context, txt_hint_display, hint_text);
+                update_text_color(context, txt_hint_display, COL_WHITE);
+                window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)"La partie est terminée !");
+                window_place_button(hint_window, btn_return_lobby, 375, 20);
+                button_render(context->renderer, btn_return_lobby);
+
+                display_text(context, txt_hint_display);
             } else {
                 /* Affichage du tour seulement */
                 update_text(context, txt_turn_label, turn_text);
@@ -711,11 +892,10 @@ void game_display(AppContext * context) {
                 display_text(context, txt_turn_label);
             }
         }
-
     }
     if (chat_window) {
         window_render(context->renderer, chat_window);
-        game_render_chat_messages(context);
+        chat_render_messages(context, chat_window, txt_chat_messages, CHAT_VISIBLE_LINES);
         if (chat_input) {
             window_place_input(chat_window, chat_input, 0, -75);
             input_render(context->renderer, chat_input);
@@ -729,6 +909,7 @@ void game_display(AppContext * context) {
 int game_free() {
     if (btn_quit_game) { button_destroy(btn_quit_game); btn_quit_game = NULL; }
     if (btn_hint_submit) { button_destroy(btn_hint_submit); btn_hint_submit = NULL; }
+    if (btn_return_lobby) { button_destroy(btn_return_lobby); btn_return_lobby = NULL; }
     if (hint_input) { input_destroy(hint_input); hint_input = NULL; }
     if (hint_count_input) { input_destroy(hint_count_input); hint_count_input = NULL; }
     if (chat_input) { input_destroy(chat_input); chat_input = NULL; }
@@ -754,9 +935,17 @@ int game_free() {
         destroy_text(txt_red_players[i]); txt_red_players[i] = NULL;
     }
 
-    for (int i = 0; i < CHAT_VISIBLE_MESSAGES; i++) {
+    for (int i = 0; i < CHAT_VISIBLE_LINES; i++) {
         destroy_text(txt_chat_messages[i]); txt_chat_messages[i] = NULL;
     }
+
+    for (int i = 0; i < HISTORY_VISIBLE_LINES; i++) {
+        destroy_text(txt_history_blue_lines[i]); txt_history_blue_lines[i] = NULL;
+        destroy_text(txt_history_red_lines[i]); txt_history_red_lines[i] = NULL;
+    }
+
+    history_wrap_cache_invalidate(&history_cache_blue);
+    history_wrap_cache_invalidate(&history_cache_red);
     
     return EXIT_SUCCESS;
 }

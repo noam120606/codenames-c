@@ -8,16 +8,41 @@
 
 #include "../lib/list.h"
 
+typedef struct AppContext AppContext;
+typedef struct Window Window;
+typedef struct Text Text;
+
 #define CHAT_MAX_MESSAGES 100
+#define CHAT_LINE_SIZE 256
+#define CHAT_WRAP_LINES_PER_MESSAGE 4
+#define CHAT_MAX_RENDER_LINES (CHAT_MAX_MESSAGES * CHAT_WRAP_LINES_PER_MESSAGE)
+#define CHAT_FONT_PATH_MAX 260
+
+/**
+ * Cache des lignes wrapees du chat pour eviter les recalculs a chaque frame.
+ */
+typedef struct ChatWrapCache {
+    unsigned int source_revision;
+    int max_text_width;
+    int font_size;
+    char font_path[CHAT_FONT_PATH_MAX];
+    int total_lines;
+    int is_valid;
+    char lines[CHAT_MAX_RENDER_LINES][CHAT_LINE_SIZE];
+} ChatWrapCache;
 
 /**
  * Structure représentant un chat.
  * @param messages Liste chaînée des messages du chat.
  * @param max_messages Nombre maximal de messages conservés.
+ * @param revision Revision incrementee quand le contenu du chat change.
+ * @param wrap_cache Cache de wrapping pour le rendu.
  */
 typedef struct Chat {
     List* messages;
     int max_messages;
+    unsigned int revision;
+    ChatWrapCache wrap_cache;
 } Chat;
 
 /**
@@ -56,5 +81,24 @@ int chat_size(Chat* chat);
  * @param chat Chat à vider.
  */
 void chat_clear(Chat* chat);
+
+/**
+ * Callback de soumission du champ de chat.
+ * Envoie le message au serveur si le texte n'est pas vide.
+ * @param context Contexte applicatif.
+ * @param text Texte saisi.
+ */
+void chat_submit_message(AppContext* context, const char* text);
+
+/**
+ * Rend les messages du chat dans une fenêtre scrollable avec retour à la ligne automatique.
+ * Les messages au format "Pseudo : texte" colorent le pseudo selon l'equipe du joueur
+ * quand elle est connue (rouge/bleu), sinon le texte reste blanc.
+ * @param context Contexte applicatif.
+ * @param chat_window Fenêtre de chat cible.
+ * @param chat_texts Tableau de Text* utilisé pour afficher les lignes visibles.
+ * @param visible_lines Nombre de lignes visibles dans le tableau.
+ */
+void chat_render_messages(AppContext* context, Window* chat_window, Text** chat_texts, int visible_lines);
 
 #endif // CLIENT_CHAT_H

@@ -10,6 +10,7 @@
 #include "sdl.h"
 
 #define INPUT_DEFAULT_MAX 256
+#define INPUT_HISTORY_MAX 50
 
 /**
  * Identifiants des différents types d'input.
@@ -63,6 +64,7 @@ typedef enum {
  * @param keep_focus_on_submit Indique si l'input conserve le focus après soumission (1) ou le perd (0).
  * @param len Longueur actuelle du texte saisi.
  * @param cursor_pos Position actuelle du curseur dans le texte (index entre 0 et len).
+ * @param view_start Index du premier octet visible dans le champ (défilement horizontal interne).
  * @param focused Indique si l'input est actuellement focalisé (1) ou non (0).
  * @param submitted Indique si l'input a été soumis (1) ou non (0). Peut être utilisé pour déclencher des actions après la soumission.
  * @param bg_texture Texture SDL de l'image de fond, chargée automatiquement si `bg_path` est défini. Doit être libérée lors de la destruction de l'input.
@@ -70,6 +72,10 @@ typedef enum {
  * @param sel_len Longueur de la sélection de texte (0 si aucune sélection).
  * @param sel_anchor Index d'ancrage de la sélection, utilisé pour étendre la sélection lors du déplacement du curseur avec Shift.
  * @param submitted_text Texte qui a été soumis lors de la dernière soumission. Peut être utilisé pour afficher le texte soumis ou pour d'autres logiques de jeu.
+ * @param history Historique des soumissions (max INPUT_HISTORY_MAX), géré en interne.
+ * @param history_count Nombre actuel d'entrées dans l'historique.
+ * @param history_index Index courant de navigation dans l'historique (flèche haut/bas).
+ * @param history_draft_text Texte temporaire restauré quand on revient en bas de l'historique.
  * @param submit_sound_chunk Chunk SDL_mixer chargé à partir de `submit_sound`, géré en interne par l'input.
  * @param placeholder_index Index du placeholder actuellement affiché (si l'input est vide), utilisé pour faire défiler les placeholders.
  * @param placeholder_last_tick Timestamp du dernier changement de placeholder, utilisé pour faire défiler les placeholders à intervalles réguliers.
@@ -105,6 +111,7 @@ typedef struct InputConfig {
     int keep_focus_on_submit;
     int len;
     int cursor_pos;
+    int view_start;
     int focused;
     int submitted;
     SDL_Texture* bg_texture;
@@ -112,6 +119,10 @@ typedef struct InputConfig {
     int sel_len;
     int sel_anchor;
     char* submitted_text;
+    char* history[INPUT_HISTORY_MAX];
+    int history_count;
+    int history_index;
+    char* history_draft_text;
     Mix_Chunk* submit_sound_chunk; /**< Chunk audio chargé à partir de submit_sound, libéré par input_destroy. */
     int placeholder_index;
     Uint32 placeholder_last_tick;

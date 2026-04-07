@@ -1,6 +1,8 @@
 #include "../lib/all.h"
 
 int request_uuid(Codenames* codenames, TcpClient* client, char* message, Arguments args) {
+    (void)message;
+    (void)args;
     
     // Générer un UUID unique et l'envoyer au client
     char* uuid = generate_uuid("data/uuids");

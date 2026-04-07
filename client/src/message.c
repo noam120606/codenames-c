@@ -153,6 +153,8 @@ int on_message(AppContext* context, char* message) {
                 return EXIT_FAILURE;
             }
 
+            if (context->lobby->game) game_struct_free(context);
+
             Game* game = (Game*)malloc(sizeof(Game));
             if (!game) {
                 printf("Failed to allocate memory for game\n");
@@ -162,6 +164,9 @@ int on_message(AppContext* context, char* message) {
             game->nb_words = atoi((char*)args.argv[1]);
             game->current_hint[0] = '\0';
             game->current_hint_count = 0;
+            game->winner = TEAM_NONE;
+            history_reset(&game->red_history);
+            history_reset(&game->blue_history);
             printf("Starting game with state %d and %d words\n", game->state, game->nb_words);
             game->cards = (Card*)malloc(sizeof(Card) * game->nb_words);
             if (!game->cards) {
@@ -206,23 +211,135 @@ int on_message(AppContext* context, char* message) {
         }
 
         case MSG_SUBMIT_HINT: {
-            if (args.argc < 3) {
+            if (args.argc < 4) {
                 printf("Invalid submit hint message from server: \"%s\"\n", message);
                 if (args.argv) free(args.argv);
                 return EXIT_FAILURE;
             }
 
-            int nb_guesses = atoi((char*)args.argv[0]);
-            char* hint = (char*)args.argv[1];
-            GameState new_state = (GameState)atoi((char*)args.argv[2]);
+            char* spy_name = (char*)args.argv[0];
+            int nb_guesses = atoi((char*)args.argv[1]);
+            char* hint = (char*)args.argv[2];
+            GameState new_state = (GameState)atoi((char*)args.argv[3]);
+            GameState previous_state = GAMESTATE_WAITING;
 
-            printf("Hint received: %s with %d guesses, new state: %d\n", hint, nb_guesses, new_state);
+            if (context->lobby && context->lobby->game) {
+                previous_state = context->lobby->game->state;
+            }
+
+            Team active_team = history_team_from_agent_state(new_state);
+
+            printf("Hint received from %s: %s with %d guesses, new state: %d\n", spy_name, hint, nb_guesses, new_state);
 
             // Stocker l'indice et mettre à jour le gamestate
             if (context->lobby && context->lobby->game) {
                 strncpy(context->lobby->game->current_hint, hint, sizeof(context->lobby->game->current_hint) - 1);
                 context->lobby->game->current_hint[sizeof(context->lobby->game->current_hint) - 1] = '\0';
                 context->lobby->game->current_hint_count = nb_guesses;
+                context->lobby->game->state = new_state;
+
+                if (active_team != TEAM_NONE) {
+                    int should_start_turn = 0;
+                    if (active_team == TEAM_RED && previous_state == GAMESTATE_TURN_RED_SPY) {
+                        should_start_turn = 1;
+                    } else if (active_team == TEAM_BLUE && previous_state == GAMESTATE_TURN_BLUE_SPY) {
+                        should_start_turn = 1;
+                    } else {
+                        History* history = history_get_for_team(context->lobby->game, active_team);
+                        if (!history || history->turn_count <= 0) {
+                            should_start_turn = 1;
+                        }
+                    }
+
+                    if (should_start_turn) {
+                        history_start_turn(context, active_team, hint, nb_guesses);
+                    } else {
+                        history_ensure_turn(context, active_team, hint, nb_guesses);
+                    }
+
+                    /* Le serveur fournit le nom de l'espion: on l'applique systématiquement au dernier tour. */
+                    History* history = history_get_for_team(context->lobby->game, active_team);
+                    if (history && history->turn_count > 0) {
+                        history_update_last_turn(history, spy_name, hint, nb_guesses);
+                    }
+                }
+            }
+            
+            break;
+        }
+
+        case MSG_GUESS_CARD: {
+            if (args.argc < 2) {
+                printf("Invalid guess card message from server: \"%s\"\n", message);
+                if (args.argv) free(args.argv);
+                return EXIT_FAILURE;
+            }
+
+            int word_index = atoi((char*)args.argv[0]);
+            GameState new_state = (GameState)atoi((char*)args.argv[1]);
+            const char* guessing_agent_name = NULL;
+            if (args.argc >= 4) {
+                guessing_agent_name = (char*)args.argv[3];
+            } else if (word_index == -1 && args.argc >= 3) {
+                guessing_agent_name = (char*)args.argv[2];
+            }
+            Team active_team = TEAM_NONE;
+            if (context->lobby && context->lobby->game) {
+                active_team = history_team_from_agent_state(context->lobby->game->state);
+            }
+
+            // Partie terminée
+            if (args.argc >= 3 && new_state == GAMESTATE_ENDED) {
+                context->lobby->game->winner = (Team)atoi((char*)args.argv[2]);
+                if (
+                    (context->lobby->game->winner == TEAM_RED && context->player_team == TEAM_RED) ||
+                    (context->lobby->game->winner == TEAM_BLUE && context->player_team == TEAM_BLUE)
+                ) {
+                    char nb_win[16];
+                    read_property(nb_win, "WIN_COUNT");
+                    int win_count = strcmp(nb_win, "")!=0 ? atoi(nb_win) + 1 : 1;
+                    format_to(nb_win, sizeof(nb_win), "%d", win_count);
+                    write_property("WIN_COUNT", nb_win);
+                }
+                
+            } 
+
+            if (new_state != context->lobby->game->state) {
+                for (int i = 0; i < context->lobby->game->nb_words; i++) {
+                    context->lobby->game->cards[i].selected = false;
+                }
+            }
+
+            printf(
+                "Card guessed: %d by %s, new state: %d\n",
+                word_index,
+                guessing_agent_name ? guessing_agent_name : "unknown",
+                new_state
+            );
+
+            // Mettre à jour la carte et le gamestate
+            if (context->lobby && context->lobby->game) {
+                if (word_index >= 0 && word_index < context->lobby->game->nb_words) {
+                    if (active_team != TEAM_NONE) {
+                        history_append_revealed_word(
+                            context,
+                            active_team,
+                            context->lobby->game->cards[word_index].word,
+                            guessing_agent_name
+                        );
+                    }
+
+                    (context->lobby->game->cards+word_index)->revealed = true;
+                    (context->lobby->game->cards+word_index)->is_hovered = false;
+                    (context->lobby->game->cards+word_index)->selected = false;
+                } else if (word_index == -1 && active_team != TEAM_NONE) {
+                    history_ensure_turn(
+                        context,
+                        active_team,
+                        context->lobby->game->current_hint,
+                        context->lobby->game->current_hint_count
+                    );
+                }
                 context->lobby->game->state = new_state;
             }
             
@@ -247,12 +364,12 @@ int on_message(AppContext* context, char* message) {
             }
 
             char full_message[512];
-            format_to(full_message, sizeof(full_message), "%s: %s", sender, chat_message);
+            format_to(full_message, sizeof(full_message), "%s : %s", sender, chat_message);
             if (chat_push(&context->lobby->chat, full_message) != EXIT_SUCCESS) {
                 printf("Failed to store chat message in lobby history\n");
             }
 
-            printf("%s: %s\n", sender, chat_message);
+            printf("%s : %s\n", sender, chat_message);
             
             break;
         }

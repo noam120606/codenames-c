@@ -265,7 +265,7 @@ int main(int argc, char* argv[]){
 
                 case APP_STATE_MENU:
                     btn_ret = menu_handle_event(&context, &e);
-                    if (btn_ret == BTN_RET_QUIT) {
+                    if (btn_ret == BTN_MENU_QUIT) {
                         running = 0;
                     } break;
                 case APP_STATE_LOBBY: lobby_handle_event(&context, &e); break;

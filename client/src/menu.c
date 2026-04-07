@@ -5,6 +5,7 @@ Button* btn_create;
 Button* btn_join;
 Button* btn_quit;
 Button* btn_social;
+Button* btn_tuto;
 Input* name_input = NULL;
 Input* code_input = NULL;
 int joining = 0;
@@ -40,20 +41,28 @@ static void code_on_submit(AppContext* context, const char* text) {
 }
 
 ButtonReturn menu_handle_event(AppContext* context, SDL_Event* e) {
+    if (tuto_is_active()) {
+        tuto_handle_event(context, e);
+        return BTN_NONE;
+    }
+
     if (name_input) input_handle_event(context, name_input, e);
     if (code_input && joining) input_handle_event(context, code_input, e);
 
-    ButtonReturn ret = BTN_RET_NONE;
+    ButtonReturn ret = BTN_NONE;
     ButtonReturn r;
-    if (btn_create) { r = button_handle_event(context, btn_create, e); if (r != BTN_RET_NONE) ret = r; }
-    if (btn_join && !joining) { r = button_handle_event(context, btn_join, e); if (r != BTN_RET_NONE) ret = r; }
-    if (btn_quit)   { r = button_handle_event(context, btn_quit, e);   if (r != BTN_RET_NONE) ret = r; }
+    if (btn_create) { r = button_handle_event(context, btn_create, e); if (r != BTN_NONE) ret = r; }
+    if (btn_join && !joining) { r = button_handle_event(context, btn_join, e); if (r != BTN_NONE) ret = r; }
+    if (btn_quit)   { r = button_handle_event(context, btn_quit, e);   if (r != BTN_NONE) ret = r; }
+    if (btn_tuto)   { r = button_handle_event(context, btn_tuto, e);   if (r != BTN_NONE) ret = r; }
     return ret;
 }
 
 ButtonReturn menu_button_click(AppContext* context, Button* button) {
     if (button == btn_join) {
         joining = 1;
+    } else if (button == btn_tuto) {
+        tuto_open();
     } else if (button == btn_create) {
         char trame[20];
         format_to(trame, sizeof(trame), "%d %s", MSG_CREATELOBBY, context->player_name ? context->player_name : "NONE");
@@ -61,9 +70,9 @@ ButtonReturn menu_button_click(AppContext* context, Button* button) {
         context->player_role = ROLE_NONE;
         context->player_team = TEAM_NONE;
     } else if (button == btn_quit) {
-        return BTN_RET_QUIT;
+        return BTN_MENU_QUIT;
     }
-    return BTN_RET_NONE;
+    return BTN_NONE;
 }
 
 int menu_init(AppContext * context) {
@@ -86,7 +95,7 @@ int menu_init(AppContext * context) {
         cfg_btn_create->color     = COL_WHITE;
         cfg_btn_create->text      = "Créer";
         cfg_btn_create->callback  = menu_button_click;
-        btn_create = button_create(context->renderer, 0, cfg_btn_create);
+        btn_create = button_create(context->renderer, BTN_CREATE_LOBBY, cfg_btn_create);
         free(cfg_btn_create);
     }
 
@@ -99,7 +108,7 @@ int menu_init(AppContext * context) {
         cfg_btn_join->color     = COL_WHITE;
         cfg_btn_join->text      = "Rejoindre";
         cfg_btn_join->callback  = menu_button_click;
-        btn_join = button_create(context->renderer, 0, cfg_btn_join);
+        btn_join = button_create(context->renderer, BTN_JOIN_LOBBY, cfg_btn_join);
         free(cfg_btn_join);
     }
 
@@ -112,21 +121,34 @@ int menu_init(AppContext * context) {
         cfg_btn_quit->color     = COL_WHITE;
         cfg_btn_quit->text      = "Quitter";
         cfg_btn_quit->callback  = menu_button_click;
-        btn_quit = button_create(context->renderer, 0, cfg_btn_quit);
+        btn_quit = button_create(context->renderer, BTN_MENU_QUIT, cfg_btn_quit);
         free(cfg_btn_quit);
     }
 
     ButtonConfig* cfg_btn_social = button_config_init();
     if (cfg_btn_social) {
-        cfg_btn_social->x         = 0;
-        cfg_btn_social->y         = -200;
-        cfg_btn_social->h         = 100;
+        cfg_btn_social->x         = 775;
+        cfg_btn_social->y         = -350;
+        cfg_btn_social->h         = 55;
         cfg_btn_social->font_path = FONT_LARABIE;
         cfg_btn_social->color     = COL_WHITE;
         cfg_btn_social->text      = "Social";
         cfg_btn_social->callback  = menu_button_click;
-        btn_social = button_create(context->renderer, 0, cfg_btn_social);
+        btn_social = button_create(context->renderer, BTN_MENU_SOCIAL, cfg_btn_social);
         free(cfg_btn_social);
+    }
+
+    ButtonConfig* cfg_btn_tuto = button_config_init();
+    if (cfg_btn_tuto) {
+        cfg_btn_tuto->x         = 775;
+        cfg_btn_tuto->y         = -400;
+        cfg_btn_tuto->h         = 55;
+        cfg_btn_tuto->font_path = FONT_LARABIE;
+        cfg_btn_tuto->color     = COL_WHITE;
+        cfg_btn_tuto->text      = "Tutoriel";
+        cfg_btn_tuto->callback  = menu_button_click;
+        btn_tuto = button_create(context->renderer, BTN_MENU_TUTO, cfg_btn_tuto);
+        free(cfg_btn_tuto);
     }
 
     // Chargement input
@@ -146,8 +168,8 @@ int menu_init(AppContext * context) {
         cfg_in_name->maxlen = 16;
         cfg_in_name->save_player_data = 1;
         cfg_in_name->on_submit = name_on_submit;
-        cfg_in_name->allowed_pattern = "^[a-zA-Z0-9_é]*$"; // Autoriser uniquement les caractères alphanumériques et les underscores
-        cfg_in_name->submit_pattern = "^[a-zA-Z0-9_é]{3,16}$";
+        cfg_in_name->allowed_pattern = "^[a-zA-Z0-9_zéèêëàâäåæçîïìùûüÿœ]*$";
+        cfg_in_name->submit_pattern = "^[a-zA-Z0-9_zéèêëàâäåæçîïìùûüÿœ]{3,16}$";
         cfg_in_name->bg_path = "assets/img/inputs/empty.png";
         cfg_in_name->bg_padding = 24;
         name_input = input_create(context->renderer, INPUT_NAME, cfg_in_name);
@@ -209,7 +231,7 @@ int menu_init(AppContext * context) {
         edit_in_cfg(INPUT_NAME, IN_CFG_SUBMIT_SOUND, (intptr_t)"assets/audio/sfx/input/submit.ogg");
     }
 
-    static const char* code_placeholders[] = {"CODE"};
+    static const char* code_placeholders[] = {"CODE : #####"};
     InputConfig* cfg_in_code = input_config_init();
     if (cfg_in_code) {
         cfg_in_code->x = 300;
@@ -231,6 +253,11 @@ int menu_init(AppContext * context) {
         cfg_in_code->bg_padding = 24;
         code_input = input_create(context->renderer, INPUT_JOIN_CODE, cfg_in_code);
         free(cfg_in_code);
+    }
+
+    if (tuto_init(context) != EXIT_SUCCESS) {
+        printf("Failed to initialize tutorial\n");
+        loading_fails++;
     }
 
     return loading_fails;
@@ -259,9 +286,14 @@ void menu_display(AppContext * context) {
 
     button_render(context->renderer, btn_create);
     button_render(context->renderer, btn_quit);
+    button_render(context->renderer, btn_tuto);
 
     if (joining) input_render(context->renderer, code_input);
     else button_render(context->renderer, btn_join);
+
+    if (tuto_is_active()) {
+        tuto_display(context);
+    }
 
 }
 
@@ -272,9 +304,12 @@ int menu_free() {
     if (btn_join) { button_destroy(btn_join); btn_join = NULL; }
     if (btn_quit) { button_destroy(btn_quit); btn_quit = NULL; }
     if (btn_social) { button_destroy(btn_social); btn_social = NULL; }
+    if (btn_tuto) { button_destroy(btn_tuto); btn_tuto = NULL; }
 
     if (name_input) { input_destroy(name_input); name_input = NULL; }
     if (code_input) { input_destroy(code_input); code_input = NULL; }
+
+    tuto_free();
 
     joining = 0;
 

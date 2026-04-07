@@ -161,11 +161,11 @@ static int compute_player_icon_position(int nb_player, int i_player, int base_x,
 
 /* Callback pour boutons du lobby (choix de rôle / équipe) */
 static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
-    if (!context || !button) return BTN_RET_NONE;
+    if (!context || !button) return BTN_NONE;
     if (button == btn_red_agent) {
         if (context->player_role == ROLE_AGENT && context->player_team == TEAM_RED) {
             printf("Role didn't change\n");
-            return BTN_RET_NONE;
+            return BTN_NONE;
         }
         context->player_role = ROLE_AGENT;
         context->player_team = TEAM_RED;
@@ -177,7 +177,7 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
     } else if (button == btn_red_spy) {
         if (context->player_role == ROLE_SPY && context->player_team == TEAM_RED) {
             printf("Role didn't change\n");
-            return BTN_RET_NONE;
+            return BTN_NONE;
         }
         context->player_role = ROLE_SPY;
         context->player_team = TEAM_RED;
@@ -188,7 +188,7 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
     } else if (button == btn_blue_agent) {
         if (context->player_role == ROLE_AGENT && context->player_team == TEAM_BLUE) {
             printf("Role didn't change\n");
-            return BTN_RET_NONE;
+            return BTN_NONE;
         }
         context->player_role = ROLE_AGENT;
         context->player_team = TEAM_BLUE;
@@ -199,7 +199,7 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
     } else if (button == btn_blue_spy) {
         if (context->player_role == ROLE_SPY && context->player_team == TEAM_BLUE) {
             printf("Role didn't change\n");
-            return BTN_RET_NONE;
+            return BTN_NONE;
         }
         context->player_role = ROLE_SPY;
         context->player_team = TEAM_BLUE;
@@ -252,7 +252,7 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
         send_tcp(context->sock, msg);
         printf("Switched difficulty to: %s\n", context->lobby->words_difficulty);
     }
-    return BTN_RET_NONE;
+    return BTN_NONE;
 }
 
 int lobby_init(AppContext* context) {
@@ -291,7 +291,7 @@ int lobby_init(AppContext* context) {
         cfg_btn_red_agent->text      = "Agent rouge";
         cfg_btn_red_agent->tex_path  = "assets/img/buttons/red.png";
         cfg_btn_red_agent->callback  = lobby_button_click;
-        btn_red_agent = button_create(context->renderer, 0, cfg_btn_red_agent);
+        btn_red_agent = button_create(context->renderer, BTN_LOBBY_RED_AGENT, cfg_btn_red_agent);
         free(cfg_btn_red_agent);
     } else loading_fails++;
 
@@ -305,7 +305,7 @@ int lobby_init(AppContext* context) {
         cfg_btn_red_spy->text      = "Espion rouge";
         cfg_btn_red_spy->tex_path  = "assets/img/buttons/red.png";
         cfg_btn_red_spy->callback  = lobby_button_click;
-        btn_red_spy = button_create(context->renderer, 0, cfg_btn_red_spy);
+        btn_red_spy = button_create(context->renderer, BTN_LOBBY_RED_SPY, cfg_btn_red_spy);
         free(cfg_btn_red_spy);
     } else loading_fails++;
 
@@ -319,7 +319,7 @@ int lobby_init(AppContext* context) {
         cfg_btn_blue_agent->text      = "Agent bleu";
         cfg_btn_blue_agent->tex_path  = "assets/img/buttons/blue.png";
         cfg_btn_blue_agent->callback  = lobby_button_click;
-        btn_blue_agent = button_create(context->renderer, 0, cfg_btn_blue_agent);
+        btn_blue_agent = button_create(context->renderer, BTN_LOBBY_BLUE_AGENT, cfg_btn_blue_agent);
         free(cfg_btn_blue_agent);
     } else loading_fails++;
 
@@ -333,7 +333,7 @@ int lobby_init(AppContext* context) {
         cfg_btn_blue_spy->text      = "Espion bleu";
         cfg_btn_blue_spy->tex_path  = "assets/img/buttons/blue.png";
         cfg_btn_blue_spy->callback  = lobby_button_click;
-        btn_blue_spy = button_create(context->renderer, 0, cfg_btn_blue_spy);
+        btn_blue_spy = button_create(context->renderer, BTN_LOBBY_BLUE_SPY, cfg_btn_blue_spy);
         free(cfg_btn_blue_spy);
     } else loading_fails++;
 
@@ -346,7 +346,7 @@ int lobby_init(AppContext* context) {
         cfg_btn_launch_game->color     = COL_WHITE;
         cfg_btn_launch_game->text      = "Lancer la partie";
         cfg_btn_launch_game->callback  = lobby_button_click;
-        btn_launch_game = button_create(context->renderer, 0, cfg_btn_launch_game);
+        btn_launch_game = button_create(context->renderer, BTN_LOBBY_LAUNCH_GAME, cfg_btn_launch_game);
         free(cfg_btn_launch_game);
     } else loading_fails++;
 
@@ -359,7 +359,7 @@ int lobby_init(AppContext* context) {
         cfg_btn_return->color     = COL_WHITE;
         cfg_btn_return->text      = "Retour au menu";
         cfg_btn_return->callback  = lobby_button_click;
-        btn_return = button_create(context->renderer, 0, cfg_btn_return);
+        btn_return = button_create(context->renderer, BTN_LOBBY_RETURN, cfg_btn_return);
         free(cfg_btn_return);
     } else loading_fails++;
 
@@ -371,9 +371,9 @@ int lobby_init(AppContext* context) {
         cfg_btn_words_difficulty_switch->h         = 48;
         cfg_btn_words_difficulty_switch->font_path = FONT_LARABIE;
         cfg_btn_words_difficulty_switch->color     = COL_WHITE;
-        cfg_btn_words_difficulty_switch->text      = "Changer";
+        cfg_btn_words_difficulty_switch->text      = "Facile";
         cfg_btn_words_difficulty_switch->callback  = lobby_button_click;
-        btn_words_difficulty_switch = button_create(context->renderer, 0, cfg_btn_words_difficulty_switch);
+        btn_words_difficulty_switch = button_create(context->renderer, BTN_LOBBY_WORDS_DIFFICULTY_SWITCH, cfg_btn_words_difficulty_switch);
         free(cfg_btn_words_difficulty_switch);
     } else loading_fails++;
 
@@ -386,7 +386,7 @@ int lobby_init(AppContext* context) {
         cfg_role_none_window->title = "Joueur(s) sans rôle :";
         cfg_role_none_window->bg_color = (SDL_Color){20, 20, 20, 220};
         cfg_role_none_window->titlebar_color = COL_GRAY;
-        role_none_window = window_create(0, cfg_role_none_window);
+        role_none_window = window_create(WINDOW_LOBBY_ROLE_NONE, cfg_role_none_window);
         if (!role_none_window) loading_fails++;
         free(cfg_role_none_window);
     } else loading_fails++;
@@ -400,7 +400,7 @@ int lobby_init(AppContext* context) {
         cfg_role_red_agent_window->title = "";
         cfg_role_red_agent_window->bg_color = (SDL_Color){150, 50, 50, 220};
         cfg_role_red_agent_window->titlebar_h = 0;
-        role_red_agent_window = window_create(0, cfg_role_red_agent_window);
+        role_red_agent_window = window_create(WINDOW_LOBBY_RED_AGENTS, cfg_role_red_agent_window);
         if (!role_red_agent_window) loading_fails++;
         free(cfg_role_red_agent_window);
     } else loading_fails++;
@@ -414,7 +414,7 @@ int lobby_init(AppContext* context) {
         cfg_role_red_spy_window->title = "";
         cfg_role_red_spy_window->bg_color = (SDL_Color){150, 50, 50, 220};
         cfg_role_red_spy_window->titlebar_h = 0;
-        role_red_spy_window = window_create(0, cfg_role_red_spy_window);
+        role_red_spy_window = window_create(WINDOW_LOBBY_RED_SPY, cfg_role_red_spy_window);
         if (!role_red_spy_window) loading_fails++;
         free(cfg_role_red_spy_window);
     } else loading_fails++;
@@ -428,7 +428,7 @@ int lobby_init(AppContext* context) {
         cfg_role_blue_agent_window->title = "";
         cfg_role_blue_agent_window->bg_color = (SDL_Color){50, 50, 150, 220};
         cfg_role_blue_agent_window->titlebar_h = 0;
-        role_blue_agent_window = window_create(0, cfg_role_blue_agent_window);
+        role_blue_agent_window = window_create(WINDOW_LOBBY_BLUE_AGENTS, cfg_role_blue_agent_window);
         if (!role_blue_agent_window) loading_fails++;
         free(cfg_role_blue_agent_window);
     } else loading_fails++;
@@ -442,7 +442,7 @@ int lobby_init(AppContext* context) {
         cfg_role_blue_spy_window->title = "";
         cfg_role_blue_spy_window->bg_color = (SDL_Color){50, 50, 150, 220};
         cfg_role_blue_spy_window->titlebar_h = 0;
-        role_blue_spy_window = window_create(0, cfg_role_blue_spy_window);
+        role_blue_spy_window = window_create(WINDOW_LOBBY_BLUE_SPY, cfg_role_blue_spy_window);
         if (!role_blue_spy_window) loading_fails++;
         free(cfg_role_blue_spy_window);
     } else loading_fails++;
@@ -456,7 +456,7 @@ int lobby_init(AppContext* context) {
         cfg_game_options_window->h = 300;
         cfg_game_options_window->title = "Options de la partie";
         cfg_game_options_window->bg_color = (SDL_Color){20, 20, 20, 220};
-        game_options_window = window_create(0, cfg_game_options_window);
+        game_options_window = window_create(WINDOW_LOBBY_GAME_OPTIONS, cfg_game_options_window);
         if (!game_options_window) loading_fails++;
         free(cfg_game_options_window);
     } else loading_fails++;
@@ -596,16 +596,29 @@ void lobby_display(AppContext* context) {
             
             // Affichage du texte label de difficulté actuelle
             if (txt_difficulty_label) {
-                const char* diff_text = (context->lobby->words_difficulty == WORDS_DIFFICULTY_HARD) ? 
-                    "Difficulté : Difficile" : "Difficulté : Facile";
+                const char* diff_text = "Difficulté :";
                 update_text(context, txt_difficulty_label, diff_text);
-                window_place_text(game_options_window, txt_difficulty_label, 0, 50);
+                window_place_text(game_options_window, txt_difficulty_label, -100, 75);
                 display_text(context, txt_difficulty_label);
             }
             
             // Affichage du bouton switch de difficulté
             if (btn_words_difficulty_switch) {
-                window_place_button(game_options_window, btn_words_difficulty_switch, 0, 75);
+                switch (context->lobby->words_difficulty) {
+                    case WORDS_DIFFICULTY_NORMAL:
+                        button_edit_cfg(btn_words_difficulty_switch, BTN_CFG_TEXT, (intptr_t)"Normal");
+                        break;
+                    case WORDS_DIFFICULTY_HARD:
+                        button_edit_cfg(btn_words_difficulty_switch, BTN_CFG_TEXT, (intptr_t)"Difficile");
+                        break;
+                    case WORDS_DIFFICULTY_INFO:
+                        button_edit_cfg(btn_words_difficulty_switch, BTN_CFG_TEXT, (intptr_t)"Informatique");
+                        break;
+                    case WORDS_DIFFICULTY_FREAKY:
+                        button_edit_cfg(btn_words_difficulty_switch, BTN_CFG_TEXT, (intptr_t)"Freaky");
+                        break;
+                }
+                window_place_button(game_options_window, btn_words_difficulty_switch, 75, 75);
                 button_render(context->renderer, btn_words_difficulty_switch);
             }
         }

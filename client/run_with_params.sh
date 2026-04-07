@@ -5,7 +5,6 @@ PORT=4242
 SERVER_IP=""
 INSTANCES=0
 NO_BUILD=0
-LAUNCHED=0
 PIDS=""
 
 print_help() {
@@ -98,52 +97,25 @@ elif [ ! -x ./build/client ]; then
 	exit 1
 fi
 
-launch_in_terminal() {
-	if command -v x-terminal-emulator >/dev/null 2>&1; then
-		x-terminal-emulator -e "$SCRIPT_DIR/run.sh" --server-ip "$SERVER_IP" --port "$PORT" --no-build >/dev/null 2>&1 &
-		return 0
-	fi
-
-	if command -v gnome-terminal >/dev/null 2>&1; then
-		gnome-terminal -- "$SCRIPT_DIR/run.sh" --server-ip "$SERVER_IP" --port "$PORT" --no-build >/dev/null 2>&1 &
-		return 0
-	fi
-
-	if command -v konsole >/dev/null 2>&1; then
-		konsole -e "$SCRIPT_DIR/run.sh" --server-ip "$SERVER_IP" --port "$PORT" --no-build >/dev/null 2>&1 &
-		return 0
-	fi
-
-	if command -v xfce4-terminal >/dev/null 2>&1; then
-		xfce4-terminal -e "$SCRIPT_DIR/run.sh --server-ip $SERVER_IP --port $PORT --no-build" >/dev/null 2>&1 &
-		return 0
-	fi
-
-	if command -v xterm >/dev/null 2>&1; then
-		xterm -e "$SCRIPT_DIR/run.sh" --server-ip "$SERVER_IP" --port "$PORT" --no-build >/dev/null 2>&1 &
-		return 0
-	fi
-
-	return 1
-}
-
 i=1
 while [ "$i" -le "$INSTANCES" ]; do
 	echo "Lancement du client $i/$INSTANCES..."
-	if launch_in_terminal; then
-		LAUNCHED=1
-	else
-		# Fallback pour les environnements sans terminal graphique: lancer en arrière-plan avec nohup
-		nohup ./build/client -s "$SERVER_IP" -p "$PORT" >"$SCRIPT_DIR/build/client_${i}.log" 2>&1 &
-		PIDS="$PIDS $!"
-	fi
+	"$SCRIPT_DIR/run.sh" --server-ip "$SERVER_IP" --port "$PORT" --no-build >/dev/null 2>&1 &
+	PIDS="$PIDS $!"
 	i=$((i + 1))
 done
 
 echo "$INSTANCES client(s) lance(s)."
 
-if [ "$LAUNCHED" -eq 0 ]; then
-	echo "Aucun emulateur de terminal detecte: clients lances en arriere-plan (nohup)."
-	echo "PIDs:$PIDS"
-	echo "Logs: $SCRIPT_DIR/build/client_*.log"
-fi
+cleanup() {
+	echo "Arret des clients..."
+	for pid in $PIDS; do
+		kill "$pid" >/dev/null 2>&1 || true
+	done
+}
+
+trap cleanup INT TERM
+
+for pid in $PIDS; do
+	wait "$pid"
+done

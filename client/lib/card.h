@@ -26,6 +26,7 @@ typedef enum CardType {
  * @param team équipe à laquelle le mot appartient (TEAM_*).
  * @param type type de mot (masculin, féminin, etc.) pour l'affichage de la carte.
  * @param rect position et taille de la carte à l'écran (calculé lors du rendu). 
+ * @param guess_rect position et taille de l'icône de devinette à l'écran.
  * @param revealed 0 si caché, 1 si révélé.
  * @param selected 0 si non sélectionné, 1 si sélectionné.
  * @param is_pressed 0 si non pressé, 1 si pressé.
@@ -35,6 +36,7 @@ typedef struct Card {
     char word[32];
     Team team;
     SDL_Rect rect;
+    SDL_Rect guess_rect;
     CardType type;
     Booleen revealed;
     Booleen selected;

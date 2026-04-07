@@ -73,32 +73,41 @@ int init_cards(AppContext * context) {
     /* Textes pour les mots des cartes */
     for (int i = 0; i < NUM_CARDS; i++) {
         txt_card_words[i] = init_text(context, " ", 
-            create_text_config(FONT_BEBASKAI, 28, COL_BLACK, 0, 0, 0, 255));
+            create_text_config(FONT_BEBASKAI, 32, COL_BLACK, 0, 0, 0, 255));
     }
 
     return loading_fails;
 }
 
-static int card_handle_click(AppContext* context, Card* card) {
+static int card_handle_click(AppContext* context, Card* card, Booleen is_guess_icon) {
     if (!context || !card) return EXIT_FAILURE;
 
-    card->selected = !card->selected;
-    printf("Card \"%s\" selected: %d\n", card->word, card->selected);
+    if (card->selected && is_guess_icon) {
+        printf("Card \"%s\" guessed!\n", card->word);
 
-    /* Trame de guess de carte
-    char message[64];
-    format_to(message, sizeof(message), "%d %d", CARD_GUESS, (int)(card - context->lobby->game->cards));
-    if (send_tcp(context->sock, message) != EXIT_SUCCESS) {
-        printf("Failed to send click_card message to server\n");
-        return EXIT_FAILURE;
-    }
-    */
+        char message[64];
+        const char* agent_name = (context->player_name && context->player_name[0] != '\0') ? context->player_name : "Unknown";
+        format_to(message, sizeof(message), "%d %d %s", MSG_GUESS_CARD, (int)(card - context->lobby->game->cards), agent_name);
+        if (send_tcp(context->sock, message) != EXIT_SUCCESS) {
+            printf("Failed to send click_card message to server\n");
+            return EXIT_FAILURE;
+        }
+        
+        card->selected = false;
+        card->revealed = true;
+    } else {
+        card->selected = !card->selected;
+    } 
 
     return EXIT_SUCCESS;
 }
 
 static int is_mouse_over_card(Card* card, int mouseX, int mouseY) {
     return mouseX >= card->rect.x && mouseX <= card->rect.x + card->rect.w && mouseY >= card->rect.y && mouseY <= card->rect.y + card->rect.h;
+}
+
+static int is_mouse_over_guess_icon(Card* card, int mouseX, int mouseY) {
+    return mouseX >= card->guess_rect.x && mouseX <= card->guess_rect.x + card->guess_rect.w && mouseY >= card->guess_rect.y && mouseY <= card->guess_rect.y + card->guess_rect.h;
 }
 
 static int card_handle_event(AppContext* context, SDL_Event* event, Card* card) {
@@ -125,7 +134,7 @@ static int card_handle_event(AppContext* context, SDL_Event* event, Card* card) 
 
         if (should_trigger) {
             audio_play(SOUND_BUTTON_CLICKED, 0);
-            return card_handle_click(context, card);
+            return card_handle_click(context, card, is_mouse_over_guess_icon(card, mouseX, mouseY));
         }
     }
     return EXIT_SUCCESS;
@@ -189,11 +198,14 @@ static SDL_Texture* get_card_texture(AppContext* context, Card* card) {
 static int card_render(AppContext* context, Card* card, int x, int y, int index) {
     if (!context || !card) return EXIT_FAILURE;
 
+    const int CARD_WIDTH = 200;
+    const int CARD_HEIGHT = 128;
+
     card->rect = (SDL_Rect){
-        .x = (WIN_WIDTH - 190) / 2 + x,
-        .y = (WIN_HEIGHT - 120) / 2 - y,
-        .w = 190,
-        .h = 120
+        .x = (WIN_WIDTH - CARD_WIDTH) / 2 + x,
+        .y = (WIN_HEIGHT - CARD_HEIGHT) / 2 - y,
+        .w = CARD_WIDTH,
+        .h = CARD_HEIGHT
     };
 
     if (card->is_pressed && card->is_hovered) {
@@ -211,18 +223,19 @@ static int card_render(AppContext* context, Card* card, int x, int y, int index)
     SDL_RenderCopyEx(context->renderer, get_card_texture(context, card), NULL, &card->rect, 0, NULL, SDL_FLIP_NONE);
 
     if (card->selected) {
-        SDL_Rect guess_rect = {
-            .x = card->rect.x + card->rect.w - 30,
+        const int GUESS_ICON_SIZE = 32;
+        card->guess_rect = (SDL_Rect){
+            .x = card->rect.x + card->rect.w - GUESS_ICON_SIZE,
             .y = card->rect.y,
-            .w = 30,
-            .h = 30
+            .w = GUESS_ICON_SIZE,
+            .h = GUESS_ICON_SIZE
         };
-        SDL_RenderCopyEx(context->renderer, guess_icon, NULL, &guess_rect, 0, NULL, SDL_FLIP_NONE);
+        SDL_RenderCopyEx(context->renderer, guess_icon, NULL, &card->guess_rect, 0, NULL, SDL_FLIP_NONE);
     }
 
     if (!card->revealed && txt_card_words[index]) {
         update_text(context, txt_card_words[index], card->word);
-        update_text_position(txt_card_words[index], x, y - 25);
+        update_text_position(txt_card_words[index], x, y - 30);
         display_text(context, txt_card_words[index]);
     }
 
@@ -230,16 +243,16 @@ static int card_render(AppContext* context, Card* card, int x, int y, int index)
 }
 
 void game_render_cards(AppContext * context) {
-    int x=-400;
-    int y=-250;
+    int x=-420;
+    int y=-235;
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
             int card_index = i*5 + j;
             card_render(context, context->lobby->game->cards + card_index, x, y, card_index);
-            x += 200;
+            x += 210;
         }
-        x = -400;
-        y += 125;
+        x = -420;
+        y += 128 + 10;
     }
 }
 

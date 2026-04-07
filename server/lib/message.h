@@ -23,6 +23,7 @@
  * @param MSG_STARTGAME message de démarrage de partie. 
  * @param MSG_WORDDATA message de données de mots pour la partie (envoyé par le serveur au démarrage de la partie, contient la liste des mots et leur couleur). 
  * @param MSG_SUBMIT_HINT message de soumission du mot indice et du nombre de mots indices.
+ * @param MSG_GUESS_CARD message de guess de carte (envoyé par le client au serveur pour indiquer la carte choisie, et relayé par le serveur à tous les clients pour indiquer quelle carte a été guessée).
  * @param MSG_SENDCHAT message d'envoi de message dans le chat.
  * @param MSG_REQUESTUUID message de demande d'UUID (pour le client de demander son UUID au serveur après connexion, si besoin pour le protocole).
  * @param MSG_COMPAREVERSION message de comparaison de version (pour le client de comparer sa version avec celle du serveur).
@@ -44,6 +45,7 @@ typedef enum MessageType {
     MSG_STARTGAME,
     MSG_WORDDATA,
     MSG_SUBMIT_HINT,
+    MSG_GUESS_CARD,
     MSG_SENDCHAT,
     MSG_REQUESTUUID,
     MSG_COMPAREVERSION,
