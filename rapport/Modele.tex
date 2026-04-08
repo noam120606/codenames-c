@@ -42,23 +42,25 @@
         Les fonctionnalités principales incluent la gestion des parties, l'interface utilisateur et l'intégration des règles du jeu. 
         Ce rapport détaille les choix techniques, l'architecture du système et les résultats obtenus lors des tests.
 
+    \newpage
     \section{Conception}
 
         \subsection{Présentation du jeu}
 
             \textit{Codenames} est un jeu d’association d’idées en équipes.
-            Chaque équipe doit retrouver ses mots secrets à partir d’indices donnés par son maître-espion.
+            Chaque équipe doit retrouver ses mots secrets à partir d’indices donnés par son espion.
 
             \begin{tcolorbox}[colback=blue!5,colframe=blue!50]
             \textbf{Objectif :} être la première équipe à retrouver tous ses agents.
             \end{tcolorbox}
 
             \begin{enumerate}
+
                 \item Mise en place :
 
                     \begin{itemize}
                         \item Former 2 équipes : rouge et bleue
-                        \item Choisir un maître-espion par équipe
+                        \item Choisir un espion par équipe
                         \item Disposer 25 mots en grille (5x5)
                         \item Tirer une carte clé au hasard\\ \textbf{Important :} La carte clé indique :
                         \begin{itemize}
@@ -69,12 +71,13 @@
                         \end{itemize}
                     \end{itemize}
 
+                \vspace{0.5cm}
                 \item Déroulement d’un tour
 
                     \begin{enumerate}
                         \item Donner un indice
 
-                            Le maître-espion doit dire :
+                            L'espion doit dire :
 
                             \begin{itemize}
                                 \item Un mot unique
@@ -105,7 +108,8 @@
                                 \item Pas de communication non verbale
                             \end{itemize}
 
-
+                        \vspace{0.5cm}
+                        
                         \item Phase de devinettes
 
                             Les joueurs peuvent proposer des mots.
@@ -128,36 +132,40 @@
 
                             Résultat des choix
 
-                            \begin{itemize}
+                            \begin{enumerate}
 
-                                \item Bon mot
+                                \item \textbf{Bon mot}
 
                                     \begin{itemize}
                                         \item On recouvre avec la couleur de l’équipe
                                         \item L’équipe peut continuer
                                     \end{itemize}
 
-                                \item Mot neutre
+                                \item \textbf{Mot neutre}
 
                                     \begin{itemize}
                                         \item Tour terminé immédiatement
                                     \end{itemize}
 
-                                \item Mot adverse
+                                \item \textbf{Mot adverse}
 
                                     \begin{itemize}
                                         \item Tour terminé
                                         \item Aide l’équipe adverse
                                     \end{itemize}
 
-                                \item Assassin
+                                \item \textbf{Assassin}
 
-                                    \textcolor{red}{\textbf{Effet : défaite immédiate}}
+                                    \begin{itemize}
+                                        \item \textcolor{red}{Effet : défaite immédiate}
+                                    \end{itemize}
 
-                            \end{itemize}
+                            \end{enumerate}
 
                     \end{enumerate}
                 
+                \vspace{0.5cm}
+                \needspace{3\baselineskip}
                 \item Fin de partie
 
                     \begin{itemize}
@@ -165,6 +173,7 @@
                         \item Une équipe perd immédiatement si elle choisit l’assassin
                     \end{itemize}
                 
+                \vspace{0.5cm}
                 \Needspace{5\baselineskip}
                 \item Règles avancées
 
@@ -195,7 +204,7 @@
                     \end{itemize}
                 \item Gestion automatique des règles du jeu, le code permet  
                     \begin{itemize}
-                        \item de vérifier la validité des indices donnés par les maîtres-espions,
+                        \item de vérifier la validité des indices donnés par les espions,
                         \item de gérer les différentes phases du jeu (donner un indice, devinettes, fin de partie),
                         \item d'appliquer les conséquences des choix des joueurs (bon mot, mot neutre, mot adverse, assassin).
                     \end{itemize}
@@ -234,6 +243,7 @@
         \caption{Répartition des tâches entre les membres de l'équipe}
         \end{table}
 
+    \newpage
     \section{Développement}
 
         \subsection{Structure du code}
@@ -438,7 +448,7 @@
         \begin{itemize}
             \item La grille de mots, avec les mots affichés dans la couleur correspondante pour les espions, et affichés de couleur neutres pour les agents,
             \item un chat en haut à droite pour communiquer entre les joueurs,
-            \item deux historiques des indices en bas pour suivre les indices donnés par les maîtres-espions (à gauche pour l'équipe rouge, à droite pour l'équipe bleue),
+            \item deux historiques des indices en bas pour suivre les indices donnés par les espions (à gauche pour l'équipe rouge, à droite pour l'équipe bleue),
             \item un input pour que les agents puissent proposer leur indice, suivi d'un input pour choisir le nombre de mots correspondants à l'indice et enfin un bouton de validation pour envoyer leur proposition.
         \end{itemize}
 
@@ -453,10 +463,33 @@
 
         \subsection{Gestion des parties}
 
-        \subsection{Fonctionnalités additionnelles}
+        La gestion des parties est assurée par le serveur, qui maintient l'état de chaque partie en cours et gère les interactions entre les joueurs.
+        Le serveur utilise une architecture orientée objet pour organiser les différentes composantes du jeu, telles que les joueurs, les lobbies, les cartes, etc.
+        Lorsqu'un joueur rejoint un lobby, le serveur met à jour l'état du lobby et informe les autres joueurs de la nouvelle arrivéee.
+        Lorsque la partie commence, le serveur gère les différentes phases du jeu (donner un indice, devinettes, fin de partie) en appliquant les règles du jeu et en envoyant les mises à jour aux clients.
+        Le serveur est également responsable de la validation des indices donnés par les espions, en vérifiant qu'ils respectent les règles du jeu (un seul mot, pas de mot présent sur la table, etc.) avant de les accepter et de les transmettre aux clients.
+
+        \vspace{0.5cm}
+
+        Au début de la partie, le serveur attribue les rôles d'espion et d'agent aux joueurs en fonction de leurs choix dans le lobby.
+        Le serveur choisit ensuite les mots de la partie en sélectionnant aléatoirement 25 mots parmi une liste prédéfinie.
+        Il attribue ensuite des couleurs à chaque mot en veillant à ce que les règles du jeu soient respectées (9 mots pour l'équipe qui commence, 8 pour l'autre, 7 civils et 1 assassin).
+        Puis les cartes sont mélangées pour créer la grille de mots finale.
+
+        \vspace{0.5cm}
+
+        Durant la partie, les équipes joueront à tour de rôle, les premiers à jouer auront donc un mot de plus à révelérer que les autres.
+        Les espions sont toujours les premiers à jouer, ils choisissent un mot et un nombre pour donner un indice à leur équipe, le serveur vérifie la validité de l'indice avant de le transmettre aux clients.
+        Ensuite, les agents peuvent proposer des mots en fonction de l'indice donné, le serveur applique les conséquences de chaque choix (bon mot, mot neutre, mot adverse, assassin) et met à jour l'état de la partie en conséquence.
+        La partie continue jusqu'à ce qu'une équipe trouve tous ses mots ou que l'assassin soit révélé, entraînant la défaite immédiate de l'équipe concernée.
 
     \newpage
     \section{Bilan et conclusion}
+
+    Les objectifs initiaux du projet ont été atteints et une version numérique du jeu de société Codenames a pu être réalisée avec une interface graphique immersive et des fonctionnalités complètes.
+    Des fonctionnalités supplémentaires ont également pu être intégrées, telles que le chat en ligne, l'historique des indices, le tutoriel, le bandeau d'informations, etc.
+    Les objectifs, choix de structure du code, de l'interface graphique et de la gestion des parties n'ont cessé de changer lors de la conception et de la mise en œuvre du projet, notamment suite à la rencontre de problemes techniques ou de changements d'avis des membres de l'équipe.
+    Cependant, grâce à une bonne communication et une répartition efficace des tâches, les difficultés ont pu être surmontées et un projet fonctionnel et satisfaisant a puêtre accompli.
 
     \newpage
     \section{Annexes}
