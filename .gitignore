@@ -5,6 +5,11 @@ client/build*
 tests/server/build*
 tests/client/build*
 
+# Fichiers temporaires rapport
+*.log
+*.aux
+*.toc
+
 # Libraries
 client/SDL2/
 
