@@ -1,0 +1,354 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\usepackage{tabularx}
+\usepackage{needspace}
+\setlength{\headheight}{15pt}
+\pagestyle{fancy}
+\begin{document}
+
+    \begin{figure}[t]
+        \includegraphics[scale=0.5]{assets/logo\_lmu.png}
+        \hfill
+        \includegraphics[scale=0.5]{assets/logo\_ic2.png}
+    \end{figure}
+
+    \title{
+        \textcolor{blue}{Le Mans Université}\\
+        Licence Informatique \textit{2ème année}\\
+        Module 174UP02 Rapport de Projet\\
+        \textbf{Codenames}
+    }
+    \author{PIAU Romain - ROGER Noam \\QUINTON Chloé - MAUDET Mathis}
+    \date{\today}
+    \maketitle
+
+    \newpage
+
+    \tableofcontents
+
+    \newpage 
+
+    \section{Introduction}
+        Ce document présente le projet Codenames, développé dans le cadre du projet de 2ème année de licence informatique à l'Université du Mans.
+        Le projet consiste en la création d'un jeu numérique basé sur le concept du jeu de société Codenames.
+        Les fonctionnalités principales incluent la gestion des parties, l'interface utilisateur et l'intégration des règles du jeu. 
+        Ce rapport détaille les choix techniques, l'architecture du système et les résultats obtenus lors des tests.
+
+    \section{Conception}
+
+        \subsection{Présentation du jeu}
+
+            \textit{Codenames} est un jeu d’association d’idées en équipes.
+            Chaque équipe doit retrouver ses mots secrets à partir d’indices donnés par son maître-espion.
+
+            \begin{tcolorbox}[colback=blue!5,colframe=blue!50]
+            \textbf{Objectif :} être la première équipe à retrouver tous ses agents.
+            \end{tcolorbox}
+
+            \begin{enumerate}
+                \item Mise en place :
+
+                    \begin{itemize}
+                        \item Former 2 équipes : rouge et bleue
+                        \item Choisir un maître-espion par équipe
+                        \item Disposer 25 mots en grille (5x5)
+                        \item Tirer une carte clé au hasard\\ \textbf{Important :} La carte clé indique :
+                        \begin{itemize}
+                            \item 9 mots pour une équipe (celle qui commence)
+                            \item 8 mots pour l’autre
+                            \item 7 civils
+                            \item 1 assassin
+                        \end{itemize}
+                    \end{itemize}
+
+                \item Déroulement d’un tour
+
+                    \begin{enumerate}
+                        \item Donner un indice
+
+                            Le maître-espion doit dire :
+
+                            \begin{itemize}
+                                \item Un mot unique
+                                \item Un nombre
+                            \end{itemize}
+
+                            \vspace{0.5cm}
+
+                            \needspace{5\baselineskip}
+
+                            \textbf{Exemple :}
+
+                            \begin{tcolorbox}
+                            Indice : \textbf{Animal 2}
+                            \end{tcolorbox}
+
+                            Cela signifie que 2 mots sur la table sont liés à "animal".
+
+                            \vspace{0.5cm}
+                            
+                            \textbf{Règles strictes pour les indices}
+
+                            \begin{itemize}
+                                \item Un seul mot (pas de phrase)
+                                \item Pas un mot présent sur la table
+                                \item Pas une partie d’un mot (ex : "auto" pour "automobile" interdit)
+                                \item Pas de traduction directe (ex : dire "dog" pour "chien")
+                                \item Pas de communication non verbale
+                            \end{itemize}
+
+
+                        \item Phase de devinettes
+
+                            Les joueurs peuvent proposer des mots.
+
+                            \begin{itemize}
+                                \item Nombre maximum de propositions = nombre annoncé + 1
+                            \end{itemize}
+
+                            \vspace{0.5cm}
+
+                            \textbf{Exemple :}
+
+                            \begin{tcolorbox}
+                            Indice : \textbf{Animal 2}
+                            \end{tcolorbox}
+
+                            → L’équipe peut proposer jusqu’à 3 mots.
+
+                            \vspace{0.5cm}
+
+                            Résultat des choix
+
+                            \begin{itemize}
+
+                                \item Bon mot
+
+                                    \begin{itemize}
+                                        \item On recouvre avec la couleur de l’équipe
+                                        \item L’équipe peut continuer
+                                    \end{itemize}
+
+                                \item Mot neutre
+
+                                    \begin{itemize}
+                                        \item Tour terminé immédiatement
+                                    \end{itemize}
+
+                                \item Mot adverse
+
+                                    \begin{itemize}
+                                        \item Tour terminé
+                                        \item Aide l’équipe adverse
+                                    \end{itemize}
+
+                                \item Assassin
+
+                                    \begin{tcolorbox}[colback=red!5,colframe=red!50]
+                                    \textbf{Effet : défaite immédiate}
+                                    \end{tcolorbox}
+                                
+                            \end{itemize}
+
+                    \end{enumerate}
+                
+                \item Fin de partie
+
+                    \begin{itemize}
+                        \item Une équipe gagne si elle trouve tous ses mots
+                        \item Une équipe perd immédiatement si elle choisit l’assassin
+                    \end{itemize}
+
+                \item Règles avancées
+
+                    Indice avec 0
+
+                    \begin{tcolorbox}
+                    Exemple : \textbf{Animal 0}
+                    \end{tcolorbox}
+
+                    Signifie :
+                    Aucun mot restant n’est lié à "animal".
+
+                    → Permet d’éviter certains pièges.
+
+            \end{enumerate}
+        
+        \Needspace{10\baselineskip}
+        \subsection{Notre adaptation numérique}
+            Notre version numérique de Codenames vise à recréer l'expérience du jeu de société tout en offrant des fonctionnalités supplémentaires pour améliorer l'interaction et la convivialité.
+
+            Fonctionnalités principales :
+            \begin{enumerate}
+                \item Interface utilisateur intuitive grâce à SDL
+                    \begin{itemize}
+                        \item différentes intefaces créées pour chaque étape (menu, lobby, jeu),
+                        \item destion avancée de bouttons et inputs,
+                        \item bandeau d'informations (affichage fps, réglage du volume et de la luminosité, règles du jeu)...
+                    \end{itemize}
+                \item Gestion automatique des règles du jeu, le code permet  
+                    \begin{itemize}
+                        \item de vérifier la validité des indices donnés par les maîtres-espions,
+                        \item de gérer les différentes phases du jeu (donner un indice, devinettes, fin de partie),
+                        \item d'appliquer les conséquences des choix des joueurs (bon mot, mot neutre, mot adverse, assassin).
+                    \end{itemize}
+                \item Possibilité de jouer en ligne avec des amis grâce à la création de lobbies privés
+                \item Système de chat intégré pour communiquer entre les joueurs
+                \item Historique des indices 
+            \end{enumerate}
+
+    \newpage
+    \section{Organisation du travail}
+        \renewcommand{\arraystretch}{1.3}
+        \setlength{\tabcolsep}{8pt}
+        \begin{table}[h]
+        \centering
+        \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|c|c|c|c|}
+        \hline
+        \textbf{Tâches} & \textbf{Noam} & \textbf{Romain} & \textbf{Chloé} & \textbf{Mathis} \\
+        \hline
+        Conception de la structure du code & 40\% & 30\% & 15\% & 15\% \\
+        \hline
+        Fonctions principales (serveur) & 30\% & 30\% & 20\% & 20\% \\
+        \hline
+        Fonctions principales (client) & 20\% & 20\% & 30\% & 30\% \\
+        \hline
+        Affichage de l'interface graphique & 10\% & 30\% & 30\% & 30\% \\
+        \hline
+        Gestion du lobby & 20\% & 20\% & 15\% & 45\% \\
+        \hline
+        Gestion des fonctions du jeu & 25\% & 25\% & 25\% & 25\% \\
+        \hline
+        Rédaction du rapport de projet & 15\% & 15\% & 55\% & 15\% \\
+        \hline
+        Tests et débogage & 25\% & 25\% & 25\% & 25\% \\
+        \hline
+        \end{tabularx}
+        \caption{Répartition des tâches entre les membres de l'équipe}
+        \end{table}
+
+    \newpage
+    \section{Développement}
+
+        \subsection{Structure du code}
+
+        Le code du jeu est structuré de la manière suivante :
+
+        \begin{itemize}
+            \item Deux parties principales : client et serveur
+            \item Un dossier de tests
+            \item Un dossier de documentation
+            \item Un dossier rapport 
+            \item Un fichier README.md pour expliquer les principales fonctionnalités du jeu et les instructions d'installation et d'utilisation
+            \item Un fichier TODO.md pour suivre les tâches à accomplir et les fonctionnalités à implémenter
+            \item Un fichier .gitignore pour exclure les fichiers temporaires et les ressources non nécessaires du dépôt Git
+            \item Un fichier LICENSE pour spécifier les conditions de distribution et d'utilisation du code
+            \item Un fichier setup pour faciliter l'installation des dépendances et la configuration de l'environnement de développement
+            \item Un fichier doxyfile pour la génération de la documentation avec Doxygen
+        \end{itemize}
+
+        Les parties client et serveur sont les plus développées et contiennent les fonctionnalités principales du jeu. Elles partagent une structure similaire pour faciliter la maintenance et la compréhension du code.
+        \begin{enumerate}
+            \item \textbf{Points communs des deux parties}
+                \begin{itemize}
+                    \item Dossier assets : contient les ressources graphiques, textuelles ou sonores du jeu
+                    \item Dossier lib : contient les fichiers d’en-tête et les bibliothèques
+                    \item Dossier src : contient le code source
+                    \item Fichier Makefile : pour la compilation du projet
+                    \item Fichier run : pour lancer le jeu
+                \end{itemize}
+            \item \textbf{Côté client}
+                \begin{itemize}
+                    \item Bibliothèques SDL compilés (ajouté par le script setup)
+                    \item Gestion de l'interface graphique (menu, lobby, jeu) 
+                    \item Traitement des bouttons, inputs utilisateur, crossfade, bandeau d'informations...
+                    \item Communication avec le serveur (envoi des actions du joueur, réception des mises à jour du jeu)
+                \end{itemize}
+            \item \textbf{Côté serveur}
+                \begin{itemize}
+                    \item Gestion des connexions clients
+                    \item Implémentation de la logique du jeu
+                \end{itemize}
+        \end{enumerate}
+
+        \subsection{Principales structures de données}
+
+        \begin{itemize}
+            \item \textbf{AppContext} : contient les informations sur l’état de l’application.\\
+                Utilité : centraliser les données et les ressources du jeu pour faciliter la gestion de l’état et de l’affichage.
+                Détails :
+                \begin{itemize}
+                    \item \textbf{Gérer l’affichage SDL}
+                    \begin{itemize}
+                        \item \texttt{window} $\rightarrow$ la fenêtre du jeu
+                        \item \texttt{renderer} $\rightarrow$ le moteur de rendu graphique
+                        \item \texttt{bg\_color} $\rightarrow$ couleur de fond
+                    \end{itemize}
+
+                    \item \textbf{Gérer l’état du jeu}
+                    \begin{itemize}
+                        \item \texttt{app\_state} $\rightarrow$ menu, lobby, en partie, etc.
+                        \item \texttt{lobby} $\rightarrow$ données du lobby (joueurs, salle, etc.)
+                    \end{itemize}
+
+                    \item \textbf{Gérer le joueur}
+                    \begin{itemize}
+                        \item \texttt{player\_role} $\rightarrow$ agent ou spy
+                        \item \texttt{player\_team} $\rightarrow$ équipe
+                        \item \texttt{player\_id} $\rightarrow$ identifiant serveur
+                        \item \texttt{player\_uuid}, \texttt{player\_name} $\rightarrow$ identité persistée
+                    \end{itemize}
+
+                    \item \textbf{Gérer la connexion réseau}
+                    \begin{itemize}
+                        \item \texttt{sock} $\rightarrow$ socket réseau
+                        \item \texttt{ping\_ms} $\rightarrow$ latence avec le serveur
+                    \end{itemize}
+
+                    \item \textbf{Gérer le timing et les performances}
+                    \begin{itemize}
+                        \item \texttt{clock} $\rightarrow$ nombre de frames écoulées
+                        \item \texttt{fps} $\rightarrow$ images par seconde
+                        \item \texttt{frame\_start\_time} $\rightarrow$ début de frame
+                        \item \texttt{last\_fullscreen\_toggle\_ms} $\rightarrow$ évite les toggles rapides
+                    \end{itemize}
+
+                    \item \textbf{Gérer l’audio}
+                    \begin{itemize}
+                        \item \texttt{music\_volume}
+                        \item \texttt{sound\_effects\_volume}
+                    \end{itemize}
+
+                    \item \textbf{Gérer la fenêtre}
+                    \begin{itemize}
+                        \item taille et position en mode fenêtré \\
+                            (\texttt{windowed\_width}, \texttt{windowed\_height}, etc.)
+                    \end{itemize}
+
+                    \item \textbf{Informations générales}
+                    \begin{itemize}
+                        \item \texttt{version} $\rightarrow$ version du jeu
+                    \end{itemize}
+                \end{itemize}
+        \end{itemize}
+
+        \subsection{Interface graphique}
+
+        \subsection{Gestion des parties}
+
+        \subsection{Fonctionnalités additionnelles}
+
+    \newpage
+    \section{Bilan et conclusion}
+
+    \newpage
+    \section{Annexes}
+
+
+\end{document}
