@@ -9,6 +9,9 @@ tests/client/build*
 *.log
 *.aux
 *.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
 
 # Libraries
 client/SDL2/
