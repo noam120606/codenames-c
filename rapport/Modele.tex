@@ -8,6 +8,8 @@
 \usepackage{tcolorbox}
 \usepackage{tabularx}
 \usepackage{needspace}
+\usepackage[justification=centering]{caption}
+\usepackage{cleveref}
 \setlength{\headheight}{15pt}
 \pagestyle{fancy}
 \begin{document}
@@ -271,7 +273,7 @@
                 \begin{itemize}
                     \item Bibliothèques SDL compilés (ajouté par le script setup)
                     \item Gestion de l'interface graphique (menu, lobby, jeu) 
-                    \item Traitement des bouttons, inputs utilisateur, crossfade, bandeau d'informations...
+                    \item Traitement des bouttons, inputs utilisateur, crossfader, bandeau d'informations...
                     \item Communication avec le serveur (envoi des actions du joueur, réception des mises à jour du jeu)
                 \end{itemize}
             \item \textbf{Côté serveur}
@@ -351,7 +353,7 @@
         \end{itemize}
 
         \vspace{0.5cm}
-        
+
         \begin{itemize}
             \item \textbf{Codenames} : Structure principale du serveur de Codenames.\\
                 Utilité : regrouper tous les composants essentiels du serveur en un seul endroit.
@@ -365,12 +367,98 @@
 
         \subsection{Interface graphique}
 
+        Codenames utilise la bibliothèque SDL pour créer une interface graphique immersive et interactive.
+        L'interface est conçue pour être intuitive et facile à naviguer, avec des éléments visuels clairs et des animations fluides.
+        Pour cela, nous avons développé plusieurs composants graphiques, tels que des boutons, des inputs, des crossfaders, etc.
+        De plus, les différentes étapes du jeu (menu, lobby, partie) ont chacune leur propre interface adaptée à leurs fonctionnalités spécifiques.
+
+        \needspace{10\baselineskip}
+
+        \begin{figure}[h]
+            \centering
+
+            \begin{minipage}[t]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{assets/menu.png}
+                \caption{Interface du menu principal}
+                \label{fig:menu}
+            \end{minipage}
+            \hfill
+            \begin{minipage}[t]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{assets/lobby.png}
+                \caption{Interface du lobby}
+                \label{fig:lobby}
+            \end{minipage}
+
+        \end{figure}
+
+        Dans la figure \ref{fig:menu}, on peut voir l'interface du menu principal, qui permet aux joueurs de 
+        \begin{itemize}
+            \item choisir leur pseudo grâce à l'input en haut à droite,
+            \item créer un lobby avec le bouton \og Créer \fg{},
+            \item rejoindre un lobby avec le bouton \og Rejoindre \fg{},
+            \item accéder au tutoriel avec le bouton \og Tutoriel \fg{},
+            \item quitter le jeu avec le bouton \og Quitter \fg{}.
+        \end{itemize}
+
+        \vspace{0.5cm}
+
+        La figure \ref{fig:lobby} montre l'interface du lobby, où les joueurs peuvent 
+        \begin{itemize} 
+            \item voir les autres participants représentés par un icône de joueur et leur pseudo, 
+            \item choisir leur équipe, leur rôle en cliquant directement dans les cases prévues à cet effet,
+            \item attendre le début de la partie, lancé par le créateur du lobby avec le bouton \og Lancer la partie \fg{}. 
+        \end{itemize}
+        
+        \vspace{0.5cm}
+
+        \begin{figure}[h]
+            \centering
+
+            \begin{minipage}[t]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{assets/jeu\_espion.png}
+                \caption{Interface du jeu pour un espion}
+                \label{fig:jeu_espion}
+            \end{minipage}
+            \hfill
+            \begin{minipage}[t]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{assets/jeu\_agent.png}
+                \caption{Interface du jeu pour un agent}
+                \label{fig:jeu_agent}
+            \end{minipage}
+
+        \end{figure}
+
+        \needspace{5\baselineskip}
+
+        Dans les figures \ref{fig:jeu_espion} et \ref{fig:jeu_agent}, on peut voir les interfaces du jeu pour un espion et un agent, sur chacune, on retrouve
+        \begin{itemize}
+            \item La grille de mots, avec les mots affichés dans la couleur correspondante pour les espions, et affichés de couleur neutres pour les agents,
+            \item un chat en haut à droite pour communiquer entre les joueurs,
+            \item deux historiques des indices en bas pour suivre les indices donnés par les maîtres-espions (à gauche pour l'équipe rouge, à droite pour l'équipe bleue),
+            \item un input pour que les agents puissent proposer leur indice, suivi d'un input pour choisir le nombre de mots correspondants à l'indice et enfin un bouton de validation pour envoyer leur proposition.
+        \end{itemize}
+
+        \vspace{0.5cm}
+
+        Afin d'améliorer l'expérience utilisateur, nous avons également intégré un bandeau d'informations qui 
+        \begin{itemize}
+            \item affiche les règles du jeu,
+            \item permet de régler la luminosité, le volume de la musique et des effets sonores avec des crossfaders,
+            \item affiche la latence les performances du jeu (FPS).
+        \end{itemize}
+
         \subsection{Gestion des parties}
 
         \subsection{Fonctionnalités additionnelles}
 
+    \newpage
     \section{Bilan et conclusion}
 
+    \newpage
     \section{Annexes}
 
 
