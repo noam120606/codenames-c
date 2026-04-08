@@ -9,6 +9,8 @@
 #include "../lib/game.h"
 
 typedef struct AppContext AppContext;
+typedef struct Window Window;
+typedef struct Text Text;
 
 /** Taille maximale (en octets) d'une ligne d'historique formatée. */
 #define HISTORY_LINE_SIZE 128
@@ -173,5 +175,59 @@ void history_wrap_cache_invalidate(HistoryWrapCache* cache);
  * @return Nombre total de lignes disponibles dans cache->lines.
  */
 int history_build_wrapped_lines_cached(const History* history, const char* font_path, int font_size, int max_text_width, HistoryWrapCache* cache);
+
+/**
+ * Extrait le préfixe de tour au format "Tour %d -" (incluant l'espace suivant si présent).
+ * @param line Ligne d'historique source.
+ * @param prefix Tampon de sortie pour le préfixe.
+ * @param prefix_size Taille du tampon prefix.
+ * @param prefix_len Longueur extraite dans la ligne source.
+ * @return EXIT_SUCCESS si un préfixe a été extrait, EXIT_FAILURE sinon.
+ */
+int history_extract_turn_prefix(const char* line, char* prefix, int prefix_size, int* prefix_len);
+
+/**
+ * Récupère (ou crée) un objet texte réutilisable pour le préfixe de tour coloré.
+ * @param context Contexte applicatif.
+ * @param font_path Police utilisée.
+ * @param font_size Taille de police.
+ * @param opacity Opacité à appliquer.
+ * @return Objet texte réutilisable, ou NULL si indisponible.
+ */
+Text* history_get_turn_prefix_text(AppContext* context, const char* font_path, int font_size, Uint8 opacity);
+
+/**
+ * Rend le préfixe de tour coloré et retourne sa largeur en pixels.
+ * @param context Contexte applicatif.
+ * @param history_window Fenêtre d'historique cible.
+ * @param left_padding Marge gauche de la zone de rendu.
+ * @param prefix_text Préfixe à afficher.
+ * @param rel_y Position Y relative de la ligne.
+ * @param turn_prefix_text Objet texte pré-alloué (issu de history_get_turn_prefix_text).
+ * @return Largeur en pixels du préfixe rendu.
+ */
+int history_render_turn_prefix(AppContext* context, const Window* history_window, int left_padding, const char* prefix_text, int rel_y, Text* turn_prefix_text);
+
+/**
+ * Retourne la largeur d'un objet texte en pixels.
+ * @param text Objet texte source.
+ * @return Largeur en pixels (0 si indisponible).
+ */
+int history_text_width(const Text* text);
+
+/**
+ * Calcule une position X relative ancrée à gauche avec offset additionnel.
+ * @param history_window Fenêtre de référence.
+ * @param text_width Largeur du texte en pixels.
+ * @param left_padding Marge gauche de la zone de rendu.
+ * @param left_offset Décalage horizontal supplémentaire.
+ * @return Position X relative.
+ */
+int history_left_anchored_rel_x_with_offset(const Window* history_window, int text_width, int left_padding, int left_offset);
+
+/**
+ * Libère les ressources de rendu internes de l'historique.
+ */
+void history_destroy_turn_prefix_text(void);
 
 #endif /* HISTORY_H */

@@ -287,7 +287,7 @@ int main(int argc, char* argv[]){
         SDL_RenderClear(context.renderer);
 
         float lum_fct = context.global_luminosity;
-        // Rendu et logique d'affichage
+        // Rendu et logique d'affichage 
         switch (context.app_state) {
             case APP_STATE_MENU:
                 context.bg_color = (SDL_Color){70*lum_fct, 70*lum_fct, 70*lum_fct, 255}; // Gris par défaut
