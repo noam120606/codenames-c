@@ -215,6 +215,13 @@ void input_destroy(Input* in);
  */
 void input_handle_event(AppContext* context, Input* in, SDL_Event* e);
 
+/**
+ * Récupère un input par son identifiant.
+ * @param id Identifiant de l'input à récupérer.
+ * @return Pointeur vers l'input avec l'id donné, ou NULL si non trouvé.
+ */
+Input* input_get_by_id(InputId id);
+
 /** Affiche l'input sur le renderer.
  * Doit être appelé à chaque frame dans la boucle de rendu.
  * @param renderer Le renderer SDL sur lequel dessiner l'input.

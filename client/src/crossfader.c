@@ -114,25 +114,21 @@ Crossfader* crossfader_create(SDL_Renderer* renderer, int id, const CrossfaderCo
     return cf;
 }
 
-static Crossfader* find_by_id(int id) {
+Crossfader* crossfader_get_by_id(int id) {
     for (int i = 0; i < crossfader_count; ++i) {
         if (crossfaders[i] && crossfaders[i]->id == id) return crossfaders[i];
     }
     return NULL;
 }
 
-Crossfader* crossfader_get(int id) {
-    return find_by_id(id);
-}
-
 int crossfader_get_value(int id) {
-    Crossfader* cf = find_by_id(id);
+    Crossfader* cf = crossfader_get_by_id(id);
     if (!cf) return 0;
     return cf->cfg->value;
 }
 
 int crossfader_set_value(int id, int value) {
-    Crossfader* cf = find_by_id(id);
+    Crossfader* cf = crossfader_get_by_id(id);
     if (!cf) return EXIT_FAILURE;
     if (value < cf->cfg->min) value = cf->cfg->min;
     if (value > cf->cfg->max) value = cf->cfg->max;
@@ -157,7 +153,7 @@ void crossfader_set_on_change(Crossfader* cf, void (*cb)(AppContext*, int)) {
 }
 
 int edit_crfd_cfg(int id, CrfdCfgKey key, intptr_t value) {
-    Crossfader* cf = find_by_id(id);
+    Crossfader* cf = crossfader_get_by_id(id);
     if (!cf || !cf->cfg) return EXIT_FAILURE;
 
     switch (key) {

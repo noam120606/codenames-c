@@ -130,7 +130,7 @@ void crossfaders_handle_event(AppContext* ctx, SDL_Event* event);
  * @param id Identifiant du crossfader.
  * @return Pointeur vers le crossfader avec l'id donné, ou NULL si non trouvé.
  */
-Crossfader* crossfader_get(int id);
+Crossfader* crossfader_get_by_id(int id);
 
 /**
  * Récupère la valeur d'un crossfader par son identifiant.

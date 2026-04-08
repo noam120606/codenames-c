@@ -704,6 +704,13 @@ void input_handle_event(AppContext* context, Input* in, SDL_Event* e) {
     }
 }
 
+Input* input_get_by_id(InputId id) {
+    for (int i = 0; i < input_count; ++i) {
+        if (inputs[i] && inputs[i]->id == id) return inputs[i];
+    }
+    return NULL;
+}
+
 void input_render(SDL_Renderer* renderer, Input* in) {
     if (!renderer || !in) return;
     SDL_Rect rect = (SDL_Rect){ in->cfg->x, in->cfg->y, in->cfg->w, in->cfg->h };

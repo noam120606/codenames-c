@@ -392,7 +392,7 @@ int game_init(AppContext * context) {
         create_text_config(FONT_LARABIE, 32, COL_WHITE, 0, 0, 0, 255));
 
     txt_hint_display = init_text(context, "", 
-        create_text_config(FONT_LARABIE, 28, COL_WHITE, 0, 0, 0, 255));
+        create_text_config(FONT_LARABIE, 32, COL_WHITE, 0, 0, 0, 255));
 
     /* Textes pour les noms de joueurs */
     for (int i = 0; i < MAX_TEAM_PLAYERS; i++) {

@@ -1,5 +1,8 @@
 #include "../lib/all.h"
 
+static Window* windows[MAX_WINDOWS];
+static int window_count = 0;
+
 static int clamp_non_negative(int value) {
 	return value < 0 ? 0 : value;
 }
@@ -224,7 +227,17 @@ Window* window_create(int id, const WindowConfig* cfg_in) {
 	}
 
 	window_update_rect(win);
+	windows[window_count++] = win;
 	return win;
+}
+
+Window* window_get_by_id(int id) {
+	for (int i = 0; i < window_count; i++) {
+		if (windows[i] && windows[i]->id == id) {
+			return windows[i];
+		}
+	}
+	return NULL;
 }
 
 void window_destroy(Window* win) {
@@ -240,6 +253,7 @@ void window_destroy(Window* win) {
 	}
 	free(win->cfg);
 	free(win);
+	window_count--;
 }
 
 int window_contains_point(const Window* win, int logical_x, int logical_y) {

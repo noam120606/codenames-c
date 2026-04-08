@@ -14,8 +14,10 @@ typedef struct Button Button;
 typedef struct Input Input;
 typedef struct Text Text;
 
+#define MAX_WINDOWS 32
+
 /**
- * Identifiants des différents types de fenêtres.
+ * Identifiants des différentes fenêtres.
  */
 typedef enum {
     WINDOW_NONE = 0,
@@ -165,6 +167,13 @@ void window_update_rect(Window* win);
  * @param event L'événement SDL à traiter.
  */
 void window_handle_event(AppContext* ctx, Window* win, SDL_Event* event);
+
+/**
+ * Récupère une fenêtre par son identifiant.
+ * @param id L'identifiant de la fenêtre à récupérer.
+ * @return Un pointeur vers la fenêtre correspondante, ou NULL si aucune fenêtre avec cet ID n'existe.
+ */
+Window* window_get_by_id(int id);
 
 /**
  * Dessine la fenêtre (fond, bordure, barre de titre).

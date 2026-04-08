@@ -1,5 +1,8 @@
 #include "../lib/all.h"
 
+static Button* button[MAX_BUTTONS];
+static int button_count = 0;
+
 ButtonConfig* button_config_init(void) {
     ButtonConfig* cfg = (ButtonConfig*)calloc(1, sizeof(ButtonConfig));
     if (!cfg) return NULL;
@@ -36,6 +39,7 @@ Button* button_create(SDL_Renderer* renderer, int id, const ButtonConfig* cfg_in
         return NULL;
     }
     button->id = id;
+    button_count++;
 
     /* Le bouton possède sa propre copie de la config */
     button->cfg = button_config_init();
@@ -199,6 +203,7 @@ void button_destroy(Button* button) {
         free(button->cfg);
     }
     free(button);
+    button_count--;
 }
 
 static int is_mouse_over_button(Button* button, int mouseX, int mouseY) {
@@ -295,6 +300,15 @@ ButtonReturn button_handle_event(AppContext* context, Button* button, SDL_Event*
         }
     }
     return BTN_NONE;
+}
+
+Button* button_get_by_id(int id) {
+    for (int i = 0; i < button_count; i++) {
+        if (button[i] && button[i]->id == id) {
+            return button[i];
+        }
+    }
+    return NULL;
 }
 
 int button_render(SDL_Renderer* renderer, Button* button) {

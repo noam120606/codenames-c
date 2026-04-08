@@ -11,6 +11,8 @@
 
 typedef struct AppContext AppContext;
 
+#define MAX_BUTTONS 64
+
 /**
  * Valeurs de retour des callbacks de boutons.
  */
@@ -165,6 +167,13 @@ void button_destroy(Button* button);
  * @return La valeur de retour du callback si le bouton a été cliqué, sinon BTN_RET_NONE.
  */
 ButtonReturn button_handle_event(AppContext* context, Button* button, SDL_Event* event);
+
+/**
+ * Récupère un bouton par son identifiant.
+ * @param id Identifiant du bouton à récupérer.
+ * @return Pointeur vers le bouton si trouvé, sinon NULL.
+ */
+Button* button_get_by_id(int id);
 
 /**
  * Rendu d'un bouton à l'écran.

@@ -23,8 +23,7 @@ static Text* txt_fps = NULL;
 static Text* txt_ping = NULL;
 static Text* txt_server_local = NULL;
 static Text* txt_server_distant = NULL;
-static Text* txt_bar_1 = NULL;
-static Text* txt_bar_2 = NULL;
+static Text* txt_bar = NULL;
 static Text* txt_version = NULL;
 
 // Animation state
@@ -219,7 +218,7 @@ int init_infos(AppContext* context) {
         create_text_config(FONT_LARABIE, 14, COL_WHITE, 0, 385, 0, 220));
     
     // Barres décoratives
-    txt_bar_1 = init_text(context, "______________", 
+    txt_bar = init_text(context, "______________", 
         create_text_config(FONT_LARABIE, 22, COL_WHITE, 0, 370, 0, 255));
 
     // Textes statiques (labels)
@@ -228,22 +227,19 @@ int init_infos(AppContext* context) {
     txt_sfx_label = init_text(context, "Effets Sonores", 
         create_text_config(FONT_LARABIE, 18, COL_WHITE, 0, 275, 0, 255));
 
-    txt_bar_2 = init_text(context, "______________", 
-        create_text_config(FONT_LARABIE, 22, COL_WHITE, 0, 230, 0, 255));
-
     // Texte statique pour la luminosité globale
     txt_lum_label = init_text(context, "Luminosité", 
         create_text_config(FONT_LARABIE, 18, COL_WHITE, 0, 220, 0, 255));
 
     // Titre et lignes des règles
     txt_rules_title = init_text(context, rules_title, 
-        create_text_config(FONT_LARABIE, 20, COL_WHITE, 0, 180, 0, 255));
+        create_text_config(FONT_LARABIE, 20, COL_WHITE, 0, 130, 0, 255));
     
     if (rules_line_count > 0) {
         txt_rules_lines = malloc(sizeof(Text*) * rules_line_count);
         for (int i = 0; i < rules_line_count; i++) {
             txt_rules_lines[i] = init_text(context, rules_lines[i], 
-                create_text_config(FONT_LARABIE, 16, COL_WHITE, 0, 180 - 35 - (i * 22), 0, 200));
+                create_text_config(FONT_LARABIE, 16, COL_WHITE, 0, 130 - 35 - (i * 22), 0, 200));
         }
     }
 
@@ -442,7 +438,7 @@ void infos_display(AppContext* context) {
 
 
             /* Affichage des règles du jeu */
-            int rules_start_y = 140;
+            int rules_start_y = 130;
             int line_spacing = 22;
 
             // Titre des règles
@@ -535,11 +531,14 @@ void fps_ping_display(AppContext* context, int display_x) {
     }
 
     /* Barres horizontales décoratives */
-    update_text_position(txt_bar_1, base_x, 370);
-    display_text(context, txt_bar_1);
+    update_text_position(txt_bar, base_x, 370);
+    display_text(context, txt_bar);
     
-    update_text_position(txt_bar_2, base_x, 230);
-    display_text(context, txt_bar_2);
+    update_text_position(txt_bar, base_x, 230);
+    display_text(context, txt_bar);
+
+    update_text_position(txt_bar, base_x, 160);
+    display_text(context, txt_bar);
 }
 
 int infos_free() {
@@ -568,8 +567,7 @@ int infos_free() {
     destroy_text(txt_ping); txt_ping = NULL;
     destroy_text(txt_server_local); txt_server_local = NULL;
     destroy_text(txt_server_distant); txt_server_distant = NULL;
-    destroy_text(txt_bar_1); txt_bar_1 = NULL;
-    destroy_text(txt_bar_2); txt_bar_2 = NULL;
+    destroy_text(txt_bar); txt_bar = NULL;
     destroy_text(txt_version); txt_version = NULL;
     
     return EXIT_SUCCESS;

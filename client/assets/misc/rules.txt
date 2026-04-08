@@ -3,18 +3,18 @@ disposées sur le
 plateau de jeu.
 
 Chaque équipe a un 
-Espion qui connait
+espion qui connait
 les couleurs
 des cartes.
 
-L'Espion donne
-un indice :
-UN mot et UN nombre.
+L'espion donne
+UN indice :
+un mot et un nombre.
 
 Son équipe doit
 deviner les cartes
 correspondantes.
 
-Attention au mot Noir !
+Attention au mot noir
 Si il est trouvé
-vous perdez
+vous perdez !
