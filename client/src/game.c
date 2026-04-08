@@ -326,8 +326,8 @@ int game_init(AppContext * context) {
         cfg_hint_count_input->maxlen = 1;
         cfg_hint_count_input->clear_on_submit = 0;
         cfg_hint_count_input->centered = 1;
-        cfg_hint_count_input->allowed_pattern = "^[1-9]$";
-        cfg_hint_count_input->submit_pattern = "^[1-9]{1}$";
+        cfg_hint_count_input->allowed_pattern = "^[0-9]$";
+        cfg_hint_count_input->submit_pattern = "^[0-9]{1}$";
         cfg_hint_count_input->bg_path = "assets/img/inputs/square.png";
         cfg_hint_count_input->bg_padding = 10;
         cfg_hint_count_input->on_submit = hint_count_on_submit;
