@@ -162,7 +162,8 @@
                         \item Une équipe gagne si elle trouve tous ses mots
                         \item Une équipe perd immédiatement si elle choisit l’assassin
                     \end{itemize}
-
+                
+                \Needspace{5\baselineskip}
                 \item Règles avancées
 
                     Indice avec 0
@@ -231,7 +232,6 @@
         \caption{Répartition des tâches entre les membres de l'équipe}
         \end{table}
 
-    \newpage
     \section{Développement}
 
         \subsection{Structure du code}
@@ -251,7 +251,13 @@
             \item Un fichier doxyfile pour la génération de la documentation avec Doxygen
         \end{itemize}
 
-        Les parties client et serveur sont les plus développées et contiennent les fonctionnalités principales du jeu. Elles partagent une structure similaire pour faciliter la maintenance et la compréhension du code.
+        \vspace{0.5cm}
+
+        Les parties client et serveur sont les plus développées et contiennent les fonctionnalités principales du jeu. 
+        Elles partagent une structure similaire pour faciliter la maintenance et la compréhension du code.
+
+        \vspace{0.5cm}
+
         \begin{enumerate}
             \item \textbf{Points communs des deux parties}
                 \begin{itemize}
@@ -282,6 +288,7 @@
                 Utilité : centraliser les données et les ressources du jeu pour faciliter la gestion de l’état et de l’affichage.
                 Détails :
                 \begin{itemize}
+                    \Needspace{4\baselineskip}
                     \item \textbf{Gérer l’affichage SDL}
                     \begin{itemize}
                         \item \texttt{window} $\rightarrow$ la fenêtre du jeu
@@ -289,12 +296,14 @@
                         \item \texttt{bg\_color} $\rightarrow$ couleur de fond
                     \end{itemize}
 
+                    \Needspace{3\baselineskip}
                     \item \textbf{Gérer l’état du jeu}
                     \begin{itemize}
                         \item \texttt{app\_state} $\rightarrow$ menu, lobby, en partie, etc.
                         \item \texttt{lobby} $\rightarrow$ données du lobby (joueurs, salle, etc.)
                     \end{itemize}
 
+                    \Needspace{5\baselineskip}
                     \item \textbf{Gérer le joueur}
                     \begin{itemize}
                         \item \texttt{player\_role} $\rightarrow$ agent ou spy
@@ -303,12 +312,14 @@
                         \item \texttt{player\_uuid}, \texttt{player\_name} $\rightarrow$ identité persistée
                     \end{itemize}
 
+                    \Needspace{3\baselineskip}
                     \item \textbf{Gérer la connexion réseau}
                     \begin{itemize}
                         \item \texttt{sock} $\rightarrow$ socket réseau
                         \item \texttt{ping\_ms} $\rightarrow$ latence avec le serveur
                     \end{itemize}
 
+                    \Needspace{5\baselineskip}
                     \item \textbf{Gérer le timing et les performances}
                     \begin{itemize}
                         \item \texttt{clock} $\rightarrow$ nombre de frames écoulées
@@ -317,22 +328,38 @@
                         \item \texttt{last\_fullscreen\_toggle\_ms} $\rightarrow$ évite les toggles rapides
                     \end{itemize}
 
+                    \Needspace{3\baselineskip}
                     \item \textbf{Gérer l’audio}
                     \begin{itemize}
                         \item \texttt{music\_volume}
                         \item \texttt{sound\_effects\_volume}
                     \end{itemize}
 
+                    \Needspace{3\baselineskip}
                     \item \textbf{Gérer la fenêtre}
                     \begin{itemize}
                         \item taille et position en mode fenêtré \\
                             (\texttt{windowed\_width}, \texttt{windowed\_height}, etc.)
                     \end{itemize}
 
+                    \Needspace{2\baselineskip}
                     \item \textbf{Informations générales}
                     \begin{itemize}
                         \item \texttt{version} $\rightarrow$ version du jeu
                     \end{itemize}
+                \end{itemize}
+        \end{itemize}
+
+        \vspace{0.5cm}
+        
+        \begin{itemize}
+            \item \textbf{Codenames} : Structure principale du serveur de Codenames.\\
+                Utilité : regrouper tous les composants essentiels du serveur en un seul endroit.
+                Détails :
+                \begin{itemize}
+                    \item \texttt{tcp} $\rightarrow$ gestionnaire du serveur TCP (sockets, clients, etc.)
+                    \item \texttt{lobby} $\rightarrow$ gestionnaire des lobbies (parties en attente, joueurs, etc.)
+                    \item \texttt{version} $\rightarrow$ version du serveur
                 \end{itemize}
         \end{itemize}
 
