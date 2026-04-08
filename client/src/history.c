@@ -376,6 +376,9 @@ void history_append_revealed_word(AppContext* context, Team team, const char* wo
         resolved_word_team = history_find_revealed_word_team(context->lobby->game, word);
     }
 
+    // Ajoute le mot révélé au tour en cours
+    turn->revealed_word_count++;
+
     for (int i = 0; i < NB_WORDS; i++) {
         if (turn->revealed_words[i][0] == '\0') {
             strncpy(turn->revealed_words[i], word, sizeof(turn->revealed_words[i]) - 1);

@@ -34,6 +34,7 @@ typedef struct Text Text;
  * @param agent_name Nom du joueur qui a révélé le(s) mot(s) du tour (vide si inconnu).
  * @param hint Indice soumis par l'espion (vide si indisponible).
  * @param revealed_words Mots révélés pendant ce tour (tableau de taille NB_WORDS).
+ * @param revealed_word_count Nombre de mots révélés pendant ce tour.
  * @param revealed_word_teams TEAM de chaque mot révélé (TEAM_NONE si inconnu).
  */
 typedef struct Turn {
@@ -42,6 +43,7 @@ typedef struct Turn {
 	char agent_name[32];
 	char hint[64];
 	char revealed_words[NB_WORDS][64];
+	int revealed_word_count;
 	Team revealed_word_teams[NB_WORDS];
 } Turn;
 

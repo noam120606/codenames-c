@@ -129,6 +129,14 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
     if (button == btn_hint_submit) {
 
         if (context->player_role == ROLE_AGENT) {
+            History* history = (context->player_team == TEAM_RED) ? &context->lobby->game->red_history : &context->lobby->game->blue_history;
+            Turn* last_turn = (history->turn_count > 0) ? &history->turns[history->turn_count - 1] : NULL;
+            if (last_turn->revealed_word_count < context->lobby->game->current_hint_count) {
+                printf("Nombre de mots minimum non atteint pour s'arreter\n");
+                window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&COL_RED); // Mettre à jour la couleur du label de soumission pour indiquer que le nombre de mots minimum n'est pas atteint
+                window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)"Vous devez au minimum deviner le nombre de mots fourni par votre agent."); // Mettre à jour le label de soumission pour indiquer que le nombre de mots minimum n'est
+                return BTN_NONE;
+            }
             char msg[64];
             const char* agent_name = (context->player_name && context->player_name[0] != '\0') ? context->player_name : "Unknown";
             format_to(msg, sizeof(msg), "%d -1 %s", MSG_GUESS_CARD, agent_name);
