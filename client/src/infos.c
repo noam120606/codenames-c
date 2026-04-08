@@ -128,8 +128,8 @@ int init_infos(AppContext* context) {
         cfg_music->max = MIX_MAX_VOLUME;
         cfg_music->value = context->music_volume;
         cfg_music->save_player_data = 1;
-        cfg_music->color_0_pct = (SDL_Color){90, 90, 200, 220};
-        cfg_music->color_100_pct = (SDL_Color){200, 110, 90, 220};
+        cfg_music->color_0_pct = (SDL_Color){80, 80, 240, 220};
+        cfg_music->color_100_pct = (SDL_Color){240, 80, 70, 220};
         cfg_music->knob_color = (SDL_Color){0, 200, 220, 255};
         cfg_music->hidden = 1;
         cfg_music->on_change = on_music_volume_change;
@@ -155,8 +155,8 @@ int init_infos(AppContext* context) {
         cfg_sfx->max = MIX_MAX_VOLUME;
         cfg_sfx->value = context->sound_effects_volume;
         cfg_sfx->save_player_data = 1;
-        cfg_sfx->color_0_pct = (SDL_Color){90, 90, 200, 220};
-        cfg_sfx->color_100_pct = (SDL_Color){200, 110, 90, 220};
+        cfg_sfx->color_0_pct = (SDL_Color){80, 80, 240, 220};
+        cfg_sfx->color_100_pct = (SDL_Color){240, 80, 70, 220};
         cfg_sfx->knob_color = (SDL_Color){0, 200, 220, 255};
         cfg_sfx->hidden = 1;
         cfg_sfx->on_change = on_sfx_volume_change;
@@ -176,7 +176,7 @@ int init_infos(AppContext* context) {
         cfg_lum->value = (int)(context->global_luminosity * 100); // Convertir en pourcentage entier
         cfg_lum->save_player_data = 1;
         cfg_lum->color_0_pct = (SDL_Color){10, 10, 10, 220};
-        cfg_lum->color_100_pct = (SDL_Color){50, 50, 50, 220};
+        cfg_lum->color_100_pct = (SDL_Color){80, 80, 80, 220};
         cfg_lum->knob_color = (SDL_Color){200, 200, 0, 255};
         cfg_lum->hidden = 1;
         cfg_lum->on_change = on_luminosity_change;

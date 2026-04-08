@@ -290,13 +290,13 @@ int main(int argc, char* argv[]){
         // Rendu et logique d'affichage 
         switch (context.app_state) {
             case APP_STATE_MENU:
-                context.bg_color = (SDL_Color){70*lum_fct, 70*lum_fct, 70*lum_fct, 255}; // Gris par défaut
+                context.bg_color = (SDL_Color){80*lum_fct, 80*lum_fct, 80*lum_fct, 255}; // Gris par défaut
 
                 display_background(&context);
                 menu_display(&context);
                 break;
             case APP_STATE_LOBBY:
-                context.bg_color = (SDL_Color){70*lum_fct, 70*lum_fct, 70*lum_fct, 255};  // Gris par défaut
+                context.bg_color = (SDL_Color){80*lum_fct, 80*lum_fct, 80*lum_fct, 255};  // Gris par défaut
 
                 display_background(&context);
                 lobby_display(&context);

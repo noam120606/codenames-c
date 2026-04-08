@@ -22,12 +22,14 @@ TextConfig create_text_config(const char* font_path, int size, SDL_Color color, 
 }
 
 void reload_text(AppContext* context, Text* text) {
-    if (!text || !text->content || !context || text->content[0] == '\0') return;
+    if (!text || !context) return;
 
     if (text->texture) {
         SDL_DestroyTexture(text->texture);
         text->texture = NULL;
     }
+
+    if (!text->content || text->content[0] == '\0') return;
 
     TTF_Font* font = TTF_OpenFont(text->cfg.font_path, text->cfg.font_size);
     if (!font) {
@@ -100,7 +102,7 @@ void update_text_color(AppContext* context, Text* text, SDL_Color color) {
 }
 
 void display_text(AppContext* context, Text* text) {
-    if (!context || !text) return;
+    if (!context || !text || !text->texture) return;
 
     int tex_w = 0, tex_h = 0;
 
