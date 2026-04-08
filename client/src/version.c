@@ -4,7 +4,7 @@ void load_version(AppContext* context) {
 
     char version[16];
     
-    FILE* v = fopen("../VERSION", "r");
+    FILE* v = fopen("../client/src/VERSION", "r");
     if (v) {
         if (fgets(version, sizeof(version), v)) {
             /* Retirer le '\n' final */

@@ -4,4 +4,7 @@ set -eu
 ROOT_DIR="$(git rev-parse --show-toplevel)"
 "$ROOT_DIR/scripts/bump_version.sh"
 
-git add "$ROOT_DIR/VERSION"
+cp "$ROOT_DIR/VERSION" "$ROOT_DIR/client/VERSION"
+cp "$ROOT_DIR/VERSION" "$ROOT_DIR/server/VERSION"
+
+git add "$ROOT_DIR/VERSION" "$ROOT_DIR/client/VERSION" "$ROOT_DIR/server/VERSION"
