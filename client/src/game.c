@@ -723,10 +723,14 @@ static void game_render_team_history(AppContext* context, Window* history_window
 
     const char* font_path = NULL;
     int font_size = 0;
+    Uint8 font_opacity = 255;
     if (history_texts[0]) {
         font_path = history_texts[0]->cfg.font_path;
         font_size = history_texts[0]->cfg.font_size;
+        font_opacity = history_texts[0]->cfg.opacity;
     }
+
+    Text* turn_prefix_text = history_get_turn_prefix_text(context, font_path, font_size, font_opacity);
 
     int total_lines = history_build_wrapped_lines_cached(
         history,
@@ -775,24 +779,42 @@ static void game_render_team_history(AppContext* context, Window* history_window
 
         const char* line = lines[start_index + i];
         const char* safe_line = line ? line : " ";
+        const char* white_line = safe_line;
+        int white_left_offset = 0;
         Team word_team = history_cache->line_word_teams[start_index + i];
         int has_word_team = history_cache->line_has_revealed_word_team[start_index + i];
         SDL_Color text_color = has_word_team ? game_history_word_color(word_team) : COL_WHITE;
+
+        if (!has_word_team && turn_prefix_text) {
+            char turn_prefix[HISTORY_LINE_SIZE];
+            int prefix_len = 0;
+            if (history_extract_turn_prefix(safe_line, turn_prefix, HISTORY_LINE_SIZE, &prefix_len) == EXIT_SUCCESS) {
+                white_line = safe_line + prefix_len;
+                if (!white_line || white_line[0] == '\0') {
+                    white_line = " ";
+                }
+                white_left_offset = history_render_turn_prefix(
+                    context,
+                    history_window,
+                    left_padding,
+                    turn_prefix,
+                    top_line_y - (i * line_gap),
+                    turn_prefix_text
+                );
+            }
+        }
 
         if (!game_colors_equal(txt->cfg.color, text_color)) {
             update_text_color(context, txt, text_color);
         }
 
-        if (!txt->content || strcmp(txt->content, safe_line) != 0) {
-            update_text(context, txt, safe_line);
+        if (!txt->content || strcmp(txt->content, white_line) != 0) {
+            update_text(context, txt, white_line);
         }
 
-        int text_w = 0;
-        if (txt->texture) {
-            SDL_QueryTexture(txt->texture, NULL, NULL, &text_w, NULL);
-        }
+        int text_w = history_text_width(txt);
 
-        int rel_x = -(history_window->cfg->w / 2) + left_padding + (text_w / 2);
+        int rel_x = history_left_anchored_rel_x_with_offset(history_window, text_w, left_padding, white_left_offset);
         int rel_y = top_line_y - (i * line_gap);
         window_place_text(history_window, txt, rel_x, rel_y);
         display_text(context, txt);
@@ -979,6 +1001,7 @@ int game_free() {
     destroy_text(txt_red_agents_label); txt_red_agents_label = NULL;
     destroy_text(txt_turn_label); txt_turn_label = NULL;
     destroy_text(txt_hint_display); txt_hint_display = NULL;
+    history_destroy_turn_prefix_text();
 
     for (int i = 0; i < MAX_TEAM_PLAYERS; i++) {
         destroy_text(txt_blue_players[i]); txt_blue_players[i] = NULL;
