@@ -5,6 +5,9 @@
  * @brief Implémentation de la gestion d'historique des tours côté client.
  */
 
+static Text* history_turn_prefix_text = NULL;
+static const SDL_Color HISTORY_TURN_PREFIX_COLOR = {0, 200, 0, 255};
+
 static const char* history_find_team_spy_name(const AppContext* context, Team team) {
     if (!context || !context->lobby) return NULL;
 
@@ -169,12 +172,95 @@ static int history_font_path_equals(const char* a, const char* b) {
     return strcmp(left, right) == 0;
 }
 
+static int history_colors_equal(SDL_Color left, SDL_Color right) {
+    return left.r == right.r && left.g == right.g && left.b == right.b && left.a == right.a;
+}
+
 static void history_set_font_path(char* dst, int dst_size, const char* src) {
     if (!dst || dst_size <= 0) return;
 
     const char* value = src ? src : "";
     strncpy(dst, value, (size_t)dst_size - 1);
     dst[dst_size - 1] = '\0';
+}
+
+int history_text_width(const Text* text) {
+    int width = 0;
+    if (text && text->texture) {
+        SDL_QueryTexture(text->texture, NULL, NULL, &width, NULL);
+    }
+    return width;
+}
+
+int history_left_anchored_rel_x_with_offset(const Window* history_window, int text_width, int left_padding, int left_offset) {
+    if (!history_window || !history_window->cfg) return 0;
+    return -(history_window->cfg->w / 2) + left_padding + (text_width / 2) + left_offset;
+}
+
+int history_extract_turn_prefix(const char* line, char* prefix, int prefix_size, int* prefix_len) {
+    if (!line || !prefix || prefix_size <= 1 || !prefix_len) return EXIT_FAILURE;
+    if (strncmp(line, "Tour ", 5) != 0) return EXIT_FAILURE;
+
+    const char* separator = strstr(line, " -");
+    if (!separator || separator <= line + 4) return EXIT_FAILURE;
+
+    int len = (int)(separator - line) + 2;
+    if (line[len] == ' ') {
+        len++;
+    }
+
+    if (len <= 0 || len >= prefix_size) return EXIT_FAILURE;
+
+    memcpy(prefix, line, (size_t)len);
+    prefix[len] = '\0';
+    *prefix_len = len;
+
+    return EXIT_SUCCESS;
+}
+
+Text* history_get_turn_prefix_text(AppContext* context, const char* font_path, int font_size, Uint8 opacity) {
+    if (!context || !font_path || font_path[0] == '\0' || font_size <= 0) return NULL;
+
+    if (!history_turn_prefix_text) {
+        TextConfig cfg = create_text_config(font_path, font_size, HISTORY_TURN_PREFIX_COLOR, 0, 0, 0.0, opacity);
+        history_turn_prefix_text = init_text(context, " ", cfg);
+        return history_turn_prefix_text;
+    }
+
+    if (history_turn_prefix_text->cfg.font_size != font_size ||
+        !history_font_path_equals(history_turn_prefix_text->cfg.font_path, font_path)) {
+        history_turn_prefix_text->cfg.font_path = font_path;
+        history_turn_prefix_text->cfg.font_size = font_size;
+        reload_text(context, history_turn_prefix_text);
+    }
+
+    history_turn_prefix_text->cfg.opacity = opacity;
+    return history_turn_prefix_text;
+}
+
+int history_render_turn_prefix(AppContext* context, const Window* history_window, int left_padding, const char* prefix_text, int rel_y, Text* turn_prefix_text) {
+    if (!context || !history_window || !prefix_text || !turn_prefix_text) return 0;
+
+    if (!history_colors_equal(turn_prefix_text->cfg.color, HISTORY_TURN_PREFIX_COLOR)) {
+        update_text_color(context, turn_prefix_text, HISTORY_TURN_PREFIX_COLOR);
+    }
+    if (!turn_prefix_text->content || strcmp(turn_prefix_text->content, prefix_text) != 0) {
+        update_text(context, turn_prefix_text, prefix_text);
+    }
+
+    int prefix_width = history_text_width(turn_prefix_text);
+    int prefix_rel_x = history_left_anchored_rel_x_with_offset(history_window, prefix_width, left_padding, 0);
+    window_place_text(history_window, turn_prefix_text, prefix_rel_x, rel_y);
+    display_text(context, turn_prefix_text);
+
+    return prefix_width;
+}
+
+void history_destroy_turn_prefix_text(void) {
+    if (history_turn_prefix_text) {
+        destroy_text(history_turn_prefix_text);
+        history_turn_prefix_text = NULL;
+    }
 }
 
 static Team history_normalize_revealed_word_team(Team team) {
@@ -399,7 +485,7 @@ static int history_build_lines_internal(
         }
 
         if (words_added == 0) {
-            line_count = history_push_line(lines, line_word_teams, line_has_revealed_word_team, max_lines, line_count, "  - Aucun mot révélé", TEAM_NONE, 0);
+            line_count = history_push_line(lines, line_word_teams, line_has_revealed_word_team, max_lines, line_count, "  - En attente de l'agent", TEAM_NONE, 0);
         }
     }
 
