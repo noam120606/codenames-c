@@ -22,7 +22,7 @@ typedef struct Window Window;
 #define MAX_USERS 8
 
 /**
- * Niveaux de difficulté du jeu.
+ * Niveaux de difficulté des mots.
  * @param WORDS_DIFFICULTY_NORMAL Difficulté normale (wordlist.txt).
  * @param WORDS_DIFFICULTY_HARD Difficulté difficile (wordlist_hard.txt).
  * @param WORDS_DIFFICULTY_INFO Difficulté informative (wordlist_info.txt).
@@ -34,6 +34,18 @@ typedef enum WordsDifficulty {
     WORDS_DIFFICULTY_INFO,
     WORDS_DIFFICULTY_FREAKY
 } WordsDifficulty;
+
+/**
+ * Nombre d'assassins.
+ * @param NUMBER_OF_ASSASSINS_1 Un assassin.
+ * @param NUMBER_OF_ASSASSINS_2 Deux assassins.
+ * @param NUMBER_OF_ASSASSINS_3 Trois assassins.
+ */
+typedef enum NumberOfAssassins {
+    NUMBER_OF_ASSASSINS_1,
+    NUMBER_OF_ASSASSINS_2,
+    NUMBER_OF_ASSASSINS_3,
+} NumberOfAssassins;
 
 /**
  * États possibles d'un lobby.
@@ -56,6 +68,7 @@ typedef enum LobbyStatus {
  * @param game partie associée au lobby (NULL si aucune partie).
  * @param chat historique du chat du lobby.
  * @param words_difficulty niveau de difficulté choisi pour la partie.
+ * @param nb_assassins nombre d'assassins choisis pour la partie.
  */
 typedef struct Lobby {
     int id;
@@ -67,6 +80,7 @@ typedef struct Lobby {
     Game* game;
     Chat chat;
     WordsDifficulty words_difficulty;
+    int nb_assassins;
 } Lobby;
 
 /**

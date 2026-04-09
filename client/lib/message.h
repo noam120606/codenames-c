@@ -30,6 +30,7 @@ typedef struct AppContext AppContext;
  * @param MSG_PING message d'echo client/serveur pour mesurer le ping applicatif en temps réel.
  * @param MSG_SEND_CLIENT_ID message envoyé automatiquement par le serveur à la connexion, contient l'identifiant numérique du client.
  * @param MSG_SET_WORDS_DIFFICULTY message pour changer la difficulté de la partie (0 = facile, 1 = difficile).
+ * @param MSG_SET_NB_ASSASSINS message pour changer le nombre d'assassins dans la partie (1..3).
  */
 typedef enum MessageType {
     MSG_SERVER_ERROR = -2,
@@ -52,6 +53,7 @@ typedef enum MessageType {
     MSG_PING,
     MSG_SEND_CLIENT_ID,
     MSG_SET_WORDS_DIFFICULTY,
+    MSG_SET_NB_ASSASSINS,
 } MessageType;
 
 /**
