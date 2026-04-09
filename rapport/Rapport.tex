@@ -10,6 +10,7 @@
 \usepackage{needspace}
 \usepackage[justification=centering]{caption}
 \usepackage{cleveref}
+\usepackage{float}
 \setlength{\headheight}{15pt}
 \pagestyle{fancy}
 \begin{document}
@@ -199,7 +200,7 @@
                 \item Interface utilisateur intuitive grâce à SDL
                     \begin{itemize}
                         \item différentes intefaces créées pour chaque étape (menu, lobby, jeu),
-                        \item destion avancée de bouttons et inputs,
+                        \item destion avancée de boutons et inputs,
                         \item bandeau d'informations (affichage fps, réglage du volume et de la luminosité, règles du jeu)...
                     \end{itemize}
                 \item Gestion automatique des règles du jeu, le code permet  
@@ -283,7 +284,7 @@
                 \begin{itemize}
                     \item Bibliothèques SDL compilés (ajouté par le script setup)
                     \item Gestion de l'interface graphique (menu, lobby, jeu) 
-                    \item Traitement des bouttons, inputs utilisateur, crossfader, bandeau d'informations...
+                    \item Traitement des boutons, inputs utilisateur, crossfader, bandeau d'informations...
                     \item Communication avec le serveur (envoi des actions du joueur, réception des mises à jour du jeu)
                 \end{itemize}
             \item \textbf{Côté serveur}
@@ -364,6 +365,7 @@
 
         \vspace{0.5cm}
 
+        \needspace{6\baselineskip}
         \begin{itemize}
             \item \textbf{Codenames} : Structure principale du serveur de Codenames.\\
                 Utilité : regrouper tous les composants essentiels du serveur en un seul endroit.
@@ -384,25 +386,14 @@
 
         \needspace{10\baselineskip}
 
-        \begin{figure}[h]
+        \begin{figure}[H]
             \centering
-
-            \begin{minipage}[t]{0.45\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{assets/menu.png}
-                \caption{Interface du menu principal}
-                \label{fig:menu}
-            \end{minipage}
-            \hfill
-            \begin{minipage}[t]{0.45\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{assets/lobby.png}
-                \caption{Interface du lobby}
-                \label{fig:lobby}
-            \end{minipage}
-
+            \includegraphics[width=\textwidth]{assets/menu.png}
+            \caption{Interface du menu principal}
+            \label{fig:menu}
         \end{figure}
 
+        \needspace{7\baselineskip}
         Dans la figure \ref{fig:menu}, on peut voir l'interface du menu principal, qui permet aux joueurs de 
         \begin{itemize}
             \item choisir leur pseudo grâce à l'input en haut à droite,
@@ -411,39 +402,37 @@
             \item accéder au tutoriel avec le bouton \og Tutoriel \fg{},
             \item quitter le jeu avec le bouton \og Quitter \fg{}.
         \end{itemize}
-
-        \vspace{0.5cm}
+        
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\textwidth]{assets/lobby.png}
+            \caption{Interface du lobby}
+            \label{fig:lobby}
+        \end{figure}
 
         La figure \ref{fig:lobby} montre l'interface du lobby, où les joueurs peuvent 
         \begin{itemize} 
             \item voir les autres participants représentés par un icône de joueur et leur pseudo, 
-            \item choisir leur équipe, leur rôle en cliquant directement dans les cases prévues à cet effet,
+            \item choisir leur équipe et leur rôle en cliquant sur les boutons correspondants,
+            \item choisir la difficulté en cliquant sur les boutons correspondants (uniquement faisable par le créateur du lobby),
             \item attendre le début de la partie, lancé par le créateur du lobby avec le bouton \og Lancer la partie \fg{}. 
         \end{itemize}
-        
-        \vspace{0.5cm}
 
-        \begin{figure}[h]
+        \begin{figure}[H]
             \centering
+            \includegraphics[width=\textwidth]{assets/jeu\_espion.png}
+            \caption{Interface du jeu pour un espion}
+            \label{fig:jeu_espion}
+        \end{figure}
 
-            \begin{minipage}[t]{0.45\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{assets/jeu\_espion.png}
-                \caption{Interface du jeu pour un espion}
-                \label{fig:jeu_espion}
-            \end{minipage}
-            \hfill
-            \begin{minipage}[t]{0.45\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{assets/jeu\_agent.png}
-                \caption{Interface du jeu pour un agent}
-                \label{fig:jeu_agent}
-            \end{minipage}
-
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\textwidth]{assets/jeu\_agent.png}
+            \caption{Interface du jeu pour un agent}
+            \label{fig:jeu_agent}
         \end{figure}
 
         \needspace{5\baselineskip}
-
         Dans les figures \ref{fig:jeu_espion} et \ref{fig:jeu_agent}, on peut voir les interfaces du jeu pour un espion et un agent, sur chacune, on retrouve
         \begin{itemize}
             \item La grille de mots, avec les mots affichés dans la couleur correspondante pour les espions, et affichés de couleur neutres pour les agents,
@@ -461,6 +450,7 @@
             \item affiche la latence les performances du jeu (FPS).
         \end{itemize}
 
+        \needspace{10\baselineskip}
         \subsection{Gestion des parties}
 
         La gestion des parties est assurée par le serveur, qui maintient l'état de chaque partie en cours et gère les interactions entre les joueurs.
