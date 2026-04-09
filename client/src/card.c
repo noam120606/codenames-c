@@ -97,6 +97,9 @@ static int card_handle_click(AppContext* context, Card* card, Booleen is_guess_i
         card->revealed = True;
     } else {
         card->selected = !card->selected;
+        char msg[64];
+        format_to(msg, sizeof(msg), "%d %d %d", MSG_PREGUESS, (int)(card - context->lobby->game->cards), card->selected);
+        send_tcp(context->sock, msg);
     } 
 
     return EXIT_SUCCESS;
@@ -181,7 +184,7 @@ static SDL_Texture* get_card_texture(AppContext* context, Card* card) {
             default: return NULL;
         }
     } else {
-        if (context->player_role == ROLE_SPY) {
+        if (context->player_role == ROLE_SPY || context->lobby->game->state == GAMESTATE_ENDED) {
             switch (card->team) {
                 case TEAM_NONE: return card->type % 2 ? card_none_f : card_none_h; break;
                 case TEAM_RED: return card->type % 2 ? card_red_f : card_red_h; break;

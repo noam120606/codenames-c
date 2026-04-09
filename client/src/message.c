@@ -273,6 +273,31 @@ int on_message(AppContext* context, char* message) {
             break;
         }
 
+        case MSG_PREGUESS: {
+            if (args.argc < 3) {
+                printf("Invalid preguess message from server: \"%s\"\n", message);
+                if (args.argv) free(args.argv);
+                return EXIT_FAILURE;
+            }
+
+            printf("Pre-guess update received: \"%s\"\n", raw_message ? raw_message : "");
+
+            int word_index = atoi((char*)args.argv[0]);
+            int selected = atoi((char*)args.argv[1]);
+            int playerid = atoi((char*)args.argv[2]);
+            (void)playerid; // Utile plus tard
+
+            printf("Pre-guess update received for card %d: selected = %d\n", word_index, selected);
+
+            // Mettre à jour la carte
+            if (context->lobby && context->lobby->game && word_index >= 0 && word_index < context->lobby->game->nb_words) {
+                Card* card = &context->lobby->game->cards[word_index];
+                card->selected = selected;
+            }
+            
+            break;
+        }
+
         case MSG_GUESS_CARD: {
             if (args.argc < 2) {
                 printf("Invalid guess card message from server: \"%s\"\n", message);
@@ -296,6 +321,7 @@ int on_message(AppContext* context, char* message) {
             // Partie terminée
             if (args.argc >= 3 && new_state == GAMESTATE_ENDED) {
                 context->lobby->game->winner = (Team)atoi((char*)args.argv[2]);
+
                 if (
                     (context->lobby->game->winner == TEAM_RED && context->player_team == TEAM_RED) ||
                     (context->lobby->game->winner == TEAM_BLUE && context->player_team == TEAM_BLUE)

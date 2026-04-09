@@ -139,6 +139,17 @@ int request_start_game(Codenames* codenames, TcpClient* client, char* message, A
 int request_submit_hint(Codenames* codenames, TcpClient* client, char* message, Arguments args);
 
 /**
+ * Traite la pré-sélection d'une carte par un agent.
+ * Le serveur vérifie que c'est bien le tour de l'agent et redistribue la sélection à tous les autres joueurs du lobby.
+ * @param codenames Contexte principal du serveur.
+ * @param client Client TCP ayant envoyé la demande (l'agent).
+ * @param message Message brut reçu du client.
+ * @param args Arguments extraits du message (card_index, selected).
+ * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur.
+ */
+int request_preguess(Codenames* codenames, TcpClient* client, char* message, Arguments args);
+
+/**
  * Traite la soumission d'une carte devinée par un agent.
  * Le serveur vérifie la validité de la carte, met à jour l'état du jeu et diffuse les changements à tous les joueurs du lobby.
  * @param codenames Contexte principal du serveur.
