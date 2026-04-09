@@ -298,6 +298,42 @@ int count_remaining_words(Game* game, Team team) {
     return count;
 }
 
+int request_preguess(Codenames* codenames, TcpClient* client, char* message, Arguments args) {
+    (void)message;
+
+    // Vérifie que le client est bien dans un lobby
+    Lobby* lobby = find_lobby_by_playerid(codenames->lobby, client->id);
+    if (!lobby) {
+        printf("Client %d is not in a lobby\n", client->id);
+        char msg[64];
+        format_to(msg, sizeof(msg), "%d %s", MSG_SERVER_ERROR, "You must be in a lobby to pre-guess a card");
+        tcp_send_to_client(codenames, client->id, msg);
+        return EXIT_FAILURE;
+    }
+
+    // Vérifie que le lobby est bien en partie
+    if (lobby->status != LB_STATUS_IN_GAME || !lobby->game) {
+        printf("Lobby %d is not in game\n", lobby->id);
+        char msg[64];
+        format_to(msg, sizeof(msg), "%d %s", MSG_SERVER_ERROR, "No game in progress");
+        tcp_send_to_client(codenames, client->id, msg);
+        return EXIT_FAILURE;
+    }
+
+    int word_index = atoi((char*)args.argv[0]);
+    int selected = atoi((char*)args.argv[1]);
+
+    // Diffuse la carte sélectionné et le nouveau gamestate à tous les joueurs du lobby
+    char msg[64];
+    format_to(msg, sizeof(msg), "%d %d %d %d", MSG_PREGUESS, word_index, selected, client->id);
+    for (int i = 0; i < lobby->nb_players; i++) {
+        tcp_send_to_client(codenames, lobby->users[i]->id, msg);
+    }
+
+    return EXIT_SUCCESS;
+
+}
+
 int request_guess_card(Codenames* codenames, TcpClient* client, char* message, Arguments args) {
     // Vérifie que le client est bien dans un lobby
     Lobby* lobby = find_lobby_by_playerid(codenames->lobby, client->id);

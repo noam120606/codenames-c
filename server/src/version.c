@@ -3,7 +3,7 @@
 void load_version(Codenames* codenames) {
 
     char version[16] = {0};
-    FILE* v = fopen("../server/VERSION", "r");
+    FILE* v = fopen("./VERSION", "r");
     if (v) {
         if (fgets(version, sizeof(version), v)) {
             /* Retirer le '\n' final */
