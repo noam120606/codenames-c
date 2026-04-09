@@ -7,12 +7,14 @@
 \usepackage{color}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
+\usepackage{amsmath}
 \usepackage{tcolorbox}
 \usepackage{tabularx}
 \usepackage{needspace}
 \usepackage[justification=centering]{caption}
-\usepackage{cleveref}
 \usepackage{float}
+\usepackage{hyperref}
+\usepackage{cleveref}
 
 \setlength{\headheight}{15pt}
 \pagestyle{fancy}
@@ -43,6 +45,7 @@
     \newpage 
 
     \section{Introduction}
+    \label{sec:intro}
         Ce document présente le projet de jeu Codenames en C réalisé dans le cadre de
         la formation de L2 Informatique de l’Université Le Mans, sur la période de janvier à
         avril 2026. Ce projet a été développé en langage C et repose sur deux composantes
@@ -62,6 +65,7 @@
 
     \newpage
     \section{Conception}
+    \label{sec:conception}
 
         \subsection{Présentation du jeu}
 
@@ -219,9 +223,9 @@
             \begin{enumerate}
                 \item Interface utilisateur intuitive grâce à SDL
                     \begin{itemize}
-                        \item différentes intefaces créées pour chaque étape (menu, lobby, jeu),
+                        \item différentes interfaces créées pour chaque étape (menu, lobby, jeu),
                         \item gestion avancée de boutons et inputs,
-                        \item bandeau d'informations (affichage fps, réglage du volume et de la luminosité, règles du jeu)...
+                        \item bandeau d'informations (affichage ping et fps, réglage du volume et de la luminosité, règles du jeu).
                     \end{itemize}
                 \item Gestion automatique des règles du jeu, le code permet  
                     \begin{itemize}
@@ -236,6 +240,7 @@
 
     \newpage
     \section{Organisation du travail}
+    \label{sec:organisation}
         \renewcommand{\arraystretch}{1.3}
         \setlength{\tabcolsep}{8pt}
         \begin{table}[h]
@@ -266,6 +271,7 @@
 
     \newpage
     \section{Développement}
+    \label{sec:developpement}
 
         \subsection{Structure du code}
 
@@ -509,6 +515,7 @@
 
     \newpage
     \section{Bilan et conclusion}
+    \label{sec:bilan}
 
     Les objectifs initiaux du projet ont été atteints et une version numérique du jeu de société Codenames a pu être réalisée avec une interface graphique immersive et des fonctionnalités complètes.
     Des fonctionnalités supplémentaires ont également pu être intégrées, telles que le chat en ligne, l'historique des indices, le tutoriel, le bandeau d'informations, etc.
