@@ -204,9 +204,9 @@ int on_message(AppContext* context, char* message) {
             context->lobby->game->cards[wordid].team = team;
             context->lobby->game->cards[wordid].type = rand() % 4; // 0 = homme, 1 = femme
             context->lobby->game->cards[wordid].revealed = revealed;
-            context->lobby->game->cards[wordid].selected = false;
-            context->lobby->game->cards[wordid].is_pressed = false;
-            context->lobby->game->cards[wordid].is_hovered = false;
+            context->lobby->game->cards[wordid].selected = False;
+            context->lobby->game->cards[wordid].is_pressed = False;
+            context->lobby->game->cards[wordid].is_hovered = False;
 
             if (wordid == context->lobby->game->nb_words - 1) {
                 context->app_state = APP_STATE_PLAYING;
@@ -311,7 +311,7 @@ int on_message(AppContext* context, char* message) {
 
             if (new_state != context->lobby->game->state) {
                 for (int i = 0; i < context->lobby->game->nb_words; i++) {
-                    context->lobby->game->cards[i].selected = false;
+                    context->lobby->game->cards[i].selected = False;
                 }
             }
 
@@ -337,9 +337,9 @@ int on_message(AppContext* context, char* message) {
                         );
                     }
 
-                    guessed_card->revealed = true;
-                    guessed_card->is_hovered = false;
-                    guessed_card->selected = false;
+                    guessed_card->revealed = True;
+                    guessed_card->is_hovered = False;
+                    guessed_card->selected = False;
                 } else if (word_index == -1 && active_team != TEAM_NONE) {
                     history_ensure_turn(
                         context,

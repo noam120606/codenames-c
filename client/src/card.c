@@ -93,8 +93,8 @@ static int card_handle_click(AppContext* context, Card* card, Booleen is_guess_i
             return EXIT_FAILURE;
         }
         
-        card->selected = false;
-        card->revealed = true;
+        card->selected = False;
+        card->revealed = True;
     } else {
         card->selected = !card->selected;
     } 
@@ -130,7 +130,7 @@ static int card_handle_event(AppContext* context, SDL_Event* event, Card* card) 
         int should_trigger = card->is_pressed && is_over;
 
         card->is_hovered = is_over;
-        card->is_pressed = false;
+        card->is_pressed = False;
 
         if (should_trigger) {
             audio_play(SOUND_BUTTON_CLICKED, 0);

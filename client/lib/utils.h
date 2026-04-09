@@ -34,8 +34,8 @@ static const SDL_Color COL_MAGENTA = (SDL_Color){255, 0, 255, 255};
 #define FONT_BEBASKAI "assets/fonts/BebasKai.otf"
 
 typedef enum Booleen {
-    false,
-    true,
+    False,
+    True,
 } Booleen;
 
 #define NUM_CARDS 25
