@@ -472,6 +472,27 @@ int on_message(AppContext* context, char* message) {
             break;
         }
 
+        case MSG_SET_NB_ASSASSINS: {
+            if (args.argc < 1) {
+                printf("Invalid set nb_assassins message from server: \"%s\"\n", message);
+                if (args.argv) free(args.argv);
+                return EXIT_FAILURE;
+            }
+
+            int nb_assassins = atoi((char*)args.argv[0]);
+            if (nb_assassins < 1 || nb_assassins > 3) {
+                printf("Invalid nb_assassins value from server: %d\n", nb_assassins);
+                break;
+            }
+
+            if (context->lobby) {
+                context->lobby->nb_assassins = nb_assassins;
+            }
+            printf("Lobby nb_assassins changed to %d\n", nb_assassins);
+
+            break;
+        }
+
         default:
             printf("Received unhandled message type %d from server: \"%s\"\n", header, message);
             break;

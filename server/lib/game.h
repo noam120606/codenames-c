@@ -108,7 +108,7 @@ char** fetchWords(WordsDifficulty difficulty);
  *         ou NULL en cas d'erreur. La gestion mémoire est à la
  *         charge de l'appelant.
  */
-Word* generateWords(int count, Team start_team, WordsDifficulty difficulty);
+Word* generateWords(int count, Team start_team, WordsDifficulty difficulty, int nb_assassins);
 
 /**
  * Mélange un tableau de mots in-place (Fisher-Yates).
@@ -170,5 +170,6 @@ int request_guess_card(Codenames* codenames, TcpClient* client, char* message, A
  * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur.
  */
 int request_set_words_difficulty(Codenames* codenames, TcpClient* client, char* message, Arguments args);
+int request_set_nb_assassins(Codenames* codenames, TcpClient* client, char* message, Arguments args);
 
 #endif // GAME_H

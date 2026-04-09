@@ -7,6 +7,7 @@ Button* btn_blue_spy = NULL;
 Button* btn_launch_game = NULL;
 Button* btn_return = NULL;
 Button* btn_words_difficulty_switch = NULL;
+Button* btn_nb_assassin_switch = NULL;
 
 Window* role_none_window = NULL;
 Window* role_red_agent_window = NULL;
@@ -24,6 +25,7 @@ SDL_Texture* player_icon_blue = NULL;
 static Text* txt_lobby_info = NULL;
 static Text* txt_no_role_label = NULL;
 static Text* txt_difficulty_label = NULL;
+static Text* txt_nb_assassin_label = NULL;
 #define MAX_PLAYER_TEXTS 16
 static Text* txt_player_names[MAX_PLAYER_TEXTS] = {NULL};
 static int current_player_text_index = 0;
@@ -253,6 +255,17 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
         format_to(msg, sizeof(msg), "%d %d", MSG_SET_WORDS_DIFFICULTY, context->lobby->words_difficulty);
         send_tcp(context->sock, msg);
         printf("Switched difficulty to: %d\n", context->lobby->words_difficulty);
+    } else if (button == btn_nb_assassin_switch) {
+        /* Alterne 1 -> 2 -> 3 -> 1 */
+        int nb = context->lobby->nb_assassins;
+        if (nb < 1 || nb > 3) nb = 1;
+        nb = (nb % 3) + 1;
+        context->lobby->nb_assassins = nb;
+
+    char msg[16];
+    format_to(msg, sizeof(msg), "%d %d", MSG_SET_NB_ASSASSINS, context->lobby->nb_assassins);
+    send_tcp(context->sock, msg);
+    printf("Switched nb_assassins to: %d\n", context->lobby->nb_assassins);
     }
     return BTN_NONE;
 }
@@ -379,6 +392,22 @@ int lobby_init(AppContext* context) {
         free(cfg_btn_words_difficulty_switch);
     } else loading_fails++;
 
+    /* Bouton switch nombre d'assassins */
+    ButtonConfig* cfg_btn_nb_assassin_switch = button_config_init();
+    if (cfg_btn_nb_assassin_switch) {
+        cfg_btn_nb_assassin_switch->x         = 0;
+        cfg_btn_nb_assassin_switch->y         = 0;
+        cfg_btn_nb_assassin_switch->h         = 48;
+        cfg_btn_nb_assassin_switch->font_path = FONT_LARABIE;
+        cfg_btn_nb_assassin_switch->color     = COL_WHITE;
+        cfg_btn_nb_assassin_switch->tex_path  = "assets/img/buttons/square.png";
+        cfg_btn_nb_assassin_switch->text      = "1";
+        cfg_btn_nb_assassin_switch->callback  = lobby_button_click;
+        btn_nb_assassin_switch = button_create(context->renderer, BTN_LOBBY_NB_ASSASSIN_SWITCH, cfg_btn_nb_assassin_switch);
+        if (!btn_nb_assassin_switch) loading_fails++;
+        free(cfg_btn_nb_assassin_switch);
+    } else loading_fails++;
+
     WindowConfig* cfg_role_none_window = window_config_init();
     if (cfg_role_none_window) {
         cfg_role_none_window->x = 0;
@@ -472,6 +501,9 @@ int lobby_init(AppContext* context) {
 
     txt_difficulty_label = init_text(context, "Difficulté des mots : Facile",
         create_text_config(FONT_LARABIE, 20, COL_WHITE, 0, 0, 0, 255));
+
+    txt_nb_assassin_label = init_text(context, "Nombre d'assassins :",
+        create_text_config(FONT_LARABIE, 20, COL_WHITE, 0, 0, 0, 255));
     
     /* Pré-allouer les textes pour les noms de joueurs */
     for (int i = 0; i < MAX_PLAYER_TEXTS; i++) {
@@ -509,6 +541,7 @@ int struct_lobby_init(Lobby* lobby, int id, const char* code) {
     lobby->owner_id = -1;
     lobby->game = NULL;
     lobby->words_difficulty = WORDS_DIFFICULTY_NORMAL;
+    lobby->nb_assassins = 1;
     strcpy(lobby->code, code);
 
     for (int i = 0; i < MAX_USERS; i++) {
@@ -623,6 +656,32 @@ void lobby_display(AppContext* context) {
                 window_place_button(game_options_window, btn_words_difficulty_switch, 75, 75);
                 button_render(context->renderer, btn_words_difficulty_switch);
             }
+
+            // Affichage du texte label du nombre d'assassins
+            if (txt_nb_assassin_label) {
+                const char* nb_assassin_text = "Nombre d'assassins :";
+                update_text(context, txt_nb_assassin_label, nb_assassin_text);
+                window_place_text(game_options_window, txt_nb_assassin_label, -55, 15);
+                display_text(context, txt_nb_assassin_label);
+            }
+
+            // Affichage du bouton switch du nombre d'assassins
+            if (btn_nb_assassin_switch) {
+                switch (context->lobby->nb_assassins) {
+                    case 1:
+                        button_edit_cfg(btn_nb_assassin_switch, BTN_CFG_TEXT, (intptr_t)"1");
+                        break;
+                    case 2:
+                        button_edit_cfg(btn_nb_assassin_switch, BTN_CFG_TEXT, (intptr_t)"2");
+                        break;
+                    case 3:
+                        button_edit_cfg(btn_nb_assassin_switch, BTN_CFG_TEXT, (intptr_t)"3");
+                        break;
+                }
+                window_place_button(game_options_window, btn_nb_assassin_switch, 110, 15);
+                button_render(context->renderer, btn_nb_assassin_switch);
+
+            }
         }
     }
 
@@ -675,6 +734,7 @@ void lobby_handle_event(AppContext* context, SDL_Event* e) {
     if (btn_launch_game) button_handle_event(context, btn_launch_game, e);
     if (btn_return) button_handle_event(context, btn_return, e);
     if (btn_words_difficulty_switch) button_handle_event(context, btn_words_difficulty_switch, e);
+    if (btn_nb_assassin_switch) button_handle_event(context, btn_nb_assassin_switch, e);
 
     if (role_none_window) window_handle_event(context, role_none_window, e);
     if (role_red_agent_window) window_handle_event(context, role_red_agent_window, e);
@@ -797,6 +857,7 @@ int lobby_free(){
     if (btn_launch_game) { button_destroy(btn_launch_game); btn_launch_game = NULL; }
     if (btn_return)     { button_destroy(btn_return);     btn_return = NULL; }
     if (btn_words_difficulty_switch) { button_destroy(btn_words_difficulty_switch); btn_words_difficulty_switch = NULL; }
+    if (btn_nb_assassin_switch) { button_destroy(btn_nb_assassin_switch); btn_nb_assassin_switch = NULL; }
 
     if (role_none_window) { window_destroy(role_none_window); role_none_window = NULL; }
     if (role_red_agent_window) { window_destroy(role_red_agent_window); role_red_agent_window = NULL; }
@@ -814,6 +875,7 @@ int lobby_free(){
     destroy_text(txt_lobby_info); txt_lobby_info = NULL;
     destroy_text(txt_no_role_label); txt_no_role_label = NULL;
     destroy_text(txt_difficulty_label); txt_difficulty_label = NULL;
+    destroy_text(txt_nb_assassin_label); txt_nb_assassin_label = NULL;
     
     for (int i = 0; i < MAX_PLAYER_TEXTS; i++) {
         destroy_text(txt_player_names[i]);

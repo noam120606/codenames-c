@@ -50,6 +50,7 @@ typedef struct Lobby {
     Game* game;
     Chat chat;
     WordsDifficulty words_difficulty;
+    int nb_assassins;
 } Lobby;
 
 /** 
