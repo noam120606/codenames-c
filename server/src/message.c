@@ -41,6 +41,7 @@ int on_message(Codenames* codenames, TcpClient* client, char* message) {
         case MSG_CHOOSE_ROLE: return request_choose_role(codenames, client, message, args);
         case MSG_STARTGAME: return request_start_game(codenames, client, message, args);
         case MSG_SUBMIT_HINT: return request_submit_hint(codenames, client, message, args);
+        case MSG_PREGUESS: return request_preguess(codenames, client, message, args);
         case MSG_GUESS_CARD: return request_guess_card(codenames, client, message, args);
         case MSG_SET_WORDS_DIFFICULTY: return request_set_words_difficulty(codenames, client, message, args);
 
