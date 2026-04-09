@@ -41,6 +41,7 @@ static Text* txt_red_agents_label = NULL;
 
 static Text* txt_turn_label = NULL;
 static Text* txt_hint_display = NULL;
+static Text* txt_endGame = NULL;
 
 /* Textes pour les noms de joueurs (max 8 par équipe) */
 #define MAX_TEAM_PLAYERS 8
@@ -393,6 +394,9 @@ int game_init(AppContext * context) {
 
     txt_hint_display = init_text(context, "", 
         create_text_config(FONT_LARABIE, 32, COL_WHITE, 0, 0, 0, 255));
+
+    txt_endGame = init_text(context, "", 
+        create_text_config(FONT_LARABIE, 28, COL_WHITE, 0, 0, 0, 255));
 
     /* Textes pour les noms de joueurs */
     for (int i = 0; i < MAX_TEAM_PLAYERS; i++) {
@@ -947,23 +951,48 @@ void game_display(AppContext * context) {
                 } else {
                     update_text_color(context, txt_hint_display, TEAM_RED_COLOR);
                 }
+                window_place_text(hint_window, txt_hint_display, 0, 0);
+                display_text(context, txt_hint_display);
                 // Affichage des noms des joueurs gagnants juste en dessous du message de fin de partie
-                char winners_text[256] = "Bravo aux gagnants : ";
+                char winners_text[256];
+                int winners_text_offset = format_to(winners_text, sizeof(winners_text), "Bravo aux gagnants : ");
+                if (winners_text_offset < 0) winners_text_offset = 0;
                 int winner_count = 0;
                 for (int i = 0; i < context->lobby->nb_players && i < MAX_USERS; i++) {
                     User* u = context->lobby->users[i];
                     if (!u || u->team != context->lobby->game->winner) continue;
-                    if (winner_count > 0) {
-                        strncat(winners_text, " - ", sizeof(winners_text) - strlen(winners_text) - 1);
+
+                    if (winners_text_offset < (int)sizeof(winners_text) - 1) {
+                        size_t remaining = sizeof(winners_text) - (size_t)winners_text_offset;
+                        int written = format_to(
+                            winners_text + winners_text_offset,
+                            remaining,
+                            "%s%s",
+                            winner_count > 0 ? " - " : "",
+                            u->name ? u->name : "???"
+                        );
+                        if (written < 0) {
+                            break;
+                        }
+                        if ((size_t)written >= remaining) {
+                            winners_text_offset = (int)sizeof(winners_text) - 1;
+                        } else {
+                            winners_text_offset += written;
+                        }
                     }
-                    strncat(winners_text, u->name ? u->name : "???", sizeof(winners_text) - strlen(winners_text) - 1);
+
                     winner_count++;
+                }
+                if (winner_count == 0) {
+                    format_to(winners_text, sizeof(winners_text), "Bravo aux gagnants : ???");
                 }
                 window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)"La partie est terminée !");
                 window_place_button(hint_window, btn_return_lobby, 450, 0);
                 button_render(context->renderer, btn_return_lobby);
-
-                display_text(context, txt_hint_display);
+                // Affichage du message des gagnants
+                update_text(context, txt_endGame, winners_text);
+                window_place_text(hint_window, txt_endGame, 0, -32);
+                display_text(context, txt_endGame);
             } else {
                 /* Affichage du tour seulement */
                 update_text(context, txt_turn_label, turn_text);
