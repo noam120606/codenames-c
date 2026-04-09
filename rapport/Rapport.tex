@@ -480,7 +480,14 @@
 
         Durant la partie, les équipes joueront à tour de rôle, les premiers à jouer auront donc un mot de plus à révelérer que les autres.
         Les espions sont toujours les premiers à jouer, ils choisissent un mot et un nombre pour donner un indice à leur équipe, le serveur vérifie la validité de l'indice avant de le transmettre aux clients.
-        Ensuite, les agents peuvent proposer des mots en fonction de l'indice donné, le serveur applique les conséquences de chaque choix (bon mot, mot neutre, mot adverse, assassin) et met à jour l'état de la partie en conséquence.
+        Ensuite, les agents peuvent proposer des mots en fonction de l'indice donné.
+        Une fois validé, chaque mot est envoyé au serveur qui applique les conséquences de chaque choix.
+        \begin{itemize}
+            \item Si le mot appartient à l'équipe, il est recouvert par la bonne couleur et les agents peuvent continuer à jouer.
+            \item Si le mot est neutre, il est recouvert par une couleur neutre et le tour de l'équipe est stoppé.
+            \item Si le mot appartient à l'équipe adverse, il est recouvert de leur couleur et le tour de l'équipe est stoppé.
+            \item Si le mot est l'assassin, l'équipe perd immédiatement la partie.
+        \end{itemize}
         La partie continue jusqu'à ce qu'une équipe trouve tous ses mots ou que l'assassin soit révélé, entraînant la défaite immédiate de l'équipe concernée.
 
     \newpage
