@@ -150,12 +150,12 @@ void shuffleWords(Word* words, int count) { // Mélange les cartes auxquelles so
 
 int destroy_game(Game* game) {
     if (!game) return EXIT_FAILURE;
+
     if (game->words) {
-        for (int i = 0; i < game->nb_words; i++) {
-            free(game->words[i].word);
-        }
         free(game->words);
+        game->words = NULL;
     }
+
     free(game);
     return EXIT_SUCCESS;
 }
@@ -184,6 +184,11 @@ int request_start_game(Codenames* codenames, TcpClient* client, char* message, A
     }
 
     // Démarre le jeu
+    if (lobby->game) {
+        destroy_game(lobby->game);
+        lobby->game = NULL;
+    }
+
     lobby->status = LB_STATUS_IN_GAME;
     printf("Game started in lobby %d\n", lobby->id);
 
@@ -206,6 +211,7 @@ int request_start_game(Codenames* codenames, TcpClient* client, char* message, A
 
     game->nb_words = 25;
     game->state = start_team == TEAM_RED ? GAMESTATE_TURN_RED_SPY : GAMESTATE_TURN_BLUE_SPY;
+    game->can_guess = 0;
     lobby->game = game;
 
     // Envoi de la partie aux joueurs
@@ -466,6 +472,12 @@ int request_guess_card(Codenames* codenames, TcpClient* client, char* message, A
         winner = TEAM_BLUE;
     }
     lobby->game->state = new_state;
+
+    if (new_state == GAMESTATE_ENDED) {
+        lobby->status = LB_STATUS_WAITING;
+        lobby->game->can_guess = 0;
+        printf("Lobby %d returned to waiting state after end of game\n", lobby->id);
+    }
 
     printf("Game state changed to %d in lobby %d\n", new_state, lobby->id);
 

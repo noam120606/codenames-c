@@ -556,18 +556,35 @@ int on_message(AppContext* context, char* message) {
                 return EXIT_FAILURE;
             }
 
+            int sender_id = -1;
+            int message_start = 1;
             char* sender = (char*)args.argv[0];
+
+            if (args.argc >= 3) {
+                char* id_end = NULL;
+                long parsed_id = strtol((char*)args.argv[0], &id_end, 10);
+                if (id_end && *id_end == '\0' && parsed_id >= 0 && parsed_id <= 2147483647L) {
+                    sender_id = (int)parsed_id;
+                    sender = (char*)args.argv[1];
+                    message_start = 2;
+                }
+            }
+
             char chat_message[448];
             chat_message[0] = '\0';
-            for (int i = 1; i < args.argc; i++) {
-                if (i > 1) {
+            for (int i = message_start; i < args.argc; i++) {
+                if (i > message_start) {
                     strncat(chat_message, " ", sizeof(chat_message) - strlen(chat_message) - 1);
                 }
                 strncat(chat_message, (char*)args.argv[i], sizeof(chat_message) - strlen(chat_message) - 1);
             }
 
             char full_message[512];
-            format_to(full_message, sizeof(full_message), "%s : %s", sender, chat_message);
+            if (sender_id >= 0) {
+                format_to(full_message, sizeof(full_message), "%d|%s : %s", sender_id, sender, chat_message);
+            } else {
+                format_to(full_message, sizeof(full_message), "%s : %s", sender, chat_message);
+            }
             if (chat_push(&context->lobby->chat, full_message) != EXIT_SUCCESS) {
                 printf("Failed to store chat message in lobby history\n");
             }

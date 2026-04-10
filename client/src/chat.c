@@ -37,21 +37,54 @@ static void free_chat_message(void* data) {
 	free(data);
 }
 
-static Team chat_find_team_by_player_name(const AppContext* context, const char* player_name) {
-	if (!context || !player_name || player_name[0] == '\0') return TEAM_NONE;
+static Team chat_find_team_by_sender(const AppContext* context, int sender_id, const char* player_name) {
+	if (!context) return TEAM_NONE;
+
+	if (sender_id >= 0) {
+		if (context->player_id == sender_id) {
+			return context->player_team;
+		}
+
+		if (!context->lobby) return TEAM_NONE;
+
+		for (int i = 0; i < MAX_USERS; i++) {
+			User* user = context->lobby->users[i];
+			if (!user) continue;
+			if (user->id == sender_id) {
+				return user->team;
+			}
+		}
+
+		return TEAM_NONE;
+	}
+
+	if (!player_name || player_name[0] == '\0') return TEAM_NONE;
+
+	if (context->lobby) {
+		Team resolved_team = TEAM_NONE;
+		int found = 0;
+
+		for (int i = 0; i < MAX_USERS; i++) {
+			User* user = context->lobby->users[i];
+			if (!user || !user->name) continue;
+			if (strcmp(user->name, player_name) != 0) continue;
+
+			if (!found) {
+				resolved_team = user->team;
+				found = 1;
+			} else if (resolved_team != user->team) {
+				/* Nom non unique avec equipes differentes: impossible de colorer sans id fiable. */
+				return TEAM_NONE;
+			}
+		}
+
+		if (found) {
+			return resolved_team;
+		}
+	}
 
 	if (context->player_name && strcmp(context->player_name, player_name) == 0) {
 		return context->player_team;
-	}
-
-	if (!context->lobby) return TEAM_NONE;
-
-	for (int i = 0; i < MAX_USERS; i++) {
-		User* user = context->lobby->users[i];
-		if (!user || !user->name) continue;
-		if (strcmp(user->name, player_name) == 0) {
-			return user->team;
-		}
 	}
 
 	return TEAM_NONE;
@@ -68,20 +101,34 @@ static SDL_Color chat_team_to_color(Team team) {
 	}
 }
 
-static int chat_extract_sender_prefix(const char* line, char* sender, int sender_size, int* prefix_len) {
-	if (!line || !sender || sender_size <= 1 || !prefix_len) return EXIT_FAILURE;
+static int chat_extract_sender_prefix(const char* line, char* sender, int sender_size, int* prefix_len, int* sender_id, int* sender_visible_offset) {
+	if (!line || !sender || sender_size <= 1 || !prefix_len || !sender_id || !sender_visible_offset) return EXIT_FAILURE;
 
-	const char* separator = strstr(line, " : ");
-	if (!separator || separator <= line) return EXIT_FAILURE;
+	*sender_id = -1;
+	*sender_visible_offset = 0;
 
-	int sender_len = (int)(separator - line);
+	const char* sender_start = line;
+	if (isdigit((unsigned char)line[0])) {
+		char* id_end = NULL;
+		long parsed_id = strtol(line, &id_end, 10);
+		if (id_end && id_end > line && *id_end == '|' && parsed_id >= 0 && parsed_id <= 2147483647L) {
+			*sender_id = (int)parsed_id;
+			sender_start = id_end + 1;
+			*sender_visible_offset = (int)(sender_start - line);
+		}
+	}
+
+	const char* separator = strstr(sender_start, " : ");
+	if (!separator || separator <= sender_start) return EXIT_FAILURE;
+
+	int sender_len = (int)(separator - sender_start);
 	if (sender_len <= 0 || sender_len >= sender_size) return EXIT_FAILURE;
 
-	memcpy(sender, line, (size_t)sender_len);
+	memcpy(sender, sender_start, (size_t)sender_len);
 	sender[sender_len] = '\0';
 
-	// Inclut " :" pour colorer le pseudo et son séparateur immédiat.
-	*prefix_len = sender_len + 2;
+	/* Inclut " : " pour colorer le pseudo et son separateur immediat. */
+	*prefix_len = sender_len + 3;
 	return EXIT_SUCCESS;
 }
 
@@ -450,18 +497,15 @@ void chat_render_messages(AppContext* context, Window* chat_window, Text** chat_
 		if (colored_prefix) {
 			char sender_name[CHAT_LINE_SIZE];
 			int prefix_len = 0;
-			if (chat_extract_sender_prefix(safe_line, sender_name, CHAT_LINE_SIZE, &prefix_len) == EXIT_SUCCESS) {
-				Team sender_team = chat_find_team_by_player_name(context, sender_name);
+			int sender_id = -1;
+			int sender_visible_offset = 0;
+			if (chat_extract_sender_prefix(safe_line, sender_name, CHAT_LINE_SIZE, &prefix_len, &sender_id, &sender_visible_offset) == EXIT_SUCCESS) {
+				Team sender_team = chat_find_team_by_sender(context, sender_id, sender_name);
 				if (sender_team == TEAM_RED || sender_team == TEAM_BLUE) {
-					if (prefix_len >= CHAT_LINE_SIZE) {
-						prefix_len = CHAT_LINE_SIZE - 1;
-					}
-
 					char prefix_text[CHAT_LINE_SIZE];
-					memcpy(prefix_text, safe_line, (size_t)prefix_len);
-					prefix_text[prefix_len] = '\0';
+					format_to(prefix_text, sizeof(prefix_text), "%s : ", sender_name);
 
-					white_line = safe_line + prefix_len;
+					white_line = safe_line + sender_visible_offset + prefix_len;
 					if (!white_line || white_line[0] == '\0') {
 						white_line = " ";
 					}
