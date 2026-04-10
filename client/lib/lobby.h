@@ -7,22 +7,17 @@
 #define LOBBY_H
 
 #include "../SDL2/include/SDL2/SDL.h"
-#include "../SDL2/include/SDL2/SDL_image.h"
-#include "../SDL2/include/SDL2/SDL_ttf.h"
 
 typedef struct AppContext AppContext;
-typedef struct Window Window;
 
-#include "../lib/button.h"
-#include "../lib/user.h"
 #include "../lib/chat.h"
-
+#include "../lib/user.h"
 
 #define MAX_LOBBIES 50
 #define MAX_USERS 8
 
 /**
- * Niveaux de difficulté des mots.
+ * Niveaux de difficulté des mots pour la génération de la grille.
  * @param WORDS_DIFFICULTY_NORMAL Difficulté normale (wordlist.txt).
  * @param WORDS_DIFFICULTY_HARD Difficulté difficile (wordlist_hard.txt).
  * @param WORDS_DIFFICULTY_INFO Difficulté informative (wordlist_info.txt).
@@ -36,7 +31,8 @@ typedef enum WordsDifficulty {
 } WordsDifficulty;
 
 /**
- * Nombre d'assassins.
+ * Nombre d'assassins disponibles pour la partie.
+ * Conservé pour documenter les valeurs attendues côté UI/réseau.
  * @param NUMBER_OF_ASSASSINS_1 Un assassin.
  * @param NUMBER_OF_ASSASSINS_2 Deux assassins.
  * @param NUMBER_OF_ASSASSINS_3 Trois assassins.
@@ -61,7 +57,7 @@ typedef enum LobbyStatus {
  * Représente un lobby de jeu.
  * @param id identifiant unique du lobby.
  * @param owner_id identifiant du joueur propriétaire du lobby.
- * @param code code d'accès au lobby (généré aléatoirement).
+ * @param code code d'accès au lobby (5 caractères + '\0').
  * @param status état courant du lobby (LB_STATUS_*).
  * @param users tableau de pointeurs vers les joueurs présents.
  * @param nb_players nombre de joueurs actuellement connectés.
@@ -84,16 +80,16 @@ typedef struct Lobby {
 } Lobby;
 
 /**
- * Initialise la structure d'un lobby.
+ * Initialise/réinitialise la structure d'un lobby.
  * @param lobby Pointeur vers le lobby à initialiser.
  * @param id Identifiant du lobby.
- * @param code Code d'accès au lobby.
+ * @param code Code d'accès au lobby (chaîne vide possible).
  * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE sinon.
  */
 int struct_lobby_init(Lobby* lobby, int id, const char* code);
 
 /**
- * Initialise le lobby.
+ * Initialise les ressources graphiques et UI du lobby.
  * @param context Contexte SDL.
  * @return 0 en cas de succès, un code d'erreur sinon.
  */
@@ -106,47 +102,17 @@ int lobby_init(AppContext* context);
 int lobby_free();
 
 /**
- * Gère les événements du lobby (boutons, windows, etc.).
+ * Gère les événements du lobby (boutons, fenêtres, scroll, etc.).
  * @param context Contexte SDL.
  * @param event Événement SDL à traiter.
  */
 void lobby_handle_event(AppContext* context, SDL_Event* event);
 
 /**
- * Affiche le lobby.
+ * Affiche l'interface complète du lobby.
  * @param context Contexte SDL.
  */
 void lobby_display(AppContext* context);
-
-/**
- * Affiche les joueurs dans les sections du lobby.
- * @param context Contexte SDL.
- * @param user Utilisateur dont l'icône doit être affichée.
- * @param nb_none Nombre de joueurs sans équipe.
- * @param i_none Indice du joueur sans équipe.
- * @param nb_red_spy Nombre de joueurs de l'équipe rouge (espions).
- * @param i_red_spy Indice du joueur espion rouge.
- * @param nb_red_agent Nombre de joueurs de l'équipe rouge (agents).
- * @param i_red_agent Indice du joueur agent rouge.
- * @param nb_blue_spy Nombre de joueurs de l'équipe bleue (espions).
- * @param i_blue_spy Indice du joueur espion bleu.
- * @param nb_blue_agent Nombre de joueurs de l'équipe bleue (agents).
- * @param i_blue_agent Indice du joueur agent bleu.
- */
-void player_display(AppContext* context, User* user, int nb_none, int i_none, int nb_red_spy, int i_red_spy, int nb_red_agent, int i_red_agent, int nb_blue_spy, int i_blue_spy, int nb_blue_agent, int i_blue_agent);
-
-/**
- * Positionne l'icône et le pseudo d'un joueur.
- * @param context Contexte SDL.
- * @param user Utilisateur dont l'icône doit être positionnée.
- * @param icon Texture de l'icône à afficher.
- * @param target_window Fenêtre cible de rendu (positionnement relatif).
- * @param nb_player Nombre de joueurs de ce type.
- * @param i_player Indice du joueur de ce type.
- * @param base_rel_x Position de base en X relative au centre de la fenêtre.
- * @param base_rel_y Position de base en Y relative au centre de la fenêtre.
- */
-void player_icon_pos(AppContext* context, User* user, SDL_Texture* icon, Window* target_window, int nb_player, int i_player, int base_rel_x, int base_rel_y);
 
 /**
  * Cherche le nom d'un joueur dans un lobby par son identifiant.

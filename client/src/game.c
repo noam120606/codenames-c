@@ -1,23 +1,24 @@
 #include "../lib/all.h"
 
-Button* btn_quit_game = NULL;
-Button* btn_hint_submit = NULL;
-Button* btn_return_lobby = NULL;
+/* Ressources UI du module jeu */
+static Button* btn_quit_game = NULL;
+static Button* btn_hint_submit = NULL;
+static Button* btn_return_lobby = NULL;
 
-Input* hint_input = NULL;
-Input* hint_count_input = NULL;
-Input* chat_input = NULL;
+static Input* hint_input = NULL;
+static Input* hint_count_input = NULL;
+static Input* chat_input = NULL;
 
 static const char* HINT_INPUT_PLACEHOLDERS[] = {"Entrez un mot indice"};
 static const char* HINT_COUNT_INPUT_PLACEHOLDERS[] = {"1","2","3"};
 static const char* CHAT_INPUT_PLACEHOLDERS[] = {"Chattez ici ..."};
 
-Window* blue_panel = NULL;
-Window* red_panel = NULL;
-Window* history_window_blue = NULL;
-Window* history_window_red = NULL;
-Window* hint_window = NULL;
-Window* chat_window = NULL;
+static Window* blue_panel = NULL;
+static Window* red_panel = NULL;
+static Window* history_window_blue = NULL;
+static Window* history_window_red = NULL;
+static Window* hint_window = NULL;
+static Window* chat_window = NULL;
 
 /* Utilisation des icônes déjà chargées dans lobby.c */
 extern SDL_Texture* player_icon_red;
@@ -72,6 +73,23 @@ static Game* game_get_active_game(AppContext* context) {
 static GameHintBarState* game_get_hint_bar_state(AppContext* context) {
     Game* game = game_get_active_game(context);
     return game ? &game->hint_bar : NULL;
+}
+
+static int game_has_active_match(const AppContext* context) {
+    return context && context->lobby && context->lobby->game;
+}
+
+static int game_has_hint(const Game* game) {
+    return game && game->current_hint[0] != '\0' && game->current_hint_count > 0;
+}
+
+static int game_should_show_hint_to_player(const AppContext* context, const Game* game) {
+    if (!context || !game || !game_has_hint(game)) return 0;
+
+    return (
+        (game->state == GAMESTATE_TURN_BLUE_AGENT && (context->player_team == TEAM_RED || context->player_role == ROLE_AGENT)) ||
+        (game->state == GAMESTATE_TURN_RED_AGENT && (context->player_team == TEAM_BLUE || context->player_role == ROLE_AGENT))
+    );
 }
 
 static void game_hint_bar_write_message(GameHintBarMessage* message, const char* text, SDL_Color color, int priority, Uint32 expire_at_ms, int active) {
@@ -222,13 +240,7 @@ static void game_hint_bar_update_context(AppContext* context) {
             break;
     }
 
-    int has_hint = (game->current_hint[0] != '\0' && game->current_hint_count > 0);
-    int show_hint_for_agents_or_opponents = has_hint && (
-        (game->state == GAMESTATE_TURN_BLUE_AGENT && (context->player_team == TEAM_RED || context->player_role == ROLE_AGENT)) ||
-        (game->state == GAMESTATE_TURN_RED_AGENT && (context->player_team == TEAM_BLUE || context->player_role == ROLE_AGENT))
-    );
-
-    if (show_hint_for_agents_or_opponents) {
+    if (game_should_show_hint_to_player(context, game)) {
         context_title = "L'indice est :";
         context_color = (game->state == GAMESTATE_TURN_BLUE_AGENT) ? TEAM_BLUE_COLOR : TEAM_RED_COLOR;
     }
@@ -425,6 +437,8 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
 }
 
 int my_turn(AppContext* context) {
+    if (!game_has_active_match(context)) return 0;
+
     switch (context->player_role) {
         case ROLE_SPY: return context->lobby->game->state == (context->player_team == TEAM_RED ? GAMESTATE_TURN_RED_SPY : GAMESTATE_TURN_BLUE_SPY);
         case ROLE_AGENT: return context->lobby->game->state == (context->player_team == TEAM_RED ? GAMESTATE_TURN_RED_AGENT : GAMESTATE_TURN_BLUE_AGENT);
@@ -444,16 +458,13 @@ void game_handle_event(AppContext* context, SDL_Event* e) {
     if (!context || !e) return;
 
     // Déterminer les éléments à gérer en fonction de l'état du jeu et du rôle du joueur
-    int has_game = (context->lobby && context->lobby->game);
+    Game* game = game_get_active_game(context);
+    int has_game = (game != NULL);
     int is_my_turn = has_game ? my_turn(context) : 0;
     int show_spy_hint_controls = (context->player_role == ROLE_SPY && is_my_turn);
-    int has_hint = has_game && (context->lobby->game->current_hint[0] != '\0' && context->lobby->game->current_hint_count > 0);
-    int show_hint_for_agents_or_opponents = has_game && has_hint && (
-        (context->lobby->game->state == GAMESTATE_TURN_BLUE_AGENT && (context->player_team == TEAM_RED || context->player_role == ROLE_AGENT)) ||
-        (context->lobby->game->state == GAMESTATE_TURN_RED_AGENT && (context->player_team == TEAM_BLUE || context->player_role == ROLE_AGENT))
-    );
+    int show_hint_for_agents_or_opponents = has_game && game_should_show_hint_to_player(context, game);
     int show_agent_hint_button = (show_hint_for_agents_or_opponents && context->player_role == ROLE_AGENT && is_my_turn);
-    int show_return_lobby_button = (has_game && context->lobby->game->state == GAMESTATE_ENDED);
+    int show_return_lobby_button = (has_game && game->state == GAMESTATE_ENDED);
 
     if (btn_quit_game) button_handle_event(context, btn_quit_game, e);
     if (btn_hint_submit && (show_spy_hint_controls || show_agent_hint_button)) button_handle_event(context, btn_hint_submit, e);
@@ -902,6 +913,7 @@ static void render_team_panel_content(AppContext* context, Window* panel, Team t
     TeamPanelMember agent_members[MAX_TEAM_PLAYERS] = {0};
     int spy_count = 0;
     int agent_count = 0;
+    int local_player_injected = 0;
 
     update_text(context, txt_spy_label, "Espions :");
     window_place_text(panel, txt_spy_label, 0, -25);
@@ -918,11 +930,13 @@ static void render_team_panel_content(AppContext* context, Window* panel, Team t
     if (context->player_team == team) {
         const char* local_name = context->player_name ? context->player_name : "Moi";
         add_member_to_panel_group(player_texts, player_index, spy_members, &spy_count, agent_members, &agent_count, context->player_role, local_name);
+        local_player_injected = 1;
     }
 
-    for (int i = 0; i < context->lobby->nb_players && i < MAX_USERS; i++) {
+    for (int i = 0; i < MAX_USERS; i++) {
         User* u = context->lobby->users[i];
         if (!u || u->team != team) continue;
+        if (local_player_injected && context->player_id >= 0 && u->id == context->player_id) continue;
 
         add_member_to_panel_group(player_texts, player_index, spy_members, &spy_count, agent_members, &agent_count, u->role, u->name ? u->name : "???");
     }
@@ -1082,6 +1096,9 @@ static void game_render_team_history(AppContext* context, Window* history_window
 }
 
 void game_display(AppContext * context) {
+    if (!context) return;
+
+    Game* game = game_get_active_game(context);
 
     if (!audio_is_playing(MUSIC_GAME)) {
         audio_play_with_fade(MUSIC_GAME, -1, 1500, AUDIO_FADE_IN_BY_VOLUME, NULL);
@@ -1106,14 +1123,14 @@ void game_display(AppContext * context) {
     }
     if (history_window_blue) {
         window_render(context->renderer, history_window_blue);
-        if (context->lobby && context->lobby->game) {
-            game_render_team_history(context, history_window_blue, &context->lobby->game->blue_history, txt_history_blue_lines, txt_history_blue_prefix_lines, &history_cache_blue);
+        if (game) {
+            game_render_team_history(context, history_window_blue, &game->blue_history, txt_history_blue_lines, txt_history_blue_prefix_lines, &history_cache_blue);
         }
     }
     if (history_window_red) {
         window_render(context->renderer, history_window_red);
-        if (context->lobby && context->lobby->game) {
-            game_render_team_history(context, history_window_red, &context->lobby->game->red_history, txt_history_red_lines, txt_history_red_prefix_lines, &history_cache_red);
+        if (game) {
+            game_render_team_history(context, history_window_red, &game->red_history, txt_history_red_lines, txt_history_red_prefix_lines, &history_cache_red);
         }
     }
 
@@ -1122,160 +1139,159 @@ void game_display(AppContext * context) {
         game_hint_bar_apply(context);
         window_render(context->renderer, hint_window);
 
-        const char* turn_text = "";
-        SDL_Color color_text = COL_GRAY;
+        if (game) {
+            const char* turn_text = "";
+            SDL_Color color_text = COL_GRAY;
 
-        switch (context->lobby->game->state) {
-            case GAMESTATE_TURN_BLUE_SPY:
-                turn_text = "Tour de l'espion bleu";
-                color_text = TEAM_BLUE_COLOR;
-                break;
-            case GAMESTATE_TURN_BLUE_AGENT:
-                turn_text = "Tour de l'agent bleu";
-                color_text = TEAM_BLUE_COLOR;
-                break;
-            case GAMESTATE_TURN_RED_SPY:
-                turn_text = "Tour de l'espion rouge";
-                color_text = TEAM_RED_COLOR;
-                break;
-            case GAMESTATE_TURN_RED_AGENT:
-                turn_text = "Tour de l'agent rouge";
-                color_text = TEAM_RED_COLOR;
-                break;
-            default:
-                turn_text = "Phase de préparation ou partie terminée";
-                break;
-        }
+            switch (game->state) {
+                case GAMESTATE_TURN_BLUE_SPY:
+                    turn_text = "Tour de l'espion bleu";
+                    color_text = TEAM_BLUE_COLOR;
+                    break;
+                case GAMESTATE_TURN_BLUE_AGENT:
+                    turn_text = "Tour de l'agent bleu";
+                    color_text = TEAM_BLUE_COLOR;
+                    break;
+                case GAMESTATE_TURN_RED_SPY:
+                    turn_text = "Tour de l'espion rouge";
+                    color_text = TEAM_RED_COLOR;
+                    break;
+                case GAMESTATE_TURN_RED_AGENT:
+                    turn_text = "Tour de l'agent rouge";
+                    color_text = TEAM_RED_COLOR;
+                    break;
+                default:
+                    turn_text = "Phase de préparation ou partie terminée";
+                    break;
+            }
 
-        if (context->player_role == ROLE_SPY && my_turn(context)) {
-            if (hint_input) {
-                window_place_input(hint_window, hint_input, -70, -15);
-                input_render(context->renderer, hint_input);
-            }
-            if (hint_count_input) {
-                window_place_input(hint_window, hint_count_input, 215, -15);
-                input_render(context->renderer, hint_count_input);
-            }
-            if (btn_hint_submit) {
-                window_place_button(hint_window, btn_hint_submit, 285, -15);
-                button_render(context->renderer, btn_hint_submit);
-            }
-        } else {
-            /* Affichage du tour et de l'indice si disponible */
-            int has_hint = (context->lobby->game->current_hint[0] != '\0' && context->lobby->game->current_hint_count > 0);
-            
-            if (has_hint && (
-                (context->lobby->game->state == GAMESTATE_TURN_BLUE_AGENT && (context->player_team == TEAM_RED || context->player_role == ROLE_AGENT)) ||
-                (context->lobby->game->state == GAMESTATE_TURN_RED_AGENT && (context->player_team == TEAM_BLUE || context->player_role == ROLE_AGENT))
-                )
-            ) {
-                /* Affichage de l'indice en grand */
-                char hint_text[128];
-                format_to(hint_text, sizeof(hint_text), "%s (%d)", 
-                    context->lobby->game->current_hint, 
-                    context->lobby->game->current_hint_count);
-                update_text(context, txt_hint_display, hint_text);
-                update_text_color(context, txt_hint_display, COL_WHITE);
-                window_place_text(hint_window, txt_hint_display, 0, -16);
-                display_text(context, txt_hint_display);
-
-                if (context->player_role == ROLE_AGENT && my_turn(context)) {
-                    if (btn_hint_submit) {
-                        window_place_button(hint_window, btn_hint_submit, 285, -15);
-                        button_render(context->renderer, btn_hint_submit);
-                    }
+            if (context->player_role == ROLE_SPY && my_turn(context)) {
+                if (hint_input) {
+                    window_place_input(hint_window, hint_input, -70, -15);
+                    input_render(context->renderer, hint_input);
                 }
-            } else if (context->lobby->game->state == GAMESTATE_ENDED) {
-                // Affichage du message de fin de partie
-                char endGame_text[128];
-                format_to(endGame_text, sizeof(endGame_text), "L'équipe %s a gagné !", context->lobby->game->winner == TEAM_BLUE ? "bleue" : "rouge");
-                update_text(context, txt_hint_display, endGame_text);
-                if (context->lobby->game->winner == TEAM_BLUE) {
-                    update_text_color(context, txt_hint_display, TEAM_BLUE_COLOR);
-                } else {
-                    update_text_color(context, txt_hint_display, TEAM_RED_COLOR);
+                if (hint_count_input) {
+                    window_place_input(hint_window, hint_count_input, 215, -15);
+                    input_render(context->renderer, hint_count_input);
                 }
-                window_place_text(hint_window, txt_hint_display, 0, 0);
-                display_text(context, txt_hint_display);
-                // Affichage des noms des joueurs gagnants juste en dessous du message de fin de partie
-                char winners_text[256];
-                int winners_text_offset = format_to(winners_text, sizeof(winners_text), "Bravo aux gagnants : ");
-                if (winners_text_offset < 0) winners_text_offset = 0;
-                int winner_count = 0;
-                int local_winner_already_listed = 0;
-                for (int i = 0; i < context->lobby->nb_players && i < MAX_USERS; i++) {
-                    User* u = context->lobby->users[i];
-                    if (!u || u->team != context->lobby->game->winner) continue;
+                if (btn_hint_submit) {
+                    window_place_button(hint_window, btn_hint_submit, 285, -15);
+                    button_render(context->renderer, btn_hint_submit);
+                }
+            } else {
+                /* Affichage du tour et de l'indice si disponible */
+                int has_hint = game_has_hint(game);
 
-                    if (context->player_name && u->name && strcmp(context->player_name, u->name) == 0) {
-                        local_winner_already_listed = 1;
-                    }
+                if (has_hint && game_should_show_hint_to_player(context, game)) {
+                    /* Affichage de l'indice en grand */
+                    char hint_text[128];
+                    format_to(hint_text, sizeof(hint_text), "%s (%d)",
+                        game->current_hint,
+                        game->current_hint_count);
+                    update_text(context, txt_hint_display, hint_text);
+                    update_text_color(context, txt_hint_display, COL_WHITE);
+                    window_place_text(hint_window, txt_hint_display, 0, -16);
+                    display_text(context, txt_hint_display);
 
-                    if (winners_text_offset < (int)sizeof(winners_text) - 1) {
-                        size_t remaining = sizeof(winners_text) - (size_t)winners_text_offset;
-                        int written = format_to(
-                            winners_text + winners_text_offset,
-                            remaining,
-                            "%s%s",
-                            winner_count > 0 ? " - " : "",
-                            u->name ? u->name : "???"
-                        );
-                        if (written < 0) {
-                            break;
-                        }
-                        if ((size_t)written >= remaining) {
-                            winners_text_offset = (int)sizeof(winners_text) - 1;
-                        } else {
-                            winners_text_offset += written;
+                    if (context->player_role == ROLE_AGENT && my_turn(context)) {
+                        if (btn_hint_submit) {
+                            window_place_button(hint_window, btn_hint_submit, 285, -15);
+                            button_render(context->renderer, btn_hint_submit);
                         }
                     }
+                } else if (game->state == GAMESTATE_ENDED) {
+                    // Affichage du message de fin de partie
+                    char endGame_text[128];
+                    format_to(endGame_text, sizeof(endGame_text), "L'équipe %s a gagné !", game->winner == TEAM_BLUE ? "bleue" : "rouge");
+                    update_text(context, txt_hint_display, endGame_text);
+                    if (game->winner == TEAM_BLUE) {
+                        update_text_color(context, txt_hint_display, TEAM_BLUE_COLOR);
+                    } else {
+                        update_text_color(context, txt_hint_display, TEAM_RED_COLOR);
+                    }
+                    window_place_text(hint_window, txt_hint_display, 0, 0);
+                    display_text(context, txt_hint_display);
+                    // Affichage des noms des joueurs gagnants juste en dessous du message de fin de partie
+                    char winners_text[256];
+                    int winners_text_offset = format_to(winners_text, sizeof(winners_text), "Bravo aux gagnants : ");
+                    if (winners_text_offset < 0) winners_text_offset = 0;
+                    int winner_count = 0;
+                    int local_winner_already_listed = 0;
+                    for (int i = 0; i < MAX_USERS; i++) {
+                        User* u = context->lobby->users[i];
+                        if (!u || u->team != game->winner) continue;
 
-                    winner_count++;
-                }
+                        if (context->player_name && u->name && strcmp(context->player_name, u->name) == 0) {
+                            local_winner_already_listed = 1;
+                        }
 
-                if (
-                    context->player_team == context->lobby->game->winner &&
-                    context->player_name && context->player_name[0] != '\0' &&
-                    !local_winner_already_listed
-                ) {
-                    if (winners_text_offset < (int)sizeof(winners_text) - 1) {
-                        size_t remaining = sizeof(winners_text) - (size_t)winners_text_offset;
-                        int written = format_to(
-                            winners_text + winners_text_offset,
-                            remaining,
-                            "%s%s",
-                            winner_count > 0 ? " - " : "",
-                            context->player_name
-                        );
-                        if (written >= 0) {
+                        if (winners_text_offset < (int)sizeof(winners_text) - 1) {
+                            size_t remaining = sizeof(winners_text) - (size_t)winners_text_offset;
+                            int written = format_to(
+                                winners_text + winners_text_offset,
+                                remaining,
+                                "%s%s",
+                                winner_count > 0 ? " - " : "",
+                                u->name ? u->name : "???"
+                            );
+                            if (written < 0) {
+                                break;
+                            }
                             if ((size_t)written >= remaining) {
                                 winners_text_offset = (int)sizeof(winners_text) - 1;
                             } else {
                                 winners_text_offset += written;
                             }
                         }
-                    }
-                    winner_count++;
-                }
 
-                if (winner_count == 0) {
-                    format_to(winners_text, sizeof(winners_text), "Bravo aux gagnants : ???");
+                        winner_count++;
+                    }
+
+                    if (
+                        context->player_team == game->winner &&
+                        context->player_name && context->player_name[0] != '\0' &&
+                        !local_winner_already_listed
+                    ) {
+                        if (winners_text_offset < (int)sizeof(winners_text) - 1) {
+                            size_t remaining = sizeof(winners_text) - (size_t)winners_text_offset;
+                            int written = format_to(
+                                winners_text + winners_text_offset,
+                                remaining,
+                                "%s%s",
+                                winner_count > 0 ? " - " : "",
+                                context->player_name
+                            );
+                            if (written >= 0) {
+                                if ((size_t)written >= remaining) {
+                                    winners_text_offset = (int)sizeof(winners_text) - 1;
+                                } else {
+                                    winners_text_offset += written;
+                                }
+                            }
+                        }
+                        winner_count++;
+                    }
+
+                    if (winner_count == 0) {
+                        format_to(winners_text, sizeof(winners_text), "Bravo aux gagnants : ???");
+                    }
+                    window_place_button(hint_window, btn_return_lobby, 450, 0);
+                    button_render(context->renderer, btn_return_lobby);
+                    // Affichage du message des gagnants
+                    update_text(context, txt_endGame, winners_text);
+                    window_place_text(hint_window, txt_endGame, 0, -32);
+                    display_text(context, txt_endGame);
+                } else {
+                    /* Affichage du tour seulement */
+                    update_text(context, txt_turn_label, turn_text);
+                    update_text_color(context, txt_turn_label, color_text);
+                    window_place_text(hint_window, txt_turn_label, 0, -16);
+                    display_text(context, txt_turn_label);
                 }
-                window_place_button(hint_window, btn_return_lobby, 450, 0);
-                button_render(context->renderer, btn_return_lobby);
-                // Affichage du message des gagnants
-                update_text(context, txt_endGame, winners_text);
-                window_place_text(hint_window, txt_endGame, 0, -32);
-                display_text(context, txt_endGame);
-            } else {
-                /* Affichage du tour seulement */
-                update_text(context, txt_turn_label, turn_text);
-                update_text_color(context, txt_turn_label, color_text);
-                window_place_text(hint_window, txt_turn_label, 0, -16);
-                display_text(context, txt_turn_label);
             }
         }
     }
+
     if (chat_window) {
         window_render(context->renderer, chat_window);
         chat_render_messages(context, chat_window, txt_chat_messages, CHAT_VISIBLE_LINES);
@@ -1312,6 +1328,7 @@ int game_free() {
     destroy_text(txt_red_agents_label); txt_red_agents_label = NULL;
     destroy_text(txt_turn_label); txt_turn_label = NULL;
     destroy_text(txt_hint_display); txt_hint_display = NULL;
+    destroy_text(txt_endGame); txt_endGame = NULL;
     history_destroy_turn_prefix_text();
 
     for (int i = 0; i < MAX_TEAM_PLAYERS; i++) {
