@@ -43,6 +43,63 @@ typedef struct PlayerPlacementCounters {
     int i_blue_spy;
 } PlayerPlacementCounters;
 
+static int lobby_find_user_slot_by_id(const Lobby* lobby, int user_id) {
+    if (!lobby || user_id < 0) return -1;
+
+    for (int i = 0; i < MAX_USERS; i++) {
+        User* user = lobby->users[i];
+        if (user && user->id == user_id) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+static int lobby_find_free_user_slot(const Lobby* lobby) {
+    if (!lobby) return -1;
+
+    for (int i = 0; i < MAX_USERS; i++) {
+        if (!lobby->users[i]) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+static void lobby_sync_local_user_in_roster(AppContext* context) {
+    if (!context || !context->lobby || context->player_id < 0) return;
+
+    const char* local_name = (context->player_name && context->player_name[0] != '\0') ? context->player_name : "Unknown";
+    int slot = lobby_find_user_slot_by_id(context->lobby, context->player_id);
+
+    if (slot >= 0) {
+        User* local_user = context->lobby->users[slot];
+        if (!local_user) return;
+
+        if (!local_user->name || strcmp(local_user->name, local_name) != 0) {
+            char* copy = strdup(local_name);
+            if (!copy) return;
+            free(local_user->name);
+            local_user->name = copy;
+        }
+
+        local_user->role = context->player_role;
+        local_user->team = context->player_team;
+        return;
+    }
+
+    int free_slot = lobby_find_free_user_slot(context->lobby);
+    if (free_slot < 0) return;
+
+    User* created = create_user(context->player_id, local_name, context->player_role, context->player_team);
+    if (!created) return;
+
+    context->lobby->users[free_slot] = created;
+    context->lobby->nb_players++;
+}
+
 static void count_player_for_layout(const User* user, PlayerPlacementCounters* counters) {
     if (!user || !counters) return;
 
@@ -171,6 +228,7 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
         }
         context->player_role = ROLE_AGENT;
         context->player_team = TEAM_RED;
+        lobby_sync_local_user_in_roster(context);
         char msg[16];
         format_to(msg, sizeof(msg), "%d %d %d", MSG_CHOOSE_ROLE, ROLE_AGENT, TEAM_RED);
         send_tcp(context->sock, msg);
@@ -183,6 +241,7 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
         }
         context->player_role = ROLE_SPY;
         context->player_team = TEAM_RED;
+        lobby_sync_local_user_in_roster(context);
         char msg[16];
         format_to(msg, sizeof(msg), "%d %d %d", MSG_CHOOSE_ROLE, ROLE_SPY, TEAM_RED);
         send_tcp(context->sock, msg);
@@ -194,6 +253,7 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
         }
         context->player_role = ROLE_AGENT;
         context->player_team = TEAM_BLUE;
+        lobby_sync_local_user_in_roster(context);
         char msg[16];
         format_to(msg, sizeof(msg), "%d %d %d", MSG_CHOOSE_ROLE, ROLE_AGENT, TEAM_BLUE);
         send_tcp(context->sock, msg);
@@ -205,6 +265,7 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
         }
         context->player_role = ROLE_SPY;
         context->player_team = TEAM_BLUE;
+        lobby_sync_local_user_in_roster(context);
         char msg[16];
         format_to(msg, sizeof(msg), "%d %d %d", MSG_CHOOSE_ROLE, ROLE_SPY, TEAM_BLUE);
         send_tcp(context->sock, msg);
@@ -557,6 +618,8 @@ int struct_lobby_init(Lobby* lobby, int id, const char* code) {
 
 void lobby_display(AppContext* context) {
 
+    lobby_sync_local_user_in_roster(context);
+
     if (!audio_is_playing(MUSIC_MENU_LOBBY)) {
         audio_play_with_fade(MUSIC_MENU_LOBBY, -1, 1500, AUDIO_FADE_IN_BY_VOLUME, NULL);
     }
@@ -688,38 +751,24 @@ void lobby_display(AppContext* context) {
     // Comptage des joueurs par rôle/équipe et indices d'affichage
     PlayerPlacementCounters counters = {0};
 
-    // Comptage du joueur local
-    User user = {-1, context->player_name, context->player_role, context->player_team};
-
-    count_player_for_layout(&user, &counters);
-
-    // Comptage des joueurs distants
+    // Comptage des joueurs du lobby (local inclus)
     for (int i = 0; i < MAX_USERS; i++) {
-        User* remote_user = context->lobby->users[i];
-        if (!remote_user) continue;
-        count_player_for_layout(remote_user, &counters);
+        User* lobby_user = context->lobby->users[i];
+        if (!lobby_user) continue;
+        count_player_for_layout(lobby_user, &counters);
     }
 
-    // Affichage du joueur local
-    player_display(context, &user,
-        counters.nb_none, counters.i_none,
-        counters.nb_red_spy, counters.i_red_spy,
-        counters.nb_red_agent, counters.i_red_agent,
-        counters.nb_blue_spy, counters.i_blue_spy,
-        counters.nb_blue_agent, counters.i_blue_agent);
-    advance_player_layout_index(&user, &counters);
-
-    // Affichage des joueurs distants
+    // Affichage des joueurs du lobby (local inclus)
     for (int i = 0; i < MAX_USERS; i++) {
-        User* remote_user = context->lobby->users[i];
-        if (!remote_user) continue;
-        player_display(context, remote_user,
+        User* lobby_user = context->lobby->users[i];
+        if (!lobby_user) continue;
+        player_display(context, lobby_user,
             counters.nb_none, counters.i_none,
             counters.nb_red_spy, counters.i_red_spy,
             counters.nb_red_agent, counters.i_red_agent,
             counters.nb_blue_spy, counters.i_blue_spy,
             counters.nb_blue_agent, counters.i_blue_agent);
-        advance_player_layout_index(remote_user, &counters);
+        advance_player_layout_index(lobby_user, &counters);
     }
 
 }

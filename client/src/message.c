@@ -32,6 +32,88 @@ static SDL_Color message_hint_bar_team_color(Team team) {
     }
 }
 
+static int message_find_user_slot_by_id(const Lobby* lobby, int user_id) {
+    if (!lobby || user_id < 0) return -1;
+
+    for (int i = 0; i < MAX_USERS; i++) {
+        User* user = lobby->users[i];
+        if (user && user->id == user_id) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+static int message_find_free_user_slot(const Lobby* lobby) {
+    if (!lobby) return -1;
+
+    for (int i = 0; i < MAX_USERS; i++) {
+        if (!lobby->users[i]) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+static int message_update_user_name(User* user, const char* name) {
+    if (!user || !name || name[0] == '\0') return EXIT_SUCCESS;
+
+    if (user->name && strcmp(user->name, name) == 0) {
+        return EXIT_SUCCESS;
+    }
+
+    char* copy = strdup(name);
+    if (!copy) return EXIT_FAILURE;
+
+    free(user->name);
+    user->name = copy;
+    return EXIT_SUCCESS;
+}
+
+static User* message_upsert_lobby_user(Lobby* lobby, int user_id, const char* name, UserRole role, Team team) {
+    if (!lobby || user_id < 0) return NULL;
+
+    int slot = message_find_user_slot_by_id(lobby, user_id);
+    if (slot >= 0) {
+        User* user = lobby->users[slot];
+        if (!user) return NULL;
+
+        if (message_update_user_name(user, name) != EXIT_SUCCESS) {
+            return NULL;
+        }
+
+        user->role = role;
+        user->team = team;
+        return user;
+    }
+
+    int free_slot = message_find_free_user_slot(lobby);
+    if (free_slot < 0) {
+        return NULL;
+    }
+
+    const char* safe_name = (name && name[0] != '\0') ? name : "Unknown";
+    User* created = create_user(user_id, safe_name, role, team);
+    if (!created) {
+        return NULL;
+    }
+
+    lobby->users[free_slot] = created;
+    lobby->nb_players++;
+    return created;
+}
+
+static void message_sync_local_user_in_lobby(AppContext* context) {
+    if (!context || !context->lobby || context->player_id < 0) return;
+
+    const char* local_name = (context->player_name && context->player_name[0] != '\0') ? context->player_name : "Unknown";
+    if (!message_upsert_lobby_user(context->lobby, context->player_id, local_name, context->player_role, context->player_team)) {
+        printf("Failed to synchronize local player %d in lobby user list\n", context->player_id);
+    }
+}
+
 int on_message(AppContext* context, char* message) {
     MessageType header = fetch_header(message);
     message += number_length((int)header) + 1; // Skip header et espace
@@ -78,12 +160,14 @@ int on_message(AppContext* context, char* message) {
             struct_lobby_init(context->lobby, atoi((char*)args.argv[0]), (char*)args.argv[1]);
             // Le créateur du lobby en est automatiquement le propriétaire
             context->lobby->owner_id = context->player_id;
+            message_sync_local_user_in_lobby(context);
             break;
 
         case MSG_JOINLOBBY:
             // Handle join lobby
             if (args.argc >= 2) {
                 struct_lobby_init(context->lobby, atoi((char*)args.argv[0]), (char*)args.argv[1]);
+                message_sync_local_user_in_lobby(context);
             }
             break;
 
@@ -104,17 +188,18 @@ int on_message(AppContext* context, char* message) {
                 return EXIT_FAILURE;
             }
 
-            User* new_player = create_user(atoi((char*)args.argv[0]), (char*)args.argv[1], (UserRole)atoi((char*)args.argv[2]), (Team)atoi((char*)args.argv[3]));
+            int joined_id = atoi((char*)args.argv[0]);
+            const char* joined_name = (char*)args.argv[1];
+            UserRole joined_role = (UserRole)atoi((char*)args.argv[2]);
+            Team joined_team = (Team)atoi((char*)args.argv[3]);
 
-            for (int i = 0; i < MAX_USERS; i++) {
-                if (!context->lobby->users[i]) {
-                    context->lobby->users[i] = new_player;
-                    context->lobby->nb_players++;
-                    break;
-                }
+            if (!message_upsert_lobby_user(context->lobby, joined_id, joined_name, joined_role, joined_team)) {
+                printf("Failed to add/update player %d in lobby\n", joined_id);
+                if (args.argv) free(args.argv);
+                return EXIT_FAILURE;
             }
 
-            printf("Player %s joined the lobby with role %s and team %s\n", (char*)args.argv[0], (char*)args.argv[1], (char*)args.argv[2]);
+            printf("Player %d (%s) joined the lobby with role %d and team %d\n", joined_id, joined_name ? joined_name : "Unknown", joined_role, joined_team);
             break;
         }
         
@@ -144,15 +229,26 @@ int on_message(AppContext* context, char* message) {
                 return EXIT_FAILURE;
             }
 
-            for (int i = 0; i < MAX_USERS; i++) {
-                if (context->lobby->users[i] && context->lobby->users[i]->id == atoi((char*)args.argv[0])) {
-                    context->lobby->users[i]->role = (UserRole)atoi((char*)args.argv[1]);
-                    context->lobby->users[i]->team = (Team)atoi((char*)args.argv[2]);
-                    break;
-                }
+            int target_id = atoi((char*)args.argv[0]);
+            UserRole target_role = (UserRole)atoi((char*)args.argv[1]);
+            Team target_team = (Team)atoi((char*)args.argv[2]);
+            const char* target_name = find_player_by_id(context->lobby, target_id);
+            if (!target_name && context->player_id == target_id) {
+                target_name = context->player_name;
             }
 
-            printf("Player %s chose role %s team %s\n", (char*)args.argv[0], (char*)args.argv[1], (char*)args.argv[2]);
+            if (!message_upsert_lobby_user(context->lobby, target_id, target_name, target_role, target_team)) {
+                printf("Failed to update role/team for player %d\n", target_id);
+                if (args.argv) free(args.argv);
+                return EXIT_FAILURE;
+            }
+
+            if (context->player_id == target_id) {
+                context->player_role = target_role;
+                context->player_team = target_team;
+            }
+
+            printf("Player %d chose role %d team %d\n", target_id, target_role, target_team);
             
             break;
         }
@@ -514,6 +610,7 @@ int on_message(AppContext* context, char* message) {
             }
 
             context->player_id = atoi((char*)args.argv[0]);
+            message_sync_local_user_in_lobby(context);
             printf("Assigned client ID: %d\n", context->player_id);
 
             break;
