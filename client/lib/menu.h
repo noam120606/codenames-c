@@ -7,35 +7,33 @@
 #define MENU_H
 
 #include "../SDL2/include/SDL2/SDL.h"
-#include "../SDL2/include/SDL2/SDL_image.h"
-#include "../SDL2/include/SDL2/SDL_ttf.h"
-
-typedef struct AppContext AppContext;
 #include "../lib/button.h"
 
+typedef struct AppContext AppContext;
+
 /**
- * Initialise les ressources du menu.
- * @param context Contexte SDL.
- * @return Nombre d'erreurs survenues lors du chargement (0 si tout s'est bien passé, >0 sinon).
+ * Initialise les ressources graphiques et UI du menu.
+ * @param context Contexte applicatif.
+ * @return 0 si tout est chargé correctement, sinon un compteur d'erreurs.
  */
 int menu_init(AppContext* context);
 
 /**
  * Affiche le menu principal.
- * @param context Contexte SDL.
+ * @param context Contexte applicatif.
  */
 void menu_display(AppContext* context);
 
 /**
- * Gère les événements SDL pour le menu (inputs, boutons, etc.).
- * @param context Contexte SDL.
- * @param e Événement SDL à traiter.
- * @return ButtonReturn (BTN_RET_QUIT pour quitter, BTN_RET_NONE sinon).
+ * Gère les événements SDL du menu (inputs, boutons, tutoriel).
+ * @param context Contexte applicatif.
+ * @param event Événement SDL à traiter.
+ * @return BTN_MENU_QUIT si l'utilisateur demande de quitter, BTN_NONE sinon.
  */
-ButtonReturn menu_handle_event(AppContext* context, SDL_Event* e);
+ButtonReturn menu_handle_event(AppContext* context, SDL_Event* event);
 
-/** 
- * Libère les ressources du menu.
+/**
+ * Libère les ressources allouées par menu_init.
  * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur.
  */
 int menu_free();

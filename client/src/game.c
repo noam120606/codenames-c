@@ -40,6 +40,9 @@ static Text* txt_blue_agents_label = NULL;
 static Text* txt_red_spy_label = NULL;
 static Text* txt_red_agents_label = NULL;
 
+static Text* txt_blue_words_remaining = NULL;
+static Text* txt_red_words_remaining = NULL;
+
 static Text* txt_turn_label = NULL;
 static Text* txt_hint_display = NULL;
 static Text* txt_endGame = NULL;
@@ -77,6 +80,19 @@ static GameHintBarState* game_get_hint_bar_state(AppContext* context) {
 
 static int game_has_active_match(const AppContext* context) {
     return context && context->lobby && context->lobby->game;
+}
+
+static int game_count_remaining_words(const Game* game, Team team) {
+    if (!game || !game->cards || game->nb_words <= 0) return 0;
+
+    int count = 0;
+    for (int i = 0; i < game->nb_words; i++) {
+        if (game->cards[i].team == team && !game->cards[i].revealed) {
+            count++;
+        }
+    }
+
+    return count;
 }
 
 static int game_has_hint(const Game* game) {
@@ -635,6 +651,12 @@ int game_init(AppContext * context) {
     txt_red_agents_label = init_text(context, "Agents:", 
         create_text_config(FONT_LARABIE, 14, (SDL_Color){255, 100, 100, 255}, 0, 0, 0, 255));
 
+
+    txt_blue_words_remaining = init_text(context, "", 
+        create_text_config(FONT_NOTO, 24, (SDL_Color){100, 150, 255, 255}, 0, 0, 0, 255));
+    txt_red_words_remaining = init_text(context, "", 
+        create_text_config(FONT_NOTO, 24, (SDL_Color){255, 100, 100, 255}, 0, 0, 0, 255));
+
     txt_turn_label = init_text(context, "", 
         create_text_config(FONT_LARABIE, 32, COL_WHITE, 0, 0, 0, 255));
 
@@ -1117,9 +1139,33 @@ void game_display(AppContext * context) {
 
     if (blue_panel) {
         window_render(context->renderer, blue_panel);
+        if (txt_blue_words_remaining) {
+            char blue_words_remaining_text[64];
+            format_to(
+                blue_words_remaining_text,
+                sizeof(blue_words_remaining_text),
+                "Mots restants : %d",
+                game_count_remaining_words(game, TEAM_BLUE)
+            );
+            update_text(context, txt_blue_words_remaining, blue_words_remaining_text);
+            window_place_text(blue_panel, txt_blue_words_remaining, 0, -200);
+            display_text(context, txt_blue_words_remaining);
+        }
     }
     if (red_panel) {
         window_render(context->renderer, red_panel);
+        if (txt_red_words_remaining) {
+            char red_words_remaining_text[64];
+            format_to(
+                red_words_remaining_text,
+                sizeof(red_words_remaining_text),
+                "Mots restants : %d",
+                game_count_remaining_words(game, TEAM_RED)
+            );
+            update_text(context, txt_red_words_remaining, red_words_remaining_text);
+            window_place_text(red_panel, txt_red_words_remaining, 0, -200);
+            display_text(context, txt_red_words_remaining);
+        }
     }
     if (history_window_blue) {
         window_render(context->renderer, history_window_blue);
@@ -1326,6 +1372,8 @@ int game_free() {
     destroy_text(txt_blue_agents_label); txt_blue_agents_label = NULL;
     destroy_text(txt_red_spy_label); txt_red_spy_label = NULL;
     destroy_text(txt_red_agents_label); txt_red_agents_label = NULL;
+    destroy_text(txt_blue_words_remaining); txt_blue_words_remaining = NULL;
+    destroy_text(txt_red_words_remaining); txt_red_words_remaining = NULL;
     destroy_text(txt_turn_label); txt_turn_label = NULL;
     destroy_text(txt_hint_display); txt_hint_display = NULL;
     destroy_text(txt_endGame); txt_endGame = NULL;
