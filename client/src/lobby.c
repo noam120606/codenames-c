@@ -638,9 +638,9 @@ void lobby_display(AppContext* context) {
 
     /* Afficher le code et l'id du lobby */
     char buf[128];
-    format_to(buf, sizeof(buf), "Lobby %d  •  Code : %s",
+    format_to(buf, sizeof(buf), "Code du Lobby : %s",
               context->lobby->id,
-              context->lobby->code[0] != '\0' ? context->lobby->code : "----");
+              context->lobby->code[0] != '\0' ? context->lobby->code : "-----");
 
     /* Affichage centré horizontalement, position verticale relative */
     update_text(context, txt_lobby_info, buf);
@@ -654,7 +654,10 @@ void lobby_display(AppContext* context) {
     if (btn_red_spy) button_render(context->renderer, btn_red_spy);
     if (btn_blue_agent) button_render(context->renderer, btn_blue_agent);
     if (btn_blue_spy) button_render(context->renderer, btn_blue_spy);
-    if (btn_launch_game) button_render(context->renderer, btn_launch_game);
+    if (btn_launch_game) {
+        // Si le joueur est le propriétaire du lobby, afficher le bouton de lancement de la partie
+        if (context->player_id == context->lobby->owner_id) button_render(context->renderer, btn_launch_game);
+    }
     if (btn_return) button_render(context->renderer, btn_return);
 
     if (role_none_window) window_render(context->renderer, role_none_window);
