@@ -409,8 +409,12 @@ void chat_render_messages(AppContext* context, Window* chat_window, Text** chat_
 	int max_scroll_offset = total_lines - visible_lines;
 	if (max_scroll_offset < 0) max_scroll_offset = 0;
 
-	window_edit_cfg(chat_window, WIN_CFG_SCROLL_MIN, 0);
-	window_edit_cfg(chat_window, WIN_CFG_SCROLL_MAX, max_scroll_offset);
+	if (chat_window->cfg->scroll_min != 0) {
+		window_edit_cfg(chat_window, WIN_CFG_SCROLL_MIN, 0);
+	}
+	if (chat_window->cfg->scroll_max != max_scroll_offset) {
+		window_edit_cfg(chat_window, WIN_CFG_SCROLL_MAX, max_scroll_offset);
+	}
 
 	int scroll_offset = chat_window->cfg->scroll_offset;
 	if (scroll_offset < 0) scroll_offset = 0;

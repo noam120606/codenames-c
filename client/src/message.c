@@ -21,6 +21,17 @@ Arguments parse_arguments(char* message) {
     return args;
 }
 
+static SDL_Color message_hint_bar_team_color(Team team) {
+    switch (team) {
+        case TEAM_BLUE:
+            return (SDL_Color){50, 80, 150, 200};
+        case TEAM_RED:
+            return (SDL_Color){150, 50, 50, 200};
+        default:
+            return COL_GRAY;
+    }
+}
+
 int on_message(AppContext* context, char* message) {
     MessageType header = fetch_header(message);
     message += number_length((int)header) + 1; // Skip header et espace
@@ -155,7 +166,7 @@ int on_message(AppContext* context, char* message) {
 
             if (context->lobby->game) game_struct_free(context);
 
-            Game* game = (Game*)malloc(sizeof(Game));
+            Game* game = (Game*)calloc(1, sizeof(Game));
             if (!game) {
                 printf("Failed to allocate memory for game\n");
                 return EXIT_FAILURE;
@@ -222,11 +233,13 @@ int on_message(AppContext* context, char* message) {
                 return EXIT_FAILURE;
             }
 
-            char* spy_name = (char*)args.argv[0];
+            int spy_id = atoi((char*)args.argv[0]);
             int nb_guesses = atoi((char*)args.argv[1]);
             char* hint = (char*)args.argv[2];
             GameState new_state = (GameState)atoi((char*)args.argv[3]);
             GameState previous_state = GAMESTATE_WAITING;
+
+            const char* spy_name = find_player_by_id(context->lobby, spy_id); //Récupérer le nom de l'espion
 
             if (context->lobby && context->lobby->game) {
                 previous_state = context->lobby->game->state;
@@ -234,7 +247,7 @@ int on_message(AppContext* context, char* message) {
 
             Team active_team = history_team_from_agent_state(new_state);
 
-            printf("Hint received from %s: %s with %d guesses, new state: %d\n", spy_name, hint, nb_guesses, new_state);
+            printf("Hint received from client %d (%s) : %s with %d guesses, new state: %d\n", spy_id, spy_name ? spy_name : "l'espion", hint, nb_guesses, new_state);
 
             // Stocker l'indice et mettre à jour le gamestate
             if (context->lobby && context->lobby->game) {
@@ -267,6 +280,30 @@ int on_message(AppContext* context, char* message) {
                     if (history && history->turn_count > 0) {
                         history_update_last_turn(history, spy_name, hint, nb_guesses);
                     }
+                }
+
+                int is_submitting_spy = 0;
+                if (context->player_id >= 0 && context->player_id == spy_id) {
+                    is_submitting_spy = 1;
+                } else if (context->player_name && spy_name && strcmp(context->player_name, spy_name) == 0) {
+                    is_submitting_spy = 1;
+                }
+
+                if (!is_submitting_spy) {
+                    char hint_feedback[GAME_HINTBAR_TEXT_LEN];
+                    format_to(
+                        hint_feedback,
+                        sizeof(hint_feedback),
+                        "Indice reçu de %s",
+                        spy_name ? spy_name : "l'espion"
+                    );
+                    game_hint_bar_set_feedback(
+                        context,
+                        hint_feedback,
+                        message_hint_bar_team_color(active_team),
+                        GAME_HINTBAR_PRIORITY_INFO,
+                        GAME_HINTBAR_FEEDBACK_INFO_MS
+                    );
                 }
             }
             
@@ -332,6 +369,27 @@ int on_message(AppContext* context, char* message) {
                     format_to(nb_win, sizeof(nb_win), "%d", win_count);
                     write_property("WIN_COUNT", nb_win);
                 }
+
+                char end_feedback[GAME_HINTBAR_TEXT_LEN];
+                const char* winner_label = "inconnue";
+                if (context->lobby->game->winner == TEAM_BLUE) {
+                    winner_label = "bleue";
+                } else if (context->lobby->game->winner == TEAM_RED) {
+                    winner_label = "rouge";
+                }
+                format_to(
+                    end_feedback,
+                    sizeof(end_feedback),
+                    "Victoire de l'equipe %s !",
+                    winner_label
+                );
+                game_hint_bar_set_feedback(
+                    context,
+                    end_feedback,
+                    message_hint_bar_team_color(context->lobby->game->winner),
+                    GAME_HINTBAR_PRIORITY_INFO,
+                    GAME_HINTBAR_FEEDBACK_SUCCESS_MS
+                );
                 
             } 
 
@@ -372,6 +430,21 @@ int on_message(AppContext* context, char* message) {
                         active_team,
                         context->lobby->game->current_hint,
                         context->lobby->game->current_hint_count
+                    );
+
+                    char turn_feedback[GAME_HINTBAR_TEXT_LEN];
+                    format_to(
+                        turn_feedback,
+                        sizeof(turn_feedback),
+                        "Tour termine par %s",
+                        guessing_agent_name ? guessing_agent_name : "un agent"
+                    );
+                    game_hint_bar_set_feedback(
+                        context,
+                        turn_feedback,
+                        message_hint_bar_team_color(active_team),
+                        GAME_HINTBAR_PRIORITY_INFO,
+                        GAME_HINTBAR_FEEDBACK_INFO_MS
                     );
                 }
                 context->lobby->game->state = new_state;

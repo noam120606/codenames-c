@@ -58,8 +58,214 @@ static Text* txt_chat_messages[CHAT_VISIBLE_LINES] = {NULL};
 #define HISTORY_VISIBLE_LINES 13
 static Text* txt_history_blue_lines[HISTORY_VISIBLE_LINES] = {NULL};
 static Text* txt_history_red_lines[HISTORY_VISIBLE_LINES] = {NULL};
+static Text* txt_history_blue_prefix_lines[HISTORY_VISIBLE_LINES] = {NULL};
+static Text* txt_history_red_prefix_lines[HISTORY_VISIBLE_LINES] = {NULL};
 static HistoryWrapCache history_cache_blue = {0};
 static HistoryWrapCache history_cache_red = {0};
+static const char GAME_HINTBAR_DEFAULT_TITLE[] = "Informations de partie";
+
+static Game* game_get_active_game(AppContext* context) {
+    if (!context || !context->lobby || !context->lobby->game) return NULL;
+    return context->lobby->game;
+}
+
+static GameHintBarState* game_get_hint_bar_state(AppContext* context) {
+    Game* game = game_get_active_game(context);
+    return game ? &game->hint_bar : NULL;
+}
+
+static void game_hint_bar_write_message(GameHintBarMessage* message, const char* text, SDL_Color color, int priority, Uint32 expire_at_ms, int active) {
+    if (!message) return;
+
+    message->color = color;
+    message->priority = priority;
+    message->expire_at_ms = expire_at_ms;
+    message->active = active;
+
+    if (!text || text[0] == '\0') {
+        message->text[0] = '\0';
+        message->active = 0;
+        return;
+    }
+
+    strncpy(message->text, text, GAME_HINTBAR_TEXT_LEN - 1);
+    message->text[GAME_HINTBAR_TEXT_LEN - 1] = '\0';
+}
+
+void game_hint_bar_set_context(AppContext* context, const char* text, SDL_Color color) {
+    GameHintBarState* state = game_get_hint_bar_state(context);
+    if (!state) return;
+
+    const char* safe_text = (text && text[0] != '\0') ? text : "";
+    if (
+        state->context.active &&
+        strcmp(state->context.text, safe_text) == 0 &&
+        state->context.color.r == color.r &&
+        state->context.color.g == color.g &&
+        state->context.color.b == color.b &&
+        state->context.color.a == color.a &&
+        state->context.priority == GAME_HINTBAR_PRIORITY_CONTEXT
+    ) {
+        return;
+    }
+
+    game_hint_bar_write_message(
+        &state->context,
+        safe_text,
+        color,
+        GAME_HINTBAR_PRIORITY_CONTEXT,
+        0,
+        1
+    );
+}
+
+static int game_hint_bar_feedback_expired(const GameHintBarMessage* feedback, Uint32 now) {
+    if (!feedback || !feedback->active) return 1;
+    if (feedback->expire_at_ms == 0) return 0;
+    return SDL_TICKS_PASSED(now, feedback->expire_at_ms);
+}
+
+void game_hint_bar_set_feedback(AppContext* context, const char* text, SDL_Color color, int priority, Uint32 duration_ms) {
+    GameHintBarState* state = game_get_hint_bar_state(context);
+    if (!state || !text || text[0] == '\0') return;
+
+    if (priority < GAME_HINTBAR_PRIORITY_CONTEXT) {
+        priority = GAME_HINTBAR_PRIORITY_CONTEXT;
+    }
+
+    Uint32 now = SDL_GetTicks();
+    if (
+        state->feedback.active &&
+        !game_hint_bar_feedback_expired(&state->feedback, now) &&
+        state->feedback.priority >= priority
+    ) {
+        return;
+    }
+
+    Uint32 expire_at_ms = (duration_ms > 0) ? (now + duration_ms) : 0;
+    game_hint_bar_write_message(&state->feedback, text, color, priority, expire_at_ms, 1);
+}
+
+void game_hint_bar_clear_feedback(AppContext* context) {
+    GameHintBarState* state = game_get_hint_bar_state(context);
+    if (!state) return;
+
+    state->feedback.text[0] = '\0';
+    state->feedback.active = 0;
+    state->feedback.priority = GAME_HINTBAR_PRIORITY_CONTEXT;
+    state->feedback.expire_at_ms = 0;
+}
+
+static int game_hint_bar_colors_equal(SDL_Color left, SDL_Color right) {
+    return left.r == right.r && left.g == right.g && left.b == right.b && left.a == right.a;
+}
+
+static const GameHintBarMessage* game_hint_bar_resolve_message(GameHintBarState* state) {
+    if (!state) return NULL;
+
+    Uint32 now = SDL_GetTicks();
+    if (game_hint_bar_feedback_expired(&state->feedback, now)) {
+        state->feedback.active = 0;
+    }
+
+    if (state->feedback.active && state->feedback.text[0] != '\0') {
+        if (!state->context.active || state->feedback.priority >= state->context.priority) {
+            return &state->feedback;
+        }
+    }
+
+    if (state->context.active && state->context.text[0] != '\0') {
+        return &state->context;
+    }
+
+    return NULL;
+}
+
+static void game_hint_bar_update_context(AppContext* context) {
+    Game* game = game_get_active_game(context);
+    if (!game) return;
+
+    const char* context_title = "Phase de preparation";
+    SDL_Color context_color = COL_GRAY;
+
+    switch (game->state) {
+        case GAMESTATE_TURN_BLUE_SPY:
+            context_title = "Tour de l'espion bleu";
+            context_color = TEAM_BLUE_COLOR;
+            break;
+        case GAMESTATE_TURN_BLUE_AGENT:
+            context_title = "Tour de l'agent bleu";
+            context_color = TEAM_BLUE_COLOR;
+            break;
+        case GAMESTATE_TURN_RED_SPY:
+            context_title = "Tour de l'espion rouge";
+            context_color = TEAM_RED_COLOR;
+            break;
+        case GAMESTATE_TURN_RED_AGENT:
+            context_title = "Tour de l'agent rouge";
+            context_color = TEAM_RED_COLOR;
+            break;
+        case GAMESTATE_ENDED:
+            context_title = "La partie est terminee !";
+            if (game->winner == TEAM_BLUE) {
+                context_color = TEAM_BLUE_COLOR;
+            } else if (game->winner == TEAM_RED) {
+                context_color = TEAM_RED_COLOR;
+            } else {
+                context_color = COL_GRAY;
+            }
+            break;
+        case GAMESTATE_WAITING:
+        default:
+            context_title = "Phase de preparation";
+            context_color = COL_GRAY;
+            break;
+    }
+
+    int has_hint = (game->current_hint[0] != '\0' && game->current_hint_count > 0);
+    int show_hint_for_agents_or_opponents = has_hint && (
+        (game->state == GAMESTATE_TURN_BLUE_AGENT && (context->player_team == TEAM_RED || context->player_role == ROLE_AGENT)) ||
+        (game->state == GAMESTATE_TURN_RED_AGENT && (context->player_team == TEAM_BLUE || context->player_role == ROLE_AGENT))
+    );
+
+    if (show_hint_for_agents_or_opponents) {
+        context_title = "L'indice est :";
+        context_color = (game->state == GAMESTATE_TURN_BLUE_AGENT) ? TEAM_BLUE_COLOR : TEAM_RED_COLOR;
+    }
+
+    game_hint_bar_set_context(context, context_title, context_color);
+}
+
+static void game_hint_bar_apply(AppContext* context) {
+    if (!hint_window) return;
+
+    GameHintBarState* state = game_get_hint_bar_state(context);
+    if (!state) return;
+
+    const GameHintBarMessage* active_message = game_hint_bar_resolve_message(state);
+    const char* title = GAME_HINTBAR_DEFAULT_TITLE;
+    SDL_Color titlebar_color = COL_GRAY;
+
+    if (active_message) {
+        if (active_message->text[0] != '\0') {
+            title = active_message->text;
+        }
+        titlebar_color = active_message->color;
+    }
+
+    if (!state->applied_valid || strcmp(state->applied_text, title) != 0) {
+        window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)title);
+        strncpy(state->applied_text, title, GAME_HINTBAR_TEXT_LEN - 1);
+        state->applied_text[GAME_HINTBAR_TEXT_LEN - 1] = '\0';
+    }
+
+    if (!state->applied_valid || !game_hint_bar_colors_equal(state->applied_color, titlebar_color)) {
+        window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&titlebar_color);
+        state->applied_color = titlebar_color;
+    }
+
+    state->applied_valid = 1;
+}
 
 static void hint_on_submit(AppContext* context, const char* text) {
     (void)context;
@@ -68,12 +274,13 @@ static void hint_on_submit(AppContext* context, const char* text) {
         hint_count_input->cfg->focused = 1;
         hint_count_input->cfg->cursor_pos = strlen(hint_count_input->cfg->text);
     }
-    // Attendre que le joueur ne presse plus la touche Entrée ou Entrée du numpad
-    while (True) {
-        SDL_Event e;
-        if (SDL_PollEvent(&e)) {
-            if (e.type == SDL_KEYUP && (e.key.keysym.sym == SDLK_RETURN || e.key.keysym.sym == SDLK_KP_ENTER)) {
-                break;
+    // Si le joueur presse encore la touche Entrée ou Entrée du numpad alors il reste sur le champ de saisie du nombre d'indices pour l'inviter à saisir un nombre d'indices après avoir saisi un mot indice.
+    SDL_Event e;
+    if (SDL_PollEvent(&e)) {
+        if (e.type == SDL_KEYUP && (e.key.keysym.sym == SDLK_RETURN || e.key.keysym.sym == SDLK_KP_ENTER)) {
+            if (hint_count_input) {
+                hint_count_input->cfg->focused = 1;
+                hint_count_input->cfg->cursor_pos = strlen(hint_count_input->cfg->text);
             }
         }
     }
@@ -123,6 +330,7 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
 
         printf("Left game and returned to menu\n");
         clear_hint_inputs();
+        game_hint_bar_clear_feedback(context);
 
         return BTN_GAME_RETURN_LOBBY;
     }
@@ -132,10 +340,17 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
         if (context->player_role == ROLE_AGENT) {
             History* history = (context->player_team == TEAM_RED) ? &context->lobby->game->red_history : &context->lobby->game->blue_history;
             Turn* last_turn = (history->turn_count > 0) ? &history->turns[history->turn_count - 1] : NULL;
-            if (last_turn->revealed_word_count < context->lobby->game->current_hint_count) {
+            if (!last_turn || last_turn->revealed_word_count < context->lobby->game->current_hint_count) {
                 printf("Nombre de mots minimum non atteint pour s'arreter\n");
-                window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&COL_RED); // Mettre à jour la couleur du label de soumission pour indiquer que le nombre de mots minimum n'est pas atteint
-                window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)"Vous devez au minimum deviner le nombre de mots fourni par votre agent."); // Mettre à jour le label de soumission pour indiquer que le nombre de mots minimum n'est
+                char title[GAME_HINTBAR_TEXT_LEN];
+                format_to(title, sizeof(title), "Sélectionnez au moins %d mot(s)", context->lobby->game->current_hint_count);
+                game_hint_bar_set_feedback(
+                    context,
+                    title,
+                    COL_RED,
+                    GAME_HINTBAR_PRIORITY_ERROR,
+                    GAME_HINTBAR_FEEDBACK_ERROR_MS
+                );
                 return BTN_NONE;
             }
             char msg[64];
@@ -145,35 +360,55 @@ static ButtonReturn game_button_click(AppContext* context, Button* button) {
             return BTN_NONE;
         }
 
-        char* text = hint_input->cfg->text;
+        char* hint = hint_input->cfg->text;
         int nb_hint = (int)atoi(hint_count_input->cfg->text);
-        int valid = valid_hint(text, context->lobby->game->cards);
+        int valid = valid_hint(hint, context->lobby->game->cards);
         
         
-        char title[64];
+        char title[GAME_HINTBAR_TEXT_LEN];
         /* Envoi de l'indice au serveur */
         // On stocke cette chaine : "Vous avez soumis le mot : " et on lui ajoute "text" et "en nb_hint"
-        if (text && nb_hint && valid) {
-            format_to(title, sizeof(title), "Vous avez soumis le mot : %s en %d", text ? text : "", nb_hint);
-            window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&COL_DARK_GREEN); // Mettre à jour la couleur du label de soumission pour indiquer que le mot est valide
-            window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)title); // Mettre à jour le label de soumission
+        if (hint && nb_hint && valid) {
+            format_to(title, sizeof(title), "Vous avez soumis le mot : %s en %d", hint ? hint : "", nb_hint);
+            game_hint_bar_set_feedback(
+                context,
+                title,
+                COL_DARK_GREEN,
+                GAME_HINTBAR_PRIORITY_INFO,
+                GAME_HINTBAR_FEEDBACK_SUCCESS_MS
+            );
             char msg[64];
-            format_to(msg, sizeof(msg), "%d %s %d %s", MSG_SUBMIT_HINT, context->player_name ? context->player_name : "Unknown", nb_hint, text);
+            format_to(msg, sizeof(msg), "%d %d %s", MSG_SUBMIT_HINT, nb_hint, hint); // Pas besoin de passer l'id du joueur car le serveur peut l'identifier grâce au socket
             send_tcp(context->sock, msg);
             clear_hint_inputs();
-        } else if(text == NULL || strlen(text) == 0) {
-            window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&COL_RED); // Mettre à jour la couleur du label de soumission pour indiquer qu'aucun mot n'a été saisi
-            window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)"Vous n'avez pas saisi de mot"); // Mettre à jour le label de soumission pour indiquer qu'aucun mot n'a été saisi
-            printf("Invalid hint submitted: %s\n", text ? text : "");
+        } else if(hint == NULL || strlen(hint) == 0) {
+            game_hint_bar_set_feedback(
+                context,
+                "Vous n'avez pas saisi de mot",
+                COL_RED,
+                GAME_HINTBAR_PRIORITY_ERROR,
+                GAME_HINTBAR_FEEDBACK_ERROR_MS
+            );
+            printf("Invalid hint submitted: %s\n", hint ? hint : "");
         } else if(nb_hint <= 0) {
-            window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&COL_RED); // Mettre à jour la couleur du label de soumission pour indiquer que le nombre d'indices est invalide
-            window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)"Vous n'avez pas saisi de nombre d'indices"); // Mettre à jour le label de soumission pour indiquer que le nombre d'indices est invalide
+            game_hint_bar_set_feedback(
+                context,
+                "Vous n'avez pas saisi de nombre d'indices",
+                COL_RED,
+                GAME_HINTBAR_PRIORITY_ERROR,
+                GAME_HINTBAR_FEEDBACK_ERROR_MS
+            );
             printf("No hint count submitted\n");
         } else {
-            format_to(title, sizeof(title), "Le mot : %s est invalide", text ? text : "");
-            window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&COL_RED); // Mettre à jour la couleur du label de soumission pour indiquer que le mot est invalide
-            window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)title); // Mettre à jour le label de soumission pour indiquer que le mot est invalide
-            printf("Invalid hint submitted: %s\n", text ? text : "");
+            format_to(title, sizeof(title), "Le mot : %s est invalide", hint ? hint : "");
+            game_hint_bar_set_feedback(
+                context,
+                title,
+                COL_RED,
+                GAME_HINTBAR_PRIORITY_ERROR,
+                GAME_HINTBAR_FEEDBACK_ERROR_MS
+            );
+            printf("Invalid hint submitted: %s\n", hint ? hint : "");
         }
 
         return BTN_NONE;
@@ -418,9 +653,17 @@ int game_init(AppContext * context) {
             create_text_config(FONT_NOTO, 18, COL_WHITE, 0, 0, 0, 255));
         if (!txt_history_blue_lines[i]) loading_fails++;
 
+        txt_history_blue_prefix_lines[i] = init_text(context, " ",
+            create_text_config(FONT_NOTO, 18, (SDL_Color){0, 200, 0, 255}, 0, 0, 0, 255));
+        if (!txt_history_blue_prefix_lines[i]) loading_fails++;
+
         txt_history_red_lines[i] = init_text(context, " ",
             create_text_config(FONT_NOTO, 18, COL_WHITE, 0, 0, 0, 255));
         if (!txt_history_red_lines[i]) loading_fails++;
+
+        txt_history_red_prefix_lines[i] = init_text(context, " ",
+            create_text_config(FONT_NOTO, 18, (SDL_Color){0, 200, 0, 255}, 0, 0, 0, 255));
+        if (!txt_history_red_prefix_lines[i]) loading_fails++;
     }
 
     /* Chargement de la fenêtre de l'équipe bleue */
@@ -516,7 +759,7 @@ int game_init(AppContext * context) {
         cfg_hint_window->y = -400;
         cfg_hint_window->w = 675;
         cfg_hint_window->h = 120;
-        cfg_hint_window->title = "";
+        cfg_hint_window->title = (char*)GAME_HINTBAR_DEFAULT_TITLE;
         cfg_hint_window->titlebar_color = COL_GRAY;
         cfg_hint_window->bg_color = (SDL_Color){20, 20, 20, 220};
         hint_window = window_create(WINDOW_GAME_HINT, cfg_hint_window);
@@ -723,8 +966,8 @@ static SDL_Color game_history_word_color(Team word_team) {
     }
 }
 
-static void game_render_team_history(AppContext* context, Window* history_window, const History* history, Text** history_texts, HistoryWrapCache* history_cache) {
-    if (!context || !history_window || !history || !history_texts || !history_window->cfg || !history_cache) return;
+static void game_render_team_history(AppContext* context, Window* history_window, const History* history, Text** history_texts, Text** history_prefix_texts, HistoryWrapCache* history_cache) {
+    if (!context || !history_window || !history || !history_texts || !history_prefix_texts || !history_window->cfg || !history_cache) return;
 
     const int line_gap = 20;
     const int left_padding = 8;
@@ -735,14 +978,10 @@ static void game_render_team_history(AppContext* context, Window* history_window
 
     const char* font_path = NULL;
     int font_size = 0;
-    Uint8 font_opacity = 255;
     if (history_texts[0]) {
         font_path = history_texts[0]->cfg.font_path;
         font_size = history_texts[0]->cfg.font_size;
-        font_opacity = history_texts[0]->cfg.opacity;
     }
-
-    Text* turn_prefix_text = history_get_turn_prefix_text(context, font_path, font_size, font_opacity);
 
     int total_lines = history_build_wrapped_lines_cached(
         history,
@@ -756,8 +995,12 @@ static void game_render_team_history(AppContext* context, Window* history_window
     int max_scroll_offset = total_lines - HISTORY_VISIBLE_LINES;
     if (max_scroll_offset < 0) max_scroll_offset = 0;
 
-    window_edit_cfg(history_window, WIN_CFG_SCROLL_MIN, 0);
-    window_edit_cfg(history_window, WIN_CFG_SCROLL_MAX, max_scroll_offset);
+    if (history_window->cfg->scroll_min != 0) {
+        window_edit_cfg(history_window, WIN_CFG_SCROLL_MIN, 0);
+    }
+    if (history_window->cfg->scroll_max != max_scroll_offset) {
+        window_edit_cfg(history_window, WIN_CFG_SCROLL_MAX, max_scroll_offset);
+    }
 
     int scroll_offset = history_window->cfg->scroll_offset;
     if (scroll_offset < 0) scroll_offset = 0;
@@ -793,6 +1036,7 @@ static void game_render_team_history(AppContext* context, Window* history_window
         const char* safe_line = line ? line : " ";
         const char* white_line = safe_line;
         int white_left_offset = 0;
+        Text* turn_prefix_text = history_prefix_texts[i];
         Team word_team = history_cache->line_word_teams[start_index + i];
         int has_word_team = history_cache->line_has_revealed_word_team[start_index + i];
         SDL_Color text_color = has_word_team ? game_history_word_color(word_team) : COL_WHITE;
@@ -863,21 +1107,23 @@ void game_display(AppContext * context) {
     if (history_window_blue) {
         window_render(context->renderer, history_window_blue);
         if (context->lobby && context->lobby->game) {
-            game_render_team_history(context, history_window_blue, &context->lobby->game->blue_history, txt_history_blue_lines, &history_cache_blue);
+            game_render_team_history(context, history_window_blue, &context->lobby->game->blue_history, txt_history_blue_lines, txt_history_blue_prefix_lines, &history_cache_blue);
         }
     }
     if (history_window_red) {
         window_render(context->renderer, history_window_red);
         if (context->lobby && context->lobby->game) {
-            game_render_team_history(context, history_window_red, &context->lobby->game->red_history, txt_history_red_lines, &history_cache_red);
+            game_render_team_history(context, history_window_red, &context->lobby->game->red_history, txt_history_red_lines, txt_history_red_prefix_lines, &history_cache_red);
         }
     }
 
     if (hint_window) {
+        game_hint_bar_update_context(context);
+        game_hint_bar_apply(context);
         window_render(context->renderer, hint_window);
 
         const char* turn_text = "";
-        SDL_Color color_text;
+        SDL_Color color_text = COL_GRAY;
 
         switch (context->lobby->game->state) {
             case GAMESTATE_TURN_BLUE_SPY:
@@ -931,8 +1177,6 @@ void game_display(AppContext * context) {
                 update_text(context, txt_hint_display, hint_text);
                 update_text_color(context, txt_hint_display, COL_WHITE);
                 window_place_text(hint_window, txt_hint_display, 0, -16);
-                window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)"L'indice est :");
-                window_edit_cfg(hint_window, WIN_CFG_TITLEBAR_COLOR, (intptr_t)&color_text);
                 display_text(context, txt_hint_display);
 
                 if (context->player_role == ROLE_AGENT && my_turn(context)) {
@@ -958,9 +1202,14 @@ void game_display(AppContext * context) {
                 int winners_text_offset = format_to(winners_text, sizeof(winners_text), "Bravo aux gagnants : ");
                 if (winners_text_offset < 0) winners_text_offset = 0;
                 int winner_count = 0;
+                int local_winner_already_listed = 0;
                 for (int i = 0; i < context->lobby->nb_players && i < MAX_USERS; i++) {
                     User* u = context->lobby->users[i];
                     if (!u || u->team != context->lobby->game->winner) continue;
+
+                    if (context->player_name && u->name && strcmp(context->player_name, u->name) == 0) {
+                        local_winner_already_listed = 1;
+                    }
 
                     if (winners_text_offset < (int)sizeof(winners_text) - 1) {
                         size_t remaining = sizeof(winners_text) - (size_t)winners_text_offset;
@@ -983,10 +1232,35 @@ void game_display(AppContext * context) {
 
                     winner_count++;
                 }
+
+                if (
+                    context->player_team == context->lobby->game->winner &&
+                    context->player_name && context->player_name[0] != '\0' &&
+                    !local_winner_already_listed
+                ) {
+                    if (winners_text_offset < (int)sizeof(winners_text) - 1) {
+                        size_t remaining = sizeof(winners_text) - (size_t)winners_text_offset;
+                        int written = format_to(
+                            winners_text + winners_text_offset,
+                            remaining,
+                            "%s%s",
+                            winner_count > 0 ? " - " : "",
+                            context->player_name
+                        );
+                        if (written >= 0) {
+                            if ((size_t)written >= remaining) {
+                                winners_text_offset = (int)sizeof(winners_text) - 1;
+                            } else {
+                                winners_text_offset += written;
+                            }
+                        }
+                    }
+                    winner_count++;
+                }
+
                 if (winner_count == 0) {
                     format_to(winners_text, sizeof(winners_text), "Bravo aux gagnants : ???");
                 }
-                window_edit_cfg(hint_window, WIN_CFG_TITLE, (intptr_t)"La partie est terminée !");
                 window_place_button(hint_window, btn_return_lobby, 450, 0);
                 button_render(context->renderer, btn_return_lobby);
                 // Affichage du message des gagnants
@@ -1052,6 +1326,8 @@ int game_free() {
     for (int i = 0; i < HISTORY_VISIBLE_LINES; i++) {
         destroy_text(txt_history_blue_lines[i]); txt_history_blue_lines[i] = NULL;
         destroy_text(txt_history_red_lines[i]); txt_history_red_lines[i] = NULL;
+        destroy_text(txt_history_blue_prefix_lines[i]); txt_history_blue_prefix_lines[i] = NULL;
+        destroy_text(txt_history_red_prefix_lines[i]); txt_history_red_prefix_lines[i] = NULL;
     }
 
     history_wrap_cache_invalidate(&history_cache_blue);

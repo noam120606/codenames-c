@@ -884,3 +884,12 @@ int lobby_free(){
 
     return EXIT_SUCCESS;
 }
+
+const char* find_player_by_id(const Lobby* lobby, int id) {
+    if (!lobby) return NULL;
+    for (int i = 0; i < MAX_USERS; i++) {
+        User* u = lobby->users[i];
+        if (u && u->id == id) return u->name;
+    }
+    return NULL;
+}

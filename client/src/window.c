@@ -94,44 +94,82 @@ static int window_content_origin_screen(const Window* win, int* out_x, int* out_
 static int window_set_title(WindowConfig* cfg, const char* title) {
 	if (!cfg) return EXIT_FAILURE;
 
+	const char* incoming = (title && title[0] != '\0') ? title : NULL;
+	if (
+		(cfg->title == NULL && incoming == NULL) ||
+		(cfg->title != NULL && incoming != NULL && strcmp(cfg->title, incoming) == 0)
+	) {
+		return EXIT_SUCCESS;
+	}
+
 	char* new_title = NULL;
-	if (title && title[0] != '\0') {
-		new_title = strdup(title);
+	if (incoming) {
+		new_title = strdup(incoming);
 		if (!new_title) return EXIT_FAILURE;
 	}
 
 	free(cfg->title);
 	cfg->title = new_title;
+
+	if (cfg->title_texture_cache) {
+		SDL_DestroyTexture(cfg->title_texture_cache);
+		cfg->title_texture_cache = NULL;
+	}
+	cfg->title_texture_cache_w = 0;
+	cfg->title_texture_cache_h = 0;
+	cfg->title_texture_cache_font_size = 0;
+	cfg->title_texture_cache_dirty = 1;
 	return EXIT_SUCCESS;
 }
 
-static void window_render_title(SDL_Renderer* renderer, const WindowConfig* cfg) {
+static void window_render_title(SDL_Renderer* renderer, WindowConfig* cfg) {
 	if (!renderer || !cfg || !cfg->title || cfg->title[0] == '\0' || cfg->titlebar_h <= 0) return;
 
 	int font_size = cfg->titlebar_h - 12;
 	if (font_size < 12) font_size = 12;
 
-	TTF_Font* font = TTF_OpenFont(FONT_LARABIE, font_size);
-	if (!font) return;
+	if (
+		cfg->title_texture_cache_dirty ||
+		!cfg->title_texture_cache ||
+		cfg->title_texture_cache_font_size != font_size
+	) {
+		if (cfg->title_texture_cache) {
+			SDL_DestroyTexture(cfg->title_texture_cache);
+			cfg->title_texture_cache = NULL;
+		}
 
-	SDL_Surface* title_surface = TTF_RenderUTF8_Blended(font, cfg->title, COL_WHITE);
-	if (!title_surface) {
-		TTF_CloseFont(font);
-		return;
-	}
+		TTF_Font* font = TTF_OpenFont(FONT_LARABIE, font_size);
+		if (!font) return;
 
-	SDL_Texture* title_texture = SDL_CreateTextureFromSurface(renderer, title_surface);
-	if (!title_texture) {
+		SDL_Surface* title_surface = TTF_RenderUTF8_Blended(font, cfg->title, COL_WHITE);
+		if (!title_surface) {
+			TTF_CloseFont(font);
+			return;
+		}
+
+		cfg->title_texture_cache = SDL_CreateTextureFromSurface(renderer, title_surface);
+		if (!cfg->title_texture_cache) {
+			SDL_FreeSurface(title_surface);
+			TTF_CloseFont(font);
+			return;
+		}
+
+		cfg->title_texture_cache_w = title_surface->w;
+		cfg->title_texture_cache_h = title_surface->h;
+		cfg->title_texture_cache_font_size = font_size;
+		cfg->title_texture_cache_dirty = 0;
+
 		SDL_FreeSurface(title_surface);
 		TTF_CloseFont(font);
-		return;
 	}
+
+	if (!cfg->title_texture_cache) return;
 
 	SDL_Rect dst = {
 		.x = cfg->rect.x + 10,
-		.y = cfg->rect.y + (cfg->titlebar_h - title_surface->h) / 2,
-		.w = title_surface->w,
-		.h = title_surface->h
+		.y = cfg->rect.y + (cfg->titlebar_h - cfg->title_texture_cache_h) / 2,
+		.w = cfg->title_texture_cache_w,
+		.h = cfg->title_texture_cache_h
 	};
 
 	SDL_Rect clip = {
@@ -142,12 +180,8 @@ static void window_render_title(SDL_Renderer* renderer, const WindowConfig* cfg)
 	};
 
 	SDL_RenderSetClipRect(renderer, &clip);
-	SDL_RenderCopy(renderer, title_texture, NULL, &dst);
+	SDL_RenderCopy(renderer, cfg->title_texture_cache, NULL, &dst);
 	SDL_RenderSetClipRect(renderer, NULL);
-
-	SDL_DestroyTexture(title_texture);
-	SDL_FreeSurface(title_surface);
-	TTF_CloseFont(font);
 }
 
 WindowConfig* window_config_init(void) {
@@ -166,6 +200,11 @@ WindowConfig* window_config_init(void) {
 	cfg->window_texture = NULL;
 	cfg->titlebar_texture = NULL;
 	cfg->title = NULL;
+	cfg->title_texture_cache = NULL;
+	cfg->title_texture_cache_w = 0;
+	cfg->title_texture_cache_h = 0;
+	cfg->title_texture_cache_font_size = 0;
+	cfg->title_texture_cache_dirty = 1;
 	cfg->border_thickness = 2;
 	cfg->titlebar_h = 36;
 	cfg->scrollable = 0;
@@ -249,6 +288,10 @@ void window_destroy(Window* win) {
 			if (win->cfg->window_texture) free_image(win->cfg->window_texture);
 			if (win->cfg->titlebar_texture) free_image(win->cfg->titlebar_texture);
 		}
+		if (win->cfg->title_texture_cache) {
+			SDL_DestroyTexture(win->cfg->title_texture_cache);
+			win->cfg->title_texture_cache = NULL;
+		}
 		free(win->cfg->title);
 	}
 	free(win->cfg);
@@ -330,7 +373,7 @@ void window_handle_event(AppContext* ctx, Window* win, SDL_Event* event) {
 void window_render(SDL_Renderer* renderer, const Window* win) {
 	if (!renderer || !win || !win->cfg || win->cfg->hidden) return;
 
-	const WindowConfig* cfg = win->cfg;
+	WindowConfig* cfg = win->cfg;
 
 	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 
@@ -395,7 +438,7 @@ int window_edit_cfg(Window* win, WindowCfgKey key, intptr_t value) {
 			if (window_set_title(cfg, (const char*)value) != EXIT_SUCCESS) return EXIT_FAILURE;
 			break;
 		case WIN_CFG_BORDER_THICKNESS: cfg->border_thickness = (int)value; break;
-		case WIN_CFG_TITLEBAR_H: cfg->titlebar_h = (int)value; break;
+		case WIN_CFG_TITLEBAR_H: cfg->titlebar_h = (int)value; cfg->title_texture_cache_dirty = 1; break;
 		case WIN_CFG_RECT: cfg->rect = *((SDL_Rect*)value); break;
 		case WIN_CFG_DRAGGING: cfg->dragging = ((int)value != 0); break;
 		case WIN_CFG_DRAG_OFFSET_X: cfg->drag_offset_x = (int)value; break;

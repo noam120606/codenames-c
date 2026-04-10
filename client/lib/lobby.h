@@ -148,4 +148,12 @@ void player_display(AppContext* context, User* user, int nb_none, int i_none, in
  */
 void player_icon_pos(AppContext* context, User* user, SDL_Texture* icon, Window* target_window, int nb_player, int i_player, int base_rel_x, int base_rel_y);
 
+/**
+ * Cherche le nom d'un joueur dans un lobby par son identifiant.
+ * @param lobby Pointeur vers le lobby.
+ * @param id Identifiant du joueur recherché.
+ * @return Pointeur vers le nom du joueur (ou NULL si introuvable).
+ */
+const char* find_player_by_id(const Lobby* lobby, int id);
+
 #endif // LOBBY_H

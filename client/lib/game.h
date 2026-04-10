@@ -7,6 +7,10 @@
 #define GAME_H
 
 #define NB_WORDS 25
+#define GAME_HINTBAR_TEXT_LEN 192
+#define GAME_HINTBAR_FEEDBACK_INFO_MS 2500U
+#define GAME_HINTBAR_FEEDBACK_SUCCESS_MS 3000U
+#define GAME_HINTBAR_FEEDBACK_ERROR_MS 5000U
 
 #include "../SDL2/include/SDL2/SDL.h"
 #include "../SDL2/include/SDL2/SDL_image.h"
@@ -66,6 +70,40 @@ typedef enum GameState {
     GAMESTATE_ENDED
 } GameState;
 
+/**
+ * Priorité des messages de la barre de titre de la fenêtre d'indice.
+ * Une priorité plus élevée masque temporairement les priorités plus faibles.
+ */
+typedef enum GameHintBarPriority {
+    GAME_HINTBAR_PRIORITY_CONTEXT = 1,
+    GAME_HINTBAR_PRIORITY_INFO = 2,
+    GAME_HINTBAR_PRIORITY_ERROR = 3
+} GameHintBarPriority;
+
+/**
+ * Message affichable dans la barre de titre de la fenêtre d'indice.
+ * expire_at_ms à 0 signifie "persistant".
+ */
+typedef struct GameHintBarMessage {
+    char text[GAME_HINTBAR_TEXT_LEN];
+    SDL_Color color;
+    int priority;
+    Uint32 expire_at_ms;
+    int active;
+} GameHintBarMessage;
+
+/**
+ * Etat complet de la barre de titre de la fenêtre d'indice.
+ * context est persistant, feedback est temporaire.
+ */
+typedef struct GameHintBarState {
+    GameHintBarMessage context;
+    GameHintBarMessage feedback;
+    char applied_text[GAME_HINTBAR_TEXT_LEN];
+    SDL_Color applied_color;
+    int applied_valid;
+} GameHintBarState;
+
 #include "../lib/history.h"
 
 /**
@@ -88,6 +126,7 @@ struct Game {
     History red_history;
     History blue_history;
     Team winner;
+    GameHintBarState hint_bar;
 };
 
 /**
@@ -103,6 +142,30 @@ int my_turn(AppContext* context);
  * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE si le contexte ou la structure de jeu est invalide.
  */
 int game_struct_free(AppContext* context);
+
+/**
+ * Définit le message persistant de contexte pour la barre de titre d'indice.
+ * @param context Contexte de l'application.
+ * @param text Texte à afficher.
+ * @param color Couleur de la barre de titre.
+ */
+void game_hint_bar_set_context(AppContext* context, const char* text, SDL_Color color);
+
+/**
+ * Définit un message temporaire de feedback pour la barre de titre d'indice.
+ * @param context Contexte de l'application.
+ * @param text Texte à afficher.
+ * @param color Couleur de la barre de titre.
+ * @param priority Priorité du feedback.
+ * @param duration_ms Durée d'affichage en millisecondes (0 = persistant jusqu'à remplacement explicite).
+ */
+void game_hint_bar_set_feedback(AppContext* context, const char* text, SDL_Color color, int priority, Uint32 duration_ms);
+
+/**
+ * Efface le feedback temporaire de la barre de titre d'indice.
+ * @param context Contexte de l'application.
+ */
+void game_hint_bar_clear_feedback(AppContext* context);
 
 /**
  * Gère les événements du menu.
