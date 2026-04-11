@@ -1,0 +1,62 @@
+========================================
+                CRÉDITS
+========================================
+
+Projet : Codenames-C
+Type : Adaptation en langage C du jeu de société Codenames
+
+----------------------------------------
+LICENCE ORIGINALE
+----------------------------------------
+
+Ce projet est une adaptation non officielle du jeu de société
+"Codenames".
+
+La licence, la marque et le concept original de Codenames
+appartiennent a leurs ayants droit respectifs.
+
+----------------------------------------
+ÉQUIPE DE CRÉATION
+----------------------------------------
+
+Roger Noam - ~WolfGang_PRoxa~ (Piau Romain)
+Quinton Chloe - KaptainePirate (Maudet Mathis)
+
+Avec la participation de : Tom
+
+----------------------------------------
+DÉVELOPPEMENT
+----------------------------------------
+
+Conception, réalisation, intégration et tests :
+Équipe projet Codenames-C
+
+----------------------------------------
+ASSETS
+----------------------------------------
+
+Audio
+- Musique de jeu : source "freesound.org"
+- Musique menu/lobby : source "pixabay.com"
+- Musique opening : source "pixabay.com"
+
+- Effet sonore clic bouton : "pixabay.com"
+- Effet sonore soumission d'input : "pixabay.com"
+- Effet sonore fermeture du bandeau latéral : "pixabay.com"
+- Effet sonore ouverture du bandeau latéral : "pixabay.com"
+
+
+Polices utilisées
+- BebasKai
+- Groovello : source "dafont.com"
+- Larabiefont
+- NotoSansSymbols
+
+----------------------------------------
+REMERCIEMENTS
+----------------------------------------
+
+Merci à toutes les personnes ayant contribué de près ou de loin
+au projet, ainsi qu'aux auteurs des ressources libres utilisées.
+
+

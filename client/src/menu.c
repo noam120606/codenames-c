@@ -7,6 +7,7 @@ static Button* btn_join = NULL;
 static Button* btn_quit = NULL;
 static Button* btn_social = NULL;
 static Button* btn_tuto = NULL;
+static Button* btn_credits = NULL;
 
 static Input* name_input = NULL;
 static Input* code_input = NULL;
@@ -78,7 +79,9 @@ static MenuStartupState menu_startup = {
 static MenuUiPlacement ui_btn_create = {0};
 static MenuUiPlacement ui_btn_join = {0};
 static MenuUiPlacement ui_btn_quit = {0};
+static MenuUiPlacement ui_btn_social = {0};
 static MenuUiPlacement ui_btn_tuto = {0};
+static MenuUiPlacement ui_btn_credits = {0};
 static MenuUiPlacement ui_input_name = {0};
 static MenuUiPlacement ui_input_code = {0};
 
@@ -211,16 +214,18 @@ static void menu_set_input_position(Input* input, int x, int y) {
     edit_in_cfg(input->id, IN_CFG_Y, y);
 }
 
-static void menu_capture_ui_targets(void) {
+static void menu_capture_ui_targets() {
     menu_capture_button_placement(btn_create, &ui_btn_create);
     menu_capture_button_placement(btn_join, &ui_btn_join);
     menu_capture_button_placement(btn_quit, &ui_btn_quit);
+    menu_capture_button_placement(btn_social, &ui_btn_social);
     menu_capture_button_placement(btn_tuto, &ui_btn_tuto);
+    menu_capture_button_placement(btn_credits, &ui_btn_credits);
     menu_capture_input_placement(name_input, &ui_input_name);
     menu_capture_input_placement(code_input, &ui_input_code);
 }
 
-static void menu_prepare_bounce_starts(void) {
+static void menu_prepare_bounce_starts() {
     if (ui_btn_create.valid) {
         ui_btn_create.from_x = -ui_btn_create.w - 120;
         ui_btn_create.from_y = ui_btn_create.target_y;
@@ -236,10 +241,20 @@ static void menu_prepare_bounce_starts(void) {
         ui_btn_quit.from_y = WIN_HEIGHT + 120;
         menu_set_button_position(btn_quit, ui_btn_quit.from_x, ui_btn_quit.from_y);
     }
+    if (ui_btn_social.valid) {
+        ui_btn_social.from_x = ui_btn_social.target_x;
+        ui_btn_social.from_y = WIN_HEIGHT + 120;
+        menu_set_button_position(btn_social, ui_btn_social.from_x, ui_btn_social.from_y);
+    }
     if (ui_btn_tuto.valid) {
         ui_btn_tuto.from_x = WIN_WIDTH + 120;
         ui_btn_tuto.from_y = ui_btn_tuto.target_y;
         menu_set_button_position(btn_tuto, ui_btn_tuto.from_x, ui_btn_tuto.from_y);
+    }
+    if (ui_btn_credits.valid) {
+        ui_btn_credits.from_x = ui_btn_credits.target_x;
+        ui_btn_credits.from_y = WIN_HEIGHT + 120;
+        menu_set_button_position(btn_credits, ui_btn_credits.from_x, ui_btn_credits.from_y);
     }
     if (ui_input_name.valid) {
         ui_input_name.from_x = WIN_WIDTH + 160;
@@ -277,11 +292,25 @@ static void menu_apply_bounce(float progress) {
             menu_lerp_int(ui_btn_quit.from_y, ui_btn_quit.target_y, eased)
         );
     }
+    if (ui_btn_social.valid) {
+        menu_set_button_position(
+            btn_social,
+            menu_lerp_int(ui_btn_social.from_x, ui_btn_social.target_x, eased),
+            menu_lerp_int(ui_btn_social.from_y, ui_btn_social.target_y, eased)
+        );
+    }
     if (ui_btn_tuto.valid) {
         menu_set_button_position(
             btn_tuto,
             menu_lerp_int(ui_btn_tuto.from_x, ui_btn_tuto.target_x, eased),
             menu_lerp_int(ui_btn_tuto.from_y, ui_btn_tuto.target_y, eased)
+        );
+    }
+    if (ui_btn_credits.valid) {
+        menu_set_button_position(
+            btn_credits,
+            menu_lerp_int(ui_btn_credits.from_x, ui_btn_credits.target_x, eased),
+            menu_lerp_int(ui_btn_credits.from_y, ui_btn_credits.target_y, eased)
         );
     }
     if (ui_input_name.valid) {
@@ -300,11 +329,13 @@ static void menu_apply_bounce(float progress) {
     }
 }
 
-static void menu_finalize_ui_positions(void) {
+static void menu_finalize_ui_positions() {
     if (ui_btn_create.valid) menu_set_button_position(btn_create, ui_btn_create.target_x, ui_btn_create.target_y);
     if (ui_btn_join.valid) menu_set_button_position(btn_join, ui_btn_join.target_x, ui_btn_join.target_y);
     if (ui_btn_quit.valid) menu_set_button_position(btn_quit, ui_btn_quit.target_x, ui_btn_quit.target_y);
+    if (ui_btn_social.valid) menu_set_button_position(btn_social, ui_btn_social.target_x, ui_btn_social.target_y);
     if (ui_btn_tuto.valid) menu_set_button_position(btn_tuto, ui_btn_tuto.target_x, ui_btn_tuto.target_y);
+    if (ui_btn_credits.valid) menu_set_button_position(btn_credits, ui_btn_credits.target_x, ui_btn_credits.target_y);
     if (ui_input_name.valid) menu_set_input_position(name_input, ui_input_name.target_x, ui_input_name.target_y);
     if (ui_input_code.valid) menu_set_input_position(code_input, ui_input_code.target_x, ui_input_code.target_y);
 }
@@ -316,7 +347,9 @@ static void menu_render_main_widgets(AppContext* context) {
 
     if (btn_create) button_render(context->renderer, btn_create);
     if (btn_quit) button_render(context->renderer, btn_quit);
+    if (btn_social) button_render(context->renderer, btn_social);
     if (btn_tuto) button_render(context->renderer, btn_tuto);
+    if (btn_credits) button_render(context->renderer, btn_credits);
 
     if (joining) {
         if (code_input) input_render(context->renderer, code_input);
@@ -410,23 +443,23 @@ void menu_set_startup_loading_progress(float progress) {
     menu_startup.loading_progress = menu_clamp01(progress);
 }
 
-void menu_mark_startup_loading_complete(void) {
+void menu_mark_startup_loading_complete() {
     menu_startup.loading_progress = 1.0f;
     menu_startup.loading_complete = 1;
 }
 
-void menu_request_startup_skip(void) {
+void menu_request_startup_skip() {
     if (!menu_startup.loading_complete) return;
     if (menu_startup.phase == MENU_STARTUP_PHASE_TRANSITION || menu_startup.phase == MENU_STARTUP_PHASE_READY) return;
 
     menu_startup.skip_requested = 1;
 }
 
-int menu_should_render_background(void) {
+int menu_should_render_background() {
     return menu_startup.phase != MENU_STARTUP_PHASE_LOADING;
 }
 
-int menu_is_startup_animation_complete(void) {
+int menu_is_startup_animation_complete() {
     return menu_startup.phase == MENU_STARTUP_PHASE_READY;
 }
 
@@ -469,8 +502,12 @@ static ButtonReturn menu_button_click(AppContext* context, Button* button) {
 
     if (button == btn_join) {
         joining = 1;
+    } else if (button == btn_social) {
+        // social_open();
     } else if (button == btn_tuto) {
         tuto_open();
+    } else if (button == btn_credits) {
+        credits_open();
     } else if (button == btn_create) {
         char trame[20];
         format_to(trame, sizeof(trame), "%d %s", MSG_CREATELOBBY, context->player_name ? context->player_name : "NONE");
@@ -483,6 +520,7 @@ static ButtonReturn menu_button_click(AppContext* context, Button* button) {
     return BTN_NONE;
 }
 
+// Création de bouttons optimisée pour le menu
 static Button* menu_create_button(AppContext* context, int id, int x, int y, int h, const char* text) {
     if (!context) return NULL;
 
@@ -514,11 +552,14 @@ static int menu_init_buttons(AppContext* context) {
     btn_quit = menu_create_button(context, BTN_MENU_QUIT, 0, -400, 100, "Quitter");
     if (!btn_quit) loading_fails++;
 
-    btn_social = menu_create_button(context, BTN_MENU_SOCIAL, 775, -350, 55, "Social");
+    btn_social = menu_create_button(context, BTN_MENU_SOCIAL, 775, -275, 55, "Social");
     if (!btn_social) loading_fails++;
 
     btn_tuto = menu_create_button(context, BTN_MENU_TUTO, 775, -400, 55, "Tutoriel");
     if (!btn_tuto) loading_fails++;
+
+    btn_credits = menu_create_button(context, BTN_MENU_CREDITS, 775, -475, 55, "Crédits");
+    if (!btn_credits) loading_fails++;
 
     return loading_fails;
 }
@@ -634,6 +675,11 @@ ButtonReturn menu_handle_event(AppContext* context, SDL_Event* e) {
         return BTN_NONE;
     }
 
+    if (credits_is_active()) {
+        credits_handle_event(context, e);
+        return BTN_NONE;
+    }
+
     if (name_input) input_handle_event(context, name_input, e);
     if (code_input && joining) input_handle_event(context, code_input, e);
 
@@ -652,8 +698,16 @@ ButtonReturn menu_handle_event(AppContext* context, SDL_Event* e) {
         r = button_handle_event(context, btn_quit, e);
         if (r != BTN_NONE) ret = r;
     }
+    if (btn_social) {
+        r = button_handle_event(context, btn_social, e);
+        if (r != BTN_NONE) ret = r;
+    }
     if (btn_tuto) {
         r = button_handle_event(context, btn_tuto, e);
+        if (r != BTN_NONE) ret = r;
+    }
+    if (btn_credits) {
+        r = button_handle_event(context, btn_credits, e);
         if (r != BTN_NONE) ret = r;
     }
 
@@ -682,7 +736,7 @@ int menu_init(AppContext* context) {
 
     txt_startup_creators_line1 = init_text(
         context,
-        "Roger Noam   -   ~WolfGang_PRoxa~ (Piau Romain)",
+        "Roger Noam    -    ~WolfGang_PRoxa~ (Piau Romain)",
         create_text_config(FONT_GROOVELLO, 56, COL_WHITE, 0, -75, 0, 255)
     );
     if (!txt_startup_creators_line1) {
@@ -691,7 +745,7 @@ int menu_init(AppContext* context) {
 
     txt_startup_creators_line2 = init_text(
         context,
-        "Quinton Chloé   -   KaptainePirate (Maudet Mathis)",
+        "Quinton Chloé    -    KaptainePirate (Maudet Mathis)",
         create_text_config(FONT_GROOVELLO, 56, COL_WHITE, 0, -175, 0, 255)
     );
     if (!txt_startup_creators_line2) {
@@ -727,6 +781,11 @@ int menu_init(AppContext* context) {
         loading_fails++;
     }
 
+    if (credits_init(context) != EXIT_SUCCESS) {
+        printf("Failed to initialize credits\n");
+        loading_fails++;
+    }
+
     menu_startup.phase = MENU_STARTUP_PHASE_LOADING;
     menu_startup.loading_progress = 0.0f;
     menu_startup.loading_complete = 0;
@@ -740,7 +799,9 @@ int menu_init(AppContext* context) {
     memset(&ui_btn_create, 0, sizeof(ui_btn_create));
     memset(&ui_btn_join, 0, sizeof(ui_btn_join));
     memset(&ui_btn_quit, 0, sizeof(ui_btn_quit));
+    memset(&ui_btn_social, 0, sizeof(ui_btn_social));
     memset(&ui_btn_tuto, 0, sizeof(ui_btn_tuto));
+    memset(&ui_btn_credits, 0, sizeof(ui_btn_credits));
     memset(&ui_input_name, 0, sizeof(ui_input_name));
     memset(&ui_input_code, 0, sizeof(ui_input_code));
 
@@ -812,6 +873,11 @@ void menu_display(AppContext* context) {
         menu_render_main_widgets(context);
     }
 
+    if (credits_is_active()) {
+        credits_display(context);
+        return;
+    }
+
     if (tuto_is_active()) {
         tuto_display(context);
     }
@@ -858,6 +924,10 @@ int menu_free() {
         button_destroy(btn_tuto);
         btn_tuto = NULL;
     }
+    if (btn_credits) {
+        button_destroy(btn_credits);
+        btn_credits = NULL;
+    }
 
     if (name_input) {
         input_destroy(name_input);
@@ -868,6 +938,7 @@ int menu_free() {
         code_input = NULL;
     }
 
+    credits_free();
     tuto_free();
 
     joining = 0;
@@ -885,7 +956,9 @@ int menu_free() {
     memset(&ui_btn_create, 0, sizeof(ui_btn_create));
     memset(&ui_btn_join, 0, sizeof(ui_btn_join));
     memset(&ui_btn_quit, 0, sizeof(ui_btn_quit));
+    memset(&ui_btn_social, 0, sizeof(ui_btn_social));
     memset(&ui_btn_tuto, 0, sizeof(ui_btn_tuto));
+    memset(&ui_btn_credits, 0, sizeof(ui_btn_credits));
     memset(&ui_input_name, 0, sizeof(ui_input_name));
     memset(&ui_input_code, 0, sizeof(ui_input_code));
 

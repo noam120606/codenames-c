@@ -300,10 +300,10 @@ int audio_init() {
     }
 
     sound_cfgs[SOUND_OPENING_CODENAMES].kind = AUDIO_SOUND_KIND_MUSIC;
-    sounds[SOUND_OPENING_CODENAMES] = load_wav_safe("assets/audio/opening/codenames_opening.ogg");
+    sounds[SOUND_OPENING_CODENAMES] = load_wav_safe("assets/audio/music/opening.ogg");
     if (!sounds[SOUND_OPENING_CODENAMES]) {
-        if (access("assets/audio/opening/codenames_opening.ogg", R_OK) != 0) {
-            printf("Audio absent: assets/audio/opening/codenames_opening.ogg\n");
+        if (access("assets/audio/music/opening.ogg", R_OK) != 0) {
+            printf("Audio absent: assets/audio/music/opening.ogg\n");
         } else {
             printf("Erreur Mix_LoadWAV: %s\n", Mix_GetError());
         }
