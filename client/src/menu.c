@@ -7,6 +7,7 @@ static Button* btn_join = NULL;
 static Button* btn_quit = NULL;
 static Button* btn_social = NULL;
 static Button* btn_tuto = NULL;
+
 static Input* name_input = NULL;
 static Input* code_input = NULL;
 static int joining = 0;

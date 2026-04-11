@@ -289,7 +289,7 @@ int on_message(AppContext* context, char* message) {
         }
 
         case MSG_WORDDATA: {
-            if (args.argc < 4) {
+            if (args.argc < 5) {
                 printf("Invalid word data message from server: \"%s\"\n", message);
                 if (args.argv) free(args.argv);
                 return EXIT_FAILURE;
@@ -298,9 +298,10 @@ int on_message(AppContext* context, char* message) {
             int wordid = atoi((char*)args.argv[0]);
             char* word = (char*)args.argv[1];
             Team team = (Team)atoi((char*)args.argv[2]);
-            int revealed = atoi((char*)args.argv[3]);
+            CardType type = (CardType)atoi((char*)args.argv[3]);
+            int revealed = atoi((char*)args.argv[4]);
 
-            printf("Word data received: %s (Team: %d, Revealed: %d)\n", word, team, revealed);
+            printf("Word data received: %s (Team: %d, Type: %d, Revealed: %d)\n", word, team, type, revealed);
 
             // Prétraitement qui remet les espaces
             for (int i = 0; word[i] != '\0'; i++) {
@@ -309,11 +310,12 @@ int on_message(AppContext* context, char* message) {
             
             strcpy(context->lobby->game->cards[wordid].word, word);
             context->lobby->game->cards[wordid].team = team;
-            context->lobby->game->cards[wordid].type = rand() % 4; // 0 = homme, 1 = femme
+            context->lobby->game->cards[wordid].type = type;
             context->lobby->game->cards[wordid].revealed = revealed;
             context->lobby->game->cards[wordid].selected = False;
             context->lobby->game->cards[wordid].is_pressed = False;
             context->lobby->game->cards[wordid].is_hovered = False;
+            context->lobby->game->cards[wordid].display_word_once_revealed = False;
 
             if (wordid == context->lobby->game->nb_words - 1) {
                 context->app_state = APP_STATE_PLAYING;

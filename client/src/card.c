@@ -25,6 +25,18 @@ SDL_Texture* guess_icon;
 /* Textes pour les mots des cartes (25 cartes) */
 static Text* txt_card_words[NUM_CARDS] = {NULL};
 
+#define CARD_FLIP_DURATION_MS 220U
+#define CARD_FLIP_MIN_WIDTH_PX 2
+
+typedef struct CardFlipState {
+    Booleen animating;
+    Booleen from_show_word;
+    Booleen to_show_word;
+    Uint32 started_at_ms;
+} CardFlipState;
+
+static CardFlipState card_flip_states[NUM_CARDS] = {0};
+
 int init_cards(AppContext * context) {
 
     int loading_fails = 0;
@@ -74,33 +86,85 @@ int init_cards(AppContext * context) {
     for (int i = 0; i < NUM_CARDS; i++) {
         txt_card_words[i] = init_text(context, " ", 
             create_text_config(FONT_BEBASKAI, 32, COL_BLACK, 0, 0, 0, 255));
+
+        card_flip_states[i].animating = False;
+        card_flip_states[i].from_show_word = False;
+        card_flip_states[i].to_show_word = False;
+        card_flip_states[i].started_at_ms = 0;
     }
 
     return loading_fails;
 }
 
+static int card_get_index(AppContext* context, Card* card) {
+    if (!context || !context->lobby || !context->lobby->game || !context->lobby->game->cards || !card) {
+        return -1;
+    }
+
+    ptrdiff_t index = card - context->lobby->game->cards;
+    if (index < 0 || index >= NUM_CARDS) {
+        return -1;
+    }
+
+    return (int)index;
+}
+
+static void card_start_flip_animation(AppContext* context, Card* card) {
+    int index = card_get_index(context, card);
+    if (index < 0) return;
+
+    CardFlipState* flip_state = &card_flip_states[index];
+    Uint32 now = SDL_GetTicks();
+
+    if (flip_state->animating) {
+        Uint32 elapsed = now - flip_state->started_at_ms;
+        float progress = (CARD_FLIP_DURATION_MS > 0)
+            ? ((float)elapsed / (float)CARD_FLIP_DURATION_MS)
+            : 1.0f;
+        if (progress > 1.0f) progress = 1.0f;
+
+        Booleen visible_side_is_word = (progress < 0.5f)
+            ? flip_state->from_show_word
+            : flip_state->to_show_word;
+
+        flip_state->from_show_word = visible_side_is_word;
+        flip_state->to_show_word = !visible_side_is_word;
+        flip_state->started_at_ms = now;
+        return;
+    }
+
+    flip_state->animating = True;
+    flip_state->from_show_word = card->display_word_once_revealed;
+    flip_state->to_show_word = !card->display_word_once_revealed;
+    flip_state->started_at_ms = now;
+}
+
 static int card_handle_click(AppContext* context, Card* card, Booleen is_guess_icon) {
     if (!context || !card) return EXIT_FAILURE;
 
-    if (card->selected && is_guess_icon) {
+    if (card->selected && is_guess_icon && !card->revealed) {
         printf("Card \"%s\" guessed!\n", card->word);
 
-        char message[64];
+        char msg[64];
         const char* agent_name = (context->player_name && context->player_name[0] != '\0') ? context->player_name : "Unknown";
-        format_to(message, sizeof(message), "%d %d %s", MSG_GUESS_CARD, (int)(card - context->lobby->game->cards), agent_name);
-        if (send_tcp(context->sock, message) != EXIT_SUCCESS) {
+        format_to(msg, sizeof(msg), "%d %d %s", MSG_GUESS_CARD, (int)(card - context->lobby->game->cards), agent_name);
+        if (send_tcp(context->sock, msg) != EXIT_SUCCESS) {
             printf("Failed to send click_card message to server\n");
             return EXIT_FAILURE;
         }
         
         card->selected = False;
         card->revealed = True;
-    } else {
+    } else if (!card->selected && !is_guess_icon && !card->revealed) {
         card->selected = !card->selected;
         char msg[64];
         format_to(msg, sizeof(msg), "%d %d %d", MSG_PREGUESS, (int)(card - context->lobby->game->cards), card->selected);
         send_tcp(context->sock, msg);
-    } 
+    } else if (card->revealed) {
+        card_start_flip_animation(context, card);
+    } else { // La carte est déjà sélectionnée mais pas devinée
+        card->display_word_once_revealed = !card->display_word_once_revealed;
+    }
 
     return EXIT_SUCCESS;
 }
@@ -147,56 +211,84 @@ int cards_handle_event(AppContext* context, SDL_Event* event) {
     if (!context || !event || !context->lobby || !context->lobby->game) return EXIT_FAILURE;
 
     for (int i = 0; i < NUM_CARDS; i++) {
-        if (context->player_role == ROLE_AGENT && my_turn(context) && !context->lobby->game->cards[i].revealed) {
+        Card* card = context->lobby->game->cards + i;
+        int can_handle_guess_interaction = (context->player_role == ROLE_AGENT && my_turn(context) && !card->revealed);
+        int can_handle_revealed_flip = card->revealed;
+
+        if (can_handle_guess_interaction || can_handle_revealed_flip) {
             card_handle_event(context, event, context->lobby->game->cards + i);
-        } 
+        }
     }
 
     return EXIT_SUCCESS;
 }
 
-static SDL_Texture* get_card_texture(AppContext* context, Card* card) {
-    if (card->revealed) {
-        switch (card->team) {
-            case TEAM_NONE:
-                switch (card->type) {
-                    case CT_MALE: case CT_CAT: return card_none_h_revealed; break;
-                    case CT_FEMALE: case CT_DOG: return card_none_f_revealed; break;
-                    default: return NULL;
-                } break;
-            case TEAM_RED:
-                switch (card->type) {
-                    case CT_MALE: return card_red_h_revealed; break;
-                    case CT_FEMALE: return card_red_f_revealed; break;
-                    case CT_CAT: return card_red_c_revealed; break;
-                    case CT_DOG: return card_red_d_revealed; break;
-                    default: return NULL;
-                } break;
-            case TEAM_BLUE:
-                switch (card->type) {
-                    case CT_MALE: return card_blue_h_revealed; break;
-                    case CT_FEMALE: return card_blue_f_revealed; break;
-                    case CT_CAT: return card_blue_c_revealed; break;
-                    case CT_DOG: return card_blue_d_revealed; break;
-                    default: return NULL;
-                } break;
-            case TEAM_BLACK: return card_black_revealed; break;
-            default: return NULL;
-        }
-    } else {
-        if (context->player_role == ROLE_SPY || context->lobby->game->state == GAMESTATE_ENDED) {
-            switch (card->team) {
-                case TEAM_NONE: return card->type % 2 ? card_none_f : card_none_h; break;
-                case TEAM_RED: return card->type % 2 ? card_red_f : card_red_h; break;
-                case TEAM_BLUE: return card->type % 2 ? card_blue_f : card_blue_h; break;
-                case TEAM_BLACK: return card_black; break;
+static SDL_Texture* get_revealed_card_texture(Card* card) {
+    if (!card) return NULL;
+
+    switch (card->team) {
+        case TEAM_NONE:
+            switch (card->type) {
+                case CT_MALE: case CT_CAT: return card_none_h_revealed;
+                case CT_FEMALE: case CT_DOG: return card_none_f_revealed;
                 default: return NULL;
             }
-        } else {
-            return card->type % 2 ? card_none_f : card_none_h;
-        }
+        case TEAM_RED:
+            switch (card->type) {
+                case CT_MALE: return card_red_h_revealed;
+                case CT_FEMALE: return card_red_f_revealed;
+                case CT_CAT: return card_red_c_revealed;
+                case CT_DOG: return card_red_d_revealed;
+                default: return NULL;
+            }
+        case TEAM_BLUE:
+            switch (card->type) {
+                case CT_MALE: return card_blue_h_revealed;
+                case CT_FEMALE: return card_blue_f_revealed;
+                case CT_CAT: return card_blue_c_revealed;
+                case CT_DOG: return card_blue_d_revealed;
+                default: return NULL;
+            }
+        case TEAM_BLACK:
+            return card_black_revealed;
+        default:
+            return NULL;
     }
-} 
+}
+
+static SDL_Texture* get_spy_word_side_texture(Card* card) {
+    if (!card) return NULL;
+
+    switch (card->team) {
+        case TEAM_NONE: return (card->type % 2) ? card_none_f : card_none_h;
+        case TEAM_RED: return (card->type % 2) ? card_red_f : card_red_h;
+        case TEAM_BLUE: return (card->type % 2) ? card_blue_f : card_blue_h;
+        case TEAM_BLACK: return card_black;
+        default: return NULL;
+    }
+}
+
+static SDL_Texture* get_card_texture(AppContext* context, Card* card) {
+    if (!context || !card) return NULL;
+
+    if (card->revealed) {
+        return get_revealed_card_texture(card);
+    }
+
+    if (context->player_role == ROLE_SPY || context->lobby->game->state == GAMESTATE_ENDED) {
+        return get_spy_word_side_texture(card);
+    }
+
+    return card->type % 2 ? card_none_f : card_none_h;
+}
+
+static void card_render_word(AppContext* context, Card* card, int index, int x, int y) {
+    if (!context || !card || index < 0 || index >= NUM_CARDS || !txt_card_words[index]) return;
+
+    update_text(context, txt_card_words[index], card->word);
+    update_text_position(txt_card_words[index], x, y - 30);
+    display_text(context, txt_card_words[index]);
+}
 
 static int card_render(AppContext* context, Card* card, int x, int y, int index) {
     if (!context || !card) return EXIT_FAILURE;
@@ -222,8 +314,62 @@ static int card_render(AppContext* context, Card* card, int x, int y, int index)
         card->rect.w += 8;
         card->rect.h += 4;
     }
-    
-    SDL_RenderCopyEx(context->renderer, get_card_texture(context, card), NULL, &card->rect, 0, NULL, SDL_FLIP_NONE);
+
+    SDL_Rect draw_rect = card->rect;
+    SDL_Texture* texture_to_render = get_card_texture(context, card);
+    Booleen render_word = !card->revealed;
+
+    if (card->revealed && index >= 0 && index < NUM_CARDS) {
+        CardFlipState* flip_state = &card_flip_states[index];
+
+        if (flip_state->animating) {
+            Uint32 elapsed = SDL_GetTicks() - flip_state->started_at_ms;
+            float progress = (CARD_FLIP_DURATION_MS > 0)
+                ? ((float)elapsed / (float)CARD_FLIP_DURATION_MS)
+                : 1.0f;
+
+            if (progress >= 1.0f) {
+                progress = 1.0f;
+                flip_state->animating = False;
+                card->display_word_once_revealed = flip_state->to_show_word;
+            }
+
+            Booleen show_word_side = (progress < 0.5f)
+                ? flip_state->from_show_word
+                : flip_state->to_show_word;
+
+            float width_scale = (progress < 0.5f)
+                ? (1.0f - (progress * 2.0f))
+                : ((progress - 0.5f) * 2.0f);
+
+            int draw_width = (int)((float)card->rect.w * width_scale);
+            if (draw_width < CARD_FLIP_MIN_WIDTH_PX) {
+                draw_width = CARD_FLIP_MIN_WIDTH_PX;
+            }
+
+            draw_rect.x = card->rect.x + ((card->rect.w - draw_width) / 2);
+            draw_rect.w = draw_width;
+
+            texture_to_render = show_word_side
+                ? get_spy_word_side_texture(card)
+                : get_revealed_card_texture(card);
+
+            render_word = show_word_side && width_scale > 0.70f;
+        } else if (card->display_word_once_revealed) {
+            texture_to_render = get_spy_word_side_texture(card);
+            render_word = True;
+        } else {
+            texture_to_render = get_revealed_card_texture(card);
+            render_word = False;
+        }
+    } else if (!card->revealed && index >= 0 && index < NUM_CARDS) {
+        card_flip_states[index].animating = False;
+        card->display_word_once_revealed = False;
+    }
+
+    if (texture_to_render) {
+        SDL_RenderCopyEx(context->renderer, texture_to_render, NULL, &draw_rect, 0, NULL, SDL_FLIP_NONE);
+    }
 
     if (card->selected) {
         const int GUESS_ICON_SIZE = 32;
@@ -236,10 +382,8 @@ static int card_render(AppContext* context, Card* card, int x, int y, int index)
         SDL_RenderCopyEx(context->renderer, guess_icon, NULL, &card->guess_rect, 0, NULL, SDL_FLIP_NONE);
     }
 
-    if (!card->revealed && txt_card_words[index]) {
-        update_text(context, txt_card_words[index], card->word);
-        update_text_position(txt_card_words[index], x, y - 30);
-        display_text(context, txt_card_words[index]);
+    if (render_word) {
+        card_render_word(context, card, index, x, y);
     }
 
     return EXIT_SUCCESS;

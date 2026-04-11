@@ -116,6 +116,7 @@ Word* generateWords(int count, Team start_team, WordsDifficulty words_difficulty
         return NULL;
     }
 
+    // Sélectionne aléatoirement des mots dans la liste et les attribue à une équipe
     for (int i = 0; i < count; i++) {
         int index;
         do {
@@ -125,9 +126,10 @@ Word* generateWords(int count, Team start_team, WordsDifficulty words_difficulty
 
         strncpy(words[i].word, sample_words[index], sizeof(words[i].word) - 1);
         words[i].word[sizeof(words[i].word) - 1] = '\0';
-    words[i].team = (i < red_count) ? TEAM_RED :
+        words[i].team = (i < red_count) ? TEAM_RED :
             (i < red_count + blue_count) ? TEAM_BLUE :
             (i < red_count + blue_count + neutral_count) ? TEAM_NONE : TEAM_BLACK;
+        words[i].type = (CardType)(rand() % 4); // Attribue un type de carte aléatoire
         words[i].revealed = 0;
     }
 
@@ -222,7 +224,7 @@ int request_start_game(Codenames* codenames, TcpClient* client, char* message, A
         tcp_send_to_client(codenames, user->id, msg);
         // Envoi de chaque mot
         for (int j = 0; j < game->nb_words; j++) {
-            format_to(msg, sizeof(msg), "%d %d %s %d %d", MSG_WORDDATA, j, game->words[j].word, game->words[j].team, game->words[j].revealed);
+            format_to(msg, sizeof(msg), "%d %d %s %d %d %d", MSG_WORDDATA, j, game->words[j].word, game->words[j].team, game->words[j].type, game->words[j].revealed);
             tcp_send_to_client(codenames, user->id, msg);
         }
     }
