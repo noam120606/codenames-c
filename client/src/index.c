@@ -177,49 +177,151 @@ int main(int argc, char* argv[]){
         cleanup_resources(resources);
         return EXIT_FAILURE;
     } else add_destroy_resource(resources, menu_free);
-
-    int background_loading_fails = init_background(&context);
-    if (background_loading_fails > 0) {
-        printf("Failed to load %d background resource(s)\n", background_loading_fails);
-        destroy_background();
-        cleanup_resources(resources);
-        return EXIT_FAILURE;
-    } else add_destroy_resource(resources, destroy_background);
-
-    int infos_loading_fails = init_infos(&context);
-    if (infos_loading_fails > 0) {
-        printf("Failed to load %d infos resource(s)\n", infos_loading_fails);
-        infos_free();
-        cleanup_resources(resources);
-        return EXIT_FAILURE;
-    } else add_destroy_resource(resources, infos_free);
-
-    int lobby_loading_fails = lobby_init(&context);
-    if (lobby_loading_fails > 0) {
-        printf("Failed to load %d lobby resource(s)\n", lobby_loading_fails);
-        lobby_free();
-        cleanup_resources(resources);
-        return EXIT_FAILURE;
-    } else add_destroy_resource(resources, lobby_free);
-
-    int card_loading_fails = init_cards(&context);
-    if (card_loading_fails > 0) {
-        printf("Failed to load %d card resource(s)\n", card_loading_fails);
-        card_free();
-        cleanup_resources(resources);
-        return EXIT_FAILURE;
-    } else add_destroy_resource(resources, card_free);
-
-    int game_loading_fails = game_init(&context);
-    if (game_loading_fails > 0) {
-        printf("Failed to load %d game resource(s)\n", game_loading_fails);
-        game_free();
-        cleanup_resources(resources);
-        return EXIT_FAILURE;
-    } else add_destroy_resource(resources, game_free);
-
     SDL_Event e;
     int running = 1;
+
+    typedef int (*SceneInitFn)(AppContext*);
+    typedef int (*SceneCleanupFn)(void);
+
+    typedef struct StartupLoadStep {
+        const char* name;
+        SceneInitFn init;
+        SceneCleanupFn cleanup;
+    } StartupLoadStep;
+
+    StartupLoadStep startup_steps[] = {
+        {"background", init_background, destroy_background},
+        {"infos", init_infos, infos_free},
+        {"lobby", lobby_init, lobby_free},
+        {"cards", init_cards, card_free},
+        {"game", game_init, game_free},
+    };
+
+    const int startup_step_count = (int)(sizeof(startup_steps) / sizeof(startup_steps[0]));
+    int startup_step_index = 0;
+    int startup_infos_ready = 0;
+    int startup_background_ready = 0;
+    int startup_running = 1;
+    const Uint32 startup_logo_only_ms = 750U;
+    Uint32 startup_sequence_started_ms = SDL_GetTicks();
+
+    menu_set_startup_loading_progress(0.0f);
+
+    while (running && startup_running) {
+        if (tick_tcp(&context) != EXIT_SUCCESS) {
+            if (context.sock >= 0) {
+                close_tcp(context.sock);
+                context.sock = -1;
+            }
+        }
+
+        context.frame_start_time = SDL_GetTicks();
+
+        while (SDL_PollEvent(&e)) {
+            if (e.type == SDL_QUIT) {
+                running = 0;
+            }
+            if (e.type == SDL_KEYDOWN && e.key.repeat == 0
+                && (e.key.keysym.sym == SDLK_F11 || e.key.keysym.sym == SDLK_ESCAPE)) {
+                toggle_fullscreen(&context);
+            }
+            #ifndef _WIN32
+            if (e.type == SDL_WINDOWEVENT) {
+                if (e.window.event == SDL_WINDOWEVENT_MAXIMIZED) {
+                    toggle_fullscreen(&context);
+                } else if (e.window.event == SDL_WINDOWEVENT_RESTORED) {
+                    Uint32 wflags = SDL_GetWindowFlags(context.window);
+                    int is_fs = (wflags & SDL_WINDOW_FULLSCREEN_DESKTOP) || (wflags & SDL_WINDOW_FULLSCREEN);
+                    if (is_fs) toggle_fullscreen(&context);
+                }
+            }
+            #endif
+
+            if (startup_infos_ready) {
+                infos_handle_event(&context, &e);
+            }
+        }
+
+        Uint32 now_ms = SDL_GetTicks();
+        if (startup_step_index < startup_step_count && (now_ms - startup_sequence_started_ms) >= startup_logo_only_ms) {
+            StartupLoadStep* step = &startup_steps[startup_step_index];
+            int loading_fails = step->init(&context);
+
+            if (loading_fails > 0) {
+                printf("Failed to load %d %s resource(s)\n", loading_fails, step->name);
+                if (step->cleanup) {
+                    step->cleanup();
+                }
+                cleanup_resources(resources);
+                return EXIT_FAILURE;
+            }
+
+            if (step->cleanup) {
+                add_destroy_resource(resources, step->cleanup);
+            }
+
+            if (step->init == init_infos) {
+                startup_infos_ready = 1;
+            }
+            if (step->init == init_background) {
+                startup_background_ready = 1;
+            }
+
+            startup_step_index++;
+            menu_set_startup_loading_progress((float)startup_step_index / (float)startup_step_count);
+
+            if (startup_step_index >= startup_step_count) {
+                menu_mark_startup_loading_complete();
+            }
+        }
+
+        float lum_fct = context.global_luminosity;
+        context.bg_color = (SDL_Color){90 * lum_fct, 90 * lum_fct, 90 * lum_fct, 255};
+
+        // Rendu du fond animé pendant le chargement du menu
+        SDL_SetRenderDrawColor(
+            context.renderer,
+            context.bg_color.r,
+            context.bg_color.g,
+            context.bg_color.b,
+            context.bg_color.a
+        );
+        SDL_RenderClear(context.renderer);
+
+        if (startup_background_ready) {
+            display_background(&context);
+        }
+        menu_display(&context);
+
+        if (startup_infos_ready) {
+            infos_display(&context);
+        }
+
+        SDL_RenderPresent(context.renderer);
+
+        Uint32 frame_end_time = SDL_GetTicks();
+        Uint32 frame_elapsed = frame_end_time - context.frame_start_time;
+        float frame_duration = 1000.0f / target_fps;
+        int frame_delay = (int)(frame_duration - frame_elapsed);
+        if (frame_delay > 0) SDL_Delay(frame_delay);
+
+        context.clock++;
+
+        if (startup_step_index >= startup_step_count && menu_is_startup_animation_complete()) {
+            startup_running = 0;
+        }
+
+        if (auto_close_frames > 0 && context.clock >= auto_close_frames) {
+            running = 0;
+        }
+    }
+
+    if (!running) {
+        printf("Exiting...\n");
+        cleanup_resources(resources);
+        return EXIT_SUCCESS;
+    }
+
     AppState previous_app_state = context.app_state;
 
     while (running) {
@@ -290,22 +392,24 @@ int main(int argc, char* argv[]){
         // Rendu et logique d'affichage 
         switch (context.app_state) {
             case APP_STATE_MENU:
-                context.bg_color = (SDL_Color){80*lum_fct, 80*lum_fct, 80*lum_fct, 255}; // Gris par défaut
+                context.bg_color = (SDL_Color){90*lum_fct, 90*lum_fct, 90*lum_fct, 255}; // Gris par défaut
 
-                display_background(&context);
+                if (menu_should_render_background()) {
+                    display_background(&context);
+                }
                 menu_display(&context);
                 break;
             case APP_STATE_LOBBY:
-                context.bg_color = (SDL_Color){80*lum_fct, 80*lum_fct, 80*lum_fct, 255};  // Gris par défaut
+                context.bg_color = (SDL_Color){90*lum_fct, 90*lum_fct, 90*lum_fct, 255};  // Gris par défaut
 
                 display_background(&context);
                 lobby_display(&context);
                 break;
             case APP_STATE_PLAYING:
                 if (context.lobby->game->state == GAMESTATE_TURN_RED_SPY || context.lobby->game->state == GAMESTATE_TURN_RED_AGENT) {
-                    context.bg_color = (SDL_Color){100*lum_fct, 45*lum_fct, 45*lum_fct, 255}; // Rouge sombre pour l'équipe rouge
+                    context.bg_color = (SDL_Color){120*lum_fct, 45*lum_fct, 45*lum_fct, 255}; // Rouge sombre pour l'équipe rouge
                 } else {
-                    context.bg_color = (SDL_Color){55*lum_fct, 55*lum_fct, 100*lum_fct, 255}; // Bleu sombre pour l'équipe bleue
+                    context.bg_color = (SDL_Color){55*lum_fct, 55*lum_fct, 120*lum_fct, 255}; // Bleu sombre pour l'équipe bleue
                 }
                 
                 display_background(&context);
