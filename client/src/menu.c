@@ -434,10 +434,10 @@ static int menu_init_name_input(AppContext* context) {
     cfg_in_name->maxlen = 16;
     cfg_in_name->save_player_data = 1;
     cfg_in_name->on_submit = name_on_submit;
-    cfg_in_name->allowed_pattern = "^[a-zA-Z0-9_zéèêëàâäåæçîïìùûüÿœ]*$";
-    cfg_in_name->submit_pattern = "^[a-zA-Z0-9_zéèêëàâäåæçîïìùûüÿœ]{3,16}$";
+    cfg_in_name->allowed_pattern = "^[a-zA-Z0-9_zéèêëàâäåæçîïìùûüÿœ~]*$";
+    cfg_in_name->submit_pattern = "^[a-zA-Z0-9_zéèêëàâäåæçîïìùûüÿœ~]{3,16}$";
     cfg_in_name->bg_path = "assets/img/inputs/empty.png";
-    cfg_in_name->bg_padding = 24;
+    cfg_in_name->bg_padding = 14;
 
     name_input = input_create(context->renderer, INPUT_NAME, cfg_in_name);
     free(cfg_in_name);
@@ -629,7 +629,7 @@ void menu_display(AppContext* context) {
         joining = 0;
     }
 
-    if (!audio_is_playing(MUSIC_MENU_LOBBY)) {
+    if (menu_startup.loading_complete && !audio_is_playing(MUSIC_MENU_LOBBY)) {
         audio_play_with_fade(MUSIC_MENU_LOBBY, -1, 1500, AUDIO_FADE_IN_BY_VOLUME, NULL);
     }
 

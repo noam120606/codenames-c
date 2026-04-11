@@ -197,6 +197,10 @@ int init_infos(AppContext* context) {
         context->sound_effects_volume = cf_sfx->cfg->value;
     }
 
+    if (cf_lum && context) {
+        context->global_luminosity = cf_lum->cfg->value / 100.0f;
+    }
+
     if (context) {
         audio_set_type_volume(AUDIO_SOUND_KIND_MUSIC, context->music_volume);
         audio_set_type_volume(AUDIO_SOUND_KIND_SFX, context->sound_effects_volume);
