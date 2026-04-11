@@ -10,12 +10,13 @@ cf. https://fr.wikipedia.org/wiki/Distance_de_Levenshtein)
 - Affichage de l'historique des tours (cartes révélées, nombre de mots restants, etc.)
 - Faire un tutoriel pour un joueur qui découvre le jeu (avec une
 partie préparée à l'avance), soit comme joueur soit comme espion.
-
 - Affichage du nombre de mots restants pour chaque équipe
-- Tirage aléatoire de la carte clé (à clarifier)
 - Proposer des niveaux de difficulté: 0 ou plusieurs assassins, varier
 la taille de la carte clé.
 
+- Ajout d'une option de temps par tour de jeu pour les espions et pour les agents
+- Affichage d'une animation de fin de partie (victoire / défaite)
+- Tirage aléatoire de la carte clé (à clarifier)
 - Mémoriser les scores des équipes à chaque partie.
 
 # idées supplémentaires :

@@ -27,19 +27,25 @@ void menu_set_startup_loading_progress(float progress);
 /**
  * Notifie le menu que le chargement des ressources de lancement est terminé.
  */
-void menu_mark_startup_loading_complete(void);
+void menu_mark_startup_loading_complete();
+
+/**
+ * Demande de passer l'animation d'ouverture et d'aller directement
+ * à la transition (bounce + fondu du background).
+ */
+void menu_request_startup_skip();
 
 /**
  * Indique si le fond animé doit être rendu derrière le menu.
  * @return 1 si le fond doit être affiché, 0 sinon.
  */
-int menu_should_render_background(void);
+int menu_should_render_background();
 
 /**
  * Indique si l'animation d'introduction de lancement est terminée.
  * @return 1 si l'intro est terminée, 0 sinon.
  */
-int menu_is_startup_animation_complete(void);
+int menu_is_startup_animation_complete();
 
 /**
  * Affiche le menu principal.

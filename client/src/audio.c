@@ -299,6 +299,16 @@ int audio_init() {
         }
     }
 
+    sound_cfgs[SOUND_OPENING_CODENAMES].kind = AUDIO_SOUND_KIND_MUSIC;
+    sounds[SOUND_OPENING_CODENAMES] = load_wav_safe("assets/audio/opening/codenames_opening.ogg");
+    if (!sounds[SOUND_OPENING_CODENAMES]) {
+        if (access("assets/audio/opening/codenames_opening.ogg", R_OK) != 0) {
+            printf("Audio absent: assets/audio/opening/codenames_opening.ogg\n");
+        } else {
+            printf("Erreur Mix_LoadWAV: %s\n", Mix_GetError());
+        }
+    }
+
     sound_cfgs[SOUND_BUTTON_CLICKED].kind = AUDIO_SOUND_KIND_SFX;
     sounds[SOUND_BUTTON_CLICKED] = load_wav_safe("assets/audio/sfx/button/clicked.ogg");
     if (!sounds[SOUND_BUTTON_CLICKED]) {

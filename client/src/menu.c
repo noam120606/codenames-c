@@ -12,23 +12,31 @@ static Input* name_input = NULL;
 static Input* code_input = NULL;
 static int joining = 0;
 static Text* txt_startup_loading = NULL;
+static Text* txt_startup_creators_line1 = NULL;
+static Text* txt_startup_creators_line2 = NULL;
 
 static const char* NAME_PLACEHOLDERS[] = {"Peter", "Quagmire", "Tom", "Faz Faf"};
 static const char* CODE_PLACEHOLDERS[] = {"CODE : #####"};
 
 #define MENU_STARTUP_LOGO_FADE_MS 750U
-#define MENU_STARTUP_BG_FADE_MS 500U
-#define MENU_STARTUP_TRANSITION_MS 900U
-#define MENU_STARTUP_LOGO_MOVE_MS 700U
+#define MENU_STARTUP_OPENING_MS 12000U
+#define MENU_STARTUP_CREDITS_FADE_MS 1000U
+#define MENU_STARTUP_OPENING_LOGO_ANIM_MS 1250U
+#define MENU_STARTUP_BG_FADE_MS 750U
+#define MENU_STARTUP_TRANSITION_MS 1000U
+#define MENU_STARTUP_LOGO_MOVE_MS 750U
 #define MENU_BOUNCE_OVERSHOOT 1.08f
 
-#define MENU_LOGO_INTRO_Y 100
+#define MENU_LOGO_INTRO_Y 150
+#define MENU_LOGO_OPENING_Y 220
 #define MENU_LOGO_FINAL_Y 200
 #define MENU_LOGO_INTRO_SCALE 1.18f
+#define MENU_LOGO_OPENING_SCALE 0.75f
 #define MENU_LOGO_FINAL_SCALE 1.00f
 
 typedef enum MenuStartupPhase {
     MENU_STARTUP_PHASE_LOADING = 0,
+    MENU_STARTUP_PHASE_OPENING,
     MENU_STARTUP_PHASE_TRANSITION,
     MENU_STARTUP_PHASE_READY
 } MenuStartupPhase;
@@ -37,8 +45,11 @@ typedef struct MenuStartupState {
     MenuStartupPhase phase;
     float loading_progress;
     int loading_complete;
+    int skip_requested;
+    int opening_audio_started;
     int transition_initialized;
     Uint32 startup_started_at_ms;
+    Uint32 opening_started_at_ms;
     Uint32 transition_started_at_ms;
 } MenuStartupState;
 
@@ -55,6 +66,9 @@ typedef struct MenuUiPlacement {
 static MenuStartupState menu_startup = {
     MENU_STARTUP_PHASE_LOADING,
     0.0f,
+    0,
+    0,
+    0,
     0,
     0,
     0,
@@ -83,6 +97,32 @@ static float menu_ease_out_back(float t) {
     const float c3 = c1 + 1.0f;
     float x = t - 1.0f;
     return 1.0f + c3 * x * x * x + c1 * x * x;
+}
+
+static float menu_smoothstep(float t) {
+    float x = menu_clamp01(t);
+    return x * x * (3.0f - (2.0f * x));
+}
+
+static Uint8 menu_opening_credits_alpha(Uint32 elapsed_ms) {
+    if (MENU_STARTUP_CREDITS_FADE_MS == 0) return 255;
+
+    if (elapsed_ms < MENU_STARTUP_CREDITS_FADE_MS) {
+        float fade_in_t = (float)elapsed_ms / (float)MENU_STARTUP_CREDITS_FADE_MS;
+        return (Uint8)(255.0f * menu_clamp01(fade_in_t));
+    }
+
+    if (elapsed_ms >= MENU_STARTUP_OPENING_MS) {
+        return 0;
+    }
+
+    if (elapsed_ms > (MENU_STARTUP_OPENING_MS - MENU_STARTUP_CREDITS_FADE_MS)) {
+        Uint32 remaining_ms = MENU_STARTUP_OPENING_MS - elapsed_ms;
+        float fade_out_t = (float)remaining_ms / (float)MENU_STARTUP_CREDITS_FADE_MS;
+        return (Uint8)(255.0f * menu_clamp01(fade_out_t));
+    }
+
+    return 255;
 }
 
 static void menu_draw_black_overlay(AppContext* context, Uint8 alpha) {
@@ -285,6 +325,51 @@ static void menu_render_main_widgets(AppContext* context) {
     }
 }
 
+static void menu_render_opening_credits(AppContext* context) {
+    if (!context) return;
+
+    Uint32 now = SDL_GetTicks();
+    Uint32 opening_elapsed_ms = 0;
+    if (menu_startup.opening_started_at_ms > 0 && now > menu_startup.opening_started_at_ms) {
+        opening_elapsed_ms = now - menu_startup.opening_started_at_ms;
+    }
+
+    float logo_anim_t = 1.0f;
+    if (menu_startup.opening_started_at_ms > 0) {
+        logo_anim_t = menu_clamp01(
+            (float)(now - menu_startup.opening_started_at_ms) / (float)MENU_STARTUP_OPENING_LOGO_ANIM_MS
+        );
+    }
+    float logo_pose_t = menu_smoothstep(logo_anim_t);
+    float logo_scale = MENU_LOGO_INTRO_SCALE + (MENU_LOGO_OPENING_SCALE - MENU_LOGO_INTRO_SCALE) * logo_pose_t;
+    int logo_y = menu_lerp_int(MENU_LOGO_INTRO_Y, MENU_LOGO_OPENING_Y, logo_pose_t);
+
+    menu_draw_black_overlay(context, 255);
+    menu_render_startup_logo(context, logo_y, logo_scale, 255);
+
+    Uint8 credits_alpha = menu_opening_credits_alpha(opening_elapsed_ms);
+
+    if (txt_startup_creators_line1) {
+        txt_startup_creators_line1->cfg.opacity = credits_alpha;
+        display_text(context, txt_startup_creators_line1);
+    }
+    if (txt_startup_creators_line2) {
+        txt_startup_creators_line2->cfg.opacity = credits_alpha;
+        display_text(context, txt_startup_creators_line2);
+    }
+}
+
+static void menu_enter_startup_transition(Uint32 now) {
+    if (audio_is_playing(SOUND_OPENING_CODENAMES)) {
+        (void)audio_stop_with_fade(SOUND_OPENING_CODENAMES, 250, AUDIO_FADE_OUT_BY_VOLUME, NULL);
+    }
+
+    menu_startup.phase = MENU_STARTUP_PHASE_TRANSITION;
+    menu_startup.transition_started_at_ms = now;
+    menu_startup.transition_initialized = 0;
+    menu_startup.skip_requested = 0;
+}
+
 static void menu_update_startup_state(AppContext* context) {
     if (!context) return;
 
@@ -293,9 +378,24 @@ static void menu_update_startup_state(AppContext* context) {
     if (menu_startup.phase == MENU_STARTUP_PHASE_LOADING) {
         float logo_progress = menu_clamp01((float)(now - menu_startup.startup_started_at_ms) / (float)MENU_STARTUP_LOGO_FADE_MS);
         if (menu_startup.loading_complete && logo_progress >= 1.0f) {
-            menu_startup.phase = MENU_STARTUP_PHASE_TRANSITION;
-            menu_startup.transition_started_at_ms = now;
-            menu_startup.transition_initialized = 0;
+            if (menu_startup.skip_requested) {
+                menu_enter_startup_transition(now);
+            } else {
+                menu_startup.phase = MENU_STARTUP_PHASE_OPENING;
+                menu_startup.opening_started_at_ms = now;
+                menu_startup.opening_audio_started = 0;
+            }
+        }
+    }
+
+    if (menu_startup.phase == MENU_STARTUP_PHASE_OPENING) {
+        if (!menu_startup.opening_audio_started) {
+            (void)audio_play_with_fade(SOUND_OPENING_CODENAMES, 0, 150, AUDIO_FADE_IN_BY_VOLUME, NULL);
+            menu_startup.opening_audio_started = 1;
+        }
+
+        if (menu_startup.skip_requested || (now - menu_startup.opening_started_at_ms) >= MENU_STARTUP_OPENING_MS) {
+            menu_enter_startup_transition(now);
         }
     }
 
@@ -313,6 +413,13 @@ void menu_set_startup_loading_progress(float progress) {
 void menu_mark_startup_loading_complete(void) {
     menu_startup.loading_progress = 1.0f;
     menu_startup.loading_complete = 1;
+}
+
+void menu_request_startup_skip(void) {
+    if (!menu_startup.loading_complete) return;
+    if (menu_startup.phase == MENU_STARTUP_PHASE_TRANSITION || menu_startup.phase == MENU_STARTUP_PHASE_READY) return;
+
+    menu_startup.skip_requested = 1;
 }
 
 int menu_should_render_background(void) {
@@ -573,6 +680,24 @@ int menu_init(AppContext* context) {
         loading_fails++;
     }
 
+    txt_startup_creators_line1 = init_text(
+        context,
+        "Roger Noam   -   ~WolfGang_PRoxa~ (Piau Romain)",
+        create_text_config(FONT_GROOVELLO, 56, COL_WHITE, 0, -75, 0, 255)
+    );
+    if (!txt_startup_creators_line1) {
+        loading_fails++;
+    }
+
+    txt_startup_creators_line2 = init_text(
+        context,
+        "Quinton Chloé   -   KaptainePirate (Maudet Mathis)",
+        create_text_config(FONT_GROOVELLO, 56, COL_WHITE, 0, -175, 0, 255)
+    );
+    if (!txt_startup_creators_line2) {
+        loading_fails++;
+    }
+
     loading_fails += menu_init_buttons(context);
 
     if (menu_init_name_input(context) != EXIT_SUCCESS) {
@@ -605,8 +730,11 @@ int menu_init(AppContext* context) {
     menu_startup.phase = MENU_STARTUP_PHASE_LOADING;
     menu_startup.loading_progress = 0.0f;
     menu_startup.loading_complete = 0;
+    menu_startup.skip_requested = 0;
+    menu_startup.opening_audio_started = 0;
     menu_startup.transition_initialized = 0;
     menu_startup.startup_started_at_ms = SDL_GetTicks();
+    menu_startup.opening_started_at_ms = 0;
     menu_startup.transition_started_at_ms = 0;
 
     memset(&ui_btn_create, 0, sizeof(ui_btn_create));
@@ -629,7 +757,11 @@ void menu_display(AppContext* context) {
         joining = 0;
     }
 
-    if (menu_startup.loading_complete && !audio_is_playing(MUSIC_MENU_LOBBY)) {
+    if (
+        menu_startup.phase == MENU_STARTUP_PHASE_TRANSITION &&
+        !audio_is_playing(SOUND_OPENING_CODENAMES) &&
+        !audio_is_playing(MUSIC_MENU_LOBBY)
+    ) {
         audio_play_with_fade(MUSIC_MENU_LOBBY, -1, 1500, AUDIO_FADE_IN_BY_VOLUME, NULL);
     }
 
@@ -649,6 +781,11 @@ void menu_display(AppContext* context) {
         return;
     }
 
+    if (menu_startup.phase == MENU_STARTUP_PHASE_OPENING) {
+        menu_render_opening_credits(context);
+        return;
+    }
+
     if (menu_startup.phase == MENU_STARTUP_PHASE_TRANSITION) {
         Uint32 now = SDL_GetTicks();
         float transition_progress = menu_clamp01((float)(now - menu_startup.transition_started_at_ms) / (float)MENU_STARTUP_TRANSITION_MS);
@@ -656,8 +793,8 @@ void menu_display(AppContext* context) {
         float bg_fade_progress = menu_clamp01((float)(now - menu_startup.transition_started_at_ms) / (float)MENU_STARTUP_BG_FADE_MS);
 
         float smooth_logo = menu_ease_out_back(logo_progress);
-        float logo_scale = MENU_LOGO_INTRO_SCALE + (MENU_LOGO_FINAL_SCALE - MENU_LOGO_INTRO_SCALE) * smooth_logo;
-        int logo_y = menu_lerp_int(MENU_LOGO_INTRO_Y, MENU_LOGO_FINAL_Y, smooth_logo);
+        float logo_scale = MENU_LOGO_OPENING_SCALE + (MENU_LOGO_FINAL_SCALE - MENU_LOGO_OPENING_SCALE) * smooth_logo;
+        int logo_y = menu_lerp_int(MENU_LOGO_OPENING_Y, MENU_LOGO_FINAL_Y, smooth_logo);
 
         Uint8 overlay_alpha = (Uint8)(255.0f * (1.0f - bg_fade_progress));
         menu_draw_black_overlay(context, overlay_alpha);
@@ -689,6 +826,16 @@ int menu_free() {
     if (txt_startup_loading) {
         destroy_text(txt_startup_loading);
         txt_startup_loading = NULL;
+    }
+
+    if (txt_startup_creators_line1) {
+        destroy_text(txt_startup_creators_line1);
+        txt_startup_creators_line1 = NULL;
+    }
+
+    if (txt_startup_creators_line2) {
+        destroy_text(txt_startup_creators_line2);
+        txt_startup_creators_line2 = NULL;
     }
 
     if (btn_create) {
@@ -728,8 +875,11 @@ int menu_free() {
     menu_startup.phase = MENU_STARTUP_PHASE_LOADING;
     menu_startup.loading_progress = 0.0f;
     menu_startup.loading_complete = 0;
+    menu_startup.skip_requested = 0;
+    menu_startup.opening_audio_started = 0;
     menu_startup.transition_initialized = 0;
     menu_startup.startup_started_at_ms = 0;
+    menu_startup.opening_started_at_ms = 0;
     menu_startup.transition_started_at_ms = 0;
 
     memset(&ui_btn_create, 0, sizeof(ui_btn_create));

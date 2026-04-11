@@ -1,6 +1,6 @@
 /**
  * @file utils.h
- * @brief Fonctions utilitaires diverses (formatage, couleurs, chaînes).
+ * @brief Fonctions utilitaires diverses (formatage, couleurs, fonts, chaînes).
  */
 
 #ifndef UTILS_H
@@ -32,6 +32,8 @@ static const SDL_Color COL_MAGENTA = (SDL_Color){255, 0, 255, 255};
 #define FONT_LARABIE "assets/fonts/larabiefont.otf"
 #define FONT_NOTO "assets/fonts/NotoSansSymbols.ttf"
 #define FONT_BEBASKAI "assets/fonts/BebasKai.otf"
+#define FONT_CREDITS "assets/fonts/Credits.ttf"
+#define FONT_GROOVELLO "assets/fonts/Groovello.ttf"
 
 typedef enum Booleen {
     False,

@@ -240,6 +240,15 @@ int main(int argc, char* argv[]){
             if (startup_infos_ready) {
                 infos_handle_event(&context, &e);
             }
+
+            if (startup_step_index >= startup_step_count) {
+                if (
+                    (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT) ||
+                    e.type == SDL_FINGERDOWN
+                ) {
+                    menu_request_startup_skip();
+                }
+            }
         }
 
         Uint32 now_ms = SDL_GetTicks();

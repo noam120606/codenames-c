@@ -653,9 +653,9 @@ int game_init(AppContext * context) {
 
 
     txt_blue_words_remaining = init_text(context, "", 
-        create_text_config(FONT_NOTO, 24, (SDL_Color){100, 150, 255, 255}, 0, 0, 0, 255));
+        create_text_config(FONT_NOTO, 30, (SDL_Color){100, 150, 255, 255}, 0, 0, 0, 255));
     txt_red_words_remaining = init_text(context, "", 
-        create_text_config(FONT_NOTO, 24, (SDL_Color){255, 100, 100, 255}, 0, 0, 0, 255));
+        create_text_config(FONT_NOTO, 30, (SDL_Color){255, 100, 100, 255}, 0, 0, 0, 255));
 
     txt_turn_label = init_text(context, "", 
         create_text_config(FONT_LARABIE, 32, COL_WHITE, 0, 0, 0, 255));
