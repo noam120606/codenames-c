@@ -23,6 +23,7 @@ static Window* chat_window = NULL;
 /* Utilisation des icônes déjà chargées dans lobby.c */
 extern SDL_Texture* player_icon_red;
 extern SDL_Texture* player_icon_blue;
+extern SDL_Texture* player_icon_glow;
 
 /* Couleurs pour les panneaux d'équipe */
 static const SDL_Color TEAM_BLUE_COLOR = {50, 80, 150, 200};
@@ -895,6 +896,15 @@ static void render_team_member_in_panel(AppContext* context, Window* panel, SDL_
     int pos_x = 0;
     int text_y = base_y;
     if (!compute_panel_member_position(nb_player, i_player, 0, base_y, &pos_x, &text_y)) return;
+
+    /* Si l'élément représente le joueur local, afficher le halo derrière l'icône */
+    int is_local = 0;
+    if (context->player_name && name && strcmp(context->player_name, name) == 0) {
+        is_local = 1;
+    }
+    if (is_local && player_icon_glow) {
+        window_display_image(context->renderer, panel, player_icon_glow, pos_x, text_y + 25, 0.15f, 0, SDL_FLIP_NONE, 1, 200);
+    }
 
     window_display_image(context->renderer, panel, icon, pos_x, text_y + 25, 0.20f, 0, SDL_FLIP_NONE, 1, 255);
 

@@ -3,6 +3,7 @@
 /* Icônes partagées avec game.c */
 SDL_Texture* player_icon_red = NULL;
 SDL_Texture* player_icon_blue = NULL;
+SDL_Texture* player_icon_glow = NULL;
 
 /* Ressources privées au module lobby */
 static Button* btn_red_agent = NULL;
@@ -504,6 +505,13 @@ int lobby_init(AppContext* context) {
         loading_fails++;
     }
 
+    /* Halo lumineux pour indiquer le joueur local */
+    player_icon_glow = load_image(context->renderer, "assets/img/player_icons/glowing_dot.png");
+    if (!player_icon_glow) {
+        printf("Failed to load player_icon_glow image\n");
+        loading_fails++;
+    }
+
     /* Créer les boutons de rôle/équipe via ButtonConfig */
     int height = 64;
 
@@ -927,6 +935,11 @@ static void player_icon_pos(AppContext* context, User* user, SDL_Texture* icon, 
         return;
     }
 
+    /* Si c'est le joueur local, afficher un halo lumineux derrière son icône */
+    if (context->player_id >= 0 && user->id == context->player_id && player_icon_glow) {
+        window_display_image(context->renderer, target_window, player_icon_glow, x, y, 0.18f, 0, SDL_FLIP_NONE, 1, 200);
+    }
+
     window_display_image(context->renderer, target_window, icon, x, y, 0.25f, 0, SDL_FLIP_NONE, 1, 255);
 
     if (current_player_text_index >= MAX_PLAYER_TEXTS) return;
@@ -964,6 +977,7 @@ int lobby_free(){
     if (player_icon_none) { free_image(player_icon_none); player_icon_none = NULL; }
     if (player_icon_red)  { free_image(player_icon_red);  player_icon_red = NULL; }
     if (player_icon_blue) { free_image(player_icon_blue); player_icon_blue = NULL; }
+    if (player_icon_glow) { free_image(player_icon_glow); player_icon_glow = NULL; }
 
     /* Libération des textes optimisés */
     destroy_text(txt_lobby_info); txt_lobby_info = NULL;

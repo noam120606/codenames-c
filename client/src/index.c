@@ -8,7 +8,7 @@
 #include <windows.h>
 #endif
 
-#define GAME_WINDOW_ICON_PATH "assets/img/others/logo_titre.png"
+#define GAME_WINDOW_ICON_PATH "assets/img/others/window_icon_big.png"
 
 // Applique l'icône de la fenêtre de jeu.
 static void set_game_window_icon(AppContext* context) {
