@@ -38,6 +38,7 @@ typedef enum ButtonReturn {
     BTN_GAME_VALIDATE_HINT,
     BTN_GAME_VALIDATE_GUESS,
     BTN_GAME_RETURN_LOBBY,
+    BTN_CREDITS_RESTART_GAME,
 } ButtonReturn;
 
 // Déclaration anticipée pour le typedef de callback.

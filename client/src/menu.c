@@ -13,16 +13,18 @@ static Input* name_input = NULL;
 static Input* code_input = NULL;
 static int joining = 0;
 static Text* txt_startup_loading = NULL;
-static Text* txt_startup_creators_line1 = NULL;
-static Text* txt_startup_creators_line2 = NULL;
+static Text* txt_startup_creators_line1_A = NULL;
+static Text* txt_startup_creators_line1_B = NULL;
+static Text* txt_startup_creators_line2_A = NULL;
+static Text* txt_startup_creators_line2_B = NULL;
 
 static const char* NAME_PLACEHOLDERS[] = {"Peter", "Quagmire", "Tom", "Faz Faf"};
 static const char* CODE_PLACEHOLDERS[] = {"CODE : #####"};
 
 #define MENU_STARTUP_LOGO_FADE_MS 750U
 #define MENU_STARTUP_OPENING_MS 12000U
-#define MENU_STARTUP_CREDITS_FADE_MS 1000U
-#define MENU_STARTUP_OPENING_LOGO_ANIM_MS 1250U
+#define MENU_STARTUP_CREATORS_FADE_MS 1250U
+#define MENU_STARTUP_OPENING_LOGO_ANIM_MS 10500U
 #define MENU_STARTUP_BG_FADE_MS 750U
 #define MENU_STARTUP_TRANSITION_MS 1000U
 #define MENU_STARTUP_LOGO_MOVE_MS 750U
@@ -31,9 +33,23 @@ static const char* CODE_PLACEHOLDERS[] = {"CODE : #####"};
 #define MENU_LOGO_INTRO_Y 150
 #define MENU_LOGO_OPENING_Y 220
 #define MENU_LOGO_FINAL_Y 200
-#define MENU_LOGO_INTRO_SCALE 1.18f
-#define MENU_LOGO_OPENING_SCALE 0.75f
+#define MENU_LOGO_INTRO_SCALE 1.2f
+#define MENU_LOGO_OPENING_SCALE 0.8f
 #define MENU_LOGO_FINAL_SCALE 1.00f
+
+#define MENU_CREATOR_LINE1_A_START_Y -140
+#define MENU_CREATOR_LINE1_A_END_Y -70
+#define MENU_CREATOR_LINE1_B_START_Y -140
+#define MENU_CREATOR_LINE1_B_END_Y -70
+#define MENU_CREATOR_LINE2_A_START_Y -240
+#define MENU_CREATOR_LINE2_A_END_Y -170
+#define MENU_CREATOR_LINE2_B_START_Y -240
+#define MENU_CREATOR_LINE2_B_END_Y -170
+
+#define MENU_CREATOR_LINE1_A_DELAY_MS 250U
+#define MENU_CREATOR_LINE1_B_DELAY_MS 950U
+#define MENU_CREATOR_LINE2_A_DELAY_MS 2450U
+#define MENU_CREATOR_LINE2_B_DELAY_MS 3150U
 
 typedef enum MenuStartupPhase {
     MENU_STARTUP_PHASE_LOADING = 0,
@@ -95,6 +111,7 @@ static int menu_lerp_int(int from, int to, float t) {
     return from + (int)lroundf((double)(to - from) * (double)t);
 }
 
+// Fonction d'easing pour un effet de rebond à la fin de l'animation d'ouverture du logo
 static float menu_ease_out_back(float t) {
     const float c1 = MENU_BOUNCE_OVERSHOOT;
     const float c3 = c1 + 1.0f;
@@ -107,11 +124,23 @@ static float menu_smoothstep(float t) {
     return x * x * (3.0f - (2.0f * x));
 }
 
-static Uint8 menu_opening_credits_alpha(Uint32 elapsed_ms) {
-    if (MENU_STARTUP_CREDITS_FADE_MS == 0) return 255;
+static float menu_opening_creator_pose(Uint32 elapsed_ms, Uint32 delay_ms) {
+    if (elapsed_ms <= delay_ms) return 0.0f;
 
-    if (elapsed_ms < MENU_STARTUP_CREDITS_FADE_MS) {
-        float fade_in_t = (float)elapsed_ms / (float)MENU_STARTUP_CREDITS_FADE_MS;
+    Uint32 delayed_elapsed_ms = elapsed_ms - delay_ms;
+    float pose_t = menu_clamp01((float)delayed_elapsed_ms / (float)MENU_STARTUP_OPENING_LOGO_ANIM_MS);
+    return menu_smoothstep(pose_t);
+}
+
+static Uint8 menu_opening_credits_alpha(Uint32 elapsed_ms, Uint32 delay_ms) {
+    if (elapsed_ms <= delay_ms) return 0;
+
+    if (MENU_STARTUP_CREATORS_FADE_MS == 0) return 255;
+
+    Uint32 delayed_elapsed_ms = elapsed_ms - delay_ms;
+
+    if (delayed_elapsed_ms < MENU_STARTUP_CREATORS_FADE_MS) {
+        float fade_in_t = (float)delayed_elapsed_ms / (float)MENU_STARTUP_CREATORS_FADE_MS;
         return (Uint8)(255.0f * menu_clamp01(fade_in_t));
     }
 
@@ -119,9 +148,9 @@ static Uint8 menu_opening_credits_alpha(Uint32 elapsed_ms) {
         return 0;
     }
 
-    if (elapsed_ms > (MENU_STARTUP_OPENING_MS - MENU_STARTUP_CREDITS_FADE_MS)) {
+    if (elapsed_ms > (MENU_STARTUP_OPENING_MS - MENU_STARTUP_CREATORS_FADE_MS)) {
         Uint32 remaining_ms = MENU_STARTUP_OPENING_MS - elapsed_ms;
-        float fade_out_t = (float)remaining_ms / (float)MENU_STARTUP_CREDITS_FADE_MS;
+        float fade_out_t = (float)remaining_ms / (float)MENU_STARTUP_CREATORS_FADE_MS;
         return (Uint8)(255.0f * menu_clamp01(fade_out_t));
     }
 
@@ -226,44 +255,44 @@ static void menu_capture_ui_targets() {
 }
 
 static void menu_prepare_bounce_starts() {
-    if (ui_btn_create.valid) {
-        ui_btn_create.from_x = -ui_btn_create.w - 120;
-        ui_btn_create.from_y = ui_btn_create.target_y;
+    if (ui_btn_create.valid) { // Du coin inférieur gauche
+        ui_btn_create.from_x = -120;
+        ui_btn_create.from_y = WIN_HEIGHT + 120;
         menu_set_button_position(btn_create, ui_btn_create.from_x, ui_btn_create.from_y);
     }
-    if (ui_btn_join.valid) {
+    if (ui_btn_join.valid) { // Du coin inférieur droit
         ui_btn_join.from_x = WIN_WIDTH + 120;
-        ui_btn_join.from_y = ui_btn_join.target_y;
+        ui_btn_join.from_y = WIN_HEIGHT + 120;
         menu_set_button_position(btn_join, ui_btn_join.from_x, ui_btn_join.from_y);
     }
-    if (ui_btn_quit.valid) {
+    if (ui_btn_quit.valid) { // Du dessous
         ui_btn_quit.from_x = ui_btn_quit.target_x;
         ui_btn_quit.from_y = WIN_HEIGHT + 120;
         menu_set_button_position(btn_quit, ui_btn_quit.from_x, ui_btn_quit.from_y);
     }
-    if (ui_btn_social.valid) {
-        ui_btn_social.from_x = ui_btn_social.target_x;
-        ui_btn_social.from_y = WIN_HEIGHT + 120;
+    if (ui_btn_social.valid) { // De la droite + un peu plus haut
+        ui_btn_social.from_x = WIN_WIDTH + 120;
+        ui_btn_social.from_y = ui_btn_social.target_y - 120;
         menu_set_button_position(btn_social, ui_btn_social.from_x, ui_btn_social.from_y);
     }
-    if (ui_btn_tuto.valid) {
+    if (ui_btn_tuto.valid) { // De la droite
         ui_btn_tuto.from_x = WIN_WIDTH + 120;
         ui_btn_tuto.from_y = ui_btn_tuto.target_y;
         menu_set_button_position(btn_tuto, ui_btn_tuto.from_x, ui_btn_tuto.from_y);
     }
-    if (ui_btn_credits.valid) {
-        ui_btn_credits.from_x = ui_btn_credits.target_x;
-        ui_btn_credits.from_y = WIN_HEIGHT + 120;
+    if (ui_btn_credits.valid) { // Du coin inférieur droit
+        ui_btn_credits.from_x = WIN_WIDTH + 120;
+        ui_btn_credits.from_y = WIN_HEIGHT - 120;
         menu_set_button_position(btn_credits, ui_btn_credits.from_x, ui_btn_credits.from_y);
     }
-    if (ui_input_name.valid) {
+    if (ui_input_name.valid) { // Du coin supérieur droit
         ui_input_name.from_x = WIN_WIDTH + 160;
-        ui_input_name.from_y = ui_input_name.target_y;
+        ui_input_name.from_y = -ui_input_name.target_y;
         menu_set_input_position(name_input, ui_input_name.from_x, ui_input_name.from_y);
     }
-    if (ui_input_code.valid) {
-        ui_input_code.from_x = WIN_WIDTH + 160;
-        ui_input_code.from_y = ui_input_code.target_y;
+    if (ui_input_code.valid) { // Du coin inférieur droit
+        ui_input_code.from_x = WIN_WIDTH + 120;
+        ui_input_code.from_y = WIN_HEIGHT + 120;
         menu_set_input_position(code_input, ui_input_code.from_x, ui_input_code.from_y);
     }
 }
@@ -377,18 +406,35 @@ static void menu_render_opening_credits(AppContext* context) {
     float logo_scale = MENU_LOGO_INTRO_SCALE + (MENU_LOGO_OPENING_SCALE - MENU_LOGO_INTRO_SCALE) * logo_pose_t;
     int logo_y = menu_lerp_int(MENU_LOGO_INTRO_Y, MENU_LOGO_OPENING_Y, logo_pose_t);
 
+    // Un seul mouvement vertical par ligne: pas de décalage Y entre A et B.
+    float creator_line1_pose_t = menu_opening_creator_pose(opening_elapsed_ms, MENU_CREATOR_LINE1_A_DELAY_MS);
+    float creator_line2_pose_t = menu_opening_creator_pose(opening_elapsed_ms, MENU_CREATOR_LINE2_A_DELAY_MS);
+
+    int creator_line1_y = menu_lerp_int(MENU_CREATOR_LINE1_A_START_Y, MENU_CREATOR_LINE1_A_END_Y, creator_line1_pose_t);
+    int creator_line2_y = menu_lerp_int(MENU_CREATOR_LINE2_A_START_Y, MENU_CREATOR_LINE2_A_END_Y, creator_line2_pose_t);
+
     menu_draw_black_overlay(context, 255);
     menu_render_startup_logo(context, logo_y, logo_scale, 255);
 
-    Uint8 credits_alpha = menu_opening_credits_alpha(opening_elapsed_ms);
-
-    if (txt_startup_creators_line1) {
-        txt_startup_creators_line1->cfg.opacity = credits_alpha;
-        display_text(context, txt_startup_creators_line1);
+    if (txt_startup_creators_line1_A) {
+        txt_startup_creators_line1_A->cfg.opacity = menu_opening_credits_alpha(opening_elapsed_ms, MENU_CREATOR_LINE1_A_DELAY_MS);
+        update_text_position(txt_startup_creators_line1_A, txt_startup_creators_line1_A->cfg.x, creator_line1_y);
+        display_text(context, txt_startup_creators_line1_A);
     }
-    if (txt_startup_creators_line2) {
-        txt_startup_creators_line2->cfg.opacity = credits_alpha;
-        display_text(context, txt_startup_creators_line2);
+    if (txt_startup_creators_line1_B) {
+        txt_startup_creators_line1_B->cfg.opacity = menu_opening_credits_alpha(opening_elapsed_ms, MENU_CREATOR_LINE1_B_DELAY_MS);
+        update_text_position(txt_startup_creators_line1_B, txt_startup_creators_line1_B->cfg.x, creator_line1_y);
+        display_text(context, txt_startup_creators_line1_B);
+    }
+    if (txt_startup_creators_line2_A) {
+        txt_startup_creators_line2_A->cfg.opacity = menu_opening_credits_alpha(opening_elapsed_ms, MENU_CREATOR_LINE2_A_DELAY_MS);
+        update_text_position(txt_startup_creators_line2_A, txt_startup_creators_line2_A->cfg.x, creator_line2_y);
+        display_text(context, txt_startup_creators_line2_A);
+    }
+    if (txt_startup_creators_line2_B) {
+        txt_startup_creators_line2_B->cfg.opacity = menu_opening_credits_alpha(opening_elapsed_ms, MENU_CREATOR_LINE2_B_DELAY_MS);
+        update_text_position(txt_startup_creators_line2_B, txt_startup_creators_line2_B->cfg.x, creator_line2_y);
+        display_text(context, txt_startup_creators_line2_B);
     }
 }
 
@@ -734,21 +780,71 @@ int menu_init(AppContext* context) {
         loading_fails++;
     }
 
-    txt_startup_creators_line1 = init_text(
+    const char* creator_line1_A_text = "Roger Noam    ";
+    const char* creator_line1_B_text = "-    ~WolfGang_PRoxa~ (Piau Romain)";
+    const char* creator_line2_A_text = "Quinton Chloé    ";
+    const char* creator_line2_B_text = "-    KaptainePirate (Maudet Mathis)";
+
+    int x_offset_1_A = 0;
+    int x_offset_1_B = 0;
+    int x_offset_2_A = 0;
+    int x_offset_2_B = 0;
+
+    TTF_Font* creators_font = load_font(FONT_GROOVELLO, 56);
+    if (creators_font) {
+        int line1_A_w = 0, line1_B_w = 0;
+        int line2_A_w = 0, line2_B_w = 0;
+        int unused_h = 0;
+
+        if (
+            TTF_SizeUTF8(creators_font, creator_line1_A_text, &line1_A_w, &unused_h) == 0 &&
+            TTF_SizeUTF8(creators_font, creator_line1_B_text, &line1_B_w, &unused_h) == 0 &&
+            TTF_SizeUTF8(creators_font, creator_line2_A_text, &line2_A_w, &unused_h) == 0 &&
+            TTF_SizeUTF8(creators_font, creator_line2_B_text, &line2_B_w, &unused_h) == 0
+        ) {
+            int line1_total_w = line1_A_w + line1_B_w;
+            int line2_total_w = line2_A_w + line2_B_w;
+
+            x_offset_1_A = -(line1_total_w / 2) + (line1_A_w / 2);
+            x_offset_1_B = -(line1_total_w / 2) + line1_A_w + (line1_B_w / 2);
+            x_offset_2_A = -(line2_total_w / 2) + (line2_A_w / 2);
+            x_offset_2_B = -(line2_total_w / 2) + line2_A_w + (line2_B_w / 2);
+        }
+    }
+
+    txt_startup_creators_line1_A = init_text(
         context,
-        "Roger Noam    -    ~WolfGang_PRoxa~ (Piau Romain)",
-        create_text_config(FONT_GROOVELLO, 56, COL_WHITE, 0, -75, 0, 255)
+        creator_line1_A_text,
+        create_text_config(FONT_GROOVELLO, 56, COL_WHITE, x_offset_1_A, MENU_CREATOR_LINE1_A_START_Y, 0, 255)
     );
-    if (!txt_startup_creators_line1) {
+    if (!txt_startup_creators_line1_A) {
         loading_fails++;
     }
 
-    txt_startup_creators_line2 = init_text(
+    txt_startup_creators_line1_B = init_text(
         context,
-        "Quinton Chloé    -    KaptainePirate (Maudet Mathis)",
-        create_text_config(FONT_GROOVELLO, 56, COL_WHITE, 0, -175, 0, 255)
+        creator_line1_B_text,
+        create_text_config(FONT_GROOVELLO, 56, COL_WHITE, x_offset_1_B, MENU_CREATOR_LINE1_B_START_Y, 0, 255)
     );
-    if (!txt_startup_creators_line2) {
+    if (!txt_startup_creators_line1_B) {
+        loading_fails++;
+    }
+
+    txt_startup_creators_line2_A = init_text(
+        context,
+        creator_line2_A_text,
+        create_text_config(FONT_GROOVELLO, 56, COL_WHITE, x_offset_2_A, MENU_CREATOR_LINE2_A_START_Y, 0, 255)
+    );
+    if (!txt_startup_creators_line2_A) {
+        loading_fails++;
+    }
+
+    txt_startup_creators_line2_B = init_text(
+        context,
+        creator_line2_B_text,
+        create_text_config(FONT_GROOVELLO, 56, COL_WHITE, x_offset_2_B, MENU_CREATOR_LINE2_B_START_Y, 0, 255)
+    );
+    if (!txt_startup_creators_line2_B) {
         loading_fails++;
     }
 
@@ -894,14 +990,24 @@ int menu_free() {
         txt_startup_loading = NULL;
     }
 
-    if (txt_startup_creators_line1) {
-        destroy_text(txt_startup_creators_line1);
-        txt_startup_creators_line1 = NULL;
+    if (txt_startup_creators_line1_A) {
+        destroy_text(txt_startup_creators_line1_A);
+        txt_startup_creators_line1_A = NULL;
     }
 
-    if (txt_startup_creators_line2) {
-        destroy_text(txt_startup_creators_line2);
-        txt_startup_creators_line2 = NULL;
+    if (txt_startup_creators_line1_B) {
+        destroy_text(txt_startup_creators_line1_B);
+        txt_startup_creators_line1_B = NULL;
+    }
+
+    if (txt_startup_creators_line2_A) {
+        destroy_text(txt_startup_creators_line2_A);
+        txt_startup_creators_line2_A = NULL;
+    }
+
+    if (txt_startup_creators_line2_B) {
+        destroy_text(txt_startup_creators_line2_B);
+        txt_startup_creators_line2_B = NULL;
     }
 
     if (btn_create) {

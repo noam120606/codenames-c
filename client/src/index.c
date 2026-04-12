@@ -4,6 +4,87 @@
 #include <time.h>
 #include <errno.h>
 #include <string.h>
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
+#define GAME_WINDOW_ICON_PATH "assets/img/others/logo_titre.png"
+
+// Applique l'icône de la fenêtre de jeu.
+static void set_game_window_icon(AppContext* context) {
+    if (!context || !context->window) return;
+
+    SDL_Surface* icon_surface = IMG_Load(GAME_WINDOW_ICON_PATH);
+    if (!icon_surface) {
+        fprintf(stderr, "Warning: failed to load window icon '%s': %s\n", GAME_WINDOW_ICON_PATH, IMG_GetError());
+        return;
+    }
+
+    SDL_SetWindowIcon(context->window, icon_surface);
+    SDL_FreeSurface(icon_surface);
+}
+
+// Relance le processus de jeu avec les mêmes arguments que le processus actuel.
+static int relaunch_game_process(int argc, char* argv[]) {
+#ifdef _WIN32
+    (void)argc;
+    (void)argv;
+
+    char* command_line = _strdup(GetCommandLineA());
+    if (!command_line) {
+        return EXIT_FAILURE;
+    }
+
+    STARTUPINFOA startup_info;
+    PROCESS_INFORMATION process_info;
+    ZeroMemory(&startup_info, sizeof(startup_info));
+    ZeroMemory(&process_info, sizeof(process_info));
+    startup_info.cb = sizeof(startup_info);
+
+    // Lancer le nouveau processus en utilisant la ligne de commande complète du processus actuel pour préserver tous les arguments et options.
+    BOOL launched = CreateProcessA(
+        NULL,
+        command_line,
+        NULL,
+        NULL,
+        FALSE,
+        0,
+        NULL,
+        NULL,
+        &startup_info,
+        &process_info
+    );
+
+    free(command_line);
+
+    if (!launched) {
+        fprintf(stderr, "Failed to relaunch game process (CreateProcessA error %lu)\n", (unsigned long)GetLastError());
+        return EXIT_FAILURE;
+    }
+
+    CloseHandle(process_info.hThread);
+    CloseHandle(process_info.hProcess);
+    return EXIT_SUCCESS;
+#else
+    if (!argv || argc <= 0 || !argv[0] || argv[0][0] == '\0') {
+        return EXIT_FAILURE;
+    }
+
+    pid_t pid = fork();
+    if (pid < 0) {
+        perror("fork failed while relaunching game");
+        return EXIT_FAILURE;
+    }
+
+    if (pid == 0) {
+        execv(argv[0], argv);
+        perror("execv failed while relaunching game");
+        _exit(127);
+    }
+
+    return EXIT_SUCCESS;
+#endif
+}
 
 // Applique les transitions audio une seule fois au changement d'état.
 static void handle_app_state_audio_transition(AppContext* context, AppState previous_state, AppState new_state) {
@@ -117,6 +198,8 @@ int main(int argc, char* argv[]){
         cleanup_resources(resources);
         return EXIT_FAILURE;
     }
+
+    set_game_window_icon(&context);
 
     // Register App context and cleanup function
     if (define_app_context(resources, &context, destroy_context) != EXIT_SUCCESS) {
@@ -237,7 +320,7 @@ int main(int argc, char* argv[]){
             }
             #endif
 
-            if (startup_infos_ready) {
+            if (startup_infos_ready && menu_is_startup_animation_complete()) {
                 infos_handle_event(&context, &e);
             }
 
@@ -302,7 +385,7 @@ int main(int argc, char* argv[]){
         }
         menu_display(&context);
 
-        if (startup_infos_ready) {
+        if (startup_infos_ready && menu_is_startup_animation_complete()) {
             infos_display(&context);
         }
 
@@ -328,6 +411,13 @@ int main(int argc, char* argv[]){
     if (!running) {
         printf("Exiting...\n");
         cleanup_resources(resources);
+
+        if (context.restart_requested) {
+            if (relaunch_game_process(argc, argv) != EXIT_SUCCESS) {
+                return EXIT_FAILURE;
+            }
+        }
+
         return EXIT_SUCCESS;
     }
 
@@ -455,6 +545,12 @@ int main(int argc, char* argv[]){
     printf("Exiting...\n");
 
     cleanup_resources(resources);
+
+    if (context.restart_requested) {
+        if (relaunch_game_process(argc, argv) != EXIT_SUCCESS) {
+            return EXIT_FAILURE;
+        }
+    }
 
     return EXIT_SUCCESS;
 }
