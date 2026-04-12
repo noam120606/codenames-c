@@ -319,6 +319,16 @@ int audio_init() {
         }
     }
 
+    sound_cfgs[SOUND_BUTTON_HOVER].kind = AUDIO_SOUND_KIND_SFX;
+    sounds[SOUND_BUTTON_HOVER] = load_wav_safe("assets/audio/sfx/button/hover.ogg");
+    if (!sounds[SOUND_BUTTON_HOVER]) {
+        if (access("assets/audio/sfx/button/hover.ogg", R_OK) != 0) {
+            printf("Audio absent: assets/audio/sfx/button/hover.ogg\n");
+        } else {
+            printf("Erreur Mix_LoadWAV: %s\n", Mix_GetError());
+        }
+    }
+
     sound_cfgs[SOUND_INFO_OPEN].kind = AUDIO_SOUND_KIND_SFX;
     sounds[SOUND_INFO_OPEN] = load_wav_safe("assets/audio/sfx/whoosh_open.ogg");
     if( !sounds[SOUND_INFO_OPEN]) {

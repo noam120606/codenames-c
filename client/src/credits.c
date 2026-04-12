@@ -12,7 +12,7 @@
 #define CREDITS_SCROLL_WHEEL_STEP 60.0f
 #define CREDITS_CLOSE_BUTTON_W 440
 #define CREDITS_CLOSE_BUTTON_H 72
-#define CREDITS_RESTART_BUTTON_W 250
+#define CREDITS_RESTART_BUTTON_W 240
 #define CREDITS_RESTART_BUTTON_H 50
 #define CREDITS_ACTION_BOTTOM_MARGIN 68
 #define CREDITS_ACTION_LEFT_MARGIN 42
@@ -34,6 +34,7 @@ typedef struct CreditsState {
 } CreditsState;
 
 static CreditsState g_credits = {0};
+
 
 static float credits_clamp_float(float value, float min_value, float max_value) {
     if (min_value > max_value) {
@@ -158,6 +159,7 @@ static int credits_load_file_content(void) {
     return EXIT_SUCCESS;
 }
 
+// Construit ou reconstruit la texture de texte à partir du contenu actuel.
 static int credits_build_text_texture(SDL_Renderer* renderer) {
     if (!renderer) return EXIT_FAILURE;
 
@@ -207,6 +209,7 @@ static int credits_build_text_texture(SDL_Renderer* renderer) {
     int total_h = 0;
     int build_error = 0;
 
+    // Parcours chaque ligne du texte, la rend en surface et calcule les dimensions totales nécessaires pour la texture finale.
     for (size_t i = 0; i < line_count; i++) {
         const char* line_end = strchr(cursor, '\n');
         size_t raw_len = line_end ? (size_t)(line_end - cursor) : strlen(cursor);

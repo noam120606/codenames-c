@@ -1,6 +1,7 @@
 
 
 
+
 ========================================
 CRÉDITS
 ========================================
@@ -16,7 +17,7 @@ Ce projet est une adaptation non officielle du jeu de société
 "Codenames".
 
 La licence, la marque et le concept original de Codenames
-appartiennent a leurs ayants droit respectifs.
+appartiennent à leurs propriétaires originaux.
 
 ----------------------------------------
 ÉQUIPE DE CRÉATION
@@ -38,28 +39,63 @@ Conception, réalisation, intégration et tests :
 ASSETS
 ----------------------------------------
 
-Audio
+Audio :
 - Musique de jeu : source "freesound.org"
 - Musique menu/lobby : source "pixabay.com"
 - Musique opening : source "pixabay.com"
 
-- Effet sonore clic bouton : "pixabay.com"
-- Effet sonore soumission d'input : "pixabay.com"
-- Effet sonore fermeture du bandeau latéral : "pixabay.com"
-- Effet sonore ouverture du bandeau latéral : "pixabay.com"
+- Effet sonore clic bouton : source "freesound.com"
+- Effet sonore de hover bouton : source "pixabay.com"
+- Effet sonore soumission d'input : source "pixabay.com"
+- Effet sonore fermeture du bandeau latéral : source "pixabay.com"
+- Effet sonore ouverture du bandeau latéral : source "pixabay.com"
 
-
-Polices utilisées
+Polices utilisées :
 - BebasKai
 - Groovello : source "dafont.com"
 - Larabiefont
 - NotoSansSymbols
 
+Images :
+- Symbole d'arrière plan loupe : source "pngtree.com"
+- Symbole d'arrière plan chapeau : source généré avec GPT Image 1.5
+- Symbole d'arrière plan jumelles : source généré avec GPT Image 1.5
+
+- Bouton vide : source généré avec GPT Image 1.5
+- Bouton rouge : source modifiée avec script python à partir du bouton vide
+- Bouton bleu : source modifiée avec script python à partir du bouton vide
+- Bouton carré : source généré avec GPT Image 1.5
+- Bouton validé 1 : source généré avec GPT Image 1.5
+- Bouton validé 2 : source généré avec GPT Image 1.5
+
+- Cartes rouge : source dessinées par Tom
+- Cartes bleue : source dessinées par Tom
+- Cartes neutre : source dessinées par Tom
+- Cartes assassin : source dessinées par Tom
+- Validateur de carte : source généré avec GPT Image 1.5
+
+- Input de saisie vide : source générée avec GPT Image 1.5
+- Input de saisie carré : source générée avec GPT Image 1.5
+
+- Bandeau latéral : source généré avec GPT Image 1.5
+- Logo de titre : source généré avec GPT Image 1.5
+- Icone de fenêtre : source générée avec GPT Image 1.5
+
+- Icône de joueur originale : source "freepik.com"
+- Icône de joueur bleu : source modifiée avec script python à partir de l'icône originale
+- Icône de joueur rouge : source modifiée avec script python à partir de l'icône originale
+- Icône de joueur aucun : source modifiée avec script python à partir de l'icône originale
+- Icône de joueur point lumineux : source "vecteezy.com"
+
+- Images de tutoriel : source le jeu lui-même
+
+- Images de fénêtres : source générées avec GPT Image 1.5
+
 ----------------------------------------
 REMERCIEMENTS
 ----------------------------------------
 
-Merci à toutes les personnes ayant contribué de près ou de loin
-au projet, ainsi qu'aux auteurs des ressources libres utilisées.
+Merci à toutes les personnes ayant contribué au projet,
+ainsi qu'aux auteurs des ressources libres utilisées.
 
 

@@ -21,6 +21,7 @@ typedef enum {
     MUSIC_GAME,                 /**< Musique pendant la partie. */
     SOUND_OPENING_CODENAMES,    /**< Audio d'ouverture avant l'arrivée du menu. */
     SOUND_BUTTON_CLICKED,       /**< Son de clic bouton. */
+    SOUND_BUTTON_HOVER,         /**< Son de survol bouton. */
     SOUND_TYPE_WRITING,         /**< Son de saisie clavier. */
     SOUND_CARD_DISTRIBUTION,    /**< Son de distribution des cartes. */
     SOUND_CARD_GUESS,           /**< Son de sélection d'une carte. */

@@ -8,6 +8,7 @@
 
 #include <stdint.h>
 #include "../SDL2/include/SDL2/SDL.h"
+#include "audio.h"
 
 typedef struct AppContext AppContext;
 
@@ -93,6 +94,12 @@ typedef struct ButtonConfig {
     SDL_Color color;
     const char* tex_path;
     ButtonCallback callback;
+    /* Son joué lors du clic (SoundID). Valeur négative = aucun son. */
+    int click_sound;
+    /* Son joué lors du survol (SoundID). Valeur négative = aucun son. */
+    int hover_sound;
+    /* Texte à afficher lors du survol (tooltip). NULL = aucun texte. */
+    const char* hover_text;
 
     /* --- champs d'état (runtime) --- */
     SDL_Rect rect;
@@ -104,6 +111,9 @@ typedef struct ButtonConfig {
     SDL_Texture* text_texture;
     SDL_Renderer* renderer;
     int text_dirty;
+    /* --- champs runtime pour hover_text --- */
+    SDL_Texture* hover_text_texture;
+    SDL_Rect hover_text_rect;
 } ButtonConfig;
 
 /**
@@ -126,6 +136,9 @@ typedef enum ButtonCfgKey {
     BTN_CFG_IS_TEXT,
     BTN_CFG_TEXT_RECT,
     BTN_CFG_TEXT_TEXTURE,
+    BTN_CFG_CLICK_SOUND,
+    BTN_CFG_HOVER_SOUND,
+    BTN_CFG_HOVER_TEXT,
 } ButtonCfgKey;
 
 /**
