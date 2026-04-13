@@ -76,12 +76,12 @@ int request_send_chat(Codenames* codenames, TcpClient* client, char* message, Ar
         return EXIT_FAILURE;
     }
 
-    if (!args.argv[0]) {
-        printf("Sender user not found for client %d\n", client->id);
-        char msg[64];
-        format_to(msg, sizeof(msg), "%d %s", MSG_SERVER_ERROR, "User %s not found in lobby", (char*)args.argv[0]);
-        tcp_send_to_client(codenames, client->id, msg);
-        return EXIT_FAILURE;
+    const char* sender_name = "Unknown";
+    User* sender_user = find_user_by_id(lobby, client->id);
+    if (sender_user && sender_user->name && sender_user->name[0] != '\0') {
+        sender_name = sender_user->name;
+    } else if (args.argv[0] && ((char*)args.argv[0])[0] != '\0') {
+        sender_name = (char*)args.argv[0];
     }
 
     // Pour que le message puisse contenir des espaces, on reconstruit le message à partir de tous les arguments après le premier (le nom de l'expéditeur)
@@ -96,7 +96,7 @@ int request_send_chat(Codenames* codenames, TcpClient* client, char* message, Ar
 
     // Diffuse le message de chat à tous les joueurs du lobby
     char msg[512];
-    format_to(msg, sizeof(msg), "%d %s %s", MSG_SENDCHAT, args.argv[0], rebuilt_message);
+    format_to(msg, sizeof(msg), "%d %d %s %s", MSG_SENDCHAT, client->id, sender_name, rebuilt_message);
     if (chat_push(&lobby->chat, msg) != EXIT_SUCCESS) {
         printf("Failed to store chat message in lobby %d history\n", lobby->id);
     }

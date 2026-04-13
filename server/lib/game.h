@@ -39,6 +39,21 @@ typedef enum Team {
 } Team;
 
 /**
+ * Types de cartes pour l'affichage (masculin, féminin, etc.). Ne correspond pas à une logique de jeu, mais uniquement à l'affichage.
+ * Permet d'avoir des cartes avec des formes différentes selon le type, pour une meilleure lisibilité.
+ * @param CT_MALE carte de type masculin.
+ * @param CT_FEMALE carte de type féminin.
+ * @param CT_CAT carte de type chat.
+ * @param CT_DOG carte de type chien.
+ */
+typedef enum CardType {
+    CT_MALE,
+    CT_FEMALE,
+    CT_CAT,
+    CT_DOG,
+} CardType;
+
+/**
  * Représente un mot dans la grille de Codenames.
  *
  * @param word texte du mot (terminé par \0).
@@ -48,6 +63,7 @@ typedef enum Team {
 typedef struct {
     char word[32];
     Team team;
+    CardType type;
     int revealed;
 } Word;
 

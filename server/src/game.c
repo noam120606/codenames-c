@@ -116,6 +116,7 @@ Word* generateWords(int count, Team start_team, WordsDifficulty words_difficulty
         return NULL;
     }
 
+    // Sélectionne aléatoirement des mots dans la liste et les attribue à une équipe
     for (int i = 0; i < count; i++) {
         int index;
         do {
@@ -125,9 +126,10 @@ Word* generateWords(int count, Team start_team, WordsDifficulty words_difficulty
 
         strncpy(words[i].word, sample_words[index], sizeof(words[i].word) - 1);
         words[i].word[sizeof(words[i].word) - 1] = '\0';
-    words[i].team = (i < red_count) ? TEAM_RED :
+        words[i].team = (i < red_count) ? TEAM_RED :
             (i < red_count + blue_count) ? TEAM_BLUE :
             (i < red_count + blue_count + neutral_count) ? TEAM_NONE : TEAM_BLACK;
+        words[i].type = (CardType)(rand() % 4); // Attribue un type de carte aléatoire
         words[i].revealed = 0;
     }
 
@@ -150,12 +152,12 @@ void shuffleWords(Word* words, int count) { // Mélange les cartes auxquelles so
 
 int destroy_game(Game* game) {
     if (!game) return EXIT_FAILURE;
+
     if (game->words) {
-        for (int i = 0; i < game->nb_words; i++) {
-            free(game->words[i].word);
-        }
         free(game->words);
+        game->words = NULL;
     }
+
     free(game);
     return EXIT_SUCCESS;
 }
@@ -184,6 +186,11 @@ int request_start_game(Codenames* codenames, TcpClient* client, char* message, A
     }
 
     // Démarre le jeu
+    if (lobby->game) {
+        destroy_game(lobby->game);
+        lobby->game = NULL;
+    }
+
     lobby->status = LB_STATUS_IN_GAME;
     printf("Game started in lobby %d\n", lobby->id);
 
@@ -206,6 +213,7 @@ int request_start_game(Codenames* codenames, TcpClient* client, char* message, A
 
     game->nb_words = 25;
     game->state = start_team == TEAM_RED ? GAMESTATE_TURN_RED_SPY : GAMESTATE_TURN_BLUE_SPY;
+    game->can_guess = 0;
     lobby->game = game;
 
     // Envoi de la partie aux joueurs
@@ -216,7 +224,7 @@ int request_start_game(Codenames* codenames, TcpClient* client, char* message, A
         tcp_send_to_client(codenames, user->id, msg);
         // Envoi de chaque mot
         for (int j = 0; j < game->nb_words; j++) {
-            format_to(msg, sizeof(msg), "%d %d %s %d %d", MSG_WORDDATA, j, game->words[j].word, game->words[j].team, game->words[j].revealed);
+            format_to(msg, sizeof(msg), "%d %d %s %d %d %d", MSG_WORDDATA, j, game->words[j].word, game->words[j].team, game->words[j].type, game->words[j].revealed);
             tcp_send_to_client(codenames, user->id, msg);
         }
     }
@@ -255,8 +263,8 @@ int request_submit_hint(Codenames* codenames, TcpClient* client, char* message, 
         return EXIT_FAILURE;
     }
 
-    // Vérifie les arguments: spy_name, nb_hint et hint_word
-    if (args.argc < 3) {
+    // Vérifie les arguments: nb_hint et hint_word
+    if (args.argc < 2) {
         printf("Invalid submit hint from client %d : \"%s\"\n", client->id, message);
         char msg[64];
         format_to(msg, sizeof(msg), "%d %s", MSG_SERVER_ERROR, "Invalid hint format");
@@ -264,11 +272,10 @@ int request_submit_hint(Codenames* codenames, TcpClient* client, char* message, 
         return EXIT_FAILURE;
     }
 
-    char* spy_name = (char*)args.argv[0];
-    int nb_hint = atoi((char*)args.argv[1]);
-    char* hint_word = (char*)args.argv[2];
+    int nb_hint = atoi((char*)args.argv[0]);
+    char* hint_word = (char*)args.argv[1];
 
-    printf("Client %d (%s) submitted hint: %s (%d)\n", client->id, spy_name, hint_word, nb_hint);
+    printf("Client %d submitted hint: %s (%d)\n", client->id, hint_word, nb_hint);
 
     // Change le gamestate de SPY à AGENT
     GameState new_state;
@@ -284,7 +291,7 @@ int request_submit_hint(Codenames* codenames, TcpClient* client, char* message, 
 
     // Diffuse l'indice et le nouveau gamestate à tous les joueurs du lobby
     char msg[128];
-    format_to(msg, sizeof(msg), "%d %s %d %s %d", MSG_SUBMIT_HINT, spy_name, nb_hint, hint_word, new_state);
+    format_to(msg, sizeof(msg), "%d %d %d %s %d", MSG_SUBMIT_HINT, client->id, nb_hint, hint_word, new_state);
     for (int i = 0; i < lobby->nb_players; i++) {
         tcp_send_to_client(codenames, lobby->users[i]->id, msg);
     }
@@ -467,6 +474,12 @@ int request_guess_card(Codenames* codenames, TcpClient* client, char* message, A
         winner = TEAM_BLUE;
     }
     lobby->game->state = new_state;
+
+    if (new_state == GAMESTATE_ENDED) {
+        lobby->status = LB_STATUS_WAITING;
+        lobby->game->can_guess = 0;
+        printf("Lobby %d returned to waiting state after end of game\n", lobby->id);
+    }
 
     printf("Game state changed to %d in lobby %d\n", new_state, lobby->id);
 

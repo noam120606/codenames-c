@@ -7,35 +7,62 @@
 #define MENU_H
 
 #include "../SDL2/include/SDL2/SDL.h"
-#include "../SDL2/include/SDL2/SDL_image.h"
-#include "../SDL2/include/SDL2/SDL_ttf.h"
-
-typedef struct AppContext AppContext;
 #include "../lib/button.h"
 
+typedef struct AppContext AppContext;
+
 /**
- * Initialise les ressources du menu.
- * @param context Contexte SDL.
- * @return Nombre d'erreurs survenues lors du chargement (0 si tout s'est bien passé, >0 sinon).
+ * Initialise les ressources graphiques et UI du menu.
+ * @param context Contexte applicatif.
+ * @return 0 si tout est chargé correctement, sinon un compteur d'erreurs.
  */
 int menu_init(AppContext* context);
 
 /**
+ * Met à jour la progression de chargement de l'intro de lancement (0.0 à 1.0).
+ * @param progress Progression réelle du chargement.
+ */
+void menu_set_startup_loading_progress(float progress);
+
+/**
+ * Notifie le menu que le chargement des ressources de lancement est terminé.
+ */
+void menu_mark_startup_loading_complete();
+
+/**
+ * Demande de passer l'animation d'ouverture et d'aller directement
+ * à la transition (bounce + fondu du background).
+ */
+void menu_request_startup_skip();
+
+/**
+ * Indique si le fond animé doit être rendu derrière le menu.
+ * @return 1 si le fond doit être affiché, 0 sinon.
+ */
+int menu_should_render_background();
+
+/**
+ * Indique si l'animation d'introduction de lancement est terminée.
+ * @return 1 si l'intro est terminée, 0 sinon.
+ */
+int menu_is_startup_animation_complete();
+
+/**
  * Affiche le menu principal.
- * @param context Contexte SDL.
+ * @param context Contexte applicatif.
  */
 void menu_display(AppContext* context);
 
 /**
- * Gère les événements SDL pour le menu (inputs, boutons, etc.).
- * @param context Contexte SDL.
- * @param e Événement SDL à traiter.
- * @return ButtonReturn (BTN_RET_QUIT pour quitter, BTN_RET_NONE sinon).
+ * Gère les événements SDL du menu (inputs, boutons, tutoriel).
+ * @param context Contexte applicatif.
+ * @param event Événement SDL à traiter.
+ * @return BTN_MENU_QUIT si l'utilisateur demande de quitter, BTN_NONE sinon.
  */
-ButtonReturn menu_handle_event(AppContext* context, SDL_Event* e);
+ButtonReturn menu_handle_event(AppContext* context, SDL_Event* event);
 
-/** 
- * Libère les ressources du menu.
+/**
+ * Libère les ressources allouées par menu_init.
  * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur.
  */
 int menu_free();

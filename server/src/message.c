@@ -44,7 +44,7 @@ int on_message(Codenames* codenames, TcpClient* client, char* message) {
         case MSG_PREGUESS: return request_preguess(codenames, client, message, args);
         case MSG_GUESS_CARD: return request_guess_card(codenames, client, message, args);
         case MSG_SET_WORDS_DIFFICULTY: return request_set_words_difficulty(codenames, client, message, args);
-    case MSG_SET_NB_ASSASSINS: return request_set_nb_assassins(codenames, client, message, args);
+        case MSG_SET_NB_ASSASSINS: return request_set_nb_assassins(codenames, client, message, args);
 
         case MSG_SENDCHAT: return request_send_chat(codenames, client, message, args);
 
