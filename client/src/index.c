@@ -9,13 +9,50 @@
 #include "../SDL2/include/SDL2/SDL_syswm.h"
 #endif
 
-#define GAME_WINDOW_ICON_PATH "assets/img/others/window_icon_big.png"
+#define GAME_WINDOW_ICON_PATH "assets/img/others/window_icon.png"
 #ifdef _WIN32
-#define GAME_WINDOW_ICON_SMALL_PATH "assets/ico/window.ico"
-#define GAME_WINDOW_ICON_BIG_PATH "assets/ico/window_big.ico"
+#define GAME_APP_ICON_PATH "assets/icon/app.ico"
+#define GAME_WINDOW_ICON_PATH "assets/icon/window.ico"
 #endif
 
 #ifdef _WIN32
+static HICON load_game_window_icon_handle(int size, int is_small_icon) {
+    HINSTANCE app_instance = GetModuleHandleA(NULL);
+    HICON icon = (HICON)LoadImageA(
+        app_instance,
+        MAKEINTRESOURCEA(1),
+        IMAGE_ICON,
+        size,
+        size,
+        LR_DEFAULTCOLOR
+    );
+    if (icon) {
+        return icon;
+    }
+
+    const char* icon_path = is_small_icon ? GAME_APP_ICON_PATH : GAME_WINDOW_ICON_PATH;
+    icon = (HICON)LoadImageA(
+        NULL,
+        icon_path,
+        IMAGE_ICON,
+        size,
+        size,
+        LR_LOADFROMFILE
+    );
+
+    if (!icon) {
+        fprintf(
+            stderr,
+            "Warning: failed to load %s window icon '%s' (error %lu)\n",
+            is_small_icon ? "small" : "big",
+            icon_path,
+            (unsigned long)GetLastError()
+        );
+    }
+
+    return icon;
+}
+
 // Force l'icône de barre de titre (petite) et l'icône de fenêtre (grande) côté Win32.
 static void set_game_window_icon_win32(SDL_Window* window) {
     if (!window) return;
@@ -30,43 +67,28 @@ static void set_game_window_icon_win32(SDL_Window* window) {
     HWND hwnd = wm_info.info.win.window;
     if (!hwnd) return;
 
-    HICON small_icon = (HICON)LoadImageA(
-        NULL,
-        GAME_WINDOW_ICON_SMALL_PATH,
-        IMAGE_ICON,
-        16,
-        16,
-        LR_LOADFROMFILE
-    );
-    if (!small_icon) {
-        fprintf(
-            stderr,
-            "Warning: failed to load small window icon '%s' (error %lu)\n",
-            GAME_WINDOW_ICON_SMALL_PATH,
-            (unsigned long)GetLastError()
-        );
-    } else {
+    HICON small_icon = load_game_window_icon_handle(16, 1);
+    if (small_icon) {
         SendMessageA(hwnd, WM_SETICON, ICON_SMALL, (LPARAM)small_icon);
+        SetClassLongPtrA(hwnd, GCLP_HICONSM, (LONG_PTR)small_icon);
     }
 
-    HICON big_icon = (HICON)LoadImageA(
-        NULL,
-        GAME_WINDOW_ICON_BIG_PATH,
-        IMAGE_ICON,
-        32,
-        32,
-        LR_LOADFROMFILE
-    );
-    if (!big_icon) {
-        fprintf(
-            stderr,
-            "Warning: failed to load big window icon '%s' (error %lu)\n",
-            GAME_WINDOW_ICON_BIG_PATH,
-            (unsigned long)GetLastError()
-        );
-    } else {
+    HICON big_icon = load_game_window_icon_handle(32, 0);
+    if (big_icon) {
         SendMessageA(hwnd, WM_SETICON, ICON_BIG, (LPARAM)big_icon);
+        SetClassLongPtrA(hwnd, GCLP_HICON, (LONG_PTR)big_icon);
     }
+
+    // Force Windows a redessiner la frame pour refléter immédiatement l'icône de titre.
+    SetWindowPos(
+        hwnd,
+        NULL,
+        0,
+        0,
+        0,
+        0,
+        SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE | SWP_FRAMECHANGED
+    );
 }
 #endif
 
@@ -371,6 +393,9 @@ int main(int argc, char* argv[]){
             if (e.type == SDL_KEYDOWN && e.key.repeat == 0
                 && (e.key.keysym.sym == SDLK_F11 || e.key.keysym.sym == SDLK_ESCAPE)) {
                 toggle_fullscreen(&context);
+                #ifdef _WIN32
+                set_game_window_icon(&context);
+                #endif
             }
             #ifndef _WIN32
             if (e.type == SDL_WINDOWEVENT) {
@@ -505,6 +530,9 @@ int main(int argc, char* argv[]){
             if (e.type == SDL_KEYDOWN && e.key.repeat == 0
                 && (e.key.keysym.sym == SDLK_F11 || e.key.keysym.sym == SDLK_ESCAPE)) {
                 toggle_fullscreen(&context);
+                #ifdef _WIN32
+                set_game_window_icon(&context);
+                #endif
             }
             #ifndef _WIN32
             if (e.type == SDL_WINDOWEVENT) {
