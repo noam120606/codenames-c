@@ -106,6 +106,28 @@ static void set_game_window_icon(AppContext* context) {
 #endif
 }
 
+#ifndef _WIN32
+static int resolve_current_executable_path(char* out_path, size_t out_path_size) {
+#if defined(__linux__)
+    if (!out_path || out_path_size <= 1) {
+        return EXIT_FAILURE;
+    }
+
+    ssize_t path_len = readlink("/proc/self/exe", out_path, out_path_size - 1);
+    if (path_len <= 0 || (size_t)path_len >= out_path_size) {
+        return EXIT_FAILURE;
+    }
+
+    out_path[path_len] = '\0';
+    return EXIT_SUCCESS;
+#else
+    (void)out_path;
+    (void)out_path_size;
+    return EXIT_FAILURE;
+#endif
+}
+#endif
+
 // Relance le processus de jeu avec les mêmes arguments que le processus actuel.
 static int relaunch_game_process(int argc, char* argv[]) {
 #ifdef _WIN32
@@ -145,6 +167,7 @@ static int relaunch_game_process(int argc, char* argv[]) {
         return EXIT_FAILURE;
     }
 
+    // Fermer les handles du processus enfant car on n'en a pas besoin et ne veut pas de fuite.
     CloseHandle(process_info.hThread);
     CloseHandle(process_info.hProcess);
     return EXIT_SUCCESS;
@@ -153,19 +176,23 @@ static int relaunch_game_process(int argc, char* argv[]) {
         return EXIT_FAILURE;
     }
 
-    pid_t pid = fork();
-    if (pid < 0) {
-        perror("fork failed while relaunching game");
-        return EXIT_FAILURE;
+    const char* executable_path = argv[0];
+    char executable_path_buffer[4096];
+    if (resolve_current_executable_path(executable_path_buffer, sizeof(executable_path_buffer)) == EXIT_SUCCESS) {
+        executable_path = executable_path_buffer;
     }
 
-    if (pid == 0) {
+    // Sous Linux, remplacer le processus courant évite que les runners de tâches
+    // interprètent la fin du parent comme une fin de job et tuent l'enfant relancé.
+    execv(executable_path, argv);
+
+    if (executable_path != argv[0]) {
         execv(argv[0], argv);
-        perror("execv failed while relaunching game");
-        _exit(127);
     }
 
-    return EXIT_SUCCESS;
+    execvp(argv[0], argv);
+    perror("failed to relaunch game");
+    return EXIT_FAILURE;
 #endif
 }
 

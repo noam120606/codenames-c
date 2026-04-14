@@ -590,7 +590,7 @@ static Button* menu_create_button(AppContext* context, int id, int x, int y, int
 static int menu_init_buttons(AppContext* context) {
     int loading_fails = 0;
 
-    btn_create = menu_create_button(context, BTN_CREATE_LOBBY, -300, -180, 100, "Créer", "Créer un nouveau lobby");
+    btn_create = menu_create_button(context, BTN_CREATE_LOBBY, -300, -180, 100, "Créer", "Créer un lobby");
     if (!btn_create) loading_fails++;
 
     btn_join = menu_create_button(context, BTN_JOIN_LOBBY, 300, -180, 100, "Rejoindre", "Rejoindre un lobby existant");
