@@ -48,8 +48,8 @@ static const char* CODE_PLACEHOLDERS[] = {"CODE : #####"};
 
 #define MENU_CREATOR_LINE1_A_DELAY_MS 250U // Noam
 #define MENU_CREATOR_LINE1_B_DELAY_MS 950U // Romain
-#define MENU_CREATOR_LINE2_A_DELAY_MS 2450U // Chloé
-#define MENU_CREATOR_LINE2_B_DELAY_MS 3200U // Mathis
+#define MENU_CREATOR_LINE2_A_DELAY_MS 2500U // Chloé
+#define MENU_CREATOR_LINE2_B_DELAY_MS 3350U // Mathis
 
 typedef enum MenuStartupPhase {
     MENU_STARTUP_PHASE_LOADING = 0,
@@ -599,7 +599,7 @@ static int menu_init_buttons(AppContext* context) {
     btn_quit = menu_create_button(context, BTN_MENU_QUIT, 0, -400, 100, "Quitter", "Quitter le jeu");
     if (!btn_quit) loading_fails++;
 
-    btn_social = menu_create_button(context, BTN_MENU_SOCIAL, 775, -275, 55, "Social", "Accéder au menu social");
+    btn_social = menu_create_button(context, BTN_MENU_SOCIAL, 775, -275, 55, "Social", "Menu social (non implémenté)");
     if (!btn_social) loading_fails++;
 
     btn_tuto = menu_create_button(context, BTN_MENU_TUTO, 775, -400, 55, "Tutoriel", "Voir le tutoriel");

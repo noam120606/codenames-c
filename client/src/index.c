@@ -12,11 +12,10 @@
 #define GAME_WINDOW_ICON_PATH "assets/img/others/window_icon.png"
 #ifdef _WIN32
 #define GAME_APP_ICON_PATH "assets/icon/app.ico"
-#define GAME_WINDOW_ICON_PATH "assets/icon/window.ico"
 #endif
 
 #ifdef _WIN32
-static HICON load_game_window_icon_handle(int size, int is_small_icon) {
+static HICON load_game_window_icon_handle(int size) {
     HINSTANCE app_instance = GetModuleHandleA(NULL);
     HICON icon = (HICON)LoadImageA(
         app_instance,
@@ -30,10 +29,9 @@ static HICON load_game_window_icon_handle(int size, int is_small_icon) {
         return icon;
     }
 
-    const char* icon_path = is_small_icon ? GAME_APP_ICON_PATH : GAME_WINDOW_ICON_PATH;
     icon = (HICON)LoadImageA(
         NULL,
-        icon_path,
+        GAME_APP_ICON_PATH,
         IMAGE_ICON,
         size,
         size,
@@ -43,9 +41,8 @@ static HICON load_game_window_icon_handle(int size, int is_small_icon) {
     if (!icon) {
         fprintf(
             stderr,
-            "Warning: failed to load %s window icon '%s' (error %lu)\n",
-            is_small_icon ? "small" : "big",
-            icon_path,
+            "Warning: failed to load window icon '%s' (error %lu)\n",
+            GAME_APP_ICON_PATH,
             (unsigned long)GetLastError()
         );
     }
@@ -67,13 +64,13 @@ static void set_game_window_icon_win32(SDL_Window* window) {
     HWND hwnd = wm_info.info.win.window;
     if (!hwnd) return;
 
-    HICON small_icon = load_game_window_icon_handle(16, 1);
+    HICON small_icon = load_game_window_icon_handle(16);
     if (small_icon) {
         SendMessageA(hwnd, WM_SETICON, ICON_SMALL, (LPARAM)small_icon);
         SetClassLongPtrA(hwnd, GCLP_HICONSM, (LONG_PTR)small_icon);
     }
 
-    HICON big_icon = load_game_window_icon_handle(32, 0);
+    HICON big_icon = load_game_window_icon_handle(32);
     if (big_icon) {
         SendMessageA(hwnd, WM_SETICON, ICON_BIG, (LPARAM)big_icon);
         SetClassLongPtrA(hwnd, GCLP_HICON, (LONG_PTR)big_icon);
@@ -323,7 +320,6 @@ int main(int argc, char* argv[]){
                     size_t len = strlen(line);
                     if (len > 0 && line[len - 1] == '\n') line[len - 1] = '\0';
                     context.player_uuid = strdup(line);
-                    printf("UUID loaded from file: %s\n", context.player_uuid);
                 }
             }
             fclose(f);

@@ -730,14 +730,11 @@ int lobby_init(AppContext* context) {
             create_text_config(FONT_LARABIE, 18, COL_WHITE, 0, 0, 0, 255));
     }
 
-    if (loading_fails == 0) {
-        printf("Lobby assets loaded successfully\n");
-        return EXIT_SUCCESS;
-    } else {
+    if (!loading_fails == 0) {
         printf("Lobby asset loading failed: %d failures\n", loading_fails);
         return EXIT_FAILURE;
     }
-    
+    return EXIT_SUCCESS;
 }
 
 int struct_lobby_init(Lobby* lobby, int id, const char* code) {
