@@ -551,7 +551,6 @@ int infos_free() {
         bandeau = NULL;
     }
     crossfaders_free();
-    free_rules();
     
     /* Libération des textes optimisés */
     destroy_text(txt_music_label); txt_music_label = NULL;
@@ -566,6 +565,8 @@ int infos_free() {
         free(txt_rules_lines);
         txt_rules_lines = NULL;
     }
+
+    free_rules();
     
     destroy_text(txt_fps); txt_fps = NULL;
     destroy_text(txt_ping); txt_ping = NULL;

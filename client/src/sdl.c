@@ -4,21 +4,37 @@ static int is_truthy_env(const char* value) {
     return value && strcmp(value, "0") != 0 && value[0] != '\0';
 }
 
-static int is_running_under_valgrind(void) {
+static int is_running_under_valgrind() {
     const char* ld_preload = getenv("LD_PRELOAD");
     return getenv("VALGRIND_LIB") || (ld_preload && strstr(ld_preload, "valgrind"));
+}
+
+/* Active le backend video dummy uniquement pour les runs de diagnostic
+ * non-interactifs (auto-close), afin d'eviter les faux positifs X11/IME/DBus.
+ */
+static int should_use_dummy_video() {
+    const char* explicit_dummy_video = getenv("CODENAMES_VIDEO_DUMMY");
+    if (explicit_dummy_video) {
+        return is_truthy_env(explicit_dummy_video);
+    }
+
+    if (!is_running_under_valgrind()) {
+        return 0;
+    }
+
+    return getenv("CODENAMES_AUTOCLOSE_FRAMES") != NULL;
 }
 
 /* Détermine si l'audio factice doit être utilisé.
  * Peut être activé via la variable d'environnement CODENAMES_AUDIO_DUMMY ou automatiquement
  * si le programme est exécuté sous Valgrind. */
-static int should_use_dummy_audio(void) {
+static int should_use_dummy_audio() {
     return is_truthy_env(getenv("CODENAMES_AUDIO_DUMMY")) || is_running_under_valgrind();
 }
 
 /* Configure des hints et variables d'environnement SDL pour améliorer l'expérience sous Valgrind
    et éviter les popups d'erreur liés à l'IME ou D-Bus. */
-static void configure_diagnostic_sdl_environment(void) {
+static void configure_diagnostic_sdl_environment() {
     if (!is_running_under_valgrind()) {
         return;
     }
@@ -30,7 +46,7 @@ static void configure_diagnostic_sdl_environment(void) {
     SDL_setenv("XMODIFIERS", "@im=none", 1);
 }
 
-static void configure_windows_audio_backend(void) {
+static void configure_windows_audio_backend() {
 #ifdef _WIN32
     const char* audio_driver = getenv("SDL_AUDIODRIVER");
     if (!audio_driver || audio_driver[0] == '\0') {
@@ -40,7 +56,7 @@ static void configure_windows_audio_backend(void) {
 #endif
 }
 
-static Uint32 get_renderer_flags(void) {
+static Uint32 get_renderer_flags() {
     if (is_truthy_env(getenv("CODENAMES_RENDER_SOFTWARE")) || is_running_under_valgrind()) {
         SDL_SetHint(SDL_HINT_RENDER_DRIVER, "software");
         SDL_SetHint(SDL_HINT_FRAMEBUFFER_ACCELERATION, "0");
@@ -60,6 +76,10 @@ AppContext init_sdl() {
 
     if (should_use_dummy_audio()) {
         SDL_setenv("SDL_AUDIODRIVER", "dummy", 1);
+    }
+
+    if (should_use_dummy_video()) {
+        SDL_setenv("SDL_VIDEODRIVER", "dummy", 1);
     }
 
     // Initialize SDL
@@ -271,7 +291,7 @@ void toggle_fullscreen(AppContext* context) {
     if (!context || !context->window) return;
 
     Uint32 now = SDL_GetTicks();
-    if (context->last_fullscreen_toggle_ms != 0 && now - context->last_fullscreen_toggle_ms < 180) {
+    if (context->last_fullscreen_toggle_ms != 0 && now - context->last_fullscreen_toggle_ms < 180) { // Empêcher les toggles trop rapides (ex: double-clic sur le bouton plein écran)
         return;
     }
     context->last_fullscreen_toggle_ms = now;
@@ -359,6 +379,7 @@ int destroy_context(AppContext* context) {
     }
 
     audio_cleanup();
+    text_font_cache_clear();
     Mix_Quit();
     TTF_Quit();
     IMG_Quit();

@@ -741,6 +741,12 @@ int struct_lobby_init(Lobby* lobby, int id, const char* code) {
     if (!lobby) return EXIT_FAILURE;
     const char* safe_code = code ? code : "";
 
+    if (lobby->game) { // Nettoyer les données de la partie précédente si elles existent
+        free(lobby->game->cards);
+        free(lobby->game);
+        lobby->game = NULL;
+    }
+
     chat_clear(&lobby->chat);
 
     for (int i = 0; i < MAX_USERS; i++) {
@@ -756,7 +762,6 @@ int struct_lobby_init(Lobby* lobby, int id, const char* code) {
     lobby->status = LB_STATUS_WAITING;
     lobby->nb_players = 0;
     lobby->owner_id = -1;
-    lobby->game = NULL;
     lobby->words_difficulty = WORDS_DIFFICULTY_NORMAL;
     lobby->nb_assassins = 1;
     strncpy(lobby->code, safe_code, sizeof(lobby->code) - 1);

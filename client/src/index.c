@@ -4,6 +4,9 @@
 #include <time.h>
 #include <errno.h>
 #include <string.h>
+#ifndef _WIN32
+#include <signal.h>
+#endif
 #ifdef _WIN32
 #include <windows.h>
 #include "../SDL2/include/SDL2/SDL_syswm.h"
@@ -230,6 +233,9 @@ static void handle_app_state_audio_transition(AppContext* context, AppState prev
 }
 
 int main(int argc, char* argv[]){
+#ifndef _WIN32
+    signal(SIGPIPE, SIG_IGN);
+#endif
 
     const float target_fps = 60.0f;
     char ip[16] = "127.0.0.1";

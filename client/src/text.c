@@ -61,6 +61,17 @@ TTF_Font* load_font(const char* font_path, int size) {
     return font;
 }
 
+void text_font_cache_clear(void) {
+    for (int i = 0; i < TEXT_FONT_CACHE_SIZE; i++) {
+        if (text_font_cache[i].font) {
+            TTF_CloseFont(text_font_cache[i].font);
+            text_font_cache[i].font = NULL;
+        }
+        text_font_cache[i].path[0] = '\0';
+        text_font_cache[i].size = 0;
+    }
+}
+
 TextConfig create_text_config(const char* font_path, int size, SDL_Color color, int x, int y, double angle, Uint8 opacity) {
     TextConfig cfg;
     cfg.font_path = font_path;

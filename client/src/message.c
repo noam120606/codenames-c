@@ -118,19 +118,20 @@ int on_message(AppContext* context, char* message) {
     MessageType header = fetch_header(message);
     message += number_length((int)header) + 1; // Skip header et espace
 
-     /* Keep a raw copy of the message (everything after the header)
-         so we can print the full argument string later even though
-         parse_arguments() will modify `message` with strtok(). */
-     char* raw_message = strdup(message);
-     Arguments args = parse_arguments(message);
+    /* Keep a raw copy of the message (everything after the header)
+       so we can print the full argument string later even though
+       parse_arguments() will modify `message` with strtok(). */
+    char* raw_message = strdup(message);
+    Arguments args = parse_arguments(message);
+    int status = EXIT_SUCCESS;
 
     switch (header) {
 
         case MSG_SERVER_ERROR:
             if (args.argc < 1) {
                 printf("Invalid error message from server: \"%s\"\n", message);
-                if (args.argv) free(args.argv);
-                return EXIT_FAILURE;
+                status = EXIT_FAILURE;
+                goto cleanup;
             }
             printf("Error from server: %s\n", (char*)args.argv[0]);
             break;
@@ -142,8 +143,8 @@ int on_message(AppContext* context, char* message) {
         case MSG_INFO:
             if (args.argc < 1) {
             printf("Invalid info message from server: \"%s\"\n", message);
-                if (args.argv) free(args.argv);
-                return EXIT_FAILURE;
+                status = EXIT_FAILURE;
+                goto cleanup;
             }
 
             /* Print the entire argument string (everything after header) */
@@ -154,8 +155,8 @@ int on_message(AppContext* context, char* message) {
         case MSG_CREATELOBBY: // Confirmation de la création du lobby, avec l'id du lobby créé
             if (args.argc < 2) {
                 printf("Invalid create lobby message from server: \"%s\"\n", message);
-                if (args.argv) free(args.argv);
-                return EXIT_FAILURE;
+                status = EXIT_FAILURE;
+                goto cleanup;
             }
             struct_lobby_init(context->lobby, atoi((char*)args.argv[0]), (char*)args.argv[1]);
             // Le créateur du lobby en est automatiquement le propriétaire
@@ -184,8 +185,8 @@ int on_message(AppContext* context, char* message) {
         case MSG_PLAYERJOINED: {
             if (args.argc < 4) {
                 printf("Invalid player joined message from server: \"%s\"\n", message);
-                if (args.argv) free(args.argv);
-                return EXIT_FAILURE;
+                status = EXIT_FAILURE;
+                goto cleanup;
             }
 
             int joined_id = atoi((char*)args.argv[0]);
@@ -195,8 +196,8 @@ int on_message(AppContext* context, char* message) {
 
             if (!message_upsert_lobby_user(context->lobby, joined_id, joined_name, joined_role, joined_team)) {
                 printf("Failed to add/update player %d in lobby\n", joined_id);
-                if (args.argv) free(args.argv);
-                return EXIT_FAILURE;
+                status = EXIT_FAILURE;
+                goto cleanup;
             }
 
             printf("Player %d (%s) joined the lobby with role %d and team %d\n", joined_id, joined_name ? joined_name : "Unknown", joined_role, joined_team);
@@ -206,8 +207,8 @@ int on_message(AppContext* context, char* message) {
         case MSG_PLAYERLEFT: {
             if (args.argc < 1) {
                 printf("Invalid player left message from server: \"%s\"\n", message);
-                if (args.argv) free(args.argv);
-                return EXIT_FAILURE;
+                status = EXIT_FAILURE;
+                goto cleanup;
             }
             int player_id = atoi((char*)args.argv[0]);
             for (int i = 0; i < MAX_USERS; i++) {
@@ -225,8 +226,8 @@ int on_message(AppContext* context, char* message) {
         case MSG_CHOOSE_ROLE: {
             if (args.argc < 3) {
                 printf("Invalid choose role message from server : \"%s\"\n", message);
-                if (args.argv) free(args.argv);
-                return EXIT_FAILURE;
+                status = EXIT_FAILURE;
+                goto cleanup;
             }
 
             int target_id = atoi((char*)args.argv[0]);
@@ -239,8 +240,8 @@ int on_message(AppContext* context, char* message) {
 
             if (!message_upsert_lobby_user(context->lobby, target_id, target_name, target_role, target_team)) {
                 printf("Failed to update role/team for player %d\n", target_id);
-                if (args.argv) free(args.argv);
-                return EXIT_FAILURE;
+                status = EXIT_FAILURE;
+                goto cleanup;
             }
 
             if (context->player_id == target_id) {
@@ -256,8 +257,8 @@ int on_message(AppContext* context, char* message) {
         case MSG_STARTGAME: {
             if (args.argc < 2) {
                 printf("Invalid start game message from server: \"%s\"\n", message);
-                if (args.argv) free(args.argv);
-                return EXIT_FAILURE;
+                status = EXIT_FAILURE;
+                goto cleanup;
             }
 
             if (context->lobby->game) game_struct_free(context);
@@ -265,7 +266,8 @@ int on_message(AppContext* context, char* message) {
             Game* game = (Game*)calloc(1, sizeof(Game));
             if (!game) {
                 printf("Failed to allocate memory for game\n");
-                return EXIT_FAILURE;
+                status = EXIT_FAILURE;
+                goto cleanup;
             }
             game->state = (GameState)atoi((char*)args.argv[0]);
             game->nb_words = atoi((char*)args.argv[1]);
@@ -279,7 +281,8 @@ int on_message(AppContext* context, char* message) {
             if (!game->cards) {
                 printf("Failed to allocate memory for game cards\n");
                 free(game);
-                return EXIT_FAILURE;
+                status = EXIT_FAILURE;
+                goto cleanup;
             }
 
             context->lobby->game = game;
@@ -291,8 +294,8 @@ int on_message(AppContext* context, char* message) {
         case MSG_WORDDATA: {
             if (args.argc < 5) {
                 printf("Invalid word data message from server: \"%s\"\n", message);
-                if (args.argv) free(args.argv);
-                return EXIT_FAILURE;
+                status = EXIT_FAILURE;
+                goto cleanup;
             }
 
             int wordid = atoi((char*)args.argv[0]);
@@ -327,8 +330,8 @@ int on_message(AppContext* context, char* message) {
         case MSG_SUBMIT_HINT: {
             if (args.argc < 4) {
                 printf("Invalid submit hint message from server: \"%s\"\n", message);
-                if (args.argv) free(args.argv);
-                return EXIT_FAILURE;
+                status = EXIT_FAILURE;
+                goto cleanup;
             }
 
             int spy_id = atoi((char*)args.argv[0]);
@@ -411,8 +414,8 @@ int on_message(AppContext* context, char* message) {
         case MSG_PREGUESS: {
             if (args.argc < 3) {
                 printf("Invalid preguess message from server: \"%s\"\n", message);
-                if (args.argv) free(args.argv);
-                return EXIT_FAILURE;
+                status = EXIT_FAILURE;
+                goto cleanup;
             }
 
             printf("Pre-guess update received: \"%s\"\n", raw_message ? raw_message : "");
@@ -436,8 +439,8 @@ int on_message(AppContext* context, char* message) {
         case MSG_GUESS_CARD: {
             if (args.argc < 2) {
                 printf("Invalid guess card message from server: \"%s\"\n", message);
-                if (args.argv) free(args.argv);
-                return EXIT_FAILURE;
+                status = EXIT_FAILURE;
+                goto cleanup;
             }
 
             int word_index = atoi((char*)args.argv[0]);
@@ -554,8 +557,8 @@ int on_message(AppContext* context, char* message) {
         case MSG_SENDCHAT: {
             if (args.argc < 2) {
                 printf("Invalid chat message from server: \"%s\"\n", message);
-                if (args.argv) free(args.argv);
-                return EXIT_FAILURE;
+                status = EXIT_FAILURE;
+                goto cleanup;
             }
 
             int sender_id = -1;
@@ -600,8 +603,8 @@ int on_message(AppContext* context, char* message) {
             // Réception de l'UUID généré par le serveur
             if (args.argc < 1) {
                 printf("Invalid UUID message from server: \"%s\"\n", message);
-                if (args.argv) free(args.argv);
-                return EXIT_FAILURE;
+                status = EXIT_FAILURE;
+                goto cleanup;
             }
             // Stocker l'UUID dans le contexte
             if (context->player_uuid) free(context->player_uuid);
@@ -624,8 +627,8 @@ int on_message(AppContext* context, char* message) {
         case MSG_SEND_CLIENT_ID: {
             if (args.argc < 1) {
                 printf("Invalid client id message from server: \"%s\"\n", message);
-                if (args.argv) free(args.argv);
-                return EXIT_FAILURE;
+                status = EXIT_FAILURE;
+                goto cleanup;
             }
 
             context->player_id = atoi((char*)args.argv[0]);
@@ -650,8 +653,8 @@ int on_message(AppContext* context, char* message) {
         case MSG_SET_WORDS_DIFFICULTY: {
             if (args.argc < 1) {
                 printf("Invalid set words difficulty message from server: \"%s\"\n", message);
-                if (args.argv) free(args.argv);
-                return EXIT_FAILURE;
+                status = EXIT_FAILURE;
+                goto cleanup;
             }
 
             int words_difficulty = atoi((char*)args.argv[0]);
@@ -664,8 +667,8 @@ int on_message(AppContext* context, char* message) {
         case MSG_SET_NB_ASSASSINS: {
             if (args.argc < 1) {
                 printf("Invalid set nb_assassins message from server: \"%s\"\n", message);
-                if (args.argv) free(args.argv);
-                return EXIT_FAILURE;
+                status = EXIT_FAILURE;
+                goto cleanup;
             }
 
             int nb_assassins = atoi((char*)args.argv[0]);
@@ -687,8 +690,9 @@ int on_message(AppContext* context, char* message) {
             break;
     };
 
+cleanup:
     if (args.argv) free(args.argv);
     if (raw_message) free(raw_message);
 
-    return EXIT_SUCCESS;
-}  
+    return status;
+}
