@@ -22,9 +22,9 @@
 \begin{document}
 
     \begin{figure}[t]
-        \includegraphics[scale=0.5]{assets/logo\_lmu.png}
+        \includegraphics[scale=0.5]{assets/logos/logo\_lmu.png}
         \hfill
-        \includegraphics[scale=0.5]{assets/logo\_ic2.png}
+        \includegraphics[scale=0.5]{assets/logos/logo\_ic2.png}
     \end{figure}
 
     \title{
@@ -422,7 +422,7 @@
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=\textwidth]{assets/menu.png}
+            \includegraphics[width=\textwidth]{assets/interface_graphique/menu.png}
             \caption{Interface du menu principal}
             \label{fig:menu}
         \end{figure}
@@ -439,7 +439,7 @@
         
         \begin{figure}[H]
             \centering
-            \includegraphics[width=\textwidth]{assets/lobby.png}
+            \includegraphics[width=\textwidth]{assets/interface_graphique/lobby.png}
             \caption{Interface du lobby}
             \label{fig:lobby}
         \end{figure}
@@ -454,14 +454,14 @@
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=\textwidth]{assets/jeu\_espion.png}
+            \includegraphics[width=\textwidth]{assets/interface_graphique/jeu\_espion.png}
             \caption{Interface du jeu pour un espion}
             \label{fig:jeu_espion}
         \end{figure}
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=\textwidth]{assets/jeu\_agent.png}
+            \includegraphics[width=\textwidth]{assets/interface_graphique/jeu\_agent.png}
             \caption{Interface du jeu pour un agent}
             \label{fig:jeu_agent}
         \end{figure}
@@ -475,14 +475,6 @@
             \item un input pour que les agents puissent proposer leur indice, suivi d'un input pour choisir le nombre de mots correspondants à l'indice et enfin un bouton de validation pour envoyer leur proposition.
         \end{itemize}
 
-        \vspace{0.5cm}
-
-        Afin d'améliorer l'expérience utilisateur, nous avons également intégré un bandeau d'informations qui 
-        \begin{itemize}
-            \item affiche les règles du jeu,
-            \item permet de régler la luminosité, le volume de la musique et des effets sonores avec des crossfaders,
-            \item affiche la latence (ping serveur) et les performances du jeu (FPS).
-        \end{itemize}
 
         \needspace{10\baselineskip}
         \subsection{Gestion des parties}
@@ -517,15 +509,107 @@
 
     \newpage
     \section{Bilan et conclusion}
-    \label{sec:bilan}
+        \label{sec:bilan}
 
-    Les objectifs initiaux du projet ont été atteints et une version numérique du jeu de société Codenames a pu être réalisée avec une interface graphique immersive et des fonctionnalités complètes.
-    Des fonctionnalités supplémentaires ont également pu être intégrées, telles que le chat en ligne, l'historique des indices, le tutoriel, le bandeau d'informations, etc.
-    Les objectifs, choix de structure du code, de l'interface graphique et de la gestion des parties n'ont cessé de changer lors de la conception et de la mise en œuvre du projet, notamment suite à la rencontre de problemes techniques ou de changements d'avis des membres de l'équipe.
-    Cependant, grâce à une bonne communication et une répartition efficace des tâches, les difficultés ont pu être surmontées et un projet fonctionnel et satisfaisant a pu être accompli.
+        Les objectifs initiaux du projet ont été atteints et une version numérique du jeu de société Codenames a pu être réalisée avec une interface graphique immersive et des fonctionnalités complètes.
+        Des fonctionnalités supplémentaires ont également pu être intégrées, telles que le chat en ligne, l'historique des indices, le tutoriel, le bandeau d'informations, etc.
+        Les objectifs, choix de structure du code, de l'interface graphique et de la gestion des parties n'ont cessé de changer lors de la conception et de la mise en œuvre du projet, notamment suite à la rencontre de problemes techniques ou de changements d'avis des membres de l'équipe.
+        Cependant, grâce à une bonne communication et une répartition efficace des tâches, les difficultés ont pu être surmontées et un projet fonctionnel et satisfaisant a pu être accompli.
 
     \newpage
     \section{Annexes}
+
+    \subsection{Bandeau d'informations}
+    Le bandeau d'informations est un élément de l'interface graphique qui permet d'afficher des informations utiles aux joueurs pendant la partie, ainsi que de régler certains paramètres du jeu.
+    Il sort de la gauche de l'écran  lorsque la souris y est placée et contient
+    \begin{itemize}
+        \item l'affichage du ping serveur et des performances du jeu (FPS),
+        \item les crossfaders pour régler la luminosité, le volume de la musique et des effets sonores,
+        \item les règles du jeu.
+    \end{itemize}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{assets/annexes/bandeau/bandeau.png}
+        \caption{Bandeau d'informations}
+        \label{fig:bandeau}
+    \end{figure}
+
+    \newpage
+    \subsection{Tutoriel}
+    Un tutoriel a été intégré au menu principal pour permettre aux joueurs de découvrir l'interface du jeu et les fonctionnalités de notre version numérique.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{assets/annexes/tuto/tuto1.png}
+        \caption{Page 1 du tutoriel}
+        \label{fig:tuto1}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{assets/annexes/tuto/tuto2.png}
+        \caption{Page 2 du tutoriel}
+        \label{fig:tuto2}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{assets/annexes/tuto/tuto3.png}
+        \caption{Page 3 du tutoriel}
+        \label{fig:tuto3}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{assets/annexes/tuto/tuto4.png}
+        \caption{Page 4 du tutoriel}
+        \label{fig:tuto4}
+    \end{figure}
+
+    \subsection{Exemple de partie}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{assets/annexes/partie/debut_agent.png}
+        \caption{Début de partie pour un agent}
+        \label{fig:debut_agent}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{assets/annexes/partie/debut_espion.png}
+        \caption{Début de partie pour un espion}
+        \label{fig:debut_espion}
+    \end{figure}
+    \needspace{5\baselineskip}
+    Le début de partie est différent selon le rôle du joueur, le point de vue d'un agent est montré dans la figure \ref{fig:debut_agent} et celui d'un espion dans la figure \ref{fig:debut_espion} ci-dessus.\\
+    Dans cet exemple, on peut voir que 2 assasins ont été choisis pour cette partie, ce qui est une option disponible dans le lobby.
+    Les rouges commencent, ils ont donc 9 mots à trouver contre 8 pour les bleus.
+
+    \vspace{0.5cm}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{assets/annexes/partie/cours_de_partie_agent.png}
+        \caption{Cours de partie pour un agent}
+        \label{fig:cours_de_partie_agent}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{assets/annexes/partie/cours_de_partie_espion.png}
+        \caption{Cours de partie pour un espion}
+        \label{fig:cours_de_partie_espion}
+    \end{figure}
+    Le cours de partie est également différent selon le rôle du joueur, le point de vue d'un agent est montré dans la figure \ref{fig:cours_de_partie_agent} et celui d'un espion dans la figure \ref{fig:cours_de_partie_espion} ci-dessus.
+    À ce moment de la partie, le fond est de couleur rouge pour indiquer que c'est au tour de l'équipe rouge de jouer. L'espion de l'équipe rouge a donné l'indice \og Brulure 2 \fg{}, son agent a préselectionné le mot \og lit \fg{}.
+    Ici, 3 mots rouges ont été trouvés et 2 mots bleus ont été trouvés, on peut retrouver les indices et les mots trouvés dans les historiques en bas de l'écran.
+    
+    \vspace{0.5cm}
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{assets/annexes/partie/fin_de_partie.png}
+        \caption{Fin de partie pour tous les joueurs}
+        \label{fig:fin_de_partie}
+    \end{figure}
+    La fin de partie est la même pour tous les joueurs, comme montré dans la figure \ref{fig:fin_de_partie} ci-dessus.\\
+    Elle affiche le résultat de la partie, ici les joueurs de l'équipe rouge ont gagné (\og \textcolor{red}{L'équipe rouge a gagné !} \fg, \og Bravo aux gagnants : Clo - Romain67 \fg).
+    
 
 
 \end{document}
