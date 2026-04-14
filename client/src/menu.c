@@ -567,7 +567,7 @@ static ButtonReturn menu_button_click(AppContext* context, Button* button) {
 }
 
 // Création de bouttons optimisée pour le menu
-static Button* menu_create_button(AppContext* context, int id, int x, int y, int h, const char* text) {
+static Button* menu_create_button(AppContext* context, int id, int x, int y, int h, const char* text, const char* hover_text) {
     if (!context) return NULL;
 
     ButtonConfig* cfg = button_config_init();
@@ -578,6 +578,7 @@ static Button* menu_create_button(AppContext* context, int id, int x, int y, int
     cfg->h = h;
     cfg->font_path = FONT_LARABIE;
     cfg->color = COL_WHITE;
+    cfg->hover_text = hover_text;
     cfg->text = text;
     cfg->callback = menu_button_click;
 
@@ -589,22 +590,22 @@ static Button* menu_create_button(AppContext* context, int id, int x, int y, int
 static int menu_init_buttons(AppContext* context) {
     int loading_fails = 0;
 
-    btn_create = menu_create_button(context, BTN_CREATE_LOBBY, -300, -180, 100, "Créer");
+    btn_create = menu_create_button(context, BTN_CREATE_LOBBY, -300, -180, 100, "Créer", "Créer un nouveau lobby");
     if (!btn_create) loading_fails++;
 
-    btn_join = menu_create_button(context, BTN_JOIN_LOBBY, 300, -180, 100, "Rejoindre");
+    btn_join = menu_create_button(context, BTN_JOIN_LOBBY, 300, -180, 100, "Rejoindre", "Rejoindre un lobby existant");
     if (!btn_join) loading_fails++;
 
-    btn_quit = menu_create_button(context, BTN_MENU_QUIT, 0, -400, 100, "Quitter");
+    btn_quit = menu_create_button(context, BTN_MENU_QUIT, 0, -400, 100, "Quitter", "Quitter le jeu");
     if (!btn_quit) loading_fails++;
 
-    btn_social = menu_create_button(context, BTN_MENU_SOCIAL, 775, -275, 55, "Social");
+    btn_social = menu_create_button(context, BTN_MENU_SOCIAL, 775, -275, 55, "Social", "Accéder au menu social");
     if (!btn_social) loading_fails++;
 
-    btn_tuto = menu_create_button(context, BTN_MENU_TUTO, 775, -400, 55, "Tutoriel");
+    btn_tuto = menu_create_button(context, BTN_MENU_TUTO, 775, -400, 55, "Tutoriel", "Voir le tutoriel");
     if (!btn_tuto) loading_fails++;
 
-    btn_credits = menu_create_button(context, BTN_MENU_CREDITS, 775, -475, 55, "Crédits");
+    btn_credits = menu_create_button(context, BTN_MENU_CREDITS, 775, -475, 55, "Crédits", "Voir les crédits");
     if (!btn_credits) loading_fails++;
 
     return loading_fails;

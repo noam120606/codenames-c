@@ -1,0 +1,2 @@
+/* Ressource Windows pour embarquer l'icone de l'executable client. */
+1 ICON "assets/ico/window_big.ico"

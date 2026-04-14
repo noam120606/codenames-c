@@ -10,12 +10,22 @@ VERSION  := $(shell cat ../VERSION 2>/dev/null || echo "0.0.0")
 ifeq ($(OS),Windows_NT)
 TARGET   := $(DIR)/client.exe
 EXTRA_NET_LIBS := -lws2_32
+WINDRES  := $(shell command -v windres 2>/dev/null || command -v x86_64-w64-mingw32-windres 2>/dev/null)
+RC_FILE  := client_icon.rc
+RC_OBJ   := $(DIR)/client_icon.res
+ifeq ($(strip $(WINDRES)),)
+$(warning windres not found; building without embedded executable icon)
+EXTRA_RES_OBJS :=
+else
+EXTRA_RES_OBJS := $(RC_OBJ)
+endif
 RPATH_FLAGS :=
 MKDIR_P  := if not exist "$(DIR)" mkdir "$(DIR)"
 RM_RF    := if exist "$(DIR)" rmdir /S /Q "$(DIR)"
 else
 TARGET   := $(DIR)/client
 EXTRA_NET_LIBS :=
+EXTRA_RES_OBJS :=
 RPATH_FLAGS := -Wl,-rpath,'$$ORIGIN/../SDL2/lib'
 MKDIR_P  := mkdir -p $(DIR)
 RM_RF    := rm -rf $(DIR)
@@ -46,12 +56,17 @@ DEPS := $(OBJS:.o=.d)
 
 all: $(TARGET)
 
-$(TARGET): $(OBJS)
+$(TARGET): $(OBJS) $(EXTRA_RES_OBJS)
 	$(CC) $^ -o $@ $(LDFLAGS)
 
 # Compilation générique
 $(DIR)/%.o: $(SRC_DIR)/%.c | $(DIR)
 	$(CC) -c $< -o $@ $(CPPFLAGS) $(CFLAGS)
+
+ifneq ($(strip $(EXTRA_RES_OBJS)),)
+$(RC_OBJ): $(RC_FILE) | $(DIR)
+	$(WINDRES) $< -O coff -o $@
+endif
 
 # Création dossier build si nécessaire
 $(DIR):

@@ -836,6 +836,7 @@ int game_init(AppContext * context) {
 typedef struct TeamPanelMember {
     Text* txt;
     const char* name;
+    int is_local;
 } TeamPanelMember;
 
 static int compute_panel_member_position(int nb_player, int i_player, int base_x, int base_y, int* out_x, int* out_y) {
@@ -890,7 +891,7 @@ static int compute_panel_member_position(int nb_player, int i_player, int base_x
     return 1;
 }
 
-static void render_team_member_in_panel(AppContext* context, Window* panel, SDL_Texture* icon, Text* txt, const char* name, int nb_player, int i_player, int base_y) {
+static void render_team_member_in_panel(AppContext* context, Window* panel, SDL_Texture* icon, Text* txt, const char* name, int is_local, int nb_player, int i_player, int base_y) {
     if (!context || !panel || !icon || !txt) return;
 
     int pos_x = 0;
@@ -898,10 +899,6 @@ static void render_team_member_in_panel(AppContext* context, Window* panel, SDL_
     if (!compute_panel_member_position(nb_player, i_player, 0, base_y, &pos_x, &text_y)) return;
 
     /* Si l'élément représente le joueur local, afficher le halo derrière l'icône */
-    int is_local = 0;
-    if (context->player_name && name && strcmp(context->player_name, name) == 0) {
-        is_local = 1;
-    }
     if (is_local && player_icon_glow) {
         window_display_image(context->renderer, panel, player_icon_glow, pos_x, text_y + 25, 0.15f, 0, SDL_FLIP_NONE, 1, 200);
     }
@@ -913,7 +910,7 @@ static void render_team_member_in_panel(AppContext* context, Window* panel, SDL_
     display_text(context, txt);
 }
 
-static void add_member_to_panel_group(Text** player_texts, int* player_index, TeamPanelMember* spies, int* spy_count, TeamPanelMember* agents, int* agent_count, UserRole role, const char* name) {
+static void add_member_to_panel_group(Text** player_texts, int* player_index, TeamPanelMember* spies, int* spy_count, TeamPanelMember* agents, int* agent_count, UserRole role, const char* name, int is_local) {
     if (!player_texts || !player_index || !spies || !spy_count || !agents || !agent_count) return;
     if (*player_index >= MAX_TEAM_PLAYERS) return;
 
@@ -926,11 +923,13 @@ static void add_member_to_panel_group(Text** player_texts, int* player_index, Te
         if (*spy_count >= MAX_TEAM_PLAYERS) return;
         spies[*spy_count].txt = txt;
         spies[*spy_count].name = safe_name;
+        spies[*spy_count].is_local = is_local;
         (*spy_count)++;
     } else {
         if (*agent_count >= MAX_TEAM_PLAYERS) return;
         agents[*agent_count].txt = txt;
         agents[*agent_count].name = safe_name;
+        agents[*agent_count].is_local = is_local;
         (*agent_count)++;
     }
 }
@@ -961,7 +960,7 @@ static void render_team_panel_content(AppContext* context, Window* panel, Team t
 
     if (context->player_team == team) {
         const char* local_name = context->player_name ? context->player_name : "Moi";
-        add_member_to_panel_group(player_texts, player_index, spy_members, &spy_count, agent_members, &agent_count, context->player_role, local_name);
+        add_member_to_panel_group(player_texts, player_index, spy_members, &spy_count, agent_members, &agent_count, context->player_role, local_name, 1);
         local_player_injected = 1;
     }
 
@@ -970,15 +969,16 @@ static void render_team_panel_content(AppContext* context, Window* panel, Team t
         if (!u || u->team != team) continue;
         if (local_player_injected && context->player_id >= 0 && u->id == context->player_id) continue;
 
-        add_member_to_panel_group(player_texts, player_index, spy_members, &spy_count, agent_members, &agent_count, u->role, u->name ? u->name : "???");
+        int member_is_local = (context->player_id >= 0 && u->id == context->player_id);
+        add_member_to_panel_group(player_texts, player_index, spy_members, &spy_count, agent_members, &agent_count, u->role, u->name ? u->name : "???", member_is_local);
     }
 
     for (int i = 0; i < spy_count; i++) {
-        render_team_member_in_panel(context, panel, icon, spy_members[i].txt, spy_members[i].name, spy_count, i, SPY_BASE_Y);
+        render_team_member_in_panel(context, panel, icon, spy_members[i].txt, spy_members[i].name, spy_members[i].is_local, spy_count, i, SPY_BASE_Y);
     }
 
     for (int i = 0; i < agent_count; i++) {
-        render_team_member_in_panel(context, panel, icon, agent_members[i].txt, agent_members[i].name, agent_count, i, AGENT_BASE_Y);
+        render_team_member_in_panel(context, panel, icon, agent_members[i].txt, agent_members[i].name, agent_members[i].is_local, agent_count, i, AGENT_BASE_Y);
     }
 }
 

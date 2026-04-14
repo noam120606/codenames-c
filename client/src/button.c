@@ -29,10 +29,12 @@ ButtonConfig* button_config_init(void) {
     cfg->renderer = NULL;
     cfg->text_dirty = 0;
     cfg->click_sound = SOUND_BUTTON_CLICKED;
-    cfg->hover_sound = -1;
+    cfg->hover_sound = SOUND_BUTTON_HOVER;
     cfg->hover_text = NULL;
     cfg->hover_text_texture = NULL;
     cfg->hover_text_rect = (SDL_Rect){0,0,0,0};
+    cfg->hover_start_ticks = 0;
+    cfg->hover_delay_ms = 1000;
 
     return cfg;
 }
@@ -67,6 +69,10 @@ Button* button_create(SDL_Renderer* renderer, int id, const ButtonConfig* cfg_in
     /* Initialiser runtime hover fields */
     button->cfg->hover_text_texture = NULL;
     button->cfg->hover_text_rect = (SDL_Rect){0,0,0,0};
+    button->cfg->hover_start_ticks = 0;
+    if (button->cfg->hover_delay_ms == 0) {
+        button->cfg->hover_delay_ms = 1000;
+    }
 
     int x = button->cfg->x;
     int y = button->cfg->y;
@@ -301,14 +307,15 @@ ButtonReturn button_handle_event(AppContext* context, Button* button, SDL_Event*
                 } else {
                     audio_play(SOUND_BUTTON_HOVER, 0);
                 }
-                if (button->cfg->hover_text && context && context->renderer) {
-                    button_build_hover_text_texture(button, context->renderer);
+                if (button->cfg->hover_text) {
+                    button->cfg->hover_start_ticks = SDL_GetTicks();
                 }
             } else {
                 if (button->cfg->hover_text_texture) {
                     SDL_DestroyTexture(button->cfg->hover_text_texture);
                     button->cfg->hover_text_texture = NULL;
                 }
+                button->cfg->hover_start_ticks = 0;
             }
             button->cfg->is_hovered = is_over;
         }
@@ -323,14 +330,15 @@ ButtonReturn button_handle_event(AppContext* context, Button* button, SDL_Event*
                 } else {
                     audio_play(SOUND_BUTTON_HOVER, 0);
                 }
-                if (button->cfg->hover_text && context && context->renderer) {
-                    button_build_hover_text_texture(button, context->renderer);
+                if (button->cfg->hover_text) {
+                    button->cfg->hover_start_ticks = SDL_GetTicks();
                 }
             } else {
                 if (button->cfg->hover_text_texture) {
                     SDL_DestroyTexture(button->cfg->hover_text_texture);
                     button->cfg->hover_text_texture = NULL;
                 }
+                button->cfg->hover_start_ticks = 0;
             }
         }
         button->cfg->is_hovered = is_over;
@@ -348,14 +356,15 @@ ButtonReturn button_handle_event(AppContext* context, Button* button, SDL_Event*
                 } else {
                     audio_play(SOUND_BUTTON_HOVER, 0);
                 }
-                if (button->cfg->hover_text && context && context->renderer) {
-                    button_build_hover_text_texture(button, context->renderer);
+                if (button->cfg->hover_text) {
+                    button->cfg->hover_start_ticks = SDL_GetTicks();
                 }
             } else {
                 if (button->cfg->hover_text_texture) {
                     SDL_DestroyTexture(button->cfg->hover_text_texture);
                     button->cfg->hover_text_texture = NULL;
                 }
+                button->cfg->hover_start_ticks = 0;
             }
         }
 
@@ -399,8 +408,8 @@ static void button_build_hover_text_texture(Button* button, SDL_Renderer* render
     if (!tex) return;
 
     /* Calculer la taille et la position du tooltip au-dessus du bouton */
-    int desired_h = button->cfg->h - 8;
-    if (desired_h < 12) desired_h = 12;
+    int desired_h = (button->cfg->h * 40) / 100;
+    if (desired_h < 10) desired_h = 10;
     double scale = (surf_h > 0) ? ((double)desired_h / (double)surf_h) : 1.0;
     int draw_w = (int)(surf_w * scale);
     int draw_h = desired_h;
@@ -466,9 +475,20 @@ int button_render(SDL_Renderer* renderer, Button* button) {
         SDL_RenderCopyEx(renderer, cfg->text_texture, NULL, &text_rect, 0, NULL, SDL_FLIP_NONE);
     }
 
-    /* Afficher le texte de hover (tooltip) si présent */
-    if (cfg->is_hovered && cfg->hover_text && cfg->hover_text_texture) {
-        SDL_RenderCopyEx(renderer, cfg->hover_text_texture, NULL, &cfg->hover_text_rect, 0, NULL, SDL_FLIP_NONE);
+    /* Afficher le texte de hover (tooltip) après un délai configuré. */
+    if (cfg->is_hovered && cfg->hover_text) {
+        if (!cfg->hover_text_texture && cfg->renderer) {
+            Uint32 now = SDL_GetTicks();
+            if (cfg->hover_start_ticks == 0) {
+                cfg->hover_start_ticks = now;
+            }
+            if ((now - cfg->hover_start_ticks) >= cfg->hover_delay_ms) {
+                button_build_hover_text_texture(button, cfg->renderer);
+            }
+        }
+        if (cfg->hover_text_texture) {
+            SDL_RenderCopyEx(renderer, cfg->hover_text_texture, NULL, &cfg->hover_text_rect, 0, NULL, SDL_FLIP_NONE);
+        }
     }
 
     return EXIT_SUCCESS;
@@ -566,8 +586,10 @@ int button_edit_cfg(Button* button, ButtonCfgKey key, intptr_t value) {
                 SDL_DestroyTexture(cfg->hover_text_texture);
                 cfg->hover_text_texture = NULL;
             }
-            if (cfg->is_hovered && cfg->hover_text && cfg->renderer) {
-                button_build_hover_text_texture(button, cfg->renderer);
+            if (cfg->is_hovered && cfg->hover_text) {
+                cfg->hover_start_ticks = SDL_GetTicks();
+            } else {
+                cfg->hover_start_ticks = 0;
             }
             return EXIT_SUCCESS;
         default:

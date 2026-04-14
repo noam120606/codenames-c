@@ -16,6 +16,7 @@ partie préparée à l'avance), soit comme joueur soit comme espion.
 - Affichage du nombre de mots restants pour chaque équipe
 - Proposer des niveaux de difficulté : 0 ou plusieurs assassins par exemple.
 - Ajout d'un halo lumineux autour du joueur pour l'aider à se repérer dans les interfaces du jeu
+- Configuration plus robuste du chargement de l'icône de l'application
 
 
 

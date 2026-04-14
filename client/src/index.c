@@ -6,9 +6,69 @@
 #include <string.h>
 #ifdef _WIN32
 #include <windows.h>
+#include "../SDL2/include/SDL2/SDL_syswm.h"
 #endif
 
 #define GAME_WINDOW_ICON_PATH "assets/img/others/window_icon_big.png"
+#ifdef _WIN32
+#define GAME_WINDOW_ICON_SMALL_PATH "assets/ico/window.ico"
+#define GAME_WINDOW_ICON_BIG_PATH "assets/ico/window_big.ico"
+#endif
+
+#ifdef _WIN32
+// Force l'icône de barre de titre (petite) et l'icône de fenêtre (grande) côté Win32.
+static void set_game_window_icon_win32(SDL_Window* window) {
+    if (!window) return;
+
+    SDL_SysWMinfo wm_info;
+    SDL_VERSION(&wm_info.version);
+    if (!SDL_GetWindowWMInfo(window, &wm_info)) {
+        fprintf(stderr, "Warning: failed to get native window handle for icon update: %s\n", SDL_GetError());
+        return;
+    }
+
+    HWND hwnd = wm_info.info.win.window;
+    if (!hwnd) return;
+
+    HICON small_icon = (HICON)LoadImageA(
+        NULL,
+        GAME_WINDOW_ICON_SMALL_PATH,
+        IMAGE_ICON,
+        16,
+        16,
+        LR_LOADFROMFILE
+    );
+    if (!small_icon) {
+        fprintf(
+            stderr,
+            "Warning: failed to load small window icon '%s' (error %lu)\n",
+            GAME_WINDOW_ICON_SMALL_PATH,
+            (unsigned long)GetLastError()
+        );
+    } else {
+        SendMessageA(hwnd, WM_SETICON, ICON_SMALL, (LPARAM)small_icon);
+    }
+
+    HICON big_icon = (HICON)LoadImageA(
+        NULL,
+        GAME_WINDOW_ICON_BIG_PATH,
+        IMAGE_ICON,
+        32,
+        32,
+        LR_LOADFROMFILE
+    );
+    if (!big_icon) {
+        fprintf(
+            stderr,
+            "Warning: failed to load big window icon '%s' (error %lu)\n",
+            GAME_WINDOW_ICON_BIG_PATH,
+            (unsigned long)GetLastError()
+        );
+    } else {
+        SendMessageA(hwnd, WM_SETICON, ICON_BIG, (LPARAM)big_icon);
+    }
+}
+#endif
 
 // Applique l'icône de la fenêtre de jeu.
 static void set_game_window_icon(AppContext* context) {
@@ -17,11 +77,14 @@ static void set_game_window_icon(AppContext* context) {
     SDL_Surface* icon_surface = IMG_Load(GAME_WINDOW_ICON_PATH);
     if (!icon_surface) {
         fprintf(stderr, "Warning: failed to load window icon '%s': %s\n", GAME_WINDOW_ICON_PATH, IMG_GetError());
-        return;
+    } else {
+        SDL_SetWindowIcon(context->window, icon_surface);
+        SDL_FreeSurface(icon_surface);
     }
 
-    SDL_SetWindowIcon(context->window, icon_surface);
-    SDL_FreeSurface(icon_surface);
+#ifdef _WIN32
+    set_game_window_icon_win32(context->window);
+#endif
 }
 
 // Relance le processus de jeu avec les mêmes arguments que le processus actuel.
@@ -30,6 +93,7 @@ static int relaunch_game_process(int argc, char* argv[]) {
     (void)argc;
     (void)argv;
 
+    // Sous Windows, on utilise CreateProcess pour relancer le processus avec la même ligne de commande complète.
     char* command_line = _strdup(GetCommandLineA());
     if (!command_line) {
         return EXIT_FAILURE;
