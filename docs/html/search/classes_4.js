@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['input_0',['Input',['../structInput.html',1,'']]],
-  ['inputconfig_1',['InputConfig',['../structInputConfig.html',1,'']]]
+  ['history_0',['History',['../structHistory.html',1,'']]],
+  ['historywrapcache_1',['HistoryWrapCache',['../structHistoryWrapCache.html',1,'']]]
 ];

@@ -1,5 +1,6 @@
 var window_8c =
 [
+    [ "clamp_between", "window_8c.html#ae782f45632a7c93d464a7bd8e238629c", null ],
     [ "clamp_non_negative", "window_8c.html#adfbab9ec061a0f54a36c5238db015cbb", null ],
     [ "clamp_positive", "window_8c.html#a3bd6685b3fb7a7da7ba7ce6a3f10131d", null ],
     [ "point_in_rect", "window_8c.html#a97e9de72ee41aec3983ae14c7749933a", null ],
@@ -11,12 +12,19 @@ var window_8c =
     [ "window_destroy", "window_8c.html#a37e9821a250b421c60c0f287b2682b4d", null ],
     [ "window_display_image", "window_8c.html#a0921a51a5dd1a64b9d3370b83715b614", null ],
     [ "window_edit_cfg", "window_8c.html#a4fb2b8937d4dde44dba4b1721f6dddd6", null ],
+    [ "window_get_by_id", "window_8c.html#abba94cac365a521bcd783bb227f58f66", null ],
+    [ "window_get_scrollable_zone_rect", "window_8c.html#a38031499d88de473b51e483a311a56b6", null ],
     [ "window_handle_event", "window_8c.html#afc458f8e977a8dfb3f6c3061da8767c6", null ],
+    [ "window_normalize_scroll_cfg", "window_8c.html#a9f5882aafca12deebf414aa5a487b2a2", null ],
     [ "window_place_button", "window_8c.html#a0aa36c1d55983f90b720bdc3e1f65fc9", null ],
     [ "window_place_input", "window_8c.html#aa0351cbc08fcf067bdc6b80bcdd12b45", null ],
     [ "window_place_text", "window_8c.html#a35c8e0318890f8939fd6c8d816ccc636", null ],
     [ "window_render", "window_8c.html#a9285833340439f457207d10355d15b29", null ],
-    [ "window_render_title", "window_8c.html#a80562218198f487f51d369abdf6b4b38", null ],
+    [ "window_render_title", "window_8c.html#abb80974eeaa53182bd4efedb7ee614b9", null ],
+    [ "window_scrollable_zone_rect_from_cfg", "window_8c.html#a5371fa26049d381795806395988c4266", null ],
     [ "window_set_title", "window_8c.html#a67c50c68196de68633349464e6077da1", null ],
-    [ "window_update_rect", "window_8c.html#a2b028817484c245cdf440e506f3fbd0d", null ]
+    [ "window_to_logical_coords", "window_8c.html#a426988275e7799a1c3acb77dcda92855", null ],
+    [ "window_update_rect", "window_8c.html#a2b028817484c245cdf440e506f3fbd0d", null ],
+    [ "window_count", "window_8c.html#ab56105b90890398c98a0a47a1df4d597", null ],
+    [ "windows", "window_8c.html#a6e7d1d05644fea30a66cc30f2171ac9b", null ]
 ];

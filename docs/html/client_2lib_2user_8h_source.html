@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames:  Fichier source de client/lib/user.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,22 +34,28 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -63,9 +68,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('client_2lib_2user_8h_source.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('client_2lib_2user_8h_source.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -92,58 +98,58 @@ $(function(){initNavTree('client_2lib_2user_8h_source.html','',''); });
   <div class="headertitle"><div class="title">user.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="client_2lib_2user_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef USER_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define USER_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="client_2lib_2game_8h.html">game.h</a>&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span></div>
-<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775">   11</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775">UserRole</a> {</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775a6db5378d7d3593626328a31ca0c43f8d">   12</a></span>    <a class="code hl_enumvalue" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775a6db5378d7d3593626328a31ca0c43f8d">ROLE_NONE</a>,</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775a3f9e2f147fd4c1dd9da3dc0ca5632577">   13</a></span>    <a class="code hl_enumvalue" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775a3f9e2f147fd4c1dd9da3dc0ca5632577">ROLE_SPY</a>,</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775afca6f78a77445f3222f54e52278fe1f1">   14</a></span>    <a class="code hl_enumvalue" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775afca6f78a77445f3222f54e52278fe1f1">ROLE_AGENT</a></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="client_2lib_2user_8h.html#a064a2c5e2528af581f38d07fbbaa8e5a">   15</a></span>} <a class="code hl_enumeration" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775">UserRole</a>;</div>
+<a href="client_2lib_2user_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#ifndef USER_H</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define USER_H</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="server_2lib_2game_8h.html">game.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775">   16</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775">UserRole</a> {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775a6db5378d7d3593626328a31ca0c43f8d">   17</a></span>    <a class="code hl_enumvalue" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775a6db5378d7d3593626328a31ca0c43f8d">ROLE_NONE</a>,</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775a3f9e2f147fd4c1dd9da3dc0ca5632577">   18</a></span>    <a class="code hl_enumvalue" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775a3f9e2f147fd4c1dd9da3dc0ca5632577">ROLE_SPY</a>,</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_enumvalue" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775afca6f78a77445f3222f54e52278fe1f1">ROLE_AGENT</a></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775afca6f78a77445f3222f54e52278fe1f1">   20</a></span>} <a class="code hl_enumeration" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775">UserRole</a>;</div>
 </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span></div>
-<div class="foldopen" id="foldopen00023" data-start="{" data-end="};">
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structUser.html">   23</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">   24</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">id</a>;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structUser.html#ae1faef3d602da4c65e7571e751f775f2">   25</a></span>    <span class="keywordtype">char</span>* <a class="code hl_variable" href="structUser.html#ae1faef3d602da4c65e7571e751f775f2">name</a>;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structUser.html#ab91e66ddd08d2a0a76790374c2861fb8">   26</a></span>    <a class="code hl_enumeration" href="server_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775">UserRole</a> <a class="code hl_variable" href="structUser.html#ab91e66ddd08d2a0a76790374c2861fb8">role</a>;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structUser.html#ad9940d1242bd89368f6e328179931464">   27</a></span>    <a class="code hl_enumeration" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> <a class="code hl_variable" href="structUser.html#ad9940d1242bd89368f6e328179931464">team</a>;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>} <a class="code hl_struct" href="structUser.html">User</a>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="};">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structUser.html">   28</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">   29</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">id</a>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structUser.html#ae1faef3d602da4c65e7571e751f775f2">   30</a></span>    <span class="keywordtype">char</span>* <a class="code hl_variable" href="structUser.html#ae1faef3d602da4c65e7571e751f775f2">name</a>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="structUser.html#ab91e66ddd08d2a0a76790374c2861fb8">   31</a></span>    <a class="code hl_enumeration" href="server_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775">UserRole</a> <a class="code hl_variable" href="structUser.html#ab91e66ddd08d2a0a76790374c2861fb8">role</a>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="structUser.html#ad9940d1242bd89368f6e328179931464">   32</a></span>    <a class="code hl_enumeration" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> <a class="code hl_variable" href="structUser.html#ad9940d1242bd89368f6e328179931464">team</a>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>} <a class="code hl_struct" href="structUser.html">User</a>;</div>
 </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">/* Fonctions */</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><a class="code hl_struct" href="structUser.html">User</a>* <a class="code hl_function" href="client_2lib_2user_8h.html#a0cb0c3d3b4ddc01d1d2c77ca4eada124">create_user</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keyword">const</span> <span class="keywordtype">char</span>* name, <a class="code hl_enumeration" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775">UserRole</a> role, <a class="code hl_enumeration" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> team);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keywordtype">void</span> <a class="code hl_function" href="client_2lib_2user_8h.html#a2479a5c30e476b2f3312e542e9fc7089">destroy_user</a>(<a class="code hl_struct" href="structUser.html">User</a>* user);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">/* Fonctions */</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><a class="code hl_struct" href="structUser.html">User</a>* <a class="code hl_function" href="client_2lib_2user_8h.html#a0cb0c3d3b4ddc01d1d2c77ca4eada124">create_user</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keyword">const</span> <span class="keywordtype">char</span>* name, <a class="code hl_enumeration" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775">UserRole</a> role, <a class="code hl_enumeration" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> team);</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#endif </span><span class="comment">// USER_H</span></div>
-<div class="ttc" id="aclient_2lib_2game_8h_html"><div class="ttname"><a href="client_2lib_2game_8h.html">game.h</a></div></div>
-<div class="ttc" id="aclient_2lib_2game_8h_html_a9c13bb5b1d69698f9b47900990eaa598"><div class="ttname"><a href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a></div><div class="ttdeci">Team</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2game_8h_source.html#l00022">game.h:22</a></div></div>
-<div class="ttc" id="aclient_2lib_2user_8h_html_a00dd1c1a522bd6fb15ecc021ffefb775"><div class="ttname"><a href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775">UserRole</a></div><div class="ttdeci">UserRole</div><div class="ttdef"><b>Definition</b> <a href="#l00011">user.h:11</a></div></div>
-<div class="ttc" id="aclient_2lib_2user_8h_html_a00dd1c1a522bd6fb15ecc021ffefb775a3f9e2f147fd4c1dd9da3dc0ca5632577"><div class="ttname"><a href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775a3f9e2f147fd4c1dd9da3dc0ca5632577">ROLE_SPY</a></div><div class="ttdeci">@ ROLE_SPY</div><div class="ttdef"><b>Definition</b> <a href="#l00013">user.h:13</a></div></div>
-<div class="ttc" id="aclient_2lib_2user_8h_html_a00dd1c1a522bd6fb15ecc021ffefb775a6db5378d7d3593626328a31ca0c43f8d"><div class="ttname"><a href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775a6db5378d7d3593626328a31ca0c43f8d">ROLE_NONE</a></div><div class="ttdeci">@ ROLE_NONE</div><div class="ttdef"><b>Definition</b> <a href="#l00012">user.h:12</a></div></div>
-<div class="ttc" id="aclient_2lib_2user_8h_html_a00dd1c1a522bd6fb15ecc021ffefb775afca6f78a77445f3222f54e52278fe1f1"><div class="ttname"><a href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775afca6f78a77445f3222f54e52278fe1f1">ROLE_AGENT</a></div><div class="ttdeci">@ ROLE_AGENT</div><div class="ttdef"><b>Definition</b> <a href="#l00014">user.h:14</a></div></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keywordtype">void</span> <a class="code hl_function" href="client_2lib_2user_8h.html#a2479a5c30e476b2f3312e542e9fc7089">destroy_user</a>(<a class="code hl_struct" href="structUser.html">User</a>* user);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#endif </span><span class="comment">// USER_H</span></div>
+<div class="ttc" id="aclient_2lib_2game_8h_html_a9c13bb5b1d69698f9b47900990eaa598"><div class="ttname"><a href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a></div><div class="ttdeci">Team</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2game_8h_source.html#l00037">game.h:37</a></div></div>
+<div class="ttc" id="aclient_2lib_2user_8h_html_a00dd1c1a522bd6fb15ecc021ffefb775"><div class="ttname"><a href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775">UserRole</a></div><div class="ttdeci">UserRole</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2user_8h_source.html#l00016">user.h:16</a></div></div>
+<div class="ttc" id="aclient_2lib_2user_8h_html_a00dd1c1a522bd6fb15ecc021ffefb775a3f9e2f147fd4c1dd9da3dc0ca5632577"><div class="ttname"><a href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775a3f9e2f147fd4c1dd9da3dc0ca5632577">ROLE_SPY</a></div><div class="ttdeci">@ ROLE_SPY</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2user_8h_source.html#l00018">user.h:18</a></div></div>
+<div class="ttc" id="aclient_2lib_2user_8h_html_a00dd1c1a522bd6fb15ecc021ffefb775a6db5378d7d3593626328a31ca0c43f8d"><div class="ttname"><a href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775a6db5378d7d3593626328a31ca0c43f8d">ROLE_NONE</a></div><div class="ttdeci">@ ROLE_NONE</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2user_8h_source.html#l00017">user.h:17</a></div></div>
+<div class="ttc" id="aclient_2lib_2user_8h_html_a00dd1c1a522bd6fb15ecc021ffefb775afca6f78a77445f3222f54e52278fe1f1"><div class="ttname"><a href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775afca6f78a77445f3222f54e52278fe1f1">ROLE_AGENT</a></div><div class="ttdeci">@ ROLE_AGENT</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2user_8h_source.html#l00020">user.h:19</a></div></div>
 <div class="ttc" id="aclient_2lib_2user_8h_html_a0cb0c3d3b4ddc01d1d2c77ca4eada124"><div class="ttname"><a href="client_2lib_2user_8h.html#a0cb0c3d3b4ddc01d1d2c77ca4eada124">create_user</a></div><div class="ttdeci">User * create_user(int id, const char *name, UserRole role, Team team)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2user_8c_source.html#l00003">user.c:3</a></div></div>
 <div class="ttc" id="aclient_2lib_2user_8h_html_a2479a5c30e476b2f3312e542e9fc7089"><div class="ttname"><a href="client_2lib_2user_8h.html#a2479a5c30e476b2f3312e542e9fc7089">destroy_user</a></div><div class="ttdeci">void destroy_user(User *user)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2user_8c_source.html#l00024">user.c:24</a></div></div>
-<div class="ttc" id="aserver_2lib_2user_8h_html_a00dd1c1a522bd6fb15ecc021ffefb775"><div class="ttname"><a href="server_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775">UserRole</a></div><div class="ttdeci">UserRole</div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2user_8h_source.html#l00011">user.h:11</a></div></div>
-<div class="ttc" id="astructUser_html"><div class="ttname"><a href="structUser.html">User</a></div><div class="ttdef"><b>Definition</b> <a href="#l00023">user.h:23</a></div></div>
-<div class="ttc" id="astructUser_html_aa7e6e39b43020bbe9c3a196b3689b0f7"><div class="ttname"><a href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">User::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition</b> <a href="#l00024">user.h:24</a></div></div>
-<div class="ttc" id="astructUser_html_ab91e66ddd08d2a0a76790374c2861fb8"><div class="ttname"><a href="structUser.html#ab91e66ddd08d2a0a76790374c2861fb8">User::role</a></div><div class="ttdeci">UserRole role</div><div class="ttdef"><b>Definition</b> <a href="#l00026">user.h:26</a></div></div>
-<div class="ttc" id="astructUser_html_ad9940d1242bd89368f6e328179931464"><div class="ttname"><a href="structUser.html#ad9940d1242bd89368f6e328179931464">User::team</a></div><div class="ttdeci">Team team</div><div class="ttdef"><b>Definition</b> <a href="#l00027">user.h:27</a></div></div>
-<div class="ttc" id="astructUser_html_ae1faef3d602da4c65e7571e751f775f2"><div class="ttname"><a href="structUser.html#ae1faef3d602da4c65e7571e751f775f2">User::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition</b> <a href="#l00025">user.h:25</a></div></div>
+<div class="ttc" id="aserver_2lib_2game_8h_html"><div class="ttname"><a href="server_2lib_2game_8h.html">game.h</a></div><div class="ttdoc">Logique de la partie de Codenames côté serveur.</div></div>
+<div class="ttc" id="aserver_2lib_2user_8h_html_a00dd1c1a522bd6fb15ecc021ffefb775"><div class="ttname"><a href="server_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775">UserRole</a></div><div class="ttdeci">UserRole</div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2user_8h_source.html#l00016">user.h:16</a></div></div>
+<div class="ttc" id="astructUser_html"><div class="ttname"><a href="structUser.html">User</a></div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2user_8h_source.html#l00028">user.h:28</a></div></div>
+<div class="ttc" id="astructUser_html_aa7e6e39b43020bbe9c3a196b3689b0f7"><div class="ttname"><a href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">User::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2user_8h_source.html#l00029">user.h:29</a></div></div>
+<div class="ttc" id="astructUser_html_ab91e66ddd08d2a0a76790374c2861fb8"><div class="ttname"><a href="structUser.html#ab91e66ddd08d2a0a76790374c2861fb8">User::role</a></div><div class="ttdeci">UserRole role</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2user_8h_source.html#l00031">user.h:31</a></div></div>
+<div class="ttc" id="astructUser_html_ad9940d1242bd89368f6e328179931464"><div class="ttname"><a href="structUser.html#ad9940d1242bd89368f6e328179931464">User::team</a></div><div class="ttdeci">Team team</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2user_8h_source.html#l00032">user.h:32</a></div></div>
+<div class="ttc" id="astructUser_html_ae1faef3d602da4c65e7571e751f775f2"><div class="ttname"><a href="structUser.html#ae1faef3d602da4c65e7571e751f775f2">User::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2user_8h_source.html#l00030">user.h:30</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a href="client_2lib_2user_8h.html">user.h</a></li>
-    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a class="el" href="client_2lib_2user_8h.html">user.h</a></li>
+    <li class="footer">Généré le Mardi 14 Avril 2026 18:57:16 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

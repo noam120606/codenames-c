@@ -5,6 +5,7 @@ var client_2src_2utils_8c =
     [ "itoa", "client_2src_2utils_8c.html#a4421b3b56ef0c8d301e35e23ba17f9d5", null ],
     [ "levenshtein", "client_2src_2utils_8c.html#ac85a2fa057900ac7d0c0dcac2a47d843", null ],
     [ "number_length", "client_2src_2utils_8c.html#acf06ac69f86a58e43477083d3930a4ca", null ],
-    [ "valid_hint", "client_2src_2utils_8c.html#a39237c7417169b3a96342c69cb0e0991", null ],
+    [ "read_line_alloc", "client_2src_2utils_8c.html#aff7b482760df8685b78cee2871b7f80a", null ],
+    [ "valid_hint", "client_2src_2utils_8c.html#a9e8c25736d7034d66768cd0cdd057ca8", null ],
     [ "word_contains", "client_2src_2utils_8c.html#abe64ca50f79e62a1be14590abf7ecd6a", null ]
 ];

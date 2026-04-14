@@ -1,0 +1,364 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Codenames: Référence du fichier client/lib/card.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Codenames<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Jeu Codenames multijoueur en C - Client SDL2 et Serveur TCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('card_8h.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#enum-members">Énumérations</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier card.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Définitions et structures pour la gestion des cartes dans <a class="el" href="structCodenames.html">Codenames</a> côté client.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="client_2lib_2game_8h_source.html">../lib/game.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="client_2lib_2utils_8h_source.html">../lib/utils.h</a>&quot;</code><br />
+</div>
+<p><a href="card_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCard.html">Card</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:abef3b2a609b4d25462a7074e25e481d9" id="r_abef3b2a609b4d25462a7074e25e481d9"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="card_8h.html#a76b9e96d86b331202dcc0fba38b758cd">CardType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="card_8h.html#abef3b2a609b4d25462a7074e25e481d9">CardType</a></td></tr>
+<tr class="separator:abef3b2a609b4d25462a7074e25e481d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23ff27324f1ac52bcafa4cc91e2c2744" id="r_a23ff27324f1ac52bcafa4cc91e2c2744"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structCard.html">Card</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="card_8h.html#a23ff27324f1ac52bcafa4cc91e2c2744">Card</a></td></tr>
+<tr class="separator:a23ff27324f1ac52bcafa4cc91e2c2744"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:a76b9e96d86b331202dcc0fba38b758cd" id="r_a76b9e96d86b331202dcc0fba38b758cd"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="card_8h.html#a76b9e96d86b331202dcc0fba38b758cd">CardType</a> { <a class="el" href="card_8h.html#a76b9e96d86b331202dcc0fba38b758cdaf53340ee1927ddefbec463fd6dd755d9">CT_MALE</a>
+, <a class="el" href="card_8h.html#a76b9e96d86b331202dcc0fba38b758cda62ad885719deb2c352c0988cdfbdef9a">CT_FEMALE</a>
+, <a class="el" href="card_8h.html#a76b9e96d86b331202dcc0fba38b758cdadffba972c261ddeed858e61e46eb4ba4">CT_CAT</a>
+, <a class="el" href="card_8h.html#a76b9e96d86b331202dcc0fba38b758cda9714286da6280ad708aa028a6cc3092b">CT_DOG</a>
+ }</td></tr>
+<tr class="separator:a76b9e96d86b331202dcc0fba38b758cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a8dd3e5207bc16b0a79170e8a223b469e" id="r_a8dd3e5207bc16b0a79170e8a223b469e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="card_8h.html#a8dd3e5207bc16b0a79170e8a223b469e">init_cards</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="separator:a8dd3e5207bc16b0a79170e8a223b469e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3efc02e77945b343b2626580182ee68d" id="r_a3efc02e77945b343b2626580182ee68d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="card_8h.html#a3efc02e77945b343b2626580182ee68d">cards_handle_event</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, SDL_Event *event)</td></tr>
+<tr class="separator:a3efc02e77945b343b2626580182ee68d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc281acdfa1094848747657fcacd03d3" id="r_afc281acdfa1094848747657fcacd03d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="card_8h.html#afc281acdfa1094848747657fcacd03d3">game_render_cards</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="separator:afc281acdfa1094848747657fcacd03d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1f09be2aa71331f099c3599b2c43636" id="r_aa1f09be2aa71331f099c3599b2c43636"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="card_8h.html#aa1f09be2aa71331f099c3599b2c43636">card_free</a> ()</td></tr>
+<tr class="separator:aa1f09be2aa71331f099c3599b2c43636"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Définitions et structures pour la gestion des cartes dans <a class="el" href="structCodenames.html">Codenames</a> côté client. </p>
+
+<p class="definition">Définition dans le fichier <a class="el" href="card_8h_source.html">card.h</a>.</p>
+</div><h2 class="groupheader">Documentation des définitions de type</h2>
+<a id="a23ff27324f1ac52bcafa4cc91e2c2744" name="a23ff27324f1ac52bcafa4cc91e2c2744"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23ff27324f1ac52bcafa4cc91e2c2744">&#9670;&#160;</a></span>Card</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structCard.html">Card</a> <a class="el" href="structCard.html">Card</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Représente un mot dans la grille de <a class="el" href="structCodenames.html">Codenames</a>. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">word</td><td>texte du mot (terminé par \0). </td></tr>
+    <tr><td class="paramname">team</td><td>équipe à laquelle le mot appartient (TEAM_*). </td></tr>
+    <tr><td class="paramname">type</td><td>type de mot (masculin, féminin, etc.) pour l'affichage de la carte. </td></tr>
+    <tr><td class="paramname">rect</td><td>position et taille de la carte à l'écran (calculé lors du rendu). </td></tr>
+    <tr><td class="paramname">guess_rect</td><td>position et taille de l'icône de devinette à l'écran. </td></tr>
+    <tr><td class="paramname">revealed</td><td>0 si caché, 1 si révélé. </td></tr>
+    <tr><td class="paramname">selected</td><td>0 si non sélectionné, 1 si sélectionné. </td></tr>
+    <tr><td class="paramname">is_pressed</td><td>0 si non pressé, 1 si pressé. </td></tr>
+    <tr><td class="paramname">is_hovered</td><td>0 si non survolé, 1 si survolé.</td></tr>
+    <tr><td class="paramname">display_word_once_revealed</td><td>côté client seulement, indique si le mot doit être affiché une fois la carte révélée (utile pour les cartes sélectionnées mais pas encore devinées) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abef3b2a609b4d25462a7074e25e481d9" name="abef3b2a609b4d25462a7074e25e481d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abef3b2a609b4d25462a7074e25e481d9">&#9670;&#160;</a></span>CardType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="card_8h.html#a76b9e96d86b331202dcc0fba38b758cd">CardType</a> <a class="el" href="card_8h.html#a76b9e96d86b331202dcc0fba38b758cd">CardType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Types de cartes pour l'affichage (masculin, féminin, etc.). Ne correspond pas à une logique de jeu, mais uniquement à l'affichage. Permet d'avoir des cartes avec des formes différentes selon le type, pour une meilleure lisibilité. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">CT_MALE</td><td>carte de type masculin. </td></tr>
+    <tr><td class="paramname">CT_FEMALE</td><td>carte de type féminin. </td></tr>
+    <tr><td class="paramname">CT_CAT</td><td>carte de type chat. </td></tr>
+    <tr><td class="paramname">CT_DOG</td><td>carte de type chien. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation du type de l'énumération</h2>
+<a id="a76b9e96d86b331202dcc0fba38b758cd" name="a76b9e96d86b331202dcc0fba38b758cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76b9e96d86b331202dcc0fba38b758cd">&#9670;&#160;</a></span>CardType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="card_8h.html#a76b9e96d86b331202dcc0fba38b758cd">CardType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Types de cartes pour l'affichage (masculin, féminin, etc.). Ne correspond pas à une logique de jeu, mais uniquement à l'affichage. Permet d'avoir des cartes avec des formes différentes selon le type, pour une meilleure lisibilité. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">CT_MALE</td><td>carte de type masculin. </td></tr>
+    <tr><td class="paramname">CT_FEMALE</td><td>carte de type féminin. </td></tr>
+    <tr><td class="paramname">CT_CAT</td><td>carte de type chat. </td></tr>
+    <tr><td class="paramname">CT_DOG</td><td>carte de type chien. </td></tr>
+  </table>
+  </dd>
+</dl>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="a76b9e96d86b331202dcc0fba38b758cdaf53340ee1927ddefbec463fd6dd755d9" name="a76b9e96d86b331202dcc0fba38b758cdaf53340ee1927ddefbec463fd6dd755d9"></a>CT_MALE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a76b9e96d86b331202dcc0fba38b758cda62ad885719deb2c352c0988cdfbdef9a" name="a76b9e96d86b331202dcc0fba38b758cda62ad885719deb2c352c0988cdfbdef9a"></a>CT_FEMALE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a76b9e96d86b331202dcc0fba38b758cdadffba972c261ddeed858e61e46eb4ba4" name="a76b9e96d86b331202dcc0fba38b758cdadffba972c261ddeed858e61e46eb4ba4"></a>CT_CAT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a76b9e96d86b331202dcc0fba38b758cda9714286da6280ad708aa028a6cc3092b" name="a76b9e96d86b331202dcc0fba38b758cda9714286da6280ad708aa028a6cc3092b"></a>CT_DOG&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Définition à la ligne <a class="el" href="card_8h_source.html#l00020">20</a> du fichier <a class="el" href="card_8h_source.html">card.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a id="aa1f09be2aa71331f099c3599b2c43636" name="aa1f09be2aa71331f099c3599b2c43636"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1f09be2aa71331f099c3599b2c43636">&#9670;&#160;</a></span>card_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int card_free </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Libère les ressources associées aux cartes (textures, textes, etc.). </p><dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS si les ressources ont été libérées avec succès, EXIT_FAILURE sinon. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="card_8c_source.html#l00406">406</a> du fichier <a class="el" href="card_8c_source.html">card.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="card_8c_source.html#l00004">card_black</a>, <a class="el" href="card_8c_source.html#l00005">card_black_revealed</a>, <a class="el" href="card_8c_source.html#l00010">card_blue_c_revealed</a>, <a class="el" href="card_8c_source.html#l00011">card_blue_d_revealed</a>, <a class="el" href="card_8c_source.html#l00007">card_blue_f</a>, <a class="el" href="card_8c_source.html#l00009">card_blue_f_revealed</a>, <a class="el" href="card_8c_source.html#l00006">card_blue_h</a>, <a class="el" href="card_8c_source.html#l00008">card_blue_h_revealed</a>, <a class="el" href="card_8c_source.html#l00019">card_none_f</a>, <a class="el" href="card_8c_source.html#l00021">card_none_f_revealed</a>, <a class="el" href="card_8c_source.html#l00018">card_none_h</a>, <a class="el" href="card_8c_source.html#l00020">card_none_h_revealed</a>, <a class="el" href="card_8c_source.html#l00016">card_red_c_revealed</a>, <a class="el" href="card_8c_source.html#l00017">card_red_d_revealed</a>, <a class="el" href="card_8c_source.html#l00013">card_red_f</a>, <a class="el" href="card_8c_source.html#l00015">card_red_f_revealed</a>, <a class="el" href="card_8c_source.html#l00012">card_red_h</a>, <a class="el" href="card_8c_source.html#l00014">card_red_h_revealed</a>, <a class="el" href="text_8c_source.html#l00177">destroy_text()</a>, <a class="el" href="sdl_8c_source.html#l00264">free_image()</a>, <a class="el" href="card_8c_source.html#l00023">guess_icon</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00043">NUM_CARDS</a>, et <a class="el" href="card_8c_source.html#l00026">txt_card_words</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00205">main()</a>.</p>
+
+</div>
+</div>
+<a id="a3efc02e77945b343b2626580182ee68d" name="a3efc02e77945b343b2626580182ee68d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3efc02e77945b343b2626580182ee68d">&#9670;&#160;</a></span>cards_handle_event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cards_handle_event </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Event *&#160;</td>
+          <td class="paramname"><em>event</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Gère les événements liés aux cartes (clics, survols, etc.). </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>contexte de l'application, utilisé pour accéder à l'état du jeu et des cartes. </td></tr>
+    <tr><td class="paramname">event</td><td>événement SDL à traiter. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS si l'événement a été traité avec succès, EXIT_FAILURE sinon. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="card_8c_source.html#l00210">210</a> du fichier <a class="el" href="card_8c_source.html">card.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="card_8c_source.html#l00180">card_handle_event()</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00124">Game::cards</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00076">Lobby::game</a>, <a class="el" href="sdl_8h_source.html#l00059">AppContext::lobby</a>, <a class="el" href="client_2src_2game_8c_source.html#l00456">my_turn()</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00043">NUM_CARDS</a>, <a class="el" href="sdl_8h_source.html#l00061">AppContext::player_role</a>, <a class="el" href="card_8h_source.html#l00047">Card::revealed</a>, et <a class="el" href="client_2lib_2user_8h_source.html#l00019">ROLE_AGENT</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00205">main()</a>.</p>
+
+</div>
+</div>
+<a id="afc281acdfa1094848747657fcacd03d3" name="afc281acdfa1094848747657fcacd03d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc281acdfa1094848747657fcacd03d3">&#9670;&#160;</a></span>game_render_cards()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game_render_cards </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Rend les cartes à l'écran en fonction de leur état (révélées, sélectionnées, etc.). </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>contexte de l'application, utilisé pour le rendu et l'accès à l'état </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="card_8c_source.html#l00392">392</a> du fichier <a class="el" href="card_8c_source.html">card.c</a>.</p>
+
+</div>
+</div>
+<a id="a8dd3e5207bc16b0a79170e8a223b469e" name="a8dd3e5207bc16b0a79170e8a223b469e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dd3e5207bc16b0a79170e8a223b469e">&#9670;&#160;</a></span>init_cards()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int init_cards </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Initialise les textures des cartes et les textes associés. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>contexte de l'application, utilisé pour le rendu et la création de textures. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>le nombre de chargements ayant échoué (0 si tout a réussi). </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="card_8c_source.html#l00040">40</a> du fichier <a class="el" href="card_8c_source.html">card.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="card_8c_source.html#l00032">CardFlipState::animating</a>, <a class="el" href="card_8c_source.html#l00004">card_black</a>, <a class="el" href="card_8c_source.html#l00005">card_black_revealed</a>, <a class="el" href="card_8c_source.html#l00010">card_blue_c_revealed</a>, <a class="el" href="card_8c_source.html#l00011">card_blue_d_revealed</a>, <a class="el" href="card_8c_source.html#l00007">card_blue_f</a>, <a class="el" href="card_8c_source.html#l00009">card_blue_f_revealed</a>, <a class="el" href="card_8c_source.html#l00006">card_blue_h</a>, <a class="el" href="card_8c_source.html#l00008">card_blue_h_revealed</a>, <a class="el" href="card_8c_source.html#l00038">card_flip_states</a>, <a class="el" href="card_8c_source.html#l00019">card_none_f</a>, <a class="el" href="card_8c_source.html#l00021">card_none_f_revealed</a>, <a class="el" href="card_8c_source.html#l00018">card_none_h</a>, <a class="el" href="card_8c_source.html#l00020">card_none_h_revealed</a>, <a class="el" href="card_8c_source.html#l00016">card_red_c_revealed</a>, <a class="el" href="card_8c_source.html#l00017">card_red_d_revealed</a>, <a class="el" href="card_8c_source.html#l00013">card_red_f</a>, <a class="el" href="card_8c_source.html#l00015">card_red_f_revealed</a>, <a class="el" href="card_8c_source.html#l00012">card_red_h</a>, <a class="el" href="card_8c_source.html#l00014">card_red_h_revealed</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00017">COL_BLACK</a>, <a class="el" href="text_8c_source.html#l00064">create_text_config()</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00039">False</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00034">FONT_BEBASKAI</a>, <a class="el" href="card_8c_source.html#l00033">CardFlipState::from_show_word</a>, <a class="el" href="card_8c_source.html#l00023">guess_icon</a>, <a class="el" href="text_8c_source.html#l00120">init_text()</a>, <a class="el" href="sdl_8c_source.html#l00205">load_image()</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00043">NUM_CARDS</a>, <a class="el" href="sdl_8h_source.html#l00056">AppContext::renderer</a>, <a class="el" href="card_8c_source.html#l00035">CardFlipState::started_at_ms</a>, <a class="el" href="card_8c_source.html#l00034">CardFlipState::to_show_word</a>, et <a class="el" href="card_8c_source.html#l00026">txt_card_words</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00205">main()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a class="el" href="card_8h.html">card.h</a></li>
+    <li class="footer">Généré le Mardi 14 Avril 2026 18:57:16 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

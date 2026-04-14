@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['userrole_0',['UserRole',['../client_2lib_2user_8h.html#a064a2c5e2528af581f38d07fbbaa8e5a',1,'UserRole:&#160;user.h'],['../server_2lib_2user_8h.html#a064a2c5e2528af581f38d07fbbaa8e5a',1,'UserRole:&#160;user.h']]]
+  ['numberofassassins_0',['NumberOfAssassins',['../client_2lib_2lobby_8h.html#a2d80312476dd978b38e1b2702543c8d9',1,'lobby.h']]]
 ];

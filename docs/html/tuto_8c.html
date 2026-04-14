@@ -1,0 +1,1217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Codenames: Référence du fichier client/src/tuto.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Codenames<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Jeu Codenames multijoueur en C - Client SDL2 et Serveur TCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('tuto_8c.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier tuto.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="client_2lib_2all_8h_source.html">../lib/all.h</a>&quot;</code><br />
+<code>#include &lt;dirent.h&gt;</code><br />
+</div>
+<p><a href="tuto_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTutorialImageFile.html">TutorialImageFile</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTutorialState.html">TutorialState</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a2a8e9fd3468666279e0208bdd7d9b61a" id="r_a2a8e9fd3468666279e0208bdd7d9b61a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#a2a8e9fd3468666279e0208bdd7d9b61a">TUTO_SLIDES_DIR</a>&#160;&#160;&#160;&quot;assets/img/tuto&quot;</td></tr>
+<tr class="separator:a2a8e9fd3468666279e0208bdd7d9b61a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7370bfc662aebd57f9d636d1852b9a3" id="r_ac7370bfc662aebd57f9d636d1852b9a3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#ac7370bfc662aebd57f9d636d1852b9a3">TUTO_SLIDES_GLOB</a>&#160;&#160;&#160;&quot;assets/img/tuto/*.png&quot;</td></tr>
+<tr class="separator:ac7370bfc662aebd57f9d636d1852b9a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5637d0cc30f9cde2a2a9a5cb4fd8d178" id="r_a5637d0cc30f9cde2a2a9a5cb4fd8d178"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#a5637d0cc30f9cde2a2a9a5cb4fd8d178">TUTO_MAX_PATH</a>&#160;&#160;&#160;512</td></tr>
+<tr class="separator:a5637d0cc30f9cde2a2a9a5cb4fd8d178"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:ac16af52908ed0f307f3ba511daa92b8a" id="r_ac16af52908ed0f307f3ba511daa92b8a"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structTutorialImageFile.html">TutorialImageFile</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#ac16af52908ed0f307f3ba511daa92b8a">TutorialImageFile</a></td></tr>
+<tr class="separator:ac16af52908ed0f307f3ba511daa92b8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a4374442d1169e3346b0abae5193e04" id="r_a6a4374442d1169e3346b0abae5193e04"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structTutorialState.html">TutorialState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#a6a4374442d1169e3346b0abae5193e04">TutorialState</a></td></tr>
+<tr class="separator:a6a4374442d1169e3346b0abae5193e04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a1dedeefa73c1c38ce73602b0a79a2e20" id="r_a1dedeefa73c1c38ce73602b0a79a2e20"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#a1dedeefa73c1c38ce73602b0a79a2e20">tutorial_parse_numeric_png</a> (const char *file_name, int *out_number)</td></tr>
+<tr class="separator:a1dedeefa73c1c38ce73602b0a79a2e20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acef73ba1ae6ad24615953053da2ee42b" id="r_acef73ba1ae6ad24615953053da2ee42b"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#acef73ba1ae6ad24615953053da2ee42b">tutorial_cmp_file</a> (const void *a, const void *b)</td></tr>
+<tr class="separator:acef73ba1ae6ad24615953053da2ee42b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c86919a629bbfbac7b5cf7276bb2b30" id="r_a6c86919a629bbfbac7b5cf7276bb2b30"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#a6c86919a629bbfbac7b5cf7276bb2b30">tutorial_append_file</a> (<a class="el" href="structTutorialImageFile.html">TutorialImageFile</a> **files, int *count, int number, const char *file_name)</td></tr>
+<tr class="separator:a6c86919a629bbfbac7b5cf7276bb2b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a728101a8834bb0a29eb04726cb369762" id="r_a728101a8834bb0a29eb04726cb369762"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#a728101a8834bb0a29eb04726cb369762">tutorial_collect_files</a> (<a class="el" href="structTutorialImageFile.html">TutorialImageFile</a> **out_files, int *out_count)</td></tr>
+<tr class="separator:a728101a8834bb0a29eb04726cb369762"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04db29af901ed2e946d42d0aa307625a" id="r_a04db29af901ed2e946d42d0aa307625a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#a04db29af901ed2e946d42d0aa307625a">tutorial_release_slides</a> (void)</td></tr>
+<tr class="separator:a04db29af901ed2e946d42d0aa307625a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba4477537192c52cdf30ed2d22f38f3f" id="r_aba4477537192c52cdf30ed2d22f38f3f"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#aba4477537192c52cdf30ed2d22f38f3f">tutorial_load_slides</a> (SDL_Renderer *renderer)</td></tr>
+<tr class="separator:aba4477537192c52cdf30ed2d22f38f3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3c5965d4d0b5338a14591d396991631" id="r_af3c5965d4d0b5338a14591d396991631"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#af3c5965d4d0b5338a14591d396991631">tutorial_reset_button_states</a> (void)</td></tr>
+<tr class="separator:af3c5965d4d0b5338a14591d396991631"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabd223c2b15d6d75721fd0cb3c2495fc" id="r_aabd223c2b15d6d75721fd0cb3c2495fc"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#aabd223c2b15d6d75721fd0cb3c2495fc">tutorial_is_prev_enabled</a> (void)</td></tr>
+<tr class="separator:aabd223c2b15d6d75721fd0cb3c2495fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ba0b06d9655a48b8cc9c48c2421b28d" id="r_a2ba0b06d9655a48b8cc9c48c2421b28d"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#a2ba0b06d9655a48b8cc9c48c2421b28d">tutorial_should_center_next_button</a> (void)</td></tr>
+<tr class="separator:a2ba0b06d9655a48b8cc9c48c2421b28d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad439428b9ddf331a707c5c2c71fda483" id="r_ad439428b9ddf331a707c5c2c71fda483"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#ad439428b9ddf331a707c5c2c71fda483">tutorial_clamp_index</a> (void)</td></tr>
+<tr class="separator:ad439428b9ddf331a707c5c2c71fda483"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7223f17f323374059db877b7fc71781b" id="r_a7223f17f323374059db877b7fc71781b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#a7223f17f323374059db877b7fc71781b">tutorial_update_title</a> (void)</td></tr>
+<tr class="separator:a7223f17f323374059db877b7fc71781b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abca037e7aa9a84183cf74c9116045e18" id="r_abca037e7aa9a84183cf74c9116045e18"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#abca037e7aa9a84183cf74c9116045e18">tutorial_update_next_button_label</a> (void)</td></tr>
+<tr class="separator:abca037e7aa9a84183cf74c9116045e18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89e401a750dbef1be8d19746e162b307" id="r_a89e401a750dbef1be8d19746e162b307"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#a89e401a750dbef1be8d19746e162b307">tutorial_sync_ui</a> (void)</td></tr>
+<tr class="separator:a89e401a750dbef1be8d19746e162b307"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9d0d57dbbaad0847839c6f1cb8a8070" id="r_aa9d0d57dbbaad0847839c6f1cb8a8070"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#aa9d0d57dbbaad0847839c6f1cb8a8070">tutorial_finish</a> (void)</td></tr>
+<tr class="separator:aa9d0d57dbbaad0847839c6f1cb8a8070"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af11d6028beebd2f13a55c746b9d95c58" id="r_af11d6028beebd2f13a55c746b9d95c58"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17">ButtonReturn</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#af11d6028beebd2f13a55c746b9d95c58">tutorial_button_click</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structButton.html">Button</a> *<a class="el" href="button_8c.html#abf4e1717cd10593e93de18811426872f">button</a>)</td></tr>
+<tr class="separator:af11d6028beebd2f13a55c746b9d95c58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e98f6e7c14c8cb6ff62f8dcb78cf440" id="r_a8e98f6e7c14c8cb6ff62f8dcb78cf440"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#a8e98f6e7c14c8cb6ff62f8dcb78cf440">tutorial_get_content_rect</a> (SDL_Rect *out_rect)</td></tr>
+<tr class="separator:a8e98f6e7c14c8cb6ff62f8dcb78cf440"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb9af78304fbc229539db4661dcbad23" id="r_abb9af78304fbc229539db4661dcbad23"><td class="memItemLeft" align="right" valign="top">static SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#abb9af78304fbc229539db4661dcbad23">tutorial_current_slide</a> (void)</td></tr>
+<tr class="separator:abb9af78304fbc229539db4661dcbad23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e5d75583633ad1dac7c88b6838de39d" id="r_a6e5d75583633ad1dac7c88b6838de39d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#a6e5d75583633ad1dac7c88b6838de39d">tutorial_render_slide</a> (SDL_Renderer *renderer)</td></tr>
+<tr class="separator:a6e5d75583633ad1dac7c88b6838de39d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d90b1914c821609657d279674c451bb" id="r_a2d90b1914c821609657d279674c451bb"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#a2d90b1914c821609657d279674c451bb">tutorial_read_seen_flag</a> (void)</td></tr>
+<tr class="separator:a2d90b1914c821609657d279674c451bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a282cd0adce1d7a4268b92756132b0229" id="r_a282cd0adce1d7a4268b92756132b0229"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#a282cd0adce1d7a4268b92756132b0229">tutorial_reposition_buttons</a> (void)</td></tr>
+<tr class="separator:a282cd0adce1d7a4268b92756132b0229"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a400e4e36c0130d5e6541078bf0762f1c" id="r_a400e4e36c0130d5e6541078bf0762f1c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#a400e4e36c0130d5e6541078bf0762f1c">tutorial_open_internal</a> (int reset_to_first)</td></tr>
+<tr class="separator:a400e4e36c0130d5e6541078bf0762f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae555b0aeabafa888cac65e925472b965" id="r_ae555b0aeabafa888cac65e925472b965"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#ae555b0aeabafa888cac65e925472b965">tuto_init</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="separator:ae555b0aeabafa888cac65e925472b965"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed7e1009cf4ac2a28878c7ac2fe4bc1f" id="r_aed7e1009cf4ac2a28878c7ac2fe4bc1f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#aed7e1009cf4ac2a28878c7ac2fe4bc1f">tuto_open</a> (void)</td></tr>
+<tr class="separator:aed7e1009cf4ac2a28878c7ac2fe4bc1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a641ebf47870eb59113e473f84cbba958" id="r_a641ebf47870eb59113e473f84cbba958"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#a641ebf47870eb59113e473f84cbba958">tuto_is_active</a> (void)</td></tr>
+<tr class="separator:a641ebf47870eb59113e473f84cbba958"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a637fc0e4f38ba46593910fb02114944d" id="r_a637fc0e4f38ba46593910fb02114944d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#a637fc0e4f38ba46593910fb02114944d">tuto_handle_event</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, SDL_Event *e)</td></tr>
+<tr class="separator:a637fc0e4f38ba46593910fb02114944d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f5230d03e33b44bbcd24080c4184cfc" id="r_a0f5230d03e33b44bbcd24080c4184cfc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#a0f5230d03e33b44bbcd24080c4184cfc">tuto_display</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="separator:a0f5230d03e33b44bbcd24080c4184cfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad643b91ef200a199f646ae168e29c922" id="r_ad643b91ef200a199f646ae168e29c922"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#ad643b91ef200a199f646ae168e29c922">tuto_free</a> (void)</td></tr>
+<tr class="separator:ad643b91ef200a199f646ae168e29c922"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a570f38f223044309716fb27aaa42b091" id="r_a570f38f223044309716fb27aaa42b091"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structTutorialState.html">TutorialState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tuto_8c.html#a570f38f223044309716fb27aaa42b091">g_tuto</a> = {0}</td></tr>
+<tr class="separator:a570f38f223044309716fb27aaa42b091"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation des macros</h2>
+<a id="a5637d0cc30f9cde2a2a9a5cb4fd8d178" name="a5637d0cc30f9cde2a2a9a5cb4fd8d178"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5637d0cc30f9cde2a2a9a5cb4fd8d178">&#9670;&#160;</a></span>TUTO_MAX_PATH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TUTO_MAX_PATH&#160;&#160;&#160;512</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00014">14</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+</div>
+</div>
+<a id="a2a8e9fd3468666279e0208bdd7d9b61a" name="a2a8e9fd3468666279e0208bdd7d9b61a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a8e9fd3468666279e0208bdd7d9b61a">&#9670;&#160;</a></span>TUTO_SLIDES_DIR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TUTO_SLIDES_DIR&#160;&#160;&#160;&quot;assets/img/tuto&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00012">12</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+</div>
+</div>
+<a id="ac7370bfc662aebd57f9d636d1852b9a3" name="ac7370bfc662aebd57f9d636d1852b9a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7370bfc662aebd57f9d636d1852b9a3">&#9670;&#160;</a></span>TUTO_SLIDES_GLOB</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TUTO_SLIDES_GLOB&#160;&#160;&#160;&quot;assets/img/tuto/*.png&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00013">13</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des définitions de type</h2>
+<a id="ac16af52908ed0f307f3ba511daa92b8a" name="ac16af52908ed0f307f3ba511daa92b8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac16af52908ed0f307f3ba511daa92b8a">&#9670;&#160;</a></span>TutorialImageFile</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structTutorialImageFile.html">TutorialImageFile</a> <a class="el" href="structTutorialImageFile.html">TutorialImageFile</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6a4374442d1169e3346b0abae5193e04" name="a6a4374442d1169e3346b0abae5193e04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a4374442d1169e3346b0abae5193e04">&#9670;&#160;</a></span>TutorialState</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structTutorialState.html">TutorialState</a> <a class="el" href="structTutorialState.html">TutorialState</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a0f5230d03e33b44bbcd24080c4184cfc" name="a0f5230d03e33b44bbcd24080c4184cfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f5230d03e33b44bbcd24080c4184cfc">&#9670;&#160;</a></span>tuto_display()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tuto_display </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Affiche la fenêtre tutoriel, l'image courante et les boutons de navigation. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>Contexte SDL. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00492">492</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="tuto_8c_source.html#l00028">TutorialState::active</a>, <a class="el" href="tuto_8c_source.html#l00024">TutorialState::btn_next</a>, <a class="el" href="tuto_8c_source.html#l00023">TutorialState::btn_prev</a>, <a class="el" href="button_8c_source.html#l00432">button_render()</a>, <a class="el" href="tuto_8c_source.html#l00033">g_tuto</a>, <a class="el" href="sdl_8h_source.html#l00056">AppContext::renderer</a>, <a class="el" href="tuto_8c_source.html#l00202">tutorial_is_prev_enabled()</a>, <a class="el" href="tuto_8c_source.html#l00309">tutorial_render_slide()</a>, <a class="el" href="tuto_8c_source.html#l00358">tutorial_reposition_buttons()</a>, <a class="el" href="tuto_8c_source.html#l00022">TutorialState::window</a>, et <a class="el" href="window_8c_source.html#l00373">window_render()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00908">menu_display()</a>.</p>
+
+</div>
+</div>
+<a id="ad643b91ef200a199f646ae168e29c922" name="ad643b91ef200a199f646ae168e29c922"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad643b91ef200a199f646ae168e29c922">&#9670;&#160;</a></span>tuto_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int tuto_free </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Libère les ressources du tutoriel. </p><dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00508">508</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="tuto_8c_source.html#l00028">TutorialState::active</a>, <a class="el" href="tuto_8c_source.html#l00024">TutorialState::btn_next</a>, <a class="el" href="tuto_8c_source.html#l00023">TutorialState::btn_prev</a>, <a class="el" href="button_8c_source.html#l00209">button_destroy()</a>, <a class="el" href="tuto_8c_source.html#l00033">g_tuto</a>, <a class="el" href="tuto_8c_source.html#l00029">TutorialState::initialized</a>, <a class="el" href="tuto_8c_source.html#l00030">TutorialState::seen</a>, <a class="el" href="tuto_8c_source.html#l00129">tutorial_release_slides()</a>, <a class="el" href="tuto_8c_source.html#l00022">TutorialState::window</a>, et <a class="el" href="window_8c_source.html#l00282">window_destroy()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00983">menu_free()</a>, et <a class="el" href="tuto_8c_source.html#l00387">tuto_init()</a>.</p>
+
+</div>
+</div>
+<a id="a637fc0e4f38ba46593910fb02114944d" name="a637fc0e4f38ba46593910fb02114944d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a637fc0e4f38ba46593910fb02114944d">&#9670;&#160;</a></span>tuto_handle_event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tuto_handle_event </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Event *&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Gère les événements SDL du tutoriel (boutons précédent/suivant). </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>Contexte SDL. </td></tr>
+    <tr><td class="paramname">e</td><td>Événement SDL. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00484">484</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="tuto_8c_source.html#l00028">TutorialState::active</a>, <a class="el" href="tuto_8c_source.html#l00024">TutorialState::btn_next</a>, <a class="el" href="tuto_8c_source.html#l00023">TutorialState::btn_prev</a>, <a class="el" href="button_8c_source.html#l00294">button_handle_event()</a>, <a class="el" href="tuto_8c_source.html#l00033">g_tuto</a>, <a class="el" href="tuto_8c_source.html#l00202">tutorial_is_prev_enabled()</a>, <a class="el" href="tuto_8c_source.html#l00022">TutorialState::window</a>, et <a class="el" href="window_8c_source.html#l00312">window_handle_event()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00713">menu_handle_event()</a>.</p>
+
+</div>
+</div>
+<a id="ae555b0aeabafa888cac65e925472b965" name="ae555b0aeabafa888cac65e925472b965"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae555b0aeabafa888cac65e925472b965">&#9670;&#160;</a></span>tuto_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int tuto_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Initialise le tutoriel (chargement des images, création de la fenêtre et des boutons). Si SEEN_TUTO vaut 0, le tutoriel est automatiquement ouvert. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>Contexte SDL. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS si initialisé, EXIT_FAILURE sinon. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00387">387</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="tuto_8c_source.html#l00028">TutorialState::active</a>, <a class="el" href="window_8h_source.html#l00075">WindowConfig::bg_color</a>, <a class="el" href="window_8h_source.html#l00076">WindowConfig::border_color</a>, <a class="el" href="window_8h_source.html#l00086">WindowConfig::border_thickness</a>, <a class="el" href="tuto_8c_source.html#l00024">TutorialState::btn_next</a>, <a class="el" href="tuto_8c_source.html#l00023">TutorialState::btn_prev</a>, <a class="el" href="button_8h_source.html#l00027">BTN_TUTO_NEXT</a>, <a class="el" href="button_8h_source.html#l00028">BTN_TUTO_PREV</a>, <a class="el" href="button_8c_source.html#l00007">button_config_init()</a>, <a class="el" href="button_8c_source.html#l00042">button_create()</a>, <a class="el" href="button_8h_source.html#l00105">ButtonConfig::callback</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00016">COL_WHITE</a>, <a class="el" href="button_8h_source.html#l00103">ButtonConfig::color</a>, <a class="el" href="tuto_8c_source.html#l00027">TutorialState::current_index</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00032">FONT_LARABIE</a>, <a class="el" href="button_8h_source.html#l00102">ButtonConfig::font_path</a>, <a class="el" href="tuto_8c_source.html#l00033">g_tuto</a>, <a class="el" href="button_8h_source.html#l00100">ButtonConfig::h</a>, <a class="el" href="window_8h_source.html#l00072">WindowConfig::h</a>, <a class="el" href="tuto_8c_source.html#l00029">TutorialState::initialized</a>, <a class="el" href="window_8h_source.html#l00073">WindowConfig::movable</a>, <a class="el" href="sdl_8h_source.html#l00056">AppContext::renderer</a>, <a class="el" href="tuto_8c_source.html#l00030">TutorialState::seen</a>, <a class="el" href="button_8h_source.html#l00101">ButtonConfig::text</a>, <a class="el" href="window_8h_source.html#l00080">WindowConfig::title</a>, <a class="el" href="window_8h_source.html#l00077">WindowConfig::titlebar_color</a>, <a class="el" href="window_8h_source.html#l00087">WindowConfig::titlebar_h</a>, <a class="el" href="tuto_8c_source.html#l00508">tuto_free()</a>, <a class="el" href="tuto_8c_source.html#l00256">tutorial_button_click()</a>, <a class="el" href="tuto_8c_source.html#l00142">tutorial_load_slides()</a>, <a class="el" href="tuto_8c_source.html#l00345">tutorial_read_seen_flag()</a>, <a class="el" href="tuto_8c_source.html#l00358">tutorial_reposition_buttons()</a>, <a class="el" href="tuto_8c_source.html#l00191">tutorial_reset_button_states()</a>, <a class="el" href="tuto_8c_source.html#l00240">tutorial_sync_ui()</a>, <a class="el" href="button_8h_source.html#l00099">ButtonConfig::w</a>, <a class="el" href="window_8h_source.html#l00071">WindowConfig::w</a>, <a class="el" href="tuto_8c_source.html#l00022">TutorialState::window</a>, <a class="el" href="window_8c_source.html#l00187">window_config_init()</a>, <a class="el" href="window_8c_source.html#l00247">window_create()</a>, <a class="el" href="window_8h_source.html#l00025">WINDOW_TUTO</a>, <a class="el" href="window_8h_source.html#l00069">WindowConfig::x</a>, et <a class="el" href="window_8h_source.html#l00070">WindowConfig::y</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00764">menu_init()</a>.</p>
+
+</div>
+</div>
+<a id="a641ebf47870eb59113e473f84cbba958" name="a641ebf47870eb59113e473f84cbba958"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a641ebf47870eb59113e473f84cbba958">&#9670;&#160;</a></span>tuto_is_active()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int tuto_is_active </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Indique si le tutoriel est actuellement affiché. </p><dl class="section return"><dt>Renvoie</dt><dd>1 si actif, 0 sinon. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00480">480</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="tuto_8c_source.html#l00028">TutorialState::active</a>, et <a class="el" href="tuto_8c_source.html#l00033">g_tuto</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00908">menu_display()</a>, et <a class="el" href="menu_8c_source.html#l00713">menu_handle_event()</a>.</p>
+
+</div>
+</div>
+<a id="aed7e1009cf4ac2a28878c7ac2fe4bc1f" name="aed7e1009cf4ac2a28878c7ac2fe4bc1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed7e1009cf4ac2a28878c7ac2fe4bc1f">&#9670;&#160;</a></span>tuto_open()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tuto_open </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ouvre le tutoriel manuellement depuis le menu. Le diaporama repart de la première image. </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00476">476</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="tuto_8c_source.html#l00378">tutorial_open_internal()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00546">menu_button_click()</a>.</p>
+
+</div>
+</div>
+<a id="a6c86919a629bbfbac7b5cf7276bb2b30" name="a6c86919a629bbfbac7b5cf7276bb2b30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c86919a629bbfbac7b5cf7276bb2b30">&#9670;&#160;</a></span>tutorial_append_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int tutorial_append_file </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTutorialImageFile.html">TutorialImageFile</a> **&#160;</td>
+          <td class="paramname"><em>files</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>file_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00064">64</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2src_2utils_8c_source.html#l00046">format_to()</a>, <a class="el" href="tuto_8c_source.html#l00017">TutorialImageFile::number</a>, <a class="el" href="tuto_8c_source.html#l00018">TutorialImageFile::path</a>, et <a class="el" href="tuto_8c_source.html#l00012">TUTO_SLIDES_DIR</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="tuto_8c_source.html#l00079">tutorial_collect_files()</a>.</p>
+
+</div>
+</div>
+<a id="af11d6028beebd2f13a55c746b9d95c58" name="af11d6028beebd2f13a55c746b9d95c58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af11d6028beebd2f13a55c746b9d95c58">&#9670;&#160;</a></span>tutorial_button_click()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="button_8h.html#a2e359d08d4b6ceb3ec6cd5c41addde17">ButtonReturn</a> tutorial_button_click </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structButton.html">Button</a> *&#160;</td>
+          <td class="paramname"><em>button</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00256">256</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="tuto_8c_source.html#l00024">TutorialState::btn_next</a>, <a class="el" href="button_8h_source.html#l00021">BTN_NONE</a>, <a class="el" href="tuto_8c_source.html#l00023">TutorialState::btn_prev</a>, <a class="el" href="button_8c_source.html#l00003">button</a>, <a class="el" href="tuto_8c_source.html#l00027">TutorialState::current_index</a>, <a class="el" href="tuto_8c_source.html#l00033">g_tuto</a>, <a class="el" href="tuto_8c_source.html#l00026">TutorialState::slide_count</a>, <a class="el" href="tuto_8c_source.html#l00246">tutorial_finish()</a>, <a class="el" href="tuto_8c_source.html#l00202">tutorial_is_prev_enabled()</a>, et <a class="el" href="tuto_8c_source.html#l00240">tutorial_sync_ui()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="tuto_8c_source.html#l00387">tuto_init()</a>.</p>
+
+</div>
+</div>
+<a id="ad439428b9ddf331a707c5c2c71fda483" name="ad439428b9ddf331a707c5c2c71fda483"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad439428b9ddf331a707c5c2c71fda483">&#9670;&#160;</a></span>tutorial_clamp_index()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void tutorial_clamp_index </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00210">210</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="tuto_8c_source.html#l00027">TutorialState::current_index</a>, <a class="el" href="tuto_8c_source.html#l00033">g_tuto</a>, et <a class="el" href="tuto_8c_source.html#l00026">TutorialState::slide_count</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="tuto_8c_source.html#l00240">tutorial_sync_ui()</a>.</p>
+
+</div>
+</div>
+<a id="acef73ba1ae6ad24615953053da2ee42b" name="acef73ba1ae6ad24615953053da2ee42b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acef73ba1ae6ad24615953053da2ee42b">&#9670;&#160;</a></span>tutorial_cmp_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int tutorial_cmp_file </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00056">56</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="tuto_8c_source.html#l00017">TutorialImageFile::number</a>, et <a class="el" href="tuto_8c_source.html#l00018">TutorialImageFile::path</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="tuto_8c_source.html#l00079">tutorial_collect_files()</a>.</p>
+
+</div>
+</div>
+<a id="a728101a8834bb0a29eb04726cb369762" name="a728101a8834bb0a29eb04726cb369762"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a728101a8834bb0a29eb04726cb369762">&#9670;&#160;</a></span>tutorial_collect_files()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int tutorial_collect_files </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTutorialImageFile.html">TutorialImageFile</a> **&#160;</td>
+          <td class="paramname"><em>out_files</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>out_count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00079">79</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="tuto_8c_source.html#l00012">TUTO_SLIDES_DIR</a>, <a class="el" href="tuto_8c_source.html#l00013">TUTO_SLIDES_GLOB</a>, <a class="el" href="tuto_8c_source.html#l00064">tutorial_append_file()</a>, <a class="el" href="tuto_8c_source.html#l00056">tutorial_cmp_file()</a>, et <a class="el" href="tuto_8c_source.html#l00035">tutorial_parse_numeric_png()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="tuto_8c_source.html#l00142">tutorial_load_slides()</a>.</p>
+
+</div>
+</div>
+<a id="abb9af78304fbc229539db4661dcbad23" name="abb9af78304fbc229539db4661dcbad23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb9af78304fbc229539db4661dcbad23">&#9670;&#160;</a></span>tutorial_current_slide()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static SDL_Texture * tutorial_current_slide </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00303">303</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="tuto_8c_source.html#l00027">TutorialState::current_index</a>, <a class="el" href="tuto_8c_source.html#l00033">g_tuto</a>, <a class="el" href="tuto_8c_source.html#l00026">TutorialState::slide_count</a>, et <a class="el" href="tuto_8c_source.html#l00025">TutorialState::slides</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="tuto_8c_source.html#l00309">tutorial_render_slide()</a>.</p>
+
+</div>
+</div>
+<a id="aa9d0d57dbbaad0847839c6f1cb8a8070" name="aa9d0d57dbbaad0847839c6f1cb8a8070"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9d0d57dbbaad0847839c6f1cb8a8070">&#9670;&#160;</a></span>tutorial_finish()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void tutorial_finish </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00246">246</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="tuto_8c_source.html#l00028">TutorialState::active</a>, <a class="el" href="tuto_8c_source.html#l00033">g_tuto</a>, <a class="el" href="tuto_8c_source.html#l00030">TutorialState::seen</a>, <a class="el" href="tuto_8c_source.html#l00191">tutorial_reset_button_states()</a>, et <a class="el" href="save_8c_source.html#l00041">write_property()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="tuto_8c_source.html#l00256">tutorial_button_click()</a>.</p>
+
+</div>
+</div>
+<a id="a8e98f6e7c14c8cb6ff62f8dcb78cf440" name="a8e98f6e7c14c8cb6ff62f8dcb78cf440"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e98f6e7c14c8cb6ff62f8dcb78cf440">&#9670;&#160;</a></span>tutorial_get_content_rect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int tutorial_get_content_rect </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Rect *&#160;</td>
+          <td class="paramname"><em>out_rect</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00281">281</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00107">Window::cfg</a>, <a class="el" href="tuto_8c_source.html#l00033">g_tuto</a>, <a class="el" href="window_8h_source.html#l00099">WindowConfig::rect</a>, <a class="el" href="window_8h_source.html#l00087">WindowConfig::titlebar_h</a>, et <a class="el" href="tuto_8c_source.html#l00022">TutorialState::window</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="tuto_8c_source.html#l00309">tutorial_render_slide()</a>.</p>
+
+</div>
+</div>
+<a id="aabd223c2b15d6d75721fd0cb3c2495fc" name="aabd223c2b15d6d75721fd0cb3c2495fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabd223c2b15d6d75721fd0cb3c2495fc">&#9670;&#160;</a></span>tutorial_is_prev_enabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int tutorial_is_prev_enabled </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00202">202</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="tuto_8c_source.html#l00027">TutorialState::current_index</a>, <a class="el" href="tuto_8c_source.html#l00033">g_tuto</a>, et <a class="el" href="tuto_8c_source.html#l00026">TutorialState::slide_count</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="tuto_8c_source.html#l00492">tuto_display()</a>, <a class="el" href="tuto_8c_source.html#l00484">tuto_handle_event()</a>, <a class="el" href="tuto_8c_source.html#l00256">tutorial_button_click()</a>, <a class="el" href="tuto_8c_source.html#l00358">tutorial_reposition_buttons()</a>, et <a class="el" href="tuto_8c_source.html#l00206">tutorial_should_center_next_button()</a>.</p>
+
+</div>
+</div>
+<a id="aba4477537192c52cdf30ed2d22f38f3f" name="aba4477537192c52cdf30ed2d22f38f3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba4477537192c52cdf30ed2d22f38f3f">&#9670;&#160;</a></span>tutorial_load_slides()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int tutorial_load_slides </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00142">142</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="tuto_8c_source.html#l00027">TutorialState::current_index</a>, <a class="el" href="tuto_8c_source.html#l00033">g_tuto</a>, <a class="el" href="sdl_8c_source.html#l00205">load_image()</a>, <a class="el" href="tuto_8c_source.html#l00026">TutorialState::slide_count</a>, <a class="el" href="tuto_8c_source.html#l00025">TutorialState::slides</a>, <a class="el" href="tuto_8c_source.html#l00079">tutorial_collect_files()</a>, et <a class="el" href="tuto_8c_source.html#l00129">tutorial_release_slides()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="tuto_8c_source.html#l00387">tuto_init()</a>.</p>
+
+</div>
+</div>
+<a id="a400e4e36c0130d5e6541078bf0762f1c" name="a400e4e36c0130d5e6541078bf0762f1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a400e4e36c0130d5e6541078bf0762f1c">&#9670;&#160;</a></span>tutorial_open_internal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void tutorial_open_internal </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>reset_to_first</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00378">378</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="tuto_8c_source.html#l00028">TutorialState::active</a>, <a class="el" href="tuto_8c_source.html#l00027">TutorialState::current_index</a>, <a class="el" href="tuto_8c_source.html#l00033">g_tuto</a>, <a class="el" href="tuto_8c_source.html#l00029">TutorialState::initialized</a>, <a class="el" href="tuto_8c_source.html#l00191">tutorial_reset_button_states()</a>, <a class="el" href="tuto_8c_source.html#l00240">tutorial_sync_ui()</a>, et <a class="el" href="tuto_8c_source.html#l00022">TutorialState::window</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="tuto_8c_source.html#l00476">tuto_open()</a>.</p>
+
+</div>
+</div>
+<a id="a1dedeefa73c1c38ce73602b0a79a2e20" name="a1dedeefa73c1c38ce73602b0a79a2e20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1dedeefa73c1c38ce73602b0a79a2e20">&#9670;&#160;</a></span>tutorial_parse_numeric_png()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int tutorial_parse_numeric_png </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>file_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>out_number</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00035">35</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="tuto_8c_source.html#l00079">tutorial_collect_files()</a>.</p>
+
+</div>
+</div>
+<a id="a2d90b1914c821609657d279674c451bb" name="a2d90b1914c821609657d279674c451bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d90b1914c821609657d279674c451bb">&#9670;&#160;</a></span>tutorial_read_seen_flag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int tutorial_read_seen_flag </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00345">345</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="save_8c_source.html#l00012">read_property()</a>, et <a class="el" href="save_8c_source.html#l00041">write_property()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="tuto_8c_source.html#l00387">tuto_init()</a>.</p>
+
+</div>
+</div>
+<a id="a04db29af901ed2e946d42d0aa307625a" name="a04db29af901ed2e946d42d0aa307625a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04db29af901ed2e946d42d0aa307625a">&#9670;&#160;</a></span>tutorial_release_slides()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void tutorial_release_slides </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00129">129</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="tuto_8c_source.html#l00027">TutorialState::current_index</a>, <a class="el" href="sdl_8c_source.html#l00264">free_image()</a>, <a class="el" href="tuto_8c_source.html#l00033">g_tuto</a>, <a class="el" href="tuto_8c_source.html#l00026">TutorialState::slide_count</a>, et <a class="el" href="tuto_8c_source.html#l00025">TutorialState::slides</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="tuto_8c_source.html#l00508">tuto_free()</a>, et <a class="el" href="tuto_8c_source.html#l00142">tutorial_load_slides()</a>.</p>
+
+</div>
+</div>
+<a id="a6e5d75583633ad1dac7c88b6838de39d" name="a6e5d75583633ad1dac7c88b6838de39d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e5d75583633ad1dac7c88b6838de39d">&#9670;&#160;</a></span>tutorial_render_slide()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void tutorial_render_slide </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00309">309</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00107">Window::cfg</a>, <a class="el" href="tuto_8c_source.html#l00033">g_tuto</a>, <a class="el" href="tuto_8c_source.html#l00303">tutorial_current_slide()</a>, <a class="el" href="tuto_8c_source.html#l00281">tutorial_get_content_rect()</a>, et <a class="el" href="tuto_8c_source.html#l00022">TutorialState::window</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="tuto_8c_source.html#l00492">tuto_display()</a>.</p>
+
+</div>
+</div>
+<a id="a282cd0adce1d7a4268b92756132b0229" name="a282cd0adce1d7a4268b92756132b0229"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a282cd0adce1d7a4268b92756132b0229">&#9670;&#160;</a></span>tutorial_reposition_buttons()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void tutorial_reposition_buttons </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00358">358</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="tuto_8c_source.html#l00024">TutorialState::btn_next</a>, <a class="el" href="tuto_8c_source.html#l00023">TutorialState::btn_prev</a>, <a class="el" href="button_8h_source.html#l00162">Button::cfg</a>, <a class="el" href="window_8h_source.html#l00107">Window::cfg</a>, <a class="el" href="tuto_8c_source.html#l00033">g_tuto</a>, <a class="el" href="window_8h_source.html#l00072">WindowConfig::h</a>, <a class="el" href="button_8h_source.html#l00116">ButtonConfig::is_hovered</a>, <a class="el" href="button_8h_source.html#l00117">ButtonConfig::is_pressed</a>, <a class="el" href="tuto_8c_source.html#l00202">tutorial_is_prev_enabled()</a>, <a class="el" href="tuto_8c_source.html#l00206">tutorial_should_center_next_button()</a>, <a class="el" href="tuto_8c_source.html#l00022">TutorialState::window</a>, et <a class="el" href="window_8c_source.html#l00477">window_place_button()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="tuto_8c_source.html#l00492">tuto_display()</a>, et <a class="el" href="tuto_8c_source.html#l00387">tuto_init()</a>.</p>
+
+</div>
+</div>
+<a id="af3c5965d4d0b5338a14591d396991631" name="af3c5965d4d0b5338a14591d396991631"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3c5965d4d0b5338a14591d396991631">&#9670;&#160;</a></span>tutorial_reset_button_states()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void tutorial_reset_button_states </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00191">191</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="tuto_8c_source.html#l00024">TutorialState::btn_next</a>, <a class="el" href="tuto_8c_source.html#l00023">TutorialState::btn_prev</a>, <a class="el" href="button_8h_source.html#l00162">Button::cfg</a>, <a class="el" href="tuto_8c_source.html#l00033">g_tuto</a>, <a class="el" href="button_8h_source.html#l00116">ButtonConfig::is_hovered</a>, et <a class="el" href="button_8h_source.html#l00117">ButtonConfig::is_pressed</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="tuto_8c_source.html#l00387">tuto_init()</a>, <a class="el" href="tuto_8c_source.html#l00246">tutorial_finish()</a>, et <a class="el" href="tuto_8c_source.html#l00378">tutorial_open_internal()</a>.</p>
+
+</div>
+</div>
+<a id="a2ba0b06d9655a48b8cc9c48c2421b28d" name="a2ba0b06d9655a48b8cc9c48c2421b28d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ba0b06d9655a48b8cc9c48c2421b28d">&#9670;&#160;</a></span>tutorial_should_center_next_button()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int tutorial_should_center_next_button </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00206">206</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="tuto_8c_source.html#l00202">tutorial_is_prev_enabled()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="tuto_8c_source.html#l00358">tutorial_reposition_buttons()</a>.</p>
+
+</div>
+</div>
+<a id="a89e401a750dbef1be8d19746e162b307" name="a89e401a750dbef1be8d19746e162b307"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89e401a750dbef1be8d19746e162b307">&#9670;&#160;</a></span>tutorial_sync_ui()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void tutorial_sync_ui </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00240">240</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="tuto_8c_source.html#l00210">tutorial_clamp_index()</a>, <a class="el" href="tuto_8c_source.html#l00232">tutorial_update_next_button_label()</a>, et <a class="el" href="tuto_8c_source.html#l00220">tutorial_update_title()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="tuto_8c_source.html#l00387">tuto_init()</a>, <a class="el" href="tuto_8c_source.html#l00256">tutorial_button_click()</a>, et <a class="el" href="tuto_8c_source.html#l00378">tutorial_open_internal()</a>.</p>
+
+</div>
+</div>
+<a id="abca037e7aa9a84183cf74c9116045e18" name="abca037e7aa9a84183cf74c9116045e18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abca037e7aa9a84183cf74c9116045e18">&#9670;&#160;</a></span>tutorial_update_next_button_label()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void tutorial_update_next_button_label </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00232">232</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="button_8h_source.html#l00138">BTN_CFG_TEXT</a>, <a class="el" href="tuto_8c_source.html#l00024">TutorialState::btn_next</a>, <a class="el" href="button_8c_source.html#l00497">button_edit_cfg()</a>, <a class="el" href="tuto_8c_source.html#l00027">TutorialState::current_index</a>, <a class="el" href="tuto_8c_source.html#l00033">g_tuto</a>, et <a class="el" href="tuto_8c_source.html#l00026">TutorialState::slide_count</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="tuto_8c_source.html#l00240">tutorial_sync_ui()</a>.</p>
+
+</div>
+</div>
+<a id="a7223f17f323374059db877b7fc71781b" name="a7223f17f323374059db877b7fc71781b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7223f17f323374059db877b7fc71781b">&#9670;&#160;</a></span>tutorial_update_title()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void tutorial_update_title </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00220">220</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="tuto_8c_source.html#l00027">TutorialState::current_index</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00046">format_to()</a>, <a class="el" href="tuto_8c_source.html#l00033">g_tuto</a>, <a class="el" href="tuto_8c_source.html#l00026">TutorialState::slide_count</a>, <a class="el" href="window_8h_source.html#l00125">WIN_CFG_TITLE</a>, <a class="el" href="tuto_8c_source.html#l00022">TutorialState::window</a>, et <a class="el" href="window_8c_source.html#l00419">window_edit_cfg()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="tuto_8c_source.html#l00240">tutorial_sync_ui()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a id="a570f38f223044309716fb27aaa42b091" name="a570f38f223044309716fb27aaa42b091"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a570f38f223044309716fb27aaa42b091">&#9670;&#160;</a></span>g_tuto</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structTutorialState.html">TutorialState</a> g_tuto = {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="tuto_8c_source.html#l00033">33</a> du fichier <a class="el" href="tuto_8c_source.html">tuto.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="tuto_8c_source.html#l00492">tuto_display()</a>, <a class="el" href="tuto_8c_source.html#l00508">tuto_free()</a>, <a class="el" href="tuto_8c_source.html#l00484">tuto_handle_event()</a>, <a class="el" href="tuto_8c_source.html#l00387">tuto_init()</a>, <a class="el" href="tuto_8c_source.html#l00480">tuto_is_active()</a>, <a class="el" href="tuto_8c_source.html#l00256">tutorial_button_click()</a>, <a class="el" href="tuto_8c_source.html#l00210">tutorial_clamp_index()</a>, <a class="el" href="tuto_8c_source.html#l00303">tutorial_current_slide()</a>, <a class="el" href="tuto_8c_source.html#l00246">tutorial_finish()</a>, <a class="el" href="tuto_8c_source.html#l00281">tutorial_get_content_rect()</a>, <a class="el" href="tuto_8c_source.html#l00202">tutorial_is_prev_enabled()</a>, <a class="el" href="tuto_8c_source.html#l00142">tutorial_load_slides()</a>, <a class="el" href="tuto_8c_source.html#l00378">tutorial_open_internal()</a>, <a class="el" href="tuto_8c_source.html#l00129">tutorial_release_slides()</a>, <a class="el" href="tuto_8c_source.html#l00309">tutorial_render_slide()</a>, <a class="el" href="tuto_8c_source.html#l00358">tutorial_reposition_buttons()</a>, <a class="el" href="tuto_8c_source.html#l00191">tutorial_reset_button_states()</a>, <a class="el" href="tuto_8c_source.html#l00232">tutorial_update_next_button_label()</a>, et <a class="el" href="tuto_8c_source.html#l00220">tutorial_update_title()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a class="el" href="tuto_8c.html">tuto.c</a></li>
+    <li class="footer">Généré le Mardi 14 Avril 2026 18:57:16 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

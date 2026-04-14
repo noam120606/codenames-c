@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier client/lib/sdl.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,20 +34,21 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,9 +63,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('sdl_8h.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('sdl_8h.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -89,9 +90,17 @@ $(function(){initNavTree('sdl_8h.html','',''); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
   <div class="headertitle"><div class="title">Référence du fichier sdl.h</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Initialisation SDL et contexte principal de l'application.  
+<a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &quot;../SDL2/include/SDL2/SDL.h&quot;</code><br />
 <code>#include &quot;../SDL2/include/SDL2/SDL_image.h&quot;</code><br />
 <code>#include &quot;../SDL2/include/SDL2/SDL_ttf.h&quot;</code><br />
@@ -103,31 +112,49 @@ $(function(){initNavTree('sdl_8h.html','',''); });
 </div>
 <p><a href="sdl_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Structures de données</h2></td></tr>
-<tr class="memitem:AppContext" id="r_AppContext"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structAppContext.html">AppContext</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAppContext.html">AppContext</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a2e6ef411e0ff00ad889788b6cde701b5" id="r_a2e6ef411e0ff00ad889788b6cde701b5"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a2e6ef411e0ff00ad889788b6cde701b5">WIN_WIDTH</a>&#160;&#160;&#160;1920</td></tr>
-<tr class="memitem:a0a33b1743038db1adbbf1045aa839b38" id="r_a0a33b1743038db1adbbf1045aa839b38"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a0a33b1743038db1adbbf1045aa839b38">WIN_HEIGHT</a>&#160;&#160;&#160;1080</td></tr>
-<tr class="memitem:a6123efbf31a64d99d4fec63fa6fbcaf6" id="r_a6123efbf31a64d99d4fec63fa6fbcaf6"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a6123efbf31a64d99d4fec63fa6fbcaf6">WIN_MIN_WIDTH</a>&#160;&#160;&#160;960</td></tr>
-<tr class="memitem:ab52814ce3811f9de6e702d82635c919d" id="r_ab52814ce3811f9de6e702d82635c919d"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ab52814ce3811f9de6e702d82635c919d">WIN_MIN_HEIGHT</a>&#160;&#160;&#160;540</td></tr>
+<tr class="memitem:a2e6ef411e0ff00ad889788b6cde701b5" id="r_a2e6ef411e0ff00ad889788b6cde701b5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdl_8h.html#a2e6ef411e0ff00ad889788b6cde701b5">WIN_WIDTH</a>&#160;&#160;&#160;1920</td></tr>
+<tr class="separator:a2e6ef411e0ff00ad889788b6cde701b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a33b1743038db1adbbf1045aa839b38" id="r_a0a33b1743038db1adbbf1045aa839b38"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdl_8h.html#a0a33b1743038db1adbbf1045aa839b38">WIN_HEIGHT</a>&#160;&#160;&#160;1080</td></tr>
+<tr class="separator:a0a33b1743038db1adbbf1045aa839b38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6123efbf31a64d99d4fec63fa6fbcaf6" id="r_a6123efbf31a64d99d4fec63fa6fbcaf6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdl_8h.html#a6123efbf31a64d99d4fec63fa6fbcaf6">WIN_MIN_WIDTH</a>&#160;&#160;&#160;960</td></tr>
+<tr class="separator:a6123efbf31a64d99d4fec63fa6fbcaf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab52814ce3811f9de6e702d82635c919d" id="r_ab52814ce3811f9de6e702d82635c919d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdl_8h.html#ab52814ce3811f9de6e702d82635c919d">WIN_MIN_HEIGHT</a>&#160;&#160;&#160;540</td></tr>
+<tr class="separator:ab52814ce3811f9de6e702d82635c919d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Définitions de type</h2></td></tr>
-<tr class="memitem:aab477be81bad6aadbec06506e3cc26a2" id="r_aab477be81bad6aadbec06506e3cc26a2"><td class="memItemLeft">typedef struct AppContext&#160;</td><td class="memItemRight"><a class="el" href="#aab477be81bad6aadbec06506e3cc26a2">AppContext</a></td></tr>
+<tr class="memitem:a23ff27324f1ac52bcafa4cc91e2c2744" id="r_a23ff27324f1ac52bcafa4cc91e2c2744"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structCard.html">Card</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdl_8h.html#a23ff27324f1ac52bcafa4cc91e2c2744">Card</a></td></tr>
+<tr class="separator:a23ff27324f1ac52bcafa4cc91e2c2744"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab477be81bad6aadbec06506e3cc26a2" id="r_aab477be81bad6aadbec06506e3cc26a2"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structAppContext.html">AppContext</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdl_8h.html#aab477be81bad6aadbec06506e3cc26a2">AppContext</a></td></tr>
+<tr class="separator:aab477be81bad6aadbec06506e3cc26a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:ac603916c8cb7ef2624a5d11af30a18af" id="r_ac603916c8cb7ef2624a5d11af30a18af"><td class="memItemLeft"><a class="el" href="structAppContext.html">AppContext</a>&#160;</td><td class="memItemRight"><a class="el" href="#ac603916c8cb7ef2624a5d11af30a18af">init_sdl</a> ()</td></tr>
-<tr class="memitem:a176ed095842cdab767f49705932b398f" id="r_a176ed095842cdab767f49705932b398f"><td class="memItemLeft">SDL_Texture *&#160;</td><td class="memItemRight"><a class="el" href="#a176ed095842cdab767f49705932b398f">load_image</a> (SDL_Renderer *renderer, const char *path)</td></tr>
-<tr class="memitem:af2c6b730c5804f9e1d59476c6b24e93d" id="r_af2c6b730c5804f9e1d59476c6b24e93d"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#af2c6b730c5804f9e1d59476c6b24e93d">display_image</a> (SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, float size_factor, double angle, SDL_RendererFlip flip, float ratio, Uint8 opacity)</td></tr>
-<tr class="memitem:a40dc301c542ead27211aba1d2169b2fa" id="r_a40dc301c542ead27211aba1d2169b2fa"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a40dc301c542ead27211aba1d2169b2fa">free_image</a> (SDL_Texture *texture)</td></tr>
-<tr class="memitem:a310e18f064cc511c484090467ead9a0c" id="r_a310e18f064cc511c484090467ead9a0c"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a310e18f064cc511c484090467ead9a0c">toggle_fullscreen</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
-<tr class="memitem:a287c6280bfa12f44b321d22d6450a125" id="r_a287c6280bfa12f44b321d22d6450a125"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a287c6280bfa12f44b321d22d6450a125">destroy_context</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="memitem:ac603916c8cb7ef2624a5d11af30a18af" id="r_ac603916c8cb7ef2624a5d11af30a18af"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structAppContext.html">AppContext</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdl_8h.html#ac603916c8cb7ef2624a5d11af30a18af">init_sdl</a> ()</td></tr>
+<tr class="separator:ac603916c8cb7ef2624a5d11af30a18af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a176ed095842cdab767f49705932b398f" id="r_a176ed095842cdab767f49705932b398f"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdl_8h.html#a176ed095842cdab767f49705932b398f">load_image</a> (SDL_Renderer *renderer, const char *path)</td></tr>
+<tr class="separator:a176ed095842cdab767f49705932b398f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2c6b730c5804f9e1d59476c6b24e93d" id="r_af2c6b730c5804f9e1d59476c6b24e93d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdl_8h.html#af2c6b730c5804f9e1d59476c6b24e93d">display_image</a> (SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, float size_factor, double angle, SDL_RendererFlip flip, float ratio, Uint8 opacity)</td></tr>
+<tr class="separator:af2c6b730c5804f9e1d59476c6b24e93d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40dc301c542ead27211aba1d2169b2fa" id="r_a40dc301c542ead27211aba1d2169b2fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdl_8h.html#a40dc301c542ead27211aba1d2169b2fa">free_image</a> (SDL_Texture *texture)</td></tr>
+<tr class="separator:a40dc301c542ead27211aba1d2169b2fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a310e18f064cc511c484090467ead9a0c" id="r_a310e18f064cc511c484090467ead9a0c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdl_8h.html#a310e18f064cc511c484090467ead9a0c">toggle_fullscreen</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="separator:a310e18f064cc511c484090467ead9a0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a287c6280bfa12f44b321d22d6450a125" id="r_a287c6280bfa12f44b321d22d6450a125"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdl_8h.html#a287c6280bfa12f44b321d22d6450a125">destroy_context</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="separator:a287c6280bfa12f44b321d22d6450a125"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentation des macros</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Initialisation SDL et contexte principal de l'application. </p>
+
+<p class="definition">Définition dans le fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
+</div><h2 class="groupheader">Documentation des macros</h2>
 <a id="a0a33b1743038db1adbbf1045aa839b38" name="a0a33b1743038db1adbbf1045aa839b38"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0a33b1743038db1adbbf1045aa839b38">&#9670;&#160;</a></span>WIN_HEIGHT</h2>
 
@@ -140,9 +167,7 @@ Fonctions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00015">15</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
-
-<p class="reference">Référencé par <a class="el" href="background_8c_source.html#l00226">background_handle_event()</a>, <a class="el" href="infos_8c_source.html#l00241">bandeau_to_screen_y()</a>, <a class="el" href="button_8c_source.html#l00029">button_create()</a>, <a class="el" href="background_8c_source.html#l00150">display_background()</a>, <a class="el" href="sdl_8c_source.html#l00201">display_image()</a>, <a class="el" href="text_8c_source.html#l00102">display_text()</a>, <a class="el" href="sdl_8c_source.html#l00052">init_sdl()</a>, <a class="el" href="input_8c_source.html#l00153">input_create()</a>, <a class="el" href="window_8c_source.html#l00083">window_config_init()</a>, <a class="el" href="window_8c_source.html#l00294">window_content_to_logical()</a>, <a class="el" href="window_8c_source.html#l00375">window_display_image()</a>, <a class="el" href="window_8c_source.html#l00172">window_handle_event()</a>, <a class="el" href="window_8c_source.html#l00350">window_place_text()</a>, et <a class="el" href="window_8c_source.html#l00113">window_update_rect()</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00020">20</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
 
 </div>
 </div>
@@ -158,9 +183,7 @@ Fonctions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00017">17</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
-
-<p class="reference">Référencé par <a class="el" href="sdl_8c_source.html#l00052">init_sdl()</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00022">22</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
 
 </div>
 </div>
@@ -176,9 +199,7 @@ Fonctions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00016">16</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
-
-<p class="reference">Référencé par <a class="el" href="sdl_8c_source.html#l00052">init_sdl()</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00021">21</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
 
 </div>
 </div>
@@ -194,13 +215,11 @@ Fonctions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00014">14</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
-
-<p class="reference">Référencé par <a class="el" href="background_8c_source.html#l00226">background_handle_event()</a>, <a class="el" href="infos_8c_source.html#l00238">bandeau_to_screen_x()</a>, <a class="el" href="button_8c_source.html#l00029">button_create()</a>, <a class="el" href="background_8c_source.html#l00150">display_background()</a>, <a class="el" href="sdl_8c_source.html#l00201">display_image()</a>, <a class="el" href="text_8c_source.html#l00102">display_text()</a>, <a class="el" href="sdl_8c_source.html#l00052">init_sdl()</a>, <a class="el" href="input_8c_source.html#l00153">input_create()</a>, <a class="el" href="window_8c_source.html#l00083">window_config_init()</a>, <a class="el" href="window_8c_source.html#l00294">window_content_to_logical()</a>, <a class="el" href="window_8c_source.html#l00375">window_display_image()</a>, <a class="el" href="window_8c_source.html#l00172">window_handle_event()</a>, <a class="el" href="window_8c_source.html#l00350">window_place_text()</a>, et <a class="el" href="window_8c_source.html#l00113">window_update_rect()</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00019">19</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
 
 </div>
 </div>
-<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Documentation des définitions de type</h2>
+<h2 class="groupheader">Documentation des définitions de type</h2>
 <a id="aab477be81bad6aadbec06506e3cc26a2" name="aab477be81bad6aadbec06506e3cc26a2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aab477be81bad6aadbec06506e3cc26a2">&#9670;&#160;</a></span>AppContext</h2>
 
@@ -208,7 +227,7 @@ Fonctions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef struct AppContext AppContext</td>
+          <td class="memname">typedef struct <a class="el" href="structAppContext.html">AppContext</a> <a class="el" href="structAppContext.html">AppContext</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -216,27 +235,52 @@ Fonctions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">window</td><td>Fenêtre SDL. </td></tr>
     <tr><td class="paramname">renderer</td><td>Renderer SDL associé à la fenêtre. </td></tr>
-    <tr><td class="paramname"><a class="el" href="background_8c.html#a41a4146bfafc08d5edf38a02628e8038">bg_color</a></td><td>Couleur de fond de la fenêtre. </td></tr>
-    <tr><td class="paramname">clock</td><td>Nombre de frame écoulé depuis le début de l'application. </td></tr>
-    <tr><td class="paramname">fps</td><td>Nombre de frames par seconde (calculé à partir du clock). </td></tr>
-    <tr><td class="paramname">sock</td><td>Identifiant socket. <br  />
- </td></tr>
+    <tr><td class="paramname">bg_color</td><td>Couleur de fond de la fenêtre. </td></tr>
     <tr><td class="paramname">lobby</td><td>Pointeur vers la structure de lobby. </td></tr>
     <tr><td class="paramname">app_state</td><td>État actuel du jeu (menu, lobby, partie, etc.). </td></tr>
     <tr><td class="paramname">player_role</td><td>Rôle du joueur (ROLE_AGENT ou ROLE_SPY). </td></tr>
     <tr><td class="paramname">player_team</td><td>Équipe du joueur (TEAM_RED, TEAM_BLUE, TEAM_NONE). </td></tr>
-    <tr><td class="paramname">frame_start_time</td><td>Timestamp du début de la frame actuelle (en ms). </td></tr>
+    <tr><td class="paramname">sock</td><td>Identifiant socket. </td></tr>
     <tr><td class="paramname">ping_ms</td><td>Ping TCP courant en millisecondes (-1 si indisponible). </td></tr>
+    <tr><td class="paramname">player_id</td><td>Identifiant numerique attribue par le serveur (-1 si inconnu). </td></tr>
+    <tr><td class="paramname">clock</td><td>Nombre de frame écoulé depuis le début de l'application. </td></tr>
+    <tr><td class="paramname">fps</td><td>Nombre de frames par seconde (calculé à partir du clock). </td></tr>
+    <tr><td class="paramname">frame_start_time</td><td>Timestamp du début de la frame actuelle (en ms). </td></tr>
+    <tr><td class="paramname">last_fullscreen_toggle_ms</td><td>Timestamp du dernier basculement plein écran (en ms, pour éviter les basculements rapides accidentels). </td></tr>
     <tr><td class="paramname">player_uuid</td><td>UUID unique du joueur (persisté dans datas/uuid). </td></tr>
     <tr><td class="paramname">player_name</td><td>Nom du joueur (persisté dans datas/name). </td></tr>
     <tr><td class="paramname">version</td><td>Version du jeu (chargée depuis VERSION). </td></tr>
+    <tr><td class="paramname">music_volume</td><td>Volume de la musique (0-128). </td></tr>
+    <tr><td class="paramname">sound_effects_volume</td><td>Volume des effets sonores (0-128). </td></tr>
+    <tr><td class="paramname">global_luminosity</td><td>Facteur de luminosité global (0.0-1.0, 1 par défaut). </td></tr>
+    <tr><td class="paramname">restart_requested</td><td>Demande de redémarrage complet de l'application (0 = non, 1 = oui). </td></tr>
+    <tr><td class="paramname">windowed_width</td><td>Largeur de la fenêtre en mode fenêtré (pour restaurer après un plein écran). </td></tr>
+    <tr><td class="paramname">windowed_height</td><td>Hauteur de la fenêtre en mode fenêtré (pour restaurer après un plein écran). </td></tr>
+    <tr><td class="paramname">windowed_x</td><td>Position x de la fenêtre en mode fenêtré (pour restaurer après un plein écran). </td></tr>
+    <tr><td class="paramname">windowed_y</td><td>Position y de la fenêtre en mode fenêtré (pour restaurer après un plein écran). </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a id="a23ff27324f1ac52bcafa4cc91e2c2744" name="a23ff27324f1ac52bcafa4cc91e2c2744"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23ff27324f1ac52bcafa4cc91e2c2744">&#9670;&#160;</a></span>Card</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structCard.html">Card</a> <a class="el" href="structCard.html">Card</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8h_source.html#l00024">24</a> du fichier <a class="el" href="sdl_8h_source.html">sdl.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a id="a287c6280bfa12f44b321d22d6450a125" name="a287c6280bfa12f44b321d22d6450a125"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a287c6280bfa12f44b321d22d6450a125">&#9670;&#160;</a></span>destroy_context()</h2>
 
@@ -246,7 +290,8 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int destroy_context </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -257,12 +302,13 @@ Fonctions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8c_source.html#l00256">256</a> du fichier <a class="el" href="sdl_8c_source.html">sdl.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8c_source.html#l00317">317</a> du fichier <a class="el" href="sdl_8c_source.html">sdl.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8c_source.html#l00601">audio_cleanup()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00046">Lobby::chat</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00052">chat_clear()</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00217">close_tcp()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00045">Lobby::game</a>, <a class="el" href="sdl_8h_source.html#l00046">AppContext::lobby</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00015">MAX_USERS</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00025">User::name</a>, <a class="el" href="sdl_8h_source.html#l00055">AppContext::player_name</a>, <a class="el" href="sdl_8h_source.html#l00054">AppContext::player_uuid</a>, <a class="el" href="sdl_8h_source.html#l00041">AppContext::renderer</a>, <a class="el" href="sdl_8h_source.html#l00045">AppContext::sock</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00043">Lobby::users</a>, <a class="el" href="sdl_8h_source.html#l00040">AppContext::window</a>, et <a class="el" href="client_2lib_2game_8h_source.html#l00082">Game::words</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8c_source.html#l00711">audio_cleanup()</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00124">Game::cards</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00077">Lobby::chat</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00240">chat_clear()</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00217">close_tcp()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00076">Lobby::game</a>, <a class="el" href="sdl_8h_source.html#l00059">AppContext::lobby</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00017">MAX_USERS</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00030">User::name</a>, <a class="el" href="sdl_8h_source.html#l00074">AppContext::player_name</a>, <a class="el" href="sdl_8h_source.html#l00073">AppContext::player_uuid</a>, <a class="el" href="sdl_8h_source.html#l00056">AppContext::renderer</a>, <a class="el" href="sdl_8h_source.html#l00064">AppContext::sock</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00074">Lobby::users</a>, et <a class="el" href="sdl_8h_source.html#l00055">AppContext::window</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="ressources_8c_source.html#l00009">define_app_context()</a>, et <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="ressources_8c_source.html#l00009">define_app_context()</a>, et <a class="el" href="client_2src_2index_8c_source.html#l00205">main()</a>.</p>
 
 </div>
 </div>
@@ -275,47 +321,61 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int display_image </td>
           <td>(</td>
-          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SDL_Texture *</td>          <td class="paramname"><span class="paramname"><em>texture</em></span>, </td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>texture</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>size_factor</em></span>, </td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>size_factor</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>angle</em></span>, </td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>angle</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SDL_RendererFlip</td>          <td class="paramname"><span class="paramname"><em>flip</em></span>, </td>
+          <td class="paramtype">SDL_RendererFlip&#160;</td>
+          <td class="paramname"><em>flip</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>ratio</em></span>, </td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>ratio</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Uint8</td>          <td class="paramname"><span class="paramname"><em>opacity</em></span>&#160;)</td>
+          <td class="paramtype">Uint8&#160;</td>
+          <td class="paramname"><em>opacity</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -323,23 +383,23 @@ Fonctions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">renderer</td><td>Le renderer SDL </td></tr>
     <tr><td class="paramname">texture</td><td>La texture à afficher </td></tr>
-    <tr><td class="paramname">x</td><td>La position x de l'image (<span class="tt">0</span> centre x) </td></tr>
-    <tr><td class="paramname">y</td><td>La position y de l'image (<span class="tt">0</span> centre y) </td></tr>
-    <tr><td class="paramname">size_factor</td><td>Facteur de taille (<span class="tt">1.0</span> taille originale) </td></tr>
+    <tr><td class="paramname">x</td><td>La position x de l'image (<code>0</code> centre x) </td></tr>
+    <tr><td class="paramname">y</td><td>La position y de l'image (<code>0</code> centre y) </td></tr>
+    <tr><td class="paramname">size_factor</td><td>Facteur de taille (<code>1.0</code> taille originale) </td></tr>
     <tr><td class="paramname">angle</td><td>Angle de rotation en degrés (0 par défaut, sens horaire) </td></tr>
-    <tr><td class="paramname">flip</td><td>Flags de flip: <span class="tt">SDL_FLIP_NONE</span> (défaut), <span class="tt">SDL_FLIP_HORIZONTAL</span>, <span class="tt">SDL_FLIP_VERTICAL</span>, ou combinaison </td></tr>
-    <tr><td class="paramname">ratio</td><td>Ratio de l'image (largeur/hauteur, <span class="tt">1</span> pour garder le ratio original) </td></tr>
+    <tr><td class="paramname">flip</td><td>Flags de flip: <code>SDL_FLIP_NONE</code> (défaut), <code>SDL_FLIP_HORIZONTAL</code>, <code>SDL_FLIP_VERTICAL</code>, ou combinaison </td></tr>
+    <tr><td class="paramname">ratio</td><td>Ratio de l'image (largeur/hauteur, <code>1</code> pour garder le ratio original) </td></tr>
     <tr><td class="paramname">opacity</td><td>Opacité de l'image (0-255, 255 par défaut) </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd><span class="tt">EXIT_SUCCESS</span> en cas de succès, <span class="tt">EXIT_FAILURE</span> en cas d'erreur Note : L'angle de rotation utilise un pivot au centre de l'image. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd><code>EXIT_SUCCESS</code> en cas de succès, <code>EXIT_FAILURE</code> en cas d'erreur Note : L'angle de rotation utilise un pivot au centre de l'image. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8c_source.html#l00201">201</a> du fichier <a class="el" href="sdl_8c_source.html">sdl.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8c_source.html#l00226">226</a> du fichier <a class="el" href="sdl_8c_source.html">sdl.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00015">WIN_HEIGHT</a>, et <a class="el" href="sdl_8h_source.html#l00014">WIN_WIDTH</a>.</p>
+<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00020">WIN_HEIGHT</a>, et <a class="el" href="sdl_8h_source.html#l00019">WIN_WIDTH</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="background_8c_source.html#l00150">display_background()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00482">game_render_cards()</a>, <a class="el" href="infos_8c_source.html#l00315">infos_display()</a>, <a class="el" href="menu_8c_source.html#l00230">menu_display()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00448">player_icon_pos()</a>, et <a class="el" href="window_8c_source.html#l00375">window_display_image()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="background_8c_source.html#l00178">display_background()</a>, <a class="el" href="infos_8c_source.html#l00367">infos_display()</a>, <a class="el" href="menu_8c_source.html#l00170">menu_render_startup_logo()</a>, et <a class="el" href="window_8c_source.html#l00549">window_display_image()</a>.</p>
 
 </div>
 </div>
@@ -352,7 +412,8 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void free_image </td>
           <td>(</td>
-          <td class="paramtype">SDL_Texture *</td>          <td class="paramname"><span class="paramname"><em>texture</em></span></td><td>)</td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>texture</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -364,9 +425,9 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8c_source.html#l00239">239</a> du fichier <a class="el" href="sdl_8c_source.html">sdl.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8c_source.html#l00264">264</a> du fichier <a class="el" href="sdl_8c_source.html">sdl.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="crossfader_8c_source.html#l00499">crossfaders_free()</a>, <a class="el" href="background_8c_source.html#l00284">destroy_background()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="input_8c_source.html#l00646">input_clear_bg()</a>, <a class="el" href="input_8c_source.html#l00241">input_destroy()</a>, <a class="el" href="input_8c_source.html#l00622">input_set_bg()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00516">lobby_free()</a>, <a class="el" href="menu_8c_source.html#l00259">menu_free()</a>, et <a class="el" href="window_8c_source.html#l00152">window_destroy()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="card_8c_source.html#l00406">card_free()</a>, <a class="el" href="crossfader_8c_source.html#l00496">crossfaders_free()</a>, <a class="el" href="background_8c_source.html#l00312">destroy_background()</a>, <a class="el" href="input_8c_source.html#l00980">input_clear_bg()</a>, <a class="el" href="input_8c_source.html#l00519">input_destroy()</a>, <a class="el" href="input_8c_source.html#l00956">input_set_bg()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00954">lobby_free()</a>, <a class="el" href="menu_8c_source.html#l00983">menu_free()</a>, <a class="el" href="tuto_8c_source.html#l00129">tutorial_release_slides()</a>, et <a class="el" href="window_8c_source.html#l00282">window_destroy()</a>.</p>
 
 </div>
 </div>
@@ -379,18 +440,18 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structAppContext.html">AppContext</a> init_sdl </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initialise SDL et crée une fenêtre et un renderer. </p><dl class="section return"><dt>Renvoie</dt><dd>Un <a class="el" href="structAppContext.html">AppContext</a> contenant la fenêtre et le renderer, ou un <a class="el" href="structAppContext.html">AppContext</a> avec des pointeurs <span class="tt">NULL</span> en cas d'erreur. </dd></dl>
+<p>Initialise SDL et crée une fenêtre et un renderer. </p><dl class="section return"><dt>Renvoie</dt><dd>Un <a class="el" href="structAppContext.html">AppContext</a> contenant la fenêtre et le renderer, ou un <a class="el" href="structAppContext.html">AppContext</a> avec des pointeurs <code>NULL</code> en cas d'erreur. </dd></dl>
 
 <p class="definition">Définition à la ligne <a class="el" href="sdl_8c_source.html#l00052">52</a> du fichier <a class="el" href="sdl_8c_source.html">sdl.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00047">AppContext::app_state</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00051">APP_STATE_MENU</a>, <a class="el" href="audio_8c_source.html#l00213">audio_init()</a>, <a class="el" href="sdl_8h_source.html#l00043">AppContext::clock</a>, <a class="el" href="sdl_8c_source.html#l00021">configure_diagnostic_sdl_environment()</a>, <a class="el" href="sdl_8c_source.html#l00033">configure_windows_audio_backend()</a>, <a class="el" href="sdl_8h_source.html#l00044">AppContext::fps</a>, <a class="el" href="sdl_8h_source.html#l00050">AppContext::frame_start_time</a>, <a class="el" href="sdl_8c_source.html#l00043">get_renderer_flags()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00039">Lobby::id</a>, <a class="el" href="sdl_8c_source.html#l00003">is_truthy_env()</a>, <a class="el" href="sdl_8h_source.html#l00046">AppContext::lobby</a>, <a class="el" href="sdl_8h_source.html#l00052">AppContext::music_volume</a>, <a class="el" href="sdl_8h_source.html#l00051">AppContext::ping_ms</a>, <a class="el" href="sdl_8h_source.html#l00041">AppContext::renderer</a>, <a class="el" href="sdl_8c_source.html#l00015">should_use_dummy_audio()</a>, <a class="el" href="sdl_8h_source.html#l00045">AppContext::sock</a>, <a class="el" href="sdl_8h_source.html#l00053">AppContext::sound_effects_volume</a>, <a class="el" href="sdl_8h_source.html#l00015">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00017">WIN_MIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00016">WIN_MIN_WIDTH</a>, <a class="el" href="sdl_8h_source.html#l00014">WIN_WIDTH</a>, et <a class="el" href="sdl_8h_source.html#l00040">AppContext::window</a>.</p>
+<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00060">AppContext::app_state</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00052">APP_STATE_MENU</a>, <a class="el" href="audio_8c_source.html#l00231">audio_init()</a>, <a class="el" href="sdl_8h_source.html#l00068">AppContext::clock</a>, <a class="el" href="sdl_8c_source.html#l00021">configure_diagnostic_sdl_environment()</a>, <a class="el" href="sdl_8c_source.html#l00033">configure_windows_audio_backend()</a>, <a class="el" href="sdl_8h_source.html#l00069">AppContext::fps</a>, <a class="el" href="sdl_8h_source.html#l00070">AppContext::frame_start_time</a>, <a class="el" href="sdl_8c_source.html#l00043">get_renderer_flags()</a>, <a class="el" href="sdl_8h_source.html#l00079">AppContext::global_luminosity</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00070">Lobby::id</a>, <a class="el" href="sdl_8c_source.html#l00003">is_truthy_env()</a>, <a class="el" href="sdl_8h_source.html#l00071">AppContext::last_fullscreen_toggle_ms</a>, <a class="el" href="sdl_8h_source.html#l00059">AppContext::lobby</a>, <a class="el" href="sdl_8h_source.html#l00077">AppContext::music_volume</a>, <a class="el" href="sdl_8h_source.html#l00065">AppContext::ping_ms</a>, <a class="el" href="sdl_8h_source.html#l00066">AppContext::player_id</a>, <a class="el" href="sdl_8h_source.html#l00056">AppContext::renderer</a>, <a class="el" href="sdl_8h_source.html#l00080">AppContext::restart_requested</a>, <a class="el" href="sdl_8c_source.html#l00015">should_use_dummy_audio()</a>, <a class="el" href="sdl_8h_source.html#l00064">AppContext::sock</a>, <a class="el" href="sdl_8h_source.html#l00078">AppContext::sound_effects_volume</a>, <a class="el" href="sdl_8h_source.html#l00020">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00022">WIN_MIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00021">WIN_MIN_WIDTH</a>, <a class="el" href="sdl_8h_source.html#l00019">WIN_WIDTH</a>, <a class="el" href="sdl_8h_source.html#l00055">AppContext::window</a>, <a class="el" href="sdl_8h_source.html#l00083">AppContext::windowed_height</a>, <a class="el" href="sdl_8h_source.html#l00082">AppContext::windowed_width</a>, <a class="el" href="sdl_8h_source.html#l00084">AppContext::windowed_x</a>, et <a class="el" href="sdl_8h_source.html#l00085">AppContext::windowed_y</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00205">main()</a>.</p>
 
 </div>
 </div>
@@ -403,12 +464,19 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">SDL_Texture * load_image </td>
           <td>(</td>
-          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>path</em></span>&#160;)</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -419,11 +487,11 @@ Fonctions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>Texture SDL, ou <span class="tt">NULL</span> en cas d'erreur. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Texture SDL, ou <code>NULL</code> en cas d'erreur. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8c_source.html#l00180">180</a> du fichier <a class="el" href="sdl_8c_source.html">sdl.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8c_source.html#l00205">205</a> du fichier <a class="el" href="sdl_8c_source.html">sdl.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="button_8c_source.html#l00029">button_create()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>, <a class="el" href="background_8c_source.html#l00129">init_background()</a>, <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>, <a class="el" href="input_8c_source.html#l00622">input_set_bg()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00094">lobby_init()</a>, et <a class="el" href="menu_8c_source.html#l00067">menu_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="button_8c_source.html#l00042">button_create()</a>, <a class="el" href="background_8c_source.html#l00157">init_background()</a>, <a class="el" href="card_8c_source.html#l00040">init_cards()</a>, <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>, <a class="el" href="input_8c_source.html#l00956">input_set_bg()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00485">lobby_init()</a>, <a class="el" href="menu_8c_source.html#l00764">menu_init()</a>, et <a class="el" href="tuto_8c_source.html#l00142">tutorial_load_slides()</a>.</p>
 
 </div>
 </div>
@@ -436,7 +504,8 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void toggle_fullscreen </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -448,29 +517,21 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="sdl_8c_source.html#l00245">245</a> du fichier <a class="el" href="sdl_8c_source.html">sdl.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sdl_8c_source.html#l00270">270</a> du fichier <a class="el" href="sdl_8c_source.html">sdl.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00040">AppContext::window</a>.</p>
+<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00071">AppContext::last_fullscreen_toggle_ms</a>, <a class="el" href="sdl_8h_source.html#l00022">WIN_MIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00021">WIN_MIN_WIDTH</a>, <a class="el" href="sdl_8h_source.html#l00055">AppContext::window</a>, <a class="el" href="sdl_8h_source.html#l00083">AppContext::windowed_height</a>, <a class="el" href="sdl_8h_source.html#l00082">AppContext::windowed_width</a>, <a class="el" href="sdl_8h_source.html#l00084">AppContext::windowed_x</a>, et <a class="el" href="sdl_8h_source.html#l00085">AppContext::windowed_y</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00205">main()</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div id="page-nav" class="page-nav-panel">
-<div id="page-nav-resize-handle"></div>
-<div id="page-nav-tree">
-<div id="page-nav-contents">
-</div><!-- page-nav-contents -->
-</div><!-- page-nav-tree -->
-</div><!-- page-nav -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a href="sdl_8h.html">sdl.h</a></li>
-    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a class="el" href="sdl_8h.html">sdl.h</a></li>
+    <li class="footer">Généré le Mardi 14 Avril 2026 18:57:16 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

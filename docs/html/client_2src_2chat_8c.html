@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier client/src/chat.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,20 +34,21 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,9 +63,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('client_2src_2chat_8c.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('client_2src_2chat_8c.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -89,6 +90,9 @@ $(function(){initNavTree('client_2src_2chat_8c.html','',''); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">Référence du fichier chat.c</div></div>
 </div><!--header-->
 <div class="contents">
@@ -96,16 +100,191 @@ $(function(){initNavTree('client_2src_2chat_8c.html','',''); });
 </div>
 <p><a href="client_2src_2chat_8c_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a07efff3af11cdd95f5abbac4b0977965" id="r_a07efff3af11cdd95f5abbac4b0977965"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a07efff3af11cdd95f5abbac4b0977965">free_chat_message</a> (void *data)</td></tr>
-<tr class="memitem:afb79622cae70b2048c678f33edebdc4f" id="r_afb79622cae70b2048c678f33edebdc4f"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#afb79622cae70b2048c678f33edebdc4f">chat_init</a> (<a class="el" href="structChat.html">Chat</a> *chat, int max_messages)</td></tr>
-<tr class="memitem:a1623ddd50bbb887235d7baed5358fcb0" id="r_a1623ddd50bbb887235d7baed5358fcb0"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a1623ddd50bbb887235d7baed5358fcb0">chat_push</a> (<a class="el" href="structChat.html">Chat</a> *chat, const char *message)</td></tr>
-<tr class="memitem:abfff823aa4be250fd2c3b95ade22025c" id="r_abfff823aa4be250fd2c3b95ade22025c"><td class="memItemLeft">const char *&#160;</td><td class="memItemRight"><a class="el" href="#abfff823aa4be250fd2c3b95ade22025c">chat_get</a> (<a class="el" href="structChat.html">Chat</a> *chat, int index)</td></tr>
-<tr class="memitem:a8dc439d5c8d241b17f730bc9a5eb4741" id="r_a8dc439d5c8d241b17f730bc9a5eb4741"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a8dc439d5c8d241b17f730bc9a5eb4741">chat_size</a> (<a class="el" href="structChat.html">Chat</a> *chat)</td></tr>
-<tr class="memitem:a9dfe68d5591d78d18590b8b6436af8cf" id="r_a9dfe68d5591d78d18590b8b6436af8cf"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9dfe68d5591d78d18590b8b6436af8cf">chat_clear</a> (<a class="el" href="structChat.html">Chat</a> *chat)</td></tr>
+<tr class="memitem:a25a42545c5c9bfc9b34e765fc3a60866" id="r_a25a42545c5c9bfc9b34e765fc3a60866"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#a25a42545c5c9bfc9b34e765fc3a60866">chat_font_path_equals</a> (const char *a, const char *b)</td></tr>
+<tr class="separator:a25a42545c5c9bfc9b34e765fc3a60866"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbc4909d7dbf5ad0d8e1f5e36b5ef7bb" id="r_adbc4909d7dbf5ad0d8e1f5e36b5ef7bb"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#adbc4909d7dbf5ad0d8e1f5e36b5ef7bb">chat_text_width</a> (const <a class="el" href="structText.html">Text</a> *text)</td></tr>
+<tr class="separator:adbc4909d7dbf5ad0d8e1f5e36b5ef7bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad48a6d87e2ba180680e8fff674b5332d" id="r_ad48a6d87e2ba180680e8fff674b5332d"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#ad48a6d87e2ba180680e8fff674b5332d">chat_left_anchored_rel_x</a> (const <a class="el" href="structWindow.html">Window</a> *<a class="el" href="client_2src_2game_8c.html#ade8ab62517421365fee4ceae5eae79b7">chat_window</a>, int text_width)</td></tr>
+<tr class="separator:ad48a6d87e2ba180680e8fff674b5332d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6aa7dad9f1dfa1fb951ce4924b1d3d7" id="r_aa6aa7dad9f1dfa1fb951ce4924b1d3d7"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#aa6aa7dad9f1dfa1fb951ce4924b1d3d7">chat_left_anchored_rel_x_with_offset</a> (const <a class="el" href="structWindow.html">Window</a> *<a class="el" href="client_2src_2game_8c.html#ade8ab62517421365fee4ceae5eae79b7">chat_window</a>, int text_width, int left_offset)</td></tr>
+<tr class="separator:aa6aa7dad9f1dfa1fb951ce4924b1d3d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07efff3af11cdd95f5abbac4b0977965" id="r_a07efff3af11cdd95f5abbac4b0977965"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#a07efff3af11cdd95f5abbac4b0977965">free_chat_message</a> (void *data)</td></tr>
+<tr class="separator:a07efff3af11cdd95f5abbac4b0977965"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acaa27817183afde031a0e84dcd77c94e" id="r_acaa27817183afde031a0e84dcd77c94e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#acaa27817183afde031a0e84dcd77c94e">chat_find_team_by_sender</a> (const <a class="el" href="structAppContext.html">AppContext</a> *context, int sender_id, const char *player_name)</td></tr>
+<tr class="separator:acaa27817183afde031a0e84dcd77c94e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5390aab922c53829b1b09d5beee17fc7" id="r_a5390aab922c53829b1b09d5beee17fc7"><td class="memItemLeft" align="right" valign="top">static SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#a5390aab922c53829b1b09d5beee17fc7">chat_team_to_color</a> (<a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> team)</td></tr>
+<tr class="separator:a5390aab922c53829b1b09d5beee17fc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3c64ad9f6a6f73fb8b068c86278bf97" id="r_ab3c64ad9f6a6f73fb8b068c86278bf97"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#ab3c64ad9f6a6f73fb8b068c86278bf97">chat_extract_sender_prefix</a> (const char *line, char *sender, int sender_size, int *prefix_len, int *sender_id, int *sender_visible_offset)</td></tr>
+<tr class="separator:ab3c64ad9f6a6f73fb8b068c86278bf97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3707bb0595752324692858ef0c8bf37" id="r_ab3707bb0595752324692858ef0c8bf37"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#ab3707bb0595752324692858ef0c8bf37">chat_get_colored_prefix_text</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, const char *font_path, int font_size, Uint8 opacity)</td></tr>
+<tr class="separator:ab3707bb0595752324692858ef0c8bf37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84755d02b71bb80f5b80dd824c444346" id="r_a84755d02b71bb80f5b80dd824c444346"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#a84755d02b71bb80f5b80dd824c444346">chat_render_sender_prefix</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, const <a class="el" href="structWindow.html">Window</a> *<a class="el" href="client_2src_2game_8c.html#ade8ab62517421365fee4ceae5eae79b7">chat_window</a>, const char *prefix_text, <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> sender_team, int rel_y, <a class="el" href="structText.html">Text</a> *colored_prefix)</td></tr>
+<tr class="separator:a84755d02b71bb80f5b80dd824c444346"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf1fa784dbccbc571f4dc8589fea4f88" id="r_acf1fa784dbccbc571f4dc8589fea4f88"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#acf1fa784dbccbc571f4dc8589fea4f88">chat_wrap_cache_invalidate</a> (<a class="el" href="structChat.html">Chat</a> *chat)</td></tr>
+<tr class="separator:acf1fa784dbccbc571f4dc8589fea4f88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a629375b039a07da780050977352e3b64" id="r_a629375b039a07da780050977352e3b64"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#a629375b039a07da780050977352e3b64">chat_touch</a> (<a class="el" href="structChat.html">Chat</a> *chat)</td></tr>
+<tr class="separator:a629375b039a07da780050977352e3b64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af58e80a422b4499469e31c3b85c1bb20" id="r_af58e80a422b4499469e31c3b85c1bb20"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#af58e80a422b4499469e31c3b85c1bb20">chat_set_font_path</a> (char *dst, int dst_size, const char *src)</td></tr>
+<tr class="separator:af58e80a422b4499469e31c3b85c1bb20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb79622cae70b2048c678f33edebdc4f" id="r_afb79622cae70b2048c678f33edebdc4f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#afb79622cae70b2048c678f33edebdc4f">chat_init</a> (<a class="el" href="structChat.html">Chat</a> *chat, int max_messages)</td></tr>
+<tr class="separator:afb79622cae70b2048c678f33edebdc4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1623ddd50bbb887235d7baed5358fcb0" id="r_a1623ddd50bbb887235d7baed5358fcb0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#a1623ddd50bbb887235d7baed5358fcb0">chat_push</a> (<a class="el" href="structChat.html">Chat</a> *chat, const char *message)</td></tr>
+<tr class="separator:a1623ddd50bbb887235d7baed5358fcb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfff823aa4be250fd2c3b95ade22025c" id="r_abfff823aa4be250fd2c3b95ade22025c"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#abfff823aa4be250fd2c3b95ade22025c">chat_get</a> (<a class="el" href="structChat.html">Chat</a> *chat, int index)</td></tr>
+<tr class="separator:abfff823aa4be250fd2c3b95ade22025c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dc439d5c8d241b17f730bc9a5eb4741" id="r_a8dc439d5c8d241b17f730bc9a5eb4741"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#a8dc439d5c8d241b17f730bc9a5eb4741">chat_size</a> (<a class="el" href="structChat.html">Chat</a> *chat)</td></tr>
+<tr class="separator:a8dc439d5c8d241b17f730bc9a5eb4741"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dfe68d5591d78d18590b8b6436af8cf" id="r_a9dfe68d5591d78d18590b8b6436af8cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#a9dfe68d5591d78d18590b8b6436af8cf">chat_clear</a> (<a class="el" href="structChat.html">Chat</a> *chat)</td></tr>
+<tr class="separator:a9dfe68d5591d78d18590b8b6436af8cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a176285c323ee42e0873ff7d0bc4e1e01" id="r_a176285c323ee42e0873ff7d0bc4e1e01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#a176285c323ee42e0873ff7d0bc4e1e01">chat_submit_message</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, const char *text)</td></tr>
+<tr class="separator:a176285c323ee42e0873ff7d0bc4e1e01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07be23370d875ed5a4deaf02509c9f32" id="r_a07be23370d875ed5a4deaf02509c9f32"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#a07be23370d875ed5a4deaf02509c9f32">chat_append_wrapped_lines</a> (const char *message, TTF_Font *font, int max_text_width, char out_lines[][<a class="el" href="client_2lib_2chat_8h.html#aef7285c36fa64217be04399205379b46">CHAT_LINE_SIZE</a>], int max_lines, int current_count)</td></tr>
+<tr class="separator:a07be23370d875ed5a4deaf02509c9f32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61ba9442db950a6c8dbc5f55046c2c93" id="r_a61ba9442db950a6c8dbc5f55046c2c93"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#a61ba9442db950a6c8dbc5f55046c2c93">chat_build_wrapped_lines_cached</a> (<a class="el" href="structChat.html">Chat</a> *chat, const char *font_path, int font_size, int max_text_width)</td></tr>
+<tr class="separator:a61ba9442db950a6c8dbc5f55046c2c93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d802e82081cd259fa6ee7fb17094903" id="r_a8d802e82081cd259fa6ee7fb17094903"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#a8d802e82081cd259fa6ee7fb17094903">chat_render_messages</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structWindow.html">Window</a> *<a class="el" href="client_2src_2game_8c.html#ade8ab62517421365fee4ceae5eae79b7">chat_window</a>, <a class="el" href="structText.html">Text</a> **chat_texts, int visible_lines)</td></tr>
+<tr class="separator:a8d802e82081cd259fa6ee7fb17094903"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a8636f448b272629de3a7a0ebbfdaa994" id="r_a8636f448b272629de3a7a0ebbfdaa994"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#a8636f448b272629de3a7a0ebbfdaa994">chat_colored_prefix_text</a> = NULL</td></tr>
+<tr class="separator:a8636f448b272629de3a7a0ebbfdaa994"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3092799ab787b7f0b34d45d9757f4e0" id="r_af3092799ab787b7f0b34d45d9757f4e0"><td class="memItemLeft" align="right" valign="top">static const SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#af3092799ab787b7f0b34d45d9757f4e0">CHAT_TEAM_BLUE_COLOR</a> = {50, 80, 150, 255}</td></tr>
+<tr class="separator:af3092799ab787b7f0b34d45d9757f4e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31bcf847a0ed4eff77a953a2b0d15ef8" id="r_a31bcf847a0ed4eff77a953a2b0d15ef8"><td class="memItemLeft" align="right" valign="top">static const SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#a31bcf847a0ed4eff77a953a2b0d15ef8">CHAT_TEAM_RED_COLOR</a> = {150, 50, 50, 255}</td></tr>
+<tr class="separator:a31bcf847a0ed4eff77a953a2b0d15ef8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebd7487f84a13f69157d7f1a44249d3b" id="r_aebd7487f84a13f69157d7f1a44249d3b"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#aebd7487f84a13f69157d7f1a44249d3b">CHAT_LINE_GAP</a> = 15</td></tr>
+<tr class="separator:aebd7487f84a13f69157d7f1a44249d3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5b6688abf8c3b190c5695fe4989ca16" id="r_ac5b6688abf8c3b190c5695fe4989ca16"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#ac5b6688abf8c3b190c5695fe4989ca16">CHAT_LEFT_PADDING</a> = 8</td></tr>
+<tr class="separator:ac5b6688abf8c3b190c5695fe4989ca16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a729119d8d39e6d46286c32823c2b65a3" id="r_a729119d8d39e6d46286c32823c2b65a3"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#a729119d8d39e6d46286c32823c2b65a3">CHAT_RIGHT_PADDING</a> = 8</td></tr>
+<tr class="separator:a729119d8d39e6d46286c32823c2b65a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac515d061d4cdac03a9bbed6f7948311e" id="r_ac515d061d4cdac03a9bbed6f7948311e"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2chat_8c.html#ac515d061d4cdac03a9bbed6f7948311e">CHAT_BOTTOM_LINE_Y</a> = -42</td></tr>
+<tr class="separator:ac515d061d4cdac03a9bbed6f7948311e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a07be23370d875ed5a4deaf02509c9f32" name="a07be23370d875ed5a4deaf02509c9f32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07be23370d875ed5a4deaf02509c9f32">&#9670;&#160;</a></span>chat_append_wrapped_lines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int chat_append_wrapped_lines </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>font</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_text_width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>out_lines</em>[][CHAT_LINE_SIZE], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_lines</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>current_count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00268">268</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2lib_2chat_8h_source.html#l00016">CHAT_LINE_SIZE</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00380">chat_build_wrapped_lines_cached()</a>.</p>
+
+</div>
+</div>
+<a id="a61ba9442db950a6c8dbc5f55046c2c93" name="a61ba9442db950a6c8dbc5f55046c2c93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61ba9442db950a6c8dbc5f55046c2c93">&#9670;&#160;</a></span>chat_build_wrapped_lines_cached()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int chat_build_wrapped_lines_cached </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structChat.html">Chat</a> *&#160;</td>
+          <td class="paramname"><em>chat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>font_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>font_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_text_width</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00380">380</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2src_2chat_8c_source.html#l00268">chat_append_wrapped_lines()</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00013">chat_font_path_equals()</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00019">CHAT_FONT_PATH_MAX</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00230">chat_get()</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00018">CHAT_MAX_RENDER_LINES</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00183">chat_set_font_path()</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00235">chat_size()</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00028">ChatWrapCache::font_path</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00027">ChatWrapCache::font_size</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00030">ChatWrapCache::is_valid</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00031">ChatWrapCache::lines</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00026">ChatWrapCache::max_text_width</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00044">Chat::revision</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00025">ChatWrapCache::source_revision</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00029">ChatWrapCache::total_lines</a>, et <a class="el" href="client_2lib_2chat_8h_source.html#l00045">Chat::wrap_cache</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00432">chat_render_messages()</a>.</p>
+
+</div>
+</div>
 <a id="a9dfe68d5591d78d18590b8b6436af8cf" name="a9dfe68d5591d78d18590b8b6436af8cf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9dfe68d5591d78d18590b8b6436af8cf">&#9670;&#160;</a></span>chat_clear()</h2>
 
@@ -115,23 +294,176 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void chat_clear </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structChat.html">Chat</a> *</td>          <td class="paramname"><span class="paramname"><em>chat</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structChat.html">Chat</a> *&#160;</td>
+          <td class="paramname"><em>chat</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Libere tous les messages du chat. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Libère tous les messages du chat. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">chat</td><td><a class="el" href="structChat.html">Chat</a> a vider. </td></tr>
+    <tr><td class="paramname">chat</td><td><a class="el" href="structChat.html">Chat</a> à vider. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00052">52</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00240">240</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2src_2chat_8c_source.html#l00003">free_chat_message()</a>, <a class="el" href="client_2src_2list_8c_source.html#l00020">list_destroy()</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00016">Chat::max_messages</a>, et <a class="el" href="client_2lib_2chat_8h_source.html#l00015">Chat::messages</a>.</p>
+<p class="reference">Références <a class="el" href="client_2src_2chat_8c_source.html#l00003">chat_colored_prefix_text</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00177">chat_touch()</a>, <a class="el" href="text_8c_source.html#l00177">destroy_text()</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00036">free_chat_message()</a>, <a class="el" href="client_2src_2list_8c_source.html#l00020">list_destroy()</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00043">Chat::max_messages</a>, et <a class="el" href="client_2lib_2chat_8h_source.html#l00042">Chat::messages</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00042">create_lobby()</a>, <a class="el" href="sdl_8c_source.html#l00256">destroy_context()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00154">destroy_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00015">destroy_lobby_callback()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00252">request_leave_lobby()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00225">struct_lobby_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00042">create_lobby()</a>, <a class="el" href="sdl_8c_source.html#l00317">destroy_context()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00156">destroy_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00015">destroy_lobby_callback()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00254">request_leave_lobby()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00740">struct_lobby_init()</a>.</p>
+
+</div>
+</div>
+<a id="ab3c64ad9f6a6f73fb8b068c86278bf97" name="ab3c64ad9f6a6f73fb8b068c86278bf97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3c64ad9f6a6f73fb8b068c86278bf97">&#9670;&#160;</a></span>chat_extract_sender_prefix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int chat_extract_sender_prefix </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>sender</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sender_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>prefix_len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>sender_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>sender_visible_offset</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00104">104</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00432">chat_render_messages()</a>.</p>
+
+</div>
+</div>
+<a id="acaa27817183afde031a0e84dcd77c94e" name="acaa27817183afde031a0e84dcd77c94e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acaa27817183afde031a0e84dcd77c94e">&#9670;&#160;</a></span>chat_find_team_by_sender()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> chat_find_team_by_sender </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sender_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>player_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00040">40</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2lib_2user_8h_source.html#l00029">User::id</a>, <a class="el" href="sdl_8h_source.html#l00059">AppContext::lobby</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00017">MAX_USERS</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00030">User::name</a>, <a class="el" href="sdl_8h_source.html#l00066">AppContext::player_id</a>, <a class="el" href="sdl_8h_source.html#l00074">AppContext::player_name</a>, <a class="el" href="sdl_8h_source.html#l00062">AppContext::player_team</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00032">User::team</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00038">TEAM_NONE</a>, et <a class="el" href="client_2lib_2lobby_8h_source.html#l00074">Lobby::users</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00432">chat_render_messages()</a>.</p>
+
+</div>
+</div>
+<a id="a25a42545c5c9bfc9b34e765fc3a60866" name="a25a42545c5c9bfc9b34e765fc3a60866"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25a42545c5c9bfc9b34e765fc3a60866">&#9670;&#160;</a></span>chat_font_path_equals()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int chat_font_path_equals </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00013">13</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00380">chat_build_wrapped_lines_cached()</a>, et <a class="el" href="client_2src_2chat_8c_source.html#l00135">chat_get_colored_prefix_text()</a>.</p>
 
 </div>
 </div>
@@ -144,27 +476,90 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">const char * chat_get </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structChat.html">Chat</a> *</td>          <td class="paramname"><span class="paramname"><em>chat</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structChat.html">Chat</a> *&#160;</td>
+          <td class="paramname"><em>chat</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Retourne le message a un index donne. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Retourne le message à un index donné. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">chat</td><td><a class="el" href="structChat.html">Chat</a> cible. </td></tr>
-    <tr><td class="paramname">index</td><td>Index 0-based. </td></tr>
+    <tr><td class="paramname">index</td><td>Index (base 0). </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Pointeur vers le message, ou NULL si index invalide. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00042">42</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00230">230</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2src_2list_8c_source.html#l00081">list_get()</a>, et <a class="el" href="client_2lib_2chat_8h_source.html#l00015">Chat::messages</a>.</p>
+<p class="reference">Références <a class="el" href="client_2src_2list_8c_source.html#l00081">list_get()</a>, et <a class="el" href="client_2lib_2chat_8h_source.html#l00042">Chat::messages</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00380">chat_build_wrapped_lines_cached()</a>.</p>
+
+</div>
+</div>
+<a id="ab3707bb0595752324692858ef0c8bf37" name="ab3707bb0595752324692858ef0c8bf37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3707bb0595752324692858ef0c8bf37">&#9670;&#160;</a></span>chat_get_colored_prefix_text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="structText.html">Text</a> * chat_get_colored_prefix_text </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>font_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>font_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Uint8&#160;</td>
+          <td class="paramname"><em>opacity</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00135">135</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="text_8h_source.html#l00039">Text::cfg</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00003">chat_colored_prefix_text</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00013">chat_font_path_equals()</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00016">COL_WHITE</a>, <a class="el" href="text_8c_source.html#l00064">create_text_config()</a>, <a class="el" href="text_8h_source.html#l00022">TextConfig::font_path</a>, <a class="el" href="text_8h_source.html#l00023">TextConfig::font_size</a>, <a class="el" href="text_8c_source.html#l00120">init_text()</a>, <a class="el" href="text_8h_source.html#l00028">TextConfig::opacity</a>, et <a class="el" href="text_8c_source.html#l00076">reload_text()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00432">chat_render_messages()</a>.</p>
 
 </div>
 </div>
@@ -177,29 +572,126 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int chat_init </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structChat.html">Chat</a> *</td>          <td class="paramname"><span class="paramname"><em>chat</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structChat.html">Chat</a> *&#160;</td>
+          <td class="paramname"><em>chat</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>max_messages</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_messages</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Initialise un chat avec une liste vide. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">chat</td><td><a class="el" href="structChat.html">Chat</a> a initialiser. </td></tr>
-    <tr><td class="paramname">max_messages</td><td>Nombre maximal de messages conserves. </td></tr>
+    <tr><td class="paramname">chat</td><td><a class="el" href="structChat.html">Chat</a> à initialiser. </td></tr>
+    <tr><td class="paramname">max_messages</td><td>Nombre maximal de messages conservés. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS en cas de succes, EXIT_FAILURE sinon. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS en cas de succès, EXIT_FAILURE sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00007">7</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00191">191</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2src_2list_8c_source.html#l00008">list_create()</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00016">Chat::max_messages</a>, et <a class="el" href="client_2lib_2chat_8h_source.html#l00015">Chat::messages</a>.</p>
+<p class="reference">Références <a class="el" href="client_2src_2chat_8c_source.html#l00172">chat_wrap_cache_invalidate()</a>, <a class="el" href="client_2src_2list_8c_source.html#l00008">list_create()</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00043">Chat::max_messages</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00042">Chat::messages</a>, et <a class="el" href="client_2lib_2chat_8h_source.html#l00044">Chat::revision</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00042">create_lobby()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00225">struct_lobby_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00042">create_lobby()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00740">struct_lobby_init()</a>.</p>
+
+</div>
+</div>
+<a id="ad48a6d87e2ba180680e8fff674b5332d" name="ad48a6d87e2ba180680e8fff674b5332d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad48a6d87e2ba180680e8fff674b5332d">&#9670;&#160;</a></span>chat_left_anchored_rel_x()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int chat_left_anchored_rel_x </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structWindow.html">Window</a> *&#160;</td>
+          <td class="paramname"><em>chat_window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>text_width</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00027">27</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00107">Window::cfg</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00009">CHAT_LEFT_PADDING</a>, <a class="el" href="client_2src_2game_8c_source.html#l00021">chat_window</a>, et <a class="el" href="window_8h_source.html#l00071">WindowConfig::w</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00032">chat_left_anchored_rel_x_with_offset()</a>, et <a class="el" href="client_2src_2chat_8c_source.html#l00155">chat_render_sender_prefix()</a>.</p>
+
+</div>
+</div>
+<a id="aa6aa7dad9f1dfa1fb951ce4924b1d3d7" name="aa6aa7dad9f1dfa1fb951ce4924b1d3d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6aa7dad9f1dfa1fb951ce4924b1d3d7">&#9670;&#160;</a></span>chat_left_anchored_rel_x_with_offset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int chat_left_anchored_rel_x_with_offset </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structWindow.html">Window</a> *&#160;</td>
+          <td class="paramname"><em>chat_window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>text_width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>left_offset</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00032">32</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2src_2chat_8c_source.html#l00027">chat_left_anchored_rel_x()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00021">chat_window</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00432">chat_render_messages()</a>.</p>
 
 </div>
 </div>
@@ -212,29 +704,203 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int chat_push </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structChat.html">Chat</a> *</td>          <td class="paramname"><span class="paramname"><em>chat</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structChat.html">Chat</a> *&#160;</td>
+          <td class="paramname"><em>chat</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>message</em></span>&#160;)</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Ajoute un message en fin de chat et supprime le plus ancien si la limite est atteinte. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">chat</td><td><a class="el" href="structChat.html">Chat</a> cible. </td></tr>
-    <tr><td class="paramname">message</td><td>Message a ajouter (copie en interne). </td></tr>
+    <tr><td class="paramname">message</td><td>Message à ajouter (copie en interne). </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS en cas de succes, EXIT_FAILURE sinon. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS en cas de succès, EXIT_FAILURE sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00017">17</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00203">203</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2lib_2list_8h_source.html#l00012">ListNode::data</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00003">free_chat_message()</a>, <a class="el" href="client_2lib_2list_8h_source.html#l00024">List::head</a>, <a class="el" href="client_2src_2list_8c_source.html#l00034">list_add()</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00016">Chat::max_messages</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00015">Chat::messages</a>, <a class="el" href="client_2lib_2list_8h_source.html#l00013">ListNode::next</a>, et <a class="el" href="client_2lib_2list_8h_source.html#l00025">List::size</a>.</p>
+<p class="reference">Références <a class="el" href="client_2src_2chat_8c_source.html#l00177">chat_touch()</a>, <a class="el" href="client_2lib_2list_8h_source.html#l00017">ListNode::data</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00036">free_chat_message()</a>, <a class="el" href="client_2lib_2list_8h_source.html#l00029">List::head</a>, <a class="el" href="client_2src_2list_8c_source.html#l00034">list_add()</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00043">Chat::max_messages</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00042">Chat::messages</a>, <a class="el" href="client_2lib_2list_8h_source.html#l00018">ListNode::next</a>, et <a class="el" href="client_2lib_2list_8h_source.html#l00030">List::size</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2message_8c_source.html#l00024">on_message()</a>, et <a class="el" href="server_2src_2chat_8c_source.html#l00060">request_send_chat()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>, et <a class="el" href="server_2src_2chat_8c_source.html#l00060">request_send_chat()</a>.</p>
+
+</div>
+</div>
+<a id="a8d802e82081cd259fa6ee7fb17094903" name="a8d802e82081cd259fa6ee7fb17094903"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d802e82081cd259fa6ee7fb17094903">&#9670;&#160;</a></span>chat_render_messages()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void chat_render_messages </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structWindow.html">Window</a> *&#160;</td>
+          <td class="paramname"><em>chat_window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structText.html">Text</a> **&#160;</td>
+          <td class="paramname"><em>chat_texts</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>visible_lines</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Rend les messages du chat dans une fenêtre scrollable avec retour à la ligne automatique. Les messages au format "Pseudo : texte" colorent le pseudo selon l'equipe du joueur quand elle est connue (rouge/bleu), sinon le texte reste blanc. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>Contexte applicatif. </td></tr>
+    <tr><td class="paramname">chat_window</td><td>Fenêtre de chat cible. </td></tr>
+    <tr><td class="paramname">chat_texts</td><td>Tableau de Text* utilisé pour afficher les lignes visibles. </td></tr>
+    <tr><td class="paramname">visible_lines</td><td>Nombre de lignes visibles dans le tableau. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00432">432</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="text_8h_source.html#l00039">Text::cfg</a>, <a class="el" href="window_8h_source.html#l00107">Window::cfg</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00077">Lobby::chat</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00011">CHAT_BOTTOM_LINE_Y</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00380">chat_build_wrapped_lines_cached()</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00104">chat_extract_sender_prefix()</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00040">chat_find_team_by_sender()</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00135">chat_get_colored_prefix_text()</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00032">chat_left_anchored_rel_x_with_offset()</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00009">CHAT_LEFT_PADDING</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00008">CHAT_LINE_GAP</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00016">CHAT_LINE_SIZE</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00155">chat_render_sender_prefix()</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00010">CHAT_RIGHT_PADDING</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00019">chat_text_width()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00021">chat_window</a>, <a class="el" href="text_8h_source.html#l00038">Text::content</a>, <a class="el" href="text_8c_source.html#l00154">display_text()</a>, <a class="el" href="text_8h_source.html#l00022">TextConfig::font_path</a>, <a class="el" href="text_8h_source.html#l00023">TextConfig::font_size</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00046">format_to()</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00031">ChatWrapCache::lines</a>, <a class="el" href="sdl_8h_source.html#l00059">AppContext::lobby</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00042">Chat::messages</a>, <a class="el" href="text_8h_source.html#l00028">TextConfig::opacity</a>, <a class="el" href="sdl_8h_source.html#l00056">AppContext::renderer</a>, <a class="el" href="window_8h_source.html#l00095">WindowConfig::scroll_max</a>, <a class="el" href="window_8h_source.html#l00094">WindowConfig::scroll_min</a>, <a class="el" href="window_8h_source.html#l00093">WindowConfig::scroll_offset</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00040">TEAM_BLUE</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00039">TEAM_RED</a>, <a class="el" href="text_8c_source.html#l00128">update_text()</a>, <a class="el" href="window_8h_source.html#l00071">WindowConfig::w</a>, <a class="el" href="window_8h_source.html#l00139">WIN_CFG_SCROLL_MAX</a>, <a class="el" href="window_8h_source.html#l00138">WIN_CFG_SCROLL_MIN</a>, <a class="el" href="window_8c_source.html#l00419">window_edit_cfg()</a>, <a class="el" href="window_8c_source.html#l00307">window_get_scrollable_zone_rect()</a>, <a class="el" href="window_8c_source.html#l00524">window_place_text()</a>, et <a class="el" href="client_2lib_2chat_8h_source.html#l00045">Chat::wrap_cache</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l01130">game_display()</a>.</p>
+
+</div>
+</div>
+<a id="a84755d02b71bb80f5b80dd824c444346" name="a84755d02b71bb80f5b80dd824c444346"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84755d02b71bb80f5b80dd824c444346">&#9670;&#160;</a></span>chat_render_sender_prefix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int chat_render_sender_prefix </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structWindow.html">Window</a> *&#160;</td>
+          <td class="paramname"><em>chat_window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>prefix_text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td>
+          <td class="paramname"><em>sender_team</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>rel_y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structText.html">Text</a> *&#160;</td>
+          <td class="paramname"><em>colored_prefix</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00155">155</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2src_2chat_8c_source.html#l00027">chat_left_anchored_rel_x()</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00093">chat_team_to_color()</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00019">chat_text_width()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00021">chat_window</a>, <a class="el" href="text_8h_source.html#l00038">Text::content</a>, <a class="el" href="text_8c_source.html#l00154">display_text()</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00040">TEAM_BLUE</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00039">TEAM_RED</a>, <a class="el" href="text_8c_source.html#l00128">update_text()</a>, <a class="el" href="text_8c_source.html#l00144">update_text_color()</a>, et <a class="el" href="window_8c_source.html#l00524">window_place_text()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00432">chat_render_messages()</a>.</p>
+
+</div>
+</div>
+<a id="af58e80a422b4499469e31c3b85c1bb20" name="af58e80a422b4499469e31c3b85c1bb20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af58e80a422b4499469e31c3b85c1bb20">&#9670;&#160;</a></span>chat_set_font_path()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void chat_set_font_path </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>dst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dst_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>src</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00183">183</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00380">chat_build_wrapped_lines_cached()</a>.</p>
 
 </div>
 </div>
@@ -247,12 +913,13 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int chat_size </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structChat.html">Chat</a> *</td>          <td class="paramname"><span class="paramname"><em>chat</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structChat.html">Chat</a> *&#160;</td>
+          <td class="paramname"><em>chat</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Retourne le nombre de messages stockes. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Retourne le nombre de messages stockés. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">chat</td><td><a class="el" href="structChat.html">Chat</a> cible. </td></tr>
   </table>
@@ -260,9 +927,180 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Nombre de messages. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00047">47</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00235">235</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2src_2list_8c_source.html#l00104">list_size()</a>, et <a class="el" href="client_2lib_2chat_8h_source.html#l00015">Chat::messages</a>.</p>
+<p class="reference">Références <a class="el" href="client_2src_2list_8c_source.html#l00104">list_size()</a>, et <a class="el" href="client_2lib_2chat_8h_source.html#l00042">Chat::messages</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00380">chat_build_wrapped_lines_cached()</a>.</p>
+
+</div>
+</div>
+<a id="a176285c323ee42e0873ff7d0bc4e1e01" name="a176285c323ee42e0873ff7d0bc4e1e01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a176285c323ee42e0873ff7d0bc4e1e01">&#9670;&#160;</a></span>chat_submit_message()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void chat_submit_message </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>text</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Callback de soumission du champ de chat. Envoie le message au serveur si le texte n'est pas vide. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>Contexte applicatif. </td></tr>
+    <tr><td class="paramname">text</td><td>Texte saisi. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00257">257</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2src_2utils_8c_source.html#l00046">format_to()</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00052">MSG_SENDCHAT</a>, <a class="el" href="sdl_8h_source.html#l00074">AppContext::player_name</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00198">send_tcp()</a>, et <a class="el" href="sdl_8h_source.html#l00064">AppContext::sock</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00504">game_init()</a>.</p>
+
+</div>
+</div>
+<a id="a5390aab922c53829b1b09d5beee17fc7" name="a5390aab922c53829b1b09d5beee17fc7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5390aab922c53829b1b09d5beee17fc7">&#9670;&#160;</a></span>chat_team_to_color()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static SDL_Color chat_team_to_color </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td>
+          <td class="paramname"><em>team</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00093">93</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2src_2chat_8c_source.html#l00005">CHAT_TEAM_BLUE_COLOR</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00006">CHAT_TEAM_RED_COLOR</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00016">COL_WHITE</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00040">TEAM_BLUE</a>, et <a class="el" href="client_2lib_2game_8h_source.html#l00039">TEAM_RED</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00155">chat_render_sender_prefix()</a>.</p>
+
+</div>
+</div>
+<a id="adbc4909d7dbf5ad0d8e1f5e36b5ef7bb" name="adbc4909d7dbf5ad0d8e1f5e36b5ef7bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbc4909d7dbf5ad0d8e1f5e36b5ef7bb">&#9670;&#160;</a></span>chat_text_width()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int chat_text_width </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structText.html">Text</a> *&#160;</td>
+          <td class="paramname"><em>text</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00019">19</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="text_8h_source.html#l00040">Text::texture</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00432">chat_render_messages()</a>, et <a class="el" href="client_2src_2chat_8c_source.html#l00155">chat_render_sender_prefix()</a>.</p>
+
+</div>
+</div>
+<a id="a629375b039a07da780050977352e3b64" name="a629375b039a07da780050977352e3b64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a629375b039a07da780050977352e3b64">&#9670;&#160;</a></span>chat_touch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void chat_touch </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structChat.html">Chat</a> *&#160;</td>
+          <td class="paramname"><em>chat</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00177">177</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2lib_2chat_8h_source.html#l00030">ChatWrapCache::is_valid</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00044">Chat::revision</a>, et <a class="el" href="client_2lib_2chat_8h_source.html#l00045">Chat::wrap_cache</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00240">chat_clear()</a>, et <a class="el" href="client_2src_2chat_8c_source.html#l00203">chat_push()</a>.</p>
+
+</div>
+</div>
+<a id="acf1fa784dbccbc571f4dc8589fea4f88" name="acf1fa784dbccbc571f4dc8589fea4f88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf1fa784dbccbc571f4dc8589fea4f88">&#9670;&#160;</a></span>chat_wrap_cache_invalidate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void chat_wrap_cache_invalidate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structChat.html">Chat</a> *&#160;</td>
+          <td class="paramname"><em>chat</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00172">172</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2lib_2chat_8h_source.html#l00045">Chat::wrap_cache</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00191">chat_init()</a>.</p>
 
 </div>
 </div>
@@ -276,40 +1114,216 @@ Fonctions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void free_chat_message </td>
+          <td class="memname">static void free_chat_message </td>
           <td>(</td>
-          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>data</em></span></td><td>)</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00036">36</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00240">chat_clear()</a>, et <a class="el" href="client_2src_2chat_8c_source.html#l00203">chat_push()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a id="ac515d061d4cdac03a9bbed6f7948311e" name="ac515d061d4cdac03a9bbed6f7948311e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac515d061d4cdac03a9bbed6f7948311e">&#9670;&#160;</a></span>CHAT_BOTTOM_LINE_Y</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int CHAT_BOTTOM_LINE_Y = -42</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00011">11</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00432">chat_render_messages()</a>.</p>
+
+</div>
+</div>
+<a id="a8636f448b272629de3a7a0ebbfdaa994" name="a8636f448b272629de3a7a0ebbfdaa994"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8636f448b272629de3a7a0ebbfdaa994">&#9670;&#160;</a></span>chat_colored_prefix_text</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structText.html">Text</a>* chat_colored_prefix_text = NULL</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00003">3</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00052">chat_clear()</a>, et <a class="el" href="client_2src_2chat_8c_source.html#l00017">chat_push()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00240">chat_clear()</a>, et <a class="el" href="client_2src_2chat_8c_source.html#l00135">chat_get_colored_prefix_text()</a>.</p>
+
+</div>
+</div>
+<a id="ac5b6688abf8c3b190c5695fe4989ca16" name="ac5b6688abf8c3b190c5695fe4989ca16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5b6688abf8c3b190c5695fe4989ca16">&#9670;&#160;</a></span>CHAT_LEFT_PADDING</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int CHAT_LEFT_PADDING = 8</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00009">9</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00027">chat_left_anchored_rel_x()</a>, et <a class="el" href="client_2src_2chat_8c_source.html#l00432">chat_render_messages()</a>.</p>
+
+</div>
+</div>
+<a id="aebd7487f84a13f69157d7f1a44249d3b" name="aebd7487f84a13f69157d7f1a44249d3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebd7487f84a13f69157d7f1a44249d3b">&#9670;&#160;</a></span>CHAT_LINE_GAP</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int CHAT_LINE_GAP = 15</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00008">8</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00432">chat_render_messages()</a>.</p>
+
+</div>
+</div>
+<a id="a729119d8d39e6d46286c32823c2b65a3" name="a729119d8d39e6d46286c32823c2b65a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a729119d8d39e6d46286c32823c2b65a3">&#9670;&#160;</a></span>CHAT_RIGHT_PADDING</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int CHAT_RIGHT_PADDING = 8</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00010">10</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00432">chat_render_messages()</a>.</p>
+
+</div>
+</div>
+<a id="af3092799ab787b7f0b34d45d9757f4e0" name="af3092799ab787b7f0b34d45d9757f4e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3092799ab787b7f0b34d45d9757f4e0">&#9670;&#160;</a></span>CHAT_TEAM_BLUE_COLOR</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const SDL_Color CHAT_TEAM_BLUE_COLOR = {50, 80, 150, 255}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00005">5</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00093">chat_team_to_color()</a>.</p>
+
+</div>
+</div>
+<a id="a31bcf847a0ed4eff77a953a2b0d15ef8" name="a31bcf847a0ed4eff77a953a2b0d15ef8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31bcf847a0ed4eff77a953a2b0d15ef8">&#9670;&#160;</a></span>CHAT_TEAM_RED_COLOR</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const SDL_Color CHAT_TEAM_RED_COLOR = {150, 50, 50, 255}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2chat_8c_source.html#l00006">6</a> du fichier <a class="el" href="client_2src_2chat_8c_source.html">chat.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00093">chat_team_to_color()</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div id="page-nav" class="page-nav-panel">
-<div id="page-nav-resize-handle"></div>
-<div id="page-nav-tree">
-<div id="page-nav-contents">
-</div><!-- page-nav-contents -->
-</div><!-- page-nav-tree -->
-</div><!-- page-nav -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a href="client_2src_2chat_8c.html">chat.c</a></li>
-    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a class="el" href="client_2src_2chat_8c.html">chat.c</a></li>
+    <li class="footer">Généré le Mardi 14 Avril 2026 18:57:16 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

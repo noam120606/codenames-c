@@ -1,13 +1,22 @@
 var client_2lib_2utils_8h =
 [
+    [ "FONT_BEBASKAI", "client_2lib_2utils_8h.html#aabb93711d373803efbcef958f1eff673", null ],
+    [ "FONT_CREDITS", "client_2lib_2utils_8h.html#ae5b2923d08acf9c9708af592d6050037", null ],
+    [ "FONT_GROOVELLO", "client_2lib_2utils_8h.html#a424a8ec4f9f6dbd125ee68fa4cbebab5", null ],
     [ "FONT_LARABIE", "client_2lib_2utils_8h.html#aab705a93a97be74e68805de82d9f9d66", null ],
     [ "FONT_NOTO", "client_2lib_2utils_8h.html#a50d2bb12b6ec7faf2e29f69d5739817e", null ],
+    [ "NUM_CARDS", "client_2lib_2utils_8h.html#af5b5fa19c2e690e24904d81c5692a30d", null ],
+    [ "Booleen", "client_2lib_2utils_8h.html#a651e28da86f3d2f8e8875c4b20b2c4f5", null ],
+    [ "Booleen", "client_2lib_2utils_8h.html#a426c0d223e7dc6b87d723c4c0c0e1f58", [
+      [ "False", "client_2lib_2utils_8h.html#a426c0d223e7dc6b87d723c4c0c0e1f58af9d46b7804d93a4fcde88489a1b68c24", null ],
+      [ "True", "client_2lib_2utils_8h.html#a426c0d223e7dc6b87d723c4c0c0e1f58a6d32c34708a0a3507c4bdb89219d650b", null ]
+    ] ],
     [ "format_to", "client_2lib_2utils_8h.html#ade6960f663c739637ee1beaf757c5f24", null ],
     [ "getRandomUsername", "client_2lib_2utils_8h.html#aead8640545d5f567606f56f8248d1b35", null ],
     [ "itoa", "client_2lib_2utils_8h.html#a4421b3b56ef0c8d301e35e23ba17f9d5", null ],
     [ "levenshtein", "client_2lib_2utils_8h.html#ac85a2fa057900ac7d0c0dcac2a47d843", null ],
     [ "number_length", "client_2lib_2utils_8h.html#acf06ac69f86a58e43477083d3930a4ca", null ],
-    [ "valid_hint", "client_2lib_2utils_8h.html#a39237c7417169b3a96342c69cb0e0991", null ],
+    [ "valid_hint", "client_2lib_2utils_8h.html#a9e8c25736d7034d66768cd0cdd057ca8", null ],
     [ "word_contains", "client_2lib_2utils_8h.html#abe64ca50f79e62a1be14590abf7ecd6a", null ],
     [ "COL_BLACK", "client_2lib_2utils_8h.html#a2e83cdef7aa658a31d69afd5f75a51b0", null ],
     [ "COL_BLUE", "client_2lib_2utils_8h.html#a9e3b63c4187b7f274912e0c7c533d1af", null ],

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['knob_5fx_5ffor_5fvalue_0',['knob_x_for_value',['../crossfader_8c.html#a0c28eae33c90be24b75ffaeb7f256b68',1,'crossfader.c']]]
+  ['join_5flobby_0',['join_lobby',['../server_2src_2lobby_8c.html#a3f3f826b2ed73b99d1f5b51ff9bb5fd5',1,'join_lobby(Lobby *lobby, User *user):&#160;lobby.c'],['../server_2lib_2lobby_8h.html#a3f3f826b2ed73b99d1f5b51ff9bb5fd5',1,'join_lobby(Lobby *lobby, User *user):&#160;lobby.c']]]
 ];

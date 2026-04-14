@@ -18,5 +18,13 @@ var searchData=
   ['crfd_5fcfg_5fvalue_15',['CRFD_CFG_VALUE',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6aefa19fffd931d63331e75e8aa0b189b3',1,'crossfader.h']]],
   ['crfd_5fcfg_5fw_16',['CRFD_CFG_W',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6a8c47c3f63bae70eed66a78edde4962d5',1,'crossfader.h']]],
   ['crfd_5fcfg_5fx_17',['CRFD_CFG_X',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6a070fa40aec610c680335bad37aa4f266',1,'crossfader.h']]],
-  ['crfd_5fcfg_5fy_18',['CRFD_CFG_Y',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6aa79acfb22d0f21e2e2a12c0ebd26cc18',1,'crossfader.h']]]
+  ['crfd_5fcfg_5fy_18',['CRFD_CFG_Y',['../crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6aa79acfb22d0f21e2e2a12c0ebd26cc18',1,'crossfader.h']]],
+  ['crossfader_5fluminosity_19',['CROSSFADER_LUMINOSITY',['../crossfader_8h.html#a7e861a2c78ea62992654d8c9c683194ca434f7351ccd45bfaf4ba361708fcef87',1,'crossfader.h']]],
+  ['crossfader_5fmusic_5fvolume_20',['CROSSFADER_MUSIC_VOLUME',['../crossfader_8h.html#a7e861a2c78ea62992654d8c9c683194caa7b9ef43df12c26bbbb139b627b3172f',1,'crossfader.h']]],
+  ['crossfader_5fnone_21',['CROSSFADER_NONE',['../crossfader_8h.html#a7e861a2c78ea62992654d8c9c683194cae6a4a9ea4e969954da65d64d0ab99d9f',1,'crossfader.h']]],
+  ['crossfader_5fsfx_5fvolume_22',['CROSSFADER_SFX_VOLUME',['../crossfader_8h.html#a7e861a2c78ea62992654d8c9c683194ca303f843e2550847a4a22f4448d85b74d',1,'crossfader.h']]],
+  ['ct_5fcat_23',['ct_cat',['../card_8h.html#a76b9e96d86b331202dcc0fba38b758cdadffba972c261ddeed858e61e46eb4ba4',1,'CT_CAT:&#160;card.h'],['../server_2lib_2game_8h.html#a76b9e96d86b331202dcc0fba38b758cdadffba972c261ddeed858e61e46eb4ba4',1,'CT_CAT:&#160;game.h']]],
+  ['ct_5fdog_24',['ct_dog',['../card_8h.html#a76b9e96d86b331202dcc0fba38b758cda9714286da6280ad708aa028a6cc3092b',1,'CT_DOG:&#160;card.h'],['../server_2lib_2game_8h.html#a76b9e96d86b331202dcc0fba38b758cda9714286da6280ad708aa028a6cc3092b',1,'CT_DOG:&#160;game.h']]],
+  ['ct_5ffemale_25',['ct_female',['../card_8h.html#a76b9e96d86b331202dcc0fba38b758cda62ad885719deb2c352c0988cdfbdef9a',1,'CT_FEMALE:&#160;card.h'],['../server_2lib_2game_8h.html#a76b9e96d86b331202dcc0fba38b758cda62ad885719deb2c352c0988cdfbdef9a',1,'CT_FEMALE:&#160;game.h']]],
+  ['ct_5fmale_26',['ct_male',['../card_8h.html#a76b9e96d86b331202dcc0fba38b758cdaf53340ee1927ddefbec463fd6dd755d9',1,'CT_MALE:&#160;card.h'],['../server_2lib_2game_8h.html#a76b9e96d86b331202dcc0fba38b758cdaf53340ee1927ddefbec463fd6dd755d9',1,'CT_MALE:&#160;game.h']]]
 ];

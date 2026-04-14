@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier client/lib/regex_compat.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,20 +34,21 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,9 +63,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('regex__compat_8h.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('regex__compat_8h.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -89,26 +90,40 @@ $(function(){initNavTree('regex__compat_8h.html','',''); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
   <div class="headertitle"><div class="title">Référence du fichier regex_compat.h</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Couche de compatibilité pour les expressions régulières (POSIX/Windows).  
+<a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;regex.h&gt;</code><br />
 </div>
 <p><a href="regex__compat_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Structures de données</h2></td></tr>
-<tr class="memitem:CnRegex" id="r_CnRegex"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structCnRegex.html">CnRegex</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCnRegex.html">CnRegex</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:ae5f45a2ceb7bcc7cb4fa38daae06c0a0" id="r_ae5f45a2ceb7bcc7cb4fa38daae06c0a0"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ae5f45a2ceb7bcc7cb4fa38daae06c0a0">cn_regex_compile</a> (<a class="el" href="structCnRegex.html">CnRegex</a> *re, const char *pattern)</td></tr>
-<tr class="memitem:a67a5e259d6bac11a4e9f11cb4a7c3c39" id="r_a67a5e259d6bac11a4e9f11cb4a7c3c39"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a67a5e259d6bac11a4e9f11cb4a7c3c39">cn_regex_match</a> (const <a class="el" href="structCnRegex.html">CnRegex</a> *re, const char *text)</td></tr>
-<tr class="memitem:adf6b83614a87ead2659503d08d5d6473" id="r_adf6b83614a87ead2659503d08d5d6473"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#adf6b83614a87ead2659503d08d5d6473">cn_regex_free</a> (<a class="el" href="structCnRegex.html">CnRegex</a> *re)</td></tr>
+<tr class="memitem:ae5f45a2ceb7bcc7cb4fa38daae06c0a0" id="r_ae5f45a2ceb7bcc7cb4fa38daae06c0a0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="regex__compat_8h.html#ae5f45a2ceb7bcc7cb4fa38daae06c0a0">cn_regex_compile</a> (<a class="el" href="structCnRegex.html">CnRegex</a> *re, const char *pattern)</td></tr>
+<tr class="separator:ae5f45a2ceb7bcc7cb4fa38daae06c0a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67a5e259d6bac11a4e9f11cb4a7c3c39" id="r_a67a5e259d6bac11a4e9f11cb4a7c3c39"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="regex__compat_8h.html#a67a5e259d6bac11a4e9f11cb4a7c3c39">cn_regex_match</a> (const <a class="el" href="structCnRegex.html">CnRegex</a> *re, const char *text)</td></tr>
+<tr class="separator:a67a5e259d6bac11a4e9f11cb4a7c3c39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf6b83614a87ead2659503d08d5d6473" id="r_adf6b83614a87ead2659503d08d5d6473"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="regex__compat_8h.html#adf6b83614a87ead2659503d08d5d6473">cn_regex_free</a> (<a class="el" href="structCnRegex.html">CnRegex</a> *re)</td></tr>
+<tr class="separator:adf6b83614a87ead2659503d08d5d6473"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Couche de compatibilité pour les expressions régulières (POSIX/Windows). </p>
+
+<p class="definition">Définition dans le fichier <a class="el" href="regex__compat_8h_source.html">regex_compat.h</a>.</p>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
 <a id="ae5f45a2ceb7bcc7cb4fa38daae06c0a0" name="ae5f45a2ceb7bcc7cb4fa38daae06c0a0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae5f45a2ceb7bcc7cb4fa38daae06c0a0">&#9670;&#160;</a></span>cn_regex_compile()</h2>
 
@@ -118,21 +133,47 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int cn_regex_compile </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCnRegex.html">CnRegex</a> *</td>          <td class="paramname"><span class="paramname"><em>re</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structCnRegex.html">CnRegex</a> *&#160;</td>
+          <td class="paramname"><em>re</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>pattern</em></span>&#160;)</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pattern</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Compile une expression régulière simple. Supporte les métacaractères suivants :</p><ul>
+<li><code>^</code> : ancre de début de ligne</li>
+<li><code>$</code> : ancre de fin de ligne</li>
+<li><code>.</code> : correspond à n'importe quel caractère</li>
+<li><code>[...]</code> : classe de caractères, avec support des plages (ex: <code>[a-z]</code>) et de la négation (ex: <code>[^0-9]</code>)</li>
+<li><code>\</code> : caractère d'échappement pour les métacaractères</li>
+<li><code>*</code> : correspond à zéro ou plusieurs occurrences du token précédent</li>
+<li><code>+</code> : correspond à une ou plusieurs occurrences du token précédent</li>
+<li><code>?</code> : correspond à zéro ou une occurrence du token précédent</li>
+<li><code>{m,n}</code> : correspond à au moins m et au plus n occurrences du token précédent <dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">re</td><td>Pointeur vers une structure <a class="el" href="structCnRegex.html">CnRegex</a> à initialiser. </td></tr>
+    <tr><td class="paramname">pattern</td><td>Chaîne de caractères représentant l'expression régulière à compiler. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, valeur non nulle en cas d'erreur. </dd></dl>
+</li>
+</ul>
 
 <p class="definition">Définition à la ligne <a class="el" href="regex__compat_8c_source.html#l00273">273</a> du fichier <a class="el" href="regex__compat_8c_source.html">regex_compat.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="regex__compat_8h_source.html#l00022">CnRegex::impl</a>.</p>
+<p class="reference">Références <a class="el" href="regex__compat_8h_source.html#l00027">CnRegex::impl</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="input_8c_source.html#l00017">regex_match_text()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="input_8c_source.html#l00130">regex_match_text()</a>.</p>
 
 </div>
 </div>
@@ -145,17 +186,24 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void cn_regex_free </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCnRegex.html">CnRegex</a> *</td>          <td class="paramname"><span class="paramname"><em>re</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structCnRegex.html">CnRegex</a> *&#160;</td>
+          <td class="paramname"><em>re</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Libère les ressources associées à une expression régulière compilée. Après l'appel de cette fonction, la structure <a class="el" href="structCnRegex.html">CnRegex</a> ne doit plus être utilisée. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">re</td><td>Pointeur vers une structure <a class="el" href="structCnRegex.html">CnRegex</a> à libérer. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Définition à la ligne <a class="el" href="regex__compat_8c_source.html#l00283">283</a> du fichier <a class="el" href="regex__compat_8c_source.html">regex_compat.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="regex__compat_8h_source.html#l00022">CnRegex::impl</a>.</p>
+<p class="reference">Références <a class="el" href="regex__compat_8h_source.html#l00027">CnRegex::impl</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="input_8c_source.html#l00017">regex_match_text()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="input_8c_source.html#l00130">regex_match_text()</a>.</p>
 
 </div>
 </div>
@@ -168,39 +216,46 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int cn_regex_match </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structCnRegex.html">CnRegex</a> *</td>          <td class="paramname"><span class="paramname"><em>re</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="structCnRegex.html">CnRegex</a> *&#160;</td>
+          <td class="paramname"><em>re</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>text</em></span>&#160;)</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>text</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Teste si une chaîne de caractères correspond à une expression régulière compilée. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">re</td><td>Pointeur vers une structure <a class="el" href="structCnRegex.html">CnRegex</a> compilée. </td></tr>
+    <tr><td class="paramname">text</td><td>Chaîne de caractères à tester. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 si la chaîne correspond, 1 si elle ne correspond pas, -1 en cas d'erreur. </dd></dl>
 
 <p class="definition">Définition à la ligne <a class="el" href="regex__compat_8c_source.html#l00278">278</a> du fichier <a class="el" href="regex__compat_8c_source.html">regex_compat.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="regex__compat_8h_source.html#l00022">CnRegex::impl</a>.</p>
+<p class="reference">Références <a class="el" href="regex__compat_8h_source.html#l00027">CnRegex::impl</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="input_8c_source.html#l00017">regex_match_text()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="input_8c_source.html#l00130">regex_match_text()</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div id="page-nav" class="page-nav-panel">
-<div id="page-nav-resize-handle"></div>
-<div id="page-nav-tree">
-<div id="page-nav-contents">
-</div><!-- page-nav-contents -->
-</div><!-- page-nav-tree -->
-</div><!-- page-nav -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a href="regex__compat_8h.html">regex_compat.h</a></li>
-    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a class="el" href="regex__compat_8h.html">regex_compat.h</a></li>
+    <li class="footer">Généré le Mardi 14 Avril 2026 18:57:16 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

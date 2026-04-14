@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier client/src/infos.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,20 +34,21 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,9 +63,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('infos_8c.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('infos_8c.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -89,6 +90,10 @@ $(function(){initNavTree('infos_8c.html','',''); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#enum-members">Énumérations</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">Référence du fichier infos.c</div></div>
 </div><!--header-->
 <div class="contents">
@@ -96,62 +101,108 @@ $(function(){initNavTree('infos_8c.html','',''); });
 </div>
 <p><a href="infos_8c_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Énumérations</h2></td></tr>
-<tr class="memitem:a7c624b7f7851972d519b4d7d8d863da4" id="r_a7c624b7f7851972d519b4d7d8d863da4"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#a7c624b7f7851972d519b4d7d8d863da4">InfosState</a> { <a class="el" href="#a7c624b7f7851972d519b4d7d8d863da4a03b153b084d803ddc55bddf89930a9f6">INFOS_HIDDEN</a>
-, <a class="el" href="#a7c624b7f7851972d519b4d7d8d863da4a5b5c6b24c8e31fa31267da11228cc1c4">INFOS_SHOWING</a>
-, <a class="el" href="#a7c624b7f7851972d519b4d7d8d863da4af939e0fc5936e34e0949999e4ed340d9">INFOS_VISIBLE</a>
-, <a class="el" href="#a7c624b7f7851972d519b4d7d8d863da4a0891caa71f4342056d0e4f0592bacbe3">INFOS_HIDING</a>
+<tr class="memitem:a7c624b7f7851972d519b4d7d8d863da4" id="r_a7c624b7f7851972d519b4d7d8d863da4"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a7c624b7f7851972d519b4d7d8d863da4">InfosState</a> { <a class="el" href="infos_8c.html#a7c624b7f7851972d519b4d7d8d863da4a03b153b084d803ddc55bddf89930a9f6">INFOS_HIDDEN</a>
+, <a class="el" href="infos_8c.html#a7c624b7f7851972d519b4d7d8d863da4a5b5c6b24c8e31fa31267da11228cc1c4">INFOS_SHOWING</a>
+, <a class="el" href="infos_8c.html#a7c624b7f7851972d519b4d7d8d863da4af939e0fc5936e34e0949999e4ed340d9">INFOS_VISIBLE</a>
+, <a class="el" href="infos_8c.html#a7c624b7f7851972d519b4d7d8d863da4a0891caa71f4342056d0e4f0592bacbe3">INFOS_HIDING</a>
  }</td></tr>
+<tr class="separator:a7c624b7f7851972d519b4d7d8d863da4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a8ea673d62376f972073bf1c0769e2081" id="r_a8ea673d62376f972073bf1c0769e2081"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a8ea673d62376f972073bf1c0769e2081">on_music_volume_change</a> (<a class="el" href="structAppContext.html">AppContext</a> *ctx, int new_value)</td></tr>
-<tr class="memitem:a56e3dfd620e48606c0f39ab976eec6cd" id="r_a56e3dfd620e48606c0f39ab976eec6cd"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a56e3dfd620e48606c0f39ab976eec6cd">on_sfx_volume_change</a> (<a class="el" href="structAppContext.html">AppContext</a> *ctx, int new_value)</td></tr>
-<tr class="memitem:a4fde767de6d4334bd10a5b0994c448d6" id="r_a4fde767de6d4334bd10a5b0994c448d6"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a4fde767de6d4334bd10a5b0994c448d6">load_rules</a> ()</td></tr>
-<tr class="memitem:af537ad668b9977d738a40316fd9eb32c" id="r_af537ad668b9977d738a40316fd9eb32c"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#af537ad668b9977d738a40316fd9eb32c">free_rules</a> ()</td></tr>
-<tr class="memitem:a39c238f1efb8789c8dd182158c88e165" id="r_a39c238f1efb8789c8dd182158c88e165"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a39c238f1efb8789c8dd182158c88e165">init_infos</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
-<tr class="memitem:a6910c41b9159f3272486cb7ec7cb3336" id="r_a6910c41b9159f3272486cb7ec7cb3336"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a6910c41b9159f3272486cb7ec7cb3336">infos_display_show_animation</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
-<tr class="memitem:af019887deb7c6522bbc42789ea205d62" id="r_af019887deb7c6522bbc42789ea205d62"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af019887deb7c6522bbc42789ea205d62">infos_display_hide_animation</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
-<tr class="memitem:a48b5c5c44f09a8a25e3de7e199cc8a76" id="r_a48b5c5c44f09a8a25e3de7e199cc8a76"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a48b5c5c44f09a8a25e3de7e199cc8a76">bandeau_to_screen_x</a> (int bx, int w)</td></tr>
-<tr class="memitem:a02c8f6d486285b1845c21c161f6ff73f" id="r_a02c8f6d486285b1845c21c161f6ff73f"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a02c8f6d486285b1845c21c161f6ff73f">bandeau_to_screen_y</a> (int by, int h)</td></tr>
-<tr class="memitem:ab6f4c8fa43ae7a3920abab13be4df8d3" id="r_ab6f4c8fa43ae7a3920abab13be4df8d3"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#ab6f4c8fa43ae7a3920abab13be4df8d3">window_to_logical</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, int wx, int wy, int *lx, int *ly)</td></tr>
-<tr class="memitem:ab00225c776aaffa6658c5b4d4325afcc" id="r_ab00225c776aaffa6658c5b4d4325afcc"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="#ab00225c776aaffa6658c5b4d4325afcc">clamp01</a> (float v)</td></tr>
-<tr class="memitem:ae0b36cef1443dc77ce79b2547309a036" id="r_ae0b36cef1443dc77ce79b2547309a036"><td class="memItemLeft">static SDL_Color&#160;</td><td class="memItemRight"><a class="el" href="#ae0b36cef1443dc77ce79b2547309a036">color_red_to_green</a> (float ratio)</td></tr>
-<tr class="memitem:a74f1c18506ff8cbfce8cf43f20f59fbb" id="r_a74f1c18506ff8cbfce8cf43f20f59fbb"><td class="memItemLeft">static SDL_Color&#160;</td><td class="memItemRight"><a class="el" href="#a74f1c18506ff8cbfce8cf43f20f59fbb">color_for_fps</a> (float fps)</td></tr>
-<tr class="memitem:ac9639efddaa717bcfe90497c29aca395" id="r_ac9639efddaa717bcfe90497c29aca395"><td class="memItemLeft">static SDL_Color&#160;</td><td class="memItemRight"><a class="el" href="#ac9639efddaa717bcfe90497c29aca395">color_for_ping</a> (int ping_ms)</td></tr>
-<tr class="memitem:a859d8e9635cbbd1a7f96460aeb84be7d" id="r_a859d8e9635cbbd1a7f96460aeb84be7d"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a859d8e9635cbbd1a7f96460aeb84be7d">update_crossfader_positions</a> (int display_x)</td></tr>
-<tr class="memitem:a7e90b959138d44b57a8a441e5e93f68f" id="r_a7e90b959138d44b57a8a441e5e93f68f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a7e90b959138d44b57a8a441e5e93f68f">infos_display</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
-<tr class="memitem:af9fb2e148a7245057eb37733619010e7" id="r_af9fb2e148a7245057eb37733619010e7"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af9fb2e148a7245057eb37733619010e7">infos_handle_event</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, SDL_Event *event)</td></tr>
-<tr class="memitem:a983096ca60b10079efe1a2463c30bccf" id="r_a983096ca60b10079efe1a2463c30bccf"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a983096ca60b10079efe1a2463c30bccf">calculate_fps</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, Uint32 current_time)</td></tr>
-<tr class="memitem:aad33eabe628f0e215c0c6c6334fb02a4" id="r_aad33eabe628f0e215c0c6c6334fb02a4"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aad33eabe628f0e215c0c6c6334fb02a4">fps_ping_display</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, int display_x)</td></tr>
-<tr class="memitem:a4240fe678f6fbf364ae1bd964d0907a1" id="r_a4240fe678f6fbf364ae1bd964d0907a1"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a4240fe678f6fbf364ae1bd964d0907a1">infos_free</a> ()</td></tr>
+<tr class="memitem:a8ea673d62376f972073bf1c0769e2081" id="r_a8ea673d62376f972073bf1c0769e2081"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a8ea673d62376f972073bf1c0769e2081">on_music_volume_change</a> (<a class="el" href="structAppContext.html">AppContext</a> *ctx, int new_value)</td></tr>
+<tr class="separator:a8ea673d62376f972073bf1c0769e2081"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56e3dfd620e48606c0f39ab976eec6cd" id="r_a56e3dfd620e48606c0f39ab976eec6cd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a56e3dfd620e48606c0f39ab976eec6cd">on_sfx_volume_change</a> (<a class="el" href="structAppContext.html">AppContext</a> *ctx, int new_value)</td></tr>
+<tr class="separator:a56e3dfd620e48606c0f39ab976eec6cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cd72fa3155edc59e4e7621f0b74d603" id="r_a6cd72fa3155edc59e4e7621f0b74d603"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a6cd72fa3155edc59e4e7621f0b74d603">on_luminosity_change</a> (<a class="el" href="structAppContext.html">AppContext</a> *ctx, int new_value)</td></tr>
+<tr class="separator:a6cd72fa3155edc59e4e7621f0b74d603"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fde767de6d4334bd10a5b0994c448d6" id="r_a4fde767de6d4334bd10a5b0994c448d6"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a4fde767de6d4334bd10a5b0994c448d6">load_rules</a> ()</td></tr>
+<tr class="separator:a4fde767de6d4334bd10a5b0994c448d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af537ad668b9977d738a40316fd9eb32c" id="r_af537ad668b9977d738a40316fd9eb32c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#af537ad668b9977d738a40316fd9eb32c">free_rules</a> ()</td></tr>
+<tr class="separator:af537ad668b9977d738a40316fd9eb32c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39c238f1efb8789c8dd182158c88e165" id="r_a39c238f1efb8789c8dd182158c88e165"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a39c238f1efb8789c8dd182158c88e165">init_infos</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="separator:a39c238f1efb8789c8dd182158c88e165"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6910c41b9159f3272486cb7ec7cb3336" id="r_a6910c41b9159f3272486cb7ec7cb3336"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a6910c41b9159f3272486cb7ec7cb3336">infos_display_show_animation</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="separator:a6910c41b9159f3272486cb7ec7cb3336"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af019887deb7c6522bbc42789ea205d62" id="r_af019887deb7c6522bbc42789ea205d62"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#af019887deb7c6522bbc42789ea205d62">infos_display_hide_animation</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="separator:af019887deb7c6522bbc42789ea205d62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48b5c5c44f09a8a25e3de7e199cc8a76" id="r_a48b5c5c44f09a8a25e3de7e199cc8a76"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a48b5c5c44f09a8a25e3de7e199cc8a76">bandeau_to_screen_x</a> (int bx, int w)</td></tr>
+<tr class="separator:a48b5c5c44f09a8a25e3de7e199cc8a76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02c8f6d486285b1845c21c161f6ff73f" id="r_a02c8f6d486285b1845c21c161f6ff73f"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a02c8f6d486285b1845c21c161f6ff73f">bandeau_to_screen_y</a> (int by, int h)</td></tr>
+<tr class="separator:a02c8f6d486285b1845c21c161f6ff73f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6f4c8fa43ae7a3920abab13be4df8d3" id="r_ab6f4c8fa43ae7a3920abab13be4df8d3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#ab6f4c8fa43ae7a3920abab13be4df8d3">window_to_logical</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, int wx, int wy, int *lx, int *ly)</td></tr>
+<tr class="separator:ab6f4c8fa43ae7a3920abab13be4df8d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab00225c776aaffa6658c5b4d4325afcc" id="r_ab00225c776aaffa6658c5b4d4325afcc"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#ab00225c776aaffa6658c5b4d4325afcc">clamp01</a> (float v)</td></tr>
+<tr class="separator:ab00225c776aaffa6658c5b4d4325afcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0b36cef1443dc77ce79b2547309a036" id="r_ae0b36cef1443dc77ce79b2547309a036"><td class="memItemLeft" align="right" valign="top">static SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#ae0b36cef1443dc77ce79b2547309a036">color_red_to_green</a> (float ratio)</td></tr>
+<tr class="separator:ae0b36cef1443dc77ce79b2547309a036"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74f1c18506ff8cbfce8cf43f20f59fbb" id="r_a74f1c18506ff8cbfce8cf43f20f59fbb"><td class="memItemLeft" align="right" valign="top">static SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a74f1c18506ff8cbfce8cf43f20f59fbb">color_for_fps</a> (float fps)</td></tr>
+<tr class="separator:a74f1c18506ff8cbfce8cf43f20f59fbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9639efddaa717bcfe90497c29aca395" id="r_ac9639efddaa717bcfe90497c29aca395"><td class="memItemLeft" align="right" valign="top">static SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#ac9639efddaa717bcfe90497c29aca395">color_for_ping</a> (int ping_ms)</td></tr>
+<tr class="separator:ac9639efddaa717bcfe90497c29aca395"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a859d8e9635cbbd1a7f96460aeb84be7d" id="r_a859d8e9635cbbd1a7f96460aeb84be7d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a859d8e9635cbbd1a7f96460aeb84be7d">update_crossfader_positions</a> (int display_x)</td></tr>
+<tr class="separator:a859d8e9635cbbd1a7f96460aeb84be7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e90b959138d44b57a8a441e5e93f68f" id="r_a7e90b959138d44b57a8a441e5e93f68f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a7e90b959138d44b57a8a441e5e93f68f">infos_display</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="separator:a7e90b959138d44b57a8a441e5e93f68f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9fb2e148a7245057eb37733619010e7" id="r_af9fb2e148a7245057eb37733619010e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#af9fb2e148a7245057eb37733619010e7">infos_handle_event</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, SDL_Event *event)</td></tr>
+<tr class="separator:af9fb2e148a7245057eb37733619010e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a983096ca60b10079efe1a2463c30bccf" id="r_a983096ca60b10079efe1a2463c30bccf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a983096ca60b10079efe1a2463c30bccf">calculate_fps</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, Uint32 current_time)</td></tr>
+<tr class="separator:a983096ca60b10079efe1a2463c30bccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad33eabe628f0e215c0c6c6334fb02a4" id="r_aad33eabe628f0e215c0c6c6334fb02a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#aad33eabe628f0e215c0c6c6334fb02a4">fps_ping_display</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, int display_x)</td></tr>
+<tr class="separator:aad33eabe628f0e215c0c6c6334fb02a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4240fe678f6fbf364ae1bd964d0907a1" id="r_a4240fe678f6fbf364ae1bd964d0907a1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a4240fe678f6fbf364ae1bd964d0907a1">infos_free</a> ()</td></tr>
+<tr class="separator:a4240fe678f6fbf364ae1bd964d0907a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:afec87a7e90cc9e31bee013010065ed0b" id="r_afec87a7e90cc9e31bee013010065ed0b"><td class="memItemLeft">SDL_Texture *&#160;</td><td class="memItemRight"><a class="el" href="#afec87a7e90cc9e31bee013010065ed0b">bandeau</a></td></tr>
-<tr class="memitem:a1480ea7eb4bf283c162dfc7999fe6c3d" id="r_a1480ea7eb4bf283c162dfc7999fe6c3d"><td class="memItemLeft">static <a class="el" href="structCrossfader.html">Crossfader</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a1480ea7eb4bf283c162dfc7999fe6c3d">cf_music</a> = NULL</td></tr>
-<tr class="memitem:adc5d995eab1f1005ea1c83d5929f57ae" id="r_adc5d995eab1f1005ea1c83d5929f57ae"><td class="memItemLeft">static <a class="el" href="structCrossfader.html">Crossfader</a> *&#160;</td><td class="memItemRight"><a class="el" href="#adc5d995eab1f1005ea1c83d5929f57ae">cf_sfx</a> = NULL</td></tr>
-<tr class="memitem:a5377b7365f8ed2b352452fbb2d883eba" id="r_a5377b7365f8ed2b352452fbb2d883eba"><td class="memItemLeft">static const char *&#160;</td><td class="memItemRight"><a class="el" href="#a5377b7365f8ed2b352452fbb2d883eba">rules_title</a> = &quot;RÈGLES DU JEU&quot;</td></tr>
-<tr class="memitem:a455e806e355945510f3da8893a8d981c" id="r_a455e806e355945510f3da8893a8d981c"><td class="memItemLeft">static char **&#160;</td><td class="memItemRight"><a class="el" href="#a455e806e355945510f3da8893a8d981c">rules_lines</a> = NULL</td></tr>
-<tr class="memitem:a3f9cb5df846184803ffb556d92a85aa0" id="r_a3f9cb5df846184803ffb556d92a85aa0"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a3f9cb5df846184803ffb556d92a85aa0">rules_line_count</a> = 0</td></tr>
-<tr class="memitem:a04f57e893cc1eb237c39d5c0129d6298" id="r_a04f57e893cc1eb237c39d5c0129d6298"><td class="memItemLeft">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a04f57e893cc1eb237c39d5c0129d6298">txt_music_label</a> = NULL</td></tr>
-<tr class="memitem:ad4627060590d6ba5dca7f987b1b801c9" id="r_ad4627060590d6ba5dca7f987b1b801c9"><td class="memItemLeft">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ad4627060590d6ba5dca7f987b1b801c9">txt_sfx_label</a> = NULL</td></tr>
-<tr class="memitem:a48179d996f7a7dfd6f1906c9ab3dbf97" id="r_a48179d996f7a7dfd6f1906c9ab3dbf97"><td class="memItemLeft">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a48179d996f7a7dfd6f1906c9ab3dbf97">txt_rules_title</a> = NULL</td></tr>
-<tr class="memitem:ab32d8485cb8fce21a8a3c2aff6574212" id="r_ab32d8485cb8fce21a8a3c2aff6574212"><td class="memItemLeft">static <a class="el" href="structText.html">Text</a> **&#160;</td><td class="memItemRight"><a class="el" href="#ab32d8485cb8fce21a8a3c2aff6574212">txt_rules_lines</a> = NULL</td></tr>
-<tr class="memitem:af8f69df21fb58b6605bdf0d7adbe31de" id="r_af8f69df21fb58b6605bdf0d7adbe31de"><td class="memItemLeft">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight"><a class="el" href="#af8f69df21fb58b6605bdf0d7adbe31de">txt_fps</a> = NULL</td></tr>
-<tr class="memitem:a566c6caa6b73617f62dc4402dbee67ce" id="r_a566c6caa6b73617f62dc4402dbee67ce"><td class="memItemLeft">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a566c6caa6b73617f62dc4402dbee67ce">txt_ping</a> = NULL</td></tr>
-<tr class="memitem:a22f957f831b5f806b6bfd7da5d640746" id="r_a22f957f831b5f806b6bfd7da5d640746"><td class="memItemLeft">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a22f957f831b5f806b6bfd7da5d640746">txt_server_local</a> = NULL</td></tr>
-<tr class="memitem:a8cadf80ad86dae76d8cfebd4a00eb761" id="r_a8cadf80ad86dae76d8cfebd4a00eb761"><td class="memItemLeft">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a8cadf80ad86dae76d8cfebd4a00eb761">txt_server_distant</a> = NULL</td></tr>
-<tr class="memitem:a3a7eb5eb7c091bbd2fa00cacea4df9cc" id="r_a3a7eb5eb7c091bbd2fa00cacea4df9cc"><td class="memItemLeft">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a3a7eb5eb7c091bbd2fa00cacea4df9cc">txt_bar_1</a> = NULL</td></tr>
-<tr class="memitem:a1cd675ee97487e8f2ffc50859f2b3d04" id="r_a1cd675ee97487e8f2ffc50859f2b3d04"><td class="memItemLeft">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a1cd675ee97487e8f2ffc50859f2b3d04">txt_bar_2</a> = NULL</td></tr>
-<tr class="memitem:a601c5254eb24236836efa250186165bc" id="r_a601c5254eb24236836efa250186165bc"><td class="memItemLeft">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a601c5254eb24236836efa250186165bc">txt_version</a> = NULL</td></tr>
-<tr class="memitem:a7529f877faba58638faeeeab49d47068" id="r_a7529f877faba58638faeeeab49d47068"><td class="memItemLeft">static <a class="el" href="#a7c624b7f7851972d519b4d7d8d863da4">InfosState</a>&#160;</td><td class="memItemRight"><a class="el" href="#a7529f877faba58638faeeeab49d47068">infos_state</a> = <a class="el" href="#a7c624b7f7851972d519b4d7d8d863da4a03b153b084d803ddc55bddf89930a9f6">INFOS_HIDDEN</a></td></tr>
-<tr class="memitem:a5c10f13bdcbb57a755889ae15393ff10" id="r_a5c10f13bdcbb57a755889ae15393ff10"><td class="memItemLeft">static Uint32&#160;</td><td class="memItemRight"><a class="el" href="#a5c10f13bdcbb57a755889ae15393ff10">animation_start_time</a> = 0</td></tr>
-<tr class="memitem:addee7354de430c785bc1e8c5598fcae3" id="r_addee7354de430c785bc1e8c5598fcae3"><td class="memItemLeft">static const Uint32&#160;</td><td class="memItemRight"><a class="el" href="#addee7354de430c785bc1e8c5598fcae3">ANIMATION_DURATION</a> = 200</td></tr>
-<tr class="memitem:aa5c0c9ab93e6e76ba7845cbce2e94b52" id="r_aa5c0c9ab93e6e76ba7845cbce2e94b52"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#aa5c0c9ab93e6e76ba7845cbce2e94b52">current_display_x</a> = -1300</td></tr>
+<tr class="memitem:afec87a7e90cc9e31bee013010065ed0b" id="r_afec87a7e90cc9e31bee013010065ed0b"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#afec87a7e90cc9e31bee013010065ed0b">bandeau</a></td></tr>
+<tr class="separator:afec87a7e90cc9e31bee013010065ed0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1480ea7eb4bf283c162dfc7999fe6c3d" id="r_a1480ea7eb4bf283c162dfc7999fe6c3d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structCrossfader.html">Crossfader</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a1480ea7eb4bf283c162dfc7999fe6c3d">cf_music</a> = NULL</td></tr>
+<tr class="separator:a1480ea7eb4bf283c162dfc7999fe6c3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc5d995eab1f1005ea1c83d5929f57ae" id="r_adc5d995eab1f1005ea1c83d5929f57ae"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structCrossfader.html">Crossfader</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#adc5d995eab1f1005ea1c83d5929f57ae">cf_sfx</a> = NULL</td></tr>
+<tr class="separator:adc5d995eab1f1005ea1c83d5929f57ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1f22893d19b95bef8fba0171d4124d4" id="r_aa1f22893d19b95bef8fba0171d4124d4"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structCrossfader.html">Crossfader</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#aa1f22893d19b95bef8fba0171d4124d4">cf_lum</a> = NULL</td></tr>
+<tr class="separator:aa1f22893d19b95bef8fba0171d4124d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5377b7365f8ed2b352452fbb2d883eba" id="r_a5377b7365f8ed2b352452fbb2d883eba"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a5377b7365f8ed2b352452fbb2d883eba">rules_title</a> = &quot;RÈGLES DU JEU&quot;</td></tr>
+<tr class="separator:a5377b7365f8ed2b352452fbb2d883eba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a455e806e355945510f3da8893a8d981c" id="r_a455e806e355945510f3da8893a8d981c"><td class="memItemLeft" align="right" valign="top">static char **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a455e806e355945510f3da8893a8d981c">rules_lines</a> = NULL</td></tr>
+<tr class="separator:a455e806e355945510f3da8893a8d981c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f9cb5df846184803ffb556d92a85aa0" id="r_a3f9cb5df846184803ffb556d92a85aa0"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a3f9cb5df846184803ffb556d92a85aa0">rules_line_count</a> = 0</td></tr>
+<tr class="separator:a3f9cb5df846184803ffb556d92a85aa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04f57e893cc1eb237c39d5c0129d6298" id="r_a04f57e893cc1eb237c39d5c0129d6298"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a04f57e893cc1eb237c39d5c0129d6298">txt_music_label</a> = NULL</td></tr>
+<tr class="separator:a04f57e893cc1eb237c39d5c0129d6298"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4627060590d6ba5dca7f987b1b801c9" id="r_ad4627060590d6ba5dca7f987b1b801c9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#ad4627060590d6ba5dca7f987b1b801c9">txt_sfx_label</a> = NULL</td></tr>
+<tr class="separator:ad4627060590d6ba5dca7f987b1b801c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57441e839843d69ff22753009e40705f" id="r_a57441e839843d69ff22753009e40705f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a57441e839843d69ff22753009e40705f">txt_lum_label</a> = NULL</td></tr>
+<tr class="separator:a57441e839843d69ff22753009e40705f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48179d996f7a7dfd6f1906c9ab3dbf97" id="r_a48179d996f7a7dfd6f1906c9ab3dbf97"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a48179d996f7a7dfd6f1906c9ab3dbf97">txt_rules_title</a> = NULL</td></tr>
+<tr class="separator:a48179d996f7a7dfd6f1906c9ab3dbf97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab32d8485cb8fce21a8a3c2aff6574212" id="r_ab32d8485cb8fce21a8a3c2aff6574212"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structText.html">Text</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#ab32d8485cb8fce21a8a3c2aff6574212">txt_rules_lines</a> = NULL</td></tr>
+<tr class="separator:ab32d8485cb8fce21a8a3c2aff6574212"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8f69df21fb58b6605bdf0d7adbe31de" id="r_af8f69df21fb58b6605bdf0d7adbe31de"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#af8f69df21fb58b6605bdf0d7adbe31de">txt_fps</a> = NULL</td></tr>
+<tr class="separator:af8f69df21fb58b6605bdf0d7adbe31de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a566c6caa6b73617f62dc4402dbee67ce" id="r_a566c6caa6b73617f62dc4402dbee67ce"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a566c6caa6b73617f62dc4402dbee67ce">txt_ping</a> = NULL</td></tr>
+<tr class="separator:a566c6caa6b73617f62dc4402dbee67ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22f957f831b5f806b6bfd7da5d640746" id="r_a22f957f831b5f806b6bfd7da5d640746"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a22f957f831b5f806b6bfd7da5d640746">txt_server_local</a> = NULL</td></tr>
+<tr class="separator:a22f957f831b5f806b6bfd7da5d640746"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cadf80ad86dae76d8cfebd4a00eb761" id="r_a8cadf80ad86dae76d8cfebd4a00eb761"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a8cadf80ad86dae76d8cfebd4a00eb761">txt_server_distant</a> = NULL</td></tr>
+<tr class="separator:a8cadf80ad86dae76d8cfebd4a00eb761"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab76b75f25a90de041a0bfbde1437ff65" id="r_ab76b75f25a90de041a0bfbde1437ff65"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#ab76b75f25a90de041a0bfbde1437ff65">txt_bar</a> = NULL</td></tr>
+<tr class="separator:ab76b75f25a90de041a0bfbde1437ff65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a601c5254eb24236836efa250186165bc" id="r_a601c5254eb24236836efa250186165bc"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a601c5254eb24236836efa250186165bc">txt_version</a> = NULL</td></tr>
+<tr class="separator:a601c5254eb24236836efa250186165bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7529f877faba58638faeeeab49d47068" id="r_a7529f877faba58638faeeeab49d47068"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="infos_8c.html#a7c624b7f7851972d519b4d7d8d863da4">InfosState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a7529f877faba58638faeeeab49d47068">infos_state</a> = <a class="el" href="infos_8c.html#a7c624b7f7851972d519b4d7d8d863da4a03b153b084d803ddc55bddf89930a9f6">INFOS_HIDDEN</a></td></tr>
+<tr class="separator:a7529f877faba58638faeeeab49d47068"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c10f13bdcbb57a755889ae15393ff10" id="r_a5c10f13bdcbb57a755889ae15393ff10"><td class="memItemLeft" align="right" valign="top">static Uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#a5c10f13bdcbb57a755889ae15393ff10">animation_start_time</a> = 0</td></tr>
+<tr class="separator:a5c10f13bdcbb57a755889ae15393ff10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addee7354de430c785bc1e8c5598fcae3" id="r_addee7354de430c785bc1e8c5598fcae3"><td class="memItemLeft" align="right" valign="top">static const Uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#addee7354de430c785bc1e8c5598fcae3">ANIMATION_DURATION</a> = 200</td></tr>
+<tr class="separator:addee7354de430c785bc1e8c5598fcae3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5c0c9ab93e6e76ba7845cbce2e94b52" id="r_aa5c0c9ab93e6e76ba7845cbce2e94b52"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="infos_8c.html#aa5c0c9ab93e6e76ba7845cbce2e94b52">current_display_x</a> = -1300</td></tr>
+<tr class="separator:aa5c0c9ab93e6e76ba7845cbce2e94b52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Documentation du type de l'énumération</h2>
+<h2 class="groupheader">Documentation du type de l'énumération</h2>
 <a id="a7c624b7f7851972d519b4d7d8d863da4" name="a7c624b7f7851972d519b4d7d8d863da4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7c624b7f7851972d519b4d7d8d863da4">&#9670;&#160;</a></span>InfosState</h2>
 
@@ -159,7 +210,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="#a7c624b7f7851972d519b4d7d8d863da4">InfosState</a></td>
+          <td class="memname">enum <a class="el" href="infos_8c.html#a7c624b7f7851972d519b4d7d8d863da4">InfosState</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -170,11 +221,11 @@ Variables</h2></td></tr>
 <tr><td class="fieldname"><a id="a7c624b7f7851972d519b4d7d8d863da4a0891caa71f4342056d0e4f0592bacbe3" name="a7c624b7f7851972d519b4d7d8d863da4a0891caa71f4342056d0e4f0592bacbe3"></a>INFOS_HIDING&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00028">28</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00030">30</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
 </div>
 </div>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a id="a48b5c5c44f09a8a25e3de7e199cc8a76" name="a48b5c5c44f09a8a25e3de7e199cc8a76"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a48b5c5c44f09a8a25e3de7e199cc8a76">&#9670;&#160;</a></span>bandeau_to_screen_x()</h2>
 
@@ -185,28 +236,35 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int bandeau_to_screen_x </td>
+          <td class="memname">static int bandeau_to_screen_x </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>bx</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>bx</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>w</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>w</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00238">238</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00281">281</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00014">WIN_WIDTH</a>.</p>
+<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00019">WIN_WIDTH</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00290">update_crossfader_positions()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00333">update_crossfader_positions()</a>.</p>
 
 </div>
 </div>
@@ -220,28 +278,35 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int bandeau_to_screen_y </td>
+          <td class="memname">static int bandeau_to_screen_y </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>by</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>by</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>h</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>h</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00241">241</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00284">284</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00015">WIN_HEIGHT</a>.</p>
+<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00020">WIN_HEIGHT</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00290">update_crossfader_positions()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00333">update_crossfader_positions()</a>.</p>
 
 </div>
 </div>
@@ -254,28 +319,35 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void calculate_fps </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Uint32</td>          <td class="paramname"><span class="paramname"><em>current_time</em></span>&#160;)</td>
+          <td class="paramtype">Uint32&#160;</td>
+          <td class="paramname"><em>current_time</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Calcule les FPS (Frames Per Second) et met à jour le champ <span class="tt">fps</span> du contexte SDL. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Calcule les FPS (Frames Per Second) et met à jour le champ <code>fps</code> du contexte SDL. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">context</td><td>Contexte SDL contenant le temps écoulé depuis la dernière mise à jour. </td></tr>
-    <tr><td class="paramname">current_time</td><td>Temps actuel en millisecondes (généralement obtenu via <span class="tt">SDL_GetTicks()</span>). Note : Cette fonction doit être appelée à chaque frame pour mettre à jour les FPS. </td></tr>
+    <tr><td class="paramname">current_time</td><td>Temps actuel en millisecondes (généralement obtenu via <code>SDL_GetTicks()</code>). Note : Cette fonction doit être appelée à chaque frame pour mettre à jour les FPS. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00422">422</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00477">477</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00044">AppContext::fps</a>.</p>
+<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00069">AppContext::fps</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00440">fps_ping_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00495">fps_ping_display()</a>.</p>
 
 </div>
 </div>
@@ -289,22 +361,23 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float clamp01 </td>
+          <td class="memname">static float clamp01 </td>
           <td>(</td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>v</em></span></td><td>)</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00261">261</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00304">304</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00268">color_red_to_green()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00311">color_red_to_green()</a>.</p>
 
 </div>
 </div>
@@ -318,24 +391,25 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SDL_Color color_for_fps </td>
+          <td class="memname">static SDL_Color color_for_fps </td>
           <td>(</td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>fps</em></span></td><td>)</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fps</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00275">275</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00318">318</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="infos_8c_source.html#l00268">color_red_to_green()</a>.</p>
+<p class="reference">Références <a class="el" href="infos_8c_source.html#l00311">color_red_to_green()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00440">fps_ping_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00495">fps_ping_display()</a>.</p>
 
 </div>
 </div>
@@ -349,24 +423,25 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SDL_Color color_for_ping </td>
+          <td class="memname">static SDL_Color color_for_ping </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>ping_ms</em></span></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ping_ms</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00282">282</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00325">325</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="infos_8c_source.html#l00268">color_red_to_green()</a>.</p>
+<p class="reference">Références <a class="el" href="infos_8c_source.html#l00311">color_red_to_green()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00440">fps_ping_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00495">fps_ping_display()</a>.</p>
 
 </div>
 </div>
@@ -380,24 +455,25 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SDL_Color color_red_to_green </td>
+          <td class="memname">static SDL_Color color_red_to_green </td>
           <td>(</td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>ratio</em></span></td><td>)</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>ratio</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00268">268</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00311">311</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="infos_8c_source.html#l00261">clamp01()</a>.</p>
+<p class="reference">Références <a class="el" href="infos_8c_source.html#l00304">clamp01()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00275">color_for_fps()</a>, et <a class="el" href="infos_8c_source.html#l00282">color_for_ping()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00318">color_for_fps()</a>, et <a class="el" href="infos_8c_source.html#l00325">color_for_ping()</a>.</p>
 
 </div>
 </div>
@@ -410,12 +486,19 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void fps_ping_display </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>display_x</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>display_x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -427,11 +510,11 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00440">440</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00495">495</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="infos_8c_source.html#l00422">calculate_fps()</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00011">COL_WHITE</a>, <a class="el" href="infos_8c_source.html#l00275">color_for_fps()</a>, <a class="el" href="infos_8c_source.html#l00282">color_for_ping()</a>, <a class="el" href="text_8c_source.html#l00102">display_text()</a>, <a class="el" href="sdl_8h_source.html#l00044">AppContext::fps</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00179">is_tcp_local_server()</a>, <a class="el" href="sdl_8h_source.html#l00051">AppContext::ping_ms</a>, <a class="el" href="sdl_8h_source.html#l00045">AppContext::sock</a>, <a class="el" href="infos_8c_source.html#l00023">txt_bar_1</a>, <a class="el" href="infos_8c_source.html#l00024">txt_bar_2</a>, <a class="el" href="infos_8c_source.html#l00019">txt_fps</a>, <a class="el" href="infos_8c_source.html#l00020">txt_ping</a>, <a class="el" href="infos_8c_source.html#l00022">txt_server_distant</a>, <a class="el" href="infos_8c_source.html#l00021">txt_server_local</a>, <a class="el" href="text_8c_source.html#l00076">update_text()</a>, <a class="el" href="text_8c_source.html#l00092">update_text_color()</a>, et <a class="el" href="text_8c_source.html#l00086">update_text_position()</a>.</p>
+<p class="reference">Références <a class="el" href="infos_8c_source.html#l00477">calculate_fps()</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00016">COL_WHITE</a>, <a class="el" href="infos_8c_source.html#l00318">color_for_fps()</a>, <a class="el" href="infos_8c_source.html#l00325">color_for_ping()</a>, <a class="el" href="text_8c_source.html#l00154">display_text()</a>, <a class="el" href="sdl_8h_source.html#l00069">AppContext::fps</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00179">is_tcp_local_server()</a>, <a class="el" href="sdl_8h_source.html#l00065">AppContext::ping_ms</a>, <a class="el" href="sdl_8h_source.html#l00064">AppContext::sock</a>, <a class="el" href="infos_8c_source.html#l00026">txt_bar</a>, <a class="el" href="infos_8c_source.html#l00022">txt_fps</a>, <a class="el" href="infos_8c_source.html#l00023">txt_ping</a>, <a class="el" href="infos_8c_source.html#l00025">txt_server_distant</a>, <a class="el" href="infos_8c_source.html#l00024">txt_server_local</a>, <a class="el" href="text_8c_source.html#l00128">update_text()</a>, <a class="el" href="text_8c_source.html#l00144">update_text_color()</a>, et <a class="el" href="text_8c_source.html#l00138">update_text_position()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00315">infos_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00367">infos_display()</a>.</p>
 
 </div>
 </div>
@@ -445,24 +528,24 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void free_rules </td>
+          <td class="memname">static void free_rules </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00087">87</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00094">94</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="infos_8c_source.html#l00012">rules_line_count</a>, et <a class="el" href="infos_8c_source.html#l00011">rules_lines</a>.</p>
+<p class="reference">Références <a class="el" href="infos_8c_source.html#l00014">rules_line_count</a>, et <a class="el" href="infos_8c_source.html#l00013">rules_lines</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00490">infos_free()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00548">infos_free()</a>.</p>
 
 </div>
 </div>
@@ -475,7 +558,8 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void infos_display </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -487,11 +571,11 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00315">315</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00367">367</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="infos_8c_source.html#l00037">ANIMATION_DURATION</a>, <a class="el" href="infos_8c_source.html#l00036">animation_start_time</a>, <a class="el" href="infos_8c_source.html#l00003">bandeau</a>, <a class="el" href="crossfader_8c_source.html#l00440">crossfaders_render()</a>, <a class="el" href="infos_8c_source.html#l00040">current_display_x</a>, <a class="el" href="sdl_8c_source.html#l00201">display_image()</a>, <a class="el" href="text_8c_source.html#l00102">display_text()</a>, <a class="el" href="infos_8c_source.html#l00440">fps_ping_display()</a>, <a class="el" href="infos_8c_source.html#l00029">INFOS_HIDDEN</a>, <a class="el" href="infos_8c_source.html#l00032">INFOS_HIDING</a>, <a class="el" href="infos_8c_source.html#l00030">INFOS_SHOWING</a>, <a class="el" href="infos_8c_source.html#l00035">infos_state</a>, <a class="el" href="infos_8c_source.html#l00031">INFOS_VISIBLE</a>, <a class="el" href="sdl_8h_source.html#l00041">AppContext::renderer</a>, <a class="el" href="infos_8c_source.html#l00012">rules_line_count</a>, <a class="el" href="infos_8c_source.html#l00015">txt_music_label</a>, <a class="el" href="infos_8c_source.html#l00018">txt_rules_lines</a>, <a class="el" href="infos_8c_source.html#l00017">txt_rules_title</a>, <a class="el" href="infos_8c_source.html#l00016">txt_sfx_label</a>, <a class="el" href="infos_8c_source.html#l00025">txt_version</a>, <a class="el" href="infos_8c_source.html#l00290">update_crossfader_positions()</a>, <a class="el" href="text_8c_source.html#l00086">update_text_position()</a>, et <a class="el" href="infos_8c_source.html#l00245">window_to_logical()</a>.</p>
+<p class="reference">Références <a class="el" href="infos_8c_source.html#l00039">ANIMATION_DURATION</a>, <a class="el" href="infos_8c_source.html#l00038">animation_start_time</a>, <a class="el" href="infos_8c_source.html#l00003">bandeau</a>, <a class="el" href="crossfader_8c_source.html#l00437">crossfaders_render()</a>, <a class="el" href="infos_8c_source.html#l00042">current_display_x</a>, <a class="el" href="sdl_8c_source.html#l00226">display_image()</a>, <a class="el" href="text_8c_source.html#l00154">display_text()</a>, <a class="el" href="infos_8c_source.html#l00495">fps_ping_display()</a>, <a class="el" href="infos_8c_source.html#l00270">infos_display_hide_animation()</a>, <a class="el" href="infos_8c_source.html#l00260">infos_display_show_animation()</a>, <a class="el" href="infos_8c_source.html#l00031">INFOS_HIDDEN</a>, <a class="el" href="infos_8c_source.html#l00034">INFOS_HIDING</a>, <a class="el" href="infos_8c_source.html#l00032">INFOS_SHOWING</a>, <a class="el" href="infos_8c_source.html#l00037">infos_state</a>, <a class="el" href="infos_8c_source.html#l00033">INFOS_VISIBLE</a>, <a class="el" href="sdl_8h_source.html#l00056">AppContext::renderer</a>, <a class="el" href="infos_8c_source.html#l00014">rules_line_count</a>, <a class="el" href="infos_8c_source.html#l00019">txt_lum_label</a>, <a class="el" href="infos_8c_source.html#l00017">txt_music_label</a>, <a class="el" href="infos_8c_source.html#l00021">txt_rules_lines</a>, <a class="el" href="infos_8c_source.html#l00020">txt_rules_title</a>, <a class="el" href="infos_8c_source.html#l00018">txt_sfx_label</a>, <a class="el" href="infos_8c_source.html#l00027">txt_version</a>, <a class="el" href="infos_8c_source.html#l00333">update_crossfader_positions()</a>, <a class="el" href="text_8c_source.html#l00138">update_text_position()</a>, et <a class="el" href="infos_8c_source.html#l00288">window_to_logical()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00205">main()</a>.</p>
 
 </div>
 </div>
@@ -504,15 +588,18 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void infos_display_hide_animation </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00229">229</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00270">270</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="infos_8c_source.html#l00036">animation_start_time</a>, <a class="el" href="infos_8c_source.html#l00029">INFOS_HIDDEN</a>, <a class="el" href="infos_8c_source.html#l00032">INFOS_HIDING</a>, et <a class="el" href="infos_8c_source.html#l00035">infos_state</a>.</p>
+<p class="reference">Références <a class="el" href="infos_8c_source.html#l00038">animation_start_time</a>, <a class="el" href="audio_8c_source.html#l00355">audio_play()</a>, <a class="el" href="infos_8c_source.html#l00031">INFOS_HIDDEN</a>, <a class="el" href="infos_8c_source.html#l00034">INFOS_HIDING</a>, <a class="el" href="infos_8c_source.html#l00037">infos_state</a>, et <a class="el" href="audio_8h_source.html#l00036">SOUND_INFO_CLOSE</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00367">infos_display()</a>.</p>
 
 </div>
 </div>
@@ -525,15 +612,18 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void infos_display_show_animation </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00221">221</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00260">260</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="infos_8c_source.html#l00036">animation_start_time</a>, <a class="el" href="infos_8c_source.html#l00030">INFOS_SHOWING</a>, <a class="el" href="infos_8c_source.html#l00035">infos_state</a>, et <a class="el" href="infos_8c_source.html#l00031">INFOS_VISIBLE</a>.</p>
+<p class="reference">Références <a class="el" href="infos_8c_source.html#l00038">animation_start_time</a>, <a class="el" href="audio_8c_source.html#l00355">audio_play()</a>, <a class="el" href="infos_8c_source.html#l00032">INFOS_SHOWING</a>, <a class="el" href="infos_8c_source.html#l00037">infos_state</a>, <a class="el" href="infos_8c_source.html#l00033">INFOS_VISIBLE</a>, et <a class="el" href="audio_8h_source.html#l00035">SOUND_INFO_OPEN</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00367">infos_display()</a>.</p>
 
 </div>
 </div>
@@ -546,18 +636,18 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int infos_free </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Libère les ressources utilisées pour l'affichage des informations. </p>
+<p>Libère les ressources utilisées pour l'affichage des informations. </p><dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00490">490</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00548">548</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="infos_8c_source.html#l00003">bandeau</a>, <a class="el" href="crossfader_8c_source.html#l00499">crossfaders_free()</a>, <a class="el" href="text_8c_source.html#l00125">destroy_text()</a>, <a class="el" href="infos_8c_source.html#l00087">free_rules()</a>, <a class="el" href="infos_8c_source.html#l00012">rules_line_count</a>, <a class="el" href="infos_8c_source.html#l00023">txt_bar_1</a>, <a class="el" href="infos_8c_source.html#l00024">txt_bar_2</a>, <a class="el" href="infos_8c_source.html#l00019">txt_fps</a>, <a class="el" href="infos_8c_source.html#l00015">txt_music_label</a>, <a class="el" href="infos_8c_source.html#l00020">txt_ping</a>, <a class="el" href="infos_8c_source.html#l00018">txt_rules_lines</a>, <a class="el" href="infos_8c_source.html#l00017">txt_rules_title</a>, <a class="el" href="infos_8c_source.html#l00022">txt_server_distant</a>, <a class="el" href="infos_8c_source.html#l00021">txt_server_local</a>, <a class="el" href="infos_8c_source.html#l00016">txt_sfx_label</a>, et <a class="el" href="infos_8c_source.html#l00025">txt_version</a>.</p>
+<p class="reference">Références <a class="el" href="infos_8c_source.html#l00003">bandeau</a>, <a class="el" href="crossfader_8c_source.html#l00496">crossfaders_free()</a>, <a class="el" href="text_8c_source.html#l00177">destroy_text()</a>, <a class="el" href="infos_8c_source.html#l00094">free_rules()</a>, <a class="el" href="infos_8c_source.html#l00014">rules_line_count</a>, <a class="el" href="infos_8c_source.html#l00026">txt_bar</a>, <a class="el" href="infos_8c_source.html#l00022">txt_fps</a>, <a class="el" href="infos_8c_source.html#l00019">txt_lum_label</a>, <a class="el" href="infos_8c_source.html#l00017">txt_music_label</a>, <a class="el" href="infos_8c_source.html#l00023">txt_ping</a>, <a class="el" href="infos_8c_source.html#l00021">txt_rules_lines</a>, <a class="el" href="infos_8c_source.html#l00020">txt_rules_title</a>, <a class="el" href="infos_8c_source.html#l00025">txt_server_distant</a>, <a class="el" href="infos_8c_source.html#l00024">txt_server_local</a>, <a class="el" href="infos_8c_source.html#l00018">txt_sfx_label</a>, et <a class="el" href="infos_8c_source.html#l00027">txt_version</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00205">main()</a>.</p>
 
 </div>
 </div>
@@ -570,12 +660,19 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void infos_handle_event </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SDL_Event *</td>          <td class="paramname"><span class="paramname"><em>event</em></span>&#160;)</td>
+          <td class="paramtype">SDL_Event *&#160;</td>
+          <td class="paramname"><em>event</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -587,11 +684,11 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00417">417</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00472">472</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="crossfader_8c_source.html#l00313">crossfaders_handle_event()</a>.</p>
+<p class="reference">Références <a class="el" href="crossfader_8c_source.html#l00310">crossfaders_handle_event()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00205">main()</a>.</p>
 
 </div>
 </div>
@@ -604,7 +701,8 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int init_infos </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -617,11 +715,11 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Nombre d'erreurs de chargement (0 si succès). </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00098">98</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00105">105</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8c_source.html#l00470">audio_set_type_volume()</a>, <a class="el" href="audio_8h_source.html#l00032">AUDIO_SOUND_KIND_MUSIC</a>, <a class="el" href="audio_8h_source.html#l00033">AUDIO_SOUND_KIND_SFX</a>, <a class="el" href="infos_8c_source.html#l00003">bandeau</a>, <a class="el" href="infos_8c_source.html#l00006">cf_music</a>, <a class="el" href="infos_8c_source.html#l00007">cf_sfx</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00019">COL_GREEN</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00011">COL_WHITE</a>, <a class="el" href="crossfader_8h_source.html#l00030">CrossfaderConfig::color_0_pct</a>, <a class="el" href="crossfader_8h_source.html#l00031">CrossfaderConfig::color_100_pct</a>, <a class="el" href="text_8c_source.html#l00012">create_text_config()</a>, <a class="el" href="crossfader_8c_source.html#l00037">crossfader_config_init()</a>, <a class="el" href="crossfader_8c_source.html#l00070">crossfader_create()</a>, <a class="el" href="infos_8h_source.html#l00007">CROSSFADER_ID_MUSIC_VOLUME</a>, <a class="el" href="infos_8h_source.html#l00008">CROSSFADER_ID_SFX_VOLUME</a>, <a class="el" href="crossfader_8c_source.html#l00065">crossfaders_init()</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00027">FONT_LARABIE</a>, <a class="el" href="crossfader_8h_source.html#l00024">CrossfaderConfig::h</a>, <a class="el" href="crossfader_8h_source.html#l00028">CrossfaderConfig::hidden</a>, <a class="el" href="text_8c_source.html#l00068">init_text()</a>, <a class="el" href="crossfader_8h_source.html#l00032">CrossfaderConfig::knob_color</a>, <a class="el" href="sdl_8c_source.html#l00180">load_image()</a>, <a class="el" href="infos_8c_source.html#l00055">load_rules()</a>, <a class="el" href="crossfader_8h_source.html#l00026">CrossfaderConfig::max</a>, <a class="el" href="crossfader_8h_source.html#l00025">CrossfaderConfig::min</a>, <a class="el" href="sdl_8h_source.html#l00052">AppContext::music_volume</a>, <a class="el" href="crossfader_8h_source.html#l00033">CrossfaderConfig::on_change</a>, <a class="el" href="infos_8c_source.html#l00043">on_music_volume_change()</a>, <a class="el" href="infos_8c_source.html#l00049">on_sfx_volume_change()</a>, <a class="el" href="sdl_8h_source.html#l00041">AppContext::renderer</a>, <a class="el" href="infos_8c_source.html#l00012">rules_line_count</a>, <a class="el" href="infos_8c_source.html#l00011">rules_lines</a>, <a class="el" href="infos_8c_source.html#l00010">rules_title</a>, <a class="el" href="crossfader_8h_source.html#l00029">CrossfaderConfig::save_player_data</a>, <a class="el" href="sdl_8h_source.html#l00053">AppContext::sound_effects_volume</a>, <a class="el" href="infos_8c_source.html#l00023">txt_bar_1</a>, <a class="el" href="infos_8c_source.html#l00024">txt_bar_2</a>, <a class="el" href="infos_8c_source.html#l00019">txt_fps</a>, <a class="el" href="infos_8c_source.html#l00015">txt_music_label</a>, <a class="el" href="infos_8c_source.html#l00020">txt_ping</a>, <a class="el" href="infos_8c_source.html#l00018">txt_rules_lines</a>, <a class="el" href="infos_8c_source.html#l00017">txt_rules_title</a>, <a class="el" href="infos_8c_source.html#l00022">txt_server_distant</a>, <a class="el" href="infos_8c_source.html#l00021">txt_server_local</a>, <a class="el" href="infos_8c_source.html#l00016">txt_sfx_label</a>, <a class="el" href="infos_8c_source.html#l00025">txt_version</a>, <a class="el" href="crossfader_8h_source.html#l00027">CrossfaderConfig::value</a>, <a class="el" href="sdl_8h_source.html#l00056">AppContext::version</a>, <a class="el" href="crossfader_8h_source.html#l00023">CrossfaderConfig::w</a>, <a class="el" href="crossfader_8h_source.html#l00021">CrossfaderConfig::x</a>, et <a class="el" href="crossfader_8h_source.html#l00022">CrossfaderConfig::y</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8c_source.html#l00557">audio_set_type_volume()</a>, <a class="el" href="audio_8h_source.html#l00043">AUDIO_SOUND_KIND_MUSIC</a>, <a class="el" href="audio_8h_source.html#l00044">AUDIO_SOUND_KIND_SFX</a>, <a class="el" href="infos_8c_source.html#l00003">bandeau</a>, <a class="el" href="infos_8c_source.html#l00009">cf_lum</a>, <a class="el" href="infos_8c_source.html#l00006">cf_music</a>, <a class="el" href="infos_8c_source.html#l00007">cf_sfx</a>, <a class="el" href="crossfader_8h_source.html#l00064">Crossfader::cfg</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00024">COL_GREEN</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00016">COL_WHITE</a>, <a class="el" href="crossfader_8h_source.html#l00045">CrossfaderConfig::color_0_pct</a>, <a class="el" href="crossfader_8h_source.html#l00046">CrossfaderConfig::color_100_pct</a>, <a class="el" href="text_8c_source.html#l00064">create_text_config()</a>, <a class="el" href="crossfader_8c_source.html#l00038">crossfader_config_init()</a>, <a class="el" href="crossfader_8c_source.html#l00071">crossfader_create()</a>, <a class="el" href="crossfader_8h_source.html#l00025">CROSSFADER_LUMINOSITY</a>, <a class="el" href="crossfader_8h_source.html#l00023">CROSSFADER_MUSIC_VOLUME</a>, <a class="el" href="crossfader_8h_source.html#l00024">CROSSFADER_SFX_VOLUME</a>, <a class="el" href="crossfader_8c_source.html#l00066">crossfaders_init()</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00032">FONT_LARABIE</a>, <a class="el" href="sdl_8h_source.html#l00079">AppContext::global_luminosity</a>, <a class="el" href="crossfader_8h_source.html#l00039">CrossfaderConfig::h</a>, <a class="el" href="crossfader_8h_source.html#l00043">CrossfaderConfig::hidden</a>, <a class="el" href="text_8c_source.html#l00120">init_text()</a>, <a class="el" href="crossfader_8h_source.html#l00047">CrossfaderConfig::knob_color</a>, <a class="el" href="sdl_8c_source.html#l00205">load_image()</a>, <a class="el" href="infos_8c_source.html#l00062">load_rules()</a>, <a class="el" href="crossfader_8h_source.html#l00041">CrossfaderConfig::max</a>, <a class="el" href="crossfader_8h_source.html#l00040">CrossfaderConfig::min</a>, <a class="el" href="sdl_8h_source.html#l00077">AppContext::music_volume</a>, <a class="el" href="crossfader_8h_source.html#l00048">CrossfaderConfig::on_change</a>, <a class="el" href="infos_8c_source.html#l00056">on_luminosity_change()</a>, <a class="el" href="infos_8c_source.html#l00045">on_music_volume_change()</a>, <a class="el" href="infos_8c_source.html#l00051">on_sfx_volume_change()</a>, <a class="el" href="sdl_8h_source.html#l00056">AppContext::renderer</a>, <a class="el" href="infos_8c_source.html#l00014">rules_line_count</a>, <a class="el" href="infos_8c_source.html#l00013">rules_lines</a>, <a class="el" href="infos_8c_source.html#l00012">rules_title</a>, <a class="el" href="crossfader_8h_source.html#l00044">CrossfaderConfig::save_player_data</a>, <a class="el" href="sdl_8h_source.html#l00078">AppContext::sound_effects_volume</a>, <a class="el" href="infos_8c_source.html#l00026">txt_bar</a>, <a class="el" href="infos_8c_source.html#l00022">txt_fps</a>, <a class="el" href="infos_8c_source.html#l00019">txt_lum_label</a>, <a class="el" href="infos_8c_source.html#l00017">txt_music_label</a>, <a class="el" href="infos_8c_source.html#l00023">txt_ping</a>, <a class="el" href="infos_8c_source.html#l00021">txt_rules_lines</a>, <a class="el" href="infos_8c_source.html#l00020">txt_rules_title</a>, <a class="el" href="infos_8c_source.html#l00025">txt_server_distant</a>, <a class="el" href="infos_8c_source.html#l00024">txt_server_local</a>, <a class="el" href="infos_8c_source.html#l00018">txt_sfx_label</a>, <a class="el" href="infos_8c_source.html#l00027">txt_version</a>, <a class="el" href="crossfader_8h_source.html#l00042">CrossfaderConfig::value</a>, <a class="el" href="sdl_8h_source.html#l00075">AppContext::version</a>, <a class="el" href="crossfader_8h_source.html#l00038">CrossfaderConfig::w</a>, <a class="el" href="crossfader_8h_source.html#l00036">CrossfaderConfig::x</a>, et <a class="el" href="crossfader_8h_source.html#l00037">CrossfaderConfig::y</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00205">main()</a>.</p>
 
 </div>
 </div>
@@ -635,24 +733,66 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void load_rules </td>
+          <td class="memname">static void load_rules </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00055">55</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00062">62</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="infos_8c_source.html#l00012">rules_line_count</a>, et <a class="el" href="infos_8c_source.html#l00011">rules_lines</a>.</p>
+<p class="reference">Références <a class="el" href="infos_8c_source.html#l00014">rules_line_count</a>, et <a class="el" href="infos_8c_source.html#l00013">rules_lines</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>.</p>
+
+</div>
+</div>
+<a id="a6cd72fa3155edc59e4e7621f0b74d603" name="a6cd72fa3155edc59e4e7621f0b74d603"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cd72fa3155edc59e4e7621f0b74d603">&#9670;&#160;</a></span>on_luminosity_change()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void on_luminosity_change </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>new_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00056">56</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00079">AppContext::global_luminosity</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>.</p>
 
 </div>
 </div>
@@ -666,28 +806,35 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void on_music_volume_change </td>
+          <td class="memname">static void on_music_volume_change </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>new_value</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>new_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00043">43</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00045">45</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8c_source.html#l00470">audio_set_type_volume()</a>, <a class="el" href="audio_8h_source.html#l00032">AUDIO_SOUND_KIND_MUSIC</a>, et <a class="el" href="sdl_8h_source.html#l00052">AppContext::music_volume</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8c_source.html#l00557">audio_set_type_volume()</a>, <a class="el" href="audio_8h_source.html#l00043">AUDIO_SOUND_KIND_MUSIC</a>, et <a class="el" href="sdl_8h_source.html#l00077">AppContext::music_volume</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>.</p>
 
 </div>
 </div>
@@ -701,28 +848,35 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void on_sfx_volume_change </td>
+          <td class="memname">static void on_sfx_volume_change </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>new_value</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>new_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00049">49</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00051">51</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8c_source.html#l00470">audio_set_type_volume()</a>, <a class="el" href="audio_8h_source.html#l00033">AUDIO_SOUND_KIND_SFX</a>, et <a class="el" href="sdl_8h_source.html#l00053">AppContext::sound_effects_volume</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8c_source.html#l00557">audio_set_type_volume()</a>, <a class="el" href="audio_8h_source.html#l00044">AUDIO_SOUND_KIND_SFX</a>, et <a class="el" href="sdl_8h_source.html#l00078">AppContext::sound_effects_volume</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>.</p>
 
 </div>
 </div>
@@ -736,24 +890,25 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void update_crossfader_positions </td>
+          <td class="memname">static void update_crossfader_positions </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>display_x</em></span></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>display_x</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00290">290</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00333">333</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="infos_8c_source.html#l00238">bandeau_to_screen_x()</a>, <a class="el" href="infos_8c_source.html#l00241">bandeau_to_screen_y()</a>, <a class="el" href="infos_8c_source.html#l00006">cf_music</a>, <a class="el" href="infos_8c_source.html#l00007">cf_sfx</a>, <a class="el" href="infos_8c_source.html#l00029">INFOS_HIDDEN</a>, et <a class="el" href="infos_8c_source.html#l00035">infos_state</a>.</p>
+<p class="reference">Références <a class="el" href="infos_8c_source.html#l00281">bandeau_to_screen_x()</a>, <a class="el" href="infos_8c_source.html#l00284">bandeau_to_screen_y()</a>, <a class="el" href="infos_8c_source.html#l00009">cf_lum</a>, <a class="el" href="infos_8c_source.html#l00006">cf_music</a>, <a class="el" href="infos_8c_source.html#l00007">cf_sfx</a>, <a class="el" href="crossfader_8h_source.html#l00064">Crossfader::cfg</a>, <a class="el" href="crossfader_8h_source.html#l00039">CrossfaderConfig::h</a>, <a class="el" href="crossfader_8h_source.html#l00043">CrossfaderConfig::hidden</a>, <a class="el" href="infos_8c_source.html#l00031">INFOS_HIDDEN</a>, <a class="el" href="infos_8c_source.html#l00037">infos_state</a>, <a class="el" href="crossfader_8h_source.html#l00051">CrossfaderConfig::rect</a>, <a class="el" href="crossfader_8h_source.html#l00038">CrossfaderConfig::w</a>, <a class="el" href="crossfader_8h_source.html#l00036">CrossfaderConfig::x</a>, et <a class="el" href="crossfader_8h_source.html#l00037">CrossfaderConfig::y</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00315">infos_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00367">infos_display()</a>.</p>
 
 </div>
 </div>
@@ -767,47 +922,57 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void window_to_logical </td>
+          <td class="memname">static void window_to_logical </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>wx</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>wx</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>wy</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>wy</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>lx</em></span>, </td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>lx</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>ly</em></span>&#160;)</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>ly</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00245">245</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00288">288</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00041">AppContext::renderer</a>.</p>
+<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00056">AppContext::renderer</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00315">infos_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00367">infos_display()</a>.</p>
 
 </div>
 </div>
-<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Documentation des variables</h2>
+<h2 class="groupheader">Documentation des variables</h2>
 <a id="addee7354de430c785bc1e8c5598fcae3" name="addee7354de430c785bc1e8c5598fcae3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#addee7354de430c785bc1e8c5598fcae3">&#9670;&#160;</a></span>ANIMATION_DURATION</h2>
 
@@ -823,14 +988,14 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00037">37</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00039">39</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00315">infos_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00367">infos_display()</a>.</p>
 
 </div>
 </div>
@@ -849,14 +1014,14 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00036">36</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00038">38</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00315">infos_display()</a>, <a class="el" href="infos_8c_source.html#l00229">infos_display_hide_animation()</a>, et <a class="el" href="infos_8c_source.html#l00221">infos_display_show_animation()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00367">infos_display()</a>, <a class="el" href="infos_8c_source.html#l00270">infos_display_hide_animation()</a>, et <a class="el" href="infos_8c_source.html#l00260">infos_display_show_animation()</a>.</p>
 
 </div>
 </div>
@@ -874,7 +1039,33 @@ Variables</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00003">3</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00315">infos_display()</a>, <a class="el" href="infos_8c_source.html#l00490">infos_free()</a>, et <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00367">infos_display()</a>, <a class="el" href="infos_8c_source.html#l00548">infos_free()</a>, et <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>.</p>
+
+</div>
+</div>
+<a id="aa1f22893d19b95bef8fba0171d4124d4" name="aa1f22893d19b95bef8fba0171d4124d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1f22893d19b95bef8fba0171d4124d4">&#9670;&#160;</a></span>cf_lum</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCrossfader.html">Crossfader</a>* cf_lum = NULL</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00009">9</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>, et <a class="el" href="infos_8c_source.html#l00333">update_crossfader_positions()</a>.</p>
 
 </div>
 </div>
@@ -893,14 +1084,14 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00006">6</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>, et <a class="el" href="infos_8c_source.html#l00290">update_crossfader_positions()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>, et <a class="el" href="infos_8c_source.html#l00333">update_crossfader_positions()</a>.</p>
 
 </div>
 </div>
@@ -919,14 +1110,14 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00007">7</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>, et <a class="el" href="infos_8c_source.html#l00290">update_crossfader_positions()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>, et <a class="el" href="infos_8c_source.html#l00333">update_crossfader_positions()</a>.</p>
 
 </div>
 </div>
@@ -945,14 +1136,14 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00040">40</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00042">42</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00315">infos_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00367">infos_display()</a>.</p>
 
 </div>
 </div>
@@ -966,19 +1157,19 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="#a7c624b7f7851972d519b4d7d8d863da4">InfosState</a> infos_state = <a class="el" href="#a7c624b7f7851972d519b4d7d8d863da4a03b153b084d803ddc55bddf89930a9f6">INFOS_HIDDEN</a></td>
+          <td class="memname"><a class="el" href="infos_8c.html#a7c624b7f7851972d519b4d7d8d863da4">InfosState</a> infos_state = <a class="el" href="infos_8c.html#a7c624b7f7851972d519b4d7d8d863da4a03b153b084d803ddc55bddf89930a9f6">INFOS_HIDDEN</a></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00035">35</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00037">37</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00315">infos_display()</a>, <a class="el" href="infos_8c_source.html#l00229">infos_display_hide_animation()</a>, <a class="el" href="infos_8c_source.html#l00221">infos_display_show_animation()</a>, et <a class="el" href="infos_8c_source.html#l00290">update_crossfader_positions()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00367">infos_display()</a>, <a class="el" href="infos_8c_source.html#l00270">infos_display_hide_animation()</a>, <a class="el" href="infos_8c_source.html#l00260">infos_display_show_animation()</a>, et <a class="el" href="infos_8c_source.html#l00333">update_crossfader_positions()</a>.</p>
 
 </div>
 </div>
@@ -997,14 +1188,14 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00012">12</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00014">14</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00087">free_rules()</a>, <a class="el" href="infos_8c_source.html#l00315">infos_display()</a>, <a class="el" href="infos_8c_source.html#l00490">infos_free()</a>, <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>, et <a class="el" href="infos_8c_source.html#l00055">load_rules()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00094">free_rules()</a>, <a class="el" href="infos_8c_source.html#l00367">infos_display()</a>, <a class="el" href="infos_8c_source.html#l00548">infos_free()</a>, <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>, et <a class="el" href="infos_8c_source.html#l00062">load_rules()</a>.</p>
 
 </div>
 </div>
@@ -1023,14 +1214,14 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00011">11</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00013">13</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00087">free_rules()</a>, <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>, et <a class="el" href="infos_8c_source.html#l00055">load_rules()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00094">free_rules()</a>, <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>, et <a class="el" href="infos_8c_source.html#l00062">load_rules()</a>.</p>
 
 </div>
 </div>
@@ -1049,19 +1240,19 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00010">10</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00012">12</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>.</p>
 
 </div>
 </div>
-<a id="a3a7eb5eb7c091bbd2fa00cacea4df9cc" name="a3a7eb5eb7c091bbd2fa00cacea4df9cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a7eb5eb7c091bbd2fa00cacea4df9cc">&#9670;&#160;</a></span>txt_bar_1</h2>
+<a id="ab76b75f25a90de041a0bfbde1437ff65" name="ab76b75f25a90de041a0bfbde1437ff65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab76b75f25a90de041a0bfbde1437ff65">&#9670;&#160;</a></span>txt_bar</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1070,45 +1261,19 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structText.html">Text</a>* txt_bar_1 = NULL</td>
+          <td class="memname"><a class="el" href="structText.html">Text</a>* txt_bar = NULL</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00023">23</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00026">26</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00440">fps_ping_display()</a>, <a class="el" href="infos_8c_source.html#l00490">infos_free()</a>, et <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>.</p>
-
-</div>
-</div>
-<a id="a1cd675ee97487e8f2ffc50859f2b3d04" name="a1cd675ee97487e8f2ffc50859f2b3d04"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1cd675ee97487e8f2ffc50859f2b3d04">&#9670;&#160;</a></span>txt_bar_2</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structText.html">Text</a>* txt_bar_2 = NULL</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00024">24</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
-
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00440">fps_ping_display()</a>, <a class="el" href="infos_8c_source.html#l00490">infos_free()</a>, et <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00495">fps_ping_display()</a>, <a class="el" href="infos_8c_source.html#l00548">infos_free()</a>, et <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>.</p>
 
 </div>
 </div>
@@ -1127,14 +1292,40 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00022">22</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00495">fps_ping_display()</a>, <a class="el" href="infos_8c_source.html#l00548">infos_free()</a>, et <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>.</p>
+
+</div>
+</div>
+<a id="a57441e839843d69ff22753009e40705f" name="a57441e839843d69ff22753009e40705f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57441e839843d69ff22753009e40705f">&#9670;&#160;</a></span>txt_lum_label</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structText.html">Text</a>* txt_lum_label = NULL</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00019">19</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00440">fps_ping_display()</a>, <a class="el" href="infos_8c_source.html#l00490">infos_free()</a>, et <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00367">infos_display()</a>, <a class="el" href="infos_8c_source.html#l00548">infos_free()</a>, et <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>.</p>
 
 </div>
 </div>
@@ -1153,14 +1344,14 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00015">15</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00017">17</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00315">infos_display()</a>, <a class="el" href="infos_8c_source.html#l00490">infos_free()</a>, et <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00367">infos_display()</a>, <a class="el" href="infos_8c_source.html#l00548">infos_free()</a>, et <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>.</p>
 
 </div>
 </div>
@@ -1179,14 +1370,14 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00020">20</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00023">23</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00440">fps_ping_display()</a>, <a class="el" href="infos_8c_source.html#l00490">infos_free()</a>, et <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00495">fps_ping_display()</a>, <a class="el" href="infos_8c_source.html#l00548">infos_free()</a>, et <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>.</p>
 
 </div>
 </div>
@@ -1205,14 +1396,14 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00018">18</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00021">21</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00315">infos_display()</a>, <a class="el" href="infos_8c_source.html#l00490">infos_free()</a>, et <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00367">infos_display()</a>, <a class="el" href="infos_8c_source.html#l00548">infos_free()</a>, et <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>.</p>
 
 </div>
 </div>
@@ -1231,14 +1422,14 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00017">17</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00020">20</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00315">infos_display()</a>, <a class="el" href="infos_8c_source.html#l00490">infos_free()</a>, et <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00367">infos_display()</a>, <a class="el" href="infos_8c_source.html#l00548">infos_free()</a>, et <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>.</p>
 
 </div>
 </div>
@@ -1257,14 +1448,14 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00022">22</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00025">25</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00440">fps_ping_display()</a>, <a class="el" href="infos_8c_source.html#l00490">infos_free()</a>, et <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00495">fps_ping_display()</a>, <a class="el" href="infos_8c_source.html#l00548">infos_free()</a>, et <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>.</p>
 
 </div>
 </div>
@@ -1283,14 +1474,14 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00021">21</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00024">24</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00440">fps_ping_display()</a>, <a class="el" href="infos_8c_source.html#l00490">infos_free()</a>, et <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00495">fps_ping_display()</a>, <a class="el" href="infos_8c_source.html#l00548">infos_free()</a>, et <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>.</p>
 
 </div>
 </div>
@@ -1309,14 +1500,14 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00016">16</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00018">18</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00315">infos_display()</a>, <a class="el" href="infos_8c_source.html#l00490">infos_free()</a>, et <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00367">infos_display()</a>, <a class="el" href="infos_8c_source.html#l00548">infos_free()</a>, et <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>.</p>
 
 </div>
 </div>
@@ -1335,32 +1526,24 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00025">25</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="infos_8c_source.html#l00027">27</a> du fichier <a class="el" href="infos_8c_source.html">infos.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00315">infos_display()</a>, <a class="el" href="infos_8c_source.html#l00490">infos_free()</a>, et <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00367">infos_display()</a>, <a class="el" href="infos_8c_source.html#l00548">infos_free()</a>, et <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div id="page-nav" class="page-nav-panel">
-<div id="page-nav-resize-handle"></div>
-<div id="page-nav-tree">
-<div id="page-nav-contents">
-</div><!-- page-nav-contents -->
-</div><!-- page-nav-tree -->
-</div><!-- page-nav -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a href="infos_8c.html">infos.c</a></li>
-    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a class="el" href="infos_8c.html">infos.c</a></li>
+    <li class="footer">Généré le Mardi 14 Avril 2026 18:57:16 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

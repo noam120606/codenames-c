@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['list_0',['List',['../structList.html',1,'']]],
-  ['listnode_1',['ListNode',['../structListNode.html',1,'']]],
-  ['lobby_2',['Lobby',['../structLobby.html',1,'']]],
-  ['lobbymanager_3',['LobbyManager',['../structLobbyManager.html',1,'']]]
+  ['input_0',['Input',['../structInput.html',1,'']]],
+  ['inputconfig_1',['InputConfig',['../structInputConfig.html',1,'']]]
 ];

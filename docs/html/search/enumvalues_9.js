@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['team_5fblack_0',['TEAM_BLACK',['../client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598a61552105f8585ebcf1056afa4085d92b',1,'TEAM_BLACK:&#160;game.h'],['../server_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598a61552105f8585ebcf1056afa4085d92b',1,'TEAM_BLACK:&#160;game.h']]],
-  ['team_5fblue_1',['TEAM_BLUE',['../client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598aa36a5d6a8d34fba0b01fc4e56cd2a240',1,'TEAM_BLUE:&#160;game.h'],['../server_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598aa36a5d6a8d34fba0b01fc4e56cd2a240',1,'TEAM_BLUE:&#160;game.h']]],
-  ['team_5fnone_2',['TEAM_NONE',['../client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598a66bbf321f9fe6b3387090eb97e230c68',1,'TEAM_NONE:&#160;game.h'],['../server_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598a66bbf321f9fe6b3387090eb97e230c68',1,'TEAM_NONE:&#160;game.h']]],
-  ['team_5fred_3',['TEAM_RED',['../client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598a097bdc2bb8d24f733c06f0be9b66bc3d',1,'TEAM_RED:&#160;game.h'],['../server_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598a097bdc2bb8d24f733c06f0be9b66bc3d',1,'TEAM_RED:&#160;game.h']]]
+  ['role_5fagent_0',['role_agent',['../client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775afca6f78a77445f3222f54e52278fe1f1',1,'ROLE_AGENT:&#160;user.h'],['../server_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775afca6f78a77445f3222f54e52278fe1f1',1,'ROLE_AGENT:&#160;user.h']]],
+  ['role_5fnone_1',['role_none',['../client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775a6db5378d7d3593626328a31ca0c43f8d',1,'ROLE_NONE:&#160;user.h'],['../server_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775a6db5378d7d3593626328a31ca0c43f8d',1,'ROLE_NONE:&#160;user.h']]],
+  ['role_5fspy_2',['role_spy',['../client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775a3f9e2f147fd4c1dd9da3dc0ca5632577',1,'ROLE_SPY:&#160;user.h'],['../server_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775a3f9e2f147fd4c1dd9da3dc0ca5632577',1,'ROLE_SPY:&#160;user.h']]]
 ];

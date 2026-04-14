@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier client/lib/input.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,20 +34,21 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,9 +63,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('input_8h.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('input_8h.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -89,107 +90,151 @@ $(function(){initNavTree('input_8h.html','',''); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#enum-members">Énumérations</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
   <div class="headertitle"><div class="title">Référence du fichier input.h</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Gestion des champs de saisie de texte interactifs.  
+<a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="sdl_8h_source.html">sdl.h</a>&quot;</code><br />
 </div>
 <p><a href="input_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Structures de données</h2></td></tr>
-<tr class="memitem:InputConfig" id="r_InputConfig"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structInputConfig.html">InputConfig</a></td></tr>
-<tr class="memitem:Input" id="r_Input"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structInput.html">Input</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structInputConfig.html">InputConfig</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structInput.html">Input</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a6a0477f66eef0933533f9d4dbfb8c609" id="r_a6a0477f66eef0933533f9d4dbfb8c609"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a6a0477f66eef0933533f9d4dbfb8c609">INPUT_DEFAULT_MAX</a>&#160;&#160;&#160;256</td></tr>
+<tr class="memitem:a6a0477f66eef0933533f9d4dbfb8c609" id="r_a6a0477f66eef0933533f9d4dbfb8c609"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8h.html#a6a0477f66eef0933533f9d4dbfb8c609">INPUT_DEFAULT_MAX</a>&#160;&#160;&#160;256</td></tr>
+<tr class="separator:a6a0477f66eef0933533f9d4dbfb8c609"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a553e59abfa1a4e6d672834b50a172c40" id="r_a553e59abfa1a4e6d672834b50a172c40"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8h.html#a553e59abfa1a4e6d672834b50a172c40">INPUT_HISTORY_MAX</a>&#160;&#160;&#160;50</td></tr>
+<tr class="separator:a553e59abfa1a4e6d672834b50a172c40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Définitions de type</h2></td></tr>
-<tr class="memitem:aea34ef574b3cf7509e579fcfe943fa42" id="r_aea34ef574b3cf7509e579fcfe943fa42"><td class="memItemLeft">typedef struct InputConfig&#160;</td><td class="memItemRight"><a class="el" href="#aea34ef574b3cf7509e579fcfe943fa42">InputConfig</a></td></tr>
-<tr class="memitem:ad1857177d745cb364a184655f148144e" id="r_ad1857177d745cb364a184655f148144e"><td class="memItemLeft">typedef struct Input&#160;</td><td class="memItemRight"><a class="el" href="#ad1857177d745cb364a184655f148144e">Input</a></td></tr>
-<tr class="memitem:a4e57838b612fd9d7720053fda55b6898" id="r_a4e57838b612fd9d7720053fda55b6898"><td class="memItemLeft">typedef enum <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58">InputCfgKey</a>&#160;</td><td class="memItemRight"><a class="el" href="#a4e57838b612fd9d7720053fda55b6898">InputCfgKey</a></td></tr>
+<tr class="memitem:aea34ef574b3cf7509e579fcfe943fa42" id="r_aea34ef574b3cf7509e579fcfe943fa42"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structInputConfig.html">InputConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8h.html#aea34ef574b3cf7509e579fcfe943fa42">InputConfig</a></td></tr>
+<tr class="separator:aea34ef574b3cf7509e579fcfe943fa42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1857177d745cb364a184655f148144e" id="r_ad1857177d745cb364a184655f148144e"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structInput.html">Input</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8h.html#ad1857177d745cb364a184655f148144e">Input</a></td></tr>
+<tr class="separator:ad1857177d745cb364a184655f148144e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e57838b612fd9d7720053fda55b6898" id="r_a4e57838b612fd9d7720053fda55b6898"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58">InputCfgKey</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8h.html#a4e57838b612fd9d7720053fda55b6898">InputCfgKey</a></td></tr>
+<tr class="separator:a4e57838b612fd9d7720053fda55b6898"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Énumérations</h2></td></tr>
-<tr class="memitem:affb866948fe1eb8a87ca4837b22eccd9" id="r_affb866948fe1eb8a87ca4837b22eccd9"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#affb866948fe1eb8a87ca4837b22eccd9">InputId</a> { <br />
-&#160;&#160;<a class="el" href="#affb866948fe1eb8a87ca4837b22eccd9ad635d6b1496fa2fba6f87068d4193246">INPUT_NONE</a> = 0
-, <a class="el" href="#affb866948fe1eb8a87ca4837b22eccd9a2220efa7553000fd9229c905d98e8106">INPUT_NAME</a>
-, <a class="el" href="#affb866948fe1eb8a87ca4837b22eccd9afea5f6534f12552ddf0feebb98637c4d">INPUT_JOIN_CODE</a>
-, <a class="el" href="#affb866948fe1eb8a87ca4837b22eccd9af5dafe806bdced747be9800b3732716c">INPUT_HINT</a>
+<tr class="memitem:affb866948fe1eb8a87ca4837b22eccd9" id="r_affb866948fe1eb8a87ca4837b22eccd9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9">InputId</a> { <br />
+&#160;&#160;<a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9ad635d6b1496fa2fba6f87068d4193246">INPUT_NONE</a> = 0
+, <a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9a2220efa7553000fd9229c905d98e8106">INPUT_NAME</a>
+, <a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9afea5f6534f12552ddf0feebb98637c4d">INPUT_JOIN_CODE</a>
+, <a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9af5dafe806bdced747be9800b3732716c">INPUT_HINT</a>
 , <br />
-&#160;&#160;<a class="el" href="#affb866948fe1eb8a87ca4837b22eccd9af60854a9703d409ee02126838fc3c75e">INPUT_HINT_COUNT</a>
-, <a class="el" href="#affb866948fe1eb8a87ca4837b22eccd9a9c373d0c102e8cc844cce7ec7696af41">INPUT_CHAT</a>
+&#160;&#160;<a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9af60854a9703d409ee02126838fc3c75e">INPUT_HINT_COUNT</a>
+, <a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9a9c373d0c102e8cc844cce7ec7696af41">INPUT_CHAT</a>
 <br />
  }</td></tr>
-<tr class="memitem:ae5dc35609c74896e526bbd8a3494ee58" id="r_ae5dc35609c74896e526bbd8a3494ee58"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58">InputCfgKey</a> { <br />
-&#160;&#160;<a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58a60730fc519a85e768751f9118144f547">IN_CFG_X</a> = 100
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58a562f8fbd46c7488f4933a2e02e42c190">IN_CFG_Y</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58a197cfeb8c495edb85962951da4a2eb62">IN_CFG_W</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58aa2bc6a8a24700e6c1a214d164e5a6cfe">IN_CFG_H</a>
+<tr class="separator:affb866948fe1eb8a87ca4837b22eccd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5dc35609c74896e526bbd8a3494ee58" id="r_ae5dc35609c74896e526bbd8a3494ee58"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58">InputCfgKey</a> { <br />
+&#160;&#160;<a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a60730fc519a85e768751f9118144f547">IN_CFG_X</a> = 100
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a562f8fbd46c7488f4933a2e02e42c190">IN_CFG_Y</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a197cfeb8c495edb85962951da4a2eb62">IN_CFG_W</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58aa2bc6a8a24700e6c1a214d164e5a6cfe">IN_CFG_H</a>
 , <br />
-&#160;&#160;<a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58a5b22ca604a6fd8f8596d290581998f4c">IN_CFG_FONT_PATH</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58a5fac6431afbf20d72f4f32499b779f1c">IN_CFG_FONT_SIZE</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58a08191ef5701395a21cdf7522ee95db40">IN_CFG_PLACEHOLDERS</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58adf3b4c92caf110dec878138a929a1ba9">IN_CFG_PLACEHOLDER_COUNT</a>
+&#160;&#160;<a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a5b22ca604a6fd8f8596d290581998f4c">IN_CFG_FONT_PATH</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a5fac6431afbf20d72f4f32499b779f1c">IN_CFG_FONT_SIZE</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a08191ef5701395a21cdf7522ee95db40">IN_CFG_PLACEHOLDERS</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58adf3b4c92caf110dec878138a929a1ba9">IN_CFG_PLACEHOLDER_COUNT</a>
 , <br />
-&#160;&#160;<a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58ab1fa09d9829ba69411373ce498fd5fdb">IN_CFG_SUBMITTED_LABEL</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58a18b0943365c6fe5e769f70a2f16ebe5d">IN_CFG_MAXLEN</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58a57dc02a68d237713e6ed1e28b6e566c3">IN_CFG_SAVE_PLAYER_DATA</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58afece0bb7a84045c196886f97f9024a6c">IN_CFG_BG_COLOR</a>
+&#160;&#160;<a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58ab1fa09d9829ba69411373ce498fd5fdb">IN_CFG_SUBMITTED_LABEL</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a18b0943365c6fe5e769f70a2f16ebe5d">IN_CFG_MAXLEN</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a57dc02a68d237713e6ed1e28b6e566c3">IN_CFG_SAVE_PLAYER_DATA</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58afece0bb7a84045c196886f97f9024a6c">IN_CFG_BG_COLOR</a>
 , <br />
-&#160;&#160;<a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58afae8f93bea7ffa957e4c135db0d82560">IN_CFG_BORDER_COLOR</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58ada262161a6003e5bcf6e65290f394908">IN_CFG_TEXT_COLOR</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58a980fd10a1b1b74f753379d12cd878c8d">IN_CFG_PADDING</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58ac9d54c9556f81a4c224127aca4443f46">IN_CFG_CENTERED</a>
+&#160;&#160;<a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58afae8f93bea7ffa957e4c135db0d82560">IN_CFG_BORDER_COLOR</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58ada262161a6003e5bcf6e65290f394908">IN_CFG_TEXT_COLOR</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a980fd10a1b1b74f753379d12cd878c8d">IN_CFG_PADDING</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58ac9d54c9556f81a4c224127aca4443f46">IN_CFG_CENTERED</a>
 , <br />
-&#160;&#160;<a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58a9ab9c54791d3e7ddde9f54976e41e207">IN_CFG_BG_PATH</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58a2c9801ea589d533363a9e17a2159c8a9">IN_CFG_BG_PADDING</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58ad8b8e1c3a953d1f0e22e694202e56b94">IN_CFG_ALLOWED_PATTERN</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58a9622032b5474eebf2453a0eb8319fd37">IN_CFG_SUBMIT_PATTERN</a>
+&#160;&#160;<a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a9ab9c54791d3e7ddde9f54976e41e207">IN_CFG_BG_PATH</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a2c9801ea589d533363a9e17a2159c8a9">IN_CFG_BG_PADDING</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58ad8b8e1c3a953d1f0e22e694202e56b94">IN_CFG_ALLOWED_PATTERN</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a9622032b5474eebf2453a0eb8319fd37">IN_CFG_SUBMIT_PATTERN</a>
 , <br />
-&#160;&#160;<a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58a9fad207e4f25c9daae5bda698355fd17">IN_CFG_INIT_TEXT</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58a1fa0048660fd88b8b30049f13c0e3202">IN_CFG_RECT</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58aab680294d6d75a5b9a139fa26d27d754">IN_CFG_TEXT</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58a1f8d315aad0ff07e4e838117b0db3cfb">IN_CFG_LEN</a>
+&#160;&#160;<a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a06bd8fa35f24432fe0cfd17752f5cbc4">IN_CFG_SUBMIT_SOUND</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a9fad207e4f25c9daae5bda698355fd17">IN_CFG_INIT_TEXT</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a1fa0048660fd88b8b30049f13c0e3202">IN_CFG_RECT</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58aab680294d6d75a5b9a139fa26d27d754">IN_CFG_TEXT</a>
 , <br />
-&#160;&#160;<a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58aa6be983835b268f854c580c25b7d2c96">IN_CFG_CURSOR_POS</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58af7296cd3521943d4c29bb47d86c8aaab">IN_CFG_FOCUSED</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58a678b62642d89e25ac9bfbd74e96eb36a">IN_CFG_SUBMITTED</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58af3df006c6e0bc47728133ff0400bab42">IN_CFG_BG_TEXTURE</a>
+&#160;&#160;<a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a1f8d315aad0ff07e4e838117b0db3cfb">IN_CFG_LEN</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58aa6be983835b268f854c580c25b7d2c96">IN_CFG_CURSOR_POS</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58aedc68511fe6bb02522c1db11803d5170">IN_CFG_CLEAR_ON_SUBMIT</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a196cc31c0e77f21ac4d83d1063ad32ce">IN_CFG_KEEP_FOCUS_ON_SUBMIT</a>
 , <br />
-&#160;&#160;<a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58a4d5c33ed226fa64f74a2664f2cc0386d">IN_CFG_SEL_START</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58a5b9a7440ea5d30835f13be5283c82402">IN_CFG_SEL_LEN</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58a7d34b37f09e2a0c36eaf6e52f0cb2919">IN_CFG_SEL_ANCHOR</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58a3ffb1f0c52049e3a3ca1a151f9aae15d">IN_CFG_SUBMITTED_TEXT</a>
+&#160;&#160;<a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58af7296cd3521943d4c29bb47d86c8aaab">IN_CFG_FOCUSED</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a678b62642d89e25ac9bfbd74e96eb36a">IN_CFG_SUBMITTED</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58af3df006c6e0bc47728133ff0400bab42">IN_CFG_BG_TEXTURE</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a4d5c33ed226fa64f74a2664f2cc0386d">IN_CFG_SEL_START</a>
 , <br />
-&#160;&#160;<a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58a39af69343bf7df476ed8b2f676c4506e">IN_CFG_PLACEHOLDER_INDEX</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58a12a8b7b18c49dcb9f665ed1bac1cf99d">IN_CFG_PLACEHOLDER_LAST_TICK</a>
-, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58abedec46d4ecacf060485ee651efdbd02">IN_CFG_ON_SUBMIT</a>
+&#160;&#160;<a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a5b9a7440ea5d30835f13be5283c82402">IN_CFG_SEL_LEN</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a7d34b37f09e2a0c36eaf6e52f0cb2919">IN_CFG_SEL_ANCHOR</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a3ffb1f0c52049e3a3ca1a151f9aae15d">IN_CFG_SUBMITTED_TEXT</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a39af69343bf7df476ed8b2f676c4506e">IN_CFG_PLACEHOLDER_INDEX</a>
+, <br />
+&#160;&#160;<a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a12a8b7b18c49dcb9f665ed1bac1cf99d">IN_CFG_PLACEHOLDER_LAST_TICK</a>
+, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58abedec46d4ecacf060485ee651efdbd02">IN_CFG_ON_SUBMIT</a>
 <br />
  }</td></tr>
+<tr class="separator:ae5dc35609c74896e526bbd8a3494ee58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a8adebff4becd4ba0edd7a83da5aba781" id="r_a8adebff4becd4ba0edd7a83da5aba781"><td class="memItemLeft"><a class="el" href="structInputConfig.html">InputConfig</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a8adebff4becd4ba0edd7a83da5aba781">input_config_init</a> ()</td></tr>
-<tr class="memitem:afdc810a8b85502f37330699e8dddc630" id="r_afdc810a8b85502f37330699e8dddc630"><td class="memItemLeft"><a class="el" href="structInput.html">Input</a> *&#160;</td><td class="memItemRight"><a class="el" href="#afdc810a8b85502f37330699e8dddc630">input_create</a> (SDL_Renderer *renderer, <a class="el" href="#affb866948fe1eb8a87ca4837b22eccd9">InputId</a> id, const <a class="el" href="structInputConfig.html">InputConfig</a> *cfg)</td></tr>
-<tr class="memitem:a74487cf6d45be3908faaa34a7864de2a" id="r_a74487cf6d45be3908faaa34a7864de2a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a74487cf6d45be3908faaa34a7864de2a">input_destroy</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
-<tr class="memitem:a77fd4ed0f0cd565b859a10157c284ec8" id="r_a77fd4ed0f0cd565b859a10157c284ec8"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a77fd4ed0f0cd565b859a10157c284ec8">input_handle_event</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structInput.html">Input</a> *in, SDL_Event *e)</td></tr>
-<tr class="memitem:aa520d2f9b20c84746b3c8a6b199e47b6" id="r_aa520d2f9b20c84746b3c8a6b199e47b6"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa520d2f9b20c84746b3c8a6b199e47b6">input_render</a> (SDL_Renderer *renderer, <a class="el" href="structInput.html">Input</a> *in)</td></tr>
-<tr class="memitem:ab8198703573f27e19f82e1dcbe43c2b9" id="r_ab8198703573f27e19f82e1dcbe43c2b9"><td class="memItemLeft">const char *&#160;</td><td class="memItemRight"><a class="el" href="#ab8198703573f27e19f82e1dcbe43c2b9">input_get_text</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
-<tr class="memitem:adb78f49e1c212bae644fcd1a087bd92d" id="r_adb78f49e1c212bae644fcd1a087bd92d"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#adb78f49e1c212bae644fcd1a087bd92d">input_is_submitted</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
-<tr class="memitem:a7df0d402a380e372de17852658d786ef" id="r_a7df0d402a380e372de17852658d786ef"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a7df0d402a380e372de17852658d786ef">input_clear_submitted</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
-<tr class="memitem:ade42f1ea801614ec46c132f79ca8ce53" id="r_ade42f1ea801614ec46c132f79ca8ce53"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ade42f1ea801614ec46c132f79ca8ce53">input_submit</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structInput.html">Input</a> *in)</td></tr>
-<tr class="memitem:a928e3979ecdcf6f146de5dc66ffdd17f" id="r_a928e3979ecdcf6f146de5dc66ffdd17f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a928e3979ecdcf6f146de5dc66ffdd17f">input_set_text</a> (<a class="el" href="structInput.html">Input</a> *in, const char *text)</td></tr>
-<tr class="memitem:a399255cb92407b394beb2b352537f1f4" id="r_a399255cb92407b394beb2b352537f1f4"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a399255cb92407b394beb2b352537f1f4">input_set_on_submit</a> (<a class="el" href="structInput.html">Input</a> *in, void(*cb)(<a class="el" href="structAppContext.html">AppContext</a> *, const char *))</td></tr>
-<tr class="memitem:ab530114a79fbb2e0231569b118355baa" id="r_ab530114a79fbb2e0231569b118355baa"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ab530114a79fbb2e0231569b118355baa">input_set_bg</a> (<a class="el" href="structInput.html">Input</a> *in, SDL_Renderer *renderer, const char *path, int padding)</td></tr>
-<tr class="memitem:a1f09bab7fb4c182015ed115f1abb1d1a" id="r_a1f09bab7fb4c182015ed115f1abb1d1a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a1f09bab7fb4c182015ed115f1abb1d1a">input_clear_bg</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
-<tr class="memitem:a25f9c60994612692f407494aa5de5673" id="r_a25f9c60994612692f407494aa5de5673"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a25f9c60994612692f407494aa5de5673">input_set_padding</a> (<a class="el" href="structInput.html">Input</a> *in, int padding)</td></tr>
-<tr class="memitem:a827bf3680c14ed7cff612d6b6ceb8c70" id="r_a827bf3680c14ed7cff612d6b6ceb8c70"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a827bf3680c14ed7cff612d6b6ceb8c70">edit_in_cfg</a> (<a class="el" href="#affb866948fe1eb8a87ca4837b22eccd9">InputId</a> id, <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58">InputCfgKey</a> key, intptr_t value)</td></tr>
+<tr class="memitem:a8adebff4becd4ba0edd7a83da5aba781" id="r_a8adebff4becd4ba0edd7a83da5aba781"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structInputConfig.html">InputConfig</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8h.html#a8adebff4becd4ba0edd7a83da5aba781">input_config_init</a> ()</td></tr>
+<tr class="separator:a8adebff4becd4ba0edd7a83da5aba781"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdc810a8b85502f37330699e8dddc630" id="r_afdc810a8b85502f37330699e8dddc630"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structInput.html">Input</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8h.html#afdc810a8b85502f37330699e8dddc630">input_create</a> (SDL_Renderer *renderer, <a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9">InputId</a> id, const <a class="el" href="structInputConfig.html">InputConfig</a> *cfg)</td></tr>
+<tr class="separator:afdc810a8b85502f37330699e8dddc630"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74487cf6d45be3908faaa34a7864de2a" id="r_a74487cf6d45be3908faaa34a7864de2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8h.html#a74487cf6d45be3908faaa34a7864de2a">input_destroy</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
+<tr class="separator:a74487cf6d45be3908faaa34a7864de2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77fd4ed0f0cd565b859a10157c284ec8" id="r_a77fd4ed0f0cd565b859a10157c284ec8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8h.html#a77fd4ed0f0cd565b859a10157c284ec8">input_handle_event</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structInput.html">Input</a> *in, SDL_Event *e)</td></tr>
+<tr class="separator:a77fd4ed0f0cd565b859a10157c284ec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4a4b2e51d555ee923fcc1d54ef666c1" id="r_ae4a4b2e51d555ee923fcc1d54ef666c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structInput.html">Input</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8h.html#ae4a4b2e51d555ee923fcc1d54ef666c1">input_get_by_id</a> (<a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9">InputId</a> id)</td></tr>
+<tr class="separator:ae4a4b2e51d555ee923fcc1d54ef666c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa520d2f9b20c84746b3c8a6b199e47b6" id="r_aa520d2f9b20c84746b3c8a6b199e47b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8h.html#aa520d2f9b20c84746b3c8a6b199e47b6">input_render</a> (SDL_Renderer *renderer, <a class="el" href="structInput.html">Input</a> *in)</td></tr>
+<tr class="separator:aa520d2f9b20c84746b3c8a6b199e47b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8198703573f27e19f82e1dcbe43c2b9" id="r_ab8198703573f27e19f82e1dcbe43c2b9"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8h.html#ab8198703573f27e19f82e1dcbe43c2b9">input_get_text</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
+<tr class="separator:ab8198703573f27e19f82e1dcbe43c2b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb78f49e1c212bae644fcd1a087bd92d" id="r_adb78f49e1c212bae644fcd1a087bd92d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8h.html#adb78f49e1c212bae644fcd1a087bd92d">input_is_submitted</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
+<tr class="separator:adb78f49e1c212bae644fcd1a087bd92d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7df0d402a380e372de17852658d786ef" id="r_a7df0d402a380e372de17852658d786ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8h.html#a7df0d402a380e372de17852658d786ef">input_clear_submitted</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
+<tr class="separator:a7df0d402a380e372de17852658d786ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade42f1ea801614ec46c132f79ca8ce53" id="r_ade42f1ea801614ec46c132f79ca8ce53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8h.html#ade42f1ea801614ec46c132f79ca8ce53">input_submit</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structInput.html">Input</a> *in)</td></tr>
+<tr class="separator:ade42f1ea801614ec46c132f79ca8ce53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a928e3979ecdcf6f146de5dc66ffdd17f" id="r_a928e3979ecdcf6f146de5dc66ffdd17f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8h.html#a928e3979ecdcf6f146de5dc66ffdd17f">input_set_text</a> (<a class="el" href="structInput.html">Input</a> *in, const char *text)</td></tr>
+<tr class="separator:a928e3979ecdcf6f146de5dc66ffdd17f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a399255cb92407b394beb2b352537f1f4" id="r_a399255cb92407b394beb2b352537f1f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8h.html#a399255cb92407b394beb2b352537f1f4">input_set_on_submit</a> (<a class="el" href="structInput.html">Input</a> *in, void(*cb)(<a class="el" href="structAppContext.html">AppContext</a> *, const char *))</td></tr>
+<tr class="separator:a399255cb92407b394beb2b352537f1f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab530114a79fbb2e0231569b118355baa" id="r_ab530114a79fbb2e0231569b118355baa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8h.html#ab530114a79fbb2e0231569b118355baa">input_set_bg</a> (<a class="el" href="structInput.html">Input</a> *in, SDL_Renderer *renderer, const char *path, int padding)</td></tr>
+<tr class="separator:ab530114a79fbb2e0231569b118355baa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f09bab7fb4c182015ed115f1abb1d1a" id="r_a1f09bab7fb4c182015ed115f1abb1d1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8h.html#a1f09bab7fb4c182015ed115f1abb1d1a">input_clear_bg</a> (<a class="el" href="structInput.html">Input</a> *in)</td></tr>
+<tr class="separator:a1f09bab7fb4c182015ed115f1abb1d1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25f9c60994612692f407494aa5de5673" id="r_a25f9c60994612692f407494aa5de5673"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8h.html#a25f9c60994612692f407494aa5de5673">input_set_padding</a> (<a class="el" href="structInput.html">Input</a> *in, int padding)</td></tr>
+<tr class="separator:a25f9c60994612692f407494aa5de5673"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a827bf3680c14ed7cff612d6b6ceb8c70" id="r_a827bf3680c14ed7cff612d6b6ceb8c70"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8h.html#a827bf3680c14ed7cff612d6b6ceb8c70">edit_in_cfg</a> (<a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9">InputId</a> id, <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58">InputCfgKey</a> key, intptr_t value)</td></tr>
+<tr class="separator:a827bf3680c14ed7cff612d6b6ceb8c70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentation des macros</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Gestion des champs de saisie de texte interactifs. </p>
+
+<p class="definition">Définition dans le fichier <a class="el" href="input_8h_source.html">input.h</a>.</p>
+</div><h2 class="groupheader">Documentation des macros</h2>
 <a id="a6a0477f66eef0933533f9d4dbfb8c609" name="a6a0477f66eef0933533f9d4dbfb8c609"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6a0477f66eef0933533f9d4dbfb8c609">&#9670;&#160;</a></span>INPUT_DEFAULT_MAX</h2>
 
@@ -202,13 +247,27 @@ Fonctions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="input_8h_source.html#l00007">7</a> du fichier <a class="el" href="input_8h_source.html">input.h</a>.</p>
-
-<p class="reference">Référencé par <a class="el" href="input_8c_source.html#l00069">input_config_init()</a>, <a class="el" href="input_8c_source.html#l00153">input_create()</a>, et <a class="el" href="menu_8c_source.html#l00067">menu_init()</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="input_8h_source.html#l00012">12</a> du fichier <a class="el" href="input_8h_source.html">input.h</a>.</p>
 
 </div>
 </div>
-<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Documentation des définitions de type</h2>
+<a id="a553e59abfa1a4e6d672834b50a172c40" name="a553e59abfa1a4e6d672834b50a172c40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a553e59abfa1a4e6d672834b50a172c40">&#9670;&#160;</a></span>INPUT_HISTORY_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INPUT_HISTORY_MAX&#160;&#160;&#160;50</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="input_8h_source.html#l00013">13</a> du fichier <a class="el" href="input_8h_source.html">input.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des définitions de type</h2>
 <a id="ad1857177d745cb364a184655f148144e" name="ad1857177d745cb364a184655f148144e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad1857177d745cb364a184655f148144e">&#9670;&#160;</a></span>Input</h2>
 
@@ -216,7 +275,7 @@ Fonctions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef struct Input Input</td>
+          <td class="memname">typedef struct <a class="el" href="structInput.html">Input</a> <a class="el" href="structInput.html">Input</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -231,11 +290,11 @@ Fonctions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef enum <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58">InputCfgKey</a> <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58">InputCfgKey</a></td>
+          <td class="memname">typedef enum <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58">InputCfgKey</a> <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58">InputCfgKey</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Clés de configuration modifiables via <span class="tt"><a class="el" href="input_8c.html#a827bf3680c14ed7cff612d6b6ceb8c70">edit_in_cfg</a></span>. </p>
+<p>Clés de configuration modifiables via <code>edit_in_cfg</code>. </p>
 
 </div>
 </div>
@@ -246,11 +305,11 @@ Fonctions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef struct InputConfig InputConfig</td>
+          <td class="memname">typedef struct <a class="el" href="structInputConfig.html">InputConfig</a> <a class="el" href="structInputConfig.html">InputConfig</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Configuration pour créer un <span class="tt"><a class="el" href="structInput.html">Input</a></span>. Tous les champs ont des valeurs par défaut définies via <span class="tt"><a class="el" href="input_8c.html#a8adebff4becd4ba0edd7a83da5aba781">input_config_init</a></span>. La structure peut être modifiée à tout moment et passée à <span class="tt"><a class="el" href="input_8c.html#afb94b7639f753d63656903360e5388ea">input_create</a></span>. Note : Certains champs sont gérés en interne par l'input (text, cursor_pos, textures, etc.) et ne doivent pas être modifiés directement après la création de l'input. Seuls les champs "configurables" (x, y, w, h, font_path, etc.) peuvent être modifiés pour changer l'apparence ou le comportement de l'input. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Configuration pour créer un <code><a class="el" href="structInput.html">Input</a></code>. Tous les champs ont des valeurs par défaut définies via <code>input_config_init</code>. La structure peut être modifiée à tout moment et passée à <code>input_create</code>. Note : Certains champs sont gérés en interne par l'input (text, cursor_pos, textures, etc.) et ne doivent pas être modifiés directement après la création de l'input. Seuls les champs "configurables" (x, y, w, h, font_path, etc.) peuvent être modifiés pour changer l'apparence ou le comportement de l'input. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">x</td><td>Offset horizontal relatif au centre de la fenêtre (pixels). Positif vers la droite, négatif vers la gauche. </td></tr>
     <tr><td class="paramname">y</td><td>Offset vertical relatif au centre de la fenêtre (pixels). Positif vers le haut, négatif vers le bas. Si x = 0 et y = 0, le centre de l'input est au centre de la fenêtre. Formules appliquées dans input_create : screen_x = WIN_WIDTH/2 + x - w/2 screen_y = WIN_HEIGHT/2 - y - h/2 </td></tr>
@@ -259,42 +318,51 @@ Fonctions</h2></td></tr>
     <tr><td class="paramname">font_path</td><td>Chemin vers la police à utiliser pour le texte de l'input. </td></tr>
     <tr><td class="paramname">font_size</td><td>Taille de la police. </td></tr>
     <tr><td class="paramname">placeholders</td><td>Tableau de chaînes de caractères utilisées comme placeholders cycliques lorsque l'input est vide. Peut être NULL si aucun placeholder n'est utilisé. </td></tr>
-    <tr><td class="paramname">placeholder_count</td><td>Nombre de placeholders dans le tableau <span class="tt">placeholders</span>. </td></tr>
+    <tr><td class="paramname">placeholder_count</td><td>Nombre de placeholders dans le tableau <code>placeholders</code>. </td></tr>
     <tr><td class="paramname">submitted_label</td><td>Texte à afficher avant le texte soumis (ex: "Pseudo : "). Peut être NULL pour ne rien afficher. </td></tr>
     <tr><td class="paramname">maxlen</td><td>Longueur maximale du texte saisi. Si le texte dépasse cette longueur, il sera tronqué. </td></tr>
     <tr><td class="paramname">save_player_data</td><td>Si 1, la valeur de l'input est sauvegardée dans datas/player.properties à chaque modification et rechargée au lancement du jeu. Utile pour des inputs comme le pseudo du joueur. </td></tr>
-    <tr><td class="paramname"><a class="el" href="background_8c.html#a41a4146bfafc08d5edf38a02628e8038">bg_color</a></td><td>Couleur de fond de l'input (utilisée si <span class="tt">bg_path</span> est NULL). </td></tr>
+    <tr><td class="paramname">bg_color</td><td>Couleur de fond de l'input (utilisée si <code>bg_path</code> est NULL). </td></tr>
     <tr><td class="paramname">border_color</td><td>Couleur de la bordure de l'input. </td></tr>
     <tr><td class="paramname">text_color</td><td>Couleur du texte saisi. </td></tr>
     <tr><td class="paramname">padding</td><td>Padding intérieur de l'input (espace entre le bord et le texte). </td></tr>
     <tr><td class="paramname">centered</td><td>Si 1, le texte/placeholder et le curseur sont centrés horizontalement. Si 0, ils sont alignés à gauche. </td></tr>
-    <tr><td class="paramname">bg_path</td><td>Chemin vers l'image de fond de l'input. Si NULL, un fond uni de couleur <span class="tt"><a class="el" href="background_8c.html#a41a4146bfafc08d5edf38a02628e8038">bg_color</a></span> est utilisé. L'image est chargée automatiquement par <span class="tt"><a class="el" href="input_8c.html#afb94b7639f753d63656903360e5388ea">input_create</a></span> et doit être libérée lors de la destruction de l'input. </td></tr>
-    <tr><td class="paramname">bg_padding</td><td>Padding à appliquer avec l'image de fond (&gt;= 0). Ignoré si <span class="tt">bg_path</span> est NULL. Si -1, le padding est calculé automatiquement pour centrer le contenu dans l'image de fond. </td></tr>
+    <tr><td class="paramname">bg_path</td><td>Chemin vers l'image de fond de l'input. Si NULL, un fond uni de couleur <code>bg_color</code> est utilisé. L'image est chargée automatiquement par <code>input_create</code> et doit être libérée lors de la destruction de l'input. </td></tr>
+    <tr><td class="paramname">bg_padding</td><td>Padding à appliquer avec l'image de fond (&gt;= 0). Ignoré si <code>bg_path</code> est NULL. Si -1, le padding est calculé automatiquement pour centrer le contenu dans l'image de fond. </td></tr>
     <tr><td class="paramname">allowed_pattern</td><td>Regex POSIX étendue appliquée à chaque caractère saisi. Si NULL, tout caractère est accepté. Ex: "^[A-Za-z0-9]$" </td></tr>
     <tr><td class="paramname">submit_pattern</td><td>Regex POSIX étendue appliquée au texte complet au moment de la soumission. Si définie et non satisfaite, la soumission est ignorée. Ex: "^[0-9]{5}$" </td></tr>
-    <tr><td class="paramname"><a class="el" href="text_8c.html#a54fde1217ab65d0085f16d682aaf4c01">init_text</a></td><td>Texte initial à afficher dans l'input. Si NULL ou chaîne vide, l'input commence vide. </td></tr>
+    <tr><td class="paramname">submit_sound</td><td>Chemin vers un son joué à la soumission valide de l'input. Si NULL, aucun son n'est joué. </td></tr>
+    <tr><td class="paramname">init_text</td><td>Texte initial à afficher dans l'input. Si NULL ou chaîne vide, l'input commence vide. </td></tr>
     <tr><td class="paramname">rect</td><td>Rectangle SDL calculé automatiquement à partir de x/y/w/h, utilisé pour le rendu et la détection de clics. </td></tr>
     <tr><td class="paramname">text</td><td>Buffer de texte saisi, géré en interne par l'input. </td></tr>
     <tr><td class="paramname">disabled</td><td>Indique si la pression de la touche entrée est désactivée (1) ou non (0). </td></tr>
+    <tr><td class="paramname">clear_on_submit</td><td>Indique si le texte est vidé après soumission (1) ou conservé (0). </td></tr>
+    <tr><td class="paramname">keep_focus_on_submit</td><td>Indique si l'input conserve le focus après soumission (1) ou le perd (0). </td></tr>
     <tr><td class="paramname">len</td><td>Longueur actuelle du texte saisi. </td></tr>
     <tr><td class="paramname">cursor_pos</td><td>Position actuelle du curseur dans le texte (index entre 0 et len). </td></tr>
+    <tr><td class="paramname">view_start</td><td>Index du premier octet visible dans le champ (défilement horizontal interne). </td></tr>
     <tr><td class="paramname">focused</td><td>Indique si l'input est actuellement focalisé (1) ou non (0). </td></tr>
     <tr><td class="paramname">submitted</td><td>Indique si l'input a été soumis (1) ou non (0). Peut être utilisé pour déclencher des actions après la soumission. </td></tr>
-    <tr><td class="paramname">bg_texture</td><td>Texture SDL de l'image de fond, chargée automatiquement si <span class="tt">bg_path</span> est défini. Doit être libérée lors de la destruction de l'input. </td></tr>
+    <tr><td class="paramname">bg_texture</td><td>Texture SDL de l'image de fond, chargée automatiquement si <code>bg_path</code> est défini. Doit être libérée lors de la destruction de l'input. </td></tr>
     <tr><td class="paramname">sel_start</td><td>Index de début de la sélection de texte (0 si aucune sélection). </td></tr>
     <tr><td class="paramname">sel_len</td><td>Longueur de la sélection de texte (0 si aucune sélection). </td></tr>
     <tr><td class="paramname">sel_anchor</td><td>Index d'ancrage de la sélection, utilisé pour étendre la sélection lors du déplacement du curseur avec Shift. </td></tr>
     <tr><td class="paramname">submitted_text</td><td>Texte qui a été soumis lors de la dernière soumission. Peut être utilisé pour afficher le texte soumis ou pour d'autres logiques de jeu. </td></tr>
+    <tr><td class="paramname">history</td><td>Historique des soumissions (max INPUT_HISTORY_MAX), géré en interne. </td></tr>
+    <tr><td class="paramname">history_count</td><td>Nombre actuel d'entrées dans l'historique. </td></tr>
+    <tr><td class="paramname">history_index</td><td>Index courant de navigation dans l'historique (flèche haut/bas). </td></tr>
+    <tr><td class="paramname">history_draft_text</td><td>Texte temporaire restauré quand on revient en bas de l'historique. </td></tr>
+    <tr><td class="paramname">submit_sound_chunk</td><td>Chunk SDL_mixer chargé à partir de <code>submit_sound</code>, géré en interne par l'input. </td></tr>
     <tr><td class="paramname">placeholder_index</td><td>Index du placeholder actuellement affiché (si l'input est vide), utilisé pour faire défiler les placeholders. </td></tr>
     <tr><td class="paramname">placeholder_last_tick</td><td>Timestamp du dernier changement de placeholder, utilisé pour faire défiler les placeholders à intervalles réguliers. </td></tr>
-    <tr><td class="paramname">on_submit</td><td>Fonction de rappel à appeler lorsque l'input est soumis (par exemple, en appuyant sur Entrée). La fonction doit prendre un <span class="tt">AppContext*</span> (contexte SDL) et un <span class="tt">const char*</span> (le texte soumis) et retourner void. Si NULL, aucune fonction ne sera appelée lors de la soumission. </td></tr>
+    <tr><td class="paramname">on_submit</td><td>Fonction de rappel à appeler lorsque l'input est soumis (par exemple, en appuyant sur Entrée). La fonction doit prendre un <code>AppContext*</code> (contexte SDL) et un <code>const char*</code> (le texte soumis) et retourner void. Si NULL, aucune fonction ne sera appelée lors de la soumission. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Documentation du type de l'énumération</h2>
+<h2 class="groupheader">Documentation du type de l'énumération</h2>
 <a id="ae5dc35609c74896e526bbd8a3494ee58" name="ae5dc35609c74896e526bbd8a3494ee58"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae5dc35609c74896e526bbd8a3494ee58">&#9670;&#160;</a></span>InputCfgKey</h2>
 
@@ -302,11 +370,11 @@ Fonctions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58">InputCfgKey</a></td>
+          <td class="memname">enum <a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58">InputCfgKey</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Clés de configuration modifiables via <span class="tt"><a class="el" href="#a827bf3680c14ed7cff612d6b6ceb8c70">edit_in_cfg</a></span>. </p>
+<p>Clés de configuration modifiables via <code>edit_in_cfg</code>. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="ae5dc35609c74896e526bbd8a3494ee58a60730fc519a85e768751f9118144f547" name="ae5dc35609c74896e526bbd8a3494ee58a60730fc519a85e768751f9118144f547"></a>IN_CFG_X&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ae5dc35609c74896e526bbd8a3494ee58a562f8fbd46c7488f4933a2e02e42c190" name="ae5dc35609c74896e526bbd8a3494ee58a562f8fbd46c7488f4933a2e02e42c190"></a>IN_CFG_Y&#160;</td><td class="fielddoc"></td></tr>
@@ -328,11 +396,14 @@ Fonctions</h2></td></tr>
 <tr><td class="fieldname"><a id="ae5dc35609c74896e526bbd8a3494ee58a2c9801ea589d533363a9e17a2159c8a9" name="ae5dc35609c74896e526bbd8a3494ee58a2c9801ea589d533363a9e17a2159c8a9"></a>IN_CFG_BG_PADDING&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ae5dc35609c74896e526bbd8a3494ee58ad8b8e1c3a953d1f0e22e694202e56b94" name="ae5dc35609c74896e526bbd8a3494ee58ad8b8e1c3a953d1f0e22e694202e56b94"></a>IN_CFG_ALLOWED_PATTERN&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ae5dc35609c74896e526bbd8a3494ee58a9622032b5474eebf2453a0eb8319fd37" name="ae5dc35609c74896e526bbd8a3494ee58a9622032b5474eebf2453a0eb8319fd37"></a>IN_CFG_SUBMIT_PATTERN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae5dc35609c74896e526bbd8a3494ee58a06bd8fa35f24432fe0cfd17752f5cbc4" name="ae5dc35609c74896e526bbd8a3494ee58a06bd8fa35f24432fe0cfd17752f5cbc4"></a>IN_CFG_SUBMIT_SOUND&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ae5dc35609c74896e526bbd8a3494ee58a9fad207e4f25c9daae5bda698355fd17" name="ae5dc35609c74896e526bbd8a3494ee58a9fad207e4f25c9daae5bda698355fd17"></a>IN_CFG_INIT_TEXT&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ae5dc35609c74896e526bbd8a3494ee58a1fa0048660fd88b8b30049f13c0e3202" name="ae5dc35609c74896e526bbd8a3494ee58a1fa0048660fd88b8b30049f13c0e3202"></a>IN_CFG_RECT&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ae5dc35609c74896e526bbd8a3494ee58aab680294d6d75a5b9a139fa26d27d754" name="ae5dc35609c74896e526bbd8a3494ee58aab680294d6d75a5b9a139fa26d27d754"></a>IN_CFG_TEXT&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ae5dc35609c74896e526bbd8a3494ee58a1f8d315aad0ff07e4e838117b0db3cfb" name="ae5dc35609c74896e526bbd8a3494ee58a1f8d315aad0ff07e4e838117b0db3cfb"></a>IN_CFG_LEN&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ae5dc35609c74896e526bbd8a3494ee58aa6be983835b268f854c580c25b7d2c96" name="ae5dc35609c74896e526bbd8a3494ee58aa6be983835b268f854c580c25b7d2c96"></a>IN_CFG_CURSOR_POS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae5dc35609c74896e526bbd8a3494ee58aedc68511fe6bb02522c1db11803d5170" name="ae5dc35609c74896e526bbd8a3494ee58aedc68511fe6bb02522c1db11803d5170"></a>IN_CFG_CLEAR_ON_SUBMIT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae5dc35609c74896e526bbd8a3494ee58a196cc31c0e77f21ac4d83d1063ad32ce" name="ae5dc35609c74896e526bbd8a3494ee58a196cc31c0e77f21ac4d83d1063ad32ce"></a>IN_CFG_KEEP_FOCUS_ON_SUBMIT&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ae5dc35609c74896e526bbd8a3494ee58af7296cd3521943d4c29bb47d86c8aaab" name="ae5dc35609c74896e526bbd8a3494ee58af7296cd3521943d4c29bb47d86c8aaab"></a>IN_CFG_FOCUSED&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ae5dc35609c74896e526bbd8a3494ee58a678b62642d89e25ac9bfbd74e96eb36a" name="ae5dc35609c74896e526bbd8a3494ee58a678b62642d89e25ac9bfbd74e96eb36a"></a>IN_CFG_SUBMITTED&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ae5dc35609c74896e526bbd8a3494ee58af3df006c6e0bc47728133ff0400bab42" name="ae5dc35609c74896e526bbd8a3494ee58af3df006c6e0bc47728133ff0400bab42"></a>IN_CFG_BG_TEXTURE&#160;</td><td class="fielddoc"></td></tr>
@@ -345,7 +416,7 @@ Fonctions</h2></td></tr>
 <tr><td class="fieldname"><a id="ae5dc35609c74896e526bbd8a3494ee58abedec46d4ecacf060485ee651efdbd02" name="ae5dc35609c74896e526bbd8a3494ee58abedec46d4ecacf060485ee651efdbd02"></a>IN_CFG_ON_SUBMIT&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Définition à la ligne <a class="el" href="input_8h_source.html#l00119">119</a> du fichier <a class="el" href="input_8h_source.html">input.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="input_8h_source.html#l00143">143</a> du fichier <a class="el" href="input_8h_source.html">input.h</a>.</p>
 
 </div>
 </div>
@@ -356,7 +427,7 @@ Fonctions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="#affb866948fe1eb8a87ca4837b22eccd9">InputId</a></td>
+          <td class="memname">enum <a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9">InputId</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -370,11 +441,11 @@ Fonctions</h2></td></tr>
 <tr><td class="fieldname"><a id="affb866948fe1eb8a87ca4837b22eccd9a9c373d0c102e8cc844cce7ec7696af41" name="affb866948fe1eb8a87ca4837b22eccd9a9c373d0c102e8cc844cce7ec7696af41"></a>INPUT_CHAT&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Définition à la ligne <a class="el" href="input_8h_source.html#l00012">12</a> du fichier <a class="el" href="input_8h_source.html">input.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="input_8h_source.html#l00018">18</a> du fichier <a class="el" href="input_8h_source.html">input.h</a>.</p>
 
 </div>
 </div>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a id="a827bf3680c14ed7cff612d6b6ceb8c70" name="a827bf3680c14ed7cff612d6b6ceb8c70"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a827bf3680c14ed7cff612d6b6ceb8c70">&#9670;&#160;</a></span>edit_in_cfg()</h2>
 
@@ -384,17 +455,25 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int edit_in_cfg </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="#affb866948fe1eb8a87ca4837b22eccd9">InputId</a></td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+          <td class="paramtype"><a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9">InputId</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58">InputCfgKey</a></td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+          <td class="paramtype"><a class="el" href="input_8h.html#ae5dc35609c74896e526bbd8a3494ee58">InputCfgKey</a>&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">intptr_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+          <td class="paramtype">intptr_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -402,15 +481,17 @@ Fonctions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">id</td><td>L'ID de l'input à modifier. </td></tr>
     <tr><td class="paramname">key</td><td>Champ ciblé dans la configuration. </td></tr>
-    <tr><td class="paramname">value</td><td>Valeur à appliquer (entier direct pour champs int/bool, pointeur casté en <span class="tt">intptr_t</span> pour les champs pointeurs, et adresse d'une structure pour <span class="tt"><a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58afece0bb7a84045c196886f97f9024a6c">IN_CFG_BG_COLOR</a></span> / <span class="tt"><a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58afae8f93bea7ffa957e4c135db0d82560">IN_CFG_BORDER_COLOR</a></span> / <span class="tt"><a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58ada262161a6003e5bcf6e65290f394908">IN_CFG_TEXT_COLOR</a></span> / <span class="tt"><a class="el" href="#ae5dc35609c74896e526bbd8a3494ee58a1fa0048660fd88b8b30049f13c0e3202">IN_CFG_RECT</a></span>). </td></tr>
+    <tr><td class="paramname">value</td><td>Valeur à appliquer (entier direct pour champs int/bool, pointeur casté en <code>intptr_t</code> pour les champs pointeurs, et adresse d'une structure pour <code>IN_CFG_BG_COLOR</code> / <code>IN_CFG_BORDER_COLOR</code> / <code>IN_CFG_TEXT_COLOR</code> / <code>IN_CFG_RECT</code>). </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS si l'input existe, sinon EXIT_FAILURE. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00661">661</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00995">995</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="input_8h_source.html#l00088">InputConfig::allowed_pattern</a>, <a class="el" href="input_8h_source.html#l00081">InputConfig::bg_color</a>, <a class="el" href="input_8h_source.html#l00087">InputConfig::bg_padding</a>, <a class="el" href="input_8h_source.html#l00086">InputConfig::bg_path</a>, <a class="el" href="input_8h_source.html#l00098">InputConfig::bg_texture</a>, <a class="el" href="input_8h_source.html#l00082">InputConfig::border_color</a>, <a class="el" href="input_8h_source.html#l00085">InputConfig::centered</a>, <a class="el" href="input_8h_source.html#l00113">Input::cfg</a>, <a class="el" href="input_8h_source.html#l00095">InputConfig::cursor_pos</a>, <a class="el" href="input_8h_source.html#l00096">InputConfig::focused</a>, <a class="el" href="input_8h_source.html#l00074">InputConfig::font_path</a>, <a class="el" href="input_8h_source.html#l00075">InputConfig::font_size</a>, <a class="el" href="input_8h_source.html#l00073">InputConfig::h</a>, <a class="el" href="input_8h_source.html#l00138">IN_CFG_ALLOWED_PATTERN</a>, <a class="el" href="input_8h_source.html#l00131">IN_CFG_BG_COLOR</a>, <a class="el" href="input_8h_source.html#l00137">IN_CFG_BG_PADDING</a>, <a class="el" href="input_8h_source.html#l00136">IN_CFG_BG_PATH</a>, <a class="el" href="input_8h_source.html#l00147">IN_CFG_BG_TEXTURE</a>, <a class="el" href="input_8h_source.html#l00132">IN_CFG_BORDER_COLOR</a>, <a class="el" href="input_8h_source.html#l00135">IN_CFG_CENTERED</a>, <a class="el" href="input_8h_source.html#l00144">IN_CFG_CURSOR_POS</a>, <a class="el" href="input_8h_source.html#l00145">IN_CFG_FOCUSED</a>, <a class="el" href="input_8h_source.html#l00124">IN_CFG_FONT_PATH</a>, <a class="el" href="input_8h_source.html#l00125">IN_CFG_FONT_SIZE</a>, <a class="el" href="input_8h_source.html#l00123">IN_CFG_H</a>, <a class="el" href="input_8h_source.html#l00140">IN_CFG_INIT_TEXT</a>, <a class="el" href="input_8h_source.html#l00143">IN_CFG_LEN</a>, <a class="el" href="input_8h_source.html#l00129">IN_CFG_MAXLEN</a>, <a class="el" href="input_8h_source.html#l00154">IN_CFG_ON_SUBMIT</a>, <a class="el" href="input_8h_source.html#l00134">IN_CFG_PADDING</a>, <a class="el" href="input_8h_source.html#l00127">IN_CFG_PLACEHOLDER_COUNT</a>, <a class="el" href="input_8h_source.html#l00152">IN_CFG_PLACEHOLDER_INDEX</a>, <a class="el" href="input_8h_source.html#l00153">IN_CFG_PLACEHOLDER_LAST_TICK</a>, <a class="el" href="input_8h_source.html#l00126">IN_CFG_PLACEHOLDERS</a>, <a class="el" href="input_8h_source.html#l00141">IN_CFG_RECT</a>, <a class="el" href="input_8h_source.html#l00130">IN_CFG_SAVE_PLAYER_DATA</a>, <a class="el" href="input_8h_source.html#l00150">IN_CFG_SEL_ANCHOR</a>, <a class="el" href="input_8h_source.html#l00149">IN_CFG_SEL_LEN</a>, <a class="el" href="input_8h_source.html#l00148">IN_CFG_SEL_START</a>, <a class="el" href="input_8h_source.html#l00139">IN_CFG_SUBMIT_PATTERN</a>, <a class="el" href="input_8h_source.html#l00146">IN_CFG_SUBMITTED</a>, <a class="el" href="input_8h_source.html#l00128">IN_CFG_SUBMITTED_LABEL</a>, <a class="el" href="input_8h_source.html#l00151">IN_CFG_SUBMITTED_TEXT</a>, <a class="el" href="input_8h_source.html#l00142">IN_CFG_TEXT</a>, <a class="el" href="input_8h_source.html#l00133">IN_CFG_TEXT_COLOR</a>, <a class="el" href="input_8h_source.html#l00122">IN_CFG_W</a>, <a class="el" href="input_8h_source.html#l00120">IN_CFG_X</a>, <a class="el" href="input_8h_source.html#l00121">IN_CFG_Y</a>, <a class="el" href="input_8h_source.html#l00090">InputConfig::init_text</a>, <a class="el" href="input_8c_source.html#l00008">input_find_by_id()</a>, <a class="el" href="input_8c_source.html#l00607">input_set_text()</a>, <a class="el" href="input_8h_source.html#l00094">InputConfig::len</a>, <a class="el" href="input_8h_source.html#l00079">InputConfig::maxlen</a>, <a class="el" href="input_8h_source.html#l00105">InputConfig::on_submit</a>, <a class="el" href="input_8h_source.html#l00084">InputConfig::padding</a>, <a class="el" href="input_8h_source.html#l00077">InputConfig::placeholder_count</a>, <a class="el" href="input_8h_source.html#l00103">InputConfig::placeholder_index</a>, <a class="el" href="input_8h_source.html#l00104">InputConfig::placeholder_last_tick</a>, <a class="el" href="input_8h_source.html#l00076">InputConfig::placeholders</a>, <a class="el" href="input_8h_source.html#l00091">InputConfig::rect</a>, <a class="el" href="input_8h_source.html#l00080">InputConfig::save_player_data</a>, <a class="el" href="input_8h_source.html#l00101">InputConfig::sel_anchor</a>, <a class="el" href="input_8h_source.html#l00100">InputConfig::sel_len</a>, <a class="el" href="input_8h_source.html#l00099">InputConfig::sel_start</a>, <a class="el" href="input_8h_source.html#l00089">InputConfig::submit_pattern</a>, <a class="el" href="input_8h_source.html#l00097">InputConfig::submitted</a>, <a class="el" href="input_8h_source.html#l00078">InputConfig::submitted_label</a>, <a class="el" href="input_8h_source.html#l00102">InputConfig::submitted_text</a>, <a class="el" href="input_8h_source.html#l00092">InputConfig::text</a>, <a class="el" href="input_8h_source.html#l00083">InputConfig::text_color</a>, <a class="el" href="input_8h_source.html#l00072">InputConfig::w</a>, <a class="el" href="input_8h_source.html#l00070">InputConfig::x</a>, et <a class="el" href="input_8h_source.html#l00071">InputConfig::y</a>.</p>
+<p class="reference">Références <a class="el" href="input_8h_source.html#l00103">InputConfig::allowed_pattern</a>, <a class="el" href="input_8h_source.html#l00096">InputConfig::bg_color</a>, <a class="el" href="input_8h_source.html#l00102">InputConfig::bg_padding</a>, <a class="el" href="input_8h_source.html#l00101">InputConfig::bg_path</a>, <a class="el" href="input_8h_source.html#l00117">InputConfig::bg_texture</a>, <a class="el" href="input_8h_source.html#l00097">InputConfig::border_color</a>, <a class="el" href="input_8h_source.html#l00100">InputConfig::centered</a>, <a class="el" href="input_8h_source.html#l00137">Input::cfg</a>, <a class="el" href="input_8h_source.html#l00110">InputConfig::clear_on_submit</a>, <a class="el" href="input_8h_source.html#l00113">InputConfig::cursor_pos</a>, <a class="el" href="input_8h_source.html#l00115">InputConfig::focused</a>, <a class="el" href="input_8h_source.html#l00089">InputConfig::font_path</a>, <a class="el" href="input_8h_source.html#l00090">InputConfig::font_size</a>, <a class="el" href="input_8h_source.html#l00088">InputConfig::h</a>, <a class="el" href="input_8h_source.html#l00162">IN_CFG_ALLOWED_PATTERN</a>, <a class="el" href="input_8h_source.html#l00155">IN_CFG_BG_COLOR</a>, <a class="el" href="input_8h_source.html#l00161">IN_CFG_BG_PADDING</a>, <a class="el" href="input_8h_source.html#l00160">IN_CFG_BG_PATH</a>, <a class="el" href="input_8h_source.html#l00174">IN_CFG_BG_TEXTURE</a>, <a class="el" href="input_8h_source.html#l00156">IN_CFG_BORDER_COLOR</a>, <a class="el" href="input_8h_source.html#l00159">IN_CFG_CENTERED</a>, <a class="el" href="input_8h_source.html#l00170">IN_CFG_CLEAR_ON_SUBMIT</a>, <a class="el" href="input_8h_source.html#l00169">IN_CFG_CURSOR_POS</a>, <a class="el" href="input_8h_source.html#l00172">IN_CFG_FOCUSED</a>, <a class="el" href="input_8h_source.html#l00148">IN_CFG_FONT_PATH</a>, <a class="el" href="input_8h_source.html#l00149">IN_CFG_FONT_SIZE</a>, <a class="el" href="input_8h_source.html#l00147">IN_CFG_H</a>, <a class="el" href="input_8h_source.html#l00165">IN_CFG_INIT_TEXT</a>, <a class="el" href="input_8h_source.html#l00171">IN_CFG_KEEP_FOCUS_ON_SUBMIT</a>, <a class="el" href="input_8h_source.html#l00168">IN_CFG_LEN</a>, <a class="el" href="input_8h_source.html#l00153">IN_CFG_MAXLEN</a>, <a class="el" href="input_8h_source.html#l00181">IN_CFG_ON_SUBMIT</a>, <a class="el" href="input_8h_source.html#l00158">IN_CFG_PADDING</a>, <a class="el" href="input_8h_source.html#l00151">IN_CFG_PLACEHOLDER_COUNT</a>, <a class="el" href="input_8h_source.html#l00179">IN_CFG_PLACEHOLDER_INDEX</a>, <a class="el" href="input_8h_source.html#l00180">IN_CFG_PLACEHOLDER_LAST_TICK</a>, <a class="el" href="input_8h_source.html#l00150">IN_CFG_PLACEHOLDERS</a>, <a class="el" href="input_8h_source.html#l00166">IN_CFG_RECT</a>, <a class="el" href="input_8h_source.html#l00154">IN_CFG_SAVE_PLAYER_DATA</a>, <a class="el" href="input_8h_source.html#l00177">IN_CFG_SEL_ANCHOR</a>, <a class="el" href="input_8h_source.html#l00176">IN_CFG_SEL_LEN</a>, <a class="el" href="input_8h_source.html#l00175">IN_CFG_SEL_START</a>, <a class="el" href="input_8h_source.html#l00163">IN_CFG_SUBMIT_PATTERN</a>, <a class="el" href="input_8h_source.html#l00164">IN_CFG_SUBMIT_SOUND</a>, <a class="el" href="input_8h_source.html#l00173">IN_CFG_SUBMITTED</a>, <a class="el" href="input_8h_source.html#l00152">IN_CFG_SUBMITTED_LABEL</a>, <a class="el" href="input_8h_source.html#l00178">IN_CFG_SUBMITTED_TEXT</a>, <a class="el" href="input_8h_source.html#l00167">IN_CFG_TEXT</a>, <a class="el" href="input_8h_source.html#l00157">IN_CFG_TEXT_COLOR</a>, <a class="el" href="input_8h_source.html#l00146">IN_CFG_W</a>, <a class="el" href="input_8h_source.html#l00144">IN_CFG_X</a>, <a class="el" href="input_8h_source.html#l00145">IN_CFG_Y</a>, <a class="el" href="input_8h_source.html#l00106">InputConfig::init_text</a>, <a class="el" href="input_8c_source.html#l00008">input_find_by_id()</a>, <a class="el" href="input_8c_source.html#l00144">input_reload_submit_sound()</a>, <a class="el" href="input_8c_source.html#l00946">input_set_text()</a>, <a class="el" href="input_8c_source.html#l00024">input_sync_text_input_state()</a>, <a class="el" href="input_8h_source.html#l00111">InputConfig::keep_focus_on_submit</a>, <a class="el" href="input_8h_source.html#l00112">InputConfig::len</a>, <a class="el" href="input_8h_source.html#l00094">InputConfig::maxlen</a>, <a class="el" href="input_8h_source.html#l00129">InputConfig::on_submit</a>, <a class="el" href="input_8h_source.html#l00099">InputConfig::padding</a>, <a class="el" href="input_8h_source.html#l00092">InputConfig::placeholder_count</a>, <a class="el" href="input_8h_source.html#l00127">InputConfig::placeholder_index</a>, <a class="el" href="input_8h_source.html#l00128">InputConfig::placeholder_last_tick</a>, <a class="el" href="input_8h_source.html#l00091">InputConfig::placeholders</a>, <a class="el" href="input_8h_source.html#l00107">InputConfig::rect</a>, <a class="el" href="input_8h_source.html#l00095">InputConfig::save_player_data</a>, <a class="el" href="input_8h_source.html#l00120">InputConfig::sel_anchor</a>, <a class="el" href="input_8h_source.html#l00119">InputConfig::sel_len</a>, <a class="el" href="input_8h_source.html#l00118">InputConfig::sel_start</a>, <a class="el" href="input_8h_source.html#l00104">InputConfig::submit_pattern</a>, <a class="el" href="input_8h_source.html#l00105">InputConfig::submit_sound</a>, <a class="el" href="input_8h_source.html#l00116">InputConfig::submitted</a>, <a class="el" href="input_8h_source.html#l00093">InputConfig::submitted_label</a>, <a class="el" href="input_8h_source.html#l00121">InputConfig::submitted_text</a>, <a class="el" href="input_8h_source.html#l00108">InputConfig::text</a>, <a class="el" href="input_8h_source.html#l00098">InputConfig::text_color</a>, <a class="el" href="input_8h_source.html#l00114">InputConfig::view_start</a>, <a class="el" href="input_8h_source.html#l00087">InputConfig::w</a>, <a class="el" href="input_8h_source.html#l00085">InputConfig::x</a>, et <a class="el" href="input_8h_source.html#l00086">InputConfig::y</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00764">menu_init()</a>, et <a class="el" href="menu_8c_source.html#l00240">menu_set_input_position()</a>.</p>
 
 </div>
 </div>
@@ -423,7 +504,8 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void input_clear_bg </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -435,9 +517,9 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00646">646</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00980">980</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="input_8h_source.html#l00098">InputConfig::bg_texture</a>, <a class="el" href="input_8h_source.html#l00113">Input::cfg</a>, <a class="el" href="sdl_8c_source.html#l00239">free_image()</a>, et <a class="el" href="input_8h_source.html#l00084">InputConfig::padding</a>.</p>
+<p class="reference">Références <a class="el" href="input_8h_source.html#l00117">InputConfig::bg_texture</a>, <a class="el" href="input_8h_source.html#l00137">Input::cfg</a>, <a class="el" href="sdl_8c_source.html#l00264">free_image()</a>, et <a class="el" href="input_8h_source.html#l00099">InputConfig::padding</a>.</p>
 
 </div>
 </div>
@@ -450,7 +532,8 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void input_clear_submitted </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -462,9 +545,9 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00598">598</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00937">937</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="input_8h_source.html#l00113">Input::cfg</a>, et <a class="el" href="input_8h_source.html#l00097">InputConfig::submitted</a>.</p>
+<p class="reference">Références <a class="el" href="input_8h_source.html#l00137">Input::cfg</a>, et <a class="el" href="input_8h_source.html#l00116">InputConfig::submitted</a>.</p>
 
 </div>
 </div>
@@ -477,19 +560,19 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structInputConfig.html">InputConfig</a> * input_config_init </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initialise une <span class="tt"><a class="el" href="structInputConfig.html">InputConfig</a></span> avec des valeurs par défaut.</p>
+<p>Initialise une <code><a class="el" href="structInputConfig.html">InputConfig</a></code> avec des valeurs par défaut. </p><dl class="section return"><dt>Renvoie</dt><dd>Pointeur vers la configuration allouée, ou NULL en cas d'échec.</dd></dl>
 <p>Initialise une <a class="el" href="structInputConfig.html">InputConfig</a> avec des valeurs par défaut. </p>
 
-<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00069">69</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00231">231</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="input_8h_source.html#l00088">InputConfig::allowed_pattern</a>, <a class="el" href="input_8h_source.html#l00081">InputConfig::bg_color</a>, <a class="el" href="input_8h_source.html#l00087">InputConfig::bg_padding</a>, <a class="el" href="input_8h_source.html#l00086">InputConfig::bg_path</a>, <a class="el" href="input_8h_source.html#l00098">InputConfig::bg_texture</a>, <a class="el" href="input_8h_source.html#l00082">InputConfig::border_color</a>, <a class="el" href="input_8h_source.html#l00085">InputConfig::centered</a>, <a class="el" href="input_8h_source.html#l00095">InputConfig::cursor_pos</a>, <a class="el" href="input_8h_source.html#l00093">InputConfig::disabled</a>, <a class="el" href="input_8h_source.html#l00096">InputConfig::focused</a>, <a class="el" href="input_8h_source.html#l00074">InputConfig::font_path</a>, <a class="el" href="input_8h_source.html#l00075">InputConfig::font_size</a>, <a class="el" href="input_8h_source.html#l00073">InputConfig::h</a>, <a class="el" href="input_8h_source.html#l00090">InputConfig::init_text</a>, <a class="el" href="input_8h_source.html#l00007">INPUT_DEFAULT_MAX</a>, <a class="el" href="input_8h_source.html#l00094">InputConfig::len</a>, <a class="el" href="input_8h_source.html#l00079">InputConfig::maxlen</a>, <a class="el" href="input_8h_source.html#l00105">InputConfig::on_submit</a>, <a class="el" href="input_8h_source.html#l00084">InputConfig::padding</a>, <a class="el" href="input_8h_source.html#l00077">InputConfig::placeholder_count</a>, <a class="el" href="input_8h_source.html#l00103">InputConfig::placeholder_index</a>, <a class="el" href="input_8h_source.html#l00104">InputConfig::placeholder_last_tick</a>, <a class="el" href="input_8h_source.html#l00076">InputConfig::placeholders</a>, <a class="el" href="input_8h_source.html#l00091">InputConfig::rect</a>, <a class="el" href="input_8h_source.html#l00080">InputConfig::save_player_data</a>, <a class="el" href="input_8h_source.html#l00101">InputConfig::sel_anchor</a>, <a class="el" href="input_8h_source.html#l00100">InputConfig::sel_len</a>, <a class="el" href="input_8h_source.html#l00099">InputConfig::sel_start</a>, <a class="el" href="input_8h_source.html#l00089">InputConfig::submit_pattern</a>, <a class="el" href="input_8h_source.html#l00097">InputConfig::submitted</a>, <a class="el" href="input_8h_source.html#l00078">InputConfig::submitted_label</a>, <a class="el" href="input_8h_source.html#l00102">InputConfig::submitted_text</a>, <a class="el" href="input_8h_source.html#l00092">InputConfig::text</a>, <a class="el" href="input_8h_source.html#l00083">InputConfig::text_color</a>, <a class="el" href="input_8h_source.html#l00072">InputConfig::w</a>, <a class="el" href="input_8h_source.html#l00070">InputConfig::x</a>, et <a class="el" href="input_8h_source.html#l00071">InputConfig::y</a>.</p>
+<p class="reference">Références <a class="el" href="input_8h_source.html#l00103">InputConfig::allowed_pattern</a>, <a class="el" href="input_8h_source.html#l00096">InputConfig::bg_color</a>, <a class="el" href="input_8h_source.html#l00102">InputConfig::bg_padding</a>, <a class="el" href="input_8h_source.html#l00101">InputConfig::bg_path</a>, <a class="el" href="input_8h_source.html#l00117">InputConfig::bg_texture</a>, <a class="el" href="input_8h_source.html#l00097">InputConfig::border_color</a>, <a class="el" href="input_8h_source.html#l00100">InputConfig::centered</a>, <a class="el" href="input_8h_source.html#l00110">InputConfig::clear_on_submit</a>, <a class="el" href="input_8h_source.html#l00113">InputConfig::cursor_pos</a>, <a class="el" href="input_8h_source.html#l00109">InputConfig::disabled</a>, <a class="el" href="input_8h_source.html#l00115">InputConfig::focused</a>, <a class="el" href="input_8h_source.html#l00089">InputConfig::font_path</a>, <a class="el" href="input_8h_source.html#l00090">InputConfig::font_size</a>, <a class="el" href="input_8h_source.html#l00088">InputConfig::h</a>, <a class="el" href="input_8h_source.html#l00122">InputConfig::history</a>, <a class="el" href="input_8h_source.html#l00123">InputConfig::history_count</a>, <a class="el" href="input_8h_source.html#l00125">InputConfig::history_draft_text</a>, <a class="el" href="input_8h_source.html#l00124">InputConfig::history_index</a>, <a class="el" href="input_8h_source.html#l00106">InputConfig::init_text</a>, <a class="el" href="input_8h_source.html#l00012">INPUT_DEFAULT_MAX</a>, <a class="el" href="input_8h_source.html#l00013">INPUT_HISTORY_MAX</a>, <a class="el" href="input_8h_source.html#l00111">InputConfig::keep_focus_on_submit</a>, <a class="el" href="input_8h_source.html#l00112">InputConfig::len</a>, <a class="el" href="input_8h_source.html#l00094">InputConfig::maxlen</a>, <a class="el" href="input_8h_source.html#l00129">InputConfig::on_submit</a>, <a class="el" href="input_8h_source.html#l00099">InputConfig::padding</a>, <a class="el" href="input_8h_source.html#l00092">InputConfig::placeholder_count</a>, <a class="el" href="input_8h_source.html#l00127">InputConfig::placeholder_index</a>, <a class="el" href="input_8h_source.html#l00128">InputConfig::placeholder_last_tick</a>, <a class="el" href="input_8h_source.html#l00091">InputConfig::placeholders</a>, <a class="el" href="input_8h_source.html#l00107">InputConfig::rect</a>, <a class="el" href="input_8h_source.html#l00095">InputConfig::save_player_data</a>, <a class="el" href="input_8h_source.html#l00120">InputConfig::sel_anchor</a>, <a class="el" href="input_8h_source.html#l00119">InputConfig::sel_len</a>, <a class="el" href="input_8h_source.html#l00118">InputConfig::sel_start</a>, <a class="el" href="input_8h_source.html#l00104">InputConfig::submit_pattern</a>, <a class="el" href="input_8h_source.html#l00105">InputConfig::submit_sound</a>, <a class="el" href="input_8h_source.html#l00126">InputConfig::submit_sound_chunk</a>, <a class="el" href="input_8h_source.html#l00116">InputConfig::submitted</a>, <a class="el" href="input_8h_source.html#l00093">InputConfig::submitted_label</a>, <a class="el" href="input_8h_source.html#l00121">InputConfig::submitted_text</a>, <a class="el" href="input_8h_source.html#l00108">InputConfig::text</a>, <a class="el" href="input_8h_source.html#l00098">InputConfig::text_color</a>, <a class="el" href="input_8h_source.html#l00114">InputConfig::view_start</a>, <a class="el" href="input_8h_source.html#l00087">InputConfig::w</a>, <a class="el" href="input_8h_source.html#l00085">InputConfig::x</a>, et <a class="el" href="input_8h_source.html#l00086">InputConfig::y</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>, <a class="el" href="input_8c_source.html#l00153">input_create()</a>, et <a class="el" href="menu_8c_source.html#l00067">menu_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00504">game_init()</a>, <a class="el" href="input_8c_source.html#l00420">input_create()</a>, <a class="el" href="menu_8c_source.html#l00643">menu_init_code_input()</a>, et <a class="el" href="menu_8c_source.html#l00614">menu_init_name_input()</a>.</p>
 
 </div>
 </div>
@@ -502,23 +585,31 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structInput.html">Input</a> * input_create </td>
           <td>(</td>
-          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="#affb866948fe1eb8a87ca4837b22eccd9">InputId</a></td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+          <td class="paramtype"><a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9">InputId</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structInputConfig.html">InputConfig</a> *</td>          <td class="paramname"><span class="paramname"><em>cfg</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="structInputConfig.html">InputConfig</a> *&#160;</td>
+          <td class="paramname"><em>cfg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Crée un nouvel input à partir d'une configuration. Si <span class="tt">cfg</span> est NULL, les valeurs par défaut sont utilisées. L'input créé doit être détruit avec <span class="tt"><a class="el" href="#a74487cf6d45be3908faaa34a7864de2a">input_destroy</a></span> pour éviter les fuites de mémoire. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Crée un nouvel input à partir d'une configuration. Si <code>cfg</code> est NULL, les valeurs par défaut sont utilisées. L'input créé doit être détruit avec <code>input_destroy</code> pour éviter les fuites de mémoire. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">renderer</td><td>Renderer SDL utilisé pour charger la texture de fond si <span class="tt">bg_path</span> est défini dans la configuration. </td></tr>
+    <tr><td class="paramname">renderer</td><td>Renderer SDL utilisé pour charger la texture de fond si <code>bg_path</code> est défini dans la configuration. </td></tr>
     <tr><td class="paramname">id</td><td>Identifiant de l'input (ex: INPUT_ID_NAME). Peut être utilisé pour différencier les inputs dans les callbacks. </td></tr>
     <tr><td class="paramname">cfg_in</td><td>Pointeur vers la configuration de l'input. Si NULL, les valeurs par défaut sont utilisées. La configuration est copiée, donc le pointeur peut être libéré ou modifié après l'appel sans affecter l'input créé. </td></tr>
   </table>
@@ -526,11 +617,11 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Pointeur vers l'input créé, ou NULL en cas d'erreur (par exemple, échec d'allocation mémoire ou de chargement de la texture de fond). </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00153">153</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00420">420</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="input_8h_source.html#l00087">InputConfig::bg_padding</a>, <a class="el" href="input_8h_source.html#l00086">InputConfig::bg_path</a>, <a class="el" href="input_8h_source.html#l00098">InputConfig::bg_texture</a>, <a class="el" href="input_8h_source.html#l00113">Input::cfg</a>, <a class="el" href="input_8h_source.html#l00095">InputConfig::cursor_pos</a>, <a class="el" href="input_8h_source.html#l00096">InputConfig::focused</a>, <a class="el" href="input_8h_source.html#l00073">InputConfig::h</a>, <a class="el" href="input_8h_source.html#l00112">Input::id</a>, <a class="el" href="input_8h_source.html#l00090">InputConfig::init_text</a>, <a class="el" href="input_8c_source.html#l00069">input_config_init()</a>, <a class="el" href="input_8c_source.html#l00006">input_count</a>, <a class="el" href="input_8h_source.html#l00007">INPUT_DEFAULT_MAX</a>, <a class="el" href="input_8c_source.html#l00241">input_destroy()</a>, <a class="el" href="input_8h_source.html#l00014">INPUT_NAME</a>, <a class="el" href="input_8c_source.html#l00622">input_set_bg()</a>, <a class="el" href="input_8c_source.html#l00005">inputs</a>, <a class="el" href="input_8h_source.html#l00094">InputConfig::len</a>, <a class="el" href="input_8c_source.html#l00004">MAX_INPUTS</a>, <a class="el" href="input_8h_source.html#l00079">InputConfig::maxlen</a>, <a class="el" href="input_8h_source.html#l00103">InputConfig::placeholder_index</a>, <a class="el" href="input_8h_source.html#l00104">InputConfig::placeholder_last_tick</a>, <a class="el" href="save_8c_source.html#l00012">read_property()</a>, <a class="el" href="input_8h_source.html#l00091">InputConfig::rect</a>, <a class="el" href="input_8h_source.html#l00080">InputConfig::save_player_data</a>, <a class="el" href="input_8h_source.html#l00101">InputConfig::sel_anchor</a>, <a class="el" href="input_8h_source.html#l00100">InputConfig::sel_len</a>, <a class="el" href="input_8h_source.html#l00099">InputConfig::sel_start</a>, <a class="el" href="input_8h_source.html#l00097">InputConfig::submitted</a>, <a class="el" href="input_8h_source.html#l00102">InputConfig::submitted_text</a>, <a class="el" href="input_8h_source.html#l00092">InputConfig::text</a>, <a class="el" href="input_8h_source.html#l00072">InputConfig::w</a>, <a class="el" href="sdl_8h_source.html#l00015">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00014">WIN_WIDTH</a>, <a class="el" href="input_8h_source.html#l00070">InputConfig::x</a>, et <a class="el" href="input_8h_source.html#l00071">InputConfig::y</a>.</p>
+<p class="reference">Références <a class="el" href="input_8h_source.html#l00102">InputConfig::bg_padding</a>, <a class="el" href="input_8h_source.html#l00101">InputConfig::bg_path</a>, <a class="el" href="input_8h_source.html#l00117">InputConfig::bg_texture</a>, <a class="el" href="input_8h_source.html#l00137">Input::cfg</a>, <a class="el" href="input_8h_source.html#l00113">InputConfig::cursor_pos</a>, <a class="el" href="input_8h_source.html#l00115">InputConfig::focused</a>, <a class="el" href="input_8h_source.html#l00088">InputConfig::h</a>, <a class="el" href="input_8h_source.html#l00122">InputConfig::history</a>, <a class="el" href="input_8h_source.html#l00123">InputConfig::history_count</a>, <a class="el" href="input_8h_source.html#l00125">InputConfig::history_draft_text</a>, <a class="el" href="input_8h_source.html#l00124">InputConfig::history_index</a>, <a class="el" href="input_8h_source.html#l00136">Input::id</a>, <a class="el" href="input_8h_source.html#l00106">InputConfig::init_text</a>, <a class="el" href="input_8c_source.html#l00231">input_config_init()</a>, <a class="el" href="input_8c_source.html#l00006">input_count</a>, <a class="el" href="input_8h_source.html#l00012">INPUT_DEFAULT_MAX</a>, <a class="el" href="input_8c_source.html#l00519">input_destroy()</a>, <a class="el" href="input_8h_source.html#l00013">INPUT_HISTORY_MAX</a>, <a class="el" href="input_8h_source.html#l00020">INPUT_NAME</a>, <a class="el" href="input_8c_source.html#l00144">input_reload_submit_sound()</a>, <a class="el" href="input_8c_source.html#l00956">input_set_bg()</a>, <a class="el" href="input_8c_source.html#l00005">inputs</a>, <a class="el" href="input_8h_source.html#l00112">InputConfig::len</a>, <a class="el" href="input_8c_source.html#l00004">MAX_INPUTS</a>, <a class="el" href="input_8h_source.html#l00094">InputConfig::maxlen</a>, <a class="el" href="input_8h_source.html#l00127">InputConfig::placeholder_index</a>, <a class="el" href="input_8h_source.html#l00128">InputConfig::placeholder_last_tick</a>, <a class="el" href="save_8c_source.html#l00012">read_property()</a>, <a class="el" href="input_8h_source.html#l00107">InputConfig::rect</a>, <a class="el" href="input_8h_source.html#l00095">InputConfig::save_player_data</a>, <a class="el" href="input_8h_source.html#l00120">InputConfig::sel_anchor</a>, <a class="el" href="input_8h_source.html#l00119">InputConfig::sel_len</a>, <a class="el" href="input_8h_source.html#l00118">InputConfig::sel_start</a>, <a class="el" href="input_8h_source.html#l00126">InputConfig::submit_sound_chunk</a>, <a class="el" href="input_8h_source.html#l00116">InputConfig::submitted</a>, <a class="el" href="input_8h_source.html#l00121">InputConfig::submitted_text</a>, <a class="el" href="input_8h_source.html#l00108">InputConfig::text</a>, <a class="el" href="input_8h_source.html#l00114">InputConfig::view_start</a>, <a class="el" href="input_8h_source.html#l00087">InputConfig::w</a>, <a class="el" href="sdl_8h_source.html#l00020">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00019">WIN_WIDTH</a>, <a class="el" href="input_8h_source.html#l00085">InputConfig::x</a>, et <a class="el" href="input_8h_source.html#l00086">InputConfig::y</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>, et <a class="el" href="menu_8c_source.html#l00067">menu_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00504">game_init()</a>, <a class="el" href="menu_8c_source.html#l00643">menu_init_code_input()</a>, et <a class="el" href="menu_8c_source.html#l00614">menu_init_name_input()</a>.</p>
 
 </div>
 </div>
@@ -543,7 +634,8 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void input_destroy </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -555,11 +647,40 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00241">241</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00519">519</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="input_8h_source.html#l00098">InputConfig::bg_texture</a>, <a class="el" href="input_8h_source.html#l00113">Input::cfg</a>, <a class="el" href="sdl_8c_source.html#l00239">free_image()</a>, <a class="el" href="input_8c_source.html#l00006">input_count</a>, <a class="el" href="input_8c_source.html#l00005">inputs</a>, <a class="el" href="input_8h_source.html#l00102">InputConfig::submitted_text</a>, et <a class="el" href="input_8h_source.html#l00092">InputConfig::text</a>.</p>
+<p class="reference">Références <a class="el" href="input_8h_source.html#l00117">InputConfig::bg_texture</a>, <a class="el" href="input_8h_source.html#l00137">Input::cfg</a>, <a class="el" href="sdl_8c_source.html#l00264">free_image()</a>, <a class="el" href="input_8h_source.html#l00122">InputConfig::history</a>, <a class="el" href="input_8h_source.html#l00125">InputConfig::history_draft_text</a>, <a class="el" href="input_8c_source.html#l00006">input_count</a>, <a class="el" href="input_8h_source.html#l00013">INPUT_HISTORY_MAX</a>, <a class="el" href="input_8c_source.html#l00005">inputs</a>, <a class="el" href="input_8h_source.html#l00126">InputConfig::submit_sound_chunk</a>, <a class="el" href="input_8h_source.html#l00121">InputConfig::submitted_text</a>, et <a class="el" href="input_8h_source.html#l00108">InputConfig::text</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="input_8c_source.html#l00153">input_create()</a>, et <a class="el" href="menu_8c_source.html#l00259">menu_free()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l01364">game_free()</a>, <a class="el" href="input_8c_source.html#l00420">input_create()</a>, et <a class="el" href="menu_8c_source.html#l00983">menu_free()</a>.</p>
+
+</div>
+</div>
+<a id="ae4a4b2e51d555ee923fcc1d54ef666c1" name="ae4a4b2e51d555ee923fcc1d54ef666c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4a4b2e51d555ee923fcc1d54ef666c1">&#9670;&#160;</a></span>input_get_by_id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structInput.html">Input</a> * input_get_by_id </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="input_8h.html#affb866948fe1eb8a87ca4837b22eccd9">InputId</a>&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Récupère un input par son identifiant. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Identifiant de l'input à récupérer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Pointeur vers l'input avec l'id donné, ou NULL si non trouvé. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00721">721</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="input_8c_source.html#l00006">input_count</a>, et <a class="el" href="input_8c_source.html#l00005">inputs</a>.</p>
 
 </div>
 </div>
@@ -572,7 +693,8 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">const char * input_get_text </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -585,11 +707,11 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Le texte actuel de l'input, ou NULL si l'input est NULL. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00588">588</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00927">927</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="input_8h_source.html#l00113">Input::cfg</a>, et <a class="el" href="input_8h_source.html#l00092">InputConfig::text</a>.</p>
+<p class="reference">Références <a class="el" href="input_8h_source.html#l00137">Input::cfg</a>, et <a class="el" href="input_8h_source.html#l00108">InputConfig::text</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00067">menu_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00764">menu_init()</a>.</p>
 
 </div>
 </div>
@@ -602,17 +724,25 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void input_handle_event </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SDL_Event *</td>          <td class="paramname"><span class="paramname"><em>e</em></span>&#160;)</td>
+          <td class="paramtype">SDL_Event *&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -625,11 +755,11 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00281">281</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00565">565</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="input_8h_source.html#l00088">InputConfig::allowed_pattern</a>, <a class="el" href="input_8h_source.html#l00113">Input::cfg</a>, <a class="el" href="input_8h_source.html#l00095">InputConfig::cursor_pos</a>, <a class="el" href="input_8h_source.html#l00096">InputConfig::focused</a>, <a class="el" href="input_8c_source.html#l00114">input_clear_selection_internal()</a>, <a class="el" href="input_8c_source.html#l00125">input_delete_selection()</a>, <a class="el" href="input_8c_source.html#l00121">input_has_selection()</a>, <a class="el" href="input_8c_source.html#l00031">input_submit_internal()</a>, <a class="el" href="input_8c_source.html#l00265">input_text_allowed()</a>, <a class="el" href="input_8h_source.html#l00094">InputConfig::len</a>, <a class="el" href="input_8h_source.html#l00079">InputConfig::maxlen</a>, <a class="el" href="input_8c_source.html#l00145">next_word_pos()</a>, <a class="el" href="input_8c_source.html#l00277">point_in_rect()</a>, <a class="el" href="input_8c_source.html#l00137">prev_word_pos()</a>, <a class="el" href="input_8h_source.html#l00091">InputConfig::rect</a>, <a class="el" href="input_8h_source.html#l00101">InputConfig::sel_anchor</a>, <a class="el" href="input_8h_source.html#l00100">InputConfig::sel_len</a>, <a class="el" href="input_8h_source.html#l00099">InputConfig::sel_start</a>, et <a class="el" href="input_8h_source.html#l00092">InputConfig::text</a>.</p>
+<p class="reference">Références <a class="el" href="input_8h_source.html#l00103">InputConfig::allowed_pattern</a>, <a class="el" href="input_8h_source.html#l00137">Input::cfg</a>, <a class="el" href="input_8h_source.html#l00113">InputConfig::cursor_pos</a>, <a class="el" href="input_8h_source.html#l00115">InputConfig::focused</a>, <a class="el" href="input_8c_source.html#l00285">input_clear_selection_internal()</a>, <a class="el" href="input_8c_source.html#l00392">input_delete_selection()</a>, <a class="el" href="input_8c_source.html#l00388">input_has_selection()</a>, <a class="el" href="input_8c_source.html#l00353">input_history_navigate()</a>, <a class="el" href="input_8c_source.html#l00292">input_reset_history_navigation()</a>, <a class="el" href="input_8c_source.html#l00168">input_submit_internal()</a>, <a class="el" href="input_8c_source.html#l00024">input_sync_text_input_state()</a>, <a class="el" href="input_8c_source.html#l00549">input_text_allowed()</a>, <a class="el" href="input_8h_source.html#l00112">InputConfig::len</a>, <a class="el" href="input_8h_source.html#l00094">InputConfig::maxlen</a>, <a class="el" href="input_8c_source.html#l00412">next_word_pos()</a>, <a class="el" href="input_8c_source.html#l00561">point_in_rect()</a>, <a class="el" href="input_8c_source.html#l00404">prev_word_pos()</a>, <a class="el" href="input_8h_source.html#l00107">InputConfig::rect</a>, <a class="el" href="input_8h_source.html#l00120">InputConfig::sel_anchor</a>, <a class="el" href="input_8h_source.html#l00119">InputConfig::sel_len</a>, <a class="el" href="input_8h_source.html#l00118">InputConfig::sel_start</a>, <a class="el" href="input_8h_source.html#l00108">InputConfig::text</a>, <a class="el" href="input_8c_source.html#l00049">utf8_next_char_pos()</a>, <a class="el" href="input_8c_source.html#l00042">utf8_prev_char_pos()</a>, et <a class="el" href="input_8h_source.html#l00114">InputConfig::view_start</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00122">game_handle_event()</a>, et <a class="el" href="menu_8c_source.html#l00041">menu_handle_event()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00474">game_handle_event()</a>, et <a class="el" href="menu_8c_source.html#l00713">menu_handle_event()</a>.</p>
 
 </div>
 </div>
@@ -642,7 +772,8 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int input_is_submitted </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -655,9 +786,9 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>1 si l'input a été soumis, 0 sinon ou si l'input est NULL. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00593">593</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00932">932</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="input_8h_source.html#l00113">Input::cfg</a>, et <a class="el" href="input_8h_source.html#l00097">InputConfig::submitted</a>.</p>
+<p class="reference">Références <a class="el" href="input_8h_source.html#l00137">Input::cfg</a>, et <a class="el" href="input_8h_source.html#l00116">InputConfig::submitted</a>.</p>
 
 </div>
 </div>
@@ -670,12 +801,19 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void input_render </td>
           <td>(</td>
-          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -687,11 +825,11 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00414">414</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00728">728</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="input_8h_source.html#l00081">InputConfig::bg_color</a>, <a class="el" href="input_8h_source.html#l00098">InputConfig::bg_texture</a>, <a class="el" href="input_8h_source.html#l00082">InputConfig::border_color</a>, <a class="el" href="input_8h_source.html#l00085">InputConfig::centered</a>, <a class="el" href="input_8h_source.html#l00113">Input::cfg</a>, <a class="el" href="input_8h_source.html#l00095">InputConfig::cursor_pos</a>, <a class="el" href="input_8h_source.html#l00096">InputConfig::focused</a>, <a class="el" href="input_8h_source.html#l00074">InputConfig::font_path</a>, <a class="el" href="input_8h_source.html#l00075">InputConfig::font_size</a>, <a class="el" href="input_8h_source.html#l00073">InputConfig::h</a>, <a class="el" href="input_8c_source.html#l00121">input_has_selection()</a>, <a class="el" href="input_8h_source.html#l00094">InputConfig::len</a>, <a class="el" href="input_8h_source.html#l00084">InputConfig::padding</a>, <a class="el" href="input_8h_source.html#l00077">InputConfig::placeholder_count</a>, <a class="el" href="input_8h_source.html#l00103">InputConfig::placeholder_index</a>, <a class="el" href="input_8h_source.html#l00104">InputConfig::placeholder_last_tick</a>, <a class="el" href="input_8h_source.html#l00076">InputConfig::placeholders</a>, <a class="el" href="input_8h_source.html#l00091">InputConfig::rect</a>, <a class="el" href="input_8h_source.html#l00100">InputConfig::sel_len</a>, <a class="el" href="input_8h_source.html#l00099">InputConfig::sel_start</a>, <a class="el" href="input_8h_source.html#l00078">InputConfig::submitted_label</a>, <a class="el" href="input_8h_source.html#l00102">InputConfig::submitted_text</a>, <a class="el" href="input_8h_source.html#l00092">InputConfig::text</a>, <a class="el" href="input_8h_source.html#l00083">InputConfig::text_color</a>, <a class="el" href="input_8h_source.html#l00072">InputConfig::w</a>, <a class="el" href="input_8h_source.html#l00070">InputConfig::x</a>, et <a class="el" href="input_8h_source.html#l00071">InputConfig::y</a>.</p>
+<p class="reference">Références <a class="el" href="input_8h_source.html#l00096">InputConfig::bg_color</a>, <a class="el" href="input_8h_source.html#l00117">InputConfig::bg_texture</a>, <a class="el" href="input_8h_source.html#l00097">InputConfig::border_color</a>, <a class="el" href="input_8h_source.html#l00100">InputConfig::centered</a>, <a class="el" href="input_8h_source.html#l00137">Input::cfg</a>, <a class="el" href="input_8h_source.html#l00113">InputConfig::cursor_pos</a>, <a class="el" href="input_8h_source.html#l00115">InputConfig::focused</a>, <a class="el" href="input_8h_source.html#l00089">InputConfig::font_path</a>, <a class="el" href="input_8h_source.html#l00090">InputConfig::font_size</a>, <a class="el" href="input_8h_source.html#l00088">InputConfig::h</a>, <a class="el" href="input_8c_source.html#l00111">input_compute_visible_end()</a>, <a class="el" href="input_8c_source.html#l00076">input_ensure_cursor_visible()</a>, <a class="el" href="input_8c_source.html#l00388">input_has_selection()</a>, <a class="el" href="input_8c_source.html#l00056">input_utf8_width_range()</a>, <a class="el" href="input_8h_source.html#l00112">InputConfig::len</a>, <a class="el" href="input_8h_source.html#l00099">InputConfig::padding</a>, <a class="el" href="input_8h_source.html#l00092">InputConfig::placeholder_count</a>, <a class="el" href="input_8h_source.html#l00127">InputConfig::placeholder_index</a>, <a class="el" href="input_8h_source.html#l00128">InputConfig::placeholder_last_tick</a>, <a class="el" href="input_8h_source.html#l00091">InputConfig::placeholders</a>, <a class="el" href="input_8h_source.html#l00107">InputConfig::rect</a>, <a class="el" href="input_8h_source.html#l00119">InputConfig::sel_len</a>, <a class="el" href="input_8h_source.html#l00118">InputConfig::sel_start</a>, <a class="el" href="input_8h_source.html#l00093">InputConfig::submitted_label</a>, <a class="el" href="input_8h_source.html#l00121">InputConfig::submitted_text</a>, <a class="el" href="input_8h_source.html#l00108">InputConfig::text</a>, <a class="el" href="input_8h_source.html#l00098">InputConfig::text_color</a>, <a class="el" href="input_8h_source.html#l00114">InputConfig::view_start</a>, <a class="el" href="input_8h_source.html#l00087">InputConfig::w</a>, <a class="el" href="input_8h_source.html#l00085">InputConfig::x</a>, et <a class="el" href="input_8h_source.html#l00086">InputConfig::y</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>, et <a class="el" href="menu_8c_source.html#l00230">menu_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l01130">game_display()</a>, et <a class="el" href="menu_8c_source.html#l00372">menu_render_main_widgets()</a>.</p>
 
 </div>
 </div>
@@ -704,22 +842,31 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int input_set_bg </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>path</em></span>, </td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>padding</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>padding</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -732,13 +879,13 @@ Fonctions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd><span class="tt">EXIT_SUCCESS</span> si la texture a été définie avec succès, <span class="tt">EXIT_FAILURE</span> en cas d'erreur (par exemple, si le chargement de l'image échoue). </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd><code>EXIT_SUCCESS</code> si la texture a été définie avec succès, <code>EXIT_FAILURE</code> en cas d'erreur (par exemple, si le chargement de l'image échoue). </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00622">622</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00956">956</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="input_8h_source.html#l00098">InputConfig::bg_texture</a>, <a class="el" href="input_8h_source.html#l00113">Input::cfg</a>, <a class="el" href="sdl_8c_source.html#l00239">free_image()</a>, <a class="el" href="input_8h_source.html#l00073">InputConfig::h</a>, <a class="el" href="sdl_8c_source.html#l00180">load_image()</a>, et <a class="el" href="input_8h_source.html#l00084">InputConfig::padding</a>.</p>
+<p class="reference">Références <a class="el" href="input_8h_source.html#l00117">InputConfig::bg_texture</a>, <a class="el" href="input_8h_source.html#l00137">Input::cfg</a>, <a class="el" href="sdl_8c_source.html#l00264">free_image()</a>, <a class="el" href="input_8h_source.html#l00088">InputConfig::h</a>, <a class="el" href="sdl_8c_source.html#l00205">load_image()</a>, et <a class="el" href="input_8h_source.html#l00099">InputConfig::padding</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="input_8c_source.html#l00153">input_create()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="input_8c_source.html#l00420">input_create()</a>.</p>
 
 </div>
 </div>
@@ -751,26 +898,33 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void input_set_on_submit </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void(*</td>          <td class="paramname"><span class="paramname"><em>cb&#160;</em></span>)(<a class="el" href="structAppContext.html">AppContext</a> *, const char *)&#160;)</td>
+          <td class="paramtype">void(*)(<a class="el" href="structAppContext.html">AppContext</a> *, const char *)&#160;</td>
+          <td class="paramname"><em>cb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Définit une fonction de rappel à appeler lorsque l'input est soumis (par exemple, en appuyant sur Entrée). </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">in</td><td>Pointeur vers l'input. </td></tr>
-    <tr><td class="paramname">cb</td><td>Pointeur vers la fonction de rappel à appeler lors de la soumission. La fonction doit prendre un <span class="tt">AppContext*</span> (contexte SDL) et un <span class="tt">const char*</span> (le texte soumis) et retourner void. Si NULL, aucune fonction ne sera appelée. </td></tr>
+    <tr><td class="paramname">cb</td><td>Pointeur vers la fonction de rappel à appeler lors de la soumission. La fonction doit prendre un <code>AppContext*</code> (contexte SDL) et un <code>const char*</code> (le texte soumis) et retourner void. Si NULL, aucune fonction ne sera appelée. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00617">617</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00951">951</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="input_8h_source.html#l00113">Input::cfg</a>, et <a class="el" href="input_8h_source.html#l00105">InputConfig::on_submit</a>.</p>
+<p class="reference">Références <a class="el" href="input_8h_source.html#l00137">Input::cfg</a>, et <a class="el" href="input_8h_source.html#l00129">InputConfig::on_submit</a>.</p>
 
 </div>
 </div>
@@ -783,16 +937,23 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void input_set_padding </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>padding</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>padding</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Définit le padding intérieur de l'input, c'est-à-dire l'espace entre le texte et les bords de l'input. Si une texture de fond est définie, il est recommandé d'utiliser <span class="tt"><a class="el" href="#ab530114a79fbb2e0231569b118355baa">input_set_bg</a></span> avec un padding approprié pour assurer une bonne apparence. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Définit le padding intérieur de l'input, c'est-à-dire l'espace entre le texte et les bords de l'input. Si une texture de fond est définie, il est recommandé d'utiliser <code>input_set_bg</code> avec un padding approprié pour assurer une bonne apparence. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">in</td><td>Pointeur vers l'input. </td></tr>
     <tr><td class="paramname">padding</td><td>Nouvelle valeur de padding en pixels. Si &lt; 0, le padding sera défini à 0. </td></tr>
@@ -800,9 +961,9 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00655">655</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00989">989</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="input_8h_source.html#l00113">Input::cfg</a>, et <a class="el" href="input_8h_source.html#l00084">InputConfig::padding</a>.</p>
+<p class="reference">Références <a class="el" href="input_8h_source.html#l00137">Input::cfg</a>, et <a class="el" href="input_8h_source.html#l00099">InputConfig::padding</a>.</p>
 
 </div>
 </div>
@@ -815,12 +976,19 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void input_set_text </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>text</em></span>&#160;)</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>text</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -832,11 +1000,11 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00607">607</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00946">946</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="input_8h_source.html#l00113">Input::cfg</a>, <a class="el" href="input_8h_source.html#l00095">InputConfig::cursor_pos</a>, <a class="el" href="input_8c_source.html#l00114">input_clear_selection_internal()</a>, <a class="el" href="input_8h_source.html#l00094">InputConfig::len</a>, <a class="el" href="input_8h_source.html#l00079">InputConfig::maxlen</a>, <a class="el" href="input_8h_source.html#l00101">InputConfig::sel_anchor</a>, et <a class="el" href="input_8h_source.html#l00092">InputConfig::text</a>.</p>
+<p class="reference">Références <a class="el" href="input_8c_source.html#l00301">input_set_text_internal()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="input_8c_source.html#l00661">edit_in_cfg()</a>, et <a class="el" href="menu_8c_source.html#l00067">menu_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00336">clear_hint_inputs()</a>, <a class="el" href="input_8c_source.html#l00995">edit_in_cfg()</a>, et <a class="el" href="menu_8c_source.html#l00673">menu_apply_random_player_name_if_needed()</a>.</p>
 
 </div>
 </div>
@@ -849,16 +1017,23 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void input_submit </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Soumet le texte courant de l'input (même comportement qu'appuyer sur Entrée). Marque l'input comme soumis, appelle le callback <span class="tt">on_submit</span> si défini, puis vide le texte courant de l'input. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Soumet le texte courant de l'input (même comportement qu'appuyer sur Entrée). Marque l'input comme soumis, appelle le callback <code>on_submit</code> si défini, puis vide le texte courant de l'input si <code>clear_on_submit</code> vaut 1. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">context</td><td>Contexte SDL passé au callback de soumission. </td></tr>
     <tr><td class="paramname">in</td><td>Pointeur vers l'input. </td></tr>
@@ -866,29 +1041,21 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00603">603</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="input_8c_source.html#l00942">942</a> du fichier <a class="el" href="input_8c_source.html">input.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="input_8c_source.html#l00031">input_submit_internal()</a>.</p>
+<p class="reference">Références <a class="el" href="input_8c_source.html#l00168">input_submit_internal()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00067">menu_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00673">menu_apply_random_player_name_if_needed()</a>, et <a class="el" href="menu_8c_source.html#l00764">menu_init()</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div id="page-nav" class="page-nav-panel">
-<div id="page-nav-resize-handle"></div>
-<div id="page-nav-tree">
-<div id="page-nav-contents">
-</div><!-- page-nav-contents -->
-</div><!-- page-nav-tree -->
-</div><!-- page-nav -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a href="input_8h.html">input.h</a></li>
-    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a class="el" href="input_8h.html">input.h</a></li>
+    <li class="footer">Généré le Mardi 14 Avril 2026 18:57:16 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

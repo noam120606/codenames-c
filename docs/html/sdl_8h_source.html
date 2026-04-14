@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames:  Fichier source de client/lib/sdl.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,22 +34,28 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -63,9 +68,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('sdl_8h_source.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('sdl_8h_source.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -92,101 +98,119 @@ $(function(){initNavTree('sdl_8h_source.html','',''); });
   <div class="headertitle"><div class="title">sdl.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="sdl_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef SDL_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define SDL_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;../SDL2/include/SDL2/SDL.h&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;../SDL2/include/SDL2/SDL_image.h&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;../SDL2/include/SDL2/SDL_ttf.h&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;../SDL2/include/SDL2/SDL_mixer.h&quot;</span></div>
+<a href="sdl_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#ifndef SDL_H</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define SDL_H</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="client_2lib_2game_8h.html">../lib/game.h</a>&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="client_2lib_2user_8h.html">../lib/user.h</a>&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="client_2lib_2list_8h.html">../lib/list.h</a>&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="client_2lib_2lobby_8h.html">../lib/lobby.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;../SDL2/include/SDL2/SDL.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;../SDL2/include/SDL2/SDL_image.h&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;../SDL2/include/SDL2/SDL_ttf.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;../SDL2/include/SDL2/SDL_mixer.h&quot;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="sdl_8h.html#a2e6ef411e0ff00ad889788b6cde701b5">   14</a></span><span class="preprocessor">#define WIN_WIDTH 1920</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="sdl_8h.html#a0a33b1743038db1adbbf1045aa839b38">   15</a></span><span class="preprocessor">#define WIN_HEIGHT 1080</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="sdl_8h.html#a6123efbf31a64d99d4fec63fa6fbcaf6">   16</a></span><span class="preprocessor">#define WIN_MIN_WIDTH 960</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="sdl_8h.html#ab52814ce3811f9de6e702d82635c919d">   17</a></span><span class="preprocessor">#define WIN_MIN_HEIGHT 540</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;../lib/game.h&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;../lib/user.h&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;../lib/list.h&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;../lib/lobby.h&quot;</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structCard.html">Card</a> <a class="code hl_struct" href="structCard.html">Card</a>;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span></div>
-<div class="foldopen" id="foldopen00039" data-start="{" data-end="};">
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structAppContext.html">   39</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structAppContext.html">AppContext</a> {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="structAppContext.html#a04bd2282bfa748f6c8dcf4564d48ac6c">   40</a></span>    SDL_Window* <a class="code hl_variable" href="structAppContext.html#a04bd2282bfa748f6c8dcf4564d48ac6c">window</a>;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structAppContext.html#a70a91ad56405a07962fe46fa7f640882">   41</a></span>    SDL_Renderer* <a class="code hl_variable" href="structAppContext.html#a70a91ad56405a07962fe46fa7f640882">renderer</a>;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structAppContext.html#a8dd06081b28551d292567af46730b101">   42</a></span>    SDL_Color <a class="code hl_variable" href="structAppContext.html#a8dd06081b28551d292567af46730b101">bg_color</a>;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="structAppContext.html#aa0836b90fd45bdb3c8113599a4b07124">   43</a></span>    <span class="keywordtype">long</span> <a class="code hl_variable" href="structAppContext.html#aa0836b90fd45bdb3c8113599a4b07124">clock</a>;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="structAppContext.html#ae9d77d7d3c4f3a49436ab668385b847e">   44</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structAppContext.html#ae9d77d7d3c4f3a49436ab668385b847e">fps</a>;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="structAppContext.html#ae094faa774b18ad2519c7f88376098e0">   45</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structAppContext.html#ae094faa774b18ad2519c7f88376098e0">sock</a>;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="structAppContext.html#a0482118779b050a3a693031790e0ebf6">   46</a></span>    <a class="code hl_struct" href="structLobby.html">Lobby</a>* <a class="code hl_variable" href="structAppContext.html#a0482118779b050a3a693031790e0ebf6">lobby</a>;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="structAppContext.html#a12358a947c811f31061ea211c1956784">   47</a></span>    <a class="code hl_enumeration" href="client_2lib_2game_8h.html#a83fc559664fc7c7e310c93586457b428">AppState</a> <a class="code hl_variable" href="structAppContext.html#a12358a947c811f31061ea211c1956784">app_state</a>;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="structAppContext.html#acdea17bcfc0e068e8cf73241280b1ebe">   48</a></span>    <a class="code hl_enumeration" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775">UserRole</a> <a class="code hl_variable" href="structAppContext.html#acdea17bcfc0e068e8cf73241280b1ebe">player_role</a>; </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="structAppContext.html#a02cb522b64d54cadeacd519e4468e3b4">   49</a></span>    <a class="code hl_enumeration" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> <a class="code hl_variable" href="structAppContext.html#a02cb522b64d54cadeacd519e4468e3b4">player_team</a>; </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="structAppContext.html#ab8f74eb4803c461921f64cb543650c22">   50</a></span>    Uint32 <a class="code hl_variable" href="structAppContext.html#ab8f74eb4803c461921f64cb543650c22">frame_start_time</a>;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="structAppContext.html#a109b81a1fc4136ff7e0ae5727a735975">   51</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structAppContext.html#a109b81a1fc4136ff7e0ae5727a735975">ping_ms</a>;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="structAppContext.html#a8691eee497ea679662d39b2926343394">   52</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structAppContext.html#a8691eee497ea679662d39b2926343394">music_volume</a>;          </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="structAppContext.html#ac754a95e774d145e7a60387c1bfd0de9">   53</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structAppContext.html#ac754a95e774d145e7a60387c1bfd0de9">sound_effects_volume</a>;  </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="structAppContext.html#a8e75d9cd35b7645dc8803102396c4f7a">   54</a></span>    <span class="keywordtype">char</span>* <a class="code hl_variable" href="structAppContext.html#a8e75d9cd35b7645dc8803102396c4f7a">player_uuid</a>;         </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="structAppContext.html#a30c1cf80cb97e4947d684a813b1ff8fa">   55</a></span>    <span class="keywordtype">char</span>* <a class="code hl_variable" href="structAppContext.html#a30c1cf80cb97e4947d684a813b1ff8fa">player_name</a>;         </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="structAppContext.html#a9c886b815d7fb53d4820a2366bb46820">   56</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="structAppContext.html#a9c886b815d7fb53d4820a2366bb46820">version</a>[16];             </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="sdl_8h.html#aab477be81bad6aadbec06506e3cc26a2">   57</a></span>} <a class="code hl_struct" href="structAppContext.html">AppContext</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="sdl_8h.html#a2e6ef411e0ff00ad889788b6cde701b5">   19</a></span><span class="preprocessor">#define WIN_WIDTH 1920</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="sdl_8h.html#a0a33b1743038db1adbbf1045aa839b38">   20</a></span><span class="preprocessor">#define WIN_HEIGHT 1080</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="sdl_8h.html#a6123efbf31a64d99d4fec63fa6fbcaf6">   21</a></span><span class="preprocessor">#define WIN_MIN_WIDTH 960</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="sdl_8h.html#ab52814ce3811f9de6e702d82635c919d">   22</a></span><span class="preprocessor">#define WIN_MIN_HEIGHT 540</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="sdl_8h.html#a23ff27324f1ac52bcafa4cc91e2c2744">   24</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structCard.html">Card</a> <a class="code hl_struct" href="structCard.html">Card</a>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="foldopen" id="foldopen00054" data-start="{" data-end="};">
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="structAppContext.html">   54</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structAppContext.html">AppContext</a> {</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="structAppContext.html#a04bd2282bfa748f6c8dcf4564d48ac6c">   55</a></span>    SDL_Window* <a class="code hl_variable" href="structAppContext.html#a04bd2282bfa748f6c8dcf4564d48ac6c">window</a>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="structAppContext.html#a70a91ad56405a07962fe46fa7f640882">   56</a></span>    SDL_Renderer* <a class="code hl_variable" href="structAppContext.html#a70a91ad56405a07962fe46fa7f640882">renderer</a>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="structAppContext.html#a8dd06081b28551d292567af46730b101">   57</a></span>    SDL_Color <a class="code hl_variable" href="structAppContext.html#a8dd06081b28551d292567af46730b101">bg_color</a>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="structAppContext.html#a0482118779b050a3a693031790e0ebf6">   59</a></span>    <a class="code hl_struct" href="structLobby.html">Lobby</a>* <a class="code hl_variable" href="structAppContext.html#a0482118779b050a3a693031790e0ebf6">lobby</a>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="structAppContext.html#a12358a947c811f31061ea211c1956784">   60</a></span>    <a class="code hl_enumeration" href="client_2lib_2game_8h.html#a83fc559664fc7c7e310c93586457b428">AppState</a> <a class="code hl_variable" href="structAppContext.html#a12358a947c811f31061ea211c1956784">app_state</a>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="structAppContext.html#acdea17bcfc0e068e8cf73241280b1ebe">   61</a></span>    <a class="code hl_enumeration" href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775">UserRole</a> <a class="code hl_variable" href="structAppContext.html#acdea17bcfc0e068e8cf73241280b1ebe">player_role</a>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="structAppContext.html#a02cb522b64d54cadeacd519e4468e3b4">   62</a></span>    <a class="code hl_enumeration" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> <a class="code hl_variable" href="structAppContext.html#a02cb522b64d54cadeacd519e4468e3b4">player_team</a>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="structAppContext.html#ae094faa774b18ad2519c7f88376098e0">   64</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structAppContext.html#ae094faa774b18ad2519c7f88376098e0">sock</a>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="structAppContext.html#a109b81a1fc4136ff7e0ae5727a735975">   65</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structAppContext.html#a109b81a1fc4136ff7e0ae5727a735975">ping_ms</a>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="structAppContext.html#ab601c17fd2f80a7918890a142db092e1">   66</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structAppContext.html#ab601c17fd2f80a7918890a142db092e1">player_id</a>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="structAppContext.html#aa0836b90fd45bdb3c8113599a4b07124">   68</a></span>    <span class="keywordtype">long</span> <a class="code hl_variable" href="structAppContext.html#aa0836b90fd45bdb3c8113599a4b07124">clock</a>;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="structAppContext.html#ae9d77d7d3c4f3a49436ab668385b847e">   69</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structAppContext.html#ae9d77d7d3c4f3a49436ab668385b847e">fps</a>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="structAppContext.html#ab8f74eb4803c461921f64cb543650c22">   70</a></span>    Uint32 <a class="code hl_variable" href="structAppContext.html#ab8f74eb4803c461921f64cb543650c22">frame_start_time</a>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="structAppContext.html#a6ba964a46649884e6e2aa40c60402427">   71</a></span>    Uint32 <a class="code hl_variable" href="structAppContext.html#a6ba964a46649884e6e2aa40c60402427">last_fullscreen_toggle_ms</a>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="structAppContext.html#a8e75d9cd35b7645dc8803102396c4f7a">   73</a></span>    <span class="keywordtype">char</span>* <a class="code hl_variable" href="structAppContext.html#a8e75d9cd35b7645dc8803102396c4f7a">player_uuid</a>;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="structAppContext.html#a30c1cf80cb97e4947d684a813b1ff8fa">   74</a></span>    <span class="keywordtype">char</span>* <a class="code hl_variable" href="structAppContext.html#a30c1cf80cb97e4947d684a813b1ff8fa">player_name</a>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="structAppContext.html#a9c886b815d7fb53d4820a2366bb46820">   75</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="structAppContext.html#a9c886b815d7fb53d4820a2366bb46820">version</a>[16];</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="structAppContext.html#a8691eee497ea679662d39b2926343394">   77</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structAppContext.html#a8691eee497ea679662d39b2926343394">music_volume</a>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="structAppContext.html#ac754a95e774d145e7a60387c1bfd0de9">   78</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structAppContext.html#ac754a95e774d145e7a60387c1bfd0de9">sound_effects_volume</a>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="structAppContext.html#a4a448c0d52b8ff2586937dadd24207e5">   79</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structAppContext.html#a4a448c0d52b8ff2586937dadd24207e5">global_luminosity</a>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="structAppContext.html#a78889dfe1177f030d60a42c5d1a8993a">   80</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structAppContext.html#a78889dfe1177f030d60a42c5d1a8993a">restart_requested</a>;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="structAppContext.html#a7f59ff3cc21c54a78a5e707265fa8771">   82</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structAppContext.html#a7f59ff3cc21c54a78a5e707265fa8771">windowed_width</a>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="structAppContext.html#aaab80fb4557b7afff19e148c86364ed4">   83</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structAppContext.html#aaab80fb4557b7afff19e148c86364ed4">windowed_height</a>;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="structAppContext.html#aacacba12169c33c8803925240280aeef">   84</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structAppContext.html#aacacba12169c33c8803925240280aeef">windowed_x</a>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="structAppContext.html#a52178812899cf728c91972c6dfda2a54">   85</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structAppContext.html#a52178812899cf728c91972c6dfda2a54">windowed_y</a>;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="sdl_8h.html#aab477be81bad6aadbec06506e3cc26a2">   86</a></span>} <a class="code hl_struct" href="structAppContext.html">AppContext</a>;</div>
 </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><a class="code hl_struct" href="structAppContext.html">AppContext</a> <a class="code hl_function" href="sdl_8h.html#ac603916c8cb7ef2624a5d11af30a18af">init_sdl</a>();</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>SDL_Texture* <a class="code hl_function" href="sdl_8h.html#a176ed095842cdab767f49705932b398f">load_image</a>(SDL_Renderer* renderer, <span class="keyword">const</span> <span class="keywordtype">char</span>* path);</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="keywordtype">int</span> <a class="code hl_function" href="sdl_8h.html#af2c6b730c5804f9e1d59476c6b24e93d">display_image</a>(SDL_Renderer* renderer, SDL_Texture* texture, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">float</span> size_factor, <span class="keywordtype">double</span> angle, SDL_RendererFlip flip, <span class="keywordtype">float</span> ratio, Uint8 opacity);</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="keywordtype">void</span> <a class="code hl_function" href="sdl_8h.html#a40dc301c542ead27211aba1d2169b2fa">free_image</a>(SDL_Texture* texture);</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="keywordtype">void</span> <a class="code hl_function" href="sdl_8h.html#a310e18f064cc511c484090467ead9a0c">toggle_fullscreen</a>(<a class="code hl_struct" href="structAppContext.html">AppContext</a>* context);</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span></div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="keywordtype">int</span> <a class="code hl_function" href="sdl_8h.html#a287c6280bfa12f44b321d22d6450a125">destroy_context</a>(<a class="code hl_struct" href="structAppContext.html">AppContext</a>* context);</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="preprocessor">#endif </span><span class="comment">// SDL_H</span></div>
-<div class="ttc" id="aclient_2lib_2game_8h_html"><div class="ttname"><a href="client_2lib_2game_8h.html">game.h</a></div></div>
-<div class="ttc" id="aclient_2lib_2game_8h_html_a83fc559664fc7c7e310c93586457b428"><div class="ttname"><a href="client_2lib_2game_8h.html#a83fc559664fc7c7e310c93586457b428">AppState</a></div><div class="ttdeci">AppState</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2game_8h_source.html#l00050">game.h:50</a></div></div>
-<div class="ttc" id="aclient_2lib_2game_8h_html_a9c13bb5b1d69698f9b47900990eaa598"><div class="ttname"><a href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a></div><div class="ttdeci">Team</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2game_8h_source.html#l00022">game.h:22</a></div></div>
-<div class="ttc" id="aclient_2lib_2list_8h_html"><div class="ttname"><a href="client_2lib_2list_8h.html">list.h</a></div></div>
-<div class="ttc" id="aclient_2lib_2lobby_8h_html"><div class="ttname"><a href="client_2lib_2lobby_8h.html">lobby.h</a></div></div>
-<div class="ttc" id="aclient_2lib_2user_8h_html"><div class="ttname"><a href="client_2lib_2user_8h.html">user.h</a></div></div>
-<div class="ttc" id="aclient_2lib_2user_8h_html_a00dd1c1a522bd6fb15ecc021ffefb775"><div class="ttname"><a href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775">UserRole</a></div><div class="ttdeci">UserRole</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2user_8h_source.html#l00011">user.h:11</a></div></div>
-<div class="ttc" id="asdl_8h_html_a176ed095842cdab767f49705932b398f"><div class="ttname"><a href="sdl_8h.html#a176ed095842cdab767f49705932b398f">load_image</a></div><div class="ttdeci">SDL_Texture * load_image(SDL_Renderer *renderer, const char *path)</div><div class="ttdef"><b>Definition</b> <a href="sdl_8c_source.html#l00180">sdl.c:180</a></div></div>
-<div class="ttc" id="asdl_8h_html_a287c6280bfa12f44b321d22d6450a125"><div class="ttname"><a href="sdl_8h.html#a287c6280bfa12f44b321d22d6450a125">destroy_context</a></div><div class="ttdeci">int destroy_context(AppContext *context)</div><div class="ttdef"><b>Definition</b> <a href="sdl_8c_source.html#l00256">sdl.c:256</a></div></div>
-<div class="ttc" id="asdl_8h_html_a310e18f064cc511c484090467ead9a0c"><div class="ttname"><a href="sdl_8h.html#a310e18f064cc511c484090467ead9a0c">toggle_fullscreen</a></div><div class="ttdeci">void toggle_fullscreen(AppContext *context)</div><div class="ttdef"><b>Definition</b> <a href="sdl_8c_source.html#l00245">sdl.c:245</a></div></div>
-<div class="ttc" id="asdl_8h_html_a40dc301c542ead27211aba1d2169b2fa"><div class="ttname"><a href="sdl_8h.html#a40dc301c542ead27211aba1d2169b2fa">free_image</a></div><div class="ttdeci">void free_image(SDL_Texture *texture)</div><div class="ttdef"><b>Definition</b> <a href="sdl_8c_source.html#l00239">sdl.c:239</a></div></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><a class="code hl_struct" href="structAppContext.html">AppContext</a> <a class="code hl_function" href="sdl_8h.html#ac603916c8cb7ef2624a5d11af30a18af">init_sdl</a>();</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>SDL_Texture* <a class="code hl_function" href="sdl_8h.html#a176ed095842cdab767f49705932b398f">load_image</a>(SDL_Renderer* renderer, <span class="keyword">const</span> <span class="keywordtype">char</span>* path);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="keywordtype">int</span> <a class="code hl_function" href="sdl_8h.html#af2c6b730c5804f9e1d59476c6b24e93d">display_image</a>(SDL_Renderer* renderer, SDL_Texture* texture, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">float</span> size_factor, <span class="keywordtype">double</span> angle, SDL_RendererFlip flip, <span class="keywordtype">float</span> ratio, Uint8 opacity);</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="keywordtype">void</span> <a class="code hl_function" href="sdl_8h.html#a40dc301c542ead27211aba1d2169b2fa">free_image</a>(SDL_Texture* texture);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="keywordtype">void</span> <a class="code hl_function" href="sdl_8h.html#a310e18f064cc511c484090467ead9a0c">toggle_fullscreen</a>(<a class="code hl_struct" href="structAppContext.html">AppContext</a>* context);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="keywordtype">int</span> <a class="code hl_function" href="sdl_8h.html#a287c6280bfa12f44b321d22d6450a125">destroy_context</a>(<a class="code hl_struct" href="structAppContext.html">AppContext</a>* context);</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="preprocessor">#endif </span><span class="comment">// SDL_H</span></div>
+<div class="ttc" id="aclient_2lib_2game_8h_html_a83fc559664fc7c7e310c93586457b428"><div class="ttname"><a href="client_2lib_2game_8h.html#a83fc559664fc7c7e310c93586457b428">AppState</a></div><div class="ttdeci">AppState</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2game_8h_source.html#l00051">game.h:51</a></div></div>
+<div class="ttc" id="aclient_2lib_2game_8h_html_a9c13bb5b1d69698f9b47900990eaa598"><div class="ttname"><a href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a></div><div class="ttdeci">Team</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2game_8h_source.html#l00037">game.h:37</a></div></div>
+<div class="ttc" id="aclient_2lib_2user_8h_html_a00dd1c1a522bd6fb15ecc021ffefb775"><div class="ttname"><a href="client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775">UserRole</a></div><div class="ttdeci">UserRole</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2user_8h_source.html#l00016">user.h:16</a></div></div>
+<div class="ttc" id="asdl_8h_html_a176ed095842cdab767f49705932b398f"><div class="ttname"><a href="sdl_8h.html#a176ed095842cdab767f49705932b398f">load_image</a></div><div class="ttdeci">SDL_Texture * load_image(SDL_Renderer *renderer, const char *path)</div><div class="ttdef"><b>Definition</b> <a href="sdl_8c_source.html#l00205">sdl.c:205</a></div></div>
+<div class="ttc" id="asdl_8h_html_a287c6280bfa12f44b321d22d6450a125"><div class="ttname"><a href="sdl_8h.html#a287c6280bfa12f44b321d22d6450a125">destroy_context</a></div><div class="ttdeci">int destroy_context(AppContext *context)</div><div class="ttdef"><b>Definition</b> <a href="sdl_8c_source.html#l00317">sdl.c:317</a></div></div>
+<div class="ttc" id="asdl_8h_html_a310e18f064cc511c484090467ead9a0c"><div class="ttname"><a href="sdl_8h.html#a310e18f064cc511c484090467ead9a0c">toggle_fullscreen</a></div><div class="ttdeci">void toggle_fullscreen(AppContext *context)</div><div class="ttdef"><b>Definition</b> <a href="sdl_8c_source.html#l00270">sdl.c:270</a></div></div>
+<div class="ttc" id="asdl_8h_html_a40dc301c542ead27211aba1d2169b2fa"><div class="ttname"><a href="sdl_8h.html#a40dc301c542ead27211aba1d2169b2fa">free_image</a></div><div class="ttdeci">void free_image(SDL_Texture *texture)</div><div class="ttdef"><b>Definition</b> <a href="sdl_8c_source.html#l00264">sdl.c:264</a></div></div>
 <div class="ttc" id="asdl_8h_html_ac603916c8cb7ef2624a5d11af30a18af"><div class="ttname"><a href="sdl_8h.html#ac603916c8cb7ef2624a5d11af30a18af">init_sdl</a></div><div class="ttdeci">AppContext init_sdl()</div><div class="ttdef"><b>Definition</b> <a href="sdl_8c_source.html#l00052">sdl.c:52</a></div></div>
-<div class="ttc" id="asdl_8h_html_af2c6b730c5804f9e1d59476c6b24e93d"><div class="ttname"><a href="sdl_8h.html#af2c6b730c5804f9e1d59476c6b24e93d">display_image</a></div><div class="ttdeci">int display_image(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, float size_factor, double angle, SDL_RendererFlip flip, float ratio, Uint8 opacity)</div><div class="ttdef"><b>Definition</b> <a href="sdl_8c_source.html#l00201">sdl.c:201</a></div></div>
-<div class="ttc" id="astructAppContext_html"><div class="ttname"><a href="structAppContext.html">AppContext</a></div><div class="ttdef"><b>Definition</b> <a href="#l00039">sdl.h:39</a></div></div>
-<div class="ttc" id="astructAppContext_html_a02cb522b64d54cadeacd519e4468e3b4"><div class="ttname"><a href="structAppContext.html#a02cb522b64d54cadeacd519e4468e3b4">AppContext::player_team</a></div><div class="ttdeci">Team player_team</div><div class="ttdef"><b>Definition</b> <a href="#l00049">sdl.h:49</a></div></div>
-<div class="ttc" id="astructAppContext_html_a0482118779b050a3a693031790e0ebf6"><div class="ttname"><a href="structAppContext.html#a0482118779b050a3a693031790e0ebf6">AppContext::lobby</a></div><div class="ttdeci">Lobby * lobby</div><div class="ttdef"><b>Definition</b> <a href="#l00046">sdl.h:46</a></div></div>
-<div class="ttc" id="astructAppContext_html_a04bd2282bfa748f6c8dcf4564d48ac6c"><div class="ttname"><a href="structAppContext.html#a04bd2282bfa748f6c8dcf4564d48ac6c">AppContext::window</a></div><div class="ttdeci">SDL_Window * window</div><div class="ttdef"><b>Definition</b> <a href="#l00040">sdl.h:40</a></div></div>
-<div class="ttc" id="astructAppContext_html_a109b81a1fc4136ff7e0ae5727a735975"><div class="ttname"><a href="structAppContext.html#a109b81a1fc4136ff7e0ae5727a735975">AppContext::ping_ms</a></div><div class="ttdeci">int ping_ms</div><div class="ttdef"><b>Definition</b> <a href="#l00051">sdl.h:51</a></div></div>
-<div class="ttc" id="astructAppContext_html_a12358a947c811f31061ea211c1956784"><div class="ttname"><a href="structAppContext.html#a12358a947c811f31061ea211c1956784">AppContext::app_state</a></div><div class="ttdeci">AppState app_state</div><div class="ttdef"><b>Definition</b> <a href="#l00047">sdl.h:47</a></div></div>
-<div class="ttc" id="astructAppContext_html_a30c1cf80cb97e4947d684a813b1ff8fa"><div class="ttname"><a href="structAppContext.html#a30c1cf80cb97e4947d684a813b1ff8fa">AppContext::player_name</a></div><div class="ttdeci">char * player_name</div><div class="ttdef"><b>Definition</b> <a href="#l00055">sdl.h:55</a></div></div>
-<div class="ttc" id="astructAppContext_html_a70a91ad56405a07962fe46fa7f640882"><div class="ttname"><a href="structAppContext.html#a70a91ad56405a07962fe46fa7f640882">AppContext::renderer</a></div><div class="ttdeci">SDL_Renderer * renderer</div><div class="ttdef"><b>Definition</b> <a href="#l00041">sdl.h:41</a></div></div>
-<div class="ttc" id="astructAppContext_html_a8691eee497ea679662d39b2926343394"><div class="ttname"><a href="structAppContext.html#a8691eee497ea679662d39b2926343394">AppContext::music_volume</a></div><div class="ttdeci">int music_volume</div><div class="ttdef"><b>Definition</b> <a href="#l00052">sdl.h:52</a></div></div>
-<div class="ttc" id="astructAppContext_html_a8dd06081b28551d292567af46730b101"><div class="ttname"><a href="structAppContext.html#a8dd06081b28551d292567af46730b101">AppContext::bg_color</a></div><div class="ttdeci">SDL_Color bg_color</div><div class="ttdef"><b>Definition</b> <a href="#l00042">sdl.h:42</a></div></div>
-<div class="ttc" id="astructAppContext_html_a8e75d9cd35b7645dc8803102396c4f7a"><div class="ttname"><a href="structAppContext.html#a8e75d9cd35b7645dc8803102396c4f7a">AppContext::player_uuid</a></div><div class="ttdeci">char * player_uuid</div><div class="ttdef"><b>Definition</b> <a href="#l00054">sdl.h:54</a></div></div>
-<div class="ttc" id="astructAppContext_html_a9c886b815d7fb53d4820a2366bb46820"><div class="ttname"><a href="structAppContext.html#a9c886b815d7fb53d4820a2366bb46820">AppContext::version</a></div><div class="ttdeci">char version[16]</div><div class="ttdef"><b>Definition</b> <a href="#l00056">sdl.h:56</a></div></div>
-<div class="ttc" id="astructAppContext_html_aa0836b90fd45bdb3c8113599a4b07124"><div class="ttname"><a href="structAppContext.html#aa0836b90fd45bdb3c8113599a4b07124">AppContext::clock</a></div><div class="ttdeci">long clock</div><div class="ttdef"><b>Definition</b> <a href="#l00043">sdl.h:43</a></div></div>
-<div class="ttc" id="astructAppContext_html_ab8f74eb4803c461921f64cb543650c22"><div class="ttname"><a href="structAppContext.html#ab8f74eb4803c461921f64cb543650c22">AppContext::frame_start_time</a></div><div class="ttdeci">Uint32 frame_start_time</div><div class="ttdef"><b>Definition</b> <a href="#l00050">sdl.h:50</a></div></div>
-<div class="ttc" id="astructAppContext_html_ac754a95e774d145e7a60387c1bfd0de9"><div class="ttname"><a href="structAppContext.html#ac754a95e774d145e7a60387c1bfd0de9">AppContext::sound_effects_volume</a></div><div class="ttdeci">int sound_effects_volume</div><div class="ttdef"><b>Definition</b> <a href="#l00053">sdl.h:53</a></div></div>
-<div class="ttc" id="astructAppContext_html_acdea17bcfc0e068e8cf73241280b1ebe"><div class="ttname"><a href="structAppContext.html#acdea17bcfc0e068e8cf73241280b1ebe">AppContext::player_role</a></div><div class="ttdeci">UserRole player_role</div><div class="ttdef"><b>Definition</b> <a href="#l00048">sdl.h:48</a></div></div>
-<div class="ttc" id="astructAppContext_html_ae094faa774b18ad2519c7f88376098e0"><div class="ttname"><a href="structAppContext.html#ae094faa774b18ad2519c7f88376098e0">AppContext::sock</a></div><div class="ttdeci">int sock</div><div class="ttdef"><b>Definition</b> <a href="#l00045">sdl.h:45</a></div></div>
-<div class="ttc" id="astructAppContext_html_ae9d77d7d3c4f3a49436ab668385b847e"><div class="ttname"><a href="structAppContext.html#ae9d77d7d3c4f3a49436ab668385b847e">AppContext::fps</a></div><div class="ttdeci">float fps</div><div class="ttdef"><b>Definition</b> <a href="#l00044">sdl.h:44</a></div></div>
-<div class="ttc" id="astructCard_html"><div class="ttname"><a href="structCard.html">Card</a></div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2game_8h_source.html#l00095">game.h:95</a></div></div>
-<div class="ttc" id="astructLobby_html"><div class="ttname"><a href="structLobby.html">Lobby</a></div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00038">lobby.h:38</a></div></div>
+<div class="ttc" id="asdl_8h_html_af2c6b730c5804f9e1d59476c6b24e93d"><div class="ttname"><a href="sdl_8h.html#af2c6b730c5804f9e1d59476c6b24e93d">display_image</a></div><div class="ttdeci">int display_image(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, float size_factor, double angle, SDL_RendererFlip flip, float ratio, Uint8 opacity)</div><div class="ttdef"><b>Definition</b> <a href="sdl_8c_source.html#l00226">sdl.c:226</a></div></div>
+<div class="ttc" id="astructAppContext_html"><div class="ttname"><a href="structAppContext.html">AppContext</a></div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00054">sdl.h:54</a></div></div>
+<div class="ttc" id="astructAppContext_html_a02cb522b64d54cadeacd519e4468e3b4"><div class="ttname"><a href="structAppContext.html#a02cb522b64d54cadeacd519e4468e3b4">AppContext::player_team</a></div><div class="ttdeci">Team player_team</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00062">sdl.h:62</a></div></div>
+<div class="ttc" id="astructAppContext_html_a0482118779b050a3a693031790e0ebf6"><div class="ttname"><a href="structAppContext.html#a0482118779b050a3a693031790e0ebf6">AppContext::lobby</a></div><div class="ttdeci">Lobby * lobby</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00059">sdl.h:59</a></div></div>
+<div class="ttc" id="astructAppContext_html_a04bd2282bfa748f6c8dcf4564d48ac6c"><div class="ttname"><a href="structAppContext.html#a04bd2282bfa748f6c8dcf4564d48ac6c">AppContext::window</a></div><div class="ttdeci">SDL_Window * window</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00055">sdl.h:55</a></div></div>
+<div class="ttc" id="astructAppContext_html_a109b81a1fc4136ff7e0ae5727a735975"><div class="ttname"><a href="structAppContext.html#a109b81a1fc4136ff7e0ae5727a735975">AppContext::ping_ms</a></div><div class="ttdeci">int ping_ms</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00065">sdl.h:65</a></div></div>
+<div class="ttc" id="astructAppContext_html_a12358a947c811f31061ea211c1956784"><div class="ttname"><a href="structAppContext.html#a12358a947c811f31061ea211c1956784">AppContext::app_state</a></div><div class="ttdeci">AppState app_state</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00060">sdl.h:60</a></div></div>
+<div class="ttc" id="astructAppContext_html_a30c1cf80cb97e4947d684a813b1ff8fa"><div class="ttname"><a href="structAppContext.html#a30c1cf80cb97e4947d684a813b1ff8fa">AppContext::player_name</a></div><div class="ttdeci">char * player_name</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00074">sdl.h:74</a></div></div>
+<div class="ttc" id="astructAppContext_html_a4a448c0d52b8ff2586937dadd24207e5"><div class="ttname"><a href="structAppContext.html#a4a448c0d52b8ff2586937dadd24207e5">AppContext::global_luminosity</a></div><div class="ttdeci">float global_luminosity</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00079">sdl.h:79</a></div></div>
+<div class="ttc" id="astructAppContext_html_a52178812899cf728c91972c6dfda2a54"><div class="ttname"><a href="structAppContext.html#a52178812899cf728c91972c6dfda2a54">AppContext::windowed_y</a></div><div class="ttdeci">int windowed_y</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00085">sdl.h:85</a></div></div>
+<div class="ttc" id="astructAppContext_html_a6ba964a46649884e6e2aa40c60402427"><div class="ttname"><a href="structAppContext.html#a6ba964a46649884e6e2aa40c60402427">AppContext::last_fullscreen_toggle_ms</a></div><div class="ttdeci">Uint32 last_fullscreen_toggle_ms</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00071">sdl.h:71</a></div></div>
+<div class="ttc" id="astructAppContext_html_a70a91ad56405a07962fe46fa7f640882"><div class="ttname"><a href="structAppContext.html#a70a91ad56405a07962fe46fa7f640882">AppContext::renderer</a></div><div class="ttdeci">SDL_Renderer * renderer</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00056">sdl.h:56</a></div></div>
+<div class="ttc" id="astructAppContext_html_a78889dfe1177f030d60a42c5d1a8993a"><div class="ttname"><a href="structAppContext.html#a78889dfe1177f030d60a42c5d1a8993a">AppContext::restart_requested</a></div><div class="ttdeci">int restart_requested</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00080">sdl.h:80</a></div></div>
+<div class="ttc" id="astructAppContext_html_a7f59ff3cc21c54a78a5e707265fa8771"><div class="ttname"><a href="structAppContext.html#a7f59ff3cc21c54a78a5e707265fa8771">AppContext::windowed_width</a></div><div class="ttdeci">int windowed_width</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00082">sdl.h:82</a></div></div>
+<div class="ttc" id="astructAppContext_html_a8691eee497ea679662d39b2926343394"><div class="ttname"><a href="structAppContext.html#a8691eee497ea679662d39b2926343394">AppContext::music_volume</a></div><div class="ttdeci">int music_volume</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00077">sdl.h:77</a></div></div>
+<div class="ttc" id="astructAppContext_html_a8dd06081b28551d292567af46730b101"><div class="ttname"><a href="structAppContext.html#a8dd06081b28551d292567af46730b101">AppContext::bg_color</a></div><div class="ttdeci">SDL_Color bg_color</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00057">sdl.h:57</a></div></div>
+<div class="ttc" id="astructAppContext_html_a8e75d9cd35b7645dc8803102396c4f7a"><div class="ttname"><a href="structAppContext.html#a8e75d9cd35b7645dc8803102396c4f7a">AppContext::player_uuid</a></div><div class="ttdeci">char * player_uuid</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00073">sdl.h:73</a></div></div>
+<div class="ttc" id="astructAppContext_html_a9c886b815d7fb53d4820a2366bb46820"><div class="ttname"><a href="structAppContext.html#a9c886b815d7fb53d4820a2366bb46820">AppContext::version</a></div><div class="ttdeci">char version[16]</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00075">sdl.h:75</a></div></div>
+<div class="ttc" id="astructAppContext_html_aa0836b90fd45bdb3c8113599a4b07124"><div class="ttname"><a href="structAppContext.html#aa0836b90fd45bdb3c8113599a4b07124">AppContext::clock</a></div><div class="ttdeci">long clock</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00068">sdl.h:68</a></div></div>
+<div class="ttc" id="astructAppContext_html_aaab80fb4557b7afff19e148c86364ed4"><div class="ttname"><a href="structAppContext.html#aaab80fb4557b7afff19e148c86364ed4">AppContext::windowed_height</a></div><div class="ttdeci">int windowed_height</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00083">sdl.h:83</a></div></div>
+<div class="ttc" id="astructAppContext_html_aacacba12169c33c8803925240280aeef"><div class="ttname"><a href="structAppContext.html#aacacba12169c33c8803925240280aeef">AppContext::windowed_x</a></div><div class="ttdeci">int windowed_x</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00084">sdl.h:84</a></div></div>
+<div class="ttc" id="astructAppContext_html_ab601c17fd2f80a7918890a142db092e1"><div class="ttname"><a href="structAppContext.html#ab601c17fd2f80a7918890a142db092e1">AppContext::player_id</a></div><div class="ttdeci">int player_id</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00066">sdl.h:66</a></div></div>
+<div class="ttc" id="astructAppContext_html_ab8f74eb4803c461921f64cb543650c22"><div class="ttname"><a href="structAppContext.html#ab8f74eb4803c461921f64cb543650c22">AppContext::frame_start_time</a></div><div class="ttdeci">Uint32 frame_start_time</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00070">sdl.h:70</a></div></div>
+<div class="ttc" id="astructAppContext_html_ac754a95e774d145e7a60387c1bfd0de9"><div class="ttname"><a href="structAppContext.html#ac754a95e774d145e7a60387c1bfd0de9">AppContext::sound_effects_volume</a></div><div class="ttdeci">int sound_effects_volume</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00078">sdl.h:78</a></div></div>
+<div class="ttc" id="astructAppContext_html_acdea17bcfc0e068e8cf73241280b1ebe"><div class="ttname"><a href="structAppContext.html#acdea17bcfc0e068e8cf73241280b1ebe">AppContext::player_role</a></div><div class="ttdeci">UserRole player_role</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00061">sdl.h:61</a></div></div>
+<div class="ttc" id="astructAppContext_html_ae094faa774b18ad2519c7f88376098e0"><div class="ttname"><a href="structAppContext.html#ae094faa774b18ad2519c7f88376098e0">AppContext::sock</a></div><div class="ttdeci">int sock</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00064">sdl.h:64</a></div></div>
+<div class="ttc" id="astructAppContext_html_ae9d77d7d3c4f3a49436ab668385b847e"><div class="ttname"><a href="structAppContext.html#ae9d77d7d3c4f3a49436ab668385b847e">AppContext::fps</a></div><div class="ttdeci">float fps</div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00069">sdl.h:69</a></div></div>
+<div class="ttc" id="astructCard_html"><div class="ttname"><a href="structCard.html">Card</a></div><div class="ttdef"><b>Definition</b> <a href="card_8h_source.html#l00041">card.h:41</a></div></div>
+<div class="ttc" id="astructLobby_html"><div class="ttname"><a href="structLobby.html">Lobby</a></div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00069">lobby.h:69</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a href="sdl_8h.html">sdl.h</a></li>
-    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a class="el" href="sdl_8h.html">sdl.h</a></li>
+    <li class="footer">Généré le Mardi 14 Avril 2026 18:57:16 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

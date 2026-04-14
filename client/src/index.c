@@ -346,7 +346,7 @@ int main(int argc, char* argv[]){
     int running = 1;
 
     typedef int (*SceneInitFn)(AppContext*);
-    typedef int (*SceneCleanupFn)(void);
+    typedef int (*SceneCleanupFn)();
 
     typedef struct StartupLoadStep {
         const char* name;

@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence de la structure Card</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,20 +34,21 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,9 +63,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('structCard.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('structCard.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -89,62 +90,179 @@ $(function(){initNavTree('structCard.html','',''); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle"><div class="title">Référence de la structure Card</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="client_2lib_2game_8h_source.html">game.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="card_8h_source.html">card.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr class="memitem:a8ef4052ae034511697f7fc2b6e8e76f8" id="r_a8ef4052ae034511697f7fc2b6e8e76f8"><td class="memItemLeft">char&#160;</td><td class="memItemRight"><a class="el" href="#a8ef4052ae034511697f7fc2b6e8e76f8">word</a> [32]</td></tr>
-<tr class="memitem:a53f87916bc14225b31c4d184076986ff" id="r_a53f87916bc14225b31c4d184076986ff"><td class="memItemLeft"><a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td><td class="memItemRight"><a class="el" href="#a53f87916bc14225b31c4d184076986ff">team</a></td></tr>
-<tr class="memitem:a081171770c1dfa99ea73cc9ccc7378f0" id="r_a081171770c1dfa99ea73cc9ccc7378f0"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a081171770c1dfa99ea73cc9ccc7378f0">revealed</a></td></tr>
-<tr class="memitem:aeff7604cd7eb372fadb523d12498a1d4" id="r_aeff7604cd7eb372fadb523d12498a1d4"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#aeff7604cd7eb372fadb523d12498a1d4">gender</a></td></tr>
+<tr class="memitem:a8ef4052ae034511697f7fc2b6e8e76f8" id="r_a8ef4052ae034511697f7fc2b6e8e76f8"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCard.html#a8ef4052ae034511697f7fc2b6e8e76f8">word</a> [32]</td></tr>
+<tr class="separator:a8ef4052ae034511697f7fc2b6e8e76f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53f87916bc14225b31c4d184076986ff" id="r_a53f87916bc14225b31c4d184076986ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCard.html#a53f87916bc14225b31c4d184076986ff">team</a></td></tr>
+<tr class="separator:a53f87916bc14225b31c4d184076986ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac94f5fbd89aefdd5733c6cdf4cf49247" id="r_ac94f5fbd89aefdd5733c6cdf4cf49247"><td class="memItemLeft" align="right" valign="top">SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCard.html#ac94f5fbd89aefdd5733c6cdf4cf49247">rect</a></td></tr>
+<tr class="separator:ac94f5fbd89aefdd5733c6cdf4cf49247"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25037efb9b194d1314510d54f514c3b8" id="r_a25037efb9b194d1314510d54f514c3b8"><td class="memItemLeft" align="right" valign="top">SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCard.html#a25037efb9b194d1314510d54f514c3b8">guess_rect</a></td></tr>
+<tr class="separator:a25037efb9b194d1314510d54f514c3b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30da989e6d55dde7c8031aa13f94dc5a" id="r_a30da989e6d55dde7c8031aa13f94dc5a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="card_8h.html#a76b9e96d86b331202dcc0fba38b758cd">CardType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCard.html#a30da989e6d55dde7c8031aa13f94dc5a">type</a></td></tr>
+<tr class="separator:a30da989e6d55dde7c8031aa13f94dc5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7a28f31d80be20da1795d298370d0b1" id="r_aa7a28f31d80be20da1795d298370d0b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="client_2lib_2utils_8h.html#a426c0d223e7dc6b87d723c4c0c0e1f58">Booleen</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCard.html#aa7a28f31d80be20da1795d298370d0b1">revealed</a></td></tr>
+<tr class="separator:aa7a28f31d80be20da1795d298370d0b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a325084be1bb1044264dbcd023306acec" id="r_a325084be1bb1044264dbcd023306acec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="client_2lib_2utils_8h.html#a426c0d223e7dc6b87d723c4c0c0e1f58">Booleen</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCard.html#a325084be1bb1044264dbcd023306acec">selected</a></td></tr>
+<tr class="separator:a325084be1bb1044264dbcd023306acec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2047755368761e32313de2b177ffc949" id="r_a2047755368761e32313de2b177ffc949"><td class="memItemLeft" align="right" valign="top"><a class="el" href="client_2lib_2utils_8h.html#a426c0d223e7dc6b87d723c4c0c0e1f58">Booleen</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCard.html#a2047755368761e32313de2b177ffc949">is_pressed</a></td></tr>
+<tr class="separator:a2047755368761e32313de2b177ffc949"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9333ca8a76c3bb5b40a02c9b01fda07" id="r_aa9333ca8a76c3bb5b40a02c9b01fda07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="client_2lib_2utils_8h.html#a426c0d223e7dc6b87d723c4c0c0e1f58">Booleen</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCard.html#aa9333ca8a76c3bb5b40a02c9b01fda07">is_hovered</a></td></tr>
+<tr class="separator:aa9333ca8a76c3bb5b40a02c9b01fda07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a507c8c40b5436e53782def8585841a75" id="r_a507c8c40b5436e53782def8585841a75"><td class="memItemLeft" align="right" valign="top"><a class="el" href="client_2lib_2utils_8h.html#a426c0d223e7dc6b87d723c4c0c0e1f58">Booleen</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCard.html#a507c8c40b5436e53782def8585841a75">display_word_once_revealed</a></td></tr>
+<tr class="separator:a507c8c40b5436e53782def8585841a75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Représente un mot dans la grille de <a class="el" href="structCodenames.html">Codenames</a>.</p>
-<dl class="params"><dt>Paramètres</dt><dd>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Représente un mot dans la grille de <a class="el" href="structCodenames.html">Codenames</a>. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="#a8ef4052ae034511697f7fc2b6e8e76f8">word</a></td><td>texte du mot (terminé par \0). </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a53f87916bc14225b31c4d184076986ff">team</a></td><td>équipe à laquelle le mot appartient (TEAM_*). </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a081171770c1dfa99ea73cc9ccc7378f0">revealed</a></td><td>0 si caché, 1 si révélé. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#aeff7604cd7eb372fadb523d12498a1d4">gender</a></td><td>genre du mot (0 pour masculin, 1 pour féminin). </td></tr>
+    <tr><td class="paramname">word</td><td>texte du mot (terminé par \0). </td></tr>
+    <tr><td class="paramname">team</td><td>équipe à laquelle le mot appartient (TEAM_*). </td></tr>
+    <tr><td class="paramname">type</td><td>type de mot (masculin, féminin, etc.) pour l'affichage de la carte. </td></tr>
+    <tr><td class="paramname">rect</td><td>position et taille de la carte à l'écran (calculé lors du rendu). </td></tr>
+    <tr><td class="paramname">guess_rect</td><td>position et taille de l'icône de devinette à l'écran. </td></tr>
+    <tr><td class="paramname">revealed</td><td>0 si caché, 1 si révélé. </td></tr>
+    <tr><td class="paramname">selected</td><td>0 si non sélectionné, 1 si sélectionné. </td></tr>
+    <tr><td class="paramname">is_pressed</td><td>0 si non pressé, 1 si pressé. </td></tr>
+    <tr><td class="paramname">is_hovered</td><td>0 si non survolé, 1 si survolé.</td></tr>
+    <tr><td class="paramname">display_word_once_revealed</td><td>côté client seulement, indique si le mot doit être affiché une fois la carte révélée (utile pour les cartes sélectionnées mais pas encore devinées) </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2game_8h_source.html#l00095">95</a> du fichier <a class="el" href="client_2lib_2game_8h_source.html">game.h</a>.</p>
-</div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Documentation des champs</h2>
-<a id="aeff7604cd7eb372fadb523d12498a1d4" name="aeff7604cd7eb372fadb523d12498a1d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeff7604cd7eb372fadb523d12498a1d4">&#9670;&#160;</a></span>gender</h2>
+<p class="definition">Définition à la ligne <a class="el" href="card_8h_source.html#l00041">41</a> du fichier <a class="el" href="card_8h_source.html">card.h</a>.</p>
+</div><h2 class="groupheader">Documentation des champs</h2>
+<a id="a507c8c40b5436e53782def8585841a75" name="a507c8c40b5436e53782def8585841a75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a507c8c40b5436e53782def8585841a75">&#9670;&#160;</a></span>display_word_once_revealed</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Card::gender</td>
+          <td class="memname"><a class="el" href="client_2lib_2utils_8h.html#a426c0d223e7dc6b87d723c4c0c0e1f58">Booleen</a> Card::display_word_once_revealed</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2game_8h_source.html#l00099">99</a> du fichier <a class="el" href="client_2lib_2game_8h_source.html">game.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="card_8h_source.html#l00052">52</a> du fichier <a class="el" href="card_8h_source.html">card.h</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="card_8c_source.html#l00142">card_handle_click()</a>, <a class="el" href="card_8c_source.html#l00293">card_render()</a>, <a class="el" href="card_8c_source.html#l00112">card_start_flip_animation()</a>, et <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>.</p>
 
 </div>
 </div>
-<a id="a081171770c1dfa99ea73cc9ccc7378f0" name="a081171770c1dfa99ea73cc9ccc7378f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a081171770c1dfa99ea73cc9ccc7378f0">&#9670;&#160;</a></span>revealed</h2>
+<a id="a25037efb9b194d1314510d54f514c3b8" name="a25037efb9b194d1314510d54f514c3b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25037efb9b194d1314510d54f514c3b8">&#9670;&#160;</a></span>guess_rect</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Card::revealed</td>
+          <td class="memname">SDL_Rect Card::guess_rect</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2game_8h_source.html#l00098">98</a> du fichier <a class="el" href="client_2lib_2game_8h_source.html">game.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="card_8h_source.html#l00045">45</a> du fichier <a class="el" href="card_8h_source.html">card.h</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="card_8c_source.html#l00293">card_render()</a>, et <a class="el" href="card_8c_source.html#l00176">is_mouse_over_guess_icon()</a>.</p>
+
+</div>
+</div>
+<a id="aa9333ca8a76c3bb5b40a02c9b01fda07" name="aa9333ca8a76c3bb5b40a02c9b01fda07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9333ca8a76c3bb5b40a02c9b01fda07">&#9670;&#160;</a></span>is_hovered</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="client_2lib_2utils_8h.html#a426c0d223e7dc6b87d723c4c0c0e1f58">Booleen</a> Card::is_hovered</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="card_8h_source.html#l00050">50</a> du fichier <a class="el" href="card_8h_source.html">card.h</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="card_8c_source.html#l00180">card_handle_event()</a>, <a class="el" href="card_8c_source.html#l00293">card_render()</a>, et <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>.</p>
+
+</div>
+</div>
+<a id="a2047755368761e32313de2b177ffc949" name="a2047755368761e32313de2b177ffc949"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2047755368761e32313de2b177ffc949">&#9670;&#160;</a></span>is_pressed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="client_2lib_2utils_8h.html#a426c0d223e7dc6b87d723c4c0c0e1f58">Booleen</a> Card::is_pressed</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="card_8h_source.html#l00049">49</a> du fichier <a class="el" href="card_8h_source.html">card.h</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="card_8c_source.html#l00180">card_handle_event()</a>, <a class="el" href="card_8c_source.html#l00293">card_render()</a>, et <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>.</p>
+
+</div>
+</div>
+<a id="ac94f5fbd89aefdd5733c6cdf4cf49247" name="ac94f5fbd89aefdd5733c6cdf4cf49247"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac94f5fbd89aefdd5733c6cdf4cf49247">&#9670;&#160;</a></span>rect</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Rect Card::rect</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="card_8h_source.html#l00044">44</a> du fichier <a class="el" href="card_8h_source.html">card.h</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="card_8c_source.html#l00293">card_render()</a>, et <a class="el" href="card_8c_source.html#l00172">is_mouse_over_card()</a>.</p>
+
+</div>
+</div>
+<a id="aa7a28f31d80be20da1795d298370d0b1" name="aa7a28f31d80be20da1795d298370d0b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7a28f31d80be20da1795d298370d0b1">&#9670;&#160;</a></span>revealed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="client_2lib_2utils_8h.html#a426c0d223e7dc6b87d723c4c0c0e1f58">Booleen</a> Card::revealed</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="card_8h_source.html#l00047">47</a> du fichier <a class="el" href="card_8h_source.html">card.h</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="card_8c_source.html#l00142">card_handle_click()</a>, <a class="el" href="card_8c_source.html#l00293">card_render()</a>, <a class="el" href="card_8c_source.html#l00210">cards_handle_event()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00086">game_count_remaining_words()</a>, <a class="el" href="card_8c_source.html#l00271">get_card_texture()</a>, et <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>.</p>
+
+</div>
+</div>
+<a id="a325084be1bb1044264dbcd023306acec" name="a325084be1bb1044264dbcd023306acec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a325084be1bb1044264dbcd023306acec">&#9670;&#160;</a></span>selected</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="client_2lib_2utils_8h.html#a426c0d223e7dc6b87d723c4c0c0e1f58">Booleen</a> Card::selected</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="card_8h_source.html#l00048">48</a> du fichier <a class="el" href="card_8h_source.html">card.h</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="card_8c_source.html#l00142">card_handle_click()</a>, <a class="el" href="card_8c_source.html#l00293">card_render()</a>, et <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>.</p>
 
 </div>
 </div>
@@ -160,7 +278,27 @@ Champs de données</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2game_8h_source.html#l00097">97</a> du fichier <a class="el" href="client_2lib_2game_8h_source.html">game.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="card_8h_source.html#l00043">43</a> du fichier <a class="el" href="card_8h_source.html">card.h</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00086">game_count_remaining_words()</a>, <a class="el" href="card_8c_source.html#l00226">get_revealed_card_texture()</a>, <a class="el" href="card_8c_source.html#l00259">get_spy_word_side_texture()</a>, <a class="el" href="history_8c_source.html#l00273">history_find_revealed_word_team()</a>, et <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>.</p>
+
+</div>
+</div>
+<a id="a30da989e6d55dde7c8031aa13f94dc5a" name="a30da989e6d55dde7c8031aa13f94dc5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30da989e6d55dde7c8031aa13f94dc5a">&#9670;&#160;</a></span>type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="card_8h.html#a76b9e96d86b331202dcc0fba38b758cd">CardType</a> Card::type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="card_8h_source.html#l00046">46</a> du fichier <a class="el" href="card_8h_source.html">card.h</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="card_8c_source.html#l00271">get_card_texture()</a>, <a class="el" href="card_8c_source.html#l00226">get_revealed_card_texture()</a>, <a class="el" href="card_8c_source.html#l00259">get_spy_word_side_texture()</a>, et <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>.</p>
 
 </div>
 </div>
@@ -176,28 +314,22 @@ Champs de données</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2game_8h_source.html#l00096">96</a> du fichier <a class="el" href="client_2lib_2game_8h_source.html">game.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="card_8h_source.html#l00042">42</a> du fichier <a class="el" href="card_8h_source.html">card.h</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="card_8c_source.html#l00142">card_handle_click()</a>, <a class="el" href="card_8c_source.html#l00285">card_render_word()</a>, <a class="el" href="history_8c_source.html#l00273">history_find_revealed_word_team()</a>, et <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>.</p>
 
 </div>
 </div>
 <hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
-<li>client/lib/<a class="el" href="client_2lib_2game_8h_source.html">game.h</a></li>
+<li>client/lib/<a class="el" href="card_8h_source.html">card.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div id="page-nav" class="page-nav-panel">
-<div id="page-nav-resize-handle"></div>
-<div id="page-nav-tree">
-<div id="page-nav-contents">
-</div><!-- page-nav-contents -->
-</div><!-- page-nav-tree -->
-</div><!-- page-nav -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="structCard.html">Card</a></li>
-    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="navelem"><a class="el" href="structCard.html">Card</a></li>
+    <li class="footer">Généré le Mardi 14 Avril 2026 18:57:16 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

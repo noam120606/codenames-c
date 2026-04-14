@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['on_5fleave_0',['on_leave',['../server_2src_2message_8c.html#add27fff7d2eeb6c5c76aa14d3b06f756',1,'on_leave(Codenames *codenames, TcpClient *client):&#160;message.c'],['../server_2lib_2message_8h.html#add27fff7d2eeb6c5c76aa14d3b06f756',1,'on_leave(Codenames *codenames, TcpClient *client):&#160;message.c']]],
-  ['on_5fmessage_1',['on_message',['../client_2src_2message_8c.html#ab721dcd31c8851d491ef34ea7ae9dc9e',1,'on_message(AppContext *context, char *message):&#160;message.c'],['../client_2lib_2message_8h.html#ab721dcd31c8851d491ef34ea7ae9dc9e',1,'on_message(AppContext *context, char *message):&#160;message.c'],['../server_2src_2message_8c.html#a10a7a0258afe719e66a8ee30cba9c34a',1,'on_message(Codenames *codenames, TcpClient *client, char *message):&#160;message.c'],['../server_2lib_2message_8h.html#a10a7a0258afe719e66a8ee30cba9c34a',1,'on_message(Codenames *codenames, TcpClient *client, char *message):&#160;message.c']]],
-  ['on_5fmusic_5fvolume_5fchange_2',['on_music_volume_change',['../infos_8c.html#a8ea673d62376f972073bf1c0769e2081',1,'infos.c']]],
-  ['on_5fsfx_5fvolume_5fchange_3',['on_sfx_volume_change',['../infos_8c.html#a56e3dfd620e48606c0f39ab976eec6cd',1,'infos.c']]],
-  ['on_5fversion_5fcompare_4',['on_version_compare',['../server_2src_2version_8c.html#afa30bed3efd45e2a49841fad471ab04c',1,'on_version_compare(Codenames *codenames, TcpClient *client, char *message, Arguments args):&#160;version.c'],['../server_2lib_2version_8h.html#afa30bed3efd45e2a49841fad471ab04c',1,'on_version_compare(Codenames *codenames, TcpClient *client, char *message, Arguments args):&#160;version.c']]],
-  ['open_5fproperties_5',['open_properties',['../save_8c.html#af5a603b5dc27a37ff0d96d890f2041e3',1,'open_properties(const char *mode):&#160;save.c'],['../save_8h.html#af5a603b5dc27a37ff0d96d890f2041e3',1,'open_properties(const char *mode):&#160;save.c']]]
+  ['name_5fon_5fsubmit_0',['name_on_submit',['../menu_8c.html#ae6a52293616cb3db719c196662bece47',1,'menu.c']]],
+  ['next_5fline_5ftoken_1',['next_line_token',['../client_2src_2tcp_8c.html#a39ef1a24d9f2afc8c0947c10e06d449f',1,'tcp.c']]],
+  ['next_5fword_5fpos_2',['next_word_pos',['../input_8c.html#a8cde532a8ed8ceb10c31c63cc1407119',1,'input.c']]],
+  ['number_5flength_3',['number_length',['../client_2src_2utils_8c.html#acf06ac69f86a58e43477083d3930a4ca',1,'number_length(int n):&#160;utils.c'],['../client_2lib_2utils_8h.html#acf06ac69f86a58e43477083d3930a4ca',1,'number_length(int n):&#160;utils.c'],['../server_2src_2utils_8c.html#acf06ac69f86a58e43477083d3930a4ca',1,'number_length(int n):&#160;utils.c'],['../server_2lib_2utils_8h.html#acf06ac69f86a58e43477083d3930a4ca',1,'number_length(int n):&#160;utils.c']]]
 ];

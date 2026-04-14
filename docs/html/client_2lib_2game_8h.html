@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier client/lib/game.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,20 +34,21 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,9 +63,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('client_2lib_2game_8h.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('client_2lib_2game_8h.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -89,64 +90,192 @@ $(function(){initNavTree('client_2lib_2game_8h.html','',''); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#enum-members">Énumérations</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
   <div class="headertitle"><div class="title">Référence du fichier game.h</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Définitions et structures pour la gestion de la partie de <a class="el" href="structCodenames.html">Codenames</a> côté client.  
+<a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &quot;../SDL2/include/SDL2/SDL.h&quot;</code><br />
-<code>#include &quot;../SDL2/include/SDL2/SDL_image.h&quot;</code><br />
-<code>#include &quot;../SDL2/include/SDL2/SDL_ttf.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="button_8h_source.html">../lib/button.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="history_8h_source.html">../lib/history.h</a>&quot;</code><br />
 </div>
 <p><a href="client_2lib_2game_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Structures de données</h2></td></tr>
-<tr class="memitem:Word" id="r_Word"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structWord.html">Word</a></td></tr>
-<tr class="memitem:Game" id="r_Game"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structGame.html">Game</a></td></tr>
-<tr class="memitem:Card" id="r_Card"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structCard.html">Card</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGameHintBarMessage.html">GameHintBarMessage</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGameHintBarState.html">GameHintBarState</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGame.html">Game</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ab5dd85e42caa80c819f0f75a1a6c4bd9" id="r_ab5dd85e42caa80c819f0f75a1a6c4bd9"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ab5dd85e42caa80c819f0f75a1a6c4bd9">NB_WORDS</a>&#160;&#160;&#160;25</td></tr>
+<tr class="memitem:ab5dd85e42caa80c819f0f75a1a6c4bd9" id="r_ab5dd85e42caa80c819f0f75a1a6c4bd9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#ab5dd85e42caa80c819f0f75a1a6c4bd9">NB_WORDS</a>&#160;&#160;&#160;25</td></tr>
+<tr class="separator:ab5dd85e42caa80c819f0f75a1a6c4bd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87cb047335b63553b306a6d7ad8e9691" id="r_a87cb047335b63553b306a6d7ad8e9691"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#a87cb047335b63553b306a6d7ad8e9691">GAME_HINTBAR_TEXT_LEN</a>&#160;&#160;&#160;192</td></tr>
+<tr class="separator:a87cb047335b63553b306a6d7ad8e9691"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32e7f376972be3a8f467b4bab1b46c95" id="r_a32e7f376972be3a8f467b4bab1b46c95"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#a32e7f376972be3a8f467b4bab1b46c95">GAME_HINTBAR_FEEDBACK_INFO_MS</a>&#160;&#160;&#160;2500U</td></tr>
+<tr class="separator:a32e7f376972be3a8f467b4bab1b46c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14a4542a36d09f28deb590823493f2cf" id="r_a14a4542a36d09f28deb590823493f2cf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#a14a4542a36d09f28deb590823493f2cf">GAME_HINTBAR_FEEDBACK_SUCCESS_MS</a>&#160;&#160;&#160;3000U</td></tr>
+<tr class="separator:a14a4542a36d09f28deb590823493f2cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32dff9758a24355bb9a193af414f53bd" id="r_a32dff9758a24355bb9a193af414f53bd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#a32dff9758a24355bb9a193af414f53bd">GAME_HINTBAR_FEEDBACK_ERROR_MS</a>&#160;&#160;&#160;5000U</td></tr>
+<tr class="separator:a32dff9758a24355bb9a193af414f53bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Définitions de type</h2></td></tr>
-<tr class="memitem:a66a998123301ec295ccf7a27e19f1723" id="r_a66a998123301ec295ccf7a27e19f1723"><td class="memItemLeft">typedef enum <a class="el" href="#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td><td class="memItemRight"><a class="el" href="#a66a998123301ec295ccf7a27e19f1723">Team</a></td></tr>
-<tr class="memitem:af18642bfb6229ca25b25c60e12cffa6c" id="r_af18642bfb6229ca25b25c60e12cffa6c"><td class="memItemLeft">typedef enum <a class="el" href="#a83fc559664fc7c7e310c93586457b428">AppState</a>&#160;</td><td class="memItemRight"><a class="el" href="#af18642bfb6229ca25b25c60e12cffa6c">AppState</a></td></tr>
-<tr class="memitem:a2185b55f783b76da98f60ddfedae594d" id="r_a2185b55f783b76da98f60ddfedae594d"><td class="memItemLeft">typedef enum <a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a>&#160;</td><td class="memItemRight"><a class="el" href="#a2185b55f783b76da98f60ddfedae594d">GameState</a></td></tr>
-<tr class="memitem:a23ff27324f1ac52bcafa4cc91e2c2744" id="r_a23ff27324f1ac52bcafa4cc91e2c2744"><td class="memItemLeft">typedef struct Card&#160;</td><td class="memItemRight"><a class="el" href="#a23ff27324f1ac52bcafa4cc91e2c2744">Card</a></td></tr>
+<tr class="memitem:aab477be81bad6aadbec06506e3cc26a2" id="r_aab477be81bad6aadbec06506e3cc26a2"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structAppContext.html">AppContext</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#aab477be81bad6aadbec06506e3cc26a2">AppContext</a></td></tr>
+<tr class="separator:aab477be81bad6aadbec06506e3cc26a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23ff27324f1ac52bcafa4cc91e2c2744" id="r_a23ff27324f1ac52bcafa4cc91e2c2744"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structCard.html">Card</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#a23ff27324f1ac52bcafa4cc91e2c2744">Card</a></td></tr>
+<tr class="separator:a23ff27324f1ac52bcafa4cc91e2c2744"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69b5df78d315f81ed77df30fdbfb7002" id="r_a69b5df78d315f81ed77df30fdbfb7002"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structGame.html">Game</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#a69b5df78d315f81ed77df30fdbfb7002">Game</a></td></tr>
+<tr class="separator:a69b5df78d315f81ed77df30fdbfb7002"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66a998123301ec295ccf7a27e19f1723" id="r_a66a998123301ec295ccf7a27e19f1723"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#a66a998123301ec295ccf7a27e19f1723">Team</a></td></tr>
+<tr class="separator:a66a998123301ec295ccf7a27e19f1723"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af18642bfb6229ca25b25c60e12cffa6c" id="r_af18642bfb6229ca25b25c60e12cffa6c"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="client_2lib_2game_8h.html#a83fc559664fc7c7e310c93586457b428">AppState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#af18642bfb6229ca25b25c60e12cffa6c">AppState</a></td></tr>
+<tr class="separator:af18642bfb6229ca25b25c60e12cffa6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2185b55f783b76da98f60ddfedae594d" id="r_a2185b55f783b76da98f60ddfedae594d"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="client_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#a2185b55f783b76da98f60ddfedae594d">GameState</a></td></tr>
+<tr class="separator:a2185b55f783b76da98f60ddfedae594d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ab7c1ee2475a52e4724811bf64ee71b" id="r_a7ab7c1ee2475a52e4724811bf64ee71b"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="client_2lib_2game_8h.html#a39e77ccc6e7539abdd48c33d8acea2e4">GameHintBarPriority</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#a7ab7c1ee2475a52e4724811bf64ee71b">GameHintBarPriority</a></td></tr>
+<tr class="separator:a7ab7c1ee2475a52e4724811bf64ee71b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7960d89193dbc6fccbe56e123ee87431" id="r_a7960d89193dbc6fccbe56e123ee87431"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structGameHintBarMessage.html">GameHintBarMessage</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#a7960d89193dbc6fccbe56e123ee87431">GameHintBarMessage</a></td></tr>
+<tr class="separator:a7960d89193dbc6fccbe56e123ee87431"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ef4b8a23a16cb682096a7ac2f08bdaa" id="r_a0ef4b8a23a16cb682096a7ac2f08bdaa"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structGameHintBarState.html">GameHintBarState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#a0ef4b8a23a16cb682096a7ac2f08bdaa">GameHintBarState</a></td></tr>
+<tr class="separator:a0ef4b8a23a16cb682096a7ac2f08bdaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Énumérations</h2></td></tr>
-<tr class="memitem:a9c13bb5b1d69698f9b47900990eaa598" id="r_a9c13bb5b1d69698f9b47900990eaa598"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#a9c13bb5b1d69698f9b47900990eaa598">Team</a> { <a class="el" href="#a9c13bb5b1d69698f9b47900990eaa598a66bbf321f9fe6b3387090eb97e230c68">TEAM_NONE</a>
-, <a class="el" href="#a9c13bb5b1d69698f9b47900990eaa598a097bdc2bb8d24f733c06f0be9b66bc3d">TEAM_RED</a>
-, <a class="el" href="#a9c13bb5b1d69698f9b47900990eaa598aa36a5d6a8d34fba0b01fc4e56cd2a240">TEAM_BLUE</a>
-, <a class="el" href="#a9c13bb5b1d69698f9b47900990eaa598a61552105f8585ebcf1056afa4085d92b">TEAM_BLACK</a>
+<tr class="memitem:a9c13bb5b1d69698f9b47900990eaa598" id="r_a9c13bb5b1d69698f9b47900990eaa598"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> { <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598a66bbf321f9fe6b3387090eb97e230c68">TEAM_NONE</a>
+, <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598a097bdc2bb8d24f733c06f0be9b66bc3d">TEAM_RED</a>
+, <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598aa36a5d6a8d34fba0b01fc4e56cd2a240">TEAM_BLUE</a>
+, <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598a61552105f8585ebcf1056afa4085d92b">TEAM_BLACK</a>
  }</td></tr>
-<tr class="memitem:a83fc559664fc7c7e310c93586457b428" id="r_a83fc559664fc7c7e310c93586457b428"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#a83fc559664fc7c7e310c93586457b428">AppState</a> { <a class="el" href="#a83fc559664fc7c7e310c93586457b428ab5eca8678d854e742304639a7ea0a74e">APP_STATE_MENU</a>
-, <a class="el" href="#a83fc559664fc7c7e310c93586457b428ae9b5455f839cc053a71b1cd91536d0d1">APP_STATE_LOBBY</a>
-, <a class="el" href="#a83fc559664fc7c7e310c93586457b428a45495845960f8f1348c61775810ad110">APP_STATE_PLAYING</a>
-, <a class="el" href="#a83fc559664fc7c7e310c93586457b428a98f98946c5ec9457a14cf4a4a1de608c">APP_STATE_PAUSED</a>
+<tr class="separator:a9c13bb5b1d69698f9b47900990eaa598"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83fc559664fc7c7e310c93586457b428" id="r_a83fc559664fc7c7e310c93586457b428"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#a83fc559664fc7c7e310c93586457b428">AppState</a> { <a class="el" href="client_2lib_2game_8h.html#a83fc559664fc7c7e310c93586457b428ab5eca8678d854e742304639a7ea0a74e">APP_STATE_MENU</a>
+, <a class="el" href="client_2lib_2game_8h.html#a83fc559664fc7c7e310c93586457b428ae9b5455f839cc053a71b1cd91536d0d1">APP_STATE_LOBBY</a>
+, <a class="el" href="client_2lib_2game_8h.html#a83fc559664fc7c7e310c93586457b428a45495845960f8f1348c61775810ad110">APP_STATE_PLAYING</a>
+, <a class="el" href="client_2lib_2game_8h.html#a83fc559664fc7c7e310c93586457b428a98f98946c5ec9457a14cf4a4a1de608c">APP_STATE_PAUSED</a>
  }</td></tr>
-<tr class="memitem:a7899b65f1ea0f655e4bbf8d2a5714285" id="r_a7899b65f1ea0f655e4bbf8d2a5714285"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a> { <br />
-&#160;&#160;<a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285a466f1dad3c9d6cdfdce7f1d6d144f932">GAMESTATE_WAITING</a>
-, <a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285ac6f4aba5b0c4077290c9fb1c9940dfdf">GAMESTATE_TURN_RED_SPY</a>
-, <a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285a7bedbddf684940fe57d29de304b8a392">GAMESTATE_TURN_RED_AGENT</a>
-, <a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285a8449de81b79b665db58f5a6380c1e413">GAMESTATE_TURN_BLUE_SPY</a>
+<tr class="separator:a83fc559664fc7c7e310c93586457b428"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7899b65f1ea0f655e4bbf8d2a5714285" id="r_a7899b65f1ea0f655e4bbf8d2a5714285"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a> { <br />
+&#160;&#160;<a class="el" href="client_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a466f1dad3c9d6cdfdce7f1d6d144f932">GAMESTATE_WAITING</a>
+, <a class="el" href="client_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285ac6f4aba5b0c4077290c9fb1c9940dfdf">GAMESTATE_TURN_RED_SPY</a>
+, <a class="el" href="client_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a7bedbddf684940fe57d29de304b8a392">GAMESTATE_TURN_RED_AGENT</a>
+, <a class="el" href="client_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a8449de81b79b665db58f5a6380c1e413">GAMESTATE_TURN_BLUE_SPY</a>
 , <br />
-&#160;&#160;<a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285acaeb5b9f28749e43e9878f40613fa669">GAMESTATE_TURN_BLUE_AGENT</a>
-, <a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285aa58a7cf5b2690f73ec2359ec09e42095">GAMESTATE_ENDED</a>
+&#160;&#160;<a class="el" href="client_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285acaeb5b9f28749e43e9878f40613fa669">GAMESTATE_TURN_BLUE_AGENT</a>
+, <a class="el" href="client_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285aa58a7cf5b2690f73ec2359ec09e42095">GAMESTATE_ENDED</a>
 <br />
  }</td></tr>
+<tr class="separator:a7899b65f1ea0f655e4bbf8d2a5714285"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39e77ccc6e7539abdd48c33d8acea2e4" id="r_a39e77ccc6e7539abdd48c33d8acea2e4"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#a39e77ccc6e7539abdd48c33d8acea2e4">GameHintBarPriority</a> { <a class="el" href="client_2lib_2game_8h.html#a39e77ccc6e7539abdd48c33d8acea2e4ab1650d42d023e3c44f337eda1313f3c3">GAME_HINTBAR_PRIORITY_CONTEXT</a> = 1
+, <a class="el" href="client_2lib_2game_8h.html#a39e77ccc6e7539abdd48c33d8acea2e4acee0cc1dafe2d971a3cb9983725e26e8">GAME_HINTBAR_PRIORITY_INFO</a> = 2
+, <a class="el" href="client_2lib_2game_8h.html#a39e77ccc6e7539abdd48c33d8acea2e4a107e7584f2736da345e7f53fd66d1dd0">GAME_HINTBAR_PRIORITY_ERROR</a> = 3
+ }</td></tr>
+<tr class="separator:a39e77ccc6e7539abdd48c33d8acea2e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:afd3d7f4bdeb22a8fc7a4c284cdbeb919" id="r_afd3d7f4bdeb22a8fc7a4c284cdbeb919"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#afd3d7f4bdeb22a8fc7a4c284cdbeb919">game_handle_event</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, SDL_Event *e)</td></tr>
-<tr class="memitem:a9f85eab4f1455671d70455e858c74dac" id="r_a9f85eab4f1455671d70455e858c74dac"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a9f85eab4f1455671d70455e858c74dac">game_init</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
-<tr class="memitem:ae52f5479f34f39bb3de7703f7ba412d6" id="r_ae52f5479f34f39bb3de7703f7ba412d6"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ae52f5479f34f39bb3de7703f7ba412d6">game_free</a> ()</td></tr>
-<tr class="memitem:a113cc37a0ea70f2b9bea4fa5f834a983" id="r_a113cc37a0ea70f2b9bea4fa5f834a983"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a113cc37a0ea70f2b9bea4fa5f834a983">game_display</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="memitem:a9f85eab4f1455671d70455e858c74dac" id="r_a9f85eab4f1455671d70455e858c74dac"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#a9f85eab4f1455671d70455e858c74dac">game_init</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="separator:a9f85eab4f1455671d70455e858c74dac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae52f5479f34f39bb3de7703f7ba412d6" id="r_ae52f5479f34f39bb3de7703f7ba412d6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#ae52f5479f34f39bb3de7703f7ba412d6">game_free</a> ()</td></tr>
+<tr class="separator:ae52f5479f34f39bb3de7703f7ba412d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a113cc37a0ea70f2b9bea4fa5f834a983" id="r_a113cc37a0ea70f2b9bea4fa5f834a983"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#a113cc37a0ea70f2b9bea4fa5f834a983">game_display</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="separator:a113cc37a0ea70f2b9bea4fa5f834a983"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05b09c21b8f3736a21a07ecf18140aa9" id="r_a05b09c21b8f3736a21a07ecf18140aa9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#a05b09c21b8f3736a21a07ecf18140aa9">game_handle_event</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, SDL_Event *event)</td></tr>
+<tr class="separator:a05b09c21b8f3736a21a07ecf18140aa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7db74d8ee615bd026d4f8d1cbf70d86" id="r_af7db74d8ee615bd026d4f8d1cbf70d86"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#af7db74d8ee615bd026d4f8d1cbf70d86">my_turn</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="separator:af7db74d8ee615bd026d4f8d1cbf70d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2bbcc3153d267dd3a78e5f72751eb8d" id="r_af2bbcc3153d267dd3a78e5f72751eb8d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#af2bbcc3153d267dd3a78e5f72751eb8d">game_struct_free</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="separator:af2bbcc3153d267dd3a78e5f72751eb8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c5e97fda9c928af54df4cd5a665e489" id="r_a0c5e97fda9c928af54df4cd5a665e489"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#a0c5e97fda9c928af54df4cd5a665e489">game_hint_bar_set_context</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, const char *text, SDL_Color color)</td></tr>
+<tr class="separator:a0c5e97fda9c928af54df4cd5a665e489"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a523208adedb1fb78566e12605a9407ac" id="r_a523208adedb1fb78566e12605a9407ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#a523208adedb1fb78566e12605a9407ac">game_hint_bar_set_feedback</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, const char *text, SDL_Color color, int priority, Uint32 duration_ms)</td></tr>
+<tr class="separator:a523208adedb1fb78566e12605a9407ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17d5cf02c9a0b9a12422b03e55856c52" id="r_a17d5cf02c9a0b9a12422b03e55856c52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#a17d5cf02c9a0b9a12422b03e55856c52">game_hint_bar_clear_feedback</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="separator:a17d5cf02c9a0b9a12422b03e55856c52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc281acdfa1094848747657fcacd03d3" id="r_afc281acdfa1094848747657fcacd03d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2game_8h.html#afc281acdfa1094848747657fcacd03d3">game_render_cards</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="separator:afc281acdfa1094848747657fcacd03d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentation des macros</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Définitions et structures pour la gestion de la partie de <a class="el" href="structCodenames.html">Codenames</a> côté client. </p>
+
+<p class="definition">Définition dans le fichier <a class="el" href="client_2lib_2game_8h_source.html">game.h</a>.</p>
+</div><h2 class="groupheader">Documentation des macros</h2>
+<a id="a32dff9758a24355bb9a193af414f53bd" name="a32dff9758a24355bb9a193af414f53bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32dff9758a24355bb9a193af414f53bd">&#9670;&#160;</a></span>GAME_HINTBAR_FEEDBACK_ERROR_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GAME_HINTBAR_FEEDBACK_ERROR_MS&#160;&#160;&#160;5000U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2game_8h_source.html#l00026">26</a> du fichier <a class="el" href="client_2lib_2game_8h_source.html">game.h</a>.</p>
+
+</div>
+</div>
+<a id="a32e7f376972be3a8f467b4bab1b46c95" name="a32e7f376972be3a8f467b4bab1b46c95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32e7f376972be3a8f467b4bab1b46c95">&#9670;&#160;</a></span>GAME_HINTBAR_FEEDBACK_INFO_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GAME_HINTBAR_FEEDBACK_INFO_MS&#160;&#160;&#160;2500U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Durées par défaut des messages temporaires de la barre d'indice. </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2game_8h_source.html#l00024">24</a> du fichier <a class="el" href="client_2lib_2game_8h_source.html">game.h</a>.</p>
+
+</div>
+</div>
+<a id="a14a4542a36d09f28deb590823493f2cf" name="a14a4542a36d09f28deb590823493f2cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14a4542a36d09f28deb590823493f2cf">&#9670;&#160;</a></span>GAME_HINTBAR_FEEDBACK_SUCCESS_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GAME_HINTBAR_FEEDBACK_SUCCESS_MS&#160;&#160;&#160;3000U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2game_8h_source.html#l00025">25</a> du fichier <a class="el" href="client_2lib_2game_8h_source.html">game.h</a>.</p>
+
+</div>
+</div>
+<a id="a87cb047335b63553b306a6d7ad8e9691" name="a87cb047335b63553b306a6d7ad8e9691"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87cb047335b63553b306a6d7ad8e9691">&#9670;&#160;</a></span>GAME_HINTBAR_TEXT_LEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GAME_HINTBAR_TEXT_LEN&#160;&#160;&#160;192</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Capacité maximale du texte affiché dans la barre d'indice. </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2game_8h_source.html#l00021">21</a> du fichier <a class="el" href="client_2lib_2game_8h_source.html">game.h</a>.</p>
+
+</div>
+</div>
 <a id="ab5dd85e42caa80c819f0f75a1a6c4bd9" name="ab5dd85e42caa80c819f0f75a1a6c4bd9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab5dd85e42caa80c819f0f75a1a6c4bd9">&#9670;&#160;</a></span>NB_WORDS</h2>
 
@@ -158,14 +287,29 @@ Fonctions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Taille standard de la grille de <a class="el" href="structCodenames.html">Codenames</a>. </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2game_8h_source.html#l00018">18</a> du fichier <a class="el" href="client_2lib_2game_8h_source.html">game.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des définitions de type</h2>
+<a id="aab477be81bad6aadbec06506e3cc26a2" name="aab477be81bad6aadbec06506e3cc26a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab477be81bad6aadbec06506e3cc26a2">&#9670;&#160;</a></span>AppContext</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structAppContext.html">AppContext</a> <a class="el" href="structAppContext.html">AppContext</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="client_2lib_2game_8h_source.html#l00011">11</a> du fichier <a class="el" href="client_2lib_2game_8h_source.html">game.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2utils_8c_source.html#l00172">valid_hint()</a>.</p>
-
 </div>
 </div>
-<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Documentation des définitions de type</h2>
 <a id="af18642bfb6229ca25b25c60e12cffa6c" name="af18642bfb6229ca25b25c60e12cffa6c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af18642bfb6229ca25b25c60e12cffa6c">&#9670;&#160;</a></span>AppState</h2>
 
@@ -173,16 +317,16 @@ Fonctions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef enum <a class="el" href="#a83fc559664fc7c7e310c93586457b428">AppState</a> <a class="el" href="#a83fc559664fc7c7e310c93586457b428">AppState</a></td>
+          <td class="memname">typedef enum <a class="el" href="client_2lib_2game_8h.html#a83fc559664fc7c7e310c93586457b428">AppState</a> <a class="el" href="client_2lib_2game_8h.html#a83fc559664fc7c7e310c93586457b428">AppState</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>État de l'application. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="#a83fc559664fc7c7e310c93586457b428ab5eca8678d854e742304639a7ea0a74e">APP_STATE_MENU</a></td><td>État du menu principal. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a83fc559664fc7c7e310c93586457b428ae9b5455f839cc053a71b1cd91536d0d1">APP_STATE_LOBBY</a></td><td>État du lobby. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a83fc559664fc7c7e310c93586457b428a45495845960f8f1348c61775810ad110">APP_STATE_PLAYING</a></td><td>État de la partie en cours. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a83fc559664fc7c7e310c93586457b428a98f98946c5ec9457a14cf4a4a1de608c">APP_STATE_PAUSED</a></td><td>État de la partie en pause. </td></tr>
+    <tr><td class="paramname">APP_STATE_MENU</td><td>État du menu principal. </td></tr>
+    <tr><td class="paramname">APP_STATE_LOBBY</td><td>État du lobby. </td></tr>
+    <tr><td class="paramname">APP_STATE_PLAYING</td><td>État de la partie en cours. </td></tr>
+    <tr><td class="paramname">APP_STATE_PAUSED</td><td>État de la partie en pause. </td></tr>
   </table>
   </dd>
 </dl>
@@ -196,20 +340,73 @@ Fonctions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef struct Card Card</td>
+          <td class="memname">typedef struct <a class="el" href="structCard.html">Card</a> <a class="el" href="structCard.html">Card</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Représente un mot dans la grille de <a class="el" href="structCodenames.html">Codenames</a>.</p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">word</td><td>texte du mot (terminé par \0). </td></tr>
-    <tr><td class="paramname">team</td><td>équipe à laquelle le mot appartient (TEAM_*). </td></tr>
-    <tr><td class="paramname">revealed</td><td>0 si caché, 1 si révélé. </td></tr>
-    <tr><td class="paramname">gender</td><td>genre du mot (0 pour masculin, 1 pour féminin). </td></tr>
-  </table>
-  </dd>
-</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2game_8h_source.html#l00012">12</a> du fichier <a class="el" href="client_2lib_2game_8h_source.html">game.h</a>.</p>
+
+</div>
+</div>
+<a id="a69b5df78d315f81ed77df30fdbfb7002" name="a69b5df78d315f81ed77df30fdbfb7002"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69b5df78d315f81ed77df30fdbfb7002">&#9670;&#160;</a></span>Game</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structGame.html">Game</a> <a class="el" href="structGame.html">Game</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2game_8h_source.html#l00013">13</a> du fichier <a class="el" href="client_2lib_2game_8h_source.html">game.h</a>.</p>
+
+</div>
+</div>
+<a id="a7960d89193dbc6fccbe56e123ee87431" name="a7960d89193dbc6fccbe56e123ee87431"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7960d89193dbc6fccbe56e123ee87431">&#9670;&#160;</a></span>GameHintBarMessage</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structGameHintBarMessage.html">GameHintBarMessage</a> <a class="el" href="structGameHintBarMessage.html">GameHintBarMessage</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Message affichable dans la barre de titre de la fenêtre d'indice. expire_at_ms à 0 signifie "persistant". </p>
+
+</div>
+</div>
+<a id="a7ab7c1ee2475a52e4724811bf64ee71b" name="a7ab7c1ee2475a52e4724811bf64ee71b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ab7c1ee2475a52e4724811bf64ee71b">&#9670;&#160;</a></span>GameHintBarPriority</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="client_2lib_2game_8h.html#a39e77ccc6e7539abdd48c33d8acea2e4">GameHintBarPriority</a> <a class="el" href="client_2lib_2game_8h.html#a39e77ccc6e7539abdd48c33d8acea2e4">GameHintBarPriority</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Priorité des messages de la barre de titre de la fenêtre d'indice. Une priorité plus élevée masque temporairement les priorités plus faibles. </p>
+
+</div>
+</div>
+<a id="a0ef4b8a23a16cb682096a7ac2f08bdaa" name="a0ef4b8a23a16cb682096a7ac2f08bdaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ef4b8a23a16cb682096a7ac2f08bdaa">&#9670;&#160;</a></span>GameHintBarState</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structGameHintBarState.html">GameHintBarState</a> <a class="el" href="structGameHintBarState.html">GameHintBarState</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Etat complet de la barre de titre de la fenêtre d'indice. context est persistant, feedback est temporaire. </p>
 
 </div>
 </div>
@@ -220,18 +417,18 @@ Fonctions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef enum <a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a> <a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a></td>
+          <td class="memname">typedef enum <a class="el" href="client_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a> <a class="el" href="client_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>États possibles d'une partie. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285a466f1dad3c9d6cdfdce7f1d6d144f932">GAMESTATE_WAITING</a></td><td>en attente de joueurs / démarrage. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285ac6f4aba5b0c4077290c9fb1c9940dfdf">GAMESTATE_TURN_RED_SPY</a></td><td>tour de l'espion rouge. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285a7bedbddf684940fe57d29de304b8a392">GAMESTATE_TURN_RED_AGENT</a></td><td>tour de l'agent rouge. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285a8449de81b79b665db58f5a6380c1e413">GAMESTATE_TURN_BLUE_SPY</a></td><td>tour de l'espion bleu. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285acaeb5b9f28749e43e9878f40613fa669">GAMESTATE_TURN_BLUE_AGENT</a></td><td>tour de l'agent bleu. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285aa58a7cf5b2690f73ec2359ec09e42095">GAMESTATE_ENDED</a></td><td>partie terminée. </td></tr>
+    <tr><td class="paramname">GAMESTATE_WAITING</td><td>en attente de joueurs / démarrage. </td></tr>
+    <tr><td class="paramname">GAMESTATE_TURN_RED_SPY</td><td>tour de l'espion rouge. </td></tr>
+    <tr><td class="paramname">GAMESTATE_TURN_RED_AGENT</td><td>tour de l'agent rouge. </td></tr>
+    <tr><td class="paramname">GAMESTATE_TURN_BLUE_SPY</td><td>tour de l'espion bleu. </td></tr>
+    <tr><td class="paramname">GAMESTATE_TURN_BLUE_AGENT</td><td>tour de l'agent bleu. </td></tr>
+    <tr><td class="paramname">GAMESTATE_ENDED</td><td>partie terminée. </td></tr>
   </table>
   </dd>
 </dl>
@@ -245,23 +442,23 @@ Fonctions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef enum <a class="el" href="#a9c13bb5b1d69698f9b47900990eaa598">Team</a> <a class="el" href="#a9c13bb5b1d69698f9b47900990eaa598">Team</a></td>
+          <td class="memname">typedef enum <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>TEAM est utilisé à la fois pour catégoriser les mots dans la grille et pour assigner les joueurs à une équipe. Catégories de mots dans la grille de <a class="el" href="structCodenames.html">Codenames</a>. Les mots sont classés en 4 catégories : </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="#a9c13bb5b1d69698f9b47900990eaa598a66bbf321f9fe6b3387090eb97e230c68">TEAM_NONE</a></td><td>mot neutre (aucune équipe). </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a9c13bb5b1d69698f9b47900990eaa598a097bdc2bb8d24f733c06f0be9b66bc3d">TEAM_RED</a></td><td>mot appartenant à l'équipe rouge. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a9c13bb5b1d69698f9b47900990eaa598aa36a5d6a8d34fba0b01fc4e56cd2a240">TEAM_BLUE</a></td><td>mot appartenant à l'équipe bleue. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a9c13bb5b1d69698f9b47900990eaa598a61552105f8585ebcf1056afa4085d92b">TEAM_BLACK</a></td><td>mot assassin (met fin à la partie si révélé). </td></tr>
+    <tr><td class="paramname">TEAM_NONE</td><td>mot neutre (aucune équipe). </td></tr>
+    <tr><td class="paramname">TEAM_RED</td><td>mot appartenant à l'équipe rouge. </td></tr>
+    <tr><td class="paramname">TEAM_BLUE</td><td>mot appartenant à l'équipe bleue. </td></tr>
+    <tr><td class="paramname">TEAM_BLACK</td><td>mot assassin (met fin à la partie si révélé). </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Documentation du type de l'énumération</h2>
+<h2 class="groupheader">Documentation du type de l'énumération</h2>
 <a id="a83fc559664fc7c7e310c93586457b428" name="a83fc559664fc7c7e310c93586457b428"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a83fc559664fc7c7e310c93586457b428">&#9670;&#160;</a></span>AppState</h2>
 
@@ -269,16 +466,16 @@ Fonctions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="#a83fc559664fc7c7e310c93586457b428">AppState</a></td>
+          <td class="memname">enum <a class="el" href="client_2lib_2game_8h.html#a83fc559664fc7c7e310c93586457b428">AppState</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>État de l'application. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="#a83fc559664fc7c7e310c93586457b428ab5eca8678d854e742304639a7ea0a74e">APP_STATE_MENU</a></td><td>État du menu principal. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a83fc559664fc7c7e310c93586457b428ae9b5455f839cc053a71b1cd91536d0d1">APP_STATE_LOBBY</a></td><td>État du lobby. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a83fc559664fc7c7e310c93586457b428a45495845960f8f1348c61775810ad110">APP_STATE_PLAYING</a></td><td>État de la partie en cours. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a83fc559664fc7c7e310c93586457b428a98f98946c5ec9457a14cf4a4a1de608c">APP_STATE_PAUSED</a></td><td>État de la partie en pause. </td></tr>
+    <tr><td class="paramname">APP_STATE_MENU</td><td>État du menu principal. </td></tr>
+    <tr><td class="paramname">APP_STATE_LOBBY</td><td>État du lobby. </td></tr>
+    <tr><td class="paramname">APP_STATE_PLAYING</td><td>État de la partie en cours. </td></tr>
+    <tr><td class="paramname">APP_STATE_PAUSED</td><td>État de la partie en pause. </td></tr>
   </table>
   </dd>
 </dl>
@@ -289,7 +486,29 @@ Fonctions</h2></td></tr>
 <tr><td class="fieldname"><a id="a83fc559664fc7c7e310c93586457b428a98f98946c5ec9457a14cf4a4a1de608c" name="a83fc559664fc7c7e310c93586457b428a98f98946c5ec9457a14cf4a4a1de608c"></a>APP_STATE_PAUSED&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2game_8h_source.html#l00050">50</a> du fichier <a class="el" href="client_2lib_2game_8h_source.html">game.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2game_8h_source.html#l00051">51</a> du fichier <a class="el" href="client_2lib_2game_8h_source.html">game.h</a>.</p>
+
+</div>
+</div>
+<a id="a39e77ccc6e7539abdd48c33d8acea2e4" name="a39e77ccc6e7539abdd48c33d8acea2e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39e77ccc6e7539abdd48c33d8acea2e4">&#9670;&#160;</a></span>GameHintBarPriority</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="client_2lib_2game_8h.html#a39e77ccc6e7539abdd48c33d8acea2e4">GameHintBarPriority</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Priorité des messages de la barre de titre de la fenêtre d'indice. Une priorité plus élevée masque temporairement les priorités plus faibles. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="a39e77ccc6e7539abdd48c33d8acea2e4ab1650d42d023e3c44f337eda1313f3c3" name="a39e77ccc6e7539abdd48c33d8acea2e4ab1650d42d023e3c44f337eda1313f3c3"></a>GAME_HINTBAR_PRIORITY_CONTEXT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a39e77ccc6e7539abdd48c33d8acea2e4acee0cc1dafe2d971a3cb9983725e26e8" name="a39e77ccc6e7539abdd48c33d8acea2e4acee0cc1dafe2d971a3cb9983725e26e8"></a>GAME_HINTBAR_PRIORITY_INFO&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a39e77ccc6e7539abdd48c33d8acea2e4a107e7584f2736da345e7f53fd66d1dd0" name="a39e77ccc6e7539abdd48c33d8acea2e4a107e7584f2736da345e7f53fd66d1dd0"></a>GAME_HINTBAR_PRIORITY_ERROR&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2game_8h_source.html#l00080">80</a> du fichier <a class="el" href="client_2lib_2game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -300,18 +519,18 @@ Fonctions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a></td>
+          <td class="memname">enum <a class="el" href="client_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>États possibles d'une partie. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285a466f1dad3c9d6cdfdce7f1d6d144f932">GAMESTATE_WAITING</a></td><td>en attente de joueurs / démarrage. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285ac6f4aba5b0c4077290c9fb1c9940dfdf">GAMESTATE_TURN_RED_SPY</a></td><td>tour de l'espion rouge. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285a7bedbddf684940fe57d29de304b8a392">GAMESTATE_TURN_RED_AGENT</a></td><td>tour de l'agent rouge. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285a8449de81b79b665db58f5a6380c1e413">GAMESTATE_TURN_BLUE_SPY</a></td><td>tour de l'espion bleu. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285acaeb5b9f28749e43e9878f40613fa669">GAMESTATE_TURN_BLUE_AGENT</a></td><td>tour de l'agent bleu. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a7899b65f1ea0f655e4bbf8d2a5714285aa58a7cf5b2690f73ec2359ec09e42095">GAMESTATE_ENDED</a></td><td>partie terminée. </td></tr>
+    <tr><td class="paramname">GAMESTATE_WAITING</td><td>en attente de joueurs / démarrage. </td></tr>
+    <tr><td class="paramname">GAMESTATE_TURN_RED_SPY</td><td>tour de l'espion rouge. </td></tr>
+    <tr><td class="paramname">GAMESTATE_TURN_RED_AGENT</td><td>tour de l'agent rouge. </td></tr>
+    <tr><td class="paramname">GAMESTATE_TURN_BLUE_SPY</td><td>tour de l'espion bleu. </td></tr>
+    <tr><td class="paramname">GAMESTATE_TURN_BLUE_AGENT</td><td>tour de l'agent bleu. </td></tr>
+    <tr><td class="paramname">GAMESTATE_ENDED</td><td>partie terminée. </td></tr>
   </table>
   </dd>
 </dl>
@@ -324,7 +543,7 @@ Fonctions</h2></td></tr>
 <tr><td class="fieldname"><a id="a7899b65f1ea0f655e4bbf8d2a5714285aa58a7cf5b2690f73ec2359ec09e42095" name="a7899b65f1ea0f655e4bbf8d2a5714285aa58a7cf5b2690f73ec2359ec09e42095"></a>GAMESTATE_ENDED&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2game_8h_source.html#l00066">66</a> du fichier <a class="el" href="client_2lib_2game_8h_source.html">game.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2game_8h_source.html#l00067">67</a> du fichier <a class="el" href="client_2lib_2game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
@@ -335,16 +554,16 @@ Fonctions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="#a9c13bb5b1d69698f9b47900990eaa598">Team</a></td>
+          <td class="memname">enum <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>TEAM est utilisé à la fois pour catégoriser les mots dans la grille et pour assigner les joueurs à une équipe. Catégories de mots dans la grille de <a class="el" href="structCodenames.html">Codenames</a>. Les mots sont classés en 4 catégories : </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="#a9c13bb5b1d69698f9b47900990eaa598a66bbf321f9fe6b3387090eb97e230c68">TEAM_NONE</a></td><td>mot neutre (aucune équipe). </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a9c13bb5b1d69698f9b47900990eaa598a097bdc2bb8d24f733c06f0be9b66bc3d">TEAM_RED</a></td><td>mot appartenant à l'équipe rouge. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a9c13bb5b1d69698f9b47900990eaa598aa36a5d6a8d34fba0b01fc4e56cd2a240">TEAM_BLUE</a></td><td>mot appartenant à l'équipe bleue. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a9c13bb5b1d69698f9b47900990eaa598a61552105f8585ebcf1056afa4085d92b">TEAM_BLACK</a></td><td>mot assassin (met fin à la partie si révélé). </td></tr>
+    <tr><td class="paramname">TEAM_NONE</td><td>mot neutre (aucune équipe). </td></tr>
+    <tr><td class="paramname">TEAM_RED</td><td>mot appartenant à l'équipe rouge. </td></tr>
+    <tr><td class="paramname">TEAM_BLUE</td><td>mot appartenant à l'équipe bleue. </td></tr>
+    <tr><td class="paramname">TEAM_BLACK</td><td>mot assassin (met fin à la partie si révélé). </td></tr>
   </table>
   </dd>
 </dl>
@@ -355,11 +574,11 @@ Fonctions</h2></td></tr>
 <tr><td class="fieldname"><a id="a9c13bb5b1d69698f9b47900990eaa598a61552105f8585ebcf1056afa4085d92b" name="a9c13bb5b1d69698f9b47900990eaa598a61552105f8585ebcf1056afa4085d92b"></a>TEAM_BLACK&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2game_8h_source.html#l00022">22</a> du fichier <a class="el" href="client_2lib_2game_8h_source.html">game.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2game_8h_source.html#l00037">37</a> du fichier <a class="el" href="client_2lib_2game_8h_source.html">game.h</a>.</p>
 
 </div>
 </div>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a id="a113cc37a0ea70f2b9bea4fa5f834a983" name="a113cc37a0ea70f2b9bea4fa5f834a983"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a113cc37a0ea70f2b9bea4fa5f834a983">&#9670;&#160;</a></span>game_display()</h2>
 
@@ -369,23 +588,24 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void game_display </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Affiche le jeu. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Affiche la scène de jeu (fenêtres, chat, historique, etc.). </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">context</td><td>Contexte SDL. </td></tr>
+    <tr><td class="paramname">context</td><td>Contexte de l'application. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00543">543</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l01130">1130</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8h_source.html#l00065">AUDIO_FADE_IN_BY_VOLUME</a>, <a class="el" href="audio_8c_source.html#l00583">audio_is_playing()</a>, <a class="el" href="audio_8c_source.html#l00301">audio_play_with_fade()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00022">blue_panel</a>, <a class="el" href="client_2src_2game_8c_source.html#l00012">btn_hint_submit</a>, <a class="el" href="client_2src_2game_8c_source.html#l00011">btn_quit_game</a>, <a class="el" href="button_8c_source.html#l00238">button_render()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00016">chat_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00027">chat_window</a>, <a class="el" href="text_8c_source.html#l00102">display_text()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00045">Lobby::game</a>, <a class="el" href="client_2src_2game_8c_source.html#l00482">game_render_cards()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00471">game_render_team_windows()</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00071">GAMESTATE_TURN_BLUE_AGENT</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00070">GAMESTATE_TURN_BLUE_SPY</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00069">GAMESTATE_TURN_RED_AGENT</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00068">GAMESTATE_TURN_RED_SPY</a>, <a class="el" href="client_2src_2game_8c_source.html#l00015">hint_count_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00014">hint_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00026">hint_window</a>, <a class="el" href="client_2src_2game_8c_source.html#l00024">history_window_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00025">history_window_red</a>, <a class="el" href="input_8c_source.html#l00414">input_render()</a>, <a class="el" href="sdl_8h_source.html#l00046">AppContext::lobby</a>, <a class="el" href="audio_8h_source.html#l00016">MUSIC_GAME</a>, <a class="el" href="sdl_8h_source.html#l00048">AppContext::player_role</a>, <a class="el" href="sdl_8h_source.html#l00049">AppContext::player_team</a>, <a class="el" href="client_2src_2game_8c_source.html#l00023">red_panel</a>, <a class="el" href="sdl_8h_source.html#l00041">AppContext::renderer</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00013">ROLE_SPY</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00084">Game::state</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00025">TEAM_BLUE</a>, <a class="el" href="client_2src_2game_8c_source.html#l00034">TEAM_BLUE_COLOR</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00024">TEAM_RED</a>, <a class="el" href="client_2src_2game_8c_source.html#l00035">TEAM_RED_COLOR</a>, <a class="el" href="client_2src_2game_8c_source.html#l00045">txt_turn_label</a>, <a class="el" href="text_8c_source.html#l00076">update_text()</a>, <a class="el" href="text_8c_source.html#l00092">update_text_color()</a>, <a class="el" href="window_8c_source.html#l00303">window_place_button()</a>, <a class="el" href="window_8c_source.html#l00329">window_place_input()</a>, <a class="el" href="window_8c_source.html#l00350">window_place_text()</a>, et <a class="el" href="window_8c_source.html#l00210">window_render()</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8h_source.html#l00076">AUDIO_FADE_IN_BY_VOLUME</a>, <a class="el" href="audio_8c_source.html#l00688">audio_is_playing()</a>, <a class="el" href="audio_8c_source.html#l00359">audio_play_with_fade()</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00130">Game::blue_history</a>, <a class="el" href="client_2src_2game_8c_source.html#l00016">blue_panel</a>, <a class="el" href="client_2src_2game_8c_source.html#l00005">btn_hint_submit</a>, <a class="el" href="client_2src_2game_8c_source.html#l00004">btn_quit_game</a>, <a class="el" href="client_2src_2game_8c_source.html#l00006">btn_return_lobby</a>, <a class="el" href="button_8c_source.html#l00432">button_render()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00010">chat_input</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00432">chat_render_messages()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00059">CHAT_VISIBLE_LINES</a>, <a class="el" href="client_2src_2game_8c_source.html#l00021">chat_window</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00019">COL_GRAY</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00016">COL_WHITE</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00127">Game::current_hint</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00128">Game::current_hint_count</a>, <a class="el" href="text_8c_source.html#l00154">display_text()</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00046">format_to()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00086">game_count_remaining_words()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00072">game_get_active_game()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00099">game_has_hint()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00268">game_hint_bar_apply()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00219">game_hint_bar_update_context()</a>, <a class="el" href="card_8c_source.html#l00392">game_render_cards()</a>, <a class="el" href="client_2src_2game_8c_source.html#l01015">game_render_team_history()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00985">game_render_team_windows()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00103">game_should_show_hint_to_player()</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00073">GAMESTATE_ENDED</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00072">GAMESTATE_TURN_BLUE_AGENT</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00071">GAMESTATE_TURN_BLUE_SPY</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00070">GAMESTATE_TURN_RED_AGENT</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00069">GAMESTATE_TURN_RED_SPY</a>, <a class="el" href="client_2src_2game_8c_source.html#l00009">hint_count_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00008">hint_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00020">hint_window</a>, <a class="el" href="client_2src_2game_8c_source.html#l00068">history_cache_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00069">history_cache_red</a>, <a class="el" href="client_2src_2game_8c_source.html#l00018">history_window_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00019">history_window_red</a>, <a class="el" href="input_8c_source.html#l00728">input_render()</a>, <a class="el" href="sdl_8h_source.html#l00059">AppContext::lobby</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00017">MAX_USERS</a>, <a class="el" href="audio_8h_source.html#l00021">MUSIC_GAME</a>, <a class="el" href="client_2src_2game_8c_source.html#l00456">my_turn()</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00030">User::name</a>, <a class="el" href="sdl_8h_source.html#l00074">AppContext::player_name</a>, <a class="el" href="sdl_8h_source.html#l00061">AppContext::player_role</a>, <a class="el" href="sdl_8h_source.html#l00062">AppContext::player_team</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00129">Game::red_history</a>, <a class="el" href="client_2src_2game_8c_source.html#l00017">red_panel</a>, <a class="el" href="sdl_8h_source.html#l00056">AppContext::renderer</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00019">ROLE_AGENT</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00018">ROLE_SPY</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00126">Game::state</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00032">User::team</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00040">TEAM_BLUE</a>, <a class="el" href="client_2src_2game_8c_source.html#l00029">TEAM_BLUE_COLOR</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00039">TEAM_RED</a>, <a class="el" href="client_2src_2game_8c_source.html#l00030">TEAM_RED_COLOR</a>, <a class="el" href="client_2src_2game_8c_source.html#l00044">txt_blue_words_remaining</a>, <a class="el" href="client_2src_2game_8c_source.html#l00060">txt_chat_messages</a>, <a class="el" href="client_2src_2game_8c_source.html#l00049">txt_endGame</a>, <a class="el" href="client_2src_2game_8c_source.html#l00048">txt_hint_display</a>, <a class="el" href="client_2src_2game_8c_source.html#l00064">txt_history_blue_lines</a>, <a class="el" href="client_2src_2game_8c_source.html#l00066">txt_history_blue_prefix_lines</a>, <a class="el" href="client_2src_2game_8c_source.html#l00065">txt_history_red_lines</a>, <a class="el" href="client_2src_2game_8c_source.html#l00067">txt_history_red_prefix_lines</a>, <a class="el" href="client_2src_2game_8c_source.html#l00045">txt_red_words_remaining</a>, <a class="el" href="client_2src_2game_8c_source.html#l00047">txt_turn_label</a>, <a class="el" href="text_8c_source.html#l00128">update_text()</a>, <a class="el" href="text_8c_source.html#l00144">update_text_color()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00074">Lobby::users</a>, <a class="el" href="window_8c_source.html#l00477">window_place_button()</a>, <a class="el" href="window_8c_source.html#l00503">window_place_input()</a>, <a class="el" href="window_8c_source.html#l00524">window_place_text()</a>, <a class="el" href="window_8c_source.html#l00373">window_render()</a>, et <a class="el" href="client_2lib_2game_8h_source.html#l00131">Game::winner</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00205">main()</a>.</p>
 
 </div>
 </div>
@@ -398,23 +618,23 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int game_free </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Libère les ressources utilisées par le jeu. </p><dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, le nombre d'erreur sinon. </dd></dl>
+<p>Libère les ressources UI/graphismes allouées par game_init. </p><dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS en cas de succès. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00636">636</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l01364">1364</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2src_2game_8c_source.html#l00022">blue_panel</a>, <a class="el" href="client_2src_2game_8c_source.html#l00012">btn_hint_submit</a>, <a class="el" href="client_2src_2game_8c_source.html#l00011">btn_quit_game</a>, <a class="el" href="button_8c_source.html#l00186">button_destroy()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00009">card_black</a>, <a class="el" href="client_2src_2game_8c_source.html#l00008">card_f_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00004">card_f_classic</a>, <a class="el" href="client_2src_2game_8c_source.html#l00006">card_f_red</a>, <a class="el" href="client_2src_2game_8c_source.html#l00007">card_h_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00003">card_h_classic</a>, <a class="el" href="client_2src_2game_8c_source.html#l00005">card_h_red</a>, <a class="el" href="client_2src_2game_8c_source.html#l00016">chat_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00027">chat_window</a>, <a class="el" href="text_8c_source.html#l00125">destroy_text()</a>, <a class="el" href="sdl_8c_source.html#l00239">free_image()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00015">hint_count_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00014">hint_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00026">hint_window</a>, <a class="el" href="client_2src_2game_8c_source.html#l00024">history_window_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00025">history_window_red</a>, <a class="el" href="input_8c_source.html#l00241">input_destroy()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00048">MAX_TEAM_PLAYERS</a>, <a class="el" href="client_2src_2game_8c_source.html#l00055">NUM_CARDS</a>, <a class="el" href="client_2src_2game_8c_source.html#l00023">red_panel</a>, <a class="el" href="client_2src_2game_8c_source.html#l00041">txt_blue_agents_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00049">txt_blue_players</a>, <a class="el" href="client_2src_2game_8c_source.html#l00040">txt_blue_spy_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00056">txt_card_words</a>, <a class="el" href="client_2src_2game_8c_source.html#l00043">txt_red_agents_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00050">txt_red_players</a>, <a class="el" href="client_2src_2game_8c_source.html#l00042">txt_red_spy_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00038">txt_team_blue_title</a>, <a class="el" href="client_2src_2game_8c_source.html#l00039">txt_team_red_title</a>, <a class="el" href="client_2src_2game_8c_source.html#l00045">txt_turn_label</a>, et <a class="el" href="window_8c_source.html#l00152">window_destroy()</a>.</p>
+<p class="reference">Références <a class="el" href="client_2src_2game_8c_source.html#l00016">blue_panel</a>, <a class="el" href="client_2src_2game_8c_source.html#l00005">btn_hint_submit</a>, <a class="el" href="client_2src_2game_8c_source.html#l00004">btn_quit_game</a>, <a class="el" href="client_2src_2game_8c_source.html#l00006">btn_return_lobby</a>, <a class="el" href="button_8c_source.html#l00209">button_destroy()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00010">chat_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00059">CHAT_VISIBLE_LINES</a>, <a class="el" href="client_2src_2game_8c_source.html#l00021">chat_window</a>, <a class="el" href="text_8c_source.html#l00177">destroy_text()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00009">hint_count_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00008">hint_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00020">hint_window</a>, <a class="el" href="client_2src_2game_8c_source.html#l00068">history_cache_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00069">history_cache_red</a>, <a class="el" href="history_8c_source.html#l00259">history_destroy_turn_prefix_text()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00063">HISTORY_VISIBLE_LINES</a>, <a class="el" href="client_2src_2game_8c_source.html#l00018">history_window_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00019">history_window_red</a>, <a class="el" href="history_8c_source.html#l00541">history_wrap_cache_invalidate()</a>, <a class="el" href="input_8c_source.html#l00519">input_destroy()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00052">MAX_TEAM_PLAYERS</a>, <a class="el" href="client_2src_2game_8c_source.html#l00017">red_panel</a>, <a class="el" href="client_2src_2game_8c_source.html#l00040">txt_blue_agents_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00053">txt_blue_players</a>, <a class="el" href="client_2src_2game_8c_source.html#l00039">txt_blue_spy_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00044">txt_blue_words_remaining</a>, <a class="el" href="client_2src_2game_8c_source.html#l00060">txt_chat_messages</a>, <a class="el" href="client_2src_2game_8c_source.html#l00049">txt_endGame</a>, <a class="el" href="client_2src_2game_8c_source.html#l00048">txt_hint_display</a>, <a class="el" href="client_2src_2game_8c_source.html#l00064">txt_history_blue_lines</a>, <a class="el" href="client_2src_2game_8c_source.html#l00066">txt_history_blue_prefix_lines</a>, <a class="el" href="client_2src_2game_8c_source.html#l00065">txt_history_red_lines</a>, <a class="el" href="client_2src_2game_8c_source.html#l00067">txt_history_red_prefix_lines</a>, <a class="el" href="client_2src_2game_8c_source.html#l00042">txt_red_agents_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00054">txt_red_players</a>, <a class="el" href="client_2src_2game_8c_source.html#l00041">txt_red_spy_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00045">txt_red_words_remaining</a>, <a class="el" href="client_2src_2game_8c_source.html#l00037">txt_team_blue_title</a>, <a class="el" href="client_2src_2game_8c_source.html#l00038">txt_team_red_title</a>, <a class="el" href="client_2src_2game_8c_source.html#l00047">txt_turn_label</a>, et <a class="el" href="window_8c_source.html#l00282">window_destroy()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00205">main()</a>.</p>
 
 </div>
 </div>
-<a id="afd3d7f4bdeb22a8fc7a4c284cdbeb919" name="afd3d7f4bdeb22a8fc7a4c284cdbeb919"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afd3d7f4bdeb22a8fc7a4c284cdbeb919">&#9670;&#160;</a></span>game_handle_event()</h2>
+<a id="a05b09c21b8f3736a21a07ecf18140aa9" name="a05b09c21b8f3736a21a07ecf18140aa9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05b09c21b8f3736a21a07ecf18140aa9">&#9670;&#160;</a></span>game_handle_event()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -422,35 +642,175 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void game_handle_event </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SDL_Event *</td>          <td class="paramname"><span class="paramname"><em>e</em></span>&#160;)</td>
+          <td class="paramtype">SDL_Event *&#160;</td>
+          <td class="paramname"><em>event</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Gère les événements du menu. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Gère les événements SDL de la scène de jeu. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">context</td><td>Contexte SDL. </td></tr>
-    <tr><td class="paramname">e</td><td>Événement SDL à traiter.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Gère les événements du jeu. </p><dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">context</td><td>Contexte SDL. </td></tr>
+    <tr><td class="paramname">context</td><td>Contexte de l'application. </td></tr>
     <tr><td class="paramname">event</td><td>Événement SDL à traiter. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00122">122</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00474">474</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2src_2game_8c_source.html#l00022">blue_panel</a>, <a class="el" href="client_2src_2game_8c_source.html#l00012">btn_hint_submit</a>, <a class="el" href="client_2src_2game_8c_source.html#l00011">btn_quit_game</a>, <a class="el" href="button_8c_source.html#l00208">button_handle_event()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00016">chat_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00027">chat_window</a>, <a class="el" href="client_2src_2game_8c_source.html#l00015">hint_count_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00014">hint_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00026">hint_window</a>, <a class="el" href="client_2src_2game_8c_source.html#l00024">history_window_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00025">history_window_red</a>, <a class="el" href="input_8c_source.html#l00281">input_handle_event()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00023">red_panel</a>, et <a class="el" href="window_8c_source.html#l00172">window_handle_event()</a>.</p>
+<p class="reference">Références <a class="el" href="client_2src_2game_8c_source.html#l00016">blue_panel</a>, <a class="el" href="client_2src_2game_8c_source.html#l00005">btn_hint_submit</a>, <a class="el" href="client_2src_2game_8c_source.html#l00004">btn_quit_game</a>, <a class="el" href="client_2src_2game_8c_source.html#l00006">btn_return_lobby</a>, <a class="el" href="button_8c_source.html#l00294">button_handle_event()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00010">chat_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00021">chat_window</a>, <a class="el" href="client_2src_2game_8c_source.html#l00072">game_get_active_game()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00103">game_should_show_hint_to_player()</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00073">GAMESTATE_ENDED</a>, <a class="el" href="client_2src_2game_8c_source.html#l00009">hint_count_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00008">hint_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00020">hint_window</a>, <a class="el" href="client_2src_2game_8c_source.html#l00018">history_window_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00019">history_window_red</a>, <a class="el" href="input_8c_source.html#l00565">input_handle_event()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00456">my_turn()</a>, <a class="el" href="sdl_8h_source.html#l00061">AppContext::player_role</a>, <a class="el" href="client_2src_2game_8c_source.html#l00017">red_panel</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00019">ROLE_AGENT</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00018">ROLE_SPY</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00126">Game::state</a>, et <a class="el" href="window_8c_source.html#l00312">window_handle_event()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00205">main()</a>.</p>
+
+</div>
+</div>
+<a id="a17d5cf02c9a0b9a12422b03e55856c52" name="a17d5cf02c9a0b9a12422b03e55856c52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17d5cf02c9a0b9a12422b03e55856c52">&#9670;&#160;</a></span>game_hint_bar_clear_feedback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game_hint_bar_clear_feedback </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Efface le feedback temporaire de la barre de titre d'indice. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>Contexte de l'application. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00184">184</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2lib_2game_8h_source.html#l00095">GameHintBarMessage::active</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00094">GameHintBarMessage::expire_at_ms</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00104">GameHintBarState::feedback</a>, <a class="el" href="client_2src_2game_8c_source.html#l00077">game_get_hint_bar_state()</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00081">GAME_HINTBAR_PRIORITY_CONTEXT</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00093">GameHintBarMessage::priority</a>, et <a class="el" href="client_2lib_2game_8h_source.html#l00091">GameHintBarMessage::text</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00345">game_button_click()</a>.</p>
+
+</div>
+</div>
+<a id="a0c5e97fda9c928af54df4cd5a665e489" name="a0c5e97fda9c928af54df4cd5a665e489"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c5e97fda9c928af54df4cd5a665e489">&#9670;&#160;</a></span>game_hint_bar_set_context()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game_hint_bar_set_context </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Color&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Définit le message persistant de contexte pour la barre de titre d'indice. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>Contexte de l'application. </td></tr>
+    <tr><td class="paramname">text</td><td>Texte à afficher. </td></tr>
+    <tr><td class="paramname">color</td><td>Couleur de la barre de titre. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00130">130</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2lib_2game_8h_source.html#l00095">GameHintBarMessage::active</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00092">GameHintBarMessage::color</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00103">GameHintBarState::context</a>, <a class="el" href="client_2src_2game_8c_source.html#l00077">game_get_hint_bar_state()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00112">game_hint_bar_write_message()</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00081">GAME_HINTBAR_PRIORITY_CONTEXT</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00093">GameHintBarMessage::priority</a>, et <a class="el" href="client_2lib_2game_8h_source.html#l00091">GameHintBarMessage::text</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00219">game_hint_bar_update_context()</a>.</p>
+
+</div>
+</div>
+<a id="a523208adedb1fb78566e12605a9407ac" name="a523208adedb1fb78566e12605a9407ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a523208adedb1fb78566e12605a9407ac">&#9670;&#160;</a></span>game_hint_bar_set_feedback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game_hint_bar_set_feedback </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Color&#160;</td>
+          <td class="paramname"><em>color</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>priority</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Uint32&#160;</td>
+          <td class="paramname"><em>duration_ms</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Définit un message temporaire de feedback pour la barre de titre d'indice. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>Contexte de l'application. </td></tr>
+    <tr><td class="paramname">text</td><td>Texte à afficher. </td></tr>
+    <tr><td class="paramname">color</td><td>Couleur de la barre de titre. </td></tr>
+    <tr><td class="paramname">priority</td><td>Priorité du feedback. </td></tr>
+    <tr><td class="paramname">duration_ms</td><td>Durée d'affichage en millisecondes (0 = persistant jusqu'à remplacement explicite). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00163">163</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2lib_2game_8h_source.html#l00095">GameHintBarMessage::active</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00104">GameHintBarState::feedback</a>, <a class="el" href="client_2src_2game_8c_source.html#l00077">game_get_hint_bar_state()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00157">game_hint_bar_feedback_expired()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00112">game_hint_bar_write_message()</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00081">GAME_HINTBAR_PRIORITY_CONTEXT</a>, et <a class="el" href="client_2lib_2game_8h_source.html#l00093">GameHintBarMessage::priority</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00345">game_button_click()</a>, et <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>.</p>
 
 </div>
 </div>
@@ -463,42 +823,133 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int game_init </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initialise le jeu. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Initialise les ressources graphiques/UI de la scène de jeu. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">context</td><td>Contexte SDL. </td></tr>
+    <tr><td class="paramname">context</td><td>Contexte de l'application. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, le nombre d'erreur sinon. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 si tout est correctement initialisé, sinon un compteur d'erreurs. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00142">142</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00504">504</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="input_8h_source.html#l00088">InputConfig::allowed_pattern</a>, <a class="el" href="window_8h_source.html#l00037">WindowConfig::bg_color</a>, <a class="el" href="input_8h_source.html#l00087">InputConfig::bg_padding</a>, <a class="el" href="input_8h_source.html#l00086">InputConfig::bg_path</a>, <a class="el" href="client_2src_2game_8c_source.html#l00022">blue_panel</a>, <a class="el" href="client_2src_2game_8c_source.html#l00012">btn_hint_submit</a>, <a class="el" href="client_2src_2game_8c_source.html#l00011">btn_quit_game</a>, <a class="el" href="button_8c_source.html#l00003">button_config_init()</a>, <a class="el" href="button_8c_source.html#l00029">button_create()</a>, <a class="el" href="button_8h_source.html#l00069">ButtonConfig::callback</a>, <a class="el" href="client_2src_2game_8c_source.html#l00009">card_black</a>, <a class="el" href="client_2src_2game_8c_source.html#l00008">card_f_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00004">card_f_classic</a>, <a class="el" href="client_2src_2game_8c_source.html#l00006">card_f_red</a>, <a class="el" href="client_2src_2game_8c_source.html#l00007">card_h_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00003">card_h_classic</a>, <a class="el" href="client_2src_2game_8c_source.html#l00005">card_h_red</a>, <a class="el" href="input_8h_source.html#l00085">InputConfig::centered</a>, <a class="el" href="client_2src_2game_8c_source.html#l00016">chat_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00020">CHAT_INPUT_PLACEHOLDERS</a>, <a class="el" href="client_2src_2game_8c_source.html#l00059">chat_on_submit()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00027">chat_window</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00012">COL_BLACK</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00014">COL_GRAY</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00011">COL_WHITE</a>, <a class="el" href="button_8h_source.html#l00067">ButtonConfig::color</a>, <a class="el" href="text_8c_source.html#l00012">create_text_config()</a>, <a class="el" href="input_8h_source.html#l00093">InputConfig::disabled</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00027">FONT_LARABIE</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00028">FONT_NOTO</a>, <a class="el" href="button_8h_source.html#l00066">ButtonConfig::font_path</a>, <a class="el" href="input_8h_source.html#l00074">InputConfig::font_path</a>, <a class="el" href="input_8h_source.html#l00075">InputConfig::font_size</a>, <a class="el" href="client_2src_2game_8c_source.html#l00068">game_button_click()</a>, <a class="el" href="button_8h_source.html#l00064">ButtonConfig::h</a>, <a class="el" href="input_8h_source.html#l00073">InputConfig::h</a>, <a class="el" href="window_8h_source.html#l00034">WindowConfig::h</a>, <a class="el" href="client_2src_2game_8c_source.html#l00015">hint_count_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00019">HINT_COUNT_INPUT_PLACEHOLDERS</a>, <a class="el" href="client_2src_2game_8c_source.html#l00014">hint_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00018">HINT_INPUT_PLACEHOLDERS</a>, <a class="el" href="client_2src_2game_8c_source.html#l00026">hint_window</a>, <a class="el" href="client_2src_2game_8c_source.html#l00024">history_window_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00025">history_window_red</a>, <a class="el" href="text_8c_source.html#l00068">init_text()</a>, <a class="el" href="input_8h_source.html#l00018">INPUT_CHAT</a>, <a class="el" href="input_8c_source.html#l00069">input_config_init()</a>, <a class="el" href="input_8c_source.html#l00153">input_create()</a>, <a class="el" href="input_8h_source.html#l00016">INPUT_HINT</a>, <a class="el" href="input_8h_source.html#l00017">INPUT_HINT_COUNT</a>, <a class="el" href="button_8h_source.html#l00076">ButtonConfig::is_text</a>, <a class="el" href="sdl_8c_source.html#l00180">load_image()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00048">MAX_TEAM_PLAYERS</a>, <a class="el" href="input_8h_source.html#l00079">InputConfig::maxlen</a>, <a class="el" href="window_8h_source.html#l00035">WindowConfig::movable</a>, <a class="el" href="client_2src_2game_8c_source.html#l00055">NUM_CARDS</a>, <a class="el" href="input_8h_source.html#l00105">InputConfig::on_submit</a>, <a class="el" href="input_8h_source.html#l00077">InputConfig::placeholder_count</a>, <a class="el" href="input_8h_source.html#l00076">InputConfig::placeholders</a>, <a class="el" href="client_2src_2game_8c_source.html#l00023">red_panel</a>, <a class="el" href="sdl_8h_source.html#l00041">AppContext::renderer</a>, <a class="el" href="input_8h_source.html#l00089">InputConfig::submit_pattern</a>, <a class="el" href="client_2src_2game_8c_source.html#l00034">TEAM_BLUE_COLOR</a>, <a class="el" href="client_2src_2game_8c_source.html#l00035">TEAM_RED_COLOR</a>, <a class="el" href="button_8h_source.html#l00068">ButtonConfig::tex_path</a>, <a class="el" href="button_8h_source.html#l00065">ButtonConfig::text</a>, <a class="el" href="window_8h_source.html#l00042">WindowConfig::title</a>, <a class="el" href="window_8h_source.html#l00039">WindowConfig::titlebar_color</a>, <a class="el" href="window_8h_source.html#l00044">WindowConfig::titlebar_h</a>, <a class="el" href="client_2src_2game_8c_source.html#l00041">txt_blue_agents_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00049">txt_blue_players</a>, <a class="el" href="client_2src_2game_8c_source.html#l00040">txt_blue_spy_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00056">txt_card_words</a>, <a class="el" href="client_2src_2game_8c_source.html#l00043">txt_red_agents_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00050">txt_red_players</a>, <a class="el" href="client_2src_2game_8c_source.html#l00042">txt_red_spy_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00038">txt_team_blue_title</a>, <a class="el" href="client_2src_2game_8c_source.html#l00039">txt_team_red_title</a>, <a class="el" href="client_2src_2game_8c_source.html#l00045">txt_turn_label</a>, <a class="el" href="button_8h_source.html#l00063">ButtonConfig::w</a>, <a class="el" href="input_8h_source.html#l00072">InputConfig::w</a>, <a class="el" href="window_8h_source.html#l00033">WindowConfig::w</a>, <a class="el" href="window_8c_source.html#l00083">window_config_init()</a>, <a class="el" href="window_8c_source.html#l00127">window_create()</a>, <a class="el" href="button_8h_source.html#l00061">ButtonConfig::x</a>, <a class="el" href="input_8h_source.html#l00070">InputConfig::x</a>, <a class="el" href="window_8h_source.html#l00031">WindowConfig::x</a>, <a class="el" href="button_8h_source.html#l00062">ButtonConfig::y</a>, <a class="el" href="input_8h_source.html#l00071">InputConfig::y</a>, et <a class="el" href="window_8h_source.html#l00032">WindowConfig::y</a>.</p>
+<p class="reference">Références <a class="el" href="input_8h_source.html#l00103">InputConfig::allowed_pattern</a>, <a class="el" href="window_8h_source.html#l00075">WindowConfig::bg_color</a>, <a class="el" href="input_8h_source.html#l00102">InputConfig::bg_padding</a>, <a class="el" href="input_8h_source.html#l00101">InputConfig::bg_path</a>, <a class="el" href="client_2src_2game_8c_source.html#l00016">blue_panel</a>, <a class="el" href="button_8h_source.html#l00041">BTN_GAME_RETURN_LOBBY</a>, <a class="el" href="button_8h_source.html#l00039">BTN_GAME_VALIDATE_HINT</a>, <a class="el" href="client_2src_2game_8c_source.html#l00005">btn_hint_submit</a>, <a class="el" href="client_2src_2game_8c_source.html#l00004">btn_quit_game</a>, <a class="el" href="client_2src_2game_8c_source.html#l00006">btn_return_lobby</a>, <a class="el" href="button_8c_source.html#l00007">button_config_init()</a>, <a class="el" href="button_8c_source.html#l00042">button_create()</a>, <a class="el" href="button_8h_source.html#l00105">ButtonConfig::callback</a>, <a class="el" href="input_8h_source.html#l00100">InputConfig::centered</a>, <a class="el" href="client_2src_2game_8c_source.html#l00010">chat_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00014">CHAT_INPUT_PLACEHOLDERS</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00257">chat_submit_message()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00059">CHAT_VISIBLE_LINES</a>, <a class="el" href="client_2src_2game_8c_source.html#l00021">chat_window</a>, <a class="el" href="input_8h_source.html#l00110">InputConfig::clear_on_submit</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00019">COL_GRAY</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00016">COL_WHITE</a>, <a class="el" href="button_8h_source.html#l00103">ButtonConfig::color</a>, <a class="el" href="text_8c_source.html#l00064">create_text_config()</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00032">FONT_LARABIE</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00033">FONT_NOTO</a>, <a class="el" href="button_8h_source.html#l00102">ButtonConfig::font_path</a>, <a class="el" href="input_8h_source.html#l00089">InputConfig::font_path</a>, <a class="el" href="input_8h_source.html#l00090">InputConfig::font_size</a>, <a class="el" href="client_2src_2game_8c_source.html#l00345">game_button_click()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00070">GAME_HINTBAR_DEFAULT_TITLE</a>, <a class="el" href="button_8h_source.html#l00100">ButtonConfig::h</a>, <a class="el" href="input_8h_source.html#l00088">InputConfig::h</a>, <a class="el" href="window_8h_source.html#l00072">WindowConfig::h</a>, <a class="el" href="client_2src_2game_8c_source.html#l00009">hint_count_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00013">HINT_COUNT_INPUT_PLACEHOLDERS</a>, <a class="el" href="client_2src_2game_8c_source.html#l00318">hint_count_on_submit()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00008">hint_input</a>, <a class="el" href="client_2src_2game_8c_source.html#l00012">HINT_INPUT_PLACEHOLDERS</a>, <a class="el" href="client_2src_2game_8c_source.html#l00299">hint_on_submit()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00020">hint_window</a>, <a class="el" href="client_2src_2game_8c_source.html#l00068">history_cache_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00069">history_cache_red</a>, <a class="el" href="client_2src_2game_8c_source.html#l00063">HISTORY_VISIBLE_LINES</a>, <a class="el" href="client_2src_2game_8c_source.html#l00018">history_window_blue</a>, <a class="el" href="client_2src_2game_8c_source.html#l00019">history_window_red</a>, <a class="el" href="history_8c_source.html#l00541">history_wrap_cache_invalidate()</a>, <a class="el" href="text_8c_source.html#l00120">init_text()</a>, <a class="el" href="input_8h_source.html#l00024">INPUT_CHAT</a>, <a class="el" href="input_8c_source.html#l00231">input_config_init()</a>, <a class="el" href="input_8c_source.html#l00420">input_create()</a>, <a class="el" href="input_8h_source.html#l00022">INPUT_HINT</a>, <a class="el" href="input_8h_source.html#l00023">INPUT_HINT_COUNT</a>, <a class="el" href="button_8h_source.html#l00118">ButtonConfig::is_text</a>, <a class="el" href="input_8h_source.html#l00111">InputConfig::keep_focus_on_submit</a>, <a class="el" href="client_2src_2game_8c_source.html#l00052">MAX_TEAM_PLAYERS</a>, <a class="el" href="input_8h_source.html#l00094">InputConfig::maxlen</a>, <a class="el" href="window_8h_source.html#l00073">WindowConfig::movable</a>, <a class="el" href="input_8h_source.html#l00129">InputConfig::on_submit</a>, <a class="el" href="input_8h_source.html#l00092">InputConfig::placeholder_count</a>, <a class="el" href="input_8h_source.html#l00091">InputConfig::placeholders</a>, <a class="el" href="client_2src_2game_8c_source.html#l00017">red_panel</a>, <a class="el" href="sdl_8h_source.html#l00056">AppContext::renderer</a>, <a class="el" href="window_8h_source.html#l00095">WindowConfig::scroll_max</a>, <a class="el" href="window_8h_source.html#l00094">WindowConfig::scroll_min</a>, <a class="el" href="window_8h_source.html#l00093">WindowConfig::scroll_offset</a>, <a class="el" href="window_8h_source.html#l00096">WindowConfig::scroll_step</a>, <a class="el" href="window_8h_source.html#l00089">WindowConfig::scroll_x1</a>, <a class="el" href="window_8h_source.html#l00091">WindowConfig::scroll_x2</a>, <a class="el" href="window_8h_source.html#l00090">WindowConfig::scroll_y1</a>, <a class="el" href="window_8h_source.html#l00092">WindowConfig::scroll_y2</a>, <a class="el" href="window_8h_source.html#l00088">WindowConfig::scrollable</a>, <a class="el" href="input_8h_source.html#l00104">InputConfig::submit_pattern</a>, <a class="el" href="input_8h_source.html#l00105">InputConfig::submit_sound</a>, <a class="el" href="client_2src_2game_8c_source.html#l00029">TEAM_BLUE_COLOR</a>, <a class="el" href="client_2src_2game_8c_source.html#l00030">TEAM_RED_COLOR</a>, <a class="el" href="button_8h_source.html#l00104">ButtonConfig::tex_path</a>, <a class="el" href="button_8h_source.html#l00101">ButtonConfig::text</a>, <a class="el" href="window_8h_source.html#l00080">WindowConfig::title</a>, <a class="el" href="window_8h_source.html#l00077">WindowConfig::titlebar_color</a>, <a class="el" href="window_8h_source.html#l00087">WindowConfig::titlebar_h</a>, <a class="el" href="client_2src_2game_8c_source.html#l00040">txt_blue_agents_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00053">txt_blue_players</a>, <a class="el" href="client_2src_2game_8c_source.html#l00039">txt_blue_spy_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00044">txt_blue_words_remaining</a>, <a class="el" href="client_2src_2game_8c_source.html#l00060">txt_chat_messages</a>, <a class="el" href="client_2src_2game_8c_source.html#l00049">txt_endGame</a>, <a class="el" href="client_2src_2game_8c_source.html#l00048">txt_hint_display</a>, <a class="el" href="client_2src_2game_8c_source.html#l00064">txt_history_blue_lines</a>, <a class="el" href="client_2src_2game_8c_source.html#l00066">txt_history_blue_prefix_lines</a>, <a class="el" href="client_2src_2game_8c_source.html#l00065">txt_history_red_lines</a>, <a class="el" href="client_2src_2game_8c_source.html#l00067">txt_history_red_prefix_lines</a>, <a class="el" href="client_2src_2game_8c_source.html#l00042">txt_red_agents_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00054">txt_red_players</a>, <a class="el" href="client_2src_2game_8c_source.html#l00041">txt_red_spy_label</a>, <a class="el" href="client_2src_2game_8c_source.html#l00045">txt_red_words_remaining</a>, <a class="el" href="client_2src_2game_8c_source.html#l00037">txt_team_blue_title</a>, <a class="el" href="client_2src_2game_8c_source.html#l00038">txt_team_red_title</a>, <a class="el" href="client_2src_2game_8c_source.html#l00047">txt_turn_label</a>, <a class="el" href="button_8h_source.html#l00099">ButtonConfig::w</a>, <a class="el" href="input_8h_source.html#l00087">InputConfig::w</a>, <a class="el" href="window_8h_source.html#l00071">WindowConfig::w</a>, <a class="el" href="window_8c_source.html#l00187">window_config_init()</a>, <a class="el" href="window_8c_source.html#l00247">window_create()</a>, <a class="el" href="window_8h_source.html#l00033">WINDOW_GAME_BLUE_PANEL</a>, <a class="el" href="window_8h_source.html#l00038">WINDOW_GAME_CHAT</a>, <a class="el" href="window_8h_source.html#l00037">WINDOW_GAME_HINT</a>, <a class="el" href="window_8h_source.html#l00035">WINDOW_GAME_HISTORY_BLUE</a>, <a class="el" href="window_8h_source.html#l00036">WINDOW_GAME_HISTORY_RED</a>, <a class="el" href="window_8h_source.html#l00034">WINDOW_GAME_RED_PANEL</a>, <a class="el" href="button_8h_source.html#l00097">ButtonConfig::x</a>, <a class="el" href="input_8h_source.html#l00085">InputConfig::x</a>, <a class="el" href="window_8h_source.html#l00069">WindowConfig::x</a>, <a class="el" href="button_8h_source.html#l00098">ButtonConfig::y</a>, <a class="el" href="input_8h_source.html#l00086">InputConfig::y</a>, et <a class="el" href="window_8h_source.html#l00070">WindowConfig::y</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00205">main()</a>.</p>
+
+</div>
+</div>
+<a id="afc281acdfa1094848747657fcacd03d3" name="afc281acdfa1094848747657fcacd03d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc281acdfa1094848747657fcacd03d3">&#9670;&#160;</a></span>game_render_cards()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game_render_cards </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Rendu des cartes du jeu (implémenté dans <a class="el" href="card_8c.html">card.c</a>). </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>Contexte SDL.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Rend les cartes à l'écran en fonction de leur état (révélées, sélectionnées, etc.). </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>contexte de l'application, utilisé pour le rendu et l'accès à l'état </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="card_8c_source.html#l00392">392</a> du fichier <a class="el" href="card_8c_source.html">card.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="card_8c_source.html#l00293">card_render()</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00124">Game::cards</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00076">Lobby::game</a>, et <a class="el" href="sdl_8h_source.html#l00059">AppContext::lobby</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l01130">game_display()</a>.</p>
+
+</div>
+</div>
+<a id="af2bbcc3153d267dd3a78e5f72751eb8d" name="af2bbcc3153d267dd3a78e5f72751eb8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2bbcc3153d267dd3a78e5f72751eb8d">&#9670;&#160;</a></span>game_struct_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int game_struct_free </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Libère les ressources utilisées par la structure de jeu. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>Contexte de l'application contenant la structure de jeu à libérer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS en cas de succès, EXIT_FAILURE si le contexte ou la structure de jeu est invalide. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00466">466</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2lib_2game_8h_source.html#l00124">Game::cards</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00076">Lobby::game</a>, et <a class="el" href="sdl_8h_source.html#l00059">AppContext::lobby</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00345">game_button_click()</a>, et <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>.</p>
+
+</div>
+</div>
+<a id="af7db74d8ee615bd026d4f8d1cbf70d86" name="af7db74d8ee615bd026d4f8d1cbf70d86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7db74d8ee615bd026d4f8d1cbf70d86">&#9670;&#160;</a></span>my_turn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int my_turn </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Vérifie si c'est le tour du joueur local. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>Contexte de l'application. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>1 si c'est le tour du joueur, 0 sinon. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2game_8c_source.html#l00456">456</a> du fichier <a class="el" href="client_2src_2game_8c_source.html">game.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2lib_2lobby_8h_source.html#l00076">Lobby::game</a>, <a class="el" href="client_2src_2game_8c_source.html#l00082">game_has_active_match()</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00072">GAMESTATE_TURN_BLUE_AGENT</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00071">GAMESTATE_TURN_BLUE_SPY</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00070">GAMESTATE_TURN_RED_AGENT</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00069">GAMESTATE_TURN_RED_SPY</a>, <a class="el" href="sdl_8h_source.html#l00059">AppContext::lobby</a>, <a class="el" href="sdl_8h_source.html#l00061">AppContext::player_role</a>, <a class="el" href="sdl_8h_source.html#l00062">AppContext::player_team</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00019">ROLE_AGENT</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00018">ROLE_SPY</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00126">Game::state</a>, et <a class="el" href="client_2lib_2game_8h_source.html#l00039">TEAM_RED</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="card_8c_source.html#l00210">cards_handle_event()</a>, <a class="el" href="client_2src_2game_8c_source.html#l01130">game_display()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00474">game_handle_event()</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div id="page-nav" class="page-nav-panel">
-<div id="page-nav-resize-handle"></div>
-<div id="page-nav-tree">
-<div id="page-nav-contents">
-</div><!-- page-nav-contents -->
-</div><!-- page-nav-tree -->
-</div><!-- page-nav -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a href="client_2lib_2game_8h.html">game.h</a></li>
-    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a class="el" href="client_2lib_2game_8h.html">game.h</a></li>
+    <li class="footer">Généré le Mardi 14 Avril 2026 18:57:16 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

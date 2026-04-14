@@ -1,11 +1,23 @@
 var searchData=
 [
-  ['w_0',['w',['../structButtonConfig.html#a925b352aab804ad5839bc6696fba69a7',1,'ButtonConfig::w'],['../structCrossfaderConfig.html#a3d1327229b97b9c42d962360c2791a44',1,'CrossfaderConfig::w'],['../structInputConfig.html#a92a154f14382d5999fd003c6c7ba4e92',1,'InputConfig::w'],['../structWindowConfig.html#a4c62d9eb84ce484e1c502d06db9b4b1d',1,'WindowConfig::w']]],
+  ['w_0',['w',['../structButtonConfig.html#a925b352aab804ad5839bc6696fba69a7',1,'ButtonConfig::w'],['../structCrossfaderConfig.html#a3d1327229b97b9c42d962360c2791a44',1,'CrossfaderConfig::w'],['../structInputConfig.html#a92a154f14382d5999fd003c6c7ba4e92',1,'InputConfig::w'],['../structWindowConfig.html#a4c62d9eb84ce484e1c502d06db9b4b1d',1,'WindowConfig::w'],['../structMenuUiPlacement.html#a04da0de63ce2431394a7c9695dcec924',1,'MenuUiPlacement::w']]],
   ['wi_1',['wi',['../structTileOverride.html#a38e5d9b0c8e989ff1dc9ae71a01b40f5',1,'TileOverride::wi'],['../structTileAnimation.html#a2dd146c7227f83192bbd969517ad95b9',1,'TileAnimation::wi']]],
-  ['window_2',['window',['../structAppContext.html#a04bd2282bfa748f6c8dcf4564d48ac6c',1,'AppContext']]],
-  ['window_5ftexture_3',['window_texture',['../structWindowConfig.html#ad301ef47c2db6a255677ccfbc96fb531',1,'WindowConfig']]],
-  ['wj_4',['wj',['../structTileOverride.html#a6c5b8cc497336987ed665c7d6ef1cb76',1,'TileOverride::wj'],['../structTileAnimation.html#a819ad7400ba25a72274bdf7414a040a7',1,'TileAnimation::wj']]],
-  ['word_5',['word',['../structWord.html#a06ff27cc131d8346f6745ea98935af3d',1,'Word::word'],['../structCard.html#a8ef4052ae034511697f7fc2b6e8e76f8',1,'Card::word']]],
-  ['wordcount_6',['WORDCOUNT',['../server_2src_2game_8c.html#affa1ff34ea79641e3e14f26cd247e66f',1,'game.c']]],
-  ['words_7',['words',['../structGame.html#aeaa9c35d5ea48b13d8b0a550de8bf8cf',1,'Game']]]
+  ['window_2',['window',['../structCreditsState.html#a49fc7a93be750638318065155711c656',1,'CreditsState::window'],['../structTutorialState.html#a864b001a27c9ae4c3ea3bb472940313e',1,'TutorialState::window'],['../structAppContext.html#a04bd2282bfa748f6c8dcf4564d48ac6c',1,'AppContext::window']]],
+  ['window_5fcount_3',['window_count',['../window_8c.html#ab56105b90890398c98a0a47a1df4d597',1,'window.c']]],
+  ['window_5ftexture_4',['window_texture',['../structWindowConfig.html#ad301ef47c2db6a255677ccfbc96fb531',1,'WindowConfig']]],
+  ['windowed_5fheight_5',['windowed_height',['../structAppContext.html#aaab80fb4557b7afff19e148c86364ed4',1,'AppContext']]],
+  ['windowed_5fwidth_6',['windowed_width',['../structAppContext.html#a7f59ff3cc21c54a78a5e707265fa8771',1,'AppContext']]],
+  ['windowed_5fx_7',['windowed_x',['../structAppContext.html#aacacba12169c33c8803925240280aeef',1,'AppContext']]],
+  ['windowed_5fy_8',['windowed_y',['../structAppContext.html#a52178812899cf728c91972c6dfda2a54',1,'AppContext']]],
+  ['windows_9',['windows',['../window_8c.html#a6e7d1d05644fea30a66cc30f2171ac9b',1,'window.c']]],
+  ['winner_10',['winner',['../structGame.html#a7fef854062856313db1770ec419005fe',1,'Game']]],
+  ['wj_11',['wj',['../structTileOverride.html#a6c5b8cc497336987ed665c7d6ef1cb76',1,'TileOverride::wj'],['../structTileAnimation.html#a819ad7400ba25a72274bdf7414a040a7',1,'TileAnimation::wj']]],
+  ['word_12',['word',['../structCard.html#a8ef4052ae034511697f7fc2b6e8e76f8',1,'Card::word'],['../structWord.html#a35467c9491077de3a5667c2b0c062955',1,'Word::word']]],
+  ['wordcount_5ffreaky_13',['WORDCOUNT_FREAKY',['../server_2src_2game_8c.html#a314db4b2f12e31cc04589096d2edc95a',1,'game.c']]],
+  ['wordcount_5fhard_14',['WORDCOUNT_HARD',['../server_2src_2game_8c.html#a2f2a5ae09b843e18999d319dd2dc80f1',1,'game.c']]],
+  ['wordcount_5finfo_15',['WORDCOUNT_INFO',['../server_2src_2game_8c.html#aa50e0436ee9b6491aa41ca38c4500247',1,'game.c']]],
+  ['wordcount_5fnormal_16',['WORDCOUNT_NORMAL',['../server_2src_2game_8c.html#a9ed5943442d9ca4fa987c1a903b26509',1,'game.c']]],
+  ['words_17',['words',['../structGame.html#a6074a4f31ebbe0c3cb05d88ae1ddac12',1,'Game']]],
+  ['words_5fdifficulty_18',['words_difficulty',['../structLobby.html#a53dc3f60b0884e6034bd7b8b5478672d',1,'Lobby']]],
+  ['wrap_5fcache_19',['wrap_cache',['../structChat.html#a502c8d1bba21cd370945372a056fb39f',1,'Chat']]]
 ];

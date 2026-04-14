@@ -2,6 +2,7 @@ var server_2lib_2message_8h =
 [
     [ "Arguments", "structArguments.html", "structArguments" ],
     [ "Arguments", "server_2lib_2message_8h.html#ac9817a3ea34e47aa6dd60b6952c57e63", null ],
+    [ "Codenames", "server_2lib_2message_8h.html#aa44c3a3da81703c57680df8630f4414e", null ],
     [ "MessageError", "server_2lib_2message_8h.html#a6f0366c9e0f6141897e0488ce3608708", null ],
     [ "MessageType", "server_2lib_2message_8h.html#a551dec83c55825ee5e7bfa1ad5609551", null ],
     [ "MessageError", "server_2lib_2message_8h.html#a9374dcf03c1691f812daf280dd37523f", [
@@ -23,10 +24,15 @@ var server_2lib_2message_8h =
       [ "MSG_STARTGAME", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013aed771684634ec8c5e250a4df7eaf245d", null ],
       [ "MSG_WORDDATA", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013aec68a0846089f260eb423bccc1741f8f", null ],
       [ "MSG_SUBMIT_HINT", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013affb36f73d5d4771737ce221bcf91811b", null ],
+      [ "MSG_PREGUESS", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a484e2deb1be7833c4afc38096185374f", null ],
+      [ "MSG_GUESS_CARD", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013af39e4f749a371f1213657d597b67eaf7", null ],
       [ "MSG_SENDCHAT", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013ac660ea980a12d3674334b2d35eddabdb", null ],
       [ "MSG_REQUESTUUID", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a48572e5982fd99f6677484f5090fa795", null ],
       [ "MSG_COMPAREVERSION", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013afa28949f4a14ffcda3646bbadc355ab1", null ],
-      [ "MSG_PING", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013aadfe01bd4c9e50a1930619703ba3217d", null ]
+      [ "MSG_PING", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013aadfe01bd4c9e50a1930619703ba3217d", null ],
+      [ "MSG_SEND_CLIENT_ID", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a4e8849e3eec25b82f2f91bba37ec32bb", null ],
+      [ "MSG_SET_WORDS_DIFFICULTY", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013ac86ee88aebb0474eedf6d61052d0c922", null ],
+      [ "MSG_SET_NB_ASSASSINS", "server_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013aba95bf3c746574f7025ec0058ece23b5", null ]
     ] ],
     [ "on_leave", "server_2lib_2message_8h.html#add27fff7d2eeb6c5c76aa14d3b06f756", null ],
     [ "on_message", "server_2lib_2message_8h.html#a10a7a0258afe719e66a8ee30cba9c34a", null ],

@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier client/src/window.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,20 +34,21 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,9 +63,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('window_8c.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('window_8c.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -89,6 +90,9 @@ $(function(){initNavTree('window_8c.html','',''); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">Référence du fichier window.c</div></div>
 </div><!--header-->
 <div class="contents">
@@ -96,29 +100,113 @@ $(function(){initNavTree('window_8c.html','',''); });
 </div>
 <p><a href="window_8c_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:adfbab9ec061a0f54a36c5238db015cbb" id="r_adfbab9ec061a0f54a36c5238db015cbb"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#adfbab9ec061a0f54a36c5238db015cbb">clamp_non_negative</a> (int value)</td></tr>
-<tr class="memitem:a3bd6685b3fb7a7da7ba7ce6a3f10131d" id="r_a3bd6685b3fb7a7da7ba7ce6a3f10131d"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a3bd6685b3fb7a7da7ba7ce6a3f10131d">clamp_positive</a> (int value, int fallback)</td></tr>
-<tr class="memitem:a97e9de72ee41aec3983ae14c7749933a" id="r_a97e9de72ee41aec3983ae14c7749933a"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a97e9de72ee41aec3983ae14c7749933a">point_in_rect</a> (int x, int y, const SDL_Rect *r)</td></tr>
-<tr class="memitem:a5a5a79bdfdd18e8f17c9502351254dc0" id="r_a5a5a79bdfdd18e8f17c9502351254dc0"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a5a5a79bdfdd18e8f17c9502351254dc0">window_content_origin_screen</a> (const <a class="el" href="structWindow.html">Window</a> *win, int *out_x, int *out_y)</td></tr>
-<tr class="memitem:a67c50c68196de68633349464e6077da1" id="r_a67c50c68196de68633349464e6077da1"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a67c50c68196de68633349464e6077da1">window_set_title</a> (<a class="el" href="structWindowConfig.html">WindowConfig</a> *cfg, const char *title)</td></tr>
-<tr class="memitem:a80562218198f487f51d369abdf6b4b38" id="r_a80562218198f487f51d369abdf6b4b38"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a80562218198f487f51d369abdf6b4b38">window_render_title</a> (SDL_Renderer *renderer, const <a class="el" href="structWindowConfig.html">WindowConfig</a> *cfg)</td></tr>
-<tr class="memitem:a0a1fd65a5d041f24dbf5392ba9755ab8" id="r_a0a1fd65a5d041f24dbf5392ba9755ab8"><td class="memItemLeft"><a class="el" href="structWindowConfig.html">WindowConfig</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a0a1fd65a5d041f24dbf5392ba9755ab8">window_config_init</a> (void)</td></tr>
-<tr class="memitem:a2b028817484c245cdf440e506f3fbd0d" id="r_a2b028817484c245cdf440e506f3fbd0d"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2b028817484c245cdf440e506f3fbd0d">window_update_rect</a> (<a class="el" href="structWindow.html">Window</a> *win)</td></tr>
-<tr class="memitem:a825126237960ed5d5c2c9a416070bfa1" id="r_a825126237960ed5d5c2c9a416070bfa1"><td class="memItemLeft"><a class="el" href="structWindow.html">Window</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a825126237960ed5d5c2c9a416070bfa1">window_create</a> (int id, const <a class="el" href="structWindowConfig.html">WindowConfig</a> *cfg_in)</td></tr>
-<tr class="memitem:a37e9821a250b421c60c0f287b2682b4d" id="r_a37e9821a250b421c60c0f287b2682b4d"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a37e9821a250b421c60c0f287b2682b4d">window_destroy</a> (<a class="el" href="structWindow.html">Window</a> *win)</td></tr>
-<tr class="memitem:ae52eb1547cda588ffb6e084a31641038" id="r_ae52eb1547cda588ffb6e084a31641038"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ae52eb1547cda588ffb6e084a31641038">window_contains_point</a> (const <a class="el" href="structWindow.html">Window</a> *win, int logical_x, int logical_y)</td></tr>
-<tr class="memitem:afc458f8e977a8dfb3f6c3061da8767c6" id="r_afc458f8e977a8dfb3f6c3061da8767c6"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#afc458f8e977a8dfb3f6c3061da8767c6">window_handle_event</a> (<a class="el" href="structAppContext.html">AppContext</a> *ctx, <a class="el" href="structWindow.html">Window</a> *win, SDL_Event *event)</td></tr>
-<tr class="memitem:a9285833340439f457207d10355d15b29" id="r_a9285833340439f457207d10355d15b29"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9285833340439f457207d10355d15b29">window_render</a> (SDL_Renderer *renderer, const <a class="el" href="structWindow.html">Window</a> *win)</td></tr>
-<tr class="memitem:a4fb2b8937d4dde44dba4b1721f6dddd6" id="r_a4fb2b8937d4dde44dba4b1721f6dddd6"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a4fb2b8937d4dde44dba4b1721f6dddd6">window_edit_cfg</a> (<a class="el" href="structWindow.html">Window</a> *win, <a class="el" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6">WindowCfgKey</a> key, intptr_t value)</td></tr>
-<tr class="memitem:a2baebd6013e12daff58a9f89685585df" id="r_a2baebd6013e12daff58a9f89685585df"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2baebd6013e12daff58a9f89685585df">window_content_to_logical</a> (const <a class="el" href="structWindow.html">Window</a> *win, int rel_x, int rel_y, int *out_logical_x, int *out_logical_y)</td></tr>
-<tr class="memitem:a0aa36c1d55983f90b720bdc3e1f65fc9" id="r_a0aa36c1d55983f90b720bdc3e1f65fc9"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a0aa36c1d55983f90b720bdc3e1f65fc9">window_place_button</a> (const <a class="el" href="structWindow.html">Window</a> *win, <a class="el" href="structButton.html">Button</a> *button, int rel_x, int rel_y)</td></tr>
-<tr class="memitem:aa0351cbc08fcf067bdc6b80bcdd12b45" id="r_aa0351cbc08fcf067bdc6b80bcdd12b45"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#aa0351cbc08fcf067bdc6b80bcdd12b45">window_place_input</a> (const <a class="el" href="structWindow.html">Window</a> *win, <a class="el" href="structInput.html">Input</a> *in, int rel_x, int rel_y)</td></tr>
-<tr class="memitem:a35c8e0318890f8939fd6c8d816ccc636" id="r_a35c8e0318890f8939fd6c8d816ccc636"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a35c8e0318890f8939fd6c8d816ccc636">window_place_text</a> (const <a class="el" href="structWindow.html">Window</a> *win, <a class="el" href="structText.html">Text</a> *text, int rel_x, int rel_y)</td></tr>
-<tr class="memitem:a0921a51a5dd1a64b9d3370b83715b614" id="r_a0921a51a5dd1a64b9d3370b83715b614"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a0921a51a5dd1a64b9d3370b83715b614">window_display_image</a> (SDL_Renderer *renderer, const <a class="el" href="structWindow.html">Window</a> *win, SDL_Texture *texture, int rel_x, int rel_y, float size_factor, double angle, SDL_RendererFlip flip, float ratio, Uint8 opacity)</td></tr>
+<tr class="memitem:adfbab9ec061a0f54a36c5238db015cbb" id="r_adfbab9ec061a0f54a36c5238db015cbb"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#adfbab9ec061a0f54a36c5238db015cbb">clamp_non_negative</a> (int value)</td></tr>
+<tr class="separator:adfbab9ec061a0f54a36c5238db015cbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bd6685b3fb7a7da7ba7ce6a3f10131d" id="r_a3bd6685b3fb7a7da7ba7ce6a3f10131d"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#a3bd6685b3fb7a7da7ba7ce6a3f10131d">clamp_positive</a> (int value, int fallback)</td></tr>
+<tr class="separator:a3bd6685b3fb7a7da7ba7ce6a3f10131d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae782f45632a7c93d464a7bd8e238629c" id="r_ae782f45632a7c93d464a7bd8e238629c"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#ae782f45632a7c93d464a7bd8e238629c">clamp_between</a> (int value, int min_value, int max_value)</td></tr>
+<tr class="separator:ae782f45632a7c93d464a7bd8e238629c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97e9de72ee41aec3983ae14c7749933a" id="r_a97e9de72ee41aec3983ae14c7749933a"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#a97e9de72ee41aec3983ae14c7749933a">point_in_rect</a> (int x, int y, const SDL_Rect *r)</td></tr>
+<tr class="separator:a97e9de72ee41aec3983ae14c7749933a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f5882aafca12deebf414aa5a487b2a2" id="r_a9f5882aafca12deebf414aa5a487b2a2"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#a9f5882aafca12deebf414aa5a487b2a2">window_normalize_scroll_cfg</a> (<a class="el" href="structWindowConfig.html">WindowConfig</a> *cfg)</td></tr>
+<tr class="separator:a9f5882aafca12deebf414aa5a487b2a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5371fa26049d381795806395988c4266" id="r_a5371fa26049d381795806395988c4266"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#a5371fa26049d381795806395988c4266">window_scrollable_zone_rect_from_cfg</a> (const <a class="el" href="structWindowConfig.html">WindowConfig</a> *cfg, SDL_Rect *out_rect)</td></tr>
+<tr class="separator:a5371fa26049d381795806395988c4266"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a426988275e7799a1c3acb77dcda92855" id="r_a426988275e7799a1c3acb77dcda92855"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#a426988275e7799a1c3acb77dcda92855">window_to_logical_coords</a> (const <a class="el" href="structAppContext.html">AppContext</a> *ctx, int wx, int wy, int *lx, int *ly)</td></tr>
+<tr class="separator:a426988275e7799a1c3acb77dcda92855"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a5a79bdfdd18e8f17c9502351254dc0" id="r_a5a5a79bdfdd18e8f17c9502351254dc0"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#a5a5a79bdfdd18e8f17c9502351254dc0">window_content_origin_screen</a> (const <a class="el" href="structWindow.html">Window</a> *win, int *out_x, int *out_y)</td></tr>
+<tr class="separator:a5a5a79bdfdd18e8f17c9502351254dc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67c50c68196de68633349464e6077da1" id="r_a67c50c68196de68633349464e6077da1"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#a67c50c68196de68633349464e6077da1">window_set_title</a> (<a class="el" href="structWindowConfig.html">WindowConfig</a> *cfg, const char *title)</td></tr>
+<tr class="separator:a67c50c68196de68633349464e6077da1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb80974eeaa53182bd4efedb7ee614b9" id="r_abb80974eeaa53182bd4efedb7ee614b9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#abb80974eeaa53182bd4efedb7ee614b9">window_render_title</a> (SDL_Renderer *renderer, <a class="el" href="structWindowConfig.html">WindowConfig</a> *cfg)</td></tr>
+<tr class="separator:abb80974eeaa53182bd4efedb7ee614b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a1fd65a5d041f24dbf5392ba9755ab8" id="r_a0a1fd65a5d041f24dbf5392ba9755ab8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structWindowConfig.html">WindowConfig</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#a0a1fd65a5d041f24dbf5392ba9755ab8">window_config_init</a> (void)</td></tr>
+<tr class="separator:a0a1fd65a5d041f24dbf5392ba9755ab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b028817484c245cdf440e506f3fbd0d" id="r_a2b028817484c245cdf440e506f3fbd0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#a2b028817484c245cdf440e506f3fbd0d">window_update_rect</a> (<a class="el" href="structWindow.html">Window</a> *win)</td></tr>
+<tr class="separator:a2b028817484c245cdf440e506f3fbd0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a825126237960ed5d5c2c9a416070bfa1" id="r_a825126237960ed5d5c2c9a416070bfa1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structWindow.html">Window</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#a825126237960ed5d5c2c9a416070bfa1">window_create</a> (int id, const <a class="el" href="structWindowConfig.html">WindowConfig</a> *cfg_in)</td></tr>
+<tr class="separator:a825126237960ed5d5c2c9a416070bfa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abba94cac365a521bcd783bb227f58f66" id="r_abba94cac365a521bcd783bb227f58f66"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structWindow.html">Window</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#abba94cac365a521bcd783bb227f58f66">window_get_by_id</a> (int id)</td></tr>
+<tr class="separator:abba94cac365a521bcd783bb227f58f66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37e9821a250b421c60c0f287b2682b4d" id="r_a37e9821a250b421c60c0f287b2682b4d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#a37e9821a250b421c60c0f287b2682b4d">window_destroy</a> (<a class="el" href="structWindow.html">Window</a> *win)</td></tr>
+<tr class="separator:a37e9821a250b421c60c0f287b2682b4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae52eb1547cda588ffb6e084a31641038" id="r_ae52eb1547cda588ffb6e084a31641038"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#ae52eb1547cda588ffb6e084a31641038">window_contains_point</a> (const <a class="el" href="structWindow.html">Window</a> *win, int logical_x, int logical_y)</td></tr>
+<tr class="separator:ae52eb1547cda588ffb6e084a31641038"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38031499d88de473b51e483a311a56b6" id="r_a38031499d88de473b51e483a311a56b6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#a38031499d88de473b51e483a311a56b6">window_get_scrollable_zone_rect</a> (const <a class="el" href="structWindow.html">Window</a> *win, SDL_Rect *out_rect)</td></tr>
+<tr class="separator:a38031499d88de473b51e483a311a56b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc458f8e977a8dfb3f6c3061da8767c6" id="r_afc458f8e977a8dfb3f6c3061da8767c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#afc458f8e977a8dfb3f6c3061da8767c6">window_handle_event</a> (<a class="el" href="structAppContext.html">AppContext</a> *ctx, <a class="el" href="structWindow.html">Window</a> *win, SDL_Event *event)</td></tr>
+<tr class="separator:afc458f8e977a8dfb3f6c3061da8767c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9285833340439f457207d10355d15b29" id="r_a9285833340439f457207d10355d15b29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#a9285833340439f457207d10355d15b29">window_render</a> (SDL_Renderer *renderer, const <a class="el" href="structWindow.html">Window</a> *win)</td></tr>
+<tr class="separator:a9285833340439f457207d10355d15b29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fb2b8937d4dde44dba4b1721f6dddd6" id="r_a4fb2b8937d4dde44dba4b1721f6dddd6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#a4fb2b8937d4dde44dba4b1721f6dddd6">window_edit_cfg</a> (<a class="el" href="structWindow.html">Window</a> *win, <a class="el" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6">WindowCfgKey</a> key, intptr_t value)</td></tr>
+<tr class="separator:a4fb2b8937d4dde44dba4b1721f6dddd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2baebd6013e12daff58a9f89685585df" id="r_a2baebd6013e12daff58a9f89685585df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#a2baebd6013e12daff58a9f89685585df">window_content_to_logical</a> (const <a class="el" href="structWindow.html">Window</a> *win, int rel_x, int rel_y, int *out_logical_x, int *out_logical_y)</td></tr>
+<tr class="separator:a2baebd6013e12daff58a9f89685585df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0aa36c1d55983f90b720bdc3e1f65fc9" id="r_a0aa36c1d55983f90b720bdc3e1f65fc9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#a0aa36c1d55983f90b720bdc3e1f65fc9">window_place_button</a> (const <a class="el" href="structWindow.html">Window</a> *win, <a class="el" href="structButton.html">Button</a> *<a class="el" href="button_8c.html#abf4e1717cd10593e93de18811426872f">button</a>, int rel_x, int rel_y)</td></tr>
+<tr class="separator:a0aa36c1d55983f90b720bdc3e1f65fc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0351cbc08fcf067bdc6b80bcdd12b45" id="r_aa0351cbc08fcf067bdc6b80bcdd12b45"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#aa0351cbc08fcf067bdc6b80bcdd12b45">window_place_input</a> (const <a class="el" href="structWindow.html">Window</a> *win, <a class="el" href="structInput.html">Input</a> *in, int rel_x, int rel_y)</td></tr>
+<tr class="separator:aa0351cbc08fcf067bdc6b80bcdd12b45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35c8e0318890f8939fd6c8d816ccc636" id="r_a35c8e0318890f8939fd6c8d816ccc636"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#a35c8e0318890f8939fd6c8d816ccc636">window_place_text</a> (const <a class="el" href="structWindow.html">Window</a> *win, <a class="el" href="structText.html">Text</a> *text, int rel_x, int rel_y)</td></tr>
+<tr class="separator:a35c8e0318890f8939fd6c8d816ccc636"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0921a51a5dd1a64b9d3370b83715b614" id="r_a0921a51a5dd1a64b9d3370b83715b614"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#a0921a51a5dd1a64b9d3370b83715b614">window_display_image</a> (SDL_Renderer *renderer, const <a class="el" href="structWindow.html">Window</a> *win, SDL_Texture *texture, int rel_x, int rel_y, float size_factor, double angle, SDL_RendererFlip flip, float ratio, Uint8 opacity)</td></tr>
+<tr class="separator:a0921a51a5dd1a64b9d3370b83715b614"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a6e7d1d05644fea30a66cc30f2171ac9b" id="r_a6e7d1d05644fea30a66cc30f2171ac9b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structWindow.html">Window</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#a6e7d1d05644fea30a66cc30f2171ac9b">windows</a> [<a class="el" href="window_8h.html#a96f609b2a30e2dc3cc404945cdb2d55e">MAX_WINDOWS</a>]</td></tr>
+<tr class="separator:a6e7d1d05644fea30a66cc30f2171ac9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab56105b90890398c98a0a47a1df4d597" id="r_ab56105b90890398c98a0a47a1df4d597"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8c.html#ab56105b90890398c98a0a47a1df4d597">window_count</a> = 0</td></tr>
+<tr class="separator:ab56105b90890398c98a0a47a1df4d597"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a id="ae782f45632a7c93d464a7bd8e238629c" name="ae782f45632a7c93d464a7bd8e238629c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae782f45632a7c93d464a7bd8e238629c">&#9670;&#160;</a></span>clamp_between()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int clamp_between </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>min_value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00015">15</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="window_8c_source.html#l00032">window_normalize_scroll_cfg()</a>.</p>
+
+</div>
+</div>
 <a id="adfbab9ec061a0f54a36c5238db015cbb" name="adfbab9ec061a0f54a36c5238db015cbb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adfbab9ec061a0f54a36c5238db015cbb">&#9670;&#160;</a></span>clamp_non_negative()</h2>
 
@@ -129,22 +217,23 @@ Fonctions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int clamp_non_negative </td>
+          <td class="memname">static int clamp_non_negative </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00003">3</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00006">6</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="window_8c_source.html#l00210">window_render()</a>, et <a class="el" href="window_8c_source.html#l00113">window_update_rect()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="window_8c_source.html#l00373">window_render()</a>, et <a class="el" href="window_8c_source.html#l00231">window_update_rect()</a>.</p>
 
 </div>
 </div>
@@ -158,26 +247,33 @@ Fonctions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int clamp_positive </td>
+          <td class="memname">static int clamp_positive </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>fallback</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fallback</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00007">7</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00010">10</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="window_8c_source.html#l00113">window_update_rect()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="window_8c_source.html#l00032">window_normalize_scroll_cfg()</a>, et <a class="el" href="window_8c_source.html#l00231">window_update_rect()</a>.</p>
 
 </div>
 </div>
@@ -191,31 +287,39 @@ Fonctions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int point_in_rect </td>
+          <td class="memname">static int point_in_rect </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const SDL_Rect *</td>          <td class="paramname"><span class="paramname"><em>r</em></span>&#160;)</td>
+          <td class="paramtype">const SDL_Rect *&#160;</td>
+          <td class="paramname"><em>r</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00012">12</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00027">27</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="window_8c_source.html#l00167">window_contains_point()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="window_8c_source.html#l00302">window_contains_point()</a>, et <a class="el" href="window_8c_source.html#l00312">window_handle_event()</a>.</p>
 
 </div>
 </div>
@@ -228,18 +332,18 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structWindowConfig.html">WindowConfig</a> * window_config_init </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Initialise une configuration de fenêtre avec des valeurs par défaut. </p><dl class="section return"><dt>Renvoie</dt><dd>Un pointeur vers la configuration initialisée, ou NULL en cas d'erreur. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00083">83</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00187">187</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="window_8h_source.html#l00037">WindowConfig::bg_color</a>, <a class="el" href="window_8h_source.html#l00038">WindowConfig::border_color</a>, <a class="el" href="window_8h_source.html#l00043">WindowConfig::border_thickness</a>, <a class="el" href="window_8h_source.html#l00049">WindowConfig::drag_offset_x</a>, <a class="el" href="window_8h_source.html#l00050">WindowConfig::drag_offset_y</a>, <a class="el" href="window_8h_source.html#l00048">WindowConfig::dragging</a>, <a class="el" href="window_8h_source.html#l00034">WindowConfig::h</a>, <a class="el" href="window_8h_source.html#l00036">WindowConfig::hidden</a>, <a class="el" href="window_8h_source.html#l00035">WindowConfig::movable</a>, <a class="el" href="window_8h_source.html#l00047">WindowConfig::rect</a>, <a class="el" href="window_8h_source.html#l00042">WindowConfig::title</a>, <a class="el" href="window_8h_source.html#l00039">WindowConfig::titlebar_color</a>, <a class="el" href="window_8h_source.html#l00044">WindowConfig::titlebar_h</a>, <a class="el" href="window_8h_source.html#l00041">WindowConfig::titlebar_texture</a>, <a class="el" href="window_8h_source.html#l00033">WindowConfig::w</a>, <a class="el" href="sdl_8h_source.html#l00015">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00014">WIN_WIDTH</a>, <a class="el" href="window_8h_source.html#l00040">WindowConfig::window_texture</a>, <a class="el" href="window_8h_source.html#l00031">WindowConfig::x</a>, et <a class="el" href="window_8h_source.html#l00032">WindowConfig::y</a>.</p>
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00075">WindowConfig::bg_color</a>, <a class="el" href="window_8h_source.html#l00076">WindowConfig::border_color</a>, <a class="el" href="window_8h_source.html#l00086">WindowConfig::border_thickness</a>, <a class="el" href="window_8h_source.html#l00101">WindowConfig::drag_offset_x</a>, <a class="el" href="window_8h_source.html#l00102">WindowConfig::drag_offset_y</a>, <a class="el" href="window_8h_source.html#l00100">WindowConfig::dragging</a>, <a class="el" href="window_8h_source.html#l00072">WindowConfig::h</a>, <a class="el" href="window_8h_source.html#l00074">WindowConfig::hidden</a>, <a class="el" href="window_8h_source.html#l00073">WindowConfig::movable</a>, <a class="el" href="window_8h_source.html#l00099">WindowConfig::rect</a>, <a class="el" href="window_8h_source.html#l00095">WindowConfig::scroll_max</a>, <a class="el" href="window_8h_source.html#l00094">WindowConfig::scroll_min</a>, <a class="el" href="window_8h_source.html#l00093">WindowConfig::scroll_offset</a>, <a class="el" href="window_8h_source.html#l00096">WindowConfig::scroll_step</a>, <a class="el" href="window_8h_source.html#l00089">WindowConfig::scroll_x1</a>, <a class="el" href="window_8h_source.html#l00091">WindowConfig::scroll_x2</a>, <a class="el" href="window_8h_source.html#l00090">WindowConfig::scroll_y1</a>, <a class="el" href="window_8h_source.html#l00092">WindowConfig::scroll_y2</a>, <a class="el" href="window_8h_source.html#l00088">WindowConfig::scrollable</a>, <a class="el" href="window_8h_source.html#l00080">WindowConfig::title</a>, <a class="el" href="window_8h_source.html#l00081">WindowConfig::title_texture_cache</a>, <a class="el" href="window_8h_source.html#l00085">WindowConfig::title_texture_cache_dirty</a>, <a class="el" href="window_8h_source.html#l00084">WindowConfig::title_texture_cache_font_size</a>, <a class="el" href="window_8h_source.html#l00083">WindowConfig::title_texture_cache_h</a>, <a class="el" href="window_8h_source.html#l00082">WindowConfig::title_texture_cache_w</a>, <a class="el" href="window_8h_source.html#l00077">WindowConfig::titlebar_color</a>, <a class="el" href="window_8h_source.html#l00087">WindowConfig::titlebar_h</a>, <a class="el" href="window_8h_source.html#l00079">WindowConfig::titlebar_texture</a>, <a class="el" href="window_8h_source.html#l00071">WindowConfig::w</a>, <a class="el" href="sdl_8h_source.html#l00020">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00019">WIN_WIDTH</a>, <a class="el" href="window_8h_source.html#l00078">WindowConfig::window_texture</a>, <a class="el" href="window_8h_source.html#l00069">WindowConfig::x</a>, et <a class="el" href="window_8h_source.html#l00070">WindowConfig::y</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>, et <a class="el" href="window_8c_source.html#l00127">window_create()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="credits_8c_source.html#l00380">credits_init()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00504">game_init()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00485">lobby_init()</a>, <a class="el" href="tuto_8c_source.html#l00387">tuto_init()</a>, et <a class="el" href="window_8c_source.html#l00247">window_create()</a>.</p>
 
 </div>
 </div>
@@ -252,17 +356,25 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int window_contains_point </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structWindow.html">Window</a> *</td>          <td class="paramname"><span class="paramname"><em>win</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="structWindow.html">Window</a> *&#160;</td>
+          <td class="paramname"><em>win</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>logical_x</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>logical_x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>logical_y</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>logical_y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -276,9 +388,9 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>1 si le point est dans la fenêtre, 0 sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00167">167</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00302">302</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="window_8h_source.html#l00055">Window::cfg</a>, <a class="el" href="window_8h_source.html#l00036">WindowConfig::hidden</a>, <a class="el" href="window_8c_source.html#l00012">point_in_rect()</a>, et <a class="el" href="window_8h_source.html#l00047">WindowConfig::rect</a>.</p>
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00107">Window::cfg</a>, <a class="el" href="window_8h_source.html#l00074">WindowConfig::hidden</a>, <a class="el" href="window_8c_source.html#l00027">point_in_rect()</a>, et <a class="el" href="window_8h_source.html#l00099">WindowConfig::rect</a>.</p>
 
 </div>
 </div>
@@ -292,33 +404,41 @@ Fonctions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int window_content_origin_screen </td>
+          <td class="memname">static int window_content_origin_screen </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structWindow.html">Window</a> *</td>          <td class="paramname"><span class="paramname"><em>win</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="structWindow.html">Window</a> *&#160;</td>
+          <td class="paramname"><em>win</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>out_x</em></span>, </td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>out_x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>out_y</em></span>&#160;)</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>out_y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00017">17</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00087">87</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="window_8h_source.html#l00055">Window::cfg</a>, et <a class="el" href="window_8h_source.html#l00047">WindowConfig::rect</a>.</p>
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00107">Window::cfg</a>, et <a class="el" href="window_8h_source.html#l00099">WindowConfig::rect</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="window_8c_source.html#l00294">window_content_to_logical()</a>, <a class="el" href="window_8c_source.html#l00375">window_display_image()</a>, <a class="el" href="window_8c_source.html#l00303">window_place_button()</a>, <a class="el" href="window_8c_source.html#l00329">window_place_input()</a>, et <a class="el" href="window_8c_source.html#l00350">window_place_text()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="window_8c_source.html#l00468">window_content_to_logical()</a>, <a class="el" href="window_8c_source.html#l00549">window_display_image()</a>, <a class="el" href="window_8c_source.html#l00477">window_place_button()</a>, <a class="el" href="window_8c_source.html#l00503">window_place_input()</a>, et <a class="el" href="window_8c_source.html#l00524">window_place_text()</a>.</p>
 
 </div>
 </div>
@@ -331,27 +451,37 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void window_content_to_logical </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structWindow.html">Window</a> *</td>          <td class="paramname"><span class="paramname"><em>win</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="structWindow.html">Window</a> *&#160;</td>
+          <td class="paramname"><em>win</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>rel_x</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>rel_x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>rel_y</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>rel_y</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>out_logical_x</em></span>, </td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>out_logical_x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>out_logical_y</em></span>&#160;)</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>out_logical_y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -366,9 +496,9 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00294">294</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00468">468</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00015">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00014">WIN_WIDTH</a>, et <a class="el" href="window_8c_source.html#l00017">window_content_origin_screen()</a>.</p>
+<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00020">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00019">WIN_WIDTH</a>, et <a class="el" href="window_8c_source.html#l00087">window_content_origin_screen()</a>.</p>
 
 </div>
 </div>
@@ -381,12 +511,19 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structWindow.html">Window</a> * window_create </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structWindowConfig.html">WindowConfig</a> *</td>          <td class="paramname"><span class="paramname"><em>cfg</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="structWindowConfig.html">WindowConfig</a> *&#160;</td>
+          <td class="paramname"><em>cfg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -399,11 +536,11 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Un pointeur vers la fenêtre créée, ou NULL en cas d'erreur. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00127">127</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00247">247</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="window_8h_source.html#l00055">Window::cfg</a>, <a class="el" href="window_8h_source.html#l00054">Window::id</a>, <a class="el" href="window_8h_source.html#l00042">WindowConfig::title</a>, <a class="el" href="window_8c_source.html#l00083">window_config_init()</a>, <a class="el" href="window_8c_source.html#l00152">window_destroy()</a>, <a class="el" href="window_8c_source.html#l00024">window_set_title()</a>, et <a class="el" href="window_8c_source.html#l00113">window_update_rect()</a>.</p>
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00107">Window::cfg</a>, <a class="el" href="window_8h_source.html#l00106">Window::id</a>, <a class="el" href="window_8h_source.html#l00080">WindowConfig::title</a>, <a class="el" href="window_8c_source.html#l00187">window_config_init()</a>, <a class="el" href="window_8c_source.html#l00004">window_count</a>, <a class="el" href="window_8c_source.html#l00282">window_destroy()</a>, <a class="el" href="window_8c_source.html#l00094">window_set_title()</a>, <a class="el" href="window_8c_source.html#l00231">window_update_rect()</a>, et <a class="el" href="window_8c_source.html#l00003">windows</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="credits_8c_source.html#l00380">credits_init()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00504">game_init()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00485">lobby_init()</a>, et <a class="el" href="tuto_8c_source.html#l00387">tuto_init()</a>.</p>
 
 </div>
 </div>
@@ -416,7 +553,8 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void window_destroy </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structWindow.html">Window</a> *</td>          <td class="paramname"><span class="paramname"><em>win</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structWindow.html">Window</a> *&#160;</td>
+          <td class="paramname"><em>win</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -428,11 +566,11 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00152">152</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00282">282</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="window_8h_source.html#l00055">Window::cfg</a>, <a class="el" href="sdl_8c_source.html#l00239">free_image()</a>, <a class="el" href="window_8h_source.html#l00042">WindowConfig::title</a>, <a class="el" href="window_8h_source.html#l00041">WindowConfig::titlebar_texture</a>, et <a class="el" href="window_8h_source.html#l00040">WindowConfig::window_texture</a>.</p>
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00107">Window::cfg</a>, <a class="el" href="sdl_8c_source.html#l00264">free_image()</a>, <a class="el" href="window_8h_source.html#l00080">WindowConfig::title</a>, <a class="el" href="window_8h_source.html#l00081">WindowConfig::title_texture_cache</a>, <a class="el" href="window_8h_source.html#l00079">WindowConfig::titlebar_texture</a>, <a class="el" href="window_8c_source.html#l00004">window_count</a>, et <a class="el" href="window_8h_source.html#l00078">WindowConfig::window_texture</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, et <a class="el" href="window_8c_source.html#l00127">window_create()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="credits_8c_source.html#l00561">credits_free()</a>, <a class="el" href="client_2src_2game_8c_source.html#l01364">game_free()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00954">lobby_free()</a>, <a class="el" href="tuto_8c_source.html#l00508">tuto_free()</a>, et <a class="el" href="window_8c_source.html#l00247">window_create()</a>.</p>
 
 </div>
 </div>
@@ -445,52 +583,67 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int window_display_image </td>
           <td>(</td>
-          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structWindow.html">Window</a> *</td>          <td class="paramname"><span class="paramname"><em>win</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="structWindow.html">Window</a> *&#160;</td>
+          <td class="paramname"><em>win</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SDL_Texture *</td>          <td class="paramname"><span class="paramname"><em>texture</em></span>, </td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>texture</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>rel_x</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>rel_x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>rel_y</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>rel_y</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>size_factor</em></span>, </td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>size_factor</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>angle</em></span>, </td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>angle</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SDL_RendererFlip</td>          <td class="paramname"><span class="paramname"><em>flip</em></span>, </td>
+          <td class="paramtype">SDL_RendererFlip&#160;</td>
+          <td class="paramname"><em>flip</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>ratio</em></span>, </td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>ratio</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Uint8</td>          <td class="paramname"><span class="paramname"><em>opacity</em></span>&#160;)</td>
+          <td class="paramtype">Uint8&#160;</td>
+          <td class="paramname"><em>opacity</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -511,11 +664,11 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS si succès, EXIT_FAILURE sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00375">375</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00549">549</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="sdl_8c_source.html#l00201">display_image()</a>, <a class="el" href="sdl_8h_source.html#l00015">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00014">WIN_WIDTH</a>, et <a class="el" href="window_8c_source.html#l00017">window_content_origin_screen()</a>.</p>
+<p class="reference">Références <a class="el" href="sdl_8c_source.html#l00226">display_image()</a>, <a class="el" href="sdl_8h_source.html#l00020">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00019">WIN_WIDTH</a>, et <a class="el" href="window_8c_source.html#l00087">window_content_origin_screen()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00413">render_team_member_in_panel()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2lobby_8c_source.html#l00911">player_icon_pos()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00894">render_team_member_in_panel()</a>.</p>
 
 </div>
 </div>
@@ -528,17 +681,25 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int window_edit_cfg </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structWindow.html">Window</a> *</td>          <td class="paramname"><span class="paramname"><em>win</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structWindow.html">Window</a> *&#160;</td>
+          <td class="paramname"><em>win</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6">WindowCfgKey</a></td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+          <td class="paramtype"><a class="el" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6">WindowCfgKey</a>&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">intptr_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+          <td class="paramtype">intptr_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -546,17 +707,88 @@ Fonctions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">win</td><td>La fenêtre à modifier. </td></tr>
     <tr><td class="paramname">key</td><td>La clé de configuration à modifier. </td></tr>
-    <tr><td class="paramname">value</td><td>La nouvelle valeur. Pour <span class="tt"><a class="el" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6a7371680984ac8f6aab739d077d075957">WIN_CFG_WINDOW_TEXTURE</a></span> et <span class="tt"><a class="el" href="window_8h.html#aca1e6d52665396b32e863043ad7237f6a48e8065abbf9cdb196cb929da0c72525">WIN_CFG_TITLEBAR_TEXTURE</a></span>, fournir un pointeur <span class="tt">SDL_Texture*</span> casté en <span class="tt">intptr_t</span>. </td></tr>
+    <tr><td class="paramname">value</td><td>La nouvelle valeur. Pour <code>WIN_CFG_WINDOW_TEXTURE</code> et <code>WIN_CFG_TITLEBAR_TEXTURE</code>, fournir un pointeur <code>SDL_Texture*</code> casté en <code>intptr_t</code>. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS en cas de succès, EXIT_FAILURE sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00256">256</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00419">419</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="window_8h_source.html#l00037">WindowConfig::bg_color</a>, <a class="el" href="window_8h_source.html#l00038">WindowConfig::border_color</a>, <a class="el" href="window_8h_source.html#l00043">WindowConfig::border_thickness</a>, <a class="el" href="window_8h_source.html#l00055">Window::cfg</a>, <a class="el" href="window_8h_source.html#l00049">WindowConfig::drag_offset_x</a>, <a class="el" href="window_8h_source.html#l00050">WindowConfig::drag_offset_y</a>, <a class="el" href="window_8h_source.html#l00048">WindowConfig::dragging</a>, <a class="el" href="window_8h_source.html#l00034">WindowConfig::h</a>, <a class="el" href="window_8h_source.html#l00036">WindowConfig::hidden</a>, <a class="el" href="window_8h_source.html#l00035">WindowConfig::movable</a>, <a class="el" href="window_8h_source.html#l00047">WindowConfig::rect</a>, <a class="el" href="window_8h_source.html#l00039">WindowConfig::titlebar_color</a>, <a class="el" href="window_8h_source.html#l00044">WindowConfig::titlebar_h</a>, <a class="el" href="window_8h_source.html#l00041">WindowConfig::titlebar_texture</a>, <a class="el" href="window_8h_source.html#l00033">WindowConfig::w</a>, <a class="el" href="window_8h_source.html#l00068">WIN_CFG_BG_COLOR</a>, <a class="el" href="window_8h_source.html#l00069">WIN_CFG_BORDER_COLOR</a>, <a class="el" href="window_8h_source.html#l00074">WIN_CFG_BORDER_THICKNESS</a>, <a class="el" href="window_8h_source.html#l00078">WIN_CFG_DRAG_OFFSET_X</a>, <a class="el" href="window_8h_source.html#l00079">WIN_CFG_DRAG_OFFSET_Y</a>, <a class="el" href="window_8h_source.html#l00077">WIN_CFG_DRAGGING</a>, <a class="el" href="window_8h_source.html#l00065">WIN_CFG_H</a>, <a class="el" href="window_8h_source.html#l00067">WIN_CFG_HIDDEN</a>, <a class="el" href="window_8h_source.html#l00066">WIN_CFG_MOVABLE</a>, <a class="el" href="window_8h_source.html#l00076">WIN_CFG_RECT</a>, <a class="el" href="window_8h_source.html#l00073">WIN_CFG_TITLE</a>, <a class="el" href="window_8h_source.html#l00070">WIN_CFG_TITLEBAR_COLOR</a>, <a class="el" href="window_8h_source.html#l00075">WIN_CFG_TITLEBAR_H</a>, <a class="el" href="window_8h_source.html#l00072">WIN_CFG_TITLEBAR_TEXTURE</a>, <a class="el" href="window_8h_source.html#l00064">WIN_CFG_W</a>, <a class="el" href="window_8h_source.html#l00071">WIN_CFG_WINDOW_TEXTURE</a>, <a class="el" href="window_8h_source.html#l00062">WIN_CFG_X</a>, <a class="el" href="window_8h_source.html#l00063">WIN_CFG_Y</a>, <a class="el" href="window_8c_source.html#l00024">window_set_title()</a>, <a class="el" href="window_8h_source.html#l00040">WindowConfig::window_texture</a>, <a class="el" href="window_8c_source.html#l00113">window_update_rect()</a>, <a class="el" href="window_8h_source.html#l00031">WindowConfig::x</a>, et <a class="el" href="window_8h_source.html#l00032">WindowConfig::y</a>.</p>
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00075">WindowConfig::bg_color</a>, <a class="el" href="window_8h_source.html#l00076">WindowConfig::border_color</a>, <a class="el" href="window_8h_source.html#l00086">WindowConfig::border_thickness</a>, <a class="el" href="window_8h_source.html#l00107">Window::cfg</a>, <a class="el" href="window_8h_source.html#l00101">WindowConfig::drag_offset_x</a>, <a class="el" href="window_8h_source.html#l00102">WindowConfig::drag_offset_y</a>, <a class="el" href="window_8h_source.html#l00100">WindowConfig::dragging</a>, <a class="el" href="window_8h_source.html#l00072">WindowConfig::h</a>, <a class="el" href="window_8h_source.html#l00074">WindowConfig::hidden</a>, <a class="el" href="window_8h_source.html#l00073">WindowConfig::movable</a>, <a class="el" href="window_8h_source.html#l00099">WindowConfig::rect</a>, <a class="el" href="window_8h_source.html#l00095">WindowConfig::scroll_max</a>, <a class="el" href="window_8h_source.html#l00094">WindowConfig::scroll_min</a>, <a class="el" href="window_8h_source.html#l00093">WindowConfig::scroll_offset</a>, <a class="el" href="window_8h_source.html#l00096">WindowConfig::scroll_step</a>, <a class="el" href="window_8h_source.html#l00089">WindowConfig::scroll_x1</a>, <a class="el" href="window_8h_source.html#l00091">WindowConfig::scroll_x2</a>, <a class="el" href="window_8h_source.html#l00090">WindowConfig::scroll_y1</a>, <a class="el" href="window_8h_source.html#l00092">WindowConfig::scroll_y2</a>, <a class="el" href="window_8h_source.html#l00088">WindowConfig::scrollable</a>, <a class="el" href="window_8h_source.html#l00085">WindowConfig::title_texture_cache_dirty</a>, <a class="el" href="window_8h_source.html#l00077">WindowConfig::titlebar_color</a>, <a class="el" href="window_8h_source.html#l00087">WindowConfig::titlebar_h</a>, <a class="el" href="window_8h_source.html#l00079">WindowConfig::titlebar_texture</a>, <a class="el" href="window_8h_source.html#l00071">WindowConfig::w</a>, <a class="el" href="window_8h_source.html#l00120">WIN_CFG_BG_COLOR</a>, <a class="el" href="window_8h_source.html#l00121">WIN_CFG_BORDER_COLOR</a>, <a class="el" href="window_8h_source.html#l00126">WIN_CFG_BORDER_THICKNESS</a>, <a class="el" href="window_8h_source.html#l00130">WIN_CFG_DRAG_OFFSET_X</a>, <a class="el" href="window_8h_source.html#l00131">WIN_CFG_DRAG_OFFSET_Y</a>, <a class="el" href="window_8h_source.html#l00129">WIN_CFG_DRAGGING</a>, <a class="el" href="window_8h_source.html#l00117">WIN_CFG_H</a>, <a class="el" href="window_8h_source.html#l00119">WIN_CFG_HIDDEN</a>, <a class="el" href="window_8h_source.html#l00118">WIN_CFG_MOVABLE</a>, <a class="el" href="window_8h_source.html#l00128">WIN_CFG_RECT</a>, <a class="el" href="window_8h_source.html#l00139">WIN_CFG_SCROLL_MAX</a>, <a class="el" href="window_8h_source.html#l00138">WIN_CFG_SCROLL_MIN</a>, <a class="el" href="window_8h_source.html#l00137">WIN_CFG_SCROLL_OFFSET</a>, <a class="el" href="window_8h_source.html#l00140">WIN_CFG_SCROLL_STEP</a>, <a class="el" href="window_8h_source.html#l00133">WIN_CFG_SCROLL_X1</a>, <a class="el" href="window_8h_source.html#l00135">WIN_CFG_SCROLL_X2</a>, <a class="el" href="window_8h_source.html#l00134">WIN_CFG_SCROLL_Y1</a>, <a class="el" href="window_8h_source.html#l00136">WIN_CFG_SCROLL_Y2</a>, <a class="el" href="window_8h_source.html#l00132">WIN_CFG_SCROLLABLE</a>, <a class="el" href="window_8h_source.html#l00125">WIN_CFG_TITLE</a>, <a class="el" href="window_8h_source.html#l00122">WIN_CFG_TITLEBAR_COLOR</a>, <a class="el" href="window_8h_source.html#l00127">WIN_CFG_TITLEBAR_H</a>, <a class="el" href="window_8h_source.html#l00124">WIN_CFG_TITLEBAR_TEXTURE</a>, <a class="el" href="window_8h_source.html#l00116">WIN_CFG_W</a>, <a class="el" href="window_8h_source.html#l00123">WIN_CFG_WINDOW_TEXTURE</a>, <a class="el" href="window_8h_source.html#l00114">WIN_CFG_X</a>, <a class="el" href="window_8h_source.html#l00115">WIN_CFG_Y</a>, <a class="el" href="window_8c_source.html#l00032">window_normalize_scroll_cfg()</a>, <a class="el" href="window_8c_source.html#l00094">window_set_title()</a>, <a class="el" href="window_8h_source.html#l00078">WindowConfig::window_texture</a>, <a class="el" href="window_8c_source.html#l00231">window_update_rect()</a>, <a class="el" href="window_8h_source.html#l00069">WindowConfig::x</a>, et <a class="el" href="window_8h_source.html#l00070">WindowConfig::y</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00068">game_button_click()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00432">chat_render_messages()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00268">game_hint_bar_apply()</a>, <a class="el" href="client_2src_2game_8c_source.html#l01015">game_render_team_history()</a>, et <a class="el" href="tuto_8c_source.html#l00220">tutorial_update_title()</a>.</p>
+
+</div>
+</div>
+<a id="abba94cac365a521bcd783bb227f58f66" name="abba94cac365a521bcd783bb227f58f66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abba94cac365a521bcd783bb227f58f66">&#9670;&#160;</a></span>window_get_by_id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structWindow.html">Window</a> * window_get_by_id </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Récupère une fenêtre par son identifiant. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>L'identifiant de la fenêtre à récupérer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur vers la fenêtre correspondante, ou NULL si aucune fenêtre avec cet ID n'existe. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00273">273</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="window_8c_source.html#l00004">window_count</a>, et <a class="el" href="window_8c_source.html#l00003">windows</a>.</p>
+
+</div>
+</div>
+<a id="a38031499d88de473b51e483a311a56b6" name="a38031499d88de473b51e483a311a56b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38031499d88de473b51e483a311a56b6">&#9670;&#160;</a></span>window_get_scrollable_zone_rect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int window_get_scrollable_zone_rect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structWindow.html">Window</a> *&#160;</td>
+          <td class="paramname"><em>win</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect *&#160;</td>
+          <td class="paramname"><em>out_rect</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Calcule le rectangle écran de la zone scrollable d'une fenêtre. La zone est définie par deux points relatifs au centre de la fenêtre. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">win</td><td>Fenêtre de référence. </td></tr>
+    <tr><td class="paramname">out_rect</td><td>Reçoit le rectangle écran calculé. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS si la zone est valide et active, EXIT_FAILURE sinon. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00307">307</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00107">Window::cfg</a>, et <a class="el" href="window_8c_source.html#l00045">window_scrollable_zone_rect_from_cfg()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00432">chat_render_messages()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l01015">game_render_team_history()</a>.</p>
 
 </div>
 </div>
@@ -569,17 +801,25 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void window_handle_event </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structWindow.html">Window</a> *</td>          <td class="paramname"><span class="paramname"><em>win</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structWindow.html">Window</a> *&#160;</td>
+          <td class="paramname"><em>win</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SDL_Event *</td>          <td class="paramname"><span class="paramname"><em>event</em></span>&#160;)</td>
+          <td class="paramtype">SDL_Event *&#160;</td>
+          <td class="paramname"><em>event</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -592,11 +832,43 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00172">172</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00312">312</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="window_8h_source.html#l00055">Window::cfg</a>, <a class="el" href="window_8h_source.html#l00049">WindowConfig::drag_offset_x</a>, <a class="el" href="window_8h_source.html#l00050">WindowConfig::drag_offset_y</a>, <a class="el" href="window_8h_source.html#l00048">WindowConfig::dragging</a>, <a class="el" href="window_8h_source.html#l00034">WindowConfig::h</a>, <a class="el" href="window_8h_source.html#l00036">WindowConfig::hidden</a>, <a class="el" href="window_8h_source.html#l00035">WindowConfig::movable</a>, <a class="el" href="crossfader_8c_source.html#l00248">point_in_rect()</a>, <a class="el" href="window_8h_source.html#l00047">WindowConfig::rect</a>, <a class="el" href="window_8h_source.html#l00033">WindowConfig::w</a>, <a class="el" href="sdl_8h_source.html#l00015">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00014">WIN_WIDTH</a>, <a class="el" href="window_8c_source.html#l00113">window_update_rect()</a>, <a class="el" href="window_8h_source.html#l00031">WindowConfig::x</a>, et <a class="el" href="window_8h_source.html#l00032">WindowConfig::y</a>.</p>
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00107">Window::cfg</a>, <a class="el" href="window_8h_source.html#l00101">WindowConfig::drag_offset_x</a>, <a class="el" href="window_8h_source.html#l00102">WindowConfig::drag_offset_y</a>, <a class="el" href="window_8h_source.html#l00100">WindowConfig::dragging</a>, <a class="el" href="window_8h_source.html#l00072">WindowConfig::h</a>, <a class="el" href="window_8h_source.html#l00074">WindowConfig::hidden</a>, <a class="el" href="window_8h_source.html#l00073">WindowConfig::movable</a>, <a class="el" href="window_8c_source.html#l00027">point_in_rect()</a>, <a class="el" href="window_8h_source.html#l00099">WindowConfig::rect</a>, <a class="el" href="window_8h_source.html#l00093">WindowConfig::scroll_offset</a>, <a class="el" href="window_8h_source.html#l00096">WindowConfig::scroll_step</a>, <a class="el" href="window_8h_source.html#l00088">WindowConfig::scrollable</a>, <a class="el" href="window_8h_source.html#l00071">WindowConfig::w</a>, <a class="el" href="sdl_8h_source.html#l00020">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00019">WIN_WIDTH</a>, <a class="el" href="window_8c_source.html#l00032">window_normalize_scroll_cfg()</a>, <a class="el" href="window_8c_source.html#l00045">window_scrollable_zone_rect_from_cfg()</a>, <a class="el" href="window_8c_source.html#l00071">window_to_logical_coords()</a>, <a class="el" href="window_8c_source.html#l00231">window_update_rect()</a>, <a class="el" href="window_8h_source.html#l00069">WindowConfig::x</a>, et <a class="el" href="window_8h_source.html#l00070">WindowConfig::y</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00122">game_handle_event()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="credits_8c_source.html#l00489">credits_handle_event()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00474">game_handle_event()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00826">lobby_handle_event()</a>, et <a class="el" href="tuto_8c_source.html#l00484">tuto_handle_event()</a>.</p>
+
+</div>
+</div>
+<a id="a9f5882aafca12deebf414aa5a487b2a2" name="a9f5882aafca12deebf414aa5a487b2a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f5882aafca12deebf414aa5a487b2a2">&#9670;&#160;</a></span>window_normalize_scroll_cfg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void window_normalize_scroll_cfg </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structWindowConfig.html">WindowConfig</a> *&#160;</td>
+          <td class="paramname"><em>cfg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00032">32</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="window_8c_source.html#l00015">clamp_between()</a>, <a class="el" href="window_8c_source.html#l00010">clamp_positive()</a>, <a class="el" href="window_8h_source.html#l00095">WindowConfig::scroll_max</a>, <a class="el" href="window_8h_source.html#l00094">WindowConfig::scroll_min</a>, <a class="el" href="window_8h_source.html#l00093">WindowConfig::scroll_offset</a>, et <a class="el" href="window_8h_source.html#l00096">WindowConfig::scroll_step</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="window_8c_source.html#l00419">window_edit_cfg()</a>, <a class="el" href="window_8c_source.html#l00312">window_handle_event()</a>, et <a class="el" href="window_8c_source.html#l00231">window_update_rect()</a>.</p>
 
 </div>
 </div>
@@ -609,22 +881,31 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int window_place_button </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structWindow.html">Window</a> *</td>          <td class="paramname"><span class="paramname"><em>win</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="structWindow.html">Window</a> *&#160;</td>
+          <td class="paramname"><em>win</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structButton.html">Button</a> *</td>          <td class="paramname"><span class="paramname"><em>button</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structButton.html">Button</a> *&#160;</td>
+          <td class="paramname"><em>button</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>rel_x</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>rel_x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>rel_y</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>rel_y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -639,11 +920,11 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS si succès, EXIT_FAILURE sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00303">303</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00477">477</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="button_8h_source.html#l00088">Button::cfg</a>, <a class="el" href="window_8h_source.html#l00055">Window::cfg</a>, <a class="el" href="button_8h_source.html#l00076">ButtonConfig::is_text</a>, <a class="el" href="button_8h_source.html#l00072">ButtonConfig::rect</a>, <a class="el" href="button_8h_source.html#l00077">ButtonConfig::text_rect</a>, <a class="el" href="window_8c_source.html#l00017">window_content_origin_screen()</a>, <a class="el" href="button_8h_source.html#l00061">ButtonConfig::x</a>, et <a class="el" href="button_8h_source.html#l00062">ButtonConfig::y</a>.</p>
+<p class="reference">Références <a class="el" href="button_8c_source.html#l00003">button</a>, <a class="el" href="button_8h_source.html#l00162">Button::cfg</a>, <a class="el" href="window_8h_source.html#l00107">Window::cfg</a>, <a class="el" href="button_8h_source.html#l00118">ButtonConfig::is_text</a>, <a class="el" href="button_8h_source.html#l00114">ButtonConfig::rect</a>, <a class="el" href="button_8h_source.html#l00119">ButtonConfig::text_rect</a>, <a class="el" href="window_8c_source.html#l00087">window_content_origin_screen()</a>, <a class="el" href="button_8h_source.html#l00097">ButtonConfig::x</a>, et <a class="el" href="button_8h_source.html#l00098">ButtonConfig::y</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="credits_8c_source.html#l00341">credits_place_action_buttons()</a>, <a class="el" href="client_2src_2game_8c_source.html#l01130">game_display()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00300">lobby_render_owner_game_options()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00260">lobby_render_role_windows()</a>, et <a class="el" href="tuto_8c_source.html#l00358">tutorial_reposition_buttons()</a>.</p>
 
 </div>
 </div>
@@ -656,22 +937,31 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int window_place_input </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structWindow.html">Window</a> *</td>          <td class="paramname"><span class="paramname"><em>win</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="structWindow.html">Window</a> *&#160;</td>
+          <td class="paramname"><em>win</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>in</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>rel_x</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>rel_x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>rel_y</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>rel_y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -686,11 +976,11 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS si succès, EXIT_FAILURE sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00329">329</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00503">503</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="input_8h_source.html#l00113">Input::cfg</a>, <a class="el" href="window_8h_source.html#l00055">Window::cfg</a>, <a class="el" href="input_8h_source.html#l00091">InputConfig::rect</a>, <a class="el" href="window_8c_source.html#l00017">window_content_origin_screen()</a>, <a class="el" href="input_8h_source.html#l00070">InputConfig::x</a>, et <a class="el" href="input_8h_source.html#l00071">InputConfig::y</a>.</p>
+<p class="reference">Références <a class="el" href="input_8h_source.html#l00137">Input::cfg</a>, <a class="el" href="window_8h_source.html#l00107">Window::cfg</a>, <a class="el" href="input_8h_source.html#l00107">InputConfig::rect</a>, <a class="el" href="window_8c_source.html#l00087">window_content_origin_screen()</a>, <a class="el" href="input_8h_source.html#l00085">InputConfig::x</a>, et <a class="el" href="input_8h_source.html#l00086">InputConfig::y</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l01130">game_display()</a>.</p>
 
 </div>
 </div>
@@ -703,22 +993,31 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int window_place_text </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structWindow.html">Window</a> *</td>          <td class="paramname"><span class="paramname"><em>win</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="structWindow.html">Window</a> *&#160;</td>
+          <td class="paramname"><em>win</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structText.html">Text</a> *</td>          <td class="paramname"><span class="paramname"><em>text</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structText.html">Text</a> *&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>rel_x</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>rel_x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>rel_y</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>rel_y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -730,11 +1029,11 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS si succès, EXIT_FAILURE sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00350">350</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00524">524</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="window_8h_source.html#l00055">Window::cfg</a>, <a class="el" href="text_8h_source.html#l00035">Text::texture</a>, <a class="el" href="text_8c_source.html#l00086">update_text_position()</a>, <a class="el" href="sdl_8h_source.html#l00015">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00014">WIN_WIDTH</a>, et <a class="el" href="window_8c_source.html#l00017">window_content_origin_screen()</a>.</p>
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00107">Window::cfg</a>, <a class="el" href="text_8h_source.html#l00040">Text::texture</a>, <a class="el" href="text_8c_source.html#l00138">update_text_position()</a>, <a class="el" href="sdl_8h_source.html#l00020">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00019">WIN_WIDTH</a>, et <a class="el" href="window_8c_source.html#l00087">window_content_origin_screen()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00413">render_team_member_in_panel()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00434">render_team_panel_content()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00432">chat_render_messages()</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00155">chat_render_sender_prefix()</a>, <a class="el" href="client_2src_2game_8c_source.html#l01130">game_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l01015">game_render_team_history()</a>, <a class="el" href="history_8c_source.html#l00241">history_render_turn_prefix()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00300">lobby_render_owner_game_options()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00911">player_icon_pos()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00894">render_team_member_in_panel()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00937">render_team_panel_content()</a>.</p>
 
 </div>
 </div>
@@ -747,12 +1046,19 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void window_render </td>
           <td>(</td>
-          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structWindow.html">Window</a> *</td>          <td class="paramname"><span class="paramname"><em>win</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="structWindow.html">Window</a> *&#160;</td>
+          <td class="paramname"><em>win</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -764,16 +1070,16 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00210">210</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00373">373</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="window_8h_source.html#l00037">WindowConfig::bg_color</a>, <a class="el" href="window_8h_source.html#l00038">WindowConfig::border_color</a>, <a class="el" href="window_8h_source.html#l00043">WindowConfig::border_thickness</a>, <a class="el" href="window_8h_source.html#l00055">Window::cfg</a>, <a class="el" href="window_8c_source.html#l00003">clamp_non_negative()</a>, <a class="el" href="window_8h_source.html#l00036">WindowConfig::hidden</a>, <a class="el" href="window_8h_source.html#l00047">WindowConfig::rect</a>, <a class="el" href="window_8h_source.html#l00039">WindowConfig::titlebar_color</a>, <a class="el" href="window_8h_source.html#l00044">WindowConfig::titlebar_h</a>, <a class="el" href="window_8h_source.html#l00041">WindowConfig::titlebar_texture</a>, <a class="el" href="window_8c_source.html#l00038">window_render_title()</a>, et <a class="el" href="window_8h_source.html#l00040">WindowConfig::window_texture</a>.</p>
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00075">WindowConfig::bg_color</a>, <a class="el" href="window_8h_source.html#l00076">WindowConfig::border_color</a>, <a class="el" href="window_8h_source.html#l00086">WindowConfig::border_thickness</a>, <a class="el" href="window_8h_source.html#l00107">Window::cfg</a>, <a class="el" href="window_8c_source.html#l00006">clamp_non_negative()</a>, <a class="el" href="window_8h_source.html#l00074">WindowConfig::hidden</a>, <a class="el" href="window_8h_source.html#l00099">WindowConfig::rect</a>, <a class="el" href="window_8h_source.html#l00077">WindowConfig::titlebar_color</a>, <a class="el" href="window_8h_source.html#l00087">WindowConfig::titlebar_h</a>, <a class="el" href="window_8h_source.html#l00079">WindowConfig::titlebar_texture</a>, <a class="el" href="window_8c_source.html#l00125">window_render_title()</a>, et <a class="el" href="window_8h_source.html#l00078">WindowConfig::window_texture</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="credits_8c_source.html#l00519">credits_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l01130">game_display()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00300">lobby_render_owner_game_options()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00260">lobby_render_role_windows()</a>, et <a class="el" href="tuto_8c_source.html#l00492">tuto_display()</a>.</p>
 
 </div>
 </div>
-<a id="a80562218198f487f51d369abdf6b4b38" name="a80562218198f487f51d369abdf6b4b38"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a80562218198f487f51d369abdf6b4b38">&#9670;&#160;</a></span>window_render_title()</h2>
+<a id="abb80974eeaa53182bd4efedb7ee614b9" name="abb80974eeaa53182bd4efedb7ee614b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb80974eeaa53182bd4efedb7ee614b9">&#9670;&#160;</a></span>window_render_title()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -782,28 +1088,77 @@ Fonctions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void window_render_title </td>
+          <td class="memname">static void window_render_title </td>
           <td>(</td>
-          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structWindowConfig.html">WindowConfig</a> *</td>          <td class="paramname"><span class="paramname"><em>cfg</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structWindowConfig.html">WindowConfig</a> *&#160;</td>
+          <td class="paramname"><em>cfg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00038">38</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00125">125</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2lib_2utils_8h_source.html#l00011">COL_WHITE</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00027">FONT_LARABIE</a>, <a class="el" href="window_8h_source.html#l00047">WindowConfig::rect</a>, <a class="el" href="window_8h_source.html#l00042">WindowConfig::title</a>, et <a class="el" href="window_8h_source.html#l00044">WindowConfig::titlebar_h</a>.</p>
+<p class="reference">Références <a class="el" href="client_2lib_2utils_8h_source.html#l00016">COL_WHITE</a>, <a class="el" href="client_2lib_2utils_8h_source.html#l00032">FONT_LARABIE</a>, <a class="el" href="window_8h_source.html#l00099">WindowConfig::rect</a>, <a class="el" href="window_8h_source.html#l00080">WindowConfig::title</a>, <a class="el" href="window_8h_source.html#l00081">WindowConfig::title_texture_cache</a>, <a class="el" href="window_8h_source.html#l00085">WindowConfig::title_texture_cache_dirty</a>, <a class="el" href="window_8h_source.html#l00084">WindowConfig::title_texture_cache_font_size</a>, <a class="el" href="window_8h_source.html#l00083">WindowConfig::title_texture_cache_h</a>, <a class="el" href="window_8h_source.html#l00082">WindowConfig::title_texture_cache_w</a>, et <a class="el" href="window_8h_source.html#l00087">WindowConfig::titlebar_h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="window_8c_source.html#l00210">window_render()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="window_8c_source.html#l00373">window_render()</a>.</p>
+
+</div>
+</div>
+<a id="a5371fa26049d381795806395988c4266" name="a5371fa26049d381795806395988c4266"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5371fa26049d381795806395988c4266">&#9670;&#160;</a></span>window_scrollable_zone_rect_from_cfg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int window_scrollable_zone_rect_from_cfg </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structWindowConfig.html">WindowConfig</a> *&#160;</td>
+          <td class="paramname"><em>cfg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect *&#160;</td>
+          <td class="paramname"><em>out_rect</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00045">45</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00099">WindowConfig::rect</a>, <a class="el" href="window_8h_source.html#l00089">WindowConfig::scroll_x1</a>, <a class="el" href="window_8h_source.html#l00091">WindowConfig::scroll_x2</a>, <a class="el" href="window_8h_source.html#l00090">WindowConfig::scroll_y1</a>, <a class="el" href="window_8h_source.html#l00092">WindowConfig::scroll_y2</a>, et <a class="el" href="window_8h_source.html#l00088">WindowConfig::scrollable</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="window_8c_source.html#l00307">window_get_scrollable_zone_rect()</a>, et <a class="el" href="window_8c_source.html#l00312">window_handle_event()</a>.</p>
 
 </div>
 </div>
@@ -817,28 +1172,95 @@ Fonctions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int window_set_title </td>
+          <td class="memname">static int window_set_title </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structWindowConfig.html">WindowConfig</a> *</td>          <td class="paramname"><span class="paramname"><em>cfg</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structWindowConfig.html">WindowConfig</a> *&#160;</td>
+          <td class="paramname"><em>cfg</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>title</em></span>&#160;)</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>title</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00024">24</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00094">94</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="window_8h_source.html#l00042">WindowConfig::title</a>.</p>
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00080">WindowConfig::title</a>, <a class="el" href="window_8h_source.html#l00081">WindowConfig::title_texture_cache</a>, <a class="el" href="window_8h_source.html#l00085">WindowConfig::title_texture_cache_dirty</a>, <a class="el" href="window_8h_source.html#l00084">WindowConfig::title_texture_cache_font_size</a>, <a class="el" href="window_8h_source.html#l00083">WindowConfig::title_texture_cache_h</a>, et <a class="el" href="window_8h_source.html#l00082">WindowConfig::title_texture_cache_w</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="window_8c_source.html#l00127">window_create()</a>, et <a class="el" href="window_8c_source.html#l00256">window_edit_cfg()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="window_8c_source.html#l00247">window_create()</a>, et <a class="el" href="window_8c_source.html#l00419">window_edit_cfg()</a>.</p>
+
+</div>
+</div>
+<a id="a426988275e7799a1c3acb77dcda92855" name="a426988275e7799a1c3acb77dcda92855"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a426988275e7799a1c3acb77dcda92855">&#9670;&#160;</a></span>window_to_logical_coords()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void window_to_logical_coords </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>wx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>wy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>lx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>ly</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00071">71</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00056">AppContext::renderer</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="window_8c_source.html#l00312">window_handle_event()</a>.</p>
 
 </div>
 </div>
@@ -851,7 +1273,8 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void window_update_rect </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structWindow.html">Window</a> *</td>          <td class="paramname"><span class="paramname"><em>win</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structWindow.html">Window</a> *&#160;</td>
+          <td class="paramname"><em>win</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -863,29 +1286,74 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00113">113</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00231">231</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="window_8h_source.html#l00055">Window::cfg</a>, <a class="el" href="window_8c_source.html#l00003">clamp_non_negative()</a>, <a class="el" href="window_8c_source.html#l00007">clamp_positive()</a>, <a class="el" href="window_8h_source.html#l00034">WindowConfig::h</a>, <a class="el" href="window_8h_source.html#l00047">WindowConfig::rect</a>, <a class="el" href="window_8h_source.html#l00044">WindowConfig::titlebar_h</a>, <a class="el" href="window_8h_source.html#l00033">WindowConfig::w</a>, <a class="el" href="sdl_8h_source.html#l00015">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00014">WIN_WIDTH</a>, <a class="el" href="window_8h_source.html#l00031">WindowConfig::x</a>, et <a class="el" href="window_8h_source.html#l00032">WindowConfig::y</a>.</p>
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00107">Window::cfg</a>, <a class="el" href="window_8c_source.html#l00006">clamp_non_negative()</a>, <a class="el" href="window_8c_source.html#l00010">clamp_positive()</a>, <a class="el" href="window_8h_source.html#l00072">WindowConfig::h</a>, <a class="el" href="window_8h_source.html#l00099">WindowConfig::rect</a>, <a class="el" href="window_8h_source.html#l00087">WindowConfig::titlebar_h</a>, <a class="el" href="window_8h_source.html#l00071">WindowConfig::w</a>, <a class="el" href="sdl_8h_source.html#l00020">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00019">WIN_WIDTH</a>, <a class="el" href="window_8c_source.html#l00032">window_normalize_scroll_cfg()</a>, <a class="el" href="window_8h_source.html#l00069">WindowConfig::x</a>, et <a class="el" href="window_8h_source.html#l00070">WindowConfig::y</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="window_8c_source.html#l00127">window_create()</a>, <a class="el" href="window_8c_source.html#l00256">window_edit_cfg()</a>, et <a class="el" href="window_8c_source.html#l00172">window_handle_event()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="window_8c_source.html#l00247">window_create()</a>, <a class="el" href="window_8c_source.html#l00419">window_edit_cfg()</a>, et <a class="el" href="window_8c_source.html#l00312">window_handle_event()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a id="ab56105b90890398c98a0a47a1df4d597" name="ab56105b90890398c98a0a47a1df4d597"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab56105b90890398c98a0a47a1df4d597">&#9670;&#160;</a></span>window_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int window_count = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00004">4</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="window_8c_source.html#l00247">window_create()</a>, <a class="el" href="window_8c_source.html#l00282">window_destroy()</a>, et <a class="el" href="window_8c_source.html#l00273">window_get_by_id()</a>.</p>
+
+</div>
+</div>
+<a id="a6e7d1d05644fea30a66cc30f2171ac9b" name="a6e7d1d05644fea30a66cc30f2171ac9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e7d1d05644fea30a66cc30f2171ac9b">&#9670;&#160;</a></span>windows</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structWindow.html">Window</a>* windows[<a class="el" href="window_8h.html#a96f609b2a30e2dc3cc404945cdb2d55e">MAX_WINDOWS</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="window_8c_source.html#l00003">3</a> du fichier <a class="el" href="window_8c_source.html">window.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="window_8c_source.html#l00247">window_create()</a>, et <a class="el" href="window_8c_source.html#l00273">window_get_by_id()</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div id="page-nav" class="page-nav-panel">
-<div id="page-nav-resize-handle"></div>
-<div id="page-nav-tree">
-<div id="page-nav-contents">
-</div><!-- page-nav-contents -->
-</div><!-- page-nav-tree -->
-</div><!-- page-nav -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a href="window_8c.html">window.c</a></li>
-    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a class="el" href="window_8c.html">window.c</a></li>
+    <li class="footer">Généré le Mardi 14 Avril 2026 18:57:16 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
