@@ -155,7 +155,7 @@ static int card_handle_click(AppContext* context, Card* card, Booleen is_guess_i
         
         card->selected = False;
         card->revealed = True;
-    } else if (!card->selected && !is_guess_icon && !card->revealed) {
+    } else if (!card->revealed) {
         card->selected = !card->selected;
         char msg[64];
         format_to(msg, sizeof(msg), "%d %d %d", MSG_PREGUESS, (int)(card - context->lobby->game->cards), card->selected);
