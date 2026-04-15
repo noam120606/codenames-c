@@ -1,14 +1,5 @@
 #include "../lib/all.h"
 
-static void set_nonblocking(int socket) {
-#ifdef _WIN32
-    u_long mode = 1;
-    ioctlsocket((SOCKET)socket, FIONBIO, &mode);
-#else
-    fcntl(socket, F_SETFL, O_NONBLOCK);
-#endif
-}
-
 TcpServer* tcp_server_create(int port) {
     TcpServer* server = calloc(1, sizeof(TcpServer));
     if (!server) return NULL;
@@ -66,8 +57,6 @@ TcpServer* tcp_server_create(int port) {
         return NULL;
     }
 
-    set_nonblocking(server->server_socket);
-
     printf("TCP server listening on port %d\n", port);
     return server;
 }
@@ -95,7 +84,6 @@ static void add_client(Codenames* codenames, int client_socket, struct sockaddr_
             server->clients[i].addr = addr;
             server->clients[i].id = i;
 
-            set_nonblocking(client_socket);
             tcp_on_client_connect(codenames, &server->clients[i]);
             return;
         }
@@ -131,8 +119,7 @@ void tcp_server_tick(Codenames* codenames) {
         }
     }
 
-    struct timeval tv = {0, 0}; // non bloquant
-    int activity = select(max_fd + 1, &readfds, NULL, NULL, &tv);
+    int activity = select(max_fd + 1, &readfds, NULL, NULL, NULL);
     if (activity <= 0) return;
 
     if (FD_ISSET(server->server_socket, &readfds)) {
