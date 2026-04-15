@@ -12,6 +12,7 @@ tests/client/build*
 *.synctex.gz
 *.fdb_latexmk
 *.fls
+*.out
 
 # Libraries
 client/SDL2/
