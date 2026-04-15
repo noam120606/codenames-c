@@ -781,7 +781,7 @@ int menu_init(AppContext* context) {
         loading_fails++;
     }
 
-    const char* creator_line1_A_text = "Roger Noam    ";
+    const char* creator_line1_A_text = "NoamSQL (Roger Noam)    ";
     const char* creator_line1_B_text = "-    ~WolfGang_PRoxa~ (Piau Romain)";
     const char* creator_line2_A_text = "Quinton Chloé    ";
     const char* creator_line2_B_text = "-    KaptainePirate (Maudet Mathis)";

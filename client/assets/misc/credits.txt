@@ -23,7 +23,7 @@ appartiennent à leurs propriétaires originaux.
 ÉQUIPE DE CRÉATION
 ----------------------------------------
 
-Roger Noam - ~WolfGang_PRoxa~ (Piau Romain)
+NoamSQL (Roger Noam) - ~WolfGang_PRoxa~ (Piau Romain)
 Quinton Chloe - KaptainePirate (Maudet Mathis)
 
 Avec la participation de : Tom
