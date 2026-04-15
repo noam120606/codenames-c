@@ -53,7 +53,13 @@ Lobby* create_lobby(LobbyManager* manager) {
     lobby->game = NULL;
     lobby->words_difficulty = WORDS_DIFFICULTY_NORMAL;
     lobby->nb_assassins = 1;
-    strcpy(lobby->code, generate_code());
+    char* code = generate_code();
+    if (!code) {
+        free(lobby);
+        return NULL;
+    }
+    strcpy(lobby->code, code);
+    free(code);
 
     if (chat_init(&lobby->chat, CHAT_MAX_MESSAGES) != EXIT_SUCCESS) {
         free(lobby);
