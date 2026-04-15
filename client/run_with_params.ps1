@@ -1,4 +1,5 @@
 param(
+    [int]$Fps = 0,
     [string]$ServerIp,
     [int]$Instances = 0,
     [int]$Port = 4242,
@@ -28,12 +29,25 @@ if ($Instances -le 0) {
     }
 }
 
+if ([int]$Fps -le 0) {
+    $fpsRaw = Read-Host "Nombre de FPS (frames per second) cible (par defaut: 60)"
+    if ([string]::IsNullOrWhiteSpace($fpsRaw)) {
+        $Fps = 60
+    } else {
+        [int]$parsedFps = 0
+        if (-not [int]::TryParse($fpsRaw, [ref]$parsedFps) -or $parsedFps -le 0) {
+            throw 'Le nombre de FPS doit etre un entier superieur a 0.'
+        }
+        $Fps = $parsedFps
+    }
+}
+
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $root
 
 if (-not $NoBuild) {
     Write-Host 'Compilation unique avant lancement multi-clients...'
-    & "$root/run.ps1" -ServerIp $ServerIp -Port $Port -BuildOnly
+    & "$root/run.ps1" -ServerIp $ServerIp -Port $Port -Fps $Fps -BuildOnly
 }
 
 for ($i = 1; $i -le $Instances; $i++) {
@@ -48,6 +62,8 @@ for ($i = 1; $i -le $Instances; $i++) {
         $ServerIp,
         '-Port',
         "$Port",
+        '-Fps',
+        "$Fps",
         '-NoBuild'
     ) | Out-Null
 }

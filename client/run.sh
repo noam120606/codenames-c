@@ -1,8 +1,9 @@
 #!/bin/sh
 set -e
 
-PORT=4242
 SERVER_IP="${SERVER_IP:-127.0.0.1}"
+PORT=4242
+FPS=60
 NO_BUILD=0
 BUILD_ONLY=0
 
@@ -13,6 +14,7 @@ Usage: ./run.sh [options]
 Options:
   -s, --server-ip IP   Server IP address (default: 127.0.0.1)
   -p, --port PORT      Server port (default: 4242)
+  -f, --fps FPS        Frames per second (default: 60)
 	  --no-build       Skip compilation
 	  --build-only     Compile only, do not launch client
   -h, --help           Show this help
@@ -35,6 +37,14 @@ while [ "$#" -gt 0 ]; do
 				exit 1
 			fi
 			PORT="$2"
+			shift 2
+			;;
+		-f|--fps)
+			if [ "$#" -lt 2 ]; then
+				echo "Missing value for $1" >&2
+				exit 1
+			fi
+			FPS="$2"
 			shift 2
 			;;
 		--no-build)
@@ -77,4 +87,4 @@ if [ "$BUILD_ONLY" -eq 1 ]; then
 	exit 0
 fi
 
-exec ./build/client -s "$SERVER_IP" -p "$PORT"
+exec ./build/client -s "$SERVER_IP" -p "$PORT" -f "$FPS"

@@ -1,8 +1,9 @@
 #!/bin/sh
 set -e
 
-PORT=4242
 SERVER_IP=""
+PORT=4242
+FPS=60
 INSTANCES=0
 NO_BUILD=0
 PIDS=""
@@ -15,6 +16,7 @@ Options:
   -s, --server-ip IP   Address IP du serveur (fallback: 127.0.0.1)
   -n, --instances N    Nombre de clients (fallback: 1)
   -p, --port PORT      Port du serveur (default: 4242)
+  -f, --fps FPS        Frames per second (default: 60)
 	  --no-build       Skip compilation step
   -h, --help           Show this help
 EOF
@@ -44,6 +46,14 @@ while [ "$#" -gt 0 ]; do
 				exit 1
 			fi
 			PORT="$2"
+			shift 2
+			;;
+		-f|--fps)
+			if [ "$#" -lt 2 ]; then
+				echo "Missing value for $1" >&2
+				exit 1
+			fi
+			FPS="$2"
 			shift 2
 			;;
 		--no-build)
@@ -91,7 +101,7 @@ cd "$SCRIPT_DIR"
 
 if [ "$NO_BUILD" -eq 0 ]; then
 	echo "Compilation unique avant lancement multi-clients..."
-	"$SCRIPT_DIR/run.sh" --server-ip "$SERVER_IP" --port "$PORT" --build-only
+	"$SCRIPT_DIR/run.sh" --server-ip "$SERVER_IP" --port "$PORT" --fps "$FPS" --build-only
 elif [ ! -x ./build/client ]; then
 	echo "No compiled client found at ./build/client. Run once without --no-build." >&2
 	exit 1
@@ -100,7 +110,7 @@ fi
 i=1
 while [ "$i" -le "$INSTANCES" ]; do
 	echo "Lancement du client $i/$INSTANCES..."
-	"$SCRIPT_DIR/run.sh" --server-ip "$SERVER_IP" --port "$PORT" --no-build >/dev/null 2>&1 &
+	"$SCRIPT_DIR/run.sh" --server-ip "$SERVER_IP" --port "$PORT" --fps "$FPS" --no-build >/dev/null 2>&1 &
 	PIDS="$PIDS $!"
 	i=$((i + 1))
 done

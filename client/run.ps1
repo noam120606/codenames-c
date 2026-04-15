@@ -1,4 +1,5 @@
 param(
+    [int]$Fps = 60,
     [string]$ServerIp = $env:SERVER_IP,
     [int]$Port = 4242,
     [switch]$NoBuild,
@@ -111,5 +112,5 @@ if ($BuildOnly) {
     return
 }
 
-Write-Host "Starting client against $ServerIp`:$Port..."
-& ./build/client.exe -s $ServerIp -p $Port
+Write-Host "Starting client against $ServerIp`:$Port with target FPS $Fps..."
+& ./build/client.exe -s $ServerIp -p $Port -f $Fps

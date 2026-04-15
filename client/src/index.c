@@ -225,19 +225,24 @@ static void handle_app_state_audio_transition(AppContext* context, AppState prev
         // En menu, on retire toujours le filtre lobby pour récupérer un son normal.
         audio_set_filter(MUSIC_MENU_LOBBY, AUDIO_FILTER_NONE, 0.0f);
 
-        // Si on revient du jeu, purge la piste menu/lobby potentiellement encore en fade-out.
-        if (previous_state == APP_STATE_PLAYING && audio_is_playing(MUSIC_MENU_LOBBY)) {
-            audio_stop(MUSIC_MENU_LOBBY);
+        // En revenant du jeu, on relance explicitement la musique du menu.
+        // Cela évite un état silencieux quand la piste est encore en fade-out ou déjà arrêtée.
+        if (previous_state == APP_STATE_PLAYING) {
+            if (audio_is_playing(MUSIC_MENU_LOBBY)) {
+                audio_stop(MUSIC_MENU_LOBBY);
+            }
+
+            audio_play_with_fade(MUSIC_MENU_LOBBY, -1, 1500, AUDIO_FADE_IN_BY_VOLUME, NULL);
         }
     }
 }
 
 int main(int argc, char* argv[]){
 #ifndef _WIN32
-    signal(SIGPIPE, SIG_IGN);
+    signal(SIGPIPE, SIG_IGN); // Ignorer SIGPIPE pour éviter que le client ne crash si le serveur ferme la connexion pendant une opération d'envoi. 
 #endif
 
-    const float target_fps = 60.0f;
+    float target_fps = 60.0f;
     char ip[16] = "127.0.0.1";
     int port = 0;
     /* Nombre de frames avant fermeture automatique (0 pour désactiver)
@@ -272,14 +277,16 @@ int main(int argc, char* argv[]){
                 ip[sizeof(ip) - 1] = '\0';
             } else if ((strcmp(argv[i], "-p") == 0 || strcmp(argv[i], "--port") == 0) && i + 1 < argc) {
                 port = atoi(argv[++i]);
+            } else if ((strcmp(argv[i], "-f") == 0 || strcmp(argv[i], "--fps") == 0) && i + 1 < argc) {
+                target_fps = (float)atoi(argv[++i]);
             } else {
-                fprintf(stderr, "Usage: %s [-s server_ip] [-p port]\n", argv[0]);
+                fprintf(stderr, "Usage: %s [-s server_ip] [-p port] [-f fps]\n", argv[0]);
                 return EXIT_FAILURE;
             }
         }
     #else
         int opt;
-        while ((opt = getopt(argc, argv, "s:p:")) != -1) {
+        while ((opt = getopt(argc, argv, "s:p:f:")) != -1) {
             switch (opt) {
                 case 's':
                     strncpy(ip, optarg, sizeof(ip) - 1);
@@ -288,14 +295,17 @@ int main(int argc, char* argv[]){
                 case 'p':
                     port = atoi(optarg);
                     break;
+                case 'f':
+                    target_fps = (float)atoi(optarg);
+                    break;
                 default:
-                    fprintf(stderr, "Usage: %s [-s server_ip] [-p port]\n", argv[0]);
+                    fprintf(stderr, "Usage: %s [-s server_ip] [-p port] [-f fps]\n", argv[0]);
                     return EXIT_FAILURE;
             }
         }
     #endif
     if (port == 0) {
-        fprintf(stderr, "Port number is required. Usage: %s [-s server_ip] [-p port]\n", argv[0]);
+        fprintf(stderr, "Port number is required. Usage: %s [-s server_ip] [-p port] [-f fps]\n", argv[0]);
         return EXIT_FAILURE;
     }
 
