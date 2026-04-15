@@ -747,7 +747,7 @@ void input_render(SDL_Renderer* renderer, Input* in) {
         /* render submitted label (always if set) and submitted text (if present) above input */
         if (in->cfg->font_path && in->cfg->submitted_label) {
             int label_size = in->cfg->font_size > 12 ? in->cfg->font_size - 4 : in->cfg->font_size;
-            TTF_Font* label_font = TTF_OpenFont(in->cfg->font_path, label_size);
+            TTF_Font* label_font = load_font(in->cfg->font_path, label_size);
             if (label_font) {
                 SDL_Color color = {255,255,255,255};
                 const char* lbl = in->cfg->submitted_label ? in->cfg->submitted_label : "";
@@ -774,13 +774,12 @@ void input_render(SDL_Renderer* renderer, Input* in) {
                     }
                     free(combined);
                 }
-                TTF_CloseFont(label_font);
             }
         }
 
     /* render text using TTF */
     if (in->cfg->font_path && in->cfg->font_size > 0) {
-        TTF_Font* font = TTF_OpenFont(in->cfg->font_path, in->cfg->font_size);
+        TTF_Font* font = load_font(in->cfg->font_path, in->cfg->font_size);
         if (font) {
             int padding = in->cfg->padding;
             if (padding < 0) padding = 0;
@@ -919,7 +918,6 @@ void input_render(SDL_Renderer* renderer, Input* in) {
 
             if (tex) SDL_DestroyTexture(tex);
             if (surf) SDL_FreeSurface(surf);
-            TTF_CloseFont(font);
         }
     }
 }

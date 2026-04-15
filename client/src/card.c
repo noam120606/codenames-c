@@ -210,9 +210,19 @@ static int card_handle_event(AppContext* context, SDL_Event* event, Card* card) 
 int cards_handle_event(AppContext* context, SDL_Event* event) {
     if (!context || !event || !context->lobby || !context->lobby->game) return EXIT_FAILURE;
 
+    if (
+        event->type != SDL_MOUSEMOTION &&
+        !(event->type == SDL_MOUSEBUTTONDOWN && event->button.button == SDL_BUTTON_LEFT) &&
+        !(event->type == SDL_MOUSEBUTTONUP && event->button.button == SDL_BUTTON_LEFT)
+    ) {
+        return EXIT_SUCCESS;
+    }
+
+    int can_guess = (context->player_role == ROLE_AGENT && my_turn(context));
+
     for (int i = 0; i < NUM_CARDS; i++) {
         Card* card = context->lobby->game->cards + i;
-        int can_handle_guess_interaction = (context->player_role == ROLE_AGENT && my_turn(context) && !card->revealed);
+        int can_handle_guess_interaction = (can_guess && !card->revealed);
         int can_handle_revealed_flip = card->revealed;
 
         if (can_handle_guess_interaction || can_handle_revealed_flip) {

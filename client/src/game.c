@@ -1131,6 +1131,7 @@ void game_display(AppContext * context) {
     if (!context) return;
 
     Game* game = game_get_active_game(context);
+    int is_my_turn = game ? my_turn(context) : 0;
 
     if (!audio_is_playing(MUSIC_GAME)) {
         audio_play_with_fade(MUSIC_GAME, -1, 1500, AUDIO_FADE_IN_BY_VOLUME, NULL);
@@ -1142,10 +1143,6 @@ void game_display(AppContext * context) {
         button_render(context->renderer, btn_quit_game);
     }
     
-
-    if (chat_input) {
-        input_render(context->renderer, chat_input);
-    }
 
     if (blue_panel) {
         window_render(context->renderer, blue_panel);
@@ -1221,7 +1218,7 @@ void game_display(AppContext * context) {
                     break;
             }
 
-            if (context->player_role == ROLE_SPY && my_turn(context)) {
+            if (context->player_role == ROLE_SPY && is_my_turn) {
                 if (hint_input) {
                     window_place_input(hint_window, hint_input, -70, -15);
                     input_render(context->renderer, hint_input);
@@ -1249,7 +1246,7 @@ void game_display(AppContext * context) {
                     window_place_text(hint_window, txt_hint_display, 0, -16);
                     display_text(context, txt_hint_display);
 
-                    if (context->player_role == ROLE_AGENT && my_turn(context)) {
+                    if (context->player_role == ROLE_AGENT && is_my_turn) {
                         if (btn_hint_submit) {
                             window_place_button(hint_window, btn_hint_submit, 285, -15);
                             button_render(context->renderer, btn_hint_submit);
