@@ -18,12 +18,14 @@ static SDL_Color bg_color = {50, 50, 50, 255};
 #define BG_SPEED     0.55f
 #define BG_SPEED_LOBBY_FACTOR 0.6f
 #define BG_SIZE      0.12f
-#define BG_ANIM_FRAMES 14
+#define BG_REFERENCE_FPS 60.0f
+#define BG_ANIM_DURATION_MS 233U
 #define BG_ANIM_POP    0.18f
 
 /* Mouvement continu du fond (évite les sauts quand la vitesse change selon l'état). */
 static float bg_motion = 0.0f;
-static long bg_motion_last_clock = -1;
+static Uint32 bg_motion_last_ticks = 0;
+static int bg_motion_ticks_initialized = 0;
 
 /* Table des états surchargés par clic.  */
 #define MAX_OVERRIDES 512
@@ -36,7 +38,7 @@ typedef struct {
     int wj;
     int from_symbol;
     int to_symbol;
-    long start_clock;
+    Uint32 start_ticks;
     int active;
 } TileAnimation;
 
@@ -66,7 +68,7 @@ static int find_animation(int wi, int wj) {
     return -1;
 }
 
-static void start_animation(int wi, int wj, int from_symbol, int to_symbol, long start_clock) {
+static void start_animation(int wi, int wj, int from_symbol, int to_symbol, Uint32 start_ticks) {
     int idx = find_animation(wi, wj);
 
     if (idx < 0) {
@@ -84,7 +86,7 @@ static void start_animation(int wi, int wj, int from_symbol, int to_symbol, long
     animations[idx].wj = wj;
     animations[idx].from_symbol = from_symbol;
     animations[idx].to_symbol = to_symbol;
-    animations[idx].start_clock = start_clock;
+    animations[idx].start_ticks = start_ticks;
     animations[idx].active = 1;
 }
 
@@ -124,14 +126,17 @@ static float background_speed(const AppContext* context) {
 static int background_scaled_time(const AppContext* context) {
     if (!context) return 0;
 
-    if (bg_motion_last_clock < 0) {
-        bg_motion_last_clock = context->clock;
+    Uint32 now_ticks = SDL_GetTicks();
+    if (!bg_motion_ticks_initialized) {
+        bg_motion_last_ticks = now_ticks;
+        bg_motion_ticks_initialized = 1;
     }
 
-    long delta = context->clock - bg_motion_last_clock;
-    if (delta > 0) {
-        bg_motion += (float)delta * background_speed(context);
-        bg_motion_last_clock = context->clock;
+    Uint32 delta_ms = now_ticks - bg_motion_last_ticks;
+    if (delta_ms > 0) {
+        float speed_per_ms = background_speed(context) * (BG_REFERENCE_FPS / 1000.0f);
+        bg_motion += (float)delta_ms * speed_per_ms;
+        bg_motion_last_ticks = now_ticks;
     }
 
     return (int)bg_motion;
@@ -181,6 +186,7 @@ void display_background(AppContext* context) {
 
     const int cols = (WIN_WIDTH  / BG_TILE_W) + BG_EXTRA;
     const int rows = (WIN_HEIGHT / BG_TILE_H) + BG_EXTRA;
+    Uint32 now_ticks = SDL_GetTicks();
 
     const int scaled_time = background_scaled_time(context);
     const int offset_x = scaled_time % (BG_TILE_W * 2);
@@ -221,11 +227,11 @@ void display_background(AppContext* context) {
 
             int anim_idx = find_animation(wi, wj);
             if (anim_idx >= 0) {
-                long elapsed = context->clock - animations[anim_idx].start_clock;
-                if (elapsed >= BG_ANIM_FRAMES) {
+                Uint32 elapsed_ms = now_ticks - animations[anim_idx].start_ticks;
+                if (elapsed_ms >= BG_ANIM_DURATION_MS) {
                     animations[anim_idx].active = 0;
                 } else {
-                    float t = (float)elapsed / (float)BG_ANIM_FRAMES;
+                    float t = (float)elapsed_ms / (float)BG_ANIM_DURATION_MS;
                     float pulse = 1.0f + ((t <= 0.5f ? t : (1.0f - t)) * 2.0f) * BG_ANIM_POP;
                     Uint8 old_opacity = (Uint8)(255.0f * (1.0f - t));
                     Uint8 new_opacity = (Uint8)(255.0f * t);
@@ -305,7 +311,7 @@ void background_handle_event(AppContext* context, SDL_Event* e) {
     int next = (current + 1) % 3;
 
     set_override(best_wi, best_wj, next);
-    start_animation(best_wi, best_wj, current, next, context->clock);
+    start_animation(best_wi, best_wj, current, next, SDL_GetTicks());
 }
 
 
@@ -316,7 +322,8 @@ int destroy_background() {
     override_count = 0;
     memset(animations, 0, sizeof(animations));
     bg_motion = 0.0f;
-    bg_motion_last_clock = -1;
+    bg_motion_last_ticks = 0;
+    bg_motion_ticks_initialized = 0;
     bg_color = (SDL_Color){50, 50, 50, 255}; // Reset à la couleur par défaut
     return EXIT_SUCCESS;
 }
