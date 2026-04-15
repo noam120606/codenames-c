@@ -17,21 +17,23 @@
  * @brief Identifiants des sons pris en charge par le client.
  */
 typedef enum {
-    MUSIC_MENU_LOBBY,      /**< Musique du menu et du lobby. */
-    MUSIC_GAME,            /**< Musique pendant la partie. */
-    SOUND_BUTTON_CLICKED,  /**< Son de clic bouton. */
-    SOUND_TYPE_WRITING,    /**< Son de saisie clavier. */
-    SOUND_CARD_DISTRIBUTION, /**< Son de distribution des cartes. */
-    SOUND_CARD_GUESS,      /**< Son de sélection d'une carte. */
-    SOUND_CARD_CONFIRMATION, /**< Son de validation d'une carte. */
-    SOUND_CARD_ENEMY,      /**< Son de révélation carte ennemie. */
-    SOUND_CARD_FRIEND,     /**< Son de révélation carte alliée. */
-    SOUND_CARD_NONE,       /**< Son de révélation carte neutre. */
-    SOUND_CARD_ASSASSIN,   /**< Son de révélation carte assassin. */
-    SOUND_VICTORY,         /**< Son de victoire. */
-    SOUND_DEFEAT,          /**< Son de défaite. */
-    SOUND_INFO_OPEN,       /**< Son d'ouverture d'une infobulle. */
-    SOUND_INFO_CLOSE,      /**< Son de fermeture d'une infobulle. */
+    MUSIC_MENU_LOBBY,           /**< Musique du menu et du lobby. */
+    MUSIC_GAME,                 /**< Musique pendant la partie. */
+    SOUND_OPENING_CODENAMES,    /**< Audio d'ouverture avant l'arrivée du menu. */
+    SOUND_BUTTON_CLICKED,       /**< Son de clic bouton. */
+    SOUND_BUTTON_HOVER,         /**< Son de survol bouton. */
+    SOUND_TYPE_WRITING,         /**< Son de saisie clavier. */
+    SOUND_CARD_DISTRIBUTION,    /**< Son de distribution des cartes. */
+    SOUND_CARD_GUESS,           /**< Son de sélection d'une carte. */
+    SOUND_CARD_CONFIRMATION,    /**< Son de validation d'une carte. */
+    SOUND_CARD_ENEMY,           /**< Son de révélation carte ennemie. */
+    SOUND_CARD_FRIEND,          /**< Son de révélation carte alliée. */
+    SOUND_CARD_NONE,            /**< Son de révélation carte neutre. */
+    SOUND_CARD_ASSASSIN,        /**< Son de révélation carte assassin. */
+    SOUND_VICTORY,              /**< Son de victoire. */
+    SOUND_DEFEAT,               /**< Son de défaite. */
+    SOUND_INFO_OPEN,            /**< Son d'ouverture d'une infobulle. */
+    SOUND_INFO_CLOSE,           /**< Son de fermeture d'une infobulle. */
 } SoundID;
 
 /**

@@ -16,5 +16,5 @@ deviner les cartes
 correspondantes.
 
 Attention au mot noir
-Si il est trouvé
+S'il est trouvé
 vous perdez !

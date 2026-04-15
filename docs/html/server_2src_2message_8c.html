@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier server/src/message.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,20 +34,21 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,9 +63,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('server_2src_2message_8c.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('server_2src_2message_8c.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -89,6 +90,8 @@ $(function(){initNavTree('server_2src_2message_8c.html','',''); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
   <div class="headertitle"><div class="title">Référence du fichier message.c</div></div>
 </div><!--header-->
 <div class="contents">
@@ -96,14 +99,18 @@ $(function(){initNavTree('server_2src_2message_8c.html','',''); });
 </div>
 <p><a href="server_2src_2message_8c_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a0a92593fab77af4d4a585fea5a7e29f8" id="r_a0a92593fab77af4d4a585fea5a7e29f8"><td class="memItemLeft"><a class="el" href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013">MessageType</a>&#160;</td><td class="memItemRight"><a class="el" href="#a0a92593fab77af4d4a585fea5a7e29f8">fetch_header</a> (char *message)</td></tr>
-<tr class="memitem:a9af23a584f59d6ef943508172a8284f5" id="r_a9af23a584f59d6ef943508172a8284f5"><td class="memItemLeft"><a class="el" href="structArguments.html">Arguments</a>&#160;</td><td class="memItemRight"><a class="el" href="#a9af23a584f59d6ef943508172a8284f5">parse_arguments</a> (char *message)</td></tr>
-<tr class="memitem:a10a7a0258afe719e66a8ee30cba9c34a" id="r_a10a7a0258afe719e66a8ee30cba9c34a"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a10a7a0258afe719e66a8ee30cba9c34a">on_message</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client, char *message)</td></tr>
-<tr class="memitem:add27fff7d2eeb6c5c76aa14d3b06f756" id="r_add27fff7d2eeb6c5c76aa14d3b06f756"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#add27fff7d2eeb6c5c76aa14d3b06f756">on_leave</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client)</td></tr>
+<tr class="memitem:a0a92593fab77af4d4a585fea5a7e29f8" id="r_a0a92593fab77af4d4a585fea5a7e29f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013">MessageType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2src_2message_8c.html#a0a92593fab77af4d4a585fea5a7e29f8">fetch_header</a> (char *message)</td></tr>
+<tr class="separator:a0a92593fab77af4d4a585fea5a7e29f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9af23a584f59d6ef943508172a8284f5" id="r_a9af23a584f59d6ef943508172a8284f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structArguments.html">Arguments</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2src_2message_8c.html#a9af23a584f59d6ef943508172a8284f5">parse_arguments</a> (char *message)</td></tr>
+<tr class="separator:a9af23a584f59d6ef943508172a8284f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10a7a0258afe719e66a8ee30cba9c34a" id="r_a10a7a0258afe719e66a8ee30cba9c34a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2src_2message_8c.html#a10a7a0258afe719e66a8ee30cba9c34a">on_message</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client, char *message)</td></tr>
+<tr class="separator:a10a7a0258afe719e66a8ee30cba9c34a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add27fff7d2eeb6c5c76aa14d3b06f756" id="r_add27fff7d2eeb6c5c76aa14d3b06f756"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2src_2message_8c.html#add27fff7d2eeb6c5c76aa14d3b06f756">on_leave</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client)</td></tr>
+<tr class="separator:add27fff7d2eeb6c5c76aa14d3b06f756"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a id="a0a92593fab77af4d4a585fea5a7e29f8" name="a0a92593fab77af4d4a585fea5a7e29f8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0a92593fab77af4d4a585fea5a7e29f8">&#9670;&#160;</a></span>fetch_header()</h2>
 
@@ -113,7 +120,8 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013">MessageType</a> fetch_header </td>
           <td>(</td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>message</em></span></td><td>)</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>message</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -121,7 +129,7 @@ Fonctions</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="server_2src_2message_8c_source.html#l00003">3</a> du fichier <a class="el" href="server_2src_2message_8c_source.html">message.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2lib_2message_8h_source.html#l00028">MSG_UNKNOWN</a>.</p>
+<p class="reference">Références <a class="el" href="client_2lib_2message_8h_source.html#l00038">MSG_UNKNOWN</a>.</p>
 
 </div>
 </div>
@@ -134,12 +142,19 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int on_leave </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *</td>          <td class="paramname"><span class="paramname"><em>codenames</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *&#160;</td>
+          <td class="paramname"><em>codenames</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structTcpClient.html">TcpClient</a> *</td>          <td class="paramname"><span class="paramname"><em>client</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structTcpClient.html">TcpClient</a> *&#160;</td>
+          <td class="paramname"><em>client</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -152,11 +167,11 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2src_2message_8c_source.html#l00064">64</a> du fichier <a class="el" href="server_2src_2message_8c_source.html">message.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2message_8c_source.html#l00069">69</a> du fichier <a class="el" href="server_2src_2message_8c_source.html">message.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="server_2src_2lobby_8c_source.html#l00154">destroy_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00142">find_lobby_by_ownerid()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00146">find_lobby_by_playerid()</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00017">format_to()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00039">Lobby::id</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00020">TcpClient::id</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00024">User::id</a>, <a class="el" href="codenames_8h_source.html#l00015">Codenames::lobby</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00035">MSG_PLAYERLEFT</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00025">User::name</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00044">Lobby::nb_players</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00040">Lobby::owner_id</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00165">tcp_send_to_client()</a>, et <a class="el" href="client_2lib_2lobby_8h_source.html#l00043">Lobby::users</a>.</p>
+<p class="reference">Références <a class="el" href="server_2src_2lobby_8c_source.html#l00156">destroy_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00144">find_lobby_by_ownerid()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00148">find_lobby_by_playerid()</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00046">format_to()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00070">Lobby::id</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00029">User::id</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00025">TcpClient::id</a>, <a class="el" href="codenames_8h_source.html#l00020">Codenames::lobby</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00045">MSG_PLAYERLEFT</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00030">User::name</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00075">Lobby::nb_players</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00071">Lobby::owner_id</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00165">tcp_send_to_client()</a>, et <a class="el" href="client_2lib_2lobby_8h_source.html#l00074">Lobby::users</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2tcp_8c_source.html#l00187">tcp_on_client_disconnect()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2tcp_8c_source.html#l00191">tcp_on_client_disconnect()</a>.</p>
 
 </div>
 </div>
@@ -169,17 +184,25 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int on_message </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *</td>          <td class="paramname"><span class="paramname"><em>codenames</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *&#160;</td>
+          <td class="paramname"><em>codenames</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structTcpClient.html">TcpClient</a> *</td>          <td class="paramname"><span class="paramname"><em>client</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structTcpClient.html">TcpClient</a> *&#160;</td>
+          <td class="paramname"><em>client</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>message</em></span>&#160;)</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -195,7 +218,7 @@ Fonctions</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="server_2src_2message_8c_source.html#l00024">24</a> du fichier <a class="el" href="server_2src_2message_8c_source.html">message.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2lib_2message_8h_source.html#l00052">Arguments::argc</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00053">Arguments::argv</a>, <a class="el" href="client_2src_2message_8c_source.html#l00003">fetch_header()</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00017">format_to()</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00020">TcpClient::id</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00036">MSG_CHOOSE_ROLE</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00042">MSG_COMPAREVERSION</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00030">MSG_CREATELOBBY</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00031">MSG_JOINLOBBY</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00032">MSG_LEAVELOBBY</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00033">MSG_LOBBYCLOSED</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00043">MSG_PING</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00041">MSG_REQUESTUUID</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00040">MSG_SENDCHAT</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00037">MSG_STARTGAME</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00028">MSG_UNKNOWN</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00003">number_length()</a>, <a class="el" href="server_2src_2version_8c_source.html#l00024">on_version_compare()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00009">parse_arguments()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00310">request_choose_role()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00168">request_create_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00200">request_join_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00252">request_leave_lobby()</a>, <a class="el" href="server_2src_2chat_8c_source.html#l00060">request_send_chat()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00110">request_start_game()</a>, <a class="el" href="uuid_8c_source.html#l00003">request_uuid()</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00165">tcp_send_to_client()</a>.</p>
+<p class="reference">Références <a class="el" href="client_2lib_2message_8h_source.html#l00067">Arguments::argc</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00068">Arguments::argv</a>, <a class="el" href="client_2src_2message_8c_source.html#l00003">fetch_header()</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00046">format_to()</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00025">TcpClient::id</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00046">MSG_CHOOSE_ROLE</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00054">MSG_COMPAREVERSION</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00040">MSG_CREATELOBBY</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00051">MSG_GUESS_CARD</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00041">MSG_JOINLOBBY</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00042">MSG_LEAVELOBBY</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00043">MSG_LOBBYCLOSED</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00055">MSG_PING</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00050">MSG_PREGUESS</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00053">MSG_REQUESTUUID</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00052">MSG_SENDCHAT</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00058">MSG_SET_NB_ASSASSINS</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00057">MSG_SET_WORDS_DIFFICULTY</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00047">MSG_STARTGAME</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00049">MSG_SUBMIT_HINT</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00038">MSG_UNKNOWN</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00032">number_length()</a>, <a class="el" href="server_2src_2version_8c_source.html#l00024">on_version_compare()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00009">parse_arguments()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00312">request_choose_role()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00170">request_create_lobby()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00348">request_guess_card()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00202">request_join_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00254">request_leave_lobby()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00312">request_preguess()</a>, <a class="el" href="server_2src_2chat_8c_source.html#l00060">request_send_chat()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00551">request_set_nb_assassins()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00496">request_set_words_difficulty()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00165">request_start_game()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00235">request_submit_hint()</a>, <a class="el" href="uuid_8c_source.html#l00003">request_uuid()</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00165">tcp_send_to_client()</a>.</p>
 
 </div>
 </div>
@@ -208,40 +231,33 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structArguments.html">Arguments</a> parse_arguments </td>
           <td>(</td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>message</em></span></td><td>)</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>message</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Extrait le type de message (HEADER) d'un message brut. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Extrait les arguments d'un message brut. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">message</td><td>message brut reçu du client. </td></tr>
+    <tr><td class="paramname">message</td><td>Message brut reçu du client. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>le type de message extrait, ou MSG_UNKNOWN si le format est invalide. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Structure <a class="el" href="structArguments.html">Arguments</a> contenant les arguments extraits. </dd></dl>
 
 <p class="definition">Définition à la ligne <a class="el" href="server_2src_2message_8c_source.html#l00009">9</a> du fichier <a class="el" href="server_2src_2message_8c_source.html">message.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2lib_2message_8h_source.html#l00052">Arguments::argc</a>, et <a class="el" href="client_2lib_2message_8h_source.html#l00053">Arguments::argv</a>.</p>
+<p class="reference">Références <a class="el" href="client_2lib_2message_8h_source.html#l00067">Arguments::argc</a>, et <a class="el" href="client_2lib_2message_8h_source.html#l00068">Arguments::argv</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div id="page-nav" class="page-nav-panel">
-<div id="page-nav-resize-handle"></div>
-<div id="page-nav-tree">
-<div id="page-nav-contents">
-</div><!-- page-nav-contents -->
-</div><!-- page-nav-tree -->
-</div><!-- page-nav -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a href="dir_a063914ab482288b7b0e1b2fca86158c.html">src</a></li><li class="navelem"><a href="server_2src_2message_8c.html">message.c</a></li>
-    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="navelem"><a class="el" href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a class="el" href="dir_a063914ab482288b7b0e1b2fca86158c.html">src</a></li><li class="navelem"><a class="el" href="server_2src_2message_8c.html">message.c</a></li>
+    <li class="footer">Généré le Mardi 14 Avril 2026 18:57:16 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

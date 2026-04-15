@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence de la structure Lobby</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,20 +34,21 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,9 +63,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('structLobby.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('structLobby.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -89,40 +90,70 @@ $(function(){initNavTree('structLobby.html','',''); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle"><div class="title">Référence de la structure Lobby</div></div>
 </div><!--header-->
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr class="memitem:aa61b45b961a54b3f1bb20c926c389e5f" id="r_aa61b45b961a54b3f1bb20c926c389e5f"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#aa61b45b961a54b3f1bb20c926c389e5f">id</a></td></tr>
-<tr class="memitem:a201a3357be821cc9646c8588855c663f" id="r_a201a3357be821cc9646c8588855c663f"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a201a3357be821cc9646c8588855c663f">owner_id</a></td></tr>
-<tr class="memitem:a92b6139484380e05dac8bf3fc0a2455a" id="r_a92b6139484380e05dac8bf3fc0a2455a"><td class="memItemLeft">char&#160;</td><td class="memItemRight"><a class="el" href="#a92b6139484380e05dac8bf3fc0a2455a">code</a> [6]</td></tr>
-<tr class="memitem:a56a7ba822aefe25cb28c9b1d680c6525" id="r_a56a7ba822aefe25cb28c9b1d680c6525"><td class="memItemLeft"><a class="el" href="server_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83">LobbyStatus</a>&#160;</td><td class="memItemRight"><a class="el" href="#a56a7ba822aefe25cb28c9b1d680c6525">status</a></td></tr>
-<tr class="memitem:ab0f8cc375b1895eb33d40d68acd2f965" id="r_ab0f8cc375b1895eb33d40d68acd2f965"><td class="memItemLeft"><a class="el" href="structUser.html">User</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ab0f8cc375b1895eb33d40d68acd2f965">users</a> [<a class="el" href="server_2lib_2lobby_8h.html#a2c2a303621f66761529e598758d7ef34">MAX_USERS</a>]</td></tr>
-<tr class="memitem:ad1fa4c8d5c1943c1d6ab2d04914dd7f1" id="r_ad1fa4c8d5c1943c1d6ab2d04914dd7f1"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">nb_players</a></td></tr>
-<tr class="memitem:a1567c92b89bc67d97ae4cbbf7034836e" id="r_a1567c92b89bc67d97ae4cbbf7034836e"><td class="memItemLeft"><a class="el" href="structGame.html">Game</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a1567c92b89bc67d97ae4cbbf7034836e">game</a></td></tr>
-<tr class="memitem:aa3d81618bd4355d37da94317c4846e8c" id="r_aa3d81618bd4355d37da94317c4846e8c"><td class="memItemLeft"><a class="el" href="structChat.html">Chat</a>&#160;</td><td class="memItemRight"><a class="el" href="#aa3d81618bd4355d37da94317c4846e8c">chat</a></td></tr>
+<tr class="memitem:aa61b45b961a54b3f1bb20c926c389e5f" id="r_aa61b45b961a54b3f1bb20c926c389e5f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLobby.html#aa61b45b961a54b3f1bb20c926c389e5f">id</a></td></tr>
+<tr class="separator:aa61b45b961a54b3f1bb20c926c389e5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a201a3357be821cc9646c8588855c663f" id="r_a201a3357be821cc9646c8588855c663f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLobby.html#a201a3357be821cc9646c8588855c663f">owner_id</a></td></tr>
+<tr class="separator:a201a3357be821cc9646c8588855c663f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92b6139484380e05dac8bf3fc0a2455a" id="r_a92b6139484380e05dac8bf3fc0a2455a"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLobby.html#a92b6139484380e05dac8bf3fc0a2455a">code</a> [6]</td></tr>
+<tr class="separator:a92b6139484380e05dac8bf3fc0a2455a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56a7ba822aefe25cb28c9b1d680c6525" id="r_a56a7ba822aefe25cb28c9b1d680c6525"><td class="memItemLeft" align="right" valign="top"><a class="el" href="server_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83">LobbyStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLobby.html#a56a7ba822aefe25cb28c9b1d680c6525">status</a></td></tr>
+<tr class="separator:a56a7ba822aefe25cb28c9b1d680c6525"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0f8cc375b1895eb33d40d68acd2f965" id="r_ab0f8cc375b1895eb33d40d68acd2f965"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUser.html">User</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a> [<a class="el" href="server_2lib_2lobby_8h.html#a2c2a303621f66761529e598758d7ef34">MAX_USERS</a>]</td></tr>
+<tr class="separator:ab0f8cc375b1895eb33d40d68acd2f965"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1fa4c8d5c1943c1d6ab2d04914dd7f1" id="r_ad1fa4c8d5c1943c1d6ab2d04914dd7f1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">nb_players</a></td></tr>
+<tr class="separator:ad1fa4c8d5c1943c1d6ab2d04914dd7f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1567c92b89bc67d97ae4cbbf7034836e" id="r_a1567c92b89bc67d97ae4cbbf7034836e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structGame.html">Game</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLobby.html#a1567c92b89bc67d97ae4cbbf7034836e">game</a></td></tr>
+<tr class="separator:a1567c92b89bc67d97ae4cbbf7034836e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3d81618bd4355d37da94317c4846e8c" id="r_aa3d81618bd4355d37da94317c4846e8c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structChat.html">Chat</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLobby.html#aa3d81618bd4355d37da94317c4846e8c">chat</a></td></tr>
+<tr class="separator:aa3d81618bd4355d37da94317c4846e8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53dc3f60b0884e6034bd7b8b5478672d" id="r_a53dc3f60b0884e6034bd7b8b5478672d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="client_2lib_2lobby_8h.html#a6be46f872cbe3887a819a0edff787498">WordsDifficulty</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLobby.html#a53dc3f60b0884e6034bd7b8b5478672d">words_difficulty</a></td></tr>
+<tr class="separator:a53dc3f60b0884e6034bd7b8b5478672d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a606f94e7272a491b8b9c120d364f4fc7" id="r_a606f94e7272a491b8b9c120d364f4fc7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLobby.html#a606f94e7272a491b8b9c120d364f4fc7">nb_assassins</a></td></tr>
+<tr class="separator:a606f94e7272a491b8b9c120d364f4fc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Représente un lobby de jeu. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="#aa61b45b961a54b3f1bb20c926c389e5f">id</a></td><td>identifiant unique du lobby. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a201a3357be821cc9646c8588855c663f">owner_id</a></td><td>identifiant du joueur propriétaire du lobby. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a92b6139484380e05dac8bf3fc0a2455a">code</a></td><td>code d'accès au lobby (généré aléatoirement). </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a56a7ba822aefe25cb28c9b1d680c6525">status</a></td><td>état courant du lobby (LB_STATUS_*). </td></tr>
-    <tr><td class="paramname"><a class="el" href="#ab0f8cc375b1895eb33d40d68acd2f965">users</a></td><td>tableau de pointeurs vers les joueurs présents. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">nb_players</a></td><td>nombre de joueurs actuellement connectés. </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a1567c92b89bc67d97ae4cbbf7034836e">game</a></td><td>partie associée au lobby (NULL si aucune partie). </td></tr>
-    <tr><td class="paramname"><a class="el" href="#aa3d81618bd4355d37da94317c4846e8c">chat</a></td><td>historique du chat du lobby. </td></tr>
+    <tr><td class="paramname">id</td><td>identifiant unique du lobby. </td></tr>
+    <tr><td class="paramname">owner_id</td><td>identifiant du joueur propriétaire du lobby. </td></tr>
+    <tr><td class="paramname">code</td><td>code d'accès au lobby (5 caractères + '\0'). </td></tr>
+    <tr><td class="paramname">status</td><td>état courant du lobby (LB_STATUS_*). </td></tr>
+    <tr><td class="paramname">users</td><td>tableau de pointeurs vers les joueurs présents. </td></tr>
+    <tr><td class="paramname">nb_players</td><td>nombre de joueurs actuellement connectés. </td></tr>
+    <tr><td class="paramname">game</td><td>partie associée au lobby (NULL si aucune partie). </td></tr>
+    <tr><td class="paramname">chat</td><td>historique du chat du lobby. </td></tr>
+    <tr><td class="paramname">words_difficulty</td><td>niveau de difficulté choisi pour la partie. </td></tr>
+    <tr><td class="paramname">nb_assassins</td><td>nombre d'assassins choisis pour la partie.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Représente un lobby de jeu. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>identifiant unique du lobby. </td></tr>
+    <tr><td class="paramname">owner_id</td><td>identifiant du joueur propriétaire du lobby. </td></tr>
+    <tr><td class="paramname">code</td><td>code d'accès au lobby (généré aléatoirement). </td></tr>
+    <tr><td class="paramname">status</td><td>état courant du lobby (LB_STATUS_*). </td></tr>
+    <tr><td class="paramname">users</td><td>tableau de pointeurs vers les joueurs présents. </td></tr>
+    <tr><td class="paramname">nb_players</td><td>nombre de joueurs actuellement connectés. </td></tr>
+    <tr><td class="paramname">game</td><td>partie associée au lobby (NULL si aucune partie). </td></tr>
+    <tr><td class="paramname">chat</td><td>historique du chat du lobby. </td></tr>
+    <tr><td class="paramname">words_difficulty</td><td>niveau de difficulté choisi pour la partie. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00038">38</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
-</div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Documentation des champs</h2>
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00069">69</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
+</div><h2 class="groupheader">Documentation des champs</h2>
 <a id="aa3d81618bd4355d37da94317c4846e8c" name="aa3d81618bd4355d37da94317c4846e8c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa3d81618bd4355d37da94317c4846e8c">&#9670;&#160;</a></span>chat</h2>
 
@@ -135,9 +166,9 @@ Champs de données</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00046">46</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00077">77</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00042">create_lobby()</a>, <a class="el" href="sdl_8c_source.html#l00256">destroy_context()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00154">destroy_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00015">destroy_lobby_callback()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00024">on_message()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00252">request_leave_lobby()</a>, <a class="el" href="server_2src_2chat_8c_source.html#l00060">request_send_chat()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00225">struct_lobby_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00432">chat_render_messages()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00042">create_lobby()</a>, <a class="el" href="sdl_8c_source.html#l00317">destroy_context()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00156">destroy_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00015">destroy_lobby_callback()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00254">request_leave_lobby()</a>, <a class="el" href="server_2src_2chat_8c_source.html#l00060">request_send_chat()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00740">struct_lobby_init()</a>.</p>
 
 </div>
 </div>
@@ -153,9 +184,9 @@ Champs de données</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00041">41</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00072">72</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00042">create_lobby()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00257">lobby_display()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00127">predicate_code()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00168">request_create_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00200">request_join_lobby()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00225">struct_lobby_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00042">create_lobby()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00776">lobby_display()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00129">predicate_code()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00170">request_create_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00202">request_join_lobby()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00740">struct_lobby_init()</a>.</p>
 
 </div>
 </div>
@@ -171,9 +202,9 @@ Champs de données</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00045">45</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00076">76</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00042">create_lobby()</a>, <a class="el" href="sdl_8c_source.html#l00256">destroy_context()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00068">game_button_click()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00482">game_render_cards()</a>, <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00024">on_message()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00110">request_start_game()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00225">struct_lobby_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="card_8c_source.html#l00099">card_get_index()</a>, <a class="el" href="card_8c_source.html#l00142">card_handle_click()</a>, <a class="el" href="card_8c_source.html#l00210">cards_handle_event()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00042">create_lobby()</a>, <a class="el" href="sdl_8c_source.html#l00317">destroy_context()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00345">game_button_click()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00072">game_get_active_game()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00082">game_has_active_match()</a>, <a class="el" href="card_8c_source.html#l00392">game_render_cards()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00466">game_struct_free()</a>, <a class="el" href="card_8c_source.html#l00271">get_card_texture()</a>, <a class="el" href="history_8c_source.html#l00345">history_append_revealed_word()</a>, <a class="el" href="history_8c_source.html#l00335">history_ensure_turn()</a>, <a class="el" href="history_8c_source.html#l00306">history_start_turn()</a>, <a class="el" href="client_2src_2index_8c_source.html#l00205">main()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00456">my_turn()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00348">request_guess_card()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00312">request_preguess()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00165">request_start_game()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00235">request_submit_hint()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00740">struct_lobby_init()</a>.</p>
 
 </div>
 </div>
@@ -189,9 +220,27 @@ Champs de données</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00039">39</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00070">70</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00042">create_lobby()</a>, <a class="el" href="sdl_8c_source.html#l00052">init_sdl()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00021">lobby_button_click()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00257">lobby_display()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00038">lobby_get_id()</a>, <a class="el" href="menu_8c_source.html#l00230">menu_display()</a>, <a class="el" href="server_2src_2message_8c_source.html#l00064">on_leave()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00024">on_message()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00310">request_choose_role()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00168">request_create_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00200">request_join_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00252">request_leave_lobby()</a>, <a class="el" href="server_2src_2chat_8c_source.html#l00060">request_send_chat()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00110">request_start_game()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00225">struct_lobby_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00042">create_lobby()</a>, <a class="el" href="sdl_8c_source.html#l00052">init_sdl()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00373">lobby_button_click()</a>, <a class="el" href="menu_8c_source.html#l00908">menu_display()</a>, <a class="el" href="server_2src_2message_8c_source.html#l00069">on_leave()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00312">request_choose_role()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00170">request_create_lobby()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00348">request_guess_card()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00202">request_join_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00254">request_leave_lobby()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00312">request_preguess()</a>, <a class="el" href="server_2src_2chat_8c_source.html#l00060">request_send_chat()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00551">request_set_nb_assassins()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00496">request_set_words_difficulty()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00165">request_start_game()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00235">request_submit_hint()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00740">struct_lobby_init()</a>.</p>
+
+</div>
+</div>
+<a id="a606f94e7272a491b8b9c120d364f4fc7" name="a606f94e7272a491b8b9c120d364f4fc7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a606f94e7272a491b8b9c120d364f4fc7">&#9670;&#160;</a></span>nb_assassins</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Lobby::nb_assassins</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00079">79</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00042">create_lobby()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00373">lobby_button_click()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00300">lobby_render_owner_game_options()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00551">request_set_nb_assassins()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00165">request_start_game()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00740">struct_lobby_init()</a>.</p>
 
 </div>
 </div>
@@ -207,9 +256,9 @@ Champs de données</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00044">44</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00075">75</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00099">choose_role()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00042">create_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00154">destroy_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00015">destroy_lobby_callback()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00133">find_user_by_id()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00070">join_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00078">leave_lobby()</a>, <a class="el" href="server_2src_2message_8c_source.html#l00064">on_leave()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00024">on_message()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00118">predicate_player_id()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00434">render_team_panel_content()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00310">request_choose_role()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00200">request_join_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00252">request_leave_lobby()</a>, <a class="el" href="server_2src_2chat_8c_source.html#l00060">request_send_chat()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00110">request_start_game()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00225">struct_lobby_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00101">choose_role()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00042">create_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00156">destroy_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00015">destroy_lobby_callback()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00135">find_user_by_id()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00072">join_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00080">leave_lobby()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00082">lobby_sync_local_user_in_roster()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00075">message_upsert_lobby_user()</a>, <a class="el" href="server_2src_2message_8c_source.html#l00069">on_leave()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00120">predicate_player_id()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00312">request_choose_role()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00348">request_guess_card()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00202">request_join_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00254">request_leave_lobby()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00312">request_preguess()</a>, <a class="el" href="server_2src_2chat_8c_source.html#l00060">request_send_chat()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00551">request_set_nb_assassins()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00496">request_set_words_difficulty()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00165">request_start_game()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00235">request_submit_hint()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00740">struct_lobby_init()</a>.</p>
 
 </div>
 </div>
@@ -225,9 +274,9 @@ Champs de données</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00040">40</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00071">71</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00042">create_lobby()</a>, <a class="el" href="server_2src_2message_8c_source.html#l00064">on_leave()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00112">predicate_owner_id()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00168">request_create_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00252">request_leave_lobby()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00225">struct_lobby_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00042">create_lobby()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00776">lobby_display()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00300">lobby_render_owner_game_options()</a>, <a class="el" href="server_2src_2message_8c_source.html#l00069">on_leave()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00114">predicate_owner_id()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00170">request_create_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00254">request_leave_lobby()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00740">struct_lobby_init()</a>.</p>
 
 </div>
 </div>
@@ -243,9 +292,9 @@ Champs de données</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00042">42</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00073">73</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00042">create_lobby()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00110">request_start_game()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00225">struct_lobby_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00042">create_lobby()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00348">request_guess_card()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00312">request_preguess()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00551">request_set_nb_assassins()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00496">request_set_words_difficulty()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00165">request_start_game()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00235">request_submit_hint()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00740">struct_lobby_init()</a>.</p>
 
 </div>
 </div>
@@ -261,9 +310,27 @@ Champs de données</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00043">43</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00074">74</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00099">choose_role()</a>, <a class="el" href="sdl_8c_source.html#l00256">destroy_context()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00154">destroy_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00015">destroy_lobby_callback()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00133">find_user_by_id()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00070">join_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00078">leave_lobby()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00257">lobby_display()</a>, <a class="el" href="server_2src_2message_8c_source.html#l00064">on_leave()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00024">on_message()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00118">predicate_player_id()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00434">render_team_panel_content()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00310">request_choose_role()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00200">request_join_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00252">request_leave_lobby()</a>, <a class="el" href="server_2src_2chat_8c_source.html#l00060">request_send_chat()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00110">request_start_game()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00225">struct_lobby_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00040">chat_find_team_by_sender()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00101">choose_role()</a>, <a class="el" href="sdl_8c_source.html#l00317">destroy_context()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00156">destroy_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00015">destroy_lobby_callback()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00993">find_player_by_id()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00135">find_user_by_id()</a>, <a class="el" href="client_2src_2game_8c_source.html#l01130">game_display()</a>, <a class="el" href="history_8c_source.html#l00025">history_find_team_agent_name()</a>, <a class="el" href="history_8c_source.html#l00011">history_find_team_spy_name()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00072">join_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00080">leave_lobby()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00070">lobby_find_free_user_slot()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00057">lobby_find_user_slot_by_id()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00339">lobby_render_players()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00082">lobby_sync_local_user_in_roster()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00048">message_find_free_user_slot()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00035">message_find_user_slot_by_id()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00075">message_upsert_lobby_user()</a>, <a class="el" href="server_2src_2message_8c_source.html#l00069">on_leave()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00120">predicate_player_id()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00937">render_team_panel_content()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00312">request_choose_role()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00348">request_guess_card()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00202">request_join_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00254">request_leave_lobby()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00312">request_preguess()</a>, <a class="el" href="server_2src_2chat_8c_source.html#l00060">request_send_chat()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00551">request_set_nb_assassins()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00496">request_set_words_difficulty()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00165">request_start_game()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00235">request_submit_hint()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00740">struct_lobby_init()</a>.</p>
+
+</div>
+</div>
+<a id="a53dc3f60b0884e6034bd7b8b5478672d" name="a53dc3f60b0884e6034bd7b8b5478672d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53dc3f60b0884e6034bd7b8b5478672d">&#9670;&#160;</a></span>words_difficulty</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="client_2lib_2lobby_8h.html#a6be46f872cbe3887a819a0edff787498">WordsDifficulty</a> Lobby::words_difficulty</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2lib_2lobby_8h_source.html#l00078">78</a> du fichier <a class="el" href="client_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00042">create_lobby()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00373">lobby_button_click()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00300">lobby_render_owner_game_options()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00496">request_set_words_difficulty()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00165">request_start_game()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00740">struct_lobby_init()</a>.</p>
 
 </div>
 </div>
@@ -273,19 +340,11 @@ Champs de données</h2></td></tr>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div id="page-nav" class="page-nav-panel">
-<div id="page-nav-resize-handle"></div>
-<div id="page-nav-tree">
-<div id="page-nav-contents">
-</div><!-- page-nav-contents -->
-</div><!-- page-nav-tree -->
-</div><!-- page-nav -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="structLobby.html">Lobby</a></li>
-    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="navelem"><a class="el" href="structLobby.html">Lobby</a></li>
+    <li class="footer">Généré le Mardi 14 Avril 2026 18:57:16 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

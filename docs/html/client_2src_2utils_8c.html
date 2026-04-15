@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier client/src/utils.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,20 +34,21 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,9 +63,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('client_2src_2utils_8c.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('client_2src_2utils_8c.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -89,6 +90,8 @@ $(function(){initNavTree('client_2src_2utils_8c.html','',''); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
   <div class="headertitle"><div class="title">Référence du fichier utils.c</div></div>
 </div><!--header-->
 <div class="contents">
@@ -96,17 +99,26 @@ $(function(){initNavTree('client_2src_2utils_8c.html','',''); });
 </div>
 <p><a href="client_2src_2utils_8c_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:acf06ac69f86a58e43477083d3930a4ca" id="r_acf06ac69f86a58e43477083d3930a4ca"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#acf06ac69f86a58e43477083d3930a4ca">number_length</a> (int n)</td></tr>
-<tr class="memitem:ade6960f663c739637ee1beaf757c5f24" id="r_ade6960f663c739637ee1beaf757c5f24"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ade6960f663c739637ee1beaf757c5f24">format_to</a> (char *buf, size_t size, const char *fmt,...)</td></tr>
-<tr class="memitem:a4421b3b56ef0c8d301e35e23ba17f9d5" id="r_a4421b3b56ef0c8d301e35e23ba17f9d5"><td class="memItemLeft">char *&#160;</td><td class="memItemRight"><a class="el" href="#a4421b3b56ef0c8d301e35e23ba17f9d5">itoa</a> (int value)</td></tr>
-<tr class="memitem:aead8640545d5f567606f56f8248d1b35" id="r_aead8640545d5f567606f56f8248d1b35"><td class="memItemLeft">char *&#160;</td><td class="memItemRight"><a class="el" href="#aead8640545d5f567606f56f8248d1b35">getRandomUsername</a> (void)</td></tr>
-<tr class="memitem:ac85a2fa057900ac7d0c0dcac2a47d843" id="r_ac85a2fa057900ac7d0c0dcac2a47d843"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ac85a2fa057900ac7d0c0dcac2a47d843">levenshtein</a> (const char *s1, const char *s2)</td></tr>
-<tr class="memitem:abe64ca50f79e62a1be14590abf7ecd6a" id="r_abe64ca50f79e62a1be14590abf7ecd6a"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#abe64ca50f79e62a1be14590abf7ecd6a">word_contains</a> (const char *input, const char *card_word)</td></tr>
-<tr class="memitem:a39237c7417169b3a96342c69cb0e0991" id="r_a39237c7417169b3a96342c69cb0e0991"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a39237c7417169b3a96342c69cb0e0991">valid_hint</a> (const char *hint, <a class="el" href="structWord.html">Word</a> card_words[<a class="el" href="client_2lib_2game_8h.html#ab5dd85e42caa80c819f0f75a1a6c4bd9">NB_WORDS</a>])</td></tr>
+<tr class="memitem:aff7b482760df8685b78cee2871b7f80a" id="r_aff7b482760df8685b78cee2871b7f80a"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2utils_8c.html#aff7b482760df8685b78cee2871b7f80a">read_line_alloc</a> (FILE *f, char **line, size_t *cap)</td></tr>
+<tr class="separator:aff7b482760df8685b78cee2871b7f80a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf06ac69f86a58e43477083d3930a4ca" id="r_acf06ac69f86a58e43477083d3930a4ca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2utils_8c.html#acf06ac69f86a58e43477083d3930a4ca">number_length</a> (int n)</td></tr>
+<tr class="separator:acf06ac69f86a58e43477083d3930a4ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade6960f663c739637ee1beaf757c5f24" id="r_ade6960f663c739637ee1beaf757c5f24"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2utils_8c.html#ade6960f663c739637ee1beaf757c5f24">format_to</a> (char *buf, size_t size, const char *fmt,...)</td></tr>
+<tr class="separator:ade6960f663c739637ee1beaf757c5f24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4421b3b56ef0c8d301e35e23ba17f9d5" id="r_a4421b3b56ef0c8d301e35e23ba17f9d5"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2utils_8c.html#a4421b3b56ef0c8d301e35e23ba17f9d5">itoa</a> (int value)</td></tr>
+<tr class="separator:a4421b3b56ef0c8d301e35e23ba17f9d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aead8640545d5f567606f56f8248d1b35" id="r_aead8640545d5f567606f56f8248d1b35"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2utils_8c.html#aead8640545d5f567606f56f8248d1b35">getRandomUsername</a> (void)</td></tr>
+<tr class="separator:aead8640545d5f567606f56f8248d1b35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac85a2fa057900ac7d0c0dcac2a47d843" id="r_ac85a2fa057900ac7d0c0dcac2a47d843"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2utils_8c.html#ac85a2fa057900ac7d0c0dcac2a47d843">levenshtein</a> (const char *s1, const char *s2)</td></tr>
+<tr class="separator:ac85a2fa057900ac7d0c0dcac2a47d843"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe64ca50f79e62a1be14590abf7ecd6a" id="r_abe64ca50f79e62a1be14590abf7ecd6a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2utils_8c.html#abe64ca50f79e62a1be14590abf7ecd6a">word_contains</a> (const char *input, const char *card_word)</td></tr>
+<tr class="separator:abe64ca50f79e62a1be14590abf7ecd6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e8c25736d7034d66768cd0cdd057ca8" id="r_a9e8c25736d7034d66768cd0cdd057ca8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2src_2utils_8c.html#a9e8c25736d7034d66768cd0cdd057ca8">valid_hint</a> (const char *hint, <a class="el" href="structCard.html">Card</a> card_words[<a class="el" href="client_2lib_2game_8h.html#ab5dd85e42caa80c819f0f75a1a6c4bd9">NB_WORDS</a>])</td></tr>
+<tr class="separator:a9e8c25736d7034d66768cd0cdd057ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a id="ade6960f663c739637ee1beaf757c5f24" name="ade6960f663c739637ee1beaf757c5f24"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ade6960f663c739637ee1beaf757c5f24">&#9670;&#160;</a></span>format_to()</h2>
 
@@ -116,22 +128,31 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int format_to </td>
           <td>(</td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>buf</em></span>, </td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>fmt</em></span>, </td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>fmt</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>...</em></span>&#160;)</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -145,9 +166,9 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Nombre de caractères écrits (sans le '\0'), ou -1 en cas d'erreur. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2utils_8c_source.html#l00017">17</a> du fichier <a class="el" href="client_2src_2utils_8c_source.html">utils.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2utils_8c_source.html#l00046">46</a> du fichier <a class="el" href="client_2src_2utils_8c_source.html">utils.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00059">chat_on_submit()</a>, <a class="el" href="menu_8c_source.html#l00031">code_on_submit()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00068">game_button_click()</a>, <a class="el" href="client_2src_2version_8c_source.html#l00003">load_version()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00021">lobby_button_click()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00257">lobby_display()</a>, <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00043">maybe_send_app_ping()</a>, <a class="el" href="menu_8c_source.html#l00053">menu_button_click()</a>, <a class="el" href="server_2src_2message_8c_source.html#l00064">on_leave()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00024">on_message()</a>, <a class="el" href="server_2src_2message_8c_source.html#l00024">on_message()</a>, <a class="el" href="server_2src_2version_8c_source.html#l00024">on_version_compare()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00310">request_choose_role()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00168">request_create_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00200">request_join_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00252">request_leave_lobby()</a>, <a class="el" href="server_2src_2chat_8c_source.html#l00060">request_send_chat()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00110">request_start_game()</a>, et <a class="el" href="uuid_8c_source.html#l00003">request_uuid()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="card_8c_source.html#l00142">card_handle_click()</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00432">chat_render_messages()</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00257">chat_submit_message()</a>, <a class="el" href="menu_8c_source.html#l00533">code_on_submit()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00345">game_button_click()</a>, <a class="el" href="client_2src_2game_8c_source.html#l01130">game_display()</a>, <a class="el" href="history_8c_source.html#l00416">history_build_lines_internal()</a>, <a class="el" href="client_2src_2version_8c_source.html#l00003">load_version()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00373">lobby_button_click()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00776">lobby_display()</a>, <a class="el" href="client_2src_2index_8c_source.html#l00205">main()</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00043">maybe_send_app_ping()</a>, <a class="el" href="menu_8c_source.html#l00546">menu_button_click()</a>, <a class="el" href="menu_8c_source.html#l00175">menu_render_loading_bar()</a>, <a class="el" href="server_2src_2message_8c_source.html#l00069">on_leave()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>, <a class="el" href="server_2src_2message_8c_source.html#l00024">on_message()</a>, <a class="el" href="server_2src_2version_8c_source.html#l00024">on_version_compare()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00312">request_choose_role()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00170">request_create_lobby()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00348">request_guess_card()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00202">request_join_lobby()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00254">request_leave_lobby()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00312">request_preguess()</a>, <a class="el" href="server_2src_2chat_8c_source.html#l00060">request_send_chat()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00551">request_set_nb_assassins()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00496">request_set_words_difficulty()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00165">request_start_game()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00235">request_submit_hint()</a>, <a class="el" href="uuid_8c_source.html#l00003">request_uuid()</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00182">tcp_on_client_connect()</a>, <a class="el" href="tuto_8c_source.html#l00064">tutorial_append_file()</a>, et <a class="el" href="tuto_8c_source.html#l00220">tutorial_update_title()</a>.</p>
 
 </div>
 </div>
@@ -160,14 +181,17 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">char * getRandomUsername </td>
           <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Retourne un nom d'utilisateur aléatoire (alloué, doit être free()). Lit le fichier <span class="tt">assets/misc/usernames.txt</span>. </p>
+<p>Retourne un nom d'utilisateur aléatoire. Lit le fichier <code>assets/misc/usernames.txt</code>. </p><dl class="section return"><dt>Renvoie</dt><dd>Pointeur vers le nom (alloué dynamiquement, doit être free()). </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2utils_8c_source.html#l00036">36</a> du fichier <a class="el" href="client_2src_2utils_8c_source.html">utils.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2utils_8c_source.html#l00065">65</a> du fichier <a class="el" href="client_2src_2utils_8c_source.html">utils.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2src_2utils_8c_source.html#l00003">read_line_alloc()</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="client_2src_2user_8c_source.html#l00003">create_user()</a>.</p>
 
@@ -182,14 +206,21 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">char * itoa </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Convertit un entier en chaîne (API historique Linux). Retourne un buffer statique (non thread-safe). </p>
+<p>Convertit un entier en chaîne (API historique Linux). Retourne un buffer statique (non thread-safe). </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Entier à convertir. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Pointeur vers la chaîne représentant l'entier. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2utils_8c_source.html#l00028">28</a> du fichier <a class="el" href="client_2src_2utils_8c_source.html">utils.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2utils_8c_source.html#l00057">57</a> du fichier <a class="el" href="client_2src_2utils_8c_source.html">utils.c</a>.</p>
 
 <p class="reference">Références <a class="el" href="client_2src_2tcp_8c_source.html#l00008">buffer</a>.</p>
 
@@ -204,27 +235,34 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int levenshtein </td>
           <td>(</td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>s1</em></span>, </td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>s2</em></span>&#160;)</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Calcule la distance de Levenshtein entre deux chaînes (insensible à la casse) </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Calcule la distance de Levenshtein entre deux chaînes (insensible à la casse). </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">s1</td><td>Première chaîne </td></tr>
-    <tr><td class="paramname">s2</td><td>Deuxième chaîne </td></tr>
+    <tr><td class="paramname">s1</td><td>Première chaîne. </td></tr>
+    <tr><td class="paramname">s2</td><td>Deuxième chaîne. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>Distance de Levenshtein (0 = identique, plus c'est grand plus c'est différent) </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Distance de Levenshtein (0 = identique, plus c'est grand plus c'est différent). </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2utils_8c_source.html#l00085">85</a> du fichier <a class="el" href="client_2src_2utils_8c_source.html">utils.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2utils_8c_source.html#l00110">110</a> du fichier <a class="el" href="client_2src_2utils_8c_source.html">utils.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2utils_8c_source.html#l00172">valid_hint()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2utils_8c_source.html#l00191">valid_hint()</a>.</p>
 
 </div>
 </div>
@@ -237,21 +275,74 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int number_length </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Calcule la longueur d'un entier en nombre de chiffres. </p>
+<p>Calcule la longueur d'un entier en nombre de chiffres. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Entier à analyser. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Nombre de chiffres nécessaires pour représenter n. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2utils_8c_source.html#l00032">32</a> du fichier <a class="el" href="client_2src_2utils_8c_source.html">utils.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>, et <a class="el" href="server_2src_2message_8c_source.html#l00024">on_message()</a>.</p>
+
+</div>
+</div>
+<a id="aff7b482760df8685b78cee2871b7f80a" name="aff7b482760df8685b78cee2871b7f80a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff7b482760df8685b78cee2871b7f80a">&#9670;&#160;</a></span>read_line_alloc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int read_line_alloc </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>cap</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="client_2src_2utils_8c_source.html#l00003">3</a> du fichier <a class="el" href="client_2src_2utils_8c_source.html">utils.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2message_8c_source.html#l00024">on_message()</a>, et <a class="el" href="server_2src_2message_8c_source.html#l00024">on_message()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2utils_8c_source.html#l00065">getRandomUsername()</a>.</p>
 
 </div>
 </div>
-<a id="a39237c7417169b3a96342c69cb0e0991" name="a39237c7417169b3a96342c69cb0e0991"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a39237c7417169b3a96342c69cb0e0991">&#9670;&#160;</a></span>valid_hint()</h2>
+<a id="a9e8c25736d7034d66768cd0cdd057ca8" name="a9e8c25736d7034d66768cd0cdd057ca8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e8c25736d7034d66768cd0cdd057ca8">&#9670;&#160;</a></span>valid_hint()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -259,29 +350,36 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int valid_hint </td>
           <td>(</td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>hint</em></span>, </td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>hint</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structWord.html">Word</a></td>          <td class="paramname"><span class="paramname"><em>card_words</em></span>[NB_WORDS]&#160;)</td>
+          <td class="paramtype"><a class="el" href="structCard.html">Card</a>&#160;</td>
+          <td class="paramname"><em>card_words</em>[NB_WORDS]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Vérifie si un indice de mot est valide par rapport à une liste de mots de carte </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Vérifie si un indice de mot est valide par rapport à une liste de mots de carte. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">hint</td><td>Le mot à vérifier </td></tr>
-    <tr><td class="paramname">card_words</td><td>La liste des mots de carte </td></tr>
+    <tr><td class="paramname">hint</td><td>Le mot à vérifier. </td></tr>
+    <tr><td class="paramname">card_words</td><td>La liste des mots de carte. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>1 si le mot est valide, 0 sinon </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>1 si le mot est valide, 0 sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2utils_8c_source.html#l00172">172</a> du fichier <a class="el" href="client_2src_2utils_8c_source.html">utils.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2utils_8c_source.html#l00191">191</a> du fichier <a class="el" href="client_2src_2utils_8c_source.html">utils.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2src_2utils_8c_source.html#l00085">levenshtein()</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00011">NB_WORDS</a>, et <a class="el" href="client_2src_2utils_8c_source.html#l00146">word_contains()</a>.</p>
+<p class="reference">Références <a class="el" href="client_2src_2utils_8c_source.html#l00110">levenshtein()</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00018">NB_WORDS</a>, et <a class="el" href="client_2src_2utils_8c_source.html#l00165">word_contains()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00068">game_button_click()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00345">game_button_click()</a>.</p>
 
 </div>
 </div>
@@ -294,45 +392,44 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int word_contains </td>
           <td>(</td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>input</em></span>, </td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>card_word</em></span>&#160;)</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>card_word</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Vérifie si un mot contient un autre mot (sous-chaîne, insensible à la casse) </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Vérifie si un mot contient un autre mot (sous-chaîne, insensible à la casse). </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">input</td><td>Le mot entré </td></tr>
-    <tr><td class="paramname">card_word</td><td>Le mot de la carte </td></tr>
+    <tr><td class="paramname">input</td><td>Le mot entré. </td></tr>
+    <tr><td class="paramname">card_word</td><td>Le mot de la carte. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>1 si input contient card_word ou vice versa, 0 sinon </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>1 si input contient card_word ou vice versa, 0 sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="client_2src_2utils_8c_source.html#l00146">146</a> du fichier <a class="el" href="client_2src_2utils_8c_source.html">utils.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="client_2src_2utils_8c_source.html#l00165">165</a> du fichier <a class="el" href="client_2src_2utils_8c_source.html">utils.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2utils_8c_source.html#l00172">valid_hint()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2lobby_8c_source.html#l00373">lobby_button_click()</a>, et <a class="el" href="client_2src_2utils_8c_source.html#l00191">valid_hint()</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div id="page-nav" class="page-nav-panel">
-<div id="page-nav-resize-handle"></div>
-<div id="page-nav-tree">
-<div id="page-nav-contents">
-</div><!-- page-nav-contents -->
-</div><!-- page-nav-tree -->
-</div><!-- page-nav -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a href="client_2src_2utils_8c.html">utils.c</a></li>
-    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a class="el" href="client_2src_2utils_8c.html">utils.c</a></li>
+    <li class="footer">Généré le Mardi 14 Avril 2026 18:57:16 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['windowcfgkey_0',['WindowCfgKey',['../window_8h.html#aca1e6d52665396b32e863043ad7237f6',1,'window.h']]]
+  ['userrole_0',['userrole',['../client_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775',1,'UserRole:&#160;user.h'],['../server_2lib_2user_8h.html#a00dd1c1a522bd6fb15ecc021ffefb775',1,'UserRole:&#160;user.h']]]
 ];

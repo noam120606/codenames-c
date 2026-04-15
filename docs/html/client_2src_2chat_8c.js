@@ -1,9 +1,32 @@
 var client_2src_2chat_8c =
 [
+    [ "chat_append_wrapped_lines", "client_2src_2chat_8c.html#a07be23370d875ed5a4deaf02509c9f32", null ],
+    [ "chat_build_wrapped_lines_cached", "client_2src_2chat_8c.html#a61ba9442db950a6c8dbc5f55046c2c93", null ],
     [ "chat_clear", "client_2src_2chat_8c.html#a9dfe68d5591d78d18590b8b6436af8cf", null ],
+    [ "chat_extract_sender_prefix", "client_2src_2chat_8c.html#ab3c64ad9f6a6f73fb8b068c86278bf97", null ],
+    [ "chat_find_team_by_sender", "client_2src_2chat_8c.html#acaa27817183afde031a0e84dcd77c94e", null ],
+    [ "chat_font_path_equals", "client_2src_2chat_8c.html#a25a42545c5c9bfc9b34e765fc3a60866", null ],
     [ "chat_get", "client_2src_2chat_8c.html#abfff823aa4be250fd2c3b95ade22025c", null ],
+    [ "chat_get_colored_prefix_text", "client_2src_2chat_8c.html#ab3707bb0595752324692858ef0c8bf37", null ],
     [ "chat_init", "client_2src_2chat_8c.html#afb79622cae70b2048c678f33edebdc4f", null ],
+    [ "chat_left_anchored_rel_x", "client_2src_2chat_8c.html#ad48a6d87e2ba180680e8fff674b5332d", null ],
+    [ "chat_left_anchored_rel_x_with_offset", "client_2src_2chat_8c.html#aa6aa7dad9f1dfa1fb951ce4924b1d3d7", null ],
     [ "chat_push", "client_2src_2chat_8c.html#a1623ddd50bbb887235d7baed5358fcb0", null ],
+    [ "chat_render_messages", "client_2src_2chat_8c.html#a8d802e82081cd259fa6ee7fb17094903", null ],
+    [ "chat_render_sender_prefix", "client_2src_2chat_8c.html#a84755d02b71bb80f5b80dd824c444346", null ],
+    [ "chat_set_font_path", "client_2src_2chat_8c.html#af58e80a422b4499469e31c3b85c1bb20", null ],
     [ "chat_size", "client_2src_2chat_8c.html#a8dc439d5c8d241b17f730bc9a5eb4741", null ],
-    [ "free_chat_message", "client_2src_2chat_8c.html#a07efff3af11cdd95f5abbac4b0977965", null ]
+    [ "chat_submit_message", "client_2src_2chat_8c.html#a176285c323ee42e0873ff7d0bc4e1e01", null ],
+    [ "chat_team_to_color", "client_2src_2chat_8c.html#a5390aab922c53829b1b09d5beee17fc7", null ],
+    [ "chat_text_width", "client_2src_2chat_8c.html#adbc4909d7dbf5ad0d8e1f5e36b5ef7bb", null ],
+    [ "chat_touch", "client_2src_2chat_8c.html#a629375b039a07da780050977352e3b64", null ],
+    [ "chat_wrap_cache_invalidate", "client_2src_2chat_8c.html#acf1fa784dbccbc571f4dc8589fea4f88", null ],
+    [ "free_chat_message", "client_2src_2chat_8c.html#a07efff3af11cdd95f5abbac4b0977965", null ],
+    [ "CHAT_BOTTOM_LINE_Y", "client_2src_2chat_8c.html#ac515d061d4cdac03a9bbed6f7948311e", null ],
+    [ "chat_colored_prefix_text", "client_2src_2chat_8c.html#a8636f448b272629de3a7a0ebbfdaa994", null ],
+    [ "CHAT_LEFT_PADDING", "client_2src_2chat_8c.html#ac5b6688abf8c3b190c5695fe4989ca16", null ],
+    [ "CHAT_LINE_GAP", "client_2src_2chat_8c.html#aebd7487f84a13f69157d7f1a44249d3b", null ],
+    [ "CHAT_RIGHT_PADDING", "client_2src_2chat_8c.html#a729119d8d39e6d46286c32823c2b65a3", null ],
+    [ "CHAT_TEAM_BLUE_COLOR", "client_2src_2chat_8c.html#af3092799ab787b7f0b34d45d9757f4e0", null ],
+    [ "CHAT_TEAM_RED_COLOR", "client_2src_2chat_8c.html#a31bcf847a0ed4eff77a953a2b0d15ef8", null ]
 ];

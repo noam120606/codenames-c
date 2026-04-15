@@ -6,17 +6,24 @@
 #ifndef GAME_H
 #define GAME_H
 
-#define NB_WORDS 25
-
 #include "../SDL2/include/SDL2/SDL.h"
-#include "../SDL2/include/SDL2/SDL_image.h"
-#include "../SDL2/include/SDL2/SDL_ttf.h"
 
 typedef struct AppContext AppContext;
 typedef struct Card Card;
 typedef struct Game Game;
 
 #include "../lib/button.h"
+
+/** Taille standard de la grille de Codenames. */
+#define NB_WORDS 25
+
+/** Capacité maximale du texte affiché dans la barre d'indice. */
+#define GAME_HINTBAR_TEXT_LEN 192
+
+/** Durées par défaut des messages temporaires de la barre d'indice. */
+#define GAME_HINTBAR_FEEDBACK_INFO_MS 2500U
+#define GAME_HINTBAR_FEEDBACK_SUCCESS_MS 3000U
+#define GAME_HINTBAR_FEEDBACK_ERROR_MS 5000U
 
 /**
  * TEAM est utilisé à la fois pour catégoriser les mots dans la grille et pour assigner les joueurs à une équipe.
@@ -66,6 +73,40 @@ typedef enum GameState {
     GAMESTATE_ENDED
 } GameState;
 
+/**
+ * Priorité des messages de la barre de titre de la fenêtre d'indice.
+ * Une priorité plus élevée masque temporairement les priorités plus faibles.
+ */
+typedef enum GameHintBarPriority {
+    GAME_HINTBAR_PRIORITY_CONTEXT = 1,
+    GAME_HINTBAR_PRIORITY_INFO = 2,
+    GAME_HINTBAR_PRIORITY_ERROR = 3
+} GameHintBarPriority;
+
+/**
+ * Message affichable dans la barre de titre de la fenêtre d'indice.
+ * expire_at_ms à 0 signifie "persistant".
+ */
+typedef struct GameHintBarMessage {
+    char text[GAME_HINTBAR_TEXT_LEN];
+    SDL_Color color;
+    int priority;
+    Uint32 expire_at_ms;
+    int active;
+} GameHintBarMessage;
+
+/**
+ * Etat complet de la barre de titre de la fenêtre d'indice.
+ * context est persistant, feedback est temporaire.
+ */
+typedef struct GameHintBarState {
+    GameHintBarMessage context;
+    GameHintBarMessage feedback;
+    char applied_text[GAME_HINTBAR_TEXT_LEN];
+    SDL_Color applied_color;
+    int applied_valid;
+} GameHintBarState;
+
 #include "../lib/history.h"
 
 /**
@@ -88,10 +129,37 @@ struct Game {
     History red_history;
     History blue_history;
     Team winner;
+    GameHintBarState hint_bar;
 };
 
 /**
- * Vérifie si c'est le tour du joueur.
+ * Initialise les ressources graphiques/UI de la scène de jeu.
+ * @param context Contexte de l'application.
+ * @return 0 si tout est correctement initialisé, sinon un compteur d'erreurs.
+ */
+int game_init(AppContext* context);
+
+/**
+ * Libère les ressources UI/graphismes allouées par game_init.
+ * @return EXIT_SUCCESS en cas de succès.
+ */
+int game_free();
+
+/**
+ * Affiche la scène de jeu (fenêtres, chat, historique, etc.).
+ * @param context Contexte de l'application.
+ */
+void game_display(AppContext* context);
+
+/**
+ * Gère les événements SDL de la scène de jeu.
+ * @param context Contexte de l'application.
+ * @param event Événement SDL à traiter.
+ */
+void game_handle_event(AppContext* context, SDL_Event* event);
+
+/**
+ * Vérifie si c'est le tour du joueur local.
  * @param context Contexte de l'application.
  * @return 1 si c'est le tour du joueur, 0 sinon.
  */
@@ -105,43 +173,34 @@ int my_turn(AppContext* context);
 int game_struct_free(AppContext* context);
 
 /**
- * Gère les événements du menu.
- * @param context Contexte SDL.
- * @param e Événement SDL à traiter.
+ * Définit le message persistant de contexte pour la barre de titre d'indice.
+ * @param context Contexte de l'application.
+ * @param text Texte à afficher.
+ * @param color Couleur de la barre de titre.
  */
-void game_handle_event(AppContext* context, SDL_Event* e);
+void game_hint_bar_set_context(AppContext* context, const char* text, SDL_Color color);
 
 /**
- * Initialise le jeu.
- * @param context Contexte SDL.
- * @return 0 en cas de succès, le nombre d'erreur sinon.
+ * Définit un message temporaire de feedback pour la barre de titre d'indice.
+ * @param context Contexte de l'application.
+ * @param text Texte à afficher.
+ * @param color Couleur de la barre de titre.
+ * @param priority Priorité du feedback.
+ * @param duration_ms Durée d'affichage en millisecondes (0 = persistant jusqu'à remplacement explicite).
  */
-int game_init(AppContext * context);
+void game_hint_bar_set_feedback(AppContext* context, const char* text, SDL_Color color, int priority, Uint32 duration_ms);
 
 /**
- * Libère les ressources utilisées par le jeu.
- * @return 0 en cas de succès, le nombre d'erreur sinon.
+ * Efface le feedback temporaire de la barre de titre d'indice.
+ * @param context Contexte de l'application.
  */
-int game_free();
+void game_hint_bar_clear_feedback(AppContext* context);
 
 /**
- * Gère les événements du jeu.
- * @param context Contexte SDL.
- * @param event Événement SDL à traiter.
- */
-void game_handle_event(AppContext * context, SDL_Event * event);
-
-/**
- * Affiche le jeu.
+ * Rendu des cartes du jeu (implémenté dans card.c).
  * @param context Contexte SDL.
  */
-void game_display(AppContext * context);
-
-/**
- * Rendu des cartes du jeu.
- * @param context Contexte SDL.
- */
-void game_render_cards(AppContext * context);
+void game_render_cards(AppContext* context);
 
 
 #endif // GAME_H

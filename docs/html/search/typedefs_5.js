@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['input_0',['Input',['../input_8h.html#ad1857177d745cb364a184655f148144e',1,'input.h']]],
-  ['inputcfgkey_1',['InputCfgKey',['../input_8h.html#a4e57838b612fd9d7720053fda55b6898',1,'input.h']]],
-  ['inputconfig_2',['InputConfig',['../input_8h.html#aea34ef574b3cf7509e579fcfe943fa42',1,'input.h']]]
+  ['history_0',['History',['../history_8h.html#a2985b94e872689bd7bc4dfe6a7f212db',1,'history.h']]],
+  ['historywrapcache_1',['HistoryWrapCache',['../history_8h.html#aa55ba95c0284c8e3ec1a1607ec7aa5e5',1,'history.h']]]
 ];

@@ -8,6 +8,7 @@
 
 #include <stdint.h>
 #include "../SDL2/include/SDL2/SDL.h"
+#include "audio.h"
 
 typedef struct AppContext AppContext;
 
@@ -20,10 +21,12 @@ typedef enum ButtonReturn {
     BTN_NONE,
     BTN_CREATE_LOBBY,
     BTN_JOIN_LOBBY,
+    BTN_MENU_SOCIAL,
     BTN_MENU_TUTO,
+    BTN_CREDITS_CLOSE,
     BTN_TUTO_NEXT,
     BTN_TUTO_PREV,
-    BTN_MENU_SOCIAL,
+    BTN_MENU_CREDITS,
     BTN_MENU_QUIT,
     BTN_LOBBY_RED_AGENT,
     BTN_LOBBY_RED_SPY,
@@ -36,6 +39,7 @@ typedef enum ButtonReturn {
     BTN_GAME_VALIDATE_HINT,
     BTN_GAME_VALIDATE_GUESS,
     BTN_GAME_RETURN_LOBBY,
+    BTN_CREDITS_RESTART_GAME,
 } ButtonReturn;
 
 // Déclaration anticipée pour le typedef de callback.
@@ -69,6 +73,9 @@ typedef ButtonReturn (*ButtonCallback)(AppContext* context, Button* button);
  * @param color     Couleur du texte. Ignorée si text est NULL.
  * @param tex_path  Chemin vers l'image de fond (assets/img/…). NULL = pas de fond personnalisé (utilise "assets/img/buttons/empty.png" par défaut si text != NULL).
  * @param callback  Fonction appelée lors du clic. Peut être NULL.
+ * @param click_sound Son joué lors du clic (SoundID). Valeur négative = aucun son.
+ * @param hover_sound Son joué lors du survol (SoundID). Valeur négative = aucun son.
+ * @param hover_text  Texte à afficher lors du survol (tooltip). NULL = aucun texte.
  *
  * Champs d'état (runtime, gérés en interne — ne pas modifier directement) :
  * @param rect         Rectangle de rendu calculé depuis x/y/w/h.
@@ -78,6 +85,12 @@ typedef ButtonReturn (*ButtonCallback)(AppContext* context, Button* button);
  * @param is_text      Mis à 1 automatiquement si text != NULL.
  * @param text_rect    Rectangle de rendu du texte, calculé automatiquement.
  * @param text_texture Texture du texte, générée automatiquement depuis text/font_path/color.
+ * @param renderer     Renderer SDL utilisé pour charger les textures (doit être fourni à button_create).
+ * @param text_dirty   Indique que le texte doit être régénéré (par exemple après une modification de la config). Mis à 1 automatiquement si text/font_path/color sont modifiés.
+ * @param hover_text_texture Texture du texte de survol (tooltip), générée automatiquement depuis hover_text/font_path/color.
+ * @param hover_text_rect Rectangle de rendu du texte de survol, calculé automatiquement.
+ * @param hover_start_ticks Timestamp du début du survol (SDL_GetTicks), utilisé pour afficher le tooltip après un délai.
+ * @param hover_delay_ms Délai en ms avant d'afficher le tooltip lors du survol.
 */
 typedef struct ButtonConfig {
     /* --- champs configurables --- */
@@ -90,6 +103,12 @@ typedef struct ButtonConfig {
     SDL_Color color;
     const char* tex_path;
     ButtonCallback callback;
+    /* Son joué lors du clic (SoundID). Valeur négative = aucun son. */
+    int click_sound;
+    /* Son joué lors du survol (SoundID). Valeur négative = aucun son. */
+    int hover_sound;
+    /* Texte à afficher lors du survol (tooltip). NULL = aucun texte. */
+    const char* hover_text;
 
     /* --- champs d'état (runtime) --- */
     SDL_Rect rect;
@@ -101,6 +120,11 @@ typedef struct ButtonConfig {
     SDL_Texture* text_texture;
     SDL_Renderer* renderer;
     int text_dirty;
+    /* --- champs runtime pour hover_text --- */
+    SDL_Texture* hover_text_texture;
+    SDL_Rect hover_text_rect;
+    Uint32 hover_start_ticks;
+    Uint32 hover_delay_ms;
 } ButtonConfig;
 
 /**
@@ -123,6 +147,9 @@ typedef enum ButtonCfgKey {
     BTN_CFG_IS_TEXT,
     BTN_CFG_TEXT_RECT,
     BTN_CFG_TEXT_TEXTURE,
+    BTN_CFG_CLICK_SOUND,
+    BTN_CFG_HOVER_SOUND,
+    BTN_CFG_HOVER_TEXT,
 } ButtonCfgKey;
 
 /**

@@ -21,6 +21,20 @@ static int input_utf8_width_range(TTF_Font* font, char* text, int start, int end
 static void input_ensure_cursor_visible(Input* in, TTF_Font* font, int content_width);
 static int input_compute_visible_end(Input* in, TTF_Font* font, int start, int content_width);
 
+static void input_sync_text_input_state(void) {
+    int has_focused_input = 0;
+
+    for (int i = 0; i < input_count; ++i) {
+        if (inputs[i] && inputs[i]->cfg && inputs[i]->cfg->focused) {
+            has_focused_input = 1;
+            break;
+        }
+    }
+
+    if (has_focused_input) SDL_StartTextInput();
+    else SDL_StopTextInput();
+}
+
 static int utf8_is_continuation_byte(unsigned char c) {
     return (c & 0xC0) == 0x80;
 }
@@ -556,14 +570,14 @@ void input_handle_event(AppContext* context, Input* in, SDL_Event* e) {
         int my = e->button.y;
         if (point_in_rect(mx, my, &in->cfg->rect)) {
             in->cfg->focused = 1;
-            SDL_StartTextInput();
             /* place cursor at end */
             in->cfg->cursor_pos = in->cfg->len;
             if (in->cfg->view_start > in->cfg->cursor_pos) in->cfg->view_start = in->cfg->cursor_pos;
+            input_sync_text_input_state();
         } else {
             if (in->cfg->focused) {
                 in->cfg->focused = 0;
-                SDL_StopTextInput();
+                input_sync_text_input_state();
             }
         }
     }
@@ -1122,8 +1136,7 @@ int edit_in_cfg(InputId id, InputCfgKey key, intptr_t value) {
             return EXIT_SUCCESS;
         case IN_CFG_FOCUSED:
             in->cfg->focused = ((int)value != 0);
-            if (in->cfg->focused) SDL_StartTextInput();
-            else SDL_StopTextInput();
+            input_sync_text_input_state();
             return EXIT_SUCCESS;
         case IN_CFG_SUBMITTED:
             in->cfg->submitted = ((int)value != 0);

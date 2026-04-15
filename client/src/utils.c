@@ -1,5 +1,34 @@
 #include "../lib/all.h"
 
+static int read_line_alloc(FILE* f, char** line, size_t* cap) {
+    if (!f || !line || !cap) return -1;
+
+    if (*line == NULL || *cap == 0) {
+        *cap = 128;
+        *line = malloc(*cap);
+        if (!*line) return -1;
+    }
+
+    size_t len = 0;
+    int c;
+    while ((c = fgetc(f)) != EOF) {
+        if (len + 1 >= *cap) {
+            size_t new_cap = (*cap) * 2;
+            char* tmp = realloc(*line, new_cap);
+            if (!tmp) return -1;
+            *line = tmp;
+            *cap = new_cap;
+        }
+        (*line)[len++] = (char)c;
+        if (c == '\n') break;
+    }
+
+    if (len == 0 && c == EOF) return -1;
+
+    (*line)[len] = '\0';
+    return (int)len;
+}
+
 int number_length(int n) {
     if (n == 0) return 1;
     int length = 0;
@@ -38,11 +67,13 @@ char* getRandomUsername(void) {
     if (!f) return NULL;
     char* line = NULL;
     size_t len = 0;
-    ssize_t read;
+    int read;
     char** names = NULL;
     size_t count = 0;
-    while ((read = getline(&line, &len, f)) != -1) {
-        if (read > 0 && line[read - 1] == '\n') line[read - 1] = '\0';
+    while ((read = read_line_alloc(f, &line, &len)) != -1) {
+        while (read > 0 && (line[read - 1] == '\n' || line[read - 1] == '\r')) {
+            line[--read] = '\0';
+        }
         char* s = strdup(line);
         if (!s) {
             free(line);

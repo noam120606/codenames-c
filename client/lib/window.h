@@ -23,6 +23,7 @@ typedef enum {
     WINDOW_NONE = 0,
     WINDOW_MENU,
 	WINDOW_TUTO,
+	WINDOW_CREDITS,
 	WINDOW_LOBBY_ROLE_NONE,
 	WINDOW_LOBBY_BLUE_AGENTS,
 	WINDOW_LOBBY_BLUE_SPY,
@@ -77,6 +78,11 @@ typedef struct WindowConfig {
 	SDL_Texture* window_texture;
 	SDL_Texture* titlebar_texture;
 	char* title;
+	SDL_Texture* title_texture_cache;
+	int title_texture_cache_w;
+	int title_texture_cache_h;
+	int title_texture_cache_font_size;
+	int title_texture_cache_dirty;
 	int border_thickness;
 	int titlebar_h;
 	int scrollable;

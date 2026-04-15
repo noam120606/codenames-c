@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Codenames:  Fichier source de client/lib/tuto.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Codenames<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Jeu Codenames multijoueur en C - Client SDL2 et Serveur TCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('tuto_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">tuto.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="tuto_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#ifndef TUTO_H</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define TUTO_H</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;../SDL2/include/SDL2/SDL.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="tuto_8h.html#aab477be81bad6aadbec06506e3cc26a2">   11</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structAppContext.html">AppContext</a> <a class="code hl_struct" href="structAppContext.html">AppContext</a>;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keywordtype">int</span> <a class="code hl_function" href="tuto_8h.html#ae555b0aeabafa888cac65e925472b965">tuto_init</a>(<a class="code hl_struct" href="structAppContext.html">AppContext</a>* context);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keywordtype">void</span> <a class="code hl_function" href="tuto_8h.html#aed7e1009cf4ac2a28878c7ac2fe4bc1f">tuto_open</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keywordtype">int</span> <a class="code hl_function" href="tuto_8h.html#a641ebf47870eb59113e473f84cbba958">tuto_is_active</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keywordtype">void</span> <a class="code hl_function" href="tuto_8h.html#a637fc0e4f38ba46593910fb02114944d">tuto_handle_event</a>(<a class="code hl_struct" href="structAppContext.html">AppContext</a>* context, SDL_Event* e);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keywordtype">void</span> <a class="code hl_function" href="tuto_8h.html#a0f5230d03e33b44bbcd24080c4184cfc">tuto_display</a>(<a class="code hl_struct" href="structAppContext.html">AppContext</a>* context);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keywordtype">int</span> <a class="code hl_function" href="tuto_8h.html#ad643b91ef200a199f646ae168e29c922">tuto_free</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#endif </span><span class="comment">// TUTO_H</span></div>
+<div class="ttc" id="astructAppContext_html"><div class="ttname"><a href="structAppContext.html">AppContext</a></div><div class="ttdef"><b>Definition</b> <a href="sdl_8h_source.html#l00054">sdl.h:54</a></div></div>
+<div class="ttc" id="atuto_8h_html_a0f5230d03e33b44bbcd24080c4184cfc"><div class="ttname"><a href="tuto_8h.html#a0f5230d03e33b44bbcd24080c4184cfc">tuto_display</a></div><div class="ttdeci">void tuto_display(AppContext *context)</div><div class="ttdef"><b>Definition</b> <a href="tuto_8c_source.html#l00492">tuto.c:492</a></div></div>
+<div class="ttc" id="atuto_8h_html_a637fc0e4f38ba46593910fb02114944d"><div class="ttname"><a href="tuto_8h.html#a637fc0e4f38ba46593910fb02114944d">tuto_handle_event</a></div><div class="ttdeci">void tuto_handle_event(AppContext *context, SDL_Event *e)</div><div class="ttdef"><b>Definition</b> <a href="tuto_8c_source.html#l00484">tuto.c:484</a></div></div>
+<div class="ttc" id="atuto_8h_html_a641ebf47870eb59113e473f84cbba958"><div class="ttname"><a href="tuto_8h.html#a641ebf47870eb59113e473f84cbba958">tuto_is_active</a></div><div class="ttdeci">int tuto_is_active(void)</div><div class="ttdef"><b>Definition</b> <a href="tuto_8c_source.html#l00480">tuto.c:480</a></div></div>
+<div class="ttc" id="atuto_8h_html_ad643b91ef200a199f646ae168e29c922"><div class="ttname"><a href="tuto_8h.html#ad643b91ef200a199f646ae168e29c922">tuto_free</a></div><div class="ttdeci">int tuto_free(void)</div><div class="ttdef"><b>Definition</b> <a href="tuto_8c_source.html#l00508">tuto.c:508</a></div></div>
+<div class="ttc" id="atuto_8h_html_ae555b0aeabafa888cac65e925472b965"><div class="ttname"><a href="tuto_8h.html#ae555b0aeabafa888cac65e925472b965">tuto_init</a></div><div class="ttdeci">int tuto_init(AppContext *context)</div><div class="ttdef"><b>Definition</b> <a href="tuto_8c_source.html#l00387">tuto.c:387</a></div></div>
+<div class="ttc" id="atuto_8h_html_aed7e1009cf4ac2a28878c7ac2fe4bc1f"><div class="ttname"><a href="tuto_8h.html#aed7e1009cf4ac2a28878c7ac2fe4bc1f">tuto_open</a></div><div class="ttdeci">void tuto_open(void)</div><div class="ttdef"><b>Definition</b> <a href="tuto_8c_source.html#l00476">tuto.c:476</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a class="el" href="tuto_8h.html">tuto.h</a></li>
+    <li class="footer">Généré le Mardi 14 Avril 2026 18:57:16 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

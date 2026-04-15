@@ -54,7 +54,33 @@ if ($localSdlBin) {
     $env:PATH = "$($localSdlBin.Path);$env:PATH"
 }
 
+$resourceSource = './client_icon.rc'
+$resourceObject = './build/client_icon.res'
+$windresCommand = $null
+foreach ($candidate in @('windres', 'x86_64-w64-mingw32-windres')) {
+    $cmd = Get-Command $candidate -ErrorAction SilentlyContinue
+    if ($cmd) {
+        $windresCommand = $cmd.Source
+        break
+    }
+}
+
 if (-not $NoBuild) {
+    if (Test-Path $resourceSource) {
+        if ($windresCommand) {
+            Write-Host 'Compiling Windows icon resource...'
+            & $windresCommand $resourceSource '-O' 'coff' '-o' $resourceObject
+            if ($LASTEXITCODE -ne 0) {
+                throw "Windows resource compilation failed with code $LASTEXITCODE"
+            }
+        } else {
+            Write-Warning 'windres not found; building without embedded executable icon.'
+            if (Test-Path $resourceObject) {
+                Remove-Item $resourceObject -Force -ErrorAction SilentlyContinue
+            }
+        }
+    }
+
     $sources = Get-ChildItem -Path './src' -Filter '*.c' | ForEach-Object { $_.FullName }
     if ($sources.Count -eq 0) {
         throw 'No client source files found in src/.'
@@ -65,6 +91,9 @@ if (-not $NoBuild) {
     $compileArgs += @('-Wall', '-Wextra', '-O2', '-finput-charset=UTF-8', '-I./lib')
     $compileArgs += $sdlCFlags
     $compileArgs += @('-o', './build/client.exe')
+    if (Test-Path $resourceObject) {
+        $compileArgs += $resourceObject
+    }
     $compileArgs += $sdlLdFlags
     $compileArgs += @('-lws2_32', '-lm')
 

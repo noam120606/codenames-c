@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Variables globale</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,20 +34,21 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,9 +63,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('globals_c.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('globals_c.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -91,46 +92,102 @@ $(function(){initNavTree('globals_c.html','',''); });
 <div class="contents">
 <div class="textblock">Liste de toutes les fonctions, variables, macros, enumérations, et définitions de type avec des liens vers les fichiers auxquels ils appartiennent :</div>
 
-<h3 class="doxsection"><a id="index_c" name="index_c"></a>- c -</h3><ul>
-<li>calculate_fps()&#160;:&#160;<a class="el" href="infos_8c.html#a983096ca60b10079efe1a2463c30bccf">infos.c</a>, <a class="el" href="infos_8h.html#a983096ca60b10079efe1a2463c30bccf">infos.h</a></li>
-<li>Card&#160;:&#160;<a class="el" href="client_2lib_2game_8h.html#a23ff27324f1ac52bcafa4cc91e2c2744">game.h</a></li>
-<li>card_black&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#afe9e4666aaaa438258f01b02d2dd5b50">game.c</a></li>
-<li>card_f_blue&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#ae54bd50311003974405fafa889149ccf">game.c</a></li>
-<li>card_f_classic&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#aff4debb79f9b6edc20084040a2305309">game.c</a></li>
-<li>card_f_red&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#aa4af26321392c002259085f074c2253e">game.c</a></li>
-<li>card_h_blue&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#a5fd900d48ad01a2c51233e0bd781edd6">game.c</a></li>
-<li>card_h_classic&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#a433ed37af32bd5c57d9b27aaee38d7b1">game.c</a></li>
-<li>card_h_red&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#ad25317eec93546f7decab5a783152af9">game.c</a></li>
+<h3><a id="index_c" name="index_c"></a>- c -</h3><ul>
+<li>calculate_fps()&#160;:&#160;<a class="el" href="infos_8h.html#a983096ca60b10079efe1a2463c30bccf">infos.h</a>, <a class="el" href="infos_8c.html#a983096ca60b10079efe1a2463c30bccf">infos.c</a></li>
+<li>Card&#160;:&#160;<a class="el" href="client_2lib_2game_8h.html#a23ff27324f1ac52bcafa4cc91e2c2744">game.h</a>, <a class="el" href="card_8h.html#a23ff27324f1ac52bcafa4cc91e2c2744">card.h</a>, <a class="el" href="sdl_8h.html#a23ff27324f1ac52bcafa4cc91e2c2744">sdl.h</a></li>
+<li>card_black&#160;:&#160;<a class="el" href="card_8c.html#afe9e4666aaaa438258f01b02d2dd5b50">card.c</a></li>
+<li>card_black_revealed&#160;:&#160;<a class="el" href="card_8c.html#ae529504098bd47d7d4cfb3016c2ddd70">card.c</a></li>
+<li>card_blue_c_revealed&#160;:&#160;<a class="el" href="card_8c.html#ac83de5ad90db484c283e339ae1e4e71a">card.c</a></li>
+<li>card_blue_d_revealed&#160;:&#160;<a class="el" href="card_8c.html#a17534d815d0450b21fdec289e7c22d2e">card.c</a></li>
+<li>card_blue_f&#160;:&#160;<a class="el" href="card_8c.html#a8afeb7557153f9cf5f82e80b30a2b28f">card.c</a></li>
+<li>card_blue_f_revealed&#160;:&#160;<a class="el" href="card_8c.html#a49c253ab632db0575e94ed9e771ee23a">card.c</a></li>
+<li>card_blue_h&#160;:&#160;<a class="el" href="card_8c.html#af1ae2e051612a82f73b5edb31fe53f02">card.c</a></li>
+<li>card_blue_h_revealed&#160;:&#160;<a class="el" href="card_8c.html#aef28bdaccc05bc337d76f05ba5609cbe">card.c</a></li>
+<li>CARD_FLIP_DURATION_MS&#160;:&#160;<a class="el" href="card_8c.html#abc2078302f370dab2e48f3de3dfe0c3c">card.c</a></li>
+<li>CARD_FLIP_MIN_WIDTH_PX&#160;:&#160;<a class="el" href="card_8c.html#a61458d33f7a12ba7e16d89b7a9e2577f">card.c</a></li>
+<li>card_flip_states&#160;:&#160;<a class="el" href="card_8c.html#ac5e8cb9da1d5394ac23bb7ddc8178087">card.c</a></li>
+<li>card_free()&#160;:&#160;<a class="el" href="card_8c.html#aa1f09be2aa71331f099c3599b2c43636">card.c</a>, <a class="el" href="card_8h.html#aa1f09be2aa71331f099c3599b2c43636">card.h</a></li>
+<li>card_get_index()&#160;:&#160;<a class="el" href="card_8c.html#ace56c5db40e35f3ba45aca81d79bce22">card.c</a></li>
+<li>card_handle_click()&#160;:&#160;<a class="el" href="card_8c.html#acd92d18bb01e03f508843ae668e3202f">card.c</a></li>
+<li>card_handle_event()&#160;:&#160;<a class="el" href="card_8c.html#a15a5d7fddd10bfc4fa04c306382aee76">card.c</a></li>
+<li>card_none_f&#160;:&#160;<a class="el" href="card_8c.html#a901a73da3062d359268ce0ce3de04ced">card.c</a></li>
+<li>card_none_f_revealed&#160;:&#160;<a class="el" href="card_8c.html#a7752fc6d9641cbfd412ade9ce8154881">card.c</a></li>
+<li>card_none_h&#160;:&#160;<a class="el" href="card_8c.html#aff4e03e641361419d0e151539dac2d0c">card.c</a></li>
+<li>card_none_h_revealed&#160;:&#160;<a class="el" href="card_8c.html#a99496ed453b5d03220e70e15d2266c2b">card.c</a></li>
+<li>card_red_c_revealed&#160;:&#160;<a class="el" href="card_8c.html#a0bac7234294679c5e307329e5108da42">card.c</a></li>
+<li>card_red_d_revealed&#160;:&#160;<a class="el" href="card_8c.html#a45d60ab94e877432bb5a96745a252da6">card.c</a></li>
+<li>card_red_f&#160;:&#160;<a class="el" href="card_8c.html#a2993e85955abbee29c6ccabc5cc22108">card.c</a></li>
+<li>card_red_f_revealed&#160;:&#160;<a class="el" href="card_8c.html#a6faf7498b716f356fba75f59a1b85645">card.c</a></li>
+<li>card_red_h&#160;:&#160;<a class="el" href="card_8c.html#a2ef21f965603d9dd62433666b070f5ba">card.c</a></li>
+<li>card_red_h_revealed&#160;:&#160;<a class="el" href="card_8c.html#af46baa5740cbaa04e206a92122c93910">card.c</a></li>
+<li>card_render()&#160;:&#160;<a class="el" href="card_8c.html#aec9a69cd43e95e24014b963bbba5c777">card.c</a></li>
+<li>card_render_word()&#160;:&#160;<a class="el" href="card_8c.html#a0ea7e9ea8db5cd037b4b2462f7e2bcea">card.c</a></li>
+<li>card_start_flip_animation()&#160;:&#160;<a class="el" href="card_8c.html#afc367450457b4dd8a92a4d5ed2dca1d4">card.c</a></li>
+<li>CardFlipState&#160;:&#160;<a class="el" href="card_8c.html#a0932ad75cea0c5979f7be7a1042a340a">card.c</a></li>
+<li>cards_handle_event()&#160;:&#160;<a class="el" href="card_8c.html#a3efc02e77945b343b2626580182ee68d">card.c</a>, <a class="el" href="card_8h.html#a3efc02e77945b343b2626580182ee68d">card.h</a></li>
+<li>CardType&#160;:&#160;<a class="el" href="card_8h.html#a76b9e96d86b331202dcc0fba38b758cd">card.h</a>, <a class="el" href="server_2lib_2game_8h.html#abef3b2a609b4d25462a7074e25e481d9">game.h</a>, <a class="el" href="card_8h.html#abef3b2a609b4d25462a7074e25e481d9">card.h</a></li>
+<li>cf_lum&#160;:&#160;<a class="el" href="infos_8c.html#aa1f22893d19b95bef8fba0171d4124d4">infos.c</a></li>
 <li>cf_music&#160;:&#160;<a class="el" href="infos_8c.html#a1480ea7eb4bf283c162dfc7999fe6c3d">infos.c</a></li>
 <li>cf_sfx&#160;:&#160;<a class="el" href="infos_8c.html#adc5d995eab1f1005ea1c83d5929f57ae">infos.c</a></li>
 <li>channel_fade_filters&#160;:&#160;<a class="el" href="audio_8c.html#aa36180ab189fb2bd6a6cbdf2078db13e">audio.c</a></li>
 <li>channel_filters&#160;:&#160;<a class="el" href="audio_8c.html#ac7c4b5419b4a281f48f015dff88c690f">audio.c</a></li>
 <li>channel_sound_ids&#160;:&#160;<a class="el" href="audio_8c.html#ad3f14a7658faa417a3ebc8a32fd3d595">audio.c</a></li>
 <li>Chat&#160;:&#160;<a class="el" href="client_2lib_2chat_8h.html#afc71f208e05a79feeda893422343c8ed">chat.h</a></li>
-<li>chat_clear()&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#a9dfe68d5591d78d18590b8b6436af8cf">chat.c</a>, <a class="el" href="client_2lib_2chat_8h.html#a9dfe68d5591d78d18590b8b6436af8cf">chat.h</a>, <a class="el" href="server_2src_2chat_8c.html#a9dfe68d5591d78d18590b8b6436af8cf">chat.c</a>, <a class="el" href="server_2lib_2chat_8h.html#a9dfe68d5591d78d18590b8b6436af8cf">chat.h</a></li>
-<li>chat_get()&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#abfff823aa4be250fd2c3b95ade22025c">chat.c</a>, <a class="el" href="client_2lib_2chat_8h.html#abfff823aa4be250fd2c3b95ade22025c">chat.h</a>, <a class="el" href="server_2src_2chat_8c.html#abfff823aa4be250fd2c3b95ade22025c">chat.c</a>, <a class="el" href="server_2lib_2chat_8h.html#abfff823aa4be250fd2c3b95ade22025c">chat.h</a></li>
+<li>chat_append_wrapped_lines()&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#a07be23370d875ed5a4deaf02509c9f32">chat.c</a></li>
+<li>CHAT_BOTTOM_LINE_Y&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#ac515d061d4cdac03a9bbed6f7948311e">chat.c</a></li>
+<li>chat_build_wrapped_lines_cached()&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#a61ba9442db950a6c8dbc5f55046c2c93">chat.c</a></li>
+<li>chat_clear()&#160;:&#160;<a class="el" href="server_2lib_2chat_8h.html#a9dfe68d5591d78d18590b8b6436af8cf">chat.h</a>, <a class="el" href="server_2src_2chat_8c.html#a9dfe68d5591d78d18590b8b6436af8cf">chat.c</a>, <a class="el" href="client_2lib_2chat_8h.html#a9dfe68d5591d78d18590b8b6436af8cf">chat.h</a></li>
+<li>chat_colored_prefix_text&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#a8636f448b272629de3a7a0ebbfdaa994">chat.c</a></li>
+<li>chat_extract_sender_prefix()&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#ab3c64ad9f6a6f73fb8b068c86278bf97">chat.c</a></li>
+<li>chat_find_team_by_sender()&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#acaa27817183afde031a0e84dcd77c94e">chat.c</a></li>
+<li>chat_font_path_equals()&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#a25a42545c5c9bfc9b34e765fc3a60866">chat.c</a></li>
+<li>CHAT_FONT_PATH_MAX&#160;:&#160;<a class="el" href="client_2lib_2chat_8h.html#a7a30a1e079b24e9570808b17fca80d49">chat.h</a></li>
+<li>chat_get()&#160;:&#160;<a class="el" href="client_2lib_2chat_8h.html#abfff823aa4be250fd2c3b95ade22025c">chat.h</a>, <a class="el" href="server_2src_2chat_8c.html#abfff823aa4be250fd2c3b95ade22025c">chat.c</a></li>
+<li>chat_get_colored_prefix_text()&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#ab3707bb0595752324692858ef0c8bf37">chat.c</a></li>
 <li>chat_init()&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#afb79622cae70b2048c678f33edebdc4f">chat.c</a>, <a class="el" href="client_2lib_2chat_8h.html#afb79622cae70b2048c678f33edebdc4f">chat.h</a>, <a class="el" href="server_2src_2chat_8c.html#afb79622cae70b2048c678f33edebdc4f">chat.c</a>, <a class="el" href="server_2lib_2chat_8h.html#afb79622cae70b2048c678f33edebdc4f">chat.h</a></li>
 <li>chat_input&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#a322f0309fbca4e5e4b8aa0eff73cfbfb">game.c</a></li>
 <li>CHAT_INPUT_PLACEHOLDERS&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#a186c8c7fcfed64cf4bc2caa97b65944a">game.c</a></li>
+<li>chat_left_anchored_rel_x()&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#ad48a6d87e2ba180680e8fff674b5332d">chat.c</a></li>
+<li>chat_left_anchored_rel_x_with_offset()&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#aa6aa7dad9f1dfa1fb951ce4924b1d3d7">chat.c</a></li>
+<li>CHAT_LEFT_PADDING&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#ac5b6688abf8c3b190c5695fe4989ca16">chat.c</a></li>
+<li>CHAT_LINE_GAP&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#aebd7487f84a13f69157d7f1a44249d3b">chat.c</a></li>
+<li>CHAT_LINE_SIZE&#160;:&#160;<a class="el" href="client_2lib_2chat_8h.html#aef7285c36fa64217be04399205379b46">chat.h</a></li>
 <li>CHAT_MAX_MESSAGES&#160;:&#160;<a class="el" href="client_2lib_2chat_8h.html#ab2371a344569b2510703bb35dc17b58d">chat.h</a></li>
-<li>chat_on_submit()&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#ab713c49bf92936d291625fcdeaa29138">game.c</a></li>
-<li>chat_push()&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#a1623ddd50bbb887235d7baed5358fcb0">chat.c</a>, <a class="el" href="client_2lib_2chat_8h.html#a1623ddd50bbb887235d7baed5358fcb0">chat.h</a>, <a class="el" href="server_2src_2chat_8c.html#a1623ddd50bbb887235d7baed5358fcb0">chat.c</a>, <a class="el" href="server_2lib_2chat_8h.html#a1623ddd50bbb887235d7baed5358fcb0">chat.h</a></li>
-<li>chat_size()&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#a8dc439d5c8d241b17f730bc9a5eb4741">chat.c</a>, <a class="el" href="client_2lib_2chat_8h.html#a8dc439d5c8d241b17f730bc9a5eb4741">chat.h</a>, <a class="el" href="server_2src_2chat_8c.html#a8dc439d5c8d241b17f730bc9a5eb4741">chat.c</a>, <a class="el" href="server_2lib_2chat_8h.html#a8dc439d5c8d241b17f730bc9a5eb4741">chat.h</a></li>
+<li>CHAT_MAX_RENDER_LINES&#160;:&#160;<a class="el" href="client_2lib_2chat_8h.html#af0a9c0ee9839c1f554044e96530d1ffd">chat.h</a></li>
+<li>chat_push()&#160;:&#160;<a class="el" href="server_2src_2chat_8c.html#a1623ddd50bbb887235d7baed5358fcb0">chat.c</a>, <a class="el" href="server_2lib_2chat_8h.html#a1623ddd50bbb887235d7baed5358fcb0">chat.h</a>, <a class="el" href="client_2src_2chat_8c.html#a1623ddd50bbb887235d7baed5358fcb0">chat.c</a></li>
+<li>chat_render_messages()&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#a8d802e82081cd259fa6ee7fb17094903">chat.c</a>, <a class="el" href="client_2lib_2chat_8h.html#a8d802e82081cd259fa6ee7fb17094903">chat.h</a></li>
+<li>chat_render_sender_prefix()&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#a84755d02b71bb80f5b80dd824c444346">chat.c</a></li>
+<li>CHAT_RIGHT_PADDING&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#a729119d8d39e6d46286c32823c2b65a3">chat.c</a></li>
+<li>chat_set_font_path()&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#af58e80a422b4499469e31c3b85c1bb20">chat.c</a></li>
+<li>chat_size()&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#a8dc439d5c8d241b17f730bc9a5eb4741">chat.c</a>, <a class="el" href="server_2lib_2chat_8h.html#a8dc439d5c8d241b17f730bc9a5eb4741">chat.h</a>, <a class="el" href="server_2src_2chat_8c.html#a8dc439d5c8d241b17f730bc9a5eb4741">chat.c</a>, <a class="el" href="client_2lib_2chat_8h.html#a8dc439d5c8d241b17f730bc9a5eb4741">chat.h</a></li>
+<li>chat_submit_message()&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#a176285c323ee42e0873ff7d0bc4e1e01">chat.c</a>, <a class="el" href="client_2lib_2chat_8h.html#a176285c323ee42e0873ff7d0bc4e1e01">chat.h</a></li>
+<li>CHAT_TEAM_BLUE_COLOR&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#af3092799ab787b7f0b34d45d9757f4e0">chat.c</a></li>
+<li>CHAT_TEAM_RED_COLOR&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#a31bcf847a0ed4eff77a953a2b0d15ef8">chat.c</a></li>
+<li>chat_team_to_color()&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#a5390aab922c53829b1b09d5beee17fc7">chat.c</a></li>
+<li>chat_text_width()&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#adbc4909d7dbf5ad0d8e1f5e36b5ef7bb">chat.c</a></li>
+<li>chat_touch()&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#a629375b039a07da780050977352e3b64">chat.c</a></li>
+<li>CHAT_VISIBLE_LINES&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#ad5c4dcd58b7eca31f12193473925c498">game.c</a></li>
 <li>chat_window&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#ade8ab62517421365fee4ceae5eae79b7">game.c</a></li>
+<li>chat_wrap_cache_invalidate()&#160;:&#160;<a class="el" href="client_2src_2chat_8c.html#acf1fa784dbccbc571f4dc8589fea4f88">chat.c</a></li>
+<li>CHAT_WRAP_LINES_PER_MESSAGE&#160;:&#160;<a class="el" href="client_2lib_2chat_8h.html#ace51b654a1c1dc75437fac152feb452b">chat.h</a></li>
+<li>ChatWrapCache&#160;:&#160;<a class="el" href="client_2lib_2chat_8h.html#a6fb283c9629f28c9f954a97d44274b91">chat.h</a></li>
 <li>choose_role()&#160;:&#160;<a class="el" href="server_2src_2lobby_8c.html#af844d1079e019dab0a618c378178fe75">lobby.c</a></li>
 <li>clamp01()&#160;:&#160;<a class="el" href="infos_8c.html#ab00225c776aaffa6658c5b4d4325afcc">infos.c</a></li>
+<li>clamp_between()&#160;:&#160;<a class="el" href="window_8c.html#ae782f45632a7c93d464a7bd8e238629c">window.c</a></li>
 <li>clamp_non_negative()&#160;:&#160;<a class="el" href="window_8c.html#adfbab9ec061a0f54a36c5238db015cbb">window.c</a></li>
 <li>clamp_positive()&#160;:&#160;<a class="el" href="window_8c.html#a3bd6685b3fb7a7da7ba7ce6a3f10131d">window.c</a></li>
 <li>clamp_volume()&#160;:&#160;<a class="el" href="audio_8c.html#aca16f856f161aaa151082cea3937fe8e">audio.c</a></li>
 <li>cleanup_resources()&#160;:&#160;<a class="el" href="ressources_8c.html#a25ce324123d4f50334b6905ef696812e">ressources.c</a>, <a class="el" href="ressources_8h.html#a25ce324123d4f50334b6905ef696812e">ressources.h</a></li>
+<li>clear_hint_inputs()&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#ae75f4150842749356fba66c79744f312">game.c</a></li>
 <li>close_tcp()&#160;:&#160;<a class="el" href="client_2src_2tcp_8c.html#a39171b188778c75d0b5a82713b417786">tcp.c</a>, <a class="el" href="client_2lib_2tcp_8h.html#a39171b188778c75d0b5a82713b417786">tcp.h</a></li>
 <li>CLOSESOCKET&#160;:&#160;<a class="el" href="client_2lib_2all_8h.html#ade43b44c58cf53d2c0737c98dc31162f">all.h</a></li>
 <li>cn_regex_compile()&#160;:&#160;<a class="el" href="regex__compat_8c.html#ae5f45a2ceb7bcc7cb4fa38daae06c0a0">regex_compat.c</a>, <a class="el" href="regex__compat_8h.html#ae5f45a2ceb7bcc7cb4fa38daae06c0a0">regex_compat.h</a></li>
-<li>cn_regex_free()&#160;:&#160;<a class="el" href="regex__compat_8c.html#adf6b83614a87ead2659503d08d5d6473">regex_compat.c</a>, <a class="el" href="regex__compat_8h.html#adf6b83614a87ead2659503d08d5d6473">regex_compat.h</a></li>
+<li>cn_regex_free()&#160;:&#160;<a class="el" href="regex__compat_8h.html#adf6b83614a87ead2659503d08d5d6473">regex_compat.h</a>, <a class="el" href="regex__compat_8c.html#adf6b83614a87ead2659503d08d5d6473">regex_compat.c</a></li>
 <li>cn_regex_match()&#160;:&#160;<a class="el" href="regex__compat_8c.html#a67a5e259d6bac11a4e9f11cb4a7c3c39">regex_compat.c</a>, <a class="el" href="regex__compat_8h.html#a67a5e259d6bac11a4e9f11cb4a7c3c39">regex_compat.h</a></li>
 <li>code_input&#160;:&#160;<a class="el" href="menu_8c.html#ad24c44449acf9d0c6656252858d95756">menu.c</a></li>
 <li>code_on_submit()&#160;:&#160;<a class="el" href="menu_8c.html#a263ab2317fc0e9c0ff3be940abd74d94">menu.c</a></li>
-<li>Codenames&#160;:&#160;<a class="el" href="codenames_8h.html#aa44c3a3da81703c57680df8630f4414e">codenames.h</a></li>
+<li>CODE_PLACEHOLDERS&#160;:&#160;<a class="el" href="menu_8c.html#aa3c0beb1bb1215cd087da75c9fcbef31">menu.c</a></li>
+<li>Codenames&#160;:&#160;<a class="el" href="server_2lib_2message_8h.html#aa44c3a3da81703c57680df8630f4414e">message.h</a>, <a class="el" href="server_2lib_2tcp_8h.html#aa44c3a3da81703c57680df8630f4414e">tcp.h</a>, <a class="el" href="server_2lib_2lobby_8h.html#aa44c3a3da81703c57680df8630f4414e">lobby.h</a>, <a class="el" href="codenames_8h.html#aa44c3a3da81703c57680df8630f4414e">codenames.h</a></li>
 <li>COL_BLACK&#160;:&#160;<a class="el" href="client_2lib_2utils_8h.html#a2e83cdef7aa658a31d69afd5f75a51b0">utils.h</a></li>
 <li>COL_BLUE&#160;:&#160;<a class="el" href="client_2lib_2utils_8h.html#a9e3b63c4187b7f274912e0c7c533d1af">utils.h</a></li>
 <li>COL_CYAN&#160;:&#160;<a class="el" href="client_2lib_2utils_8h.html#ab059b53d1d57390e9347ef90ff2b68af">utils.h</a></li>
@@ -151,14 +208,52 @@ $(function(){initNavTree('globals_c.html','',''); });
 <li>color_red_to_green()&#160;:&#160;<a class="el" href="infos_8c.html#ae0b36cef1443dc77ce79b2547309a036">infos.c</a></li>
 <li>compute_effective_volume()&#160;:&#160;<a class="el" href="audio_8c.html#a2b2d2ffce5df8e1fade27b0cd7254033">audio.c</a></li>
 <li>compute_low_pass_alpha()&#160;:&#160;<a class="el" href="audio_8c.html#a3ebf1390e0aa8e2132c5e797da4ec7e7">audio.c</a></li>
+<li>compute_panel_member_position()&#160;:&#160;<a class="el" href="client_2src_2game_8c.html#a5b23eb7fad0f15d757736ef76c6ea44c">game.c</a></li>
+<li>compute_player_icon_position()&#160;:&#160;<a class="el" href="client_2src_2lobby_8c.html#a6f6d907fb788a38062ee87afe216d94c">lobby.c</a></li>
 <li>configure_diagnostic_sdl_environment()&#160;:&#160;<a class="el" href="sdl_8c.html#a3043f28d64a3da3c6d93503f414188f4">sdl.c</a></li>
 <li>configure_windows_audio_backend()&#160;:&#160;<a class="el" href="sdl_8c.html#a75620c72d5315a52b70d6edefb4112c5">sdl.c</a></li>
-<li>count_words()&#160;:&#160;<a class="el" href="server_2src_2utils_8c.html#ad93ebcf9b51100e8925bd85aabf977bc">utils.c</a>, <a class="el" href="server_2lib_2utils_8h.html#ad93ebcf9b51100e8925bd85aabf977bc">utils.h</a></li>
+<li>count_player_for_layout()&#160;:&#160;<a class="el" href="client_2src_2lobby_8c.html#a79b78da2f703e71fd2dd9bfaa18d1bee">lobby.c</a></li>
+<li>count_remaining_words()&#160;:&#160;<a class="el" href="server_2src_2game_8c.html#a13c4b961bee4ac94b6a64fe43218fdc8">game.c</a></li>
+<li>count_words()&#160;:&#160;<a class="el" href="server_2lib_2utils_8h.html#ad93ebcf9b51100e8925bd85aabf977bc">utils.h</a>, <a class="el" href="server_2src_2utils_8c.html#ad93ebcf9b51100e8925bd85aabf977bc">utils.c</a></li>
 <li>create_lobby()&#160;:&#160;<a class="el" href="server_2src_2lobby_8c.html#a44d2d1f1a9577918a430c3d184438383">lobby.c</a>, <a class="el" href="server_2lib_2lobby_8h.html#a44d2d1f1a9577918a430c3d184438383">lobby.h</a></li>
 <li>create_lobby_manager()&#160;:&#160;<a class="el" href="server_2src_2lobby_8c.html#a95d0cf6c24388e7600fecdf9207fcb72">lobby.c</a>, <a class="el" href="server_2lib_2lobby_8h.html#a95d0cf6c24388e7600fecdf9207fcb72">lobby.h</a></li>
 <li>create_text()&#160;:&#160;<a class="el" href="text_8c.html#ae6c3a92a65ce87de859b5ecd21fb0fbc">text.c</a>, <a class="el" href="text_8h.html#ae6c3a92a65ce87de859b5ecd21fb0fbc">text.h</a></li>
 <li>create_text_config()&#160;:&#160;<a class="el" href="text_8c.html#a5229e53c1df6a3e32e4ca68e7fe8b1ba">text.c</a>, <a class="el" href="text_8h.html#a5229e53c1df6a3e32e4ca68e7fe8b1ba">text.h</a></li>
 <li>create_user()&#160;:&#160;<a class="el" href="client_2src_2user_8c.html#a0cb0c3d3b4ddc01d1d2c77ca4eada124">user.c</a>, <a class="el" href="client_2lib_2user_8h.html#a0cb0c3d3b4ddc01d1d2c77ca4eada124">user.h</a>, <a class="el" href="server_2src_2user_8c.html#a0710dca1ff61cdf7517bbe57803f1fec">user.c</a>, <a class="el" href="server_2lib_2user_8h.html#a0710dca1ff61cdf7517bbe57803f1fec">user.h</a></li>
+<li>CREDITS_ACTION_BOTTOM_MARGIN&#160;:&#160;<a class="el" href="credits_8c.html#a01b2d68c69eaefcca8ad256fc2cceb70">credits.c</a></li>
+<li>credits_action_button_callback()&#160;:&#160;<a class="el" href="credits_8c.html#a365396e91e5480e386141de4f2418262">credits.c</a></li>
+<li>CREDITS_ACTION_LEFT_MARGIN&#160;:&#160;<a class="el" href="credits_8c.html#a7d442c1d5595238148dd69d0e534d382">credits.c</a></li>
+<li>credits_build_text_texture()&#160;:&#160;<a class="el" href="credits_8c.html#a284d103e17394e695cf734dff293a5ae">credits.c</a></li>
+<li>credits_clamp_float()&#160;:&#160;<a class="el" href="credits_8c.html#a5a303800967b8f43e26691d03a2d26c1">credits.c</a></li>
+<li>credits_clamp_scroll_offset()&#160;:&#160;<a class="el" href="credits_8c.html#a51205ecb1cb4b51ac364d782c0504aa3">credits.c</a></li>
+<li>CREDITS_CLOSE_BUTTON_H&#160;:&#160;<a class="el" href="credits_8c.html#a1a89331a754ab377b46ef861adfc5631">credits.c</a></li>
+<li>CREDITS_CLOSE_BUTTON_W&#160;:&#160;<a class="el" href="credits_8c.html#ab9c2d1a223ed4ddd2a61dff99eb8a880">credits.c</a></li>
+<li>credits_display()&#160;:&#160;<a class="el" href="credits_8c.html#a3dab12e37a0eaaa551baff5083a71037">credits.c</a>, <a class="el" href="credits_8h.html#a3dab12e37a0eaaa551baff5083a71037">credits.h</a></li>
+<li>CREDITS_FILE_PATH&#160;:&#160;<a class="el" href="credits_8c.html#a8821ca0d850dea8e9296bc73f69b67cf">credits.c</a></li>
+<li>credits_free()&#160;:&#160;<a class="el" href="credits_8c.html#a2c34805ef49eeed215c209215bf2d197">credits.c</a>, <a class="el" href="credits_8h.html#a2c34805ef49eeed215c209215bf2d197">credits.h</a></li>
+<li>credits_get_content_rect()&#160;:&#160;<a class="el" href="credits_8c.html#ad3578544501d358a1bf815df9ac23794">credits.c</a></li>
+<li>credits_handle_event()&#160;:&#160;<a class="el" href="credits_8c.html#ad3949b2ed1043157f798be702fc2e1db">credits.c</a>, <a class="el" href="credits_8h.html#ad3949b2ed1043157f798be702fc2e1db">credits.h</a></li>
+<li>credits_init()&#160;:&#160;<a class="el" href="credits_8c.html#a0d359391cf838bcdfd1a515160c7d936">credits.c</a>, <a class="el" href="credits_8h.html#a0d359391cf838bcdfd1a515160c7d936">credits.h</a></li>
+<li>credits_is_active()&#160;:&#160;<a class="el" href="credits_8h.html#ad7ea38347a3a4f84f80a28ec7da496b3">credits.h</a>, <a class="el" href="credits_8c.html#ad7ea38347a3a4f84f80a28ec7da496b3">credits.c</a></li>
+<li>credits_load_file_content()&#160;:&#160;<a class="el" href="credits_8c.html#a0e869d3ac84837ab315187e8d8997d03">credits.c</a></li>
+<li>credits_max_scroll_for_rect()&#160;:&#160;<a class="el" href="credits_8c.html#a1aec8595b671c428981b4a0f282e5236">credits.c</a></li>
+<li>credits_open()&#160;:&#160;<a class="el" href="credits_8c.html#a909adf500af5d5e2688d24a25c594564">credits.c</a>, <a class="el" href="credits_8h.html#a909adf500af5d5e2688d24a25c594564">credits.h</a></li>
+<li>credits_place_action_buttons()&#160;:&#160;<a class="el" href="credits_8c.html#a5fb8156a8ad1156fad4c9f33ab77e442">credits.c</a></li>
+<li>credits_request_full_restart()&#160;:&#160;<a class="el" href="credits_8c.html#ac7a052494729ec8486eb2db9b770c11a">credits.c</a></li>
+<li>credits_reset_button_state()&#160;:&#160;<a class="el" href="credits_8c.html#a960fd6d0bad830142523aa0cb7c44af1">credits.c</a></li>
+<li>CREDITS_RESTART_BUTTON_H&#160;:&#160;<a class="el" href="credits_8c.html#a62425b41f0de07a5878a623c34a081df">credits.c</a></li>
+<li>CREDITS_RESTART_BUTTON_W&#160;:&#160;<a class="el" href="credits_8c.html#a7ad2e2e781abb48ba51948416f6fbcb1">credits.c</a></li>
+<li>CREDITS_SCROLL_RESUME_DELAY_MS&#160;:&#160;<a class="el" href="credits_8c.html#a3403cef22d92a2135e20dfe777c0834d">credits.c</a></li>
+<li>CREDITS_SCROLL_SPEED_PX_PER_SEC&#160;:&#160;<a class="el" href="credits_8c.html#aa0aa4e4ed677d27e70121d09901096a5">credits.c</a></li>
+<li>CREDITS_SCROLL_WHEEL_STEP&#160;:&#160;<a class="el" href="credits_8c.html#a1779ce9e0aec8a7810dfcb94bdd33e62">credits.c</a></li>
+<li>CREDITS_TEXT_BOTTOM_PADDING&#160;:&#160;<a class="el" href="credits_8c.html#a978009ca0dd8221988bab3d42f7f3eb0">credits.c</a></li>
+<li>CREDITS_TEXT_FONT_SIZE&#160;:&#160;<a class="el" href="credits_8c.html#a5ce65980b358a4228dab94af8bd51315">credits.c</a></li>
+<li>CREDITS_TEXT_LINE_ADVANCE_FACTOR&#160;:&#160;<a class="el" href="credits_8c.html#a18c123b29f7ba05c536373fdf9d1293f">credits.c</a></li>
+<li>CREDITS_TEXT_SIDE_PADDING&#160;:&#160;<a class="el" href="credits_8c.html#acca74f69d2fccb1e242f620110dbd0af">credits.c</a></li>
+<li>CREDITS_TEXT_TOP_PADDING&#160;:&#160;<a class="el" href="credits_8c.html#a855ba62440ef90e023a045421d52b61c">credits.c</a></li>
+<li>CREDITS_TEXT_WRAP_PADDING&#160;:&#160;<a class="el" href="credits_8c.html#a3ebd951e1e0bc05baa49f0519eaa1ec5">credits.c</a></li>
+<li>credits_update_auto_scroll()&#160;:&#160;<a class="el" href="credits_8c.html#a33f99d16c4b3083c6eeeb2b73638259a">credits.c</a></li>
+<li>CreditsState&#160;:&#160;<a class="el" href="credits_8c.html#ae3fac7dc3bae62ce474ceb8c63cdc22e">credits.c</a></li>
 <li>CRFD_CFG_COLOR_0_PCT&#160;:&#160;<a class="el" href="crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6a494409af326f01a5e9afe94d5c1d62b9">crossfader.h</a></li>
 <li>CRFD_CFG_COLOR_100_PCT&#160;:&#160;<a class="el" href="crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6aac073e7b1f1d16bd1abb477364cf8fd1">crossfader.h</a></li>
 <li>CRFD_CFG_DRAGGING&#160;:&#160;<a class="el" href="crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6aa671d49e547f767dae3c352cc3c443ec">crossfader.h</a></li>
@@ -183,30 +278,36 @@ $(function(){initNavTree('globals_c.html','',''); });
 <li>crossfader_config_init()&#160;:&#160;<a class="el" href="crossfader_8c.html#a521dcc82f98f78679b9b0c15528b04c6">crossfader.c</a>, <a class="el" href="crossfader_8h.html#a521dcc82f98f78679b9b0c15528b04c6">crossfader.h</a></li>
 <li>crossfader_count&#160;:&#160;<a class="el" href="crossfader_8c.html#a0ce8e67845f5a7841d1ad7fd1392918c">crossfader.c</a></li>
 <li>crossfader_create()&#160;:&#160;<a class="el" href="crossfader_8c.html#a148770c36381abdf8ab7b6e8a2d6e7d6">crossfader.c</a>, <a class="el" href="crossfader_8h.html#ad88a14929edf0a596db17799ac96b3d9">crossfader.h</a></li>
-<li>crossfader_get()&#160;:&#160;<a class="el" href="crossfader_8c.html#a0bed147822b42417aefeea1541272501">crossfader.c</a>, <a class="el" href="crossfader_8h.html#a0bed147822b42417aefeea1541272501">crossfader.h</a></li>
+<li>crossfader_get_by_id()&#160;:&#160;<a class="el" href="crossfader_8c.html#a1ba2eab902df30f04f6de65af87d8690">crossfader.c</a>, <a class="el" href="crossfader_8h.html#a1ba2eab902df30f04f6de65af87d8690">crossfader.h</a></li>
 <li>crossfader_get_value()&#160;:&#160;<a class="el" href="crossfader_8c.html#abc2d08f47e64af39655f95b7c07f68f1">crossfader.c</a>, <a class="el" href="crossfader_8h.html#abc2d08f47e64af39655f95b7c07f68f1">crossfader.h</a></li>
-<li>CROSSFADER_ID_MUSIC_VOLUME&#160;:&#160;<a class="el" href="infos_8h.html#a33a612bb99cde5e7d08cc25002db4cdd">infos.h</a></li>
-<li>CROSSFADER_ID_SFX_VOLUME&#160;:&#160;<a class="el" href="infos_8h.html#a5d1ef3b5a31b4091fc933e3433224560">infos.h</a></li>
 <li>crossfader_load_saved_value_if_enabled()&#160;:&#160;<a class="el" href="crossfader_8c.html#aaf0a988f209364a32edd472c65809462">crossfader.c</a></li>
+<li>CROSSFADER_LUMINOSITY&#160;:&#160;<a class="el" href="crossfader_8h.html#a7e861a2c78ea62992654d8c9c683194ca434f7351ccd45bfaf4ba361708fcef87">crossfader.h</a></li>
+<li>CROSSFADER_MUSIC_VOLUME&#160;:&#160;<a class="el" href="crossfader_8h.html#a7e861a2c78ea62992654d8c9c683194caa7b9ef43df12c26bbbb139b627b3172f">crossfader.h</a></li>
+<li>CROSSFADER_NONE&#160;:&#160;<a class="el" href="crossfader_8h.html#a7e861a2c78ea62992654d8c9c683194cae6a4a9ea4e969954da65d64d0ab99d9f">crossfader.h</a></li>
 <li>crossfader_save_value_if_enabled()&#160;:&#160;<a class="el" href="crossfader_8c.html#a7addb5762d28c38f0b694ea52e10f2a4">crossfader.c</a></li>
 <li>crossfader_set_on_change()&#160;:&#160;<a class="el" href="crossfader_8c.html#a519c21fa24125ee05ec1757c26182e90">crossfader.c</a>, <a class="el" href="crossfader_8h.html#a519c21fa24125ee05ec1757c26182e90">crossfader.h</a></li>
 <li>crossfader_set_value()&#160;:&#160;<a class="el" href="crossfader_8c.html#aa12b0bd0cbcf2b7137b73c9eacc59a9f">crossfader.c</a>, <a class="el" href="crossfader_8h.html#aa12b0bd0cbcf2b7137b73c9eacc59a9f">crossfader.h</a></li>
+<li>CROSSFADER_SFX_VOLUME&#160;:&#160;<a class="el" href="crossfader_8h.html#a7e861a2c78ea62992654d8c9c683194ca303f843e2550847a4a22f4448d85b74d">crossfader.h</a></li>
 <li>CrossfaderConfig&#160;:&#160;<a class="el" href="crossfader_8h.html#a29100e9db07ce4018bf39cfe06eb47bf">crossfader.h</a></li>
+<li>CrossfaderId&#160;:&#160;<a class="el" href="crossfader_8h.html#a7e861a2c78ea62992654d8c9c683194c">crossfader.h</a></li>
 <li>crossfaders&#160;:&#160;<a class="el" href="crossfader_8c.html#abac4aa6a694945af96309a31c9cad66b">crossfader.c</a></li>
-<li>crossfaders_free()&#160;:&#160;<a class="el" href="crossfader_8c.html#a44ded336e9ff59db3be4ec0f350d6939">crossfader.c</a>, <a class="el" href="crossfader_8h.html#a44ded336e9ff59db3be4ec0f350d6939">crossfader.h</a></li>
+<li>crossfaders_free()&#160;:&#160;<a class="el" href="crossfader_8h.html#a44ded336e9ff59db3be4ec0f350d6939">crossfader.h</a>, <a class="el" href="crossfader_8c.html#a44ded336e9ff59db3be4ec0f350d6939">crossfader.c</a></li>
 <li>crossfaders_handle_event()&#160;:&#160;<a class="el" href="crossfader_8c.html#adc9e735b49e634d43d8de02ca11a85f3">crossfader.c</a>, <a class="el" href="crossfader_8h.html#adc9e735b49e634d43d8de02ca11a85f3">crossfader.h</a></li>
 <li>crossfaders_init()&#160;:&#160;<a class="el" href="crossfader_8c.html#ad474b93da0891997c452368c5b9a3604">crossfader.c</a>, <a class="el" href="crossfader_8h.html#ad474b93da0891997c452368c5b9a3604">crossfader.h</a></li>
 <li>crossfaders_render()&#160;:&#160;<a class="el" href="crossfader_8c.html#a4b968aa69e95c0594b0f075b0c07363d">crossfader.c</a>, <a class="el" href="crossfader_8h.html#a4b968aa69e95c0594b0f075b0c07363d">crossfader.h</a></li>
+<li>CT_CAT&#160;:&#160;<a class="el" href="server_2lib_2game_8h.html#a76b9e96d86b331202dcc0fba38b758cdadffba972c261ddeed858e61e46eb4ba4">game.h</a>, <a class="el" href="card_8h.html#a76b9e96d86b331202dcc0fba38b758cdadffba972c261ddeed858e61e46eb4ba4">card.h</a></li>
+<li>CT_DOG&#160;:&#160;<a class="el" href="card_8h.html#a76b9e96d86b331202dcc0fba38b758cda9714286da6280ad708aa028a6cc3092b">card.h</a>, <a class="el" href="server_2lib_2game_8h.html#a76b9e96d86b331202dcc0fba38b758cda9714286da6280ad708aa028a6cc3092b">game.h</a></li>
+<li>CT_FEMALE&#160;:&#160;<a class="el" href="card_8h.html#a76b9e96d86b331202dcc0fba38b758cda62ad885719deb2c352c0988cdfbdef9a">card.h</a>, <a class="el" href="server_2lib_2game_8h.html#a76b9e96d86b331202dcc0fba38b758cda62ad885719deb2c352c0988cdfbdef9a">game.h</a></li>
+<li>CT_MALE&#160;:&#160;<a class="el" href="card_8h.html#a76b9e96d86b331202dcc0fba38b758cdaf53340ee1927ddefbec463fd6dd755d9">card.h</a>, <a class="el" href="server_2lib_2game_8h.html#a76b9e96d86b331202dcc0fba38b758cdaf53340ee1927ddefbec463fd6dd755d9">game.h</a></li>
 <li>current_display_x&#160;:&#160;<a class="el" href="infos_8c.html#aa5c0c9ab93e6e76ba7845cbce2e94b52">infos.c</a></li>
 <li>current_player_text_index&#160;:&#160;<a class="el" href="client_2src_2lobby_8c.html#acd7ada16665ace9a6e10d7cc09fcaf11">lobby.c</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="footer">Généré le Mardi 14 Avril 2026 18:57:16 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

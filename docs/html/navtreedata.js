@@ -75,7 +75,7 @@ var NAVTREE =
         [ "Variables", "globals_vars.html", null ],
         [ "Définitions de type", "globals_type.html", null ],
         [ "Énumérations", "globals_enum.html", null ],
-        [ "Valeurs énumérées", "globals_eval.html", null ],
+        [ "Valeurs énumérées", "globals_eval.html", "globals_eval" ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -85,13 +85,15 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"client_2lib_2user_8h.html#a064a2c5e2528af581f38d07fbbaa8e5a",
-"functions_b.html",
-"input_8h.html#ae5dc35609c74896e526bbd8a3494ee58a980fd10a1b1b74f753379d12cd878c8d",
-"server_2src_2chat_8c.html#a1623ddd50bbb887235d7baed5358fcb0",
-"structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1"
+"card_8h.html#a76b9e96d86b331202dcc0fba38b758cda62ad885719deb2c352c0988cdfbdef9a",
+"client_2src_2game_8c.html#a216feb4db1303c66a65e98d10ee407cf",
+"crossfader_8c.html#aaed6fcc09513d856ab82ae783e354fb2",
+"index.html#autotoc_md24",
+"menu_8c.html#aa77b2633437f1e7cf36f3c4e34103795",
+"server_2lib_2tcp_8h_source.html",
+"structCreditsState.html#ae9bcf8366958fbbc60f14e10dffe890d",
+"structWindowConfig.html#a4c53e594702da63bcb0b5041ab02f2d6"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';
 var SYNCOFFMSG = 'cliquez pour activer la synchronisation du panel';
-var LISTOFALLMEMBERS = 'Liste de tous les membres';

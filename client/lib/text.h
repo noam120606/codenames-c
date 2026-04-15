@@ -49,6 +49,11 @@ typedef struct Text {
 TTF_Font* load_font(const char* font_path, int size);
 
 /**
+ * Libère les polices conservées dans le cache global du module texte.
+ */
+void text_font_cache_clear(void);
+
+/**
  * Crée une configuration de texte.
  * @param font_path Chemin vers le fichier de police TTF.
  * @param size Taille de la police.

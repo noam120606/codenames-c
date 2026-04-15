@@ -3,9 +3,11 @@ var crossfader_8h =
     [ "CrossfaderConfig", "structCrossfaderConfig.html", "structCrossfaderConfig" ],
     [ "Crossfader", "structCrossfader.html", "structCrossfader" ],
     [ "MAX_CROSSFADERS", "crossfader_8h.html#a21018c4b39fc408ee095a7ee6ca9f09d", null ],
+    [ "AppContext", "crossfader_8h.html#aab477be81bad6aadbec06506e3cc26a2", null ],
     [ "CrfdCfgKey", "crossfader_8h.html#aeca92bb9bd14fb41274e9dd76f190255", null ],
     [ "Crossfader", "crossfader_8h.html#a8cb153a970d35495ffb273e1f02dbd33", null ],
     [ "CrossfaderConfig", "crossfader_8h.html#a29100e9db07ce4018bf39cfe06eb47bf", null ],
+    [ "CrossfaderId", "crossfader_8h.html#a1a2c1a1721b9e3a6f9181017ceacbb64", null ],
     [ "CrfdCfgKey", "crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6", [
       [ "CRFD_CFG_X", "crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6a070fa40aec610c680335bad37aa4f266", null ],
       [ "CRFD_CFG_Y", "crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6aa79acfb22d0f21e2e2a12c0ebd26cc18", null ],
@@ -27,9 +29,15 @@ var crossfader_8h =
       [ "CRFD_CFG_TRACK_TEXTURE", "crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6ad18fa8ea2a95e56b2773019bdc054050", null ],
       [ "CRFD_CFG_KNOB_TEXTURE", "crossfader_8h.html#afe46759d0a90580e13d099a69c6fc9f6aad27082639893b31a46b0d8c996fb793", null ]
     ] ],
+    [ "CrossfaderId", "crossfader_8h.html#a7e861a2c78ea62992654d8c9c683194c", [
+      [ "CROSSFADER_NONE", "crossfader_8h.html#a7e861a2c78ea62992654d8c9c683194cae6a4a9ea4e969954da65d64d0ab99d9f", null ],
+      [ "CROSSFADER_MUSIC_VOLUME", "crossfader_8h.html#a7e861a2c78ea62992654d8c9c683194caa7b9ef43df12c26bbbb139b627b3172f", null ],
+      [ "CROSSFADER_SFX_VOLUME", "crossfader_8h.html#a7e861a2c78ea62992654d8c9c683194ca303f843e2550847a4a22f4448d85b74d", null ],
+      [ "CROSSFADER_LUMINOSITY", "crossfader_8h.html#a7e861a2c78ea62992654d8c9c683194ca434f7351ccd45bfaf4ba361708fcef87", null ]
+    ] ],
     [ "crossfader_config_init", "crossfader_8h.html#a521dcc82f98f78679b9b0c15528b04c6", null ],
     [ "crossfader_create", "crossfader_8h.html#ad88a14929edf0a596db17799ac96b3d9", null ],
-    [ "crossfader_get", "crossfader_8h.html#a0bed147822b42417aefeea1541272501", null ],
+    [ "crossfader_get_by_id", "crossfader_8h.html#a1ba2eab902df30f04f6de65af87d8690", null ],
     [ "crossfader_get_value", "crossfader_8h.html#abc2d08f47e64af39655f95b7c07f68f1", null ],
     [ "crossfader_set_on_change", "crossfader_8h.html#a519c21fa24125ee05ec1757c26182e90", null ],
     [ "crossfader_set_value", "crossfader_8h.html#aa12b0bd0cbcf2b7137b73c9eacc59a9f", null ],

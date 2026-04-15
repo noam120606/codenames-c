@@ -1,0 +1,1589 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Codenames: Référence du fichier client/src/history.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Codenames<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Jeu Codenames multijoueur en C - Client SDL2 et Serveur TCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('history_8c.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier history.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Implémentation de la gestion d'historique des tours côté client.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="client_2lib_2all_8h_source.html">../lib/all.h</a>&quot;</code><br />
+</div>
+<p><a href="history_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ae6b799424fd39643dd568a184bad3e87" id="r_ae6b799424fd39643dd568a184bad3e87"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#ae6b799424fd39643dd568a184bad3e87">history_find_team_spy_name</a> (const <a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> team)</td></tr>
+<tr class="separator:ae6b799424fd39643dd568a184bad3e87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8ad61a60f3a7344b4033f7d8fc33a73" id="r_ad8ad61a60f3a7344b4033f7d8fc33a73"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#ad8ad61a60f3a7344b4033f7d8fc33a73">history_find_team_agent_name</a> (const <a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> team)</td></tr>
+<tr class="separator:ad8ad61a60f3a7344b4033f7d8fc33a73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b2cc76e3e7f99640bc280c649ac5fe4" id="r_a3b2cc76e3e7f99640bc280c649ac5fe4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#a3b2cc76e3e7f99640bc280c649ac5fe4">history_touch</a> (<a class="el" href="structHistory.html">History</a> *history)</td></tr>
+<tr class="separator:a3b2cc76e3e7f99640bc280c649ac5fe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0af268d7eb09ecbd8370f99ab9d4eeb0" id="r_a0af268d7eb09ecbd8370f99ab9d4eeb0"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#a0af268d7eb09ecbd8370f99ab9d4eeb0">history_push_line</a> (char lines[][<a class="el" href="history_8h.html#a70f6de4abf397f4e2da20062e4177919">HISTORY_LINE_SIZE</a>], <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> line_word_teams[], int line_has_revealed_word_team[], int max_lines, int current_count, const char *line, <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> line_word_team, int has_revealed_word_team)</td></tr>
+<tr class="separator:a0af268d7eb09ecbd8370f99ab9d4eeb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad755e2bbc64289e63bf83315665793ad" id="r_ad755e2bbc64289e63bf83315665793ad"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#ad755e2bbc64289e63bf83315665793ad">history_append_wrapped_line</a> (const char *line, TTF_Font *font, int max_text_width, char out_lines[][<a class="el" href="history_8h.html#a70f6de4abf397f4e2da20062e4177919">HISTORY_LINE_SIZE</a>], int max_lines, int current_count)</td></tr>
+<tr class="separator:ad755e2bbc64289e63bf83315665793ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7809ce73aaef7d5c367c7aa51949ca2f" id="r_a7809ce73aaef7d5c367c7aa51949ca2f"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#a7809ce73aaef7d5c367c7aa51949ca2f">history_font_path_equals</a> (const char *a, const char *b)</td></tr>
+<tr class="separator:a7809ce73aaef7d5c367c7aa51949ca2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fb082e34397005cb5db8426e46392bf" id="r_a9fb082e34397005cb5db8426e46392bf"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#a9fb082e34397005cb5db8426e46392bf">history_colors_equal</a> (SDL_Color left, SDL_Color right)</td></tr>
+<tr class="separator:a9fb082e34397005cb5db8426e46392bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad574e66fd4d557ad3a9630d1318fb056" id="r_ad574e66fd4d557ad3a9630d1318fb056"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#ad574e66fd4d557ad3a9630d1318fb056">history_set_font_path</a> (char *dst, int dst_size, const char *src)</td></tr>
+<tr class="separator:ad574e66fd4d557ad3a9630d1318fb056"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af48882b387cf94f33e92a86ba9f7af0c" id="r_af48882b387cf94f33e92a86ba9f7af0c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#af48882b387cf94f33e92a86ba9f7af0c">history_text_width</a> (const <a class="el" href="structText.html">Text</a> *text)</td></tr>
+<tr class="separator:af48882b387cf94f33e92a86ba9f7af0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7668ce88aa97b780a2b0f30047f58506" id="r_a7668ce88aa97b780a2b0f30047f58506"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#a7668ce88aa97b780a2b0f30047f58506">history_left_anchored_rel_x_with_offset</a> (const <a class="el" href="structWindow.html">Window</a> *history_window, int text_width, int left_padding, int left_offset)</td></tr>
+<tr class="separator:a7668ce88aa97b780a2b0f30047f58506"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addfa32b20aab57487a16ed1d28967b94" id="r_addfa32b20aab57487a16ed1d28967b94"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#addfa32b20aab57487a16ed1d28967b94">history_extract_turn_prefix</a> (const char *line, char *prefix, int prefix_size, int *prefix_len)</td></tr>
+<tr class="separator:addfa32b20aab57487a16ed1d28967b94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9a0d3dcfbf8d9ae748935699aabc5c9" id="r_ad9a0d3dcfbf8d9ae748935699aabc5c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#ad9a0d3dcfbf8d9ae748935699aabc5c9">history_get_turn_prefix_text</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, const char *font_path, int font_size, Uint8 opacity)</td></tr>
+<tr class="separator:ad9a0d3dcfbf8d9ae748935699aabc5c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67d7a9fd746f97315e721b266242fedf" id="r_a67d7a9fd746f97315e721b266242fedf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#a67d7a9fd746f97315e721b266242fedf">history_render_turn_prefix</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, const <a class="el" href="structWindow.html">Window</a> *history_window, int left_padding, const char *prefix_text, int rel_y, <a class="el" href="structText.html">Text</a> *turn_prefix_text)</td></tr>
+<tr class="separator:a67d7a9fd746f97315e721b266242fedf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52930d479f298952445c331abd7ab0eb" id="r_a52930d479f298952445c331abd7ab0eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#a52930d479f298952445c331abd7ab0eb">history_destroy_turn_prefix_text</a> (void)</td></tr>
+<tr class="separator:a52930d479f298952445c331abd7ab0eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1257fa208c07479eebabe348a975982b" id="r_a1257fa208c07479eebabe348a975982b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#a1257fa208c07479eebabe348a975982b">history_normalize_revealed_word_team</a> (<a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> team)</td></tr>
+<tr class="separator:a1257fa208c07479eebabe348a975982b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3986dcf71a5ea98eb6c4bf263466136b" id="r_a3986dcf71a5ea98eb6c4bf263466136b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#a3986dcf71a5ea98eb6c4bf263466136b">history_find_revealed_word_team</a> (const <a class="el" href="structGame.html">Game</a> *game, const char *word)</td></tr>
+<tr class="separator:a3986dcf71a5ea98eb6c4bf263466136b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70d3c495b838dedd227eeacc88fcaeab" id="r_a70d3c495b838dedd227eeacc88fcaeab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structHistory.html">History</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#a70d3c495b838dedd227eeacc88fcaeab">history_get_for_team</a> (<a class="el" href="structGame.html">Game</a> *game, <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> team)</td></tr>
+<tr class="separator:a70d3c495b838dedd227eeacc88fcaeab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad90e9665380bbd2764ecf6612266583f" id="r_ad90e9665380bbd2764ecf6612266583f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#ad90e9665380bbd2764ecf6612266583f">history_team_from_agent_state</a> (<a class="el" href="client_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a> state)</td></tr>
+<tr class="separator:ad90e9665380bbd2764ecf6612266583f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89d935a7fbf34e8ab6179a9d0e6adbef" id="r_a89d935a7fbf34e8ab6179a9d0e6adbef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#a89d935a7fbf34e8ab6179a9d0e6adbef">history_reset</a> (<a class="el" href="structHistory.html">History</a> *history)</td></tr>
+<tr class="separator:a89d935a7fbf34e8ab6179a9d0e6adbef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78d8741208ee75c4f7d70a097c263284" id="r_a78d8741208ee75c4f7d70a097c263284"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#a78d8741208ee75c4f7d70a097c263284">history_start_turn</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> team, const char *hint, int hint_count)</td></tr>
+<tr class="separator:a78d8741208ee75c4f7d70a097c263284"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0903143b198faa755b31353907981c0d" id="r_a0903143b198faa755b31353907981c0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#a0903143b198faa755b31353907981c0d">history_ensure_turn</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> team, const char *hint, int hint_count)</td></tr>
+<tr class="separator:a0903143b198faa755b31353907981c0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a407afcc739826576b6e34b89fce81e15" id="r_a407afcc739826576b6e34b89fce81e15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#a407afcc739826576b6e34b89fce81e15">history_append_revealed_word</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> team, const char *word, <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> revealed_word_team, const char *agent_name)</td></tr>
+<tr class="separator:a407afcc739826576b6e34b89fce81e15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96426b2db2a69741bba50a0b6598469e" id="r_a96426b2db2a69741bba50a0b6598469e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#a96426b2db2a69741bba50a0b6598469e">history_update_last_turn</a> (<a class="el" href="structHistory.html">History</a> *history, const char *spy_name, const char *hint, int hint_count)</td></tr>
+<tr class="separator:a96426b2db2a69741bba50a0b6598469e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb5102bdb1cfaf69c12ec54291264bf5" id="r_afb5102bdb1cfaf69c12ec54291264bf5"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#afb5102bdb1cfaf69c12ec54291264bf5">history_build_lines_internal</a> (const <a class="el" href="structHistory.html">History</a> *history, char lines[][<a class="el" href="history_8h.html#a70f6de4abf397f4e2da20062e4177919">HISTORY_LINE_SIZE</a>], <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> line_word_teams[], int line_has_revealed_word_team[], int max_lines)</td></tr>
+<tr class="separator:afb5102bdb1cfaf69c12ec54291264bf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45ce81331af90d1cd7f231b5028a5ca2" id="r_a45ce81331af90d1cd7f231b5028a5ca2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#a45ce81331af90d1cd7f231b5028a5ca2">history_build_lines</a> (const <a class="el" href="structHistory.html">History</a> *history, char lines[][<a class="el" href="history_8h.html#a70f6de4abf397f4e2da20062e4177919">HISTORY_LINE_SIZE</a>], int max_lines)</td></tr>
+<tr class="separator:a45ce81331af90d1cd7f231b5028a5ca2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7d55d0d2356c4d71548da5bb0813b3d" id="r_ab7d55d0d2356c4d71548da5bb0813b3d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#ab7d55d0d2356c4d71548da5bb0813b3d">history_build_wrapped_lines</a> (const <a class="el" href="structHistory.html">History</a> *history, const char *font_path, int font_size, int max_text_width, char lines[][<a class="el" href="history_8h.html#a70f6de4abf397f4e2da20062e4177919">HISTORY_LINE_SIZE</a>], int max_lines)</td></tr>
+<tr class="separator:ab7d55d0d2356c4d71548da5bb0813b3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a098797dd96dbe3d003d421c733bef2f4" id="r_a098797dd96dbe3d003d421c733bef2f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#a098797dd96dbe3d003d421c733bef2f4">history_wrap_cache_invalidate</a> (<a class="el" href="structHistoryWrapCache.html">HistoryWrapCache</a> *cache)</td></tr>
+<tr class="separator:a098797dd96dbe3d003d421c733bef2f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bcaed86898dcfa07691839873488e3d" id="r_a9bcaed86898dcfa07691839873488e3d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#a9bcaed86898dcfa07691839873488e3d">history_build_wrapped_lines_cached</a> (const <a class="el" href="structHistory.html">History</a> *history, const char *font_path, int font_size, int max_text_width, <a class="el" href="structHistoryWrapCache.html">HistoryWrapCache</a> *cache)</td></tr>
+<tr class="separator:a9bcaed86898dcfa07691839873488e3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a00d0f797e2c10c55a3bfd3f3fb6c8984" id="r_a00d0f797e2c10c55a3bfd3f3fb6c8984"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#a00d0f797e2c10c55a3bfd3f3fb6c8984">history_turn_prefix_text</a> = NULL</td></tr>
+<tr class="separator:a00d0f797e2c10c55a3bfd3f3fb6c8984"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac41617fc8ae6a484b9cad9087492c370" id="r_ac41617fc8ae6a484b9cad9087492c370"><td class="memItemLeft" align="right" valign="top">static const SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="history_8c.html#ac41617fc8ae6a484b9cad9087492c370">HISTORY_TURN_PREFIX_COLOR</a> = {0, 200, 0, 255}</td></tr>
+<tr class="separator:ac41617fc8ae6a484b9cad9087492c370"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Implémentation de la gestion d'historique des tours côté client. </p>
+
+<p class="definition">Définition dans le fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a407afcc739826576b6e34b89fce81e15" name="a407afcc739826576b6e34b89fce81e15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a407afcc739826576b6e34b89fce81e15">&#9670;&#160;</a></span>history_append_revealed_word()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void history_append_revealed_word </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td>
+          <td class="paramname"><em>team</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>word</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td>
+          <td class="paramname"><em>revealed_word_team</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>agent_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ajoute un mot révélé au dernier tour de l'équipe. Si aucun tour n'existe, un tour est créé automatiquement. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>Contexte applicatif. </td></tr>
+    <tr><td class="paramname">team</td><td>Équipe concernée. </td></tr>
+    <tr><td class="paramname">word</td><td>Mot révélé à enregistrer. </td></tr>
+    <tr><td class="paramname">revealed_word_team</td><td>TEAM du mot révélé (TEAM_NONE si inconnue). </td></tr>
+    <tr><td class="paramname">agent_name</td><td>Nom de l'agent ayant révélé le mot (peut être NULL). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00345">345</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="history_8h_source.html#l00043">Turn::agent_name</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00127">Game::current_hint</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00128">Game::current_hint_count</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00076">Lobby::game</a>, <a class="el" href="history_8c_source.html#l00273">history_find_revealed_word_team()</a>, <a class="el" href="history_8c_source.html#l00025">history_find_team_agent_name()</a>, <a class="el" href="history_8c_source.html#l00287">history_get_for_team()</a>, <a class="el" href="history_8c_source.html#l00266">history_normalize_revealed_word_team()</a>, <a class="el" href="history_8c_source.html#l00306">history_start_turn()</a>, <a class="el" href="history_8c_source.html#l00039">history_touch()</a>, <a class="el" href="sdl_8h_source.html#l00059">AppContext::lobby</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00018">NB_WORDS</a>, <a class="el" href="history_8h_source.html#l00046">Turn::revealed_word_count</a>, <a class="el" href="history_8h_source.html#l00047">Turn::revealed_word_teams</a>, <a class="el" href="history_8h_source.html#l00045">Turn::revealed_words</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00038">TEAM_NONE</a>, <a class="el" href="history_8h_source.html#l00057">History::turn_count</a>, et <a class="el" href="history_8h_source.html#l00056">History::turns</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>.</p>
+
+</div>
+</div>
+<a id="ad755e2bbc64289e63bf83315665793ad" name="ad755e2bbc64289e63bf83315665793ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad755e2bbc64289e63bf83315665793ad">&#9670;&#160;</a></span>history_append_wrapped_line()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int history_append_wrapped_line </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>font</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_text_width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>out_lines</em>[][HISTORY_LINE_SIZE], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_lines</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>current_count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00070">70</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="history_8h_source.html#l00016">HISTORY_LINE_SIZE</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="history_8c_source.html#l00502">history_build_wrapped_lines()</a>, et <a class="el" href="history_8c_source.html#l00546">history_build_wrapped_lines_cached()</a>.</p>
+
+</div>
+</div>
+<a id="a45ce81331af90d1cd7f231b5028a5ca2" name="a45ce81331af90d1cd7f231b5028a5ca2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45ce81331af90d1cd7f231b5028a5ca2">&#9670;&#160;</a></span>history_build_lines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int history_build_lines </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structHistory.html">History</a> *&#160;</td>
+          <td class="paramname"><em>history</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>lines</em>[][HISTORY_LINE_SIZE], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_lines</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Construit des lignes prêtes à afficher pour un historique d'équipe. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">history</td><td>Historique source. </td></tr>
+    <tr><td class="paramname">lines</td><td>Tampon de sortie de type [max_lines][HISTORY_LINE_SIZE]. </td></tr>
+    <tr><td class="paramname">max_lines</td><td>Nombre de lignes disponibles dans le tampon. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Nombre de lignes réellement écrites. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00498">498</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="history_8c_source.html#l00416">history_build_lines_internal()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="history_8c_source.html#l00502">history_build_wrapped_lines()</a>.</p>
+
+</div>
+</div>
+<a id="afb5102bdb1cfaf69c12ec54291264bf5" name="afb5102bdb1cfaf69c12ec54291264bf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb5102bdb1cfaf69c12ec54291264bf5">&#9670;&#160;</a></span>history_build_lines_internal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int history_build_lines_internal </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structHistory.html">History</a> *&#160;</td>
+          <td class="paramname"><em>history</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>lines</em>[][HISTORY_LINE_SIZE], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td>
+          <td class="paramname"><em>line_word_teams</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>line_has_revealed_word_team</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_lines</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00416">416</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="history_8h_source.html#l00043">Turn::agent_name</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00046">format_to()</a>, <a class="el" href="history_8h_source.html#l00044">Turn::hint</a>, <a class="el" href="history_8h_source.html#l00042">Turn::hint_count</a>, <a class="el" href="history_8h_source.html#l00016">HISTORY_LINE_SIZE</a>, <a class="el" href="history_8c_source.html#l00266">history_normalize_revealed_word_team()</a>, <a class="el" href="history_8c_source.html#l00044">history_push_line()</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00018">NB_WORDS</a>, <a class="el" href="history_8h_source.html#l00047">Turn::revealed_word_teams</a>, <a class="el" href="history_8h_source.html#l00045">Turn::revealed_words</a>, <a class="el" href="history_8h_source.html#l00041">Turn::spy_name</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00038">TEAM_NONE</a>, <a class="el" href="history_8h_source.html#l00057">History::turn_count</a>, et <a class="el" href="history_8h_source.html#l00056">History::turns</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="history_8c_source.html#l00498">history_build_lines()</a>, et <a class="el" href="history_8c_source.html#l00546">history_build_wrapped_lines_cached()</a>.</p>
+
+</div>
+</div>
+<a id="ab7d55d0d2356c4d71548da5bb0813b3d" name="ab7d55d0d2356c4d71548da5bb0813b3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7d55d0d2356c4d71548da5bb0813b3d">&#9670;&#160;</a></span>history_build_wrapped_lines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int history_build_wrapped_lines </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structHistory.html">History</a> *&#160;</td>
+          <td class="paramname"><em>history</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>font_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>font_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_text_width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>lines</em>[][HISTORY_LINE_SIZE], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_lines</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Construit des lignes prêtes à afficher avec retour à la ligne automatique. Le wrapping est calculé en fonction d'une largeur maximale en pixels. Si la police est indisponible, les lignes sont copiées sans mesure de largeur. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">history</td><td>Historique source. </td></tr>
+    <tr><td class="paramname">font_path</td><td>Chemin de la police utilisée pour mesurer la largeur (peut être NULL). </td></tr>
+    <tr><td class="paramname">font_size</td><td>Taille de police utilisée pour la mesure (doit être &gt; 0 avec font_path). </td></tr>
+    <tr><td class="paramname">max_text_width</td><td>Largeur maximale d'une ligne en pixels. </td></tr>
+    <tr><td class="paramname">lines</td><td>Tampon de sortie de type [max_lines][HISTORY_LINE_SIZE]. </td></tr>
+    <tr><td class="paramname">max_lines</td><td>Nombre de lignes disponibles dans le tampon. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Nombre de lignes réellement écrites. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00502">502</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="history_8c_source.html#l00070">history_append_wrapped_line()</a>, <a class="el" href="history_8c_source.html#l00498">history_build_lines()</a>, <a class="el" href="history_8h_source.html#l00016">HISTORY_LINE_SIZE</a>, et <a class="el" href="history_8h_source.html#l00022">HISTORY_MAX_BASE_LINES</a>.</p>
+
+</div>
+</div>
+<a id="a9bcaed86898dcfa07691839873488e3d" name="a9bcaed86898dcfa07691839873488e3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bcaed86898dcfa07691839873488e3d">&#9670;&#160;</a></span>history_build_wrapped_lines_cached()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int history_build_wrapped_lines_cached </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structHistory.html">History</a> *&#160;</td>
+          <td class="paramname"><em>history</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>font_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>font_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_text_width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structHistoryWrapCache.html">HistoryWrapCache</a> *&#160;</td>
+          <td class="paramname"><em>cache</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Récupère les lignes d'historique wrapées via un cache. Le wrapping est recalculé uniquement si nécessaire. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">history</td><td>Historique source. </td></tr>
+    <tr><td class="paramname">font_path</td><td>Chemin de la police utilisée pour mesurer la largeur (peut être NULL). </td></tr>
+    <tr><td class="paramname">font_size</td><td>Taille de police utilisée pour la mesure. </td></tr>
+    <tr><td class="paramname">max_text_width</td><td>Largeur maximale d'une ligne en pixels. </td></tr>
+    <tr><td class="paramname">cache</td><td>Cache de rendu à remplir/réutiliser. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Nombre total de lignes disponibles dans cache-&gt;lines. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00546">546</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="history_8h_source.html#l00070">HistoryWrapCache::font_path</a>, <a class="el" href="history_8h_source.html#l00069">HistoryWrapCache::font_size</a>, <a class="el" href="history_8c_source.html#l00070">history_append_wrapped_line()</a>, <a class="el" href="history_8c_source.html#l00416">history_build_lines_internal()</a>, <a class="el" href="history_8c_source.html#l00169">history_font_path_equals()</a>, <a class="el" href="history_8h_source.html#l00028">HISTORY_FONT_PATH_MAX</a>, <a class="el" href="history_8h_source.html#l00016">HISTORY_LINE_SIZE</a>, <a class="el" href="history_8h_source.html#l00022">HISTORY_MAX_BASE_LINES</a>, <a class="el" href="history_8h_source.html#l00025">HISTORY_MAX_RENDER_LINES</a>, <a class="el" href="history_8c_source.html#l00266">history_normalize_revealed_word_team()</a>, <a class="el" href="history_8c_source.html#l00179">history_set_font_path()</a>, <a class="el" href="history_8h_source.html#l00072">HistoryWrapCache::is_valid</a>, <a class="el" href="history_8h_source.html#l00075">HistoryWrapCache::line_has_revealed_word_team</a>, <a class="el" href="history_8h_source.html#l00074">HistoryWrapCache::line_word_teams</a>, <a class="el" href="history_8h_source.html#l00073">HistoryWrapCache::lines</a>, <a class="el" href="history_8h_source.html#l00068">HistoryWrapCache::max_text_width</a>, <a class="el" href="history_8h_source.html#l00058">History::revision</a>, <a class="el" href="history_8h_source.html#l00066">HistoryWrapCache::source_history</a>, <a class="el" href="history_8h_source.html#l00067">HistoryWrapCache::source_revision</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00038">TEAM_NONE</a>, et <a class="el" href="history_8h_source.html#l00071">HistoryWrapCache::total_lines</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l01015">game_render_team_history()</a>.</p>
+
+</div>
+</div>
+<a id="a9fb082e34397005cb5db8426e46392bf" name="a9fb082e34397005cb5db8426e46392bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fb082e34397005cb5db8426e46392bf">&#9670;&#160;</a></span>history_colors_equal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int history_colors_equal </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Color&#160;</td>
+          <td class="paramname"><em>left</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Color&#160;</td>
+          <td class="paramname"><em>right</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00175">175</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="history_8c_source.html#l00241">history_render_turn_prefix()</a>.</p>
+
+</div>
+</div>
+<a id="a52930d479f298952445c331abd7ab0eb" name="a52930d479f298952445c331abd7ab0eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52930d479f298952445c331abd7ab0eb">&#9670;&#160;</a></span>history_destroy_turn_prefix_text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void history_destroy_turn_prefix_text </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Libère les ressources de rendu internes de l'historique. </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00259">259</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="text_8c_source.html#l00177">destroy_text()</a>, et <a class="el" href="history_8c_source.html#l00008">history_turn_prefix_text</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l01364">game_free()</a>.</p>
+
+</div>
+</div>
+<a id="a0903143b198faa755b31353907981c0d" name="a0903143b198faa755b31353907981c0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0903143b198faa755b31353907981c0d">&#9670;&#160;</a></span>history_ensure_turn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void history_ensure_turn </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td>
+          <td class="paramname"><em>team</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>hint</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>hint_count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Garantit qu'au moins un tour existe pour l'équipe. Si aucun tour n'existe, en crée un avec l'indice fourni. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>Contexte applicatif. </td></tr>
+    <tr><td class="paramname">team</td><td>Équipe concernée. </td></tr>
+    <tr><td class="paramname">hint</td><td>Indice à associer au tour créé (peut être NULL). </td></tr>
+    <tr><td class="paramname">hint_count</td><td>Nombre associé à l'indice (0 si indisponible). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00335">335</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2lib_2lobby_8h_source.html#l00076">Lobby::game</a>, <a class="el" href="history_8c_source.html#l00287">history_get_for_team()</a>, <a class="el" href="history_8c_source.html#l00306">history_start_turn()</a>, <a class="el" href="sdl_8h_source.html#l00059">AppContext::lobby</a>, et <a class="el" href="history_8h_source.html#l00057">History::turn_count</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>.</p>
+
+</div>
+</div>
+<a id="addfa32b20aab57487a16ed1d28967b94" name="addfa32b20aab57487a16ed1d28967b94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addfa32b20aab57487a16ed1d28967b94">&#9670;&#160;</a></span>history_extract_turn_prefix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int history_extract_turn_prefix </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>prefix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>prefix_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>prefix_len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Extrait le préfixe de tour au format "Tour %d -" (incluant l'espace suivant si présent). </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">line</td><td>Ligne d'historique source. </td></tr>
+    <tr><td class="paramname">prefix</td><td>Tampon de sortie pour le préfixe. </td></tr>
+    <tr><td class="paramname">prefix_size</td><td>Taille du tampon prefix. </td></tr>
+    <tr><td class="paramname">prefix_len</td><td>Longueur extraite dans la ligne source. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS si un préfixe a été extrait, EXIT_FAILURE sinon. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00200">200</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l01015">game_render_team_history()</a>.</p>
+
+</div>
+</div>
+<a id="a3986dcf71a5ea98eb6c4bf263466136b" name="a3986dcf71a5ea98eb6c4bf263466136b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3986dcf71a5ea98eb6c4bf263466136b">&#9670;&#160;</a></span>history_find_revealed_word_team()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> history_find_revealed_word_team </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structGame.html">Game</a> *&#160;</td>
+          <td class="paramname"><em>game</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>word</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00273">273</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2lib_2game_8h_source.html#l00124">Game::cards</a>, <a class="el" href="history_8c_source.html#l00266">history_normalize_revealed_word_team()</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00125">Game::nb_words</a>, <a class="el" href="card_8h_source.html#l00043">Card::team</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00038">TEAM_NONE</a>, et <a class="el" href="card_8h_source.html#l00042">Card::word</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="history_8c_source.html#l00345">history_append_revealed_word()</a>.</p>
+
+</div>
+</div>
+<a id="ad8ad61a60f3a7344b4033f7d8fc33a73" name="ad8ad61a60f3a7344b4033f7d8fc33a73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8ad61a60f3a7344b4033f7d8fc33a73">&#9670;&#160;</a></span>history_find_team_agent_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const char * history_find_team_agent_name </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td>
+          <td class="paramname"><em>team</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00025">25</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00059">AppContext::lobby</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00017">MAX_USERS</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00030">User::name</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00031">User::role</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00019">ROLE_AGENT</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00032">User::team</a>, et <a class="el" href="client_2lib_2lobby_8h_source.html#l00074">Lobby::users</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="history_8c_source.html#l00345">history_append_revealed_word()</a>.</p>
+
+</div>
+</div>
+<a id="ae6b799424fd39643dd568a184bad3e87" name="ae6b799424fd39643dd568a184bad3e87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6b799424fd39643dd568a184bad3e87">&#9670;&#160;</a></span>history_find_team_spy_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const char * history_find_team_spy_name </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td>
+          <td class="paramname"><em>team</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00011">11</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="sdl_8h_source.html#l00059">AppContext::lobby</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00017">MAX_USERS</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00030">User::name</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00031">User::role</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00018">ROLE_SPY</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00032">User::team</a>, et <a class="el" href="client_2lib_2lobby_8h_source.html#l00074">Lobby::users</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="history_8c_source.html#l00306">history_start_turn()</a>.</p>
+
+</div>
+</div>
+<a id="a7809ce73aaef7d5c367c7aa51949ca2f" name="a7809ce73aaef7d5c367c7aa51949ca2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7809ce73aaef7d5c367c7aa51949ca2f">&#9670;&#160;</a></span>history_font_path_equals()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int history_font_path_equals </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00169">169</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="history_8c_source.html#l00546">history_build_wrapped_lines_cached()</a>, et <a class="el" href="history_8c_source.html#l00221">history_get_turn_prefix_text()</a>.</p>
+
+</div>
+</div>
+<a id="a70d3c495b838dedd227eeacc88fcaeab" name="a70d3c495b838dedd227eeacc88fcaeab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70d3c495b838dedd227eeacc88fcaeab">&#9670;&#160;</a></span>history_get_for_team()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structHistory.html">History</a> * history_get_for_team </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structGame.html">Game</a> *&#160;</td>
+          <td class="paramname"><em>game</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td>
+          <td class="paramname"><em>team</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Retourne l'historique associé à une équipe. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game</td><td>Partie cible. </td></tr>
+    <tr><td class="paramname">team</td><td>Équipe cible (TEAM_RED ou TEAM_BLUE). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Pointeur vers l'historique de l'équipe, ou NULL si invalide. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00287">287</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2lib_2game_8h_source.html#l00130">Game::blue_history</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00129">Game::red_history</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00040">TEAM_BLUE</a>, et <a class="el" href="client_2lib_2game_8h_source.html#l00039">TEAM_RED</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="history_8c_source.html#l00345">history_append_revealed_word()</a>, <a class="el" href="history_8c_source.html#l00335">history_ensure_turn()</a>, <a class="el" href="history_8c_source.html#l00306">history_start_turn()</a>, et <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>.</p>
+
+</div>
+</div>
+<a id="ad9a0d3dcfbf8d9ae748935699aabc5c9" name="ad9a0d3dcfbf8d9ae748935699aabc5c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9a0d3dcfbf8d9ae748935699aabc5c9">&#9670;&#160;</a></span>history_get_turn_prefix_text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structText.html">Text</a> * history_get_turn_prefix_text </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>font_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>font_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Uint8&#160;</td>
+          <td class="paramname"><em>opacity</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Récupère (ou crée) un objet texte réutilisable pour le préfixe de tour coloré. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>Contexte applicatif. </td></tr>
+    <tr><td class="paramname">font_path</td><td>Police utilisée. </td></tr>
+    <tr><td class="paramname">font_size</td><td>Taille de police. </td></tr>
+    <tr><td class="paramname">opacity</td><td>Opacité à appliquer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Objet texte réutilisable, ou NULL si indisponible. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00221">221</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="text_8h_source.html#l00039">Text::cfg</a>, <a class="el" href="text_8c_source.html#l00064">create_text_config()</a>, <a class="el" href="text_8h_source.html#l00022">TextConfig::font_path</a>, <a class="el" href="text_8h_source.html#l00023">TextConfig::font_size</a>, <a class="el" href="history_8c_source.html#l00169">history_font_path_equals()</a>, <a class="el" href="history_8c_source.html#l00009">HISTORY_TURN_PREFIX_COLOR</a>, <a class="el" href="history_8c_source.html#l00008">history_turn_prefix_text</a>, <a class="el" href="text_8c_source.html#l00120">init_text()</a>, <a class="el" href="text_8h_source.html#l00028">TextConfig::opacity</a>, et <a class="el" href="text_8c_source.html#l00076">reload_text()</a>.</p>
+
+</div>
+</div>
+<a id="a7668ce88aa97b780a2b0f30047f58506" name="a7668ce88aa97b780a2b0f30047f58506"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7668ce88aa97b780a2b0f30047f58506">&#9670;&#160;</a></span>history_left_anchored_rel_x_with_offset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int history_left_anchored_rel_x_with_offset </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structWindow.html">Window</a> *&#160;</td>
+          <td class="paramname"><em>history_window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>text_width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>left_padding</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>left_offset</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Calcule une position X relative ancrée à gauche avec offset additionnel. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">history_window</td><td>Fenêtre de référence. </td></tr>
+    <tr><td class="paramname">text_width</td><td>Largeur du texte en pixels. </td></tr>
+    <tr><td class="paramname">left_padding</td><td>Marge gauche de la zone de rendu. </td></tr>
+    <tr><td class="paramname">left_offset</td><td>Décalage horizontal supplémentaire. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Position X relative. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00195">195</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="window_8h_source.html#l00107">Window::cfg</a>, et <a class="el" href="window_8h_source.html#l00071">WindowConfig::w</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l01015">game_render_team_history()</a>, et <a class="el" href="history_8c_source.html#l00241">history_render_turn_prefix()</a>.</p>
+
+</div>
+</div>
+<a id="a1257fa208c07479eebabe348a975982b" name="a1257fa208c07479eebabe348a975982b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1257fa208c07479eebabe348a975982b">&#9670;&#160;</a></span>history_normalize_revealed_word_team()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> history_normalize_revealed_word_team </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td>
+          <td class="paramname"><em>team</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00266">266</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2lib_2game_8h_source.html#l00041">TEAM_BLACK</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00040">TEAM_BLUE</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00038">TEAM_NONE</a>, et <a class="el" href="client_2lib_2game_8h_source.html#l00039">TEAM_RED</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="history_8c_source.html#l00345">history_append_revealed_word()</a>, <a class="el" href="history_8c_source.html#l00416">history_build_lines_internal()</a>, <a class="el" href="history_8c_source.html#l00546">history_build_wrapped_lines_cached()</a>, et <a class="el" href="history_8c_source.html#l00273">history_find_revealed_word_team()</a>.</p>
+
+</div>
+</div>
+<a id="a0af268d7eb09ecbd8370f99ab9d4eeb0" name="a0af268d7eb09ecbd8370f99ab9d4eeb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0af268d7eb09ecbd8370f99ab9d4eeb0">&#9670;&#160;</a></span>history_push_line()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int history_push_line </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>lines</em>[][HISTORY_LINE_SIZE], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td>
+          <td class="paramname"><em>line_word_teams</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>line_has_revealed_word_team</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_lines</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>current_count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td>
+          <td class="paramname"><em>line_word_team</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>has_revealed_word_team</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00044">44</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="history_8h_source.html#l00016">HISTORY_LINE_SIZE</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="history_8c_source.html#l00416">history_build_lines_internal()</a>.</p>
+
+</div>
+</div>
+<a id="a67d7a9fd746f97315e721b266242fedf" name="a67d7a9fd746f97315e721b266242fedf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67d7a9fd746f97315e721b266242fedf">&#9670;&#160;</a></span>history_render_turn_prefix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int history_render_turn_prefix </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structWindow.html">Window</a> *&#160;</td>
+          <td class="paramname"><em>history_window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>left_padding</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>prefix_text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>rel_y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structText.html">Text</a> *&#160;</td>
+          <td class="paramname"><em>turn_prefix_text</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Rend le préfixe de tour coloré et retourne sa largeur en pixels. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>Contexte applicatif. </td></tr>
+    <tr><td class="paramname">history_window</td><td>Fenêtre d'historique cible. </td></tr>
+    <tr><td class="paramname">left_padding</td><td>Marge gauche de la zone de rendu. </td></tr>
+    <tr><td class="paramname">prefix_text</td><td>Préfixe à afficher. </td></tr>
+    <tr><td class="paramname">rel_y</td><td>Position Y relative de la ligne. </td></tr>
+    <tr><td class="paramname">turn_prefix_text</td><td>Objet texte pré-alloué (issu de history_get_turn_prefix_text). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Largeur en pixels du préfixe rendu. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00241">241</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="text_8h_source.html#l00039">Text::cfg</a>, <a class="el" href="text_8h_source.html#l00024">TextConfig::color</a>, <a class="el" href="text_8h_source.html#l00038">Text::content</a>, <a class="el" href="text_8c_source.html#l00154">display_text()</a>, <a class="el" href="history_8c_source.html#l00175">history_colors_equal()</a>, <a class="el" href="history_8c_source.html#l00195">history_left_anchored_rel_x_with_offset()</a>, <a class="el" href="history_8c_source.html#l00187">history_text_width()</a>, <a class="el" href="history_8c_source.html#l00009">HISTORY_TURN_PREFIX_COLOR</a>, <a class="el" href="text_8c_source.html#l00128">update_text()</a>, <a class="el" href="text_8c_source.html#l00144">update_text_color()</a>, et <a class="el" href="window_8c_source.html#l00524">window_place_text()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l01015">game_render_team_history()</a>.</p>
+
+</div>
+</div>
+<a id="a89d935a7fbf34e8ab6179a9d0e6adbef" name="a89d935a7fbf34e8ab6179a9d0e6adbef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89d935a7fbf34e8ab6179a9d0e6adbef">&#9670;&#160;</a></span>history_reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void history_reset </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structHistory.html">History</a> *&#160;</td>
+          <td class="paramname"><em>history</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Réinitialise un historique d'équipe. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">history</td><td>Historique à vider. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00300">300</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="history_8h_source.html#l00058">History::revision</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>.</p>
+
+</div>
+</div>
+<a id="ad574e66fd4d557ad3a9630d1318fb056" name="ad574e66fd4d557ad3a9630d1318fb056"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad574e66fd4d557ad3a9630d1318fb056">&#9670;&#160;</a></span>history_set_font_path()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void history_set_font_path </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>dst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dst_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>src</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00179">179</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="history_8c_source.html#l00546">history_build_wrapped_lines_cached()</a>.</p>
+
+</div>
+</div>
+<a id="a78d8741208ee75c4f7d70a097c263284" name="a78d8741208ee75c4f7d70a097c263284"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78d8741208ee75c4f7d70a097c263284">&#9670;&#160;</a></span>history_start_turn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void history_start_turn </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a>&#160;</td>
+          <td class="paramname"><em>team</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>hint</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>hint_count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Crée un nouveau tour dans l'historique de l'équipe. Le nom d'espion est résolu depuis le lobby courant si possible. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>Contexte applicatif. </td></tr>
+    <tr><td class="paramname">team</td><td>Équipe concernée. </td></tr>
+    <tr><td class="paramname">hint</td><td>Indice associé au tour (peut être NULL). </td></tr>
+    <tr><td class="paramname">hint_count</td><td>Nombre associé à l'indice (0 si indisponible). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00306">306</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2lib_2lobby_8h_source.html#l00076">Lobby::game</a>, <a class="el" href="history_8h_source.html#l00044">Turn::hint</a>, <a class="el" href="history_8h_source.html#l00042">Turn::hint_count</a>, <a class="el" href="history_8c_source.html#l00011">history_find_team_spy_name()</a>, <a class="el" href="history_8c_source.html#l00287">history_get_for_team()</a>, <a class="el" href="history_8c_source.html#l00039">history_touch()</a>, <a class="el" href="sdl_8h_source.html#l00059">AppContext::lobby</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00018">NB_WORDS</a>, <a class="el" href="history_8h_source.html#l00041">Turn::spy_name</a>, <a class="el" href="history_8h_source.html#l00057">History::turn_count</a>, et <a class="el" href="history_8h_source.html#l00056">History::turns</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="history_8c_source.html#l00345">history_append_revealed_word()</a>, <a class="el" href="history_8c_source.html#l00335">history_ensure_turn()</a>, et <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>.</p>
+
+</div>
+</div>
+<a id="ad90e9665380bbd2764ecf6612266583f" name="ad90e9665380bbd2764ecf6612266583f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad90e9665380bbd2764ecf6612266583f">&#9670;&#160;</a></span>history_team_from_agent_state()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="client_2lib_2game_8h.html#a9c13bb5b1d69698f9b47900990eaa598">Team</a> history_team_from_agent_state </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="client_2lib_2game_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a>&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Déduit l'équipe active à partir d'un état de tour agent. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>État de jeu courant. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>TEAM_RED ou TEAM_BLUE pour les états agent, TEAM_NONE sinon. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00294">294</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2lib_2game_8h_source.html#l00072">GAMESTATE_TURN_BLUE_AGENT</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00070">GAMESTATE_TURN_RED_AGENT</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00040">TEAM_BLUE</a>, <a class="el" href="client_2lib_2game_8h_source.html#l00038">TEAM_NONE</a>, et <a class="el" href="client_2lib_2game_8h_source.html#l00039">TEAM_RED</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>.</p>
+
+</div>
+</div>
+<a id="af48882b387cf94f33e92a86ba9f7af0c" name="af48882b387cf94f33e92a86ba9f7af0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af48882b387cf94f33e92a86ba9f7af0c">&#9670;&#160;</a></span>history_text_width()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int history_text_width </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structText.html">Text</a> *&#160;</td>
+          <td class="paramname"><em>text</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Retourne la largeur d'un objet texte en pixels. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text</td><td>Objet texte source. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Largeur en pixels (0 si indisponible). </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00187">187</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="text_8h_source.html#l00040">Text::texture</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l01015">game_render_team_history()</a>, et <a class="el" href="history_8c_source.html#l00241">history_render_turn_prefix()</a>.</p>
+
+</div>
+</div>
+<a id="a3b2cc76e3e7f99640bc280c649ac5fe4" name="a3b2cc76e3e7f99640bc280c649ac5fe4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b2cc76e3e7f99640bc280c649ac5fe4">&#9670;&#160;</a></span>history_touch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void history_touch </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structHistory.html">History</a> *&#160;</td>
+          <td class="paramname"><em>history</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00039">39</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="history_8h_source.html#l00058">History::revision</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="history_8c_source.html#l00345">history_append_revealed_word()</a>, <a class="el" href="history_8c_source.html#l00306">history_start_turn()</a>, et <a class="el" href="history_8c_source.html#l00393">history_update_last_turn()</a>.</p>
+
+</div>
+</div>
+<a id="a96426b2db2a69741bba50a0b6598469e" name="a96426b2db2a69741bba50a0b6598469e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96426b2db2a69741bba50a0b6598469e">&#9670;&#160;</a></span>history_update_last_turn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int history_update_last_turn </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structHistory.html">History</a> *&#160;</td>
+          <td class="paramname"><em>history</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>spy_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>hint</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>hint_count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Met à jour les métadonnées du dernier tour (nom espion/indice/compte) et invalide le cache associé. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">history</td><td>Historique à modifier. </td></tr>
+    <tr><td class="paramname">spy_name</td><td>Nom de l'espion (peut être NULL pour ne pas modifier). </td></tr>
+    <tr><td class="paramname">hint</td><td>Indice (peut être NULL pour ne pas modifier). </td></tr>
+    <tr><td class="paramname">hint_count</td><td>Nombre associé à l'indice (valeur &gt;= 0 pour modifier). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS si le dernier tour a été mis à jour, EXIT_FAILURE sinon. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00393">393</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="history_8h_source.html#l00044">Turn::hint</a>, <a class="el" href="history_8h_source.html#l00042">Turn::hint_count</a>, <a class="el" href="history_8c_source.html#l00039">history_touch()</a>, <a class="el" href="history_8h_source.html#l00041">Turn::spy_name</a>, <a class="el" href="history_8h_source.html#l00057">History::turn_count</a>, et <a class="el" href="history_8h_source.html#l00056">History::turns</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>.</p>
+
+</div>
+</div>
+<a id="a098797dd96dbe3d003d421c733bef2f4" name="a098797dd96dbe3d003d421c733bef2f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a098797dd96dbe3d003d421c733bef2f4">&#9670;&#160;</a></span>history_wrap_cache_invalidate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void history_wrap_cache_invalidate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structHistoryWrapCache.html">HistoryWrapCache</a> *&#160;</td>
+          <td class="paramname"><em>cache</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Invalide un cache de wrapping historique. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cache</td><td>Cache à invalider. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00541">541</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l01364">game_free()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00504">game_init()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a id="ac41617fc8ae6a484b9cad9087492c370" name="ac41617fc8ae6a484b9cad9087492c370"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac41617fc8ae6a484b9cad9087492c370">&#9670;&#160;</a></span>HISTORY_TURN_PREFIX_COLOR</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const SDL_Color HISTORY_TURN_PREFIX_COLOR = {0, 200, 0, 255}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00009">9</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="history_8c_source.html#l00221">history_get_turn_prefix_text()</a>, et <a class="el" href="history_8c_source.html#l00241">history_render_turn_prefix()</a>.</p>
+
+</div>
+</div>
+<a id="a00d0f797e2c10c55a3bfd3f3fb6c8984" name="a00d0f797e2c10c55a3bfd3f3fb6c8984"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00d0f797e2c10c55a3bfd3f3fb6c8984">&#9670;&#160;</a></span>history_turn_prefix_text</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structText.html">Text</a>* history_turn_prefix_text = NULL</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="history_8c_source.html#l00008">8</a> du fichier <a class="el" href="history_8c_source.html">history.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="history_8c_source.html#l00259">history_destroy_turn_prefix_text()</a>, et <a class="el" href="history_8c_source.html#l00221">history_get_turn_prefix_text()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a class="el" href="history_8c.html">history.c</a></li>
+    <li class="footer">Généré le Mardi 14 Avril 2026 18:57:16 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

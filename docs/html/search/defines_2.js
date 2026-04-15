@@ -1,7 +1,28 @@
 var searchData=
 [
-  ['chat_5fmax_5fmessages_0',['CHAT_MAX_MESSAGES',['../client_2lib_2chat_8h.html#ab2371a344569b2510703bb35dc17b58d',1,'CHAT_MAX_MESSAGES:&#160;chat.h'],['../server_2lib_2chat_8h.html#ab2371a344569b2510703bb35dc17b58d',1,'CHAT_MAX_MESSAGES:&#160;chat.h']]],
-  ['closesocket_1',['CLOSESOCKET',['../client_2lib_2all_8h.html#ade43b44c58cf53d2c0737c98dc31162f',1,'CLOSESOCKET:&#160;all.h'],['../server_2lib_2all_8h.html#ade43b44c58cf53d2c0737c98dc31162f',1,'CLOSESOCKET:&#160;all.h']]],
-  ['crossfader_5fid_5fmusic_5fvolume_2',['CROSSFADER_ID_MUSIC_VOLUME',['../infos_8h.html#a33a612bb99cde5e7d08cc25002db4cdd',1,'infos.h']]],
-  ['crossfader_5fid_5fsfx_5fvolume_3',['CROSSFADER_ID_SFX_VOLUME',['../infos_8h.html#a5d1ef3b5a31b4091fc933e3433224560',1,'infos.h']]]
+  ['card_5fflip_5fduration_5fms_0',['CARD_FLIP_DURATION_MS',['../card_8c.html#abc2078302f370dab2e48f3de3dfe0c3c',1,'card.c']]],
+  ['card_5fflip_5fmin_5fwidth_5fpx_1',['CARD_FLIP_MIN_WIDTH_PX',['../card_8c.html#a61458d33f7a12ba7e16d89b7a9e2577f',1,'card.c']]],
+  ['chat_5ffont_5fpath_5fmax_2',['CHAT_FONT_PATH_MAX',['../client_2lib_2chat_8h.html#a7a30a1e079b24e9570808b17fca80d49',1,'chat.h']]],
+  ['chat_5fline_5fsize_3',['CHAT_LINE_SIZE',['../client_2lib_2chat_8h.html#aef7285c36fa64217be04399205379b46',1,'chat.h']]],
+  ['chat_5fmax_5fmessages_4',['chat_max_messages',['../client_2lib_2chat_8h.html#ab2371a344569b2510703bb35dc17b58d',1,'CHAT_MAX_MESSAGES:&#160;chat.h'],['../server_2lib_2chat_8h.html#ab2371a344569b2510703bb35dc17b58d',1,'CHAT_MAX_MESSAGES:&#160;chat.h']]],
+  ['chat_5fmax_5frender_5flines_5',['CHAT_MAX_RENDER_LINES',['../client_2lib_2chat_8h.html#af0a9c0ee9839c1f554044e96530d1ffd',1,'chat.h']]],
+  ['chat_5fvisible_5flines_6',['CHAT_VISIBLE_LINES',['../client_2src_2game_8c.html#ad5c4dcd58b7eca31f12193473925c498',1,'game.c']]],
+  ['chat_5fwrap_5flines_5fper_5fmessage_7',['CHAT_WRAP_LINES_PER_MESSAGE',['../client_2lib_2chat_8h.html#ace51b654a1c1dc75437fac152feb452b',1,'chat.h']]],
+  ['closesocket_8',['closesocket',['../client_2lib_2all_8h.html#ade43b44c58cf53d2c0737c98dc31162f',1,'CLOSESOCKET:&#160;all.h'],['../server_2lib_2all_8h.html#ade43b44c58cf53d2c0737c98dc31162f',1,'CLOSESOCKET:&#160;all.h']]],
+  ['credits_5faction_5fbottom_5fmargin_9',['CREDITS_ACTION_BOTTOM_MARGIN',['../credits_8c.html#a01b2d68c69eaefcca8ad256fc2cceb70',1,'credits.c']]],
+  ['credits_5faction_5fleft_5fmargin_10',['CREDITS_ACTION_LEFT_MARGIN',['../credits_8c.html#a7d442c1d5595238148dd69d0e534d382',1,'credits.c']]],
+  ['credits_5fclose_5fbutton_5fh_11',['CREDITS_CLOSE_BUTTON_H',['../credits_8c.html#a1a89331a754ab377b46ef861adfc5631',1,'credits.c']]],
+  ['credits_5fclose_5fbutton_5fw_12',['CREDITS_CLOSE_BUTTON_W',['../credits_8c.html#ab9c2d1a223ed4ddd2a61dff99eb8a880',1,'credits.c']]],
+  ['credits_5ffile_5fpath_13',['CREDITS_FILE_PATH',['../credits_8c.html#a8821ca0d850dea8e9296bc73f69b67cf',1,'credits.c']]],
+  ['credits_5frestart_5fbutton_5fh_14',['CREDITS_RESTART_BUTTON_H',['../credits_8c.html#a62425b41f0de07a5878a623c34a081df',1,'credits.c']]],
+  ['credits_5frestart_5fbutton_5fw_15',['CREDITS_RESTART_BUTTON_W',['../credits_8c.html#a7ad2e2e781abb48ba51948416f6fbcb1',1,'credits.c']]],
+  ['credits_5fscroll_5fresume_5fdelay_5fms_16',['CREDITS_SCROLL_RESUME_DELAY_MS',['../credits_8c.html#a3403cef22d92a2135e20dfe777c0834d',1,'credits.c']]],
+  ['credits_5fscroll_5fspeed_5fpx_5fper_5fsec_17',['CREDITS_SCROLL_SPEED_PX_PER_SEC',['../credits_8c.html#aa0aa4e4ed677d27e70121d09901096a5',1,'credits.c']]],
+  ['credits_5fscroll_5fwheel_5fstep_18',['CREDITS_SCROLL_WHEEL_STEP',['../credits_8c.html#a1779ce9e0aec8a7810dfcb94bdd33e62',1,'credits.c']]],
+  ['credits_5ftext_5fbottom_5fpadding_19',['CREDITS_TEXT_BOTTOM_PADDING',['../credits_8c.html#a978009ca0dd8221988bab3d42f7f3eb0',1,'credits.c']]],
+  ['credits_5ftext_5ffont_5fsize_20',['CREDITS_TEXT_FONT_SIZE',['../credits_8c.html#a5ce65980b358a4228dab94af8bd51315',1,'credits.c']]],
+  ['credits_5ftext_5fline_5fadvance_5ffactor_21',['CREDITS_TEXT_LINE_ADVANCE_FACTOR',['../credits_8c.html#a18c123b29f7ba05c536373fdf9d1293f',1,'credits.c']]],
+  ['credits_5ftext_5fside_5fpadding_22',['CREDITS_TEXT_SIDE_PADDING',['../credits_8c.html#acca74f69d2fccb1e242f620110dbd0af',1,'credits.c']]],
+  ['credits_5ftext_5ftop_5fpadding_23',['CREDITS_TEXT_TOP_PADDING',['../credits_8c.html#a855ba62440ef90e023a045421d52b61c',1,'credits.c']]],
+  ['credits_5ftext_5fwrap_5fpadding_24',['CREDITS_TEXT_WRAP_PADDING',['../credits_8c.html#a3ebd951e1e0bc05baa49f0519eaa1ec5',1,'credits.c']]]
 ];

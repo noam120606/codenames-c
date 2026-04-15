@@ -1,34 +1,45 @@
 #include "../lib/all.h"
 
-Button* btn_red_agent = NULL;
-Button* btn_red_spy = NULL;
-Button* btn_blue_agent = NULL;
-Button* btn_blue_spy = NULL;
-Button* btn_launch_game = NULL;
-Button* btn_return = NULL;
-Button* btn_words_difficulty_switch = NULL;
-Button* btn_nb_assassin_switch = NULL;
-
-Window* role_none_window = NULL;
-Window* role_red_agent_window = NULL;
-Window* role_red_spy_window = NULL;
-Window* role_blue_agent_window = NULL;
-Window* role_blue_spy_window = NULL;
-
-Window* game_options_window = NULL;
-
-SDL_Texture* player_icon_none = NULL;
+/* Icônes partagées avec game.c */
 SDL_Texture* player_icon_red = NULL;
 SDL_Texture* player_icon_blue = NULL;
+SDL_Texture* player_icon_glow = NULL;
+
+/* Ressources privées au module lobby */
+static Button* btn_red_agent = NULL;
+static Button* btn_red_spy = NULL;
+static Button* btn_blue_agent = NULL;
+static Button* btn_blue_spy = NULL;
+static Button* btn_launch_game = NULL;
+static Button* btn_return = NULL;
+static Button* btn_words_difficulty_switch = NULL;
+static Button* btn_nb_assassin_switch = NULL;
+
+static Window* role_none_window = NULL;
+static Window* role_red_agent_window = NULL;
+static Window* role_red_spy_window = NULL;
+static Window* role_blue_agent_window = NULL;
+static Window* role_blue_spy_window = NULL;
+static Window* game_options_window = NULL;
+
+static SDL_Texture* player_icon_none = NULL;
 
 /* Textes optimisés pour le lobby */
+#define MAX_PLAYER_TEXTS 16
 static Text* txt_lobby_info = NULL;
 static Text* txt_no_role_label = NULL;
 static Text* txt_difficulty_label = NULL;
 static Text* txt_nb_assassin_label = NULL;
-#define MAX_PLAYER_TEXTS 16
 static Text* txt_player_names[MAX_PLAYER_TEXTS] = {NULL};
 static int current_player_text_index = 0;
+
+static void player_display(AppContext* context, User* user, int nb_none, int i_none, int nb_red_spy, int i_red_spy, int nb_red_agent, int i_red_agent, int nb_blue_spy, int i_blue_spy, int nb_blue_agent, int i_blue_agent);
+static void player_icon_pos(AppContext* context, User* user, SDL_Texture* icon, Window* target_window, int nb_player, int i_player, int base_rel_x, int base_rel_y);
+static const char* lobby_words_difficulty_label(WordsDifficulty difficulty);
+static const char* lobby_nb_assassins_label(int nb_assassins);
+static void lobby_render_role_windows(AppContext* context);
+static void lobby_render_owner_game_options(AppContext* context);
+static void lobby_render_players(AppContext* context);
 
 typedef struct PlayerPlacementCounters {
     int nb_none;
@@ -42,6 +53,63 @@ typedef struct PlayerPlacementCounters {
     int i_blue_agent;
     int i_blue_spy;
 } PlayerPlacementCounters;
+
+static int lobby_find_user_slot_by_id(const Lobby* lobby, int user_id) {
+    if (!lobby || user_id < 0) return -1;
+
+    for (int i = 0; i < MAX_USERS; i++) {
+        User* user = lobby->users[i];
+        if (user && user->id == user_id) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+static int lobby_find_free_user_slot(const Lobby* lobby) {
+    if (!lobby) return -1;
+
+    for (int i = 0; i < MAX_USERS; i++) {
+        if (!lobby->users[i]) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+static void lobby_sync_local_user_in_roster(AppContext* context) {
+    if (!context || !context->lobby || context->player_id < 0) return;
+
+    const char* local_name = (context->player_name && context->player_name[0] != '\0') ? context->player_name : "Unknown";
+    int slot = lobby_find_user_slot_by_id(context->lobby, context->player_id);
+
+    if (slot >= 0) {
+        User* local_user = context->lobby->users[slot];
+        if (!local_user) return;
+
+        if (!local_user->name || strcmp(local_user->name, local_name) != 0) {
+            char* copy = strdup(local_name);
+            if (!copy) return;
+            free(local_user->name);
+            local_user->name = copy;
+        }
+
+        local_user->role = context->player_role;
+        local_user->team = context->player_team;
+        return;
+    }
+
+    int free_slot = lobby_find_free_user_slot(context->lobby);
+    if (free_slot < 0) return;
+
+    User* created = create_user(context->player_id, local_name, context->player_role, context->player_team);
+    if (!created) return;
+
+    context->lobby->users[free_slot] = created;
+    context->lobby->nb_players++;
+}
 
 static void count_player_for_layout(const User* user, PlayerPlacementCounters* counters) {
     if (!user || !counters) return;
@@ -161,9 +229,149 @@ static int compute_player_icon_position(int nb_player, int i_player, int base_x,
     return 1;
 }
 
+static const char* lobby_words_difficulty_label(WordsDifficulty difficulty) {
+    switch (difficulty) {
+        case WORDS_DIFFICULTY_NORMAL:
+            return "Normal";
+        case WORDS_DIFFICULTY_HARD:
+            return "Difficile";
+        case WORDS_DIFFICULTY_INFO:
+            return "Informatique";
+        case WORDS_DIFFICULTY_FREAKY:
+            return "Freaky";
+        default:
+            return "Normal";
+    }
+}
+
+static const char* lobby_nb_assassins_label(int nb_assassins) {
+    switch (nb_assassins) {
+        case 1:
+            return "1";
+        case 2:
+            return "2";
+        case 3:
+            return "3";
+        default:
+            return "1";
+    }
+}
+
+static void lobby_render_role_windows(AppContext* context) {
+    if (!context) return;
+
+    if (role_none_window) {
+        window_render(context->renderer, role_none_window);
+    }
+
+    if (role_red_agent_window) {
+        window_render(context->renderer, role_red_agent_window);
+        if (btn_red_agent) {
+            window_place_button(role_red_agent_window, btn_red_agent, 0, 80);
+            button_render(context->renderer, btn_red_agent);
+        }
+    }
+
+    if (role_red_spy_window) {
+        window_render(context->renderer, role_red_spy_window);
+        if (btn_red_spy) {
+            window_place_button(role_red_spy_window, btn_red_spy, 0, 80);
+            button_render(context->renderer, btn_red_spy);
+        }
+    }
+
+    if (role_blue_agent_window) {
+        window_render(context->renderer, role_blue_agent_window);
+        if (btn_blue_agent) {
+            window_place_button(role_blue_agent_window, btn_blue_agent, 0, 80);
+            button_render(context->renderer, btn_blue_agent);
+        }
+    }
+
+    if (role_blue_spy_window) {
+        window_render(context->renderer, role_blue_spy_window);
+        if (btn_blue_spy) {
+            window_place_button(role_blue_spy_window, btn_blue_spy, 0, 80);
+            button_render(context->renderer, btn_blue_spy);
+        }
+    }
+}
+
+static void lobby_render_owner_game_options(AppContext* context) {
+    if (!context || !context->lobby || !game_options_window) return;
+    if (context->lobby->owner_id != context->player_id) return;
+
+    window_render(context->renderer, game_options_window);
+
+    if (txt_difficulty_label) {
+        update_text(context, txt_difficulty_label, "Difficulté :");
+        window_place_text(game_options_window, txt_difficulty_label, -100, 75);
+        display_text(context, txt_difficulty_label);
+    }
+
+    if (btn_words_difficulty_switch) {
+        button_edit_cfg(
+            btn_words_difficulty_switch,
+            BTN_CFG_TEXT,
+            (intptr_t)lobby_words_difficulty_label(context->lobby->words_difficulty)
+        );
+        window_place_button(game_options_window, btn_words_difficulty_switch, 75, 75);
+        button_render(context->renderer, btn_words_difficulty_switch);
+    }
+
+    if (txt_nb_assassin_label) {
+        update_text(context, txt_nb_assassin_label, "Nombre d'assassins :");
+        window_place_text(game_options_window, txt_nb_assassin_label, -55, 15);
+        display_text(context, txt_nb_assassin_label);
+    }
+
+    if (btn_nb_assassin_switch) {
+        button_edit_cfg(
+            btn_nb_assassin_switch,
+            BTN_CFG_TEXT,
+            (intptr_t)lobby_nb_assassins_label(context->lobby->nb_assassins)
+        );
+        window_place_button(game_options_window, btn_nb_assassin_switch, 110, 15);
+        button_render(context->renderer, btn_nb_assassin_switch);
+    }
+}
+
+static void lobby_render_players(AppContext* context) {
+    if (!context || !context->lobby) return;
+
+    PlayerPlacementCounters counters = {0};
+
+    for (int i = 0; i < MAX_USERS; i++) {
+        User* lobby_user = context->lobby->users[i];
+        if (!lobby_user) continue;
+        count_player_for_layout(lobby_user, &counters);
+    }
+
+    for (int i = 0; i < MAX_USERS; i++) {
+        User* lobby_user = context->lobby->users[i];
+        if (!lobby_user) continue;
+
+        player_display(
+            context,
+            lobby_user,
+            counters.nb_none,
+            counters.i_none,
+            counters.nb_red_spy,
+            counters.i_red_spy,
+            counters.nb_red_agent,
+            counters.i_red_agent,
+            counters.nb_blue_spy,
+            counters.i_blue_spy,
+            counters.nb_blue_agent,
+            counters.i_blue_agent
+        );
+        advance_player_layout_index(lobby_user, &counters);
+    }
+}
+
 /* Callback pour boutons du lobby (choix de rôle / équipe) */
 static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
-    if (!context || !button) return BTN_NONE;
+    if (!context || !context->lobby || !button) return BTN_NONE;
     if (button == btn_red_agent) {
         if (context->player_role == ROLE_AGENT && context->player_team == TEAM_RED) {
             printf("Role didn't change\n");
@@ -171,6 +379,7 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
         }
         context->player_role = ROLE_AGENT;
         context->player_team = TEAM_RED;
+        lobby_sync_local_user_in_roster(context);
         char msg[16];
         format_to(msg, sizeof(msg), "%d %d %d", MSG_CHOOSE_ROLE, ROLE_AGENT, TEAM_RED);
         send_tcp(context->sock, msg);
@@ -183,6 +392,7 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
         }
         context->player_role = ROLE_SPY;
         context->player_team = TEAM_RED;
+        lobby_sync_local_user_in_roster(context);
         char msg[16];
         format_to(msg, sizeof(msg), "%d %d %d", MSG_CHOOSE_ROLE, ROLE_SPY, TEAM_RED);
         send_tcp(context->sock, msg);
@@ -194,6 +404,7 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
         }
         context->player_role = ROLE_AGENT;
         context->player_team = TEAM_BLUE;
+        lobby_sync_local_user_in_roster(context);
         char msg[16];
         format_to(msg, sizeof(msg), "%d %d %d", MSG_CHOOSE_ROLE, ROLE_AGENT, TEAM_BLUE);
         send_tcp(context->sock, msg);
@@ -205,6 +416,7 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
         }
         context->player_role = ROLE_SPY;
         context->player_team = TEAM_BLUE;
+        lobby_sync_local_user_in_roster(context);
         char msg[16];
         format_to(msg, sizeof(msg), "%d %d %d", MSG_CHOOSE_ROLE, ROLE_SPY, TEAM_BLUE);
         send_tcp(context->sock, msg);
@@ -262,10 +474,10 @@ static ButtonReturn lobby_button_click(AppContext* context, Button* button) {
         nb = (nb % 3) + 1;
         context->lobby->nb_assassins = nb;
 
-    char msg[16];
-    format_to(msg, sizeof(msg), "%d %d", MSG_SET_NB_ASSASSINS, context->lobby->nb_assassins);
-    send_tcp(context->sock, msg);
-    printf("Switched nb_assassins to: %d\n", context->lobby->nb_assassins);
+        char msg[16];
+        format_to(msg, sizeof(msg), "%d %d", MSG_SET_NB_ASSASSINS, context->lobby->nb_assassins);
+        send_tcp(context->sock, msg);
+        printf("Switched nb_assassins to: %d\n", context->lobby->nb_assassins);
     }
     return BTN_NONE;
 }
@@ -290,6 +502,13 @@ int lobby_init(AppContext* context) {
     player_icon_blue = load_image(context->renderer, "assets/img/player_icons/blue.png");
     if (!player_icon_blue) {
         printf("Failed to load player_icon_blue image\n");
+        loading_fails++;
+    }
+
+    /* Halo lumineux pour indiquer le joueur local */
+    player_icon_glow = load_image(context->renderer, "assets/img/player_icons/glowing_dot.png");
+    if (!player_icon_glow) {
+        printf("Failed to load player_icon_glow image\n");
         loading_fails++;
     }
 
@@ -511,38 +730,42 @@ int lobby_init(AppContext* context) {
             create_text_config(FONT_LARABIE, 18, COL_WHITE, 0, 0, 0, 255));
     }
 
-    if (loading_fails == 0) {
-        printf("Lobby assets loaded successfully\n");
-        return EXIT_SUCCESS;
-    } else {
+    if (!loading_fails == 0) {
         printf("Lobby asset loading failed: %d failures\n", loading_fails);
         return EXIT_FAILURE;
     }
-    
+    return EXIT_SUCCESS;
 }
 
 int struct_lobby_init(Lobby* lobby, int id, const char* code) {
     if (!lobby) return EXIT_FAILURE;
+    const char* safe_code = code ? code : "";
+
+    if (lobby->game) { // Nettoyer les données de la partie précédente si elles existent
+        free(lobby->game->cards);
+        free(lobby->game);
+        lobby->game = NULL;
+    }
 
     chat_clear(&lobby->chat);
 
-    for(int i = 0; i < MAX_USERS; i++) {
-        if (lobby->users[i] && lobby->users[i]->name) {
-            free(lobby->users[i]->name);
-            lobby->users[i]->name = NULL;
-            free(lobby->users[i]);
-            lobby->users[i] = NULL;
-        }
+    for (int i = 0; i < MAX_USERS; i++) {
+        if (!lobby->users[i]) continue;
+
+        free(lobby->users[i]->name);
+        lobby->users[i]->name = NULL;
+        free(lobby->users[i]);
+        lobby->users[i] = NULL;
     }
 
     lobby->id = id;
     lobby->status = LB_STATUS_WAITING;
     lobby->nb_players = 0;
     lobby->owner_id = -1;
-    lobby->game = NULL;
     lobby->words_difficulty = WORDS_DIFFICULTY_NORMAL;
     lobby->nb_assassins = 1;
-    strcpy(lobby->code, code);
+    strncpy(lobby->code, safe_code, sizeof(lobby->code) - 1);
+    lobby->code[sizeof(lobby->code) - 1] = '\0';
 
     for (int i = 0; i < MAX_USERS; i++) {
         lobby->users[i] = NULL;
@@ -556,6 +779,9 @@ int struct_lobby_init(Lobby* lobby, int id, const char* code) {
 }
 
 void lobby_display(AppContext* context) {
+    if (!context || !context->lobby) return;
+
+    lobby_sync_local_user_in_roster(context);
 
     if (!audio_is_playing(MUSIC_MENU_LOBBY)) {
         audio_play_with_fade(MUSIC_MENU_LOBBY, -1, 1500, AUDIO_FADE_IN_BY_VOLUME, NULL);
@@ -573,159 +799,37 @@ void lobby_display(AppContext* context) {
         }
     }
 
-    /* Afficher le code et l'id du lobby */
+    /* Afficher le code du lobby */
     char buf[128];
-    format_to(buf, sizeof(buf), "Lobby %d  •  Code : %s",
-              context->lobby->id,
-              context->lobby->code[0] != '\0' ? context->lobby->code : "----");
+    format_to(buf, sizeof(buf), "Code du Lobby : %s",
+              context->lobby->code[0] != '\0' ? context->lobby->code : "-----");
 
     /* Affichage centré horizontalement, position verticale relative */
     update_text(context, txt_lobby_info, buf);
     update_text_position(txt_lobby_info, 0, -250);
     display_text(context, txt_lobby_info);
 
-    // Affichage des joueurs sans rôle
+    /* Affichage des joueurs sans rôle */
     display_text(context, txt_no_role_label);
 
     if (btn_red_agent) button_render(context->renderer, btn_red_agent);
     if (btn_red_spy) button_render(context->renderer, btn_red_spy);
     if (btn_blue_agent) button_render(context->renderer, btn_blue_agent);
     if (btn_blue_spy) button_render(context->renderer, btn_blue_spy);
-    if (btn_launch_game) button_render(context->renderer, btn_launch_game);
+    if (btn_launch_game) {
+        // Si le joueur est le propriétaire du lobby, afficher le bouton de lancement de la partie
+        if (context->player_id == context->lobby->owner_id) button_render(context->renderer, btn_launch_game);
+    }
     if (btn_return) button_render(context->renderer, btn_return);
 
-    if (role_none_window) window_render(context->renderer, role_none_window);
-    if (role_red_agent_window) {
-        window_render(context->renderer, role_red_agent_window);
-        if (btn_red_agent) {
-            window_place_button(role_red_agent_window, btn_red_agent, 0, 80);
-            button_render(context->renderer, btn_red_agent);
-        }
-    }
-    if (role_red_spy_window) {
-        window_render(context->renderer, role_red_spy_window);
-        if (btn_red_spy) {
-            window_place_button(role_red_spy_window, btn_red_spy, 0, 80);
-            button_render(context->renderer, btn_red_spy);
-        }
-    }
-    if (role_blue_agent_window) {
-        window_render(context->renderer, role_blue_agent_window);
-        if (btn_blue_agent) {
-            window_place_button(role_blue_agent_window, btn_blue_agent, 0, 80);
-            button_render(context->renderer, btn_blue_agent);
-        }
-    }
-    if (role_blue_spy_window) {
-        window_render(context->renderer, role_blue_spy_window);
-        if (btn_blue_spy) {
-            window_place_button(role_blue_spy_window, btn_blue_spy, 0, 80);
-            button_render(context->renderer, btn_blue_spy);
-        }
-    }
-
-    if (game_options_window) {
-        if (context->lobby->owner_id == context->player_id) {
-            // Afficher les options de jeu uniquement pour le propriétaire du lobby
-            window_render(context->renderer, game_options_window);
-            
-            // Affichage du texte label de difficulté actuelle
-            if (txt_difficulty_label) {
-                const char* diff_text = "Difficulté :";
-                update_text(context, txt_difficulty_label, diff_text);
-                window_place_text(game_options_window, txt_difficulty_label, -100, 75);
-                display_text(context, txt_difficulty_label);
-            }
-            
-            // Affichage du bouton switch de difficulté
-            if (btn_words_difficulty_switch) {
-                switch (context->lobby->words_difficulty) {
-                    case WORDS_DIFFICULTY_NORMAL:
-                        button_edit_cfg(btn_words_difficulty_switch, BTN_CFG_TEXT, (intptr_t)"Normal");
-                        break;
-                    case WORDS_DIFFICULTY_HARD:
-                        button_edit_cfg(btn_words_difficulty_switch, BTN_CFG_TEXT, (intptr_t)"Difficile");
-                        break;
-                    case WORDS_DIFFICULTY_INFO:
-                        button_edit_cfg(btn_words_difficulty_switch, BTN_CFG_TEXT, (intptr_t)"Informatique");
-                        break;
-                    case WORDS_DIFFICULTY_FREAKY:
-                        button_edit_cfg(btn_words_difficulty_switch, BTN_CFG_TEXT, (intptr_t)"Freaky");
-                        break;
-                }
-                window_place_button(game_options_window, btn_words_difficulty_switch, 75, 75);
-                button_render(context->renderer, btn_words_difficulty_switch);
-            }
-
-            // Affichage du texte label du nombre d'assassins
-            if (txt_nb_assassin_label) {
-                const char* nb_assassin_text = "Nombre d'assassins :";
-                update_text(context, txt_nb_assassin_label, nb_assassin_text);
-                window_place_text(game_options_window, txt_nb_assassin_label, -55, 15);
-                display_text(context, txt_nb_assassin_label);
-            }
-
-            // Affichage du bouton switch du nombre d'assassins
-            if (btn_nb_assassin_switch) {
-                switch (context->lobby->nb_assassins) {
-                    case 1:
-                        button_edit_cfg(btn_nb_assassin_switch, BTN_CFG_TEXT, (intptr_t)"1");
-                        break;
-                    case 2:
-                        button_edit_cfg(btn_nb_assassin_switch, BTN_CFG_TEXT, (intptr_t)"2");
-                        break;
-                    case 3:
-                        button_edit_cfg(btn_nb_assassin_switch, BTN_CFG_TEXT, (intptr_t)"3");
-                        break;
-                }
-                window_place_button(game_options_window, btn_nb_assassin_switch, 110, 15);
-                button_render(context->renderer, btn_nb_assassin_switch);
-
-            }
-        }
-    }
-
-    // Comptage des joueurs par rôle/équipe et indices d'affichage
-    PlayerPlacementCounters counters = {0};
-
-    // Comptage du joueur local
-    User user = {-1, context->player_name, context->player_role, context->player_team};
-
-    count_player_for_layout(&user, &counters);
-
-    // Comptage des joueurs distants
-    for (int i = 0; i < MAX_USERS; i++) {
-        User* remote_user = context->lobby->users[i];
-        if (!remote_user) continue;
-        count_player_for_layout(remote_user, &counters);
-    }
-
-    // Affichage du joueur local
-    player_display(context, &user,
-        counters.nb_none, counters.i_none,
-        counters.nb_red_spy, counters.i_red_spy,
-        counters.nb_red_agent, counters.i_red_agent,
-        counters.nb_blue_spy, counters.i_blue_spy,
-        counters.nb_blue_agent, counters.i_blue_agent);
-    advance_player_layout_index(&user, &counters);
-
-    // Affichage des joueurs distants
-    for (int i = 0; i < MAX_USERS; i++) {
-        User* remote_user = context->lobby->users[i];
-        if (!remote_user) continue;
-        player_display(context, remote_user,
-            counters.nb_none, counters.i_none,
-            counters.nb_red_spy, counters.i_red_spy,
-            counters.nb_red_agent, counters.i_red_agent,
-            counters.nb_blue_spy, counters.i_blue_spy,
-            counters.nb_blue_agent, counters.i_blue_agent);
-        advance_player_layout_index(remote_user, &counters);
-    }
+    lobby_render_role_windows(context);
+    lobby_render_owner_game_options(context);
+    lobby_render_players(context);
 
 }
 
 void lobby_handle_event(AppContext* context, SDL_Event* e) {
-    if (!context || !e) return;
+    if (!context || !context->lobby || !e) return;
 
     if (btn_red_agent) button_handle_event(context, btn_red_agent, e);
     if (btn_red_spy) button_handle_event(context, btn_red_spy, e);
@@ -745,7 +849,7 @@ void lobby_handle_event(AppContext* context, SDL_Event* e) {
     if (game_options_window) window_handle_event(context, game_options_window, e);
 }
 
-void player_display(AppContext* context, User* user, int nb_none, int i_none, int nb_red_spy, int i_red_spy, int nb_red_agent, int i_red_agent, int nb_blue_spy, int i_blue_spy, int nb_blue_agent, int i_blue_agent) {
+static void player_display(AppContext* context, User* user, int nb_none, int i_none, int nb_red_spy, int i_red_spy, int nb_red_agent, int i_red_agent, int nb_blue_spy, int i_blue_spy, int nb_blue_agent, int i_blue_agent) {
     if (!context || !user) return;
     if (!user->name) return;
 
@@ -809,7 +913,7 @@ void player_display(AppContext* context, User* user, int nb_none, int i_none, in
     player_icon_pos(context, user, icon, target_window, nb_player, i_player, base_rel_x, base_rel_y);
 }
 
-void player_icon_pos(AppContext* context, User* user, SDL_Texture* icon, Window* target_window, int nb_player, int i_player, int base_rel_x, int base_rel_y) {
+static void player_icon_pos(AppContext* context, User* user, SDL_Texture* icon, Window* target_window, int nb_player, int i_player, int base_rel_x, int base_rel_y) {
     if (!context){
         printf("Invalid context\n");
         return;
@@ -831,6 +935,11 @@ void player_icon_pos(AppContext* context, User* user, SDL_Texture* icon, Window*
     int y = 0;
     if (!compute_player_icon_position(nb_player, i_player, base_rel_x, base_rel_y, &x, &y)) {
         return;
+    }
+
+    /* Si c'est le joueur local, afficher un halo lumineux derrière son icône */
+    if (context->player_id >= 0 && user->id == context->player_id && player_icon_glow) {
+        window_display_image(context->renderer, target_window, player_icon_glow, x, y, 0.18f, 0, SDL_FLIP_NONE, 1, 200);
     }
 
     window_display_image(context->renderer, target_window, icon, x, y, 0.25f, 0, SDL_FLIP_NONE, 1, 255);
@@ -870,6 +979,7 @@ int lobby_free(){
     if (player_icon_none) { free_image(player_icon_none); player_icon_none = NULL; }
     if (player_icon_red)  { free_image(player_icon_red);  player_icon_red = NULL; }
     if (player_icon_blue) { free_image(player_icon_blue); player_icon_blue = NULL; }
+    if (player_icon_glow) { free_image(player_icon_glow); player_icon_glow = NULL; }
 
     /* Libération des textes optimisés */
     destroy_text(txt_lobby_info); txt_lobby_info = NULL;
@@ -883,4 +993,13 @@ int lobby_free(){
     }
 
     return EXIT_SUCCESS;
+}
+
+const char* find_player_by_id(const Lobby* lobby, int id) {
+    if (!lobby) return NULL;
+    for (int i = 0; i < MAX_USERS; i++) {
+        User* u = lobby->users[i];
+        if (u && u->id == id) return u->name;
+    }
+    return NULL;
 }

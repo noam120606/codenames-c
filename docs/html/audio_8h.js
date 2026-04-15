@@ -26,7 +26,9 @@ var audio_8h =
     [ "SoundID", "audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61", [
       [ "MUSIC_MENU_LOBBY", "audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61a019256693b67f6c4dcb6da34fd4fd83d", null ],
       [ "MUSIC_GAME", "audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61aefec904a682f968a2f5ce373972b144d", null ],
+      [ "SOUND_OPENING_CODENAMES", "audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61a76e38e3342d693a0407c10e33938cab1", null ],
       [ "SOUND_BUTTON_CLICKED", "audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61abe9e87d158d492333784dfede18a5586", null ],
+      [ "SOUND_BUTTON_HOVER", "audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61ab5583566fa541ea1fc03db26279eb5db", null ],
       [ "SOUND_TYPE_WRITING", "audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61a1f06ce32a15da6784704caa77075d79c", null ],
       [ "SOUND_CARD_DISTRIBUTION", "audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61a23d37522e2f36ca726a22cc39bd5e86c", null ],
       [ "SOUND_CARD_GUESS", "audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61aa08eab5f8d8a76ba051febb690884f0b", null ],
@@ -34,7 +36,11 @@ var audio_8h =
       [ "SOUND_CARD_ENEMY", "audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61a6474abf49f2be091bbd6615f51329636", null ],
       [ "SOUND_CARD_FRIEND", "audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61aba496de82ebd88b259bc82b972123c9a", null ],
       [ "SOUND_CARD_NONE", "audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61a212ec0036b58ec8f7ad267e9b1e68820", null ],
-      [ "SOUND_CARD_ASSASSIN", "audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61a6b8622fd615d785311cc4a712f20956b", null ]
+      [ "SOUND_CARD_ASSASSIN", "audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61a6b8622fd615d785311cc4a712f20956b", null ],
+      [ "SOUND_VICTORY", "audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61ab94854047305ec264ca968f597388158", null ],
+      [ "SOUND_DEFEAT", "audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61a8d986f1bb06a99ae264a392ca1c2bad2", null ],
+      [ "SOUND_INFO_OPEN", "audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61a3e9df2495289c4c122ede3ffa6d2b3fa", null ],
+      [ "SOUND_INFO_CLOSE", "audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61a02be53344caa6671e1851cc076c77d24", null ]
     ] ],
     [ "audio_cleanup", "audio_8h.html#a00514b261c2898c90d7faaabf3a33543", null ],
     [ "audio_get_filter", "audio_8h.html#adcb913b2d300cbf2417910b66625d07b", null ],

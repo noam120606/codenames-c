@@ -7,17 +7,24 @@ MessageType fetch_header(char* message) {
 }
 
 Arguments parse_arguments(char* message) {
-    Arguments args;
+    Arguments args = {0};
     char* token = strtok(message, " ");
-    args.argc = 0;
-    args.argv = NULL;
 
     while (token != NULL) {
+        char** resized_argv = realloc(args.argv, (args.argc + 1) * sizeof(char*));
+        if (!resized_argv) {
+            free(args.argv);
+            args.argv = NULL;
+            args.argc = 0;
+            break;
+        }
+
+        args.argv = resized_argv;
+        args.argv[args.argc] = token;
         args.argc++;
-        args.argv = realloc(args.argv, args.argc * sizeof(char*));
-        ((char**)args.argv)[args.argc - 1] = token;
         token = strtok(NULL, " ");
     }
+
     return args;
 }
 
@@ -28,42 +35,71 @@ int on_message(Codenames* codenames, TcpClient* client, char* message) {
     // printf("[MSG] %d %s\n", header, message);
 
     Arguments args = parse_arguments(message);
+    int status = EXIT_SUCCESS;
 
     switch (header) {
         case MSG_UNKNOWN: 
             printf("Received unknown message header from client %d: \"%s\"\n", client->id, message);
             break;
 
-        case MSG_CREATELOBBY: return request_create_lobby(codenames, client, message, args);
-        case MSG_JOINLOBBY: return request_join_lobby(codenames, client, message, args);
-        case MSG_LEAVELOBBY: return request_leave_lobby(codenames, client, message, args);
+        case MSG_CREATELOBBY:
+            status = request_create_lobby(codenames, client, message, args);
+            break;
+        case MSG_JOINLOBBY:
+            status = request_join_lobby(codenames, client, message, args);
+            break;
+        case MSG_LEAVELOBBY:
+            status = request_leave_lobby(codenames, client, message, args);
+            break;
         case MSG_LOBBYCLOSED: break; // Server -> Client only
-        case MSG_CHOOSE_ROLE: return request_choose_role(codenames, client, message, args);
-        case MSG_STARTGAME: return request_start_game(codenames, client, message, args);
-        case MSG_SUBMIT_HINT: return request_submit_hint(codenames, client, message, args);
-        case MSG_PREGUESS: return request_preguess(codenames, client, message, args);
-        case MSG_GUESS_CARD: return request_guess_card(codenames, client, message, args);
-        case MSG_SET_WORDS_DIFFICULTY: return request_set_words_difficulty(codenames, client, message, args);
-    case MSG_SET_NB_ASSASSINS: return request_set_nb_assassins(codenames, client, message, args);
+        case MSG_CHOOSE_ROLE:
+            status = request_choose_role(codenames, client, message, args);
+            break;
+        case MSG_STARTGAME:
+            status = request_start_game(codenames, client, message, args);
+            break;
+        case MSG_SUBMIT_HINT:
+            status = request_submit_hint(codenames, client, message, args);
+            break;
+        case MSG_PREGUESS:
+            status = request_preguess(codenames, client, message, args);
+            break;
+        case MSG_GUESS_CARD:
+            status = request_guess_card(codenames, client, message, args);
+            break;
+        case MSG_SET_WORDS_DIFFICULTY:
+            status = request_set_words_difficulty(codenames, client, message, args);
+            break;
+        case MSG_SET_NB_ASSASSINS:
+            status = request_set_nb_assassins(codenames, client, message, args);
+            break;
 
-        case MSG_SENDCHAT: return request_send_chat(codenames, client, message, args);
+        case MSG_SENDCHAT:
+            status = request_send_chat(codenames, client, message, args);
+            break;
 
-        case MSG_REQUESTUUID: return request_uuid(codenames, client, message, args);
-        case MSG_COMPAREVERSION: return on_version_compare(codenames, client, message, args);
+        case MSG_REQUESTUUID:
+            status = request_uuid(codenames, client, message, args);
+            break;
+        case MSG_COMPAREVERSION:
+            status = on_version_compare(codenames, client, message, args);
+            break;
         case MSG_PING:
             if (args.argc >= 1) {
                 char response[64];
-                format_to(response, sizeof(response), "%d %s", MSG_PING, (char*)args.argv[0]);
+                format_to(response, sizeof(response), "%d %s", MSG_PING, args.argv[0]);
                 tcp_send_to_client(codenames, client->id, response);
             }
-            return EXIT_SUCCESS;
+            status = EXIT_SUCCESS;
+            break;
 
         default:
             // Les autres types de message sont gérés ailleurs ou sont réservés aux clients.
             break;
     }
 
-    return EXIT_SUCCESS;
+    free(args.argv);
+    return status;
 }
 
 int on_leave(Codenames* codenames, TcpClient* client) {

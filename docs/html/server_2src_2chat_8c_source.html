@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames:  Fichier source de server/src/chat.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,22 +34,28 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -63,9 +68,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('server_2src_2chat_8c_source.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('server_2src_2chat_8c_source.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -92,7 +98,7 @@ $(function(){initNavTree('server_2src_2chat_8c_source.html','',''); });
   <div class="headertitle"><div class="title">chat.c</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="server_2src_2chat_8c.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="server_2lib_2all_8h.html">../lib/all.h</a>&quot;</span></div>
+<a href="server_2src_2chat_8c.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;../lib/all.h&quot;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="foldopen" id="foldopen00003" data-start="{" data-end="}">
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="server_2src_2chat_8c.html#a07efff3af11cdd95f5abbac4b0977965">    3</a></span><span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="client_2src_2chat_8c.html#a07efff3af11cdd95f5abbac4b0977965">free_chat_message</a>(<span class="keywordtype">void</span>* data) {</div>
@@ -183,74 +189,85 @@ $(function(){initNavTree('server_2src_2chat_8c_source.html','',''); });
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    }</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordflow">if</span> (!args.<a class="code hl_variable" href="structArguments.html#a29e8dac2f7b3adc32cbd95e9a4162194">argv</a>[0]) {</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        printf(<span class="stringliteral">&quot;Sender user not found for client %d\n&quot;</span>, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordtype">char</span> msg[64];</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <a class="code hl_function" href="client_2src_2utils_8c.html#ade6960f663c739637ee1beaf757c5f24">format_to</a>(msg, <span class="keyword">sizeof</span>(msg), <span class="stringliteral">&quot;%d %s&quot;</span>, <a class="code hl_enumvalue" href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a8de267a33883ee34bdb9880676b6651a">MSG_SERVER_ERROR</a>, <span class="stringliteral">&quot;User %s not found in lobby&quot;</span>, (<span class="keywordtype">char</span>*)args.<a class="code hl_variable" href="structArguments.html#a29e8dac2f7b3adc32cbd95e9a4162194">argv</a>[0]);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <a class="code hl_function" href="server_2src_2tcp_8c.html#ae3efc44467ee08b4d29bcc4ef7886119">tcp_send_to_client</a>(codenames, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>, msg);</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keyword">const</span> <span class="keywordtype">char</span>* sender_name = <span class="stringliteral">&quot;Unknown&quot;</span>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <a class="code hl_struct" href="structUser.html">User</a>* sender_user = <a class="code hl_function" href="server_2src_2lobby_8c.html#a09e92c0051506ed8b2ab1d8c3de28ac1">find_user_by_id</a>(lobby, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordflow">if</span> (sender_user &amp;&amp; sender_user-&gt;<a class="code hl_variable" href="structUser.html#ae1faef3d602da4c65e7571e751f775f2">name</a> &amp;&amp; sender_user-&gt;<a class="code hl_variable" href="structUser.html#ae1faef3d602da4c65e7571e751f775f2">name</a>[0] != <span class="charliteral">&#39;\0&#39;</span>) {</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        sender_name = sender_user-&gt;<a class="code hl_variable" href="structUser.html#ae1faef3d602da4c65e7571e751f775f2">name</a>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (args.<a class="code hl_variable" href="structArguments.html#a29e8dac2f7b3adc32cbd95e9a4162194">argv</a>[0] &amp;&amp; ((<span class="keywordtype">char</span>*)args.<a class="code hl_variable" href="structArguments.html#a29e8dac2f7b3adc32cbd95e9a4162194">argv</a>[0])[0] != <span class="charliteral">&#39;\0&#39;</span>) {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        sender_name = (<span class="keywordtype">char</span>*)args.<a class="code hl_variable" href="structArguments.html#a29e8dac2f7b3adc32cbd95e9a4162194">argv</a>[0];</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    }</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="comment">// Diffuse le message de chat à tous les joueurs du lobby</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordtype">char</span> msg[512];</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <a class="code hl_function" href="client_2src_2utils_8c.html#ade6960f663c739637ee1beaf757c5f24">format_to</a>(msg, <span class="keyword">sizeof</span>(msg), <span class="stringliteral">&quot;%d %s %s&quot;</span>, <a class="code hl_enumvalue" href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013ac660ea980a12d3674334b2d35eddabdb">MSG_SENDCHAT</a>, args.<a class="code hl_variable" href="structArguments.html#a29e8dac2f7b3adc32cbd95e9a4162194">argv</a>[0], args.<a class="code hl_variable" href="structArguments.html#a29e8dac2f7b3adc32cbd95e9a4162194">argv</a>[1]);</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="client_2src_2chat_8c.html#a1623ddd50bbb887235d7baed5358fcb0">chat_push</a>(&amp;lobby-&gt;<a class="code hl_variable" href="structLobby.html#aa3d81618bd4355d37da94317c4846e8c">chat</a>, msg) != EXIT_SUCCESS) {</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        printf(<span class="stringliteral">&quot;Failed to store chat message in lobby %d history\n&quot;</span>, lobby-&gt;<a class="code hl_variable" href="structLobby.html#aa61b45b961a54b3f1bb20c926c389e5f">id</a>);</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    }</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; lobby-&gt;<a class="code hl_variable" href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">nb_players</a>; i++) {</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <a class="code hl_function" href="server_2src_2tcp_8c.html#ae3efc44467ee08b4d29bcc4ef7886119">tcp_send_to_client</a>(codenames, lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[i]-&gt;<a class="code hl_variable" href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">id</a>, msg);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="comment">// Pour que le message puisse contenir des espaces, on reconstruit le message à partir de tous les arguments après le premier (le nom de l&#39;expéditeur)</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordtype">char</span> rebuilt_message[448];</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    rebuilt_message[0] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; args.<a class="code hl_variable" href="structArguments.html#ad7e02331365bd54d9d3abdef6b81dc30">argc</a>; i++) {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordflow">if</span> (i &gt; 1) {</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            strncat(rebuilt_message, <span class="stringliteral">&quot; &quot;</span>, <span class="keyword">sizeof</span>(rebuilt_message) - strlen(rebuilt_message) - 1);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        }</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        strncat(rebuilt_message, (<span class="keywordtype">char</span>*)args.<a class="code hl_variable" href="structArguments.html#a29e8dac2f7b3adc32cbd95e9a4162194">argv</a>[i], <span class="keyword">sizeof</span>(rebuilt_message) - strlen(rebuilt_message) - 1);</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    }</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>} </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="comment">// Diffuse le message de chat à tous les joueurs du lobby</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">char</span> msg[512];</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <a class="code hl_function" href="client_2src_2utils_8c.html#ade6960f663c739637ee1beaf757c5f24">format_to</a>(msg, <span class="keyword">sizeof</span>(msg), <span class="stringliteral">&quot;%d %d %s %s&quot;</span>, <a class="code hl_enumvalue" href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013ac660ea980a12d3674334b2d35eddabdb">MSG_SENDCHAT</a>, client-&gt;<a class="code hl_variable" href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">id</a>, sender_name, rebuilt_message);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="client_2src_2chat_8c.html#a1623ddd50bbb887235d7baed5358fcb0">chat_push</a>(&amp;lobby-&gt;<a class="code hl_variable" href="structLobby.html#aa3d81618bd4355d37da94317c4846e8c">chat</a>, msg) != EXIT_SUCCESS) {</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        printf(<span class="stringliteral">&quot;Failed to store chat message in lobby %d history\n&quot;</span>, lobby-&gt;<a class="code hl_variable" href="structLobby.html#aa61b45b961a54b3f1bb20c926c389e5f">id</a>);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; lobby-&gt;<a class="code hl_variable" href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">nb_players</a>; i++) {</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <a class="code hl_function" href="server_2src_2tcp_8c.html#ae3efc44467ee08b4d29bcc4ef7886119">tcp_send_to_client</a>(codenames, lobby-&gt;<a class="code hl_variable" href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">users</a>[i]-&gt;<a class="code hl_variable" href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">id</a>, msg);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>} </div>
 </div>
-<div class="ttc" id="aclient_2lib_2message_8h_html_ac6606ebe91c8ac66a2c314c79f5ab013a8de267a33883ee34bdb9880676b6651a"><div class="ttname"><a href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a8de267a33883ee34bdb9880676b6651a">MSG_SERVER_ERROR</a></div><div class="ttdeci">@ MSG_SERVER_ERROR</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00027">message.h:27</a></div></div>
-<div class="ttc" id="aclient_2lib_2message_8h_html_ac6606ebe91c8ac66a2c314c79f5ab013ac660ea980a12d3674334b2d35eddabdb"><div class="ttname"><a href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013ac660ea980a12d3674334b2d35eddabdb">MSG_SENDCHAT</a></div><div class="ttdeci">@ MSG_SENDCHAT</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00040">message.h:40</a></div></div>
-<div class="ttc" id="aclient_2src_2chat_8c_html_a07efff3af11cdd95f5abbac4b0977965"><div class="ttname"><a href="client_2src_2chat_8c.html#a07efff3af11cdd95f5abbac4b0977965">free_chat_message</a></div><div class="ttdeci">static void free_chat_message(void *data)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2chat_8c_source.html#l00003">chat.c:3</a></div></div>
-<div class="ttc" id="aclient_2src_2chat_8c_html_a1623ddd50bbb887235d7baed5358fcb0"><div class="ttname"><a href="client_2src_2chat_8c.html#a1623ddd50bbb887235d7baed5358fcb0">chat_push</a></div><div class="ttdeci">int chat_push(Chat *chat, const char *message)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2chat_8c_source.html#l00017">chat.c:17</a></div></div>
-<div class="ttc" id="aclient_2src_2chat_8c_html_a8dc439d5c8d241b17f730bc9a5eb4741"><div class="ttname"><a href="client_2src_2chat_8c.html#a8dc439d5c8d241b17f730bc9a5eb4741">chat_size</a></div><div class="ttdeci">int chat_size(Chat *chat)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2chat_8c_source.html#l00047">chat.c:47</a></div></div>
-<div class="ttc" id="aclient_2src_2chat_8c_html_a9dfe68d5591d78d18590b8b6436af8cf"><div class="ttname"><a href="client_2src_2chat_8c.html#a9dfe68d5591d78d18590b8b6436af8cf">chat_clear</a></div><div class="ttdeci">void chat_clear(Chat *chat)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2chat_8c_source.html#l00052">chat.c:52</a></div></div>
-<div class="ttc" id="aclient_2src_2chat_8c_html_abfff823aa4be250fd2c3b95ade22025c"><div class="ttname"><a href="client_2src_2chat_8c.html#abfff823aa4be250fd2c3b95ade22025c">chat_get</a></div><div class="ttdeci">const char * chat_get(Chat *chat, int index)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2chat_8c_source.html#l00042">chat.c:42</a></div></div>
-<div class="ttc" id="aclient_2src_2chat_8c_html_afb79622cae70b2048c678f33edebdc4f"><div class="ttname"><a href="client_2src_2chat_8c.html#afb79622cae70b2048c678f33edebdc4f">chat_init</a></div><div class="ttdeci">int chat_init(Chat *chat, int max_messages)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2chat_8c_source.html#l00007">chat.c:7</a></div></div>
+<div class="ttc" id="aclient_2lib_2message_8h_html_ac6606ebe91c8ac66a2c314c79f5ab013a8de267a33883ee34bdb9880676b6651a"><div class="ttname"><a href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a8de267a33883ee34bdb9880676b6651a">MSG_SERVER_ERROR</a></div><div class="ttdeci">@ MSG_SERVER_ERROR</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00037">message.h:37</a></div></div>
+<div class="ttc" id="aclient_2lib_2message_8h_html_ac6606ebe91c8ac66a2c314c79f5ab013ac660ea980a12d3674334b2d35eddabdb"><div class="ttname"><a href="client_2lib_2message_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013ac660ea980a12d3674334b2d35eddabdb">MSG_SENDCHAT</a></div><div class="ttdeci">@ MSG_SENDCHAT</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00052">message.h:52</a></div></div>
+<div class="ttc" id="aclient_2src_2chat_8c_html_a07efff3af11cdd95f5abbac4b0977965"><div class="ttname"><a href="client_2src_2chat_8c.html#a07efff3af11cdd95f5abbac4b0977965">free_chat_message</a></div><div class="ttdeci">static void free_chat_message(void *data)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2chat_8c_source.html#l00036">chat.c:36</a></div></div>
+<div class="ttc" id="aclient_2src_2chat_8c_html_a1623ddd50bbb887235d7baed5358fcb0"><div class="ttname"><a href="client_2src_2chat_8c.html#a1623ddd50bbb887235d7baed5358fcb0">chat_push</a></div><div class="ttdeci">int chat_push(Chat *chat, const char *message)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2chat_8c_source.html#l00203">chat.c:203</a></div></div>
+<div class="ttc" id="aclient_2src_2chat_8c_html_a8dc439d5c8d241b17f730bc9a5eb4741"><div class="ttname"><a href="client_2src_2chat_8c.html#a8dc439d5c8d241b17f730bc9a5eb4741">chat_size</a></div><div class="ttdeci">int chat_size(Chat *chat)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2chat_8c_source.html#l00235">chat.c:235</a></div></div>
+<div class="ttc" id="aclient_2src_2chat_8c_html_a9dfe68d5591d78d18590b8b6436af8cf"><div class="ttname"><a href="client_2src_2chat_8c.html#a9dfe68d5591d78d18590b8b6436af8cf">chat_clear</a></div><div class="ttdeci">void chat_clear(Chat *chat)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2chat_8c_source.html#l00240">chat.c:240</a></div></div>
+<div class="ttc" id="aclient_2src_2chat_8c_html_abfff823aa4be250fd2c3b95ade22025c"><div class="ttname"><a href="client_2src_2chat_8c.html#abfff823aa4be250fd2c3b95ade22025c">chat_get</a></div><div class="ttdeci">const char * chat_get(Chat *chat, int index)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2chat_8c_source.html#l00230">chat.c:230</a></div></div>
+<div class="ttc" id="aclient_2src_2chat_8c_html_afb79622cae70b2048c678f33edebdc4f"><div class="ttname"><a href="client_2src_2chat_8c.html#afb79622cae70b2048c678f33edebdc4f">chat_init</a></div><div class="ttdeci">int chat_init(Chat *chat, int max_messages)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2chat_8c_source.html#l00191">chat.c:191</a></div></div>
 <div class="ttc" id="aclient_2src_2list_8c_html_a18f87d88930c7be4d848c4db76e6fe76"><div class="ttname"><a href="client_2src_2list_8c.html#a18f87d88930c7be4d848c4db76e6fe76">list_add</a></div><div class="ttdeci">int list_add(List *list, void *data)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2list_8c_source.html#l00034">list.c:34</a></div></div>
 <div class="ttc" id="aclient_2src_2list_8c_html_a2e0b573f5ab9221c82af4a5eb5a48379"><div class="ttname"><a href="client_2src_2list_8c.html#a2e0b573f5ab9221c82af4a5eb5a48379">list_size</a></div><div class="ttdeci">int list_size(List *list)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2list_8c_source.html#l00104">list.c:104</a></div></div>
 <div class="ttc" id="aclient_2src_2list_8c_html_a50a6d26faf5a6f4c65eb98feaf2430b5"><div class="ttname"><a href="client_2src_2list_8c.html#a50a6d26faf5a6f4c65eb98feaf2430b5">list_create</a></div><div class="ttdeci">List * list_create()</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2list_8c_source.html#l00008">list.c:8</a></div></div>
 <div class="ttc" id="aclient_2src_2list_8c_html_a769aba1f6d36778101fcb047890a26fd"><div class="ttname"><a href="client_2src_2list_8c.html#a769aba1f6d36778101fcb047890a26fd">list_destroy</a></div><div class="ttdeci">void list_destroy(List *list, void(*free_data)(void *))</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2list_8c_source.html#l00020">list.c:20</a></div></div>
 <div class="ttc" id="aclient_2src_2list_8c_html_a91bcac9bcc90fdec55719cefde1f1c90"><div class="ttname"><a href="client_2src_2list_8c.html#a91bcac9bcc90fdec55719cefde1f1c90">list_get</a></div><div class="ttdeci">void * list_get(List *list, int index)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2list_8c_source.html#l00081">list.c:81</a></div></div>
-<div class="ttc" id="aclient_2src_2utils_8c_html_ade6960f663c739637ee1beaf757c5f24"><div class="ttname"><a href="client_2src_2utils_8c.html#ade6960f663c739637ee1beaf757c5f24">format_to</a></div><div class="ttdeci">int format_to(char *buf, size_t size, const char *fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2utils_8c_source.html#l00017">utils.c:17</a></div></div>
-<div class="ttc" id="aserver_2lib_2all_8h_html"><div class="ttname"><a href="server_2lib_2all_8h.html">all.h</a></div></div>
-<div class="ttc" id="aserver_2src_2chat_8c_html_a726dbd7b7cae60bb9944935d74a9772c"><div class="ttname"><a href="server_2src_2chat_8c.html#a726dbd7b7cae60bb9944935d74a9772c">request_send_chat</a></div><div class="ttdeci">int request_send_chat(Codenames *codenames, TcpClient *client, char *message, Arguments args)</div><div class="ttdef"><b>Definition</b> <a href="#l00060">chat.c:60</a></div></div>
-<div class="ttc" id="aserver_2src_2lobby_8c_html_ab200dca231db3c7405e5242cd1d580e1"><div class="ttname"><a href="server_2src_2lobby_8c.html#ab200dca231db3c7405e5242cd1d580e1">find_lobby_by_playerid</a></div><div class="ttdeci">Lobby * find_lobby_by_playerid(LobbyManager *manager, int id)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00146">lobby.c:146</a></div></div>
+<div class="ttc" id="aclient_2src_2utils_8c_html_ade6960f663c739637ee1beaf757c5f24"><div class="ttname"><a href="client_2src_2utils_8c.html#ade6960f663c739637ee1beaf757c5f24">format_to</a></div><div class="ttdeci">int format_to(char *buf, size_t size, const char *fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2utils_8c_source.html#l00046">utils.c:46</a></div></div>
+<div class="ttc" id="aserver_2src_2chat_8c_html_a726dbd7b7cae60bb9944935d74a9772c"><div class="ttname"><a href="server_2src_2chat_8c.html#a726dbd7b7cae60bb9944935d74a9772c">request_send_chat</a></div><div class="ttdeci">int request_send_chat(Codenames *codenames, TcpClient *client, char *message, Arguments args)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2chat_8c_source.html#l00060">chat.c:60</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_a09e92c0051506ed8b2ab1d8c3de28ac1"><div class="ttname"><a href="server_2src_2lobby_8c.html#a09e92c0051506ed8b2ab1d8c3de28ac1">find_user_by_id</a></div><div class="ttdeci">User * find_user_by_id(Lobby *lobby, int id)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00135">lobby.c:135</a></div></div>
+<div class="ttc" id="aserver_2src_2lobby_8c_html_ab200dca231db3c7405e5242cd1d580e1"><div class="ttname"><a href="server_2src_2lobby_8c.html#ab200dca231db3c7405e5242cd1d580e1">find_lobby_by_playerid</a></div><div class="ttdeci">Lobby * find_lobby_by_playerid(LobbyManager *manager, int id)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2lobby_8c_source.html#l00148">lobby.c:148</a></div></div>
 <div class="ttc" id="aserver_2src_2tcp_8c_html_ae3efc44467ee08b4d29bcc4ef7886119"><div class="ttname"><a href="server_2src_2tcp_8c.html#ae3efc44467ee08b4d29bcc4ef7886119">tcp_send_to_client</a></div><div class="ttdeci">int tcp_send_to_client(Codenames *codenames, int client_id, const char *message)</div><div class="ttdef"><b>Definition</b> <a href="server_2src_2tcp_8c_source.html#l00165">tcp.c:165</a></div></div>
-<div class="ttc" id="astructArguments_html"><div class="ttname"><a href="structArguments.html">Arguments</a></div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00051">message.h:51</a></div></div>
-<div class="ttc" id="astructArguments_html_a29e8dac2f7b3adc32cbd95e9a4162194"><div class="ttname"><a href="structArguments.html#a29e8dac2f7b3adc32cbd95e9a4162194">Arguments::argv</a></div><div class="ttdeci">char ** argv</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00053">message.h:53</a></div></div>
-<div class="ttc" id="astructArguments_html_ad7e02331365bd54d9d3abdef6b81dc30"><div class="ttname"><a href="structArguments.html#ad7e02331365bd54d9d3abdef6b81dc30">Arguments::argc</a></div><div class="ttdeci">int argc</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00052">message.h:52</a></div></div>
-<div class="ttc" id="astructChat_html"><div class="ttname"><a href="structChat.html">Chat</a></div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2chat_8h_source.html#l00014">chat.h:14</a></div></div>
-<div class="ttc" id="astructChat_html_a5ad701b30e82d091257082e44eef5147"><div class="ttname"><a href="structChat.html#a5ad701b30e82d091257082e44eef5147">Chat::messages</a></div><div class="ttdeci">List * messages</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2chat_8h_source.html#l00015">chat.h:15</a></div></div>
-<div class="ttc" id="astructChat_html_a6128476d96045c2b1b4af9a6034102f5"><div class="ttname"><a href="structChat.html#a6128476d96045c2b1b4af9a6034102f5">Chat::max_messages</a></div><div class="ttdeci">int max_messages</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2chat_8h_source.html#l00016">chat.h:16</a></div></div>
-<div class="ttc" id="astructCodenames_html"><div class="ttname"><a href="structCodenames.html">Codenames</a></div><div class="ttdef"><b>Definition</b> <a href="codenames_8h_source.html#l00013">codenames.h:13</a></div></div>
-<div class="ttc" id="astructCodenames_html_a60e595ede4c21bb5ab8aeead6009726a"><div class="ttname"><a href="structCodenames.html#a60e595ede4c21bb5ab8aeead6009726a">Codenames::lobby</a></div><div class="ttdeci">LobbyManager * lobby</div><div class="ttdef"><b>Definition</b> <a href="codenames_8h_source.html#l00015">codenames.h:15</a></div></div>
-<div class="ttc" id="astructListNode_html"><div class="ttname"><a href="structListNode.html">ListNode</a></div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2list_8h_source.html#l00011">list.h:11</a></div></div>
-<div class="ttc" id="astructListNode_html_a232112b6981e0fa380e985d199d1f7b3"><div class="ttname"><a href="structListNode.html#a232112b6981e0fa380e985d199d1f7b3">ListNode::next</a></div><div class="ttdeci">struct ListNode * next</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2list_8h_source.html#l00013">list.h:13</a></div></div>
-<div class="ttc" id="astructListNode_html_ade05bffc15e732376ae4568bcf210e02"><div class="ttname"><a href="structListNode.html#ade05bffc15e732376ae4568bcf210e02">ListNode::data</a></div><div class="ttdeci">void * data</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2list_8h_source.html#l00012">list.h:12</a></div></div>
-<div class="ttc" id="astructList_html_a5ab8f8003076b3866a7e03b07d921082"><div class="ttname"><a href="structList.html#a5ab8f8003076b3866a7e03b07d921082">List::head</a></div><div class="ttdeci">ListNode * head</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2list_8h_source.html#l00024">list.h:24</a></div></div>
-<div class="ttc" id="astructList_html_ac41719eafdd551f0dcee8f3ce67ececc"><div class="ttname"><a href="structList.html#ac41719eafdd551f0dcee8f3ce67ececc">List::size</a></div><div class="ttdeci">int size</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2list_8h_source.html#l00025">list.h:25</a></div></div>
-<div class="ttc" id="astructLobby_html"><div class="ttname"><a href="structLobby.html">Lobby</a></div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00038">lobby.h:38</a></div></div>
-<div class="ttc" id="astructLobby_html_aa3d81618bd4355d37da94317c4846e8c"><div class="ttname"><a href="structLobby.html#aa3d81618bd4355d37da94317c4846e8c">Lobby::chat</a></div><div class="ttdeci">Chat chat</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00046">lobby.h:46</a></div></div>
-<div class="ttc" id="astructLobby_html_aa61b45b961a54b3f1bb20c926c389e5f"><div class="ttname"><a href="structLobby.html#aa61b45b961a54b3f1bb20c926c389e5f">Lobby::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00039">lobby.h:39</a></div></div>
-<div class="ttc" id="astructLobby_html_ab0f8cc375b1895eb33d40d68acd2f965"><div class="ttname"><a href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">Lobby::users</a></div><div class="ttdeci">User * users[MAX_USERS]</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00043">lobby.h:43</a></div></div>
-<div class="ttc" id="astructLobby_html_ad1fa4c8d5c1943c1d6ab2d04914dd7f1"><div class="ttname"><a href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">Lobby::nb_players</a></div><div class="ttdeci">int nb_players</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00044">lobby.h:44</a></div></div>
-<div class="ttc" id="astructTcpClient_html"><div class="ttname"><a href="structTcpClient.html">TcpClient</a></div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2tcp_8h_source.html#l00019">tcp.h:19</a></div></div>
-<div class="ttc" id="astructTcpClient_html_a28a40517fae053778f34c4c8498b83b6"><div class="ttname"><a href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">TcpClient::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2tcp_8h_source.html#l00020">tcp.h:20</a></div></div>
-<div class="ttc" id="astructUser_html_aa7e6e39b43020bbe9c3a196b3689b0f7"><div class="ttname"><a href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">User::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2user_8h_source.html#l00024">user.h:24</a></div></div>
+<div class="ttc" id="astructArguments_html"><div class="ttname"><a href="structArguments.html">Arguments</a></div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00066">message.h:66</a></div></div>
+<div class="ttc" id="astructArguments_html_a29e8dac2f7b3adc32cbd95e9a4162194"><div class="ttname"><a href="structArguments.html#a29e8dac2f7b3adc32cbd95e9a4162194">Arguments::argv</a></div><div class="ttdeci">char ** argv</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00068">message.h:68</a></div></div>
+<div class="ttc" id="astructArguments_html_ad7e02331365bd54d9d3abdef6b81dc30"><div class="ttname"><a href="structArguments.html#ad7e02331365bd54d9d3abdef6b81dc30">Arguments::argc</a></div><div class="ttdeci">int argc</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2message_8h_source.html#l00067">message.h:67</a></div></div>
+<div class="ttc" id="astructChat_html"><div class="ttname"><a href="structChat.html">Chat</a></div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2chat_8h_source.html#l00041">chat.h:41</a></div></div>
+<div class="ttc" id="astructChat_html_a5ad701b30e82d091257082e44eef5147"><div class="ttname"><a href="structChat.html#a5ad701b30e82d091257082e44eef5147">Chat::messages</a></div><div class="ttdeci">List * messages</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2chat_8h_source.html#l00042">chat.h:42</a></div></div>
+<div class="ttc" id="astructChat_html_a6128476d96045c2b1b4af9a6034102f5"><div class="ttname"><a href="structChat.html#a6128476d96045c2b1b4af9a6034102f5">Chat::max_messages</a></div><div class="ttdeci">int max_messages</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2chat_8h_source.html#l00043">chat.h:43</a></div></div>
+<div class="ttc" id="astructCodenames_html"><div class="ttname"><a href="structCodenames.html">Codenames</a></div><div class="ttdef"><b>Definition</b> <a href="codenames_8h_source.html#l00018">codenames.h:18</a></div></div>
+<div class="ttc" id="astructCodenames_html_a60e595ede4c21bb5ab8aeead6009726a"><div class="ttname"><a href="structCodenames.html#a60e595ede4c21bb5ab8aeead6009726a">Codenames::lobby</a></div><div class="ttdeci">LobbyManager * lobby</div><div class="ttdef"><b>Definition</b> <a href="codenames_8h_source.html#l00020">codenames.h:20</a></div></div>
+<div class="ttc" id="astructListNode_html"><div class="ttname"><a href="structListNode.html">ListNode</a></div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2list_8h_source.html#l00016">list.h:16</a></div></div>
+<div class="ttc" id="astructListNode_html_a232112b6981e0fa380e985d199d1f7b3"><div class="ttname"><a href="structListNode.html#a232112b6981e0fa380e985d199d1f7b3">ListNode::next</a></div><div class="ttdeci">struct ListNode * next</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2list_8h_source.html#l00018">list.h:18</a></div></div>
+<div class="ttc" id="astructListNode_html_ade05bffc15e732376ae4568bcf210e02"><div class="ttname"><a href="structListNode.html#ade05bffc15e732376ae4568bcf210e02">ListNode::data</a></div><div class="ttdeci">void * data</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2list_8h_source.html#l00017">list.h:17</a></div></div>
+<div class="ttc" id="astructList_html_a5ab8f8003076b3866a7e03b07d921082"><div class="ttname"><a href="structList.html#a5ab8f8003076b3866a7e03b07d921082">List::head</a></div><div class="ttdeci">ListNode * head</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2list_8h_source.html#l00029">list.h:29</a></div></div>
+<div class="ttc" id="astructList_html_ac41719eafdd551f0dcee8f3ce67ececc"><div class="ttname"><a href="structList.html#ac41719eafdd551f0dcee8f3ce67ececc">List::size</a></div><div class="ttdeci">int size</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2list_8h_source.html#l00030">list.h:30</a></div></div>
+<div class="ttc" id="astructLobby_html"><div class="ttname"><a href="structLobby.html">Lobby</a></div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00069">lobby.h:69</a></div></div>
+<div class="ttc" id="astructLobby_html_aa3d81618bd4355d37da94317c4846e8c"><div class="ttname"><a href="structLobby.html#aa3d81618bd4355d37da94317c4846e8c">Lobby::chat</a></div><div class="ttdeci">Chat chat</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00077">lobby.h:77</a></div></div>
+<div class="ttc" id="astructLobby_html_aa61b45b961a54b3f1bb20c926c389e5f"><div class="ttname"><a href="structLobby.html#aa61b45b961a54b3f1bb20c926c389e5f">Lobby::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00070">lobby.h:70</a></div></div>
+<div class="ttc" id="astructLobby_html_ab0f8cc375b1895eb33d40d68acd2f965"><div class="ttname"><a href="structLobby.html#ab0f8cc375b1895eb33d40d68acd2f965">Lobby::users</a></div><div class="ttdeci">User * users[MAX_USERS]</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00074">lobby.h:74</a></div></div>
+<div class="ttc" id="astructLobby_html_ad1fa4c8d5c1943c1d6ab2d04914dd7f1"><div class="ttname"><a href="structLobby.html#ad1fa4c8d5c1943c1d6ab2d04914dd7f1">Lobby::nb_players</a></div><div class="ttdeci">int nb_players</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2lobby_8h_source.html#l00075">lobby.h:75</a></div></div>
+<div class="ttc" id="astructTcpClient_html"><div class="ttname"><a href="structTcpClient.html">TcpClient</a></div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2tcp_8h_source.html#l00024">tcp.h:24</a></div></div>
+<div class="ttc" id="astructTcpClient_html_a28a40517fae053778f34c4c8498b83b6"><div class="ttname"><a href="structTcpClient.html#a28a40517fae053778f34c4c8498b83b6">TcpClient::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition</b> <a href="server_2lib_2tcp_8h_source.html#l00025">tcp.h:25</a></div></div>
+<div class="ttc" id="astructUser_html"><div class="ttname"><a href="structUser.html">User</a></div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2user_8h_source.html#l00028">user.h:28</a></div></div>
+<div class="ttc" id="astructUser_html_aa7e6e39b43020bbe9c3a196b3689b0f7"><div class="ttname"><a href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">User::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2user_8h_source.html#l00029">user.h:29</a></div></div>
+<div class="ttc" id="astructUser_html_ae1faef3d602da4c65e7571e751f775f2"><div class="ttname"><a href="structUser.html#ae1faef3d602da4c65e7571e751f775f2">User::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition</b> <a href="client_2lib_2user_8h_source.html#l00030">user.h:30</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a href="dir_a063914ab482288b7b0e1b2fca86158c.html">src</a></li><li class="navelem"><a href="server_2src_2chat_8c.html">chat.c</a></li>
-    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="navelem"><a class="el" href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a class="el" href="dir_a063914ab482288b7b0e1b2fca86158c.html">src</a></li><li class="navelem"><a class="el" href="server_2src_2chat_8c.html">chat.c</a></li>
+    <li class="footer">Généré le Mardi 14 Avril 2026 18:57:16 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

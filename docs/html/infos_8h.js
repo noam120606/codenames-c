@@ -1,7 +1,5 @@
 var infos_8h =
 [
-    [ "CROSSFADER_ID_MUSIC_VOLUME", "infos_8h.html#a33a612bb99cde5e7d08cc25002db4cdd", null ],
-    [ "CROSSFADER_ID_SFX_VOLUME", "infos_8h.html#a5d1ef3b5a31b4091fc933e3433224560", null ],
     [ "calculate_fps", "infos_8h.html#a983096ca60b10079efe1a2463c30bccf", null ],
     [ "fps_ping_display", "infos_8h.html#aad33eabe628f0e215c0c6c6334fb02a4", null ],
     [ "infos_display", "infos_8h.html#a7e90b959138d44b57a8a441e5e93f68f", null ],

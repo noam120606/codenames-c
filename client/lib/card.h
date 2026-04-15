@@ -12,6 +12,10 @@
 /**
  * Types de cartes pour l'affichage (masculin, féminin, etc.). Ne correspond pas à une logique de jeu, mais uniquement à l'affichage.
  * Permet d'avoir des cartes avec des formes différentes selon le type, pour une meilleure lisibilité.
+ * @param CT_MALE carte de type masculin.
+ * @param CT_FEMALE carte de type féminin.
+ * @param CT_CAT carte de type chat.
+ * @param CT_DOG carte de type chien.
  */
 typedef enum CardType {
     CT_MALE,
@@ -31,6 +35,8 @@ typedef enum CardType {
  * @param selected 0 si non sélectionné, 1 si sélectionné.
  * @param is_pressed 0 si non pressé, 1 si pressé.
  * @param is_hovered 0 si non survolé, 1 si survolé.
+ * 
+ * @param display_word_once_revealed côté client seulement, indique si le mot doit être affiché une fois la carte révélée (utile pour les cartes sélectionnées mais pas encore devinées)
  */
 typedef struct Card {
     char word[32];
@@ -42,6 +48,8 @@ typedef struct Card {
     Booleen selected;
     Booleen is_pressed;
     Booleen is_hovered;
+
+    Booleen display_word_once_revealed; // Côté client seulement
 } Card;
 
 /**

@@ -67,6 +67,7 @@ codenames-c/
 │   └── run.ps1                # Script de lancement serveur sous Windows
 │
 ├── docs/                      # Documentation Doxygen générée
+├── tests/                     # Fichiers de tests
 ├── Doxyfile                   # Configuration Doxygen (projet complet)
 ├── LICENSE                    # Licence MIT
 ├── setup.sh                   # Script d'installation des dépendances

@@ -6,5 +6,6 @@ var searchData=
   ['end_5falpha_3',['end_alpha',['../structChannelFadeFilterState.html#a9b0d81d149d2d580e626844e9b5c0d60',1,'ChannelFadeFilterState']]],
   ['end_5fcutoff_5fhz_4',['end_cutoff_hz',['../structAudioFadeOutFilterParams.html#ab7331fa95f0df803e2b13cb48320386b',1,'AudioFadeOutFilterParams::end_cutoff_hz'],['../structAudioFadeInFilterParams.html#a2658d2e6747b734c78e1b3e4a5ab3a37',1,'AudioFadeInFilterParams::end_cutoff_hz']]],
   ['ensure_5fnetwork_5finitialized_5',['ensure_network_initialized',['../client_2src_2tcp_8c.html#a2a6510220fcecbfca0e638a20d9f892a',1,'tcp.c']]],
-  ['exemples_20de_20headers_6',['Exemples de headers',['../index.html#autotoc_md26',1,'']]]
+  ['exemples_20de_20headers_6',['Exemples de headers',['../index.html#autotoc_md26',1,'']]],
+  ['expire_5fat_5fms_7',['expire_at_ms',['../structGameHintBarMessage.html#ae1cbf4bb63ce214757c46c9c60e1041b',1,'GameHintBarMessage']]]
 ];

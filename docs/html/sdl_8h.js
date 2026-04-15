@@ -6,6 +6,7 @@ var sdl_8h =
     [ "WIN_MIN_WIDTH", "sdl_8h.html#a6123efbf31a64d99d4fec63fa6fbcaf6", null ],
     [ "WIN_WIDTH", "sdl_8h.html#a2e6ef411e0ff00ad889788b6cde701b5", null ],
     [ "AppContext", "sdl_8h.html#aab477be81bad6aadbec06506e3cc26a2", null ],
+    [ "Card", "sdl_8h.html#a23ff27324f1ac52bcafa4cc91e2c2744", null ],
     [ "destroy_context", "sdl_8h.html#a287c6280bfa12f44b321d22d6450a125", null ],
     [ "display_image", "sdl_8h.html#af2c6b730c5804f9e1d59476c6b24e93d", null ],
     [ "free_image", "sdl_8h.html#a40dc301c542ead27211aba1d2169b2fa", null ],

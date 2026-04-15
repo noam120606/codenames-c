@@ -21,6 +21,8 @@ var audio_8c =
     [ "compute_effective_volume", "audio_8c.html#a2b2d2ffce5df8e1fade27b0cd7254033", null ],
     [ "compute_low_pass_alpha", "audio_8c.html#a3ebf1390e0aa8e2132c5e797da4ec7e7", null ],
     [ "fade_low_pass_effect", "audio_8c.html#abc5a2810782d664639b4cb871e39169e", null ],
+    [ "find_available_channel", "audio_8c.html#abc5627d47bfb47a849b3fdee260a29ba", null ],
+    [ "is_channel_bound_to_sound", "audio_8c.html#a728a3bdc43905b750321c139f2df07a8", null ],
     [ "is_valid_kind", "audio_8c.html#a04f51f0ed9bfb85eb0156c6e3fc72ea7", null ],
     [ "is_valid_sound_id", "audio_8c.html#aa61a6e34df631d3cd739d2016e6674c7", null ],
     [ "load_wav_safe", "audio_8c.html#ab747949675ab207fd216a42f05a0d5f5", null ],

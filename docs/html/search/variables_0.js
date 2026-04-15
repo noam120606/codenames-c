@@ -1,14 +1,20 @@
 var searchData=
 [
-  ['active_0',['active',['../structChannelFilterState.html#a73e992fe5b84371476edcb351eed4945',1,'ChannelFilterState::active'],['../structChannelFadeFilterState.html#aaa1dc0fbdef0b154d22e36f97303a169',1,'ChannelFadeFilterState::active'],['../structTileAnimation.html#a7f3dc372d7b765c46b9ceb2526b01f51',1,'TileAnimation::active']]],
+  ['active_0',['active',['../structChannelFadeFilterState.html#aaa1dc0fbdef0b154d22e36f97303a169',1,'ChannelFadeFilterState::active'],['../structTileAnimation.html#a7f3dc372d7b765c46b9ceb2526b01f51',1,'TileAnimation::active'],['../structCreditsState.html#ae9bcf8366958fbbc60f14e10dffe890d',1,'CreditsState::active'],['../structTutorialState.html#aad4e0cdefaedd905dbd03c6ebb3838e5',1,'TutorialState::active'],['../structGameHintBarMessage.html#a4e2a2b42f0f8dedc529850648a22b0ef',1,'GameHintBarMessage::active'],['../structChannelFilterState.html#a73e992fe5b84371476edcb351eed4945',1,'ChannelFilterState::active']]],
   ['addr_1',['addr',['../structTcpClient.html#a16d1db1ab6eb28b277ce51d595050eb8',1,'TcpClient']]],
-  ['allowed_5fpattern_2',['allowed_pattern',['../structInputConfig.html#a2ebd806bb0800d1e3cd8f2118f985961',1,'InputConfig']]],
-  ['alpha_3',['alpha',['../structChannelFilterState.html#a1348177ecf30a7ab716fd7da76813183',1,'ChannelFilterState']]],
-  ['angle_4',['angle',['../structTextConfig.html#a511e27cf46b5e7099b5a9ed3ce7fb7a1',1,'TextConfig']]],
-  ['animation_5fduration_5',['ANIMATION_DURATION',['../infos_8c.html#addee7354de430c785bc1e8c5598fcae3',1,'infos.c']]],
-  ['animation_5fstart_5ftime_6',['animation_start_time',['../infos_8c.html#a5c10f13bdcbb57a755889ae15393ff10',1,'infos.c']]],
-  ['animations_7',['animations',['../background_8c.html#aecee9fd9c8255361411f98ca4e75b90c',1,'background.c']]],
-  ['app_5fstate_8',['app_state',['../structAppContext.html#a12358a947c811f31061ea211c1956784',1,'AppContext']]],
-  ['argc_9',['argc',['../structArguments.html#ad7e02331365bd54d9d3abdef6b81dc30',1,'Arguments']]],
-  ['argv_10',['argv',['../structArguments.html#a29e8dac2f7b3adc32cbd95e9a4162194',1,'Arguments']]]
+  ['agent_5fname_2',['agent_name',['../structTurn.html#a6f8c9fae267fcc9bc737a43ade809b1b',1,'Turn']]],
+  ['allowed_5fpattern_3',['allowed_pattern',['../structInputConfig.html#a2ebd806bb0800d1e3cd8f2118f985961',1,'InputConfig']]],
+  ['alpha_4',['alpha',['../structChannelFilterState.html#a1348177ecf30a7ab716fd7da76813183',1,'ChannelFilterState']]],
+  ['angle_5',['angle',['../structTextConfig.html#a511e27cf46b5e7099b5a9ed3ce7fb7a1',1,'TextConfig']]],
+  ['animating_6',['animating',['../structCardFlipState.html#af9bebe1a9b67b2e0c384fcdc1a1c63db',1,'CardFlipState']]],
+  ['animation_5fduration_7',['ANIMATION_DURATION',['../infos_8c.html#addee7354de430c785bc1e8c5598fcae3',1,'infos.c']]],
+  ['animation_5fstart_5ftime_8',['animation_start_time',['../infos_8c.html#a5c10f13bdcbb57a755889ae15393ff10',1,'infos.c']]],
+  ['animations_9',['animations',['../background_8c.html#aecee9fd9c8255361411f98ca4e75b90c',1,'background.c']]],
+  ['app_5fstate_10',['app_state',['../structAppContext.html#a12358a947c811f31061ea211c1956784',1,'AppContext']]],
+  ['applied_5fcolor_11',['applied_color',['../structGameHintBarState.html#ae3a4a2a778b0e90e04d393d6c92f3e09',1,'GameHintBarState']]],
+  ['applied_5ftext_12',['applied_text',['../structGameHintBarState.html#a3b94725a115d2efeded4518a77d77873',1,'GameHintBarState']]],
+  ['applied_5fvalid_13',['applied_valid',['../structGameHintBarState.html#a821469138dcda31524d3d20fcaccdb51',1,'GameHintBarState']]],
+  ['argc_14',['argc',['../structArguments.html#ad7e02331365bd54d9d3abdef6b81dc30',1,'Arguments']]],
+  ['argv_15',['argv',['../structArguments.html#a29e8dac2f7b3adc32cbd95e9a4162194',1,'Arguments']]],
+  ['auto_5fscroll_5fpaused_16',['auto_scroll_paused',['../structCreditsState.html#aa0b99e74e63a4226a497d97f45c58aa4',1,'CreditsState']]]
 ];

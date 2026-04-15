@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier client/lib/tcp.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,20 +34,21 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,9 +63,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('client_2lib_2tcp_8h.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('client_2lib_2tcp_8h.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -89,23 +90,38 @@ $(function(){initNavTree('client_2lib_2tcp_8h.html','',''); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
   <div class="headertitle"><div class="title">Référence du fichier tcp.h</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Communication TCP avec le serveur de jeu.  
+<a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="sdl_8h_source.html">sdl.h</a>&quot;</code><br />
 </div>
 <p><a href="client_2lib_2tcp_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a6ac472484968ec75f0cc2ca1212e8e4b" id="r_a6ac472484968ec75f0cc2ca1212e8e4b"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a6ac472484968ec75f0cc2ca1212e8e4b">init_tcp</a> (const char *server_ip, int port)</td></tr>
-<tr class="memitem:a494b2c72c94c69643bd9f418c960da71" id="r_a494b2c72c94c69643bd9f418c960da71"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a494b2c72c94c69643bd9f418c960da71">tick_tcp</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
-<tr class="memitem:a1b734946fd4dfcb3d7816a02f8efdbbb" id="r_a1b734946fd4dfcb3d7816a02f8efdbbb"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a1b734946fd4dfcb3d7816a02f8efdbbb">get_tcp_ping_ms</a> (int sock)</td></tr>
-<tr class="memitem:a219aafb1dfd40098b80739d476dcf9cd" id="r_a219aafb1dfd40098b80739d476dcf9cd"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a219aafb1dfd40098b80739d476dcf9cd">is_tcp_local_server</a> (int sock)</td></tr>
-<tr class="memitem:a4a1ac696cfcab23f00771084596b5c70" id="r_a4a1ac696cfcab23f00771084596b5c70"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a4a1ac696cfcab23f00771084596b5c70">send_tcp</a> (int sock, const char *message)</td></tr>
-<tr class="memitem:a39171b188778c75d0b5a82713b417786" id="r_a39171b188778c75d0b5a82713b417786"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a39171b188778c75d0b5a82713b417786">close_tcp</a> (int sock)</td></tr>
+<tr class="memitem:a6ac472484968ec75f0cc2ca1212e8e4b" id="r_a6ac472484968ec75f0cc2ca1212e8e4b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2tcp_8h.html#a6ac472484968ec75f0cc2ca1212e8e4b">init_tcp</a> (const char *server_ip, int port)</td></tr>
+<tr class="separator:a6ac472484968ec75f0cc2ca1212e8e4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a494b2c72c94c69643bd9f418c960da71" id="r_a494b2c72c94c69643bd9f418c960da71"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2tcp_8h.html#a494b2c72c94c69643bd9f418c960da71">tick_tcp</a> (<a class="el" href="structAppContext.html">AppContext</a> *context)</td></tr>
+<tr class="separator:a494b2c72c94c69643bd9f418c960da71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b734946fd4dfcb3d7816a02f8efdbbb" id="r_a1b734946fd4dfcb3d7816a02f8efdbbb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2tcp_8h.html#a1b734946fd4dfcb3d7816a02f8efdbbb">get_tcp_ping_ms</a> (int sock)</td></tr>
+<tr class="separator:a1b734946fd4dfcb3d7816a02f8efdbbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a219aafb1dfd40098b80739d476dcf9cd" id="r_a219aafb1dfd40098b80739d476dcf9cd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2tcp_8h.html#a219aafb1dfd40098b80739d476dcf9cd">is_tcp_local_server</a> (int sock)</td></tr>
+<tr class="separator:a219aafb1dfd40098b80739d476dcf9cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a1ac696cfcab23f00771084596b5c70" id="r_a4a1ac696cfcab23f00771084596b5c70"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2tcp_8h.html#a4a1ac696cfcab23f00771084596b5c70">send_tcp</a> (int sock, const char *message)</td></tr>
+<tr class="separator:a4a1ac696cfcab23f00771084596b5c70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39171b188778c75d0b5a82713b417786" id="r_a39171b188778c75d0b5a82713b417786"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2lib_2tcp_8h.html#a39171b188778c75d0b5a82713b417786">close_tcp</a> (int sock)</td></tr>
+<tr class="separator:a39171b188778c75d0b5a82713b417786"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Communication TCP avec le serveur de jeu. </p>
+
+<p class="definition">Définition dans le fichier <a class="el" href="client_2lib_2tcp_8h_source.html">tcp.h</a>.</p>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
 <a id="a39171b188778c75d0b5a82713b417786" name="a39171b188778c75d0b5a82713b417786"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a39171b188778c75d0b5a82713b417786">&#9670;&#160;</a></span>close_tcp()</h2>
 
@@ -115,7 +131,8 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int close_tcp </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>sock</em></span></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sock</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -126,13 +143,13 @@ Fonctions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd><span class="tt">EXIT_SUCCESS</span> en cas de succès, <span class="tt">EXIT_FAILURE</span> en cas d'erreur. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd><code>EXIT_SUCCESS</code> en cas de succès, <code>EXIT_FAILURE</code> en cas d'erreur. </dd></dl>
 
 <p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00217">217</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2lib_2all_8h_source.html#l00034">CLOSESOCKET</a>, et <a class="el" href="client_2src_2tcp_8c_source.html#l00011">network_initialized</a>.</p>
+<p class="reference">Références <a class="el" href="client_2lib_2all_8h_source.html#l00039">CLOSESOCKET</a>, et <a class="el" href="client_2src_2tcp_8c_source.html#l00011">network_initialized</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="sdl_8c_source.html#l00256">destroy_context()</a>, et <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="sdl_8c_source.html#l00317">destroy_context()</a>, et <a class="el" href="client_2src_2index_8c_source.html#l00205">main()</a>.</p>
 
 </div>
 </div>
@@ -145,7 +162,8 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int get_tcp_ping_ms </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>sock</em></span></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sock</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -171,12 +189,19 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int init_tcp </td>
           <td>(</td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>server_ip</em></span>, </td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>server_ip</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>port</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -191,9 +216,9 @@ Fonctions</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00060">60</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2lib_2all_8h_source.html#l00034">CLOSESOCKET</a>, et <a class="el" href="client_2src_2tcp_8c_source.html#l00013">ensure_network_initialized()</a>.</p>
+<p class="reference">Références <a class="el" href="client_2lib_2all_8h_source.html#l00039">CLOSESOCKET</a>, et <a class="el" href="client_2src_2tcp_8c_source.html#l00013">ensure_network_initialized()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00205">main()</a>.</p>
 
 </div>
 </div>
@@ -206,7 +231,8 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int is_tcp_local_server </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>sock</em></span></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sock</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -221,7 +247,7 @@ Fonctions</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00179">179</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00440">fps_ping_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00495">fps_ping_display()</a>.</p>
 
 </div>
 </div>
@@ -234,12 +260,19 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int send_tcp </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>sock</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sock</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>message</em></span>&#160;)</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -250,11 +283,11 @@ Fonctions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd><span class="tt">EXIT_SUCCESS</span> en cas de succès, <span class="tt">EXIT_FAILURE</span> en cas d'erreur. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd><code>EXIT_SUCCESS</code> en cas de succès, <code>EXIT_FAILURE</code> en cas d'erreur. </dd></dl>
 
 <p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00198">198</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00059">chat_on_submit()</a>, <a class="el" href="menu_8c_source.html#l00031">code_on_submit()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00068">game_button_click()</a>, <a class="el" href="client_2src_2version_8c_source.html#l00003">load_version()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00021">lobby_button_click()</a>, <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00043">maybe_send_app_ping()</a>, et <a class="el" href="menu_8c_source.html#l00053">menu_button_click()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="card_8c_source.html#l00142">card_handle_click()</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00257">chat_submit_message()</a>, <a class="el" href="menu_8c_source.html#l00533">code_on_submit()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00345">game_button_click()</a>, <a class="el" href="client_2src_2version_8c_source.html#l00003">load_version()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00373">lobby_button_click()</a>, <a class="el" href="client_2src_2index_8c_source.html#l00205">main()</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00043">maybe_send_app_ping()</a>, et <a class="el" href="menu_8c_source.html#l00546">menu_button_click()</a>.</p>
 
 </div>
 </div>
@@ -267,42 +300,35 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int tick_tcp </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Traite les événements réseau côté client (réception, etc.). </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sock</td><td>Descripteur de socket. </td></tr>
+    <tr><td class="paramname">context</td><td>Contexte de l'application. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd><span class="tt">EXIT_SUCCESS</span> en cas de succès, <span class="tt">EXIT_FAILURE</span> en cas d'erreur. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur. </dd></dl>
 
 <p class="definition">Définition à la ligne <a class="el" href="client_2src_2tcp_8c_source.html#l00101">101</a> du fichier <a class="el" href="client_2src_2tcp_8c_source.html">tcp.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2src_2tcp_8c_source.html#l00008">buffer</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00006">BUFFER_SIZE</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00043">maybe_send_app_ping()</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00026">next_line_token()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00024">on_message()</a>, et <a class="el" href="sdl_8h_source.html#l00045">AppContext::sock</a>.</p>
+<p class="reference">Références <a class="el" href="client_2src_2tcp_8c_source.html#l00008">buffer</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00006">BUFFER_SIZE</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00043">maybe_send_app_ping()</a>, <a class="el" href="client_2src_2tcp_8c_source.html#l00026">next_line_token()</a>, <a class="el" href="client_2src_2message_8c_source.html#l00117">on_message()</a>, et <a class="el" href="sdl_8h_source.html#l00064">AppContext::sock</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00205">main()</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div id="page-nav" class="page-nav-panel">
-<div id="page-nav-resize-handle"></div>
-<div id="page-nav-tree">
-<div id="page-nav-contents">
-</div><!-- page-nav-contents -->
-</div><!-- page-nav-tree -->
-</div><!-- page-nav -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a href="client_2lib_2tcp_8h.html">tcp.h</a></li>
-    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_c820a03d7ce2287b7e602f7703757381.html">lib</a></li><li class="navelem"><a class="el" href="client_2lib_2tcp_8h.html">tcp.h</a></li>
+    <li class="footer">Généré le Mardi 14 Avril 2026 18:57:16 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

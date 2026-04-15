@@ -1,12 +1,75 @@
 #include "../lib/all.h"
 
+#define TEXT_FONT_CACHE_SIZE 16
+#define TEXT_FONT_PATH_MAX 260
+
+typedef struct TextFontCacheEntry {
+    char path[TEXT_FONT_PATH_MAX];
+    int size;
+    TTF_Font* font;
+} TextFontCacheEntry;
+
+static TextFontCacheEntry text_font_cache[TEXT_FONT_CACHE_SIZE] = {0};
+
+static TTF_Font* text_get_cached_font(const char* font_path, int size) {
+    if (!font_path || font_path[0] == '\0' || size <= 0) return NULL;
+
+    for (int i = 0; i < TEXT_FONT_CACHE_SIZE; i++) {
+        TextFontCacheEntry* entry = &text_font_cache[i];
+        if (!entry->font) continue;
+        if (entry->size == size && strcmp(entry->path, font_path) == 0) {
+            return entry->font;
+        }
+    }
+
+    int slot = -1;
+    for (int i = 0; i < TEXT_FONT_CACHE_SIZE; i++) {
+        if (!text_font_cache[i].font) {
+            slot = i;
+            break;
+        }
+    }
+
+    if (slot < 0) {
+        slot = 0;
+        if (text_font_cache[slot].font) {
+            TTF_CloseFont(text_font_cache[slot].font);
+            text_font_cache[slot].font = NULL;
+        }
+    }
+
+    TTF_Font* loaded = TTF_OpenFont(font_path, size);
+    if (!loaded) {
+        printf("Failed to load font: %s\n", TTF_GetError());
+        return NULL;
+    }
+
+    TextFontCacheEntry* entry = &text_font_cache[slot];
+    entry->size = size;
+    strncpy(entry->path, font_path, TEXT_FONT_PATH_MAX - 1);
+    entry->path[TEXT_FONT_PATH_MAX - 1] = '\0';
+    entry->font = loaded;
+    return entry->font;
+}
+
 TTF_Font* load_font(const char* font_path, int size) {
-    TTF_Font* font = TTF_OpenFont(font_path, size);
+    TTF_Font* font = text_get_cached_font(font_path, size);
     if (!font) {
         printf("Failed to load font: %s\n", TTF_GetError());
         return NULL;
     }
     return font;
+}
+
+void text_font_cache_clear(void) {
+    for (int i = 0; i < TEXT_FONT_CACHE_SIZE; i++) {
+        if (text_font_cache[i].font) {
+            TTF_CloseFont(text_font_cache[i].font);
+            text_font_cache[i].font = NULL;
+        }
+        text_font_cache[i].path[0] = '\0';
+        text_font_cache[i].size = 0;
+    }
 }
 
 TextConfig create_text_config(const char* font_path, int size, SDL_Color color, int x, int y, double angle, Uint8 opacity) {
@@ -31,7 +94,7 @@ void reload_text(AppContext* context, Text* text) {
 
     if (!text->content || text->content[0] == '\0') return;
 
-    TTF_Font* font = TTF_OpenFont(text->cfg.font_path, text->cfg.font_size);
+    TTF_Font* font = text_get_cached_font(text->cfg.font_path, text->cfg.font_size);
     if (!font) {
         printf("Failed to load font: %s\n", TTF_GetError());
         return;
@@ -40,13 +103,11 @@ void reload_text(AppContext* context, Text* text) {
     SDL_Surface* surface = TTF_RenderUTF8_Blended(font, text->content, text->cfg.color);
     if (!surface) {
         printf("Failed to create text surface: %s\n", TTF_GetError());
-        TTF_CloseFont(font);
         return;
     }
 
     text->texture = SDL_CreateTextureFromSurface(context->renderer, surface);
     SDL_FreeSurface(surface);
-    TTF_CloseFont(font);
 
     if (!text->texture) {
         printf("Failed to create text texture: %s\n", SDL_GetError());

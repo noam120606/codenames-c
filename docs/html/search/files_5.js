@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['list_2ec_0',['list.c',['../client_2src_2list_8c.html',1,'(Espace de nommage global)'],['../server_2src_2list_8c.html',1,'(Espace de nommage global)']]],
-  ['list_2eh_1',['list.h',['../client_2lib_2list_8h.html',1,'(Espace de nommage global)'],['../server_2lib_2list_8h.html',1,'(Espace de nommage global)']]],
-  ['lobby_2ec_2',['lobby.c',['../client_2src_2lobby_8c.html',1,'(Espace de nommage global)'],['../server_2src_2lobby_8c.html',1,'(Espace de nommage global)']]],
-  ['lobby_2eh_3',['lobby.h',['../client_2lib_2lobby_8h.html',1,'(Espace de nommage global)'],['../server_2lib_2lobby_8h.html',1,'(Espace de nommage global)']]]
+  ['index_2ec_0',['index.c',['../client_2src_2index_8c.html',1,'(Espace de nommage global)'],['../server_2src_2index_8c.html',1,'(Espace de nommage global)']]],
+  ['infos_2ec_1',['infos.c',['../infos_8c.html',1,'']]],
+  ['infos_2eh_2',['infos.h',['../infos_8h.html',1,'']]],
+  ['input_2ec_3',['input.c',['../input_8c.html',1,'']]],
+  ['input_2eh_4',['input.h',['../input_8h.html',1,'']]]
 ];

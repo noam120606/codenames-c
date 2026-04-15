@@ -1,12 +1,23 @@
 var searchData=
 [
-  ['rect_0',['rect',['../structButtonConfig.html#a499e2e5ebe13589dff7967201b77038c',1,'ButtonConfig::rect'],['../structCrossfaderConfig.html#a4943be4eea5c53d125492ec6e5229a4f',1,'CrossfaderConfig::rect'],['../structInputConfig.html#a9d52b0c0e768b365d8c7f63420d8aebb',1,'InputConfig::rect'],['../structWindowConfig.html#a4169b01a110ca1c4323b342439a3c030',1,'WindowConfig::rect']]],
-  ['red_5fpanel_1',['red_panel',['../client_2src_2game_8c.html#ab6afd5e7d984cee1802863cf639b7062',1,'game.c']]],
-  ['red_5fplayer_5ftext_5findex_2',['red_player_text_index',['../client_2src_2game_8c.html#a216feb4db1303c66a65e98d10ee407cf',1,'game.c']]],
-  ['renderer_3',['renderer',['../structAppContext.html#a70a91ad56405a07962fe46fa7f640882',1,'AppContext']]],
-  ['revealed_4',['revealed',['../structWord.html#a0cac07c3eb1ee9ad069181b07b045a00',1,'Word::revealed'],['../structCard.html#a081171770c1dfa99ea73cc9ccc7378f0',1,'Card::revealed']]],
-  ['role_5',['role',['../structUser.html#ab91e66ddd08d2a0a76790374c2861fb8',1,'User']]],
-  ['rules_5fline_5fcount_6',['rules_line_count',['../infos_8c.html#a3f9cb5df846184803ffb556d92a85aa0',1,'infos.c']]],
-  ['rules_5flines_7',['rules_lines',['../infos_8c.html#a455e806e355945510f3da8893a8d981c',1,'infos.c']]],
-  ['rules_5ftitle_8',['rules_title',['../infos_8c.html#a5377b7365f8ed2b352452fbb2d883eba',1,'infos.c']]]
+  ['rect_0',['rect',['../structCard.html#ac94f5fbd89aefdd5733c6cdf4cf49247',1,'Card::rect'],['../structCrossfaderConfig.html#a4943be4eea5c53d125492ec6e5229a4f',1,'CrossfaderConfig::rect'],['../structInputConfig.html#a9d52b0c0e768b365d8c7f63420d8aebb',1,'InputConfig::rect'],['../structWindowConfig.html#a4169b01a110ca1c4323b342439a3c030',1,'WindowConfig::rect'],['../structButtonConfig.html#a499e2e5ebe13589dff7967201b77038c',1,'ButtonConfig::rect']]],
+  ['red_5fhistory_1',['red_history',['../structGame.html#af7b14045d8c5e0e6cdee233e69517d13',1,'Game']]],
+  ['red_5fpanel_2',['red_panel',['../client_2src_2game_8c.html#ab6afd5e7d984cee1802863cf639b7062',1,'game.c']]],
+  ['red_5fplayer_5ftext_5findex_3',['red_player_text_index',['../client_2src_2game_8c.html#a216feb4db1303c66a65e98d10ee407cf',1,'game.c']]],
+  ['renderer_4',['renderer',['../structButtonConfig.html#a456a61edbf4bf03be46fbd4d43dd53cb',1,'ButtonConfig::renderer'],['../structAppContext.html#a70a91ad56405a07962fe46fa7f640882',1,'AppContext::renderer']]],
+  ['restart_5frequested_5',['restart_requested',['../structAppContext.html#a78889dfe1177f030d60a42c5d1a8993a',1,'AppContext']]],
+  ['revealed_6',['revealed',['../structCard.html#aa7a28f31d80be20da1795d298370d0b1',1,'Card::revealed'],['../structWord.html#a0cac07c3eb1ee9ad069181b07b045a00',1,'Word::revealed']]],
+  ['revealed_5fword_5fcount_7',['revealed_word_count',['../structTurn.html#a927ec1240b9f8848a54f433c47a43004',1,'Turn']]],
+  ['revealed_5fword_5fteams_8',['revealed_word_teams',['../structTurn.html#ad31798f9db11dc0d792beaa5d0686e4c',1,'Turn']]],
+  ['revealed_5fwords_9',['revealed_words',['../structTurn.html#ad5d071670d0bb5f9b8aba63e906dc68a',1,'Turn']]],
+  ['revision_10',['revision',['../structHistory.html#a51794bb16a12232b379ca5d07f13cac4',1,'History::revision'],['../structChat.html#a77c2ce309291bd2f24587741ba536d05',1,'Chat::revision']]],
+  ['role_11',['role',['../structUser.html#ab91e66ddd08d2a0a76790374c2861fb8',1,'User']]],
+  ['role_5fblue_5fagent_5fwindow_12',['role_blue_agent_window',['../client_2src_2lobby_8c.html#af7995b8a25651727a375e0a1baf3bd83',1,'lobby.c']]],
+  ['role_5fblue_5fspy_5fwindow_13',['role_blue_spy_window',['../client_2src_2lobby_8c.html#afe98d59d15e97a269c79a0d420c5b7be',1,'lobby.c']]],
+  ['role_5fnone_5fwindow_14',['role_none_window',['../client_2src_2lobby_8c.html#a05f0023ce4923e0df8ea9b658009436c',1,'lobby.c']]],
+  ['role_5fred_5fagent_5fwindow_15',['role_red_agent_window',['../client_2src_2lobby_8c.html#a04b0b6ac21acff27da24cd45633b0bd0',1,'lobby.c']]],
+  ['role_5fred_5fspy_5fwindow_16',['role_red_spy_window',['../client_2src_2lobby_8c.html#a0a904238ed8012901b1748a3747951ab',1,'lobby.c']]],
+  ['rules_5fline_5fcount_17',['rules_line_count',['../infos_8c.html#a3f9cb5df846184803ffb556d92a85aa0',1,'infos.c']]],
+  ['rules_5flines_18',['rules_lines',['../infos_8c.html#a455e806e355945510f3da8893a8d981c',1,'infos.c']]],
+  ['rules_5ftitle_19',['rules_title',['../infos_8c.html#a5377b7365f8ed2b352452fbb2d883eba',1,'infos.c']]]
 ];

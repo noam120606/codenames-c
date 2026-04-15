@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier server/lib/lobby.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,20 +34,21 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,9 +63,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('server_2lib_2lobby_8h.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('server_2lib_2lobby_8h.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -89,9 +90,18 @@ $(function(){initNavTree('server_2lib_2lobby_8h.html','',''); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#enum-members">Énumérations</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
   <div class="headertitle"><div class="title">Référence du fichier lobby.h</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Gestion des lobbies (salles d'attente) côté serveur.  
+<a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="server_2lib_2user_8h_source.html">../lib/user.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="server_2lib_2game_8h_source.html">../lib/game.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="server_2lib_2message_8h_source.html">../lib/message.h</a>&quot;</code><br />
@@ -100,46 +110,76 @@ $(function(){initNavTree('server_2lib_2lobby_8h.html','',''); });
 </div>
 <p><a href="server_2lib_2lobby_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Structures de données</h2></td></tr>
-<tr class="memitem:Lobby" id="r_Lobby"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structLobby.html">Lobby</a></td></tr>
-<tr class="memitem:LobbyManager" id="r_LobbyManager"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structLobbyManager.html">LobbyManager</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLobby.html">Lobby</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLobbyManager.html">LobbyManager</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a67fee069fc4be0b17f7a3a8d185f4416" id="r_a67fee069fc4be0b17f7a3a8d185f4416"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a67fee069fc4be0b17f7a3a8d185f4416">MAX_LOBBIES</a>&#160;&#160;&#160;50</td></tr>
-<tr class="memitem:a2c2a303621f66761529e598758d7ef34" id="r_a2c2a303621f66761529e598758d7ef34"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a2c2a303621f66761529e598758d7ef34">MAX_USERS</a>&#160;&#160;&#160;8</td></tr>
+<tr class="memitem:a67fee069fc4be0b17f7a3a8d185f4416" id="r_a67fee069fc4be0b17f7a3a8d185f4416"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2lobby_8h.html#a67fee069fc4be0b17f7a3a8d185f4416">MAX_LOBBIES</a>&#160;&#160;&#160;50</td></tr>
+<tr class="separator:a67fee069fc4be0b17f7a3a8d185f4416"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c2a303621f66761529e598758d7ef34" id="r_a2c2a303621f66761529e598758d7ef34"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2lobby_8h.html#a2c2a303621f66761529e598758d7ef34">MAX_USERS</a>&#160;&#160;&#160;8</td></tr>
+<tr class="separator:a2c2a303621f66761529e598758d7ef34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Définitions de type</h2></td></tr>
-<tr class="memitem:a66b59b004a9832d09c7c6ebf763eec32" id="r_a66b59b004a9832d09c7c6ebf763eec32"><td class="memItemLeft">typedef enum <a class="el" href="client_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83">LobbyStatus</a>&#160;</td><td class="memItemRight"><a class="el" href="#a66b59b004a9832d09c7c6ebf763eec32">LobbyStatus</a></td></tr>
-<tr class="memitem:a229c875e4f4c628685491500cddaae31" id="r_a229c875e4f4c628685491500cddaae31"><td class="memItemLeft">typedef struct Lobby&#160;</td><td class="memItemRight"><a class="el" href="#a229c875e4f4c628685491500cddaae31">Lobby</a></td></tr>
-<tr class="memitem:a3a3c4da33b4ef8a21b6374ea385cf368" id="r_a3a3c4da33b4ef8a21b6374ea385cf368"><td class="memItemLeft">typedef struct LobbyManager&#160;</td><td class="memItemRight"><a class="el" href="#a3a3c4da33b4ef8a21b6374ea385cf368">LobbyManager</a></td></tr>
+<tr class="memitem:aa44c3a3da81703c57680df8630f4414e" id="r_aa44c3a3da81703c57680df8630f4414e"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structCodenames.html">Codenames</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2lobby_8h.html#aa44c3a3da81703c57680df8630f4414e">Codenames</a></td></tr>
+<tr class="separator:aa44c3a3da81703c57680df8630f4414e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66b59b004a9832d09c7c6ebf763eec32" id="r_a66b59b004a9832d09c7c6ebf763eec32"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="client_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83">LobbyStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2lobby_8h.html#a66b59b004a9832d09c7c6ebf763eec32">LobbyStatus</a></td></tr>
+<tr class="separator:a66b59b004a9832d09c7c6ebf763eec32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a229c875e4f4c628685491500cddaae31" id="r_a229c875e4f4c628685491500cddaae31"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structLobby.html">Lobby</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2lobby_8h.html#a229c875e4f4c628685491500cddaae31">Lobby</a></td></tr>
+<tr class="separator:a229c875e4f4c628685491500cddaae31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a3c4da33b4ef8a21b6374ea385cf368" id="r_a3a3c4da33b4ef8a21b6374ea385cf368"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structLobbyManager.html">LobbyManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2lobby_8h.html#a3a3c4da33b4ef8a21b6374ea385cf368">LobbyManager</a></td></tr>
+<tr class="separator:a3a3c4da33b4ef8a21b6374ea385cf368"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Énumérations</h2></td></tr>
-<tr class="memitem:a02f4e343ea570764cb2390b12ad37d83" id="r_a02f4e343ea570764cb2390b12ad37d83"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#a02f4e343ea570764cb2390b12ad37d83">LobbyStatus</a> { <a class="el" href="#a02f4e343ea570764cb2390b12ad37d83a715a5fc1dd102e417ed4fc5b81477ba4">LB_STATUS_WAITING</a>
-, <a class="el" href="#a02f4e343ea570764cb2390b12ad37d83ac5cf08a357894a8e0f8b340d97ff14b9">LB_STATUS_IN_GAME</a>
+<tr class="memitem:a02f4e343ea570764cb2390b12ad37d83" id="r_a02f4e343ea570764cb2390b12ad37d83"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83">LobbyStatus</a> { <a class="el" href="server_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83a715a5fc1dd102e417ed4fc5b81477ba4">LB_STATUS_WAITING</a>
+, <a class="el" href="server_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83ac5cf08a357894a8e0f8b340d97ff14b9">LB_STATUS_IN_GAME</a>
  }</td></tr>
+<tr class="separator:a02f4e343ea570764cb2390b12ad37d83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a95d0cf6c24388e7600fecdf9207fcb72" id="r_a95d0cf6c24388e7600fecdf9207fcb72"><td class="memItemLeft"><a class="el" href="structLobbyManager.html">LobbyManager</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a95d0cf6c24388e7600fecdf9207fcb72">create_lobby_manager</a> ()</td></tr>
-<tr class="memitem:a1f8c73963ebfb36ee377a21fe636d1e3" id="r_a1f8c73963ebfb36ee377a21fe636d1e3"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a1f8c73963ebfb36ee377a21fe636d1e3">destroy_lobby_manager</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structLobbyManager.html">LobbyManager</a> *manager)</td></tr>
-<tr class="memitem:a44d2d1f1a9577918a430c3d184438383" id="r_a44d2d1f1a9577918a430c3d184438383"><td class="memItemLeft"><a class="el" href="structLobby.html">Lobby</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a44d2d1f1a9577918a430c3d184438383">create_lobby</a> (<a class="el" href="structLobbyManager.html">LobbyManager</a> *manager)</td></tr>
-<tr class="memitem:a3f3f826b2ed73b99d1f5b51ff9bb5fd5" id="r_a3f3f826b2ed73b99d1f5b51ff9bb5fd5"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a3f3f826b2ed73b99d1f5b51ff9bb5fd5">join_lobby</a> (<a class="el" href="structLobby.html">Lobby</a> *lobby, <a class="el" href="structUser.html">User</a> *user)</td></tr>
-<tr class="memitem:ab54b2e902c3070efb2feb5f75699ccef" id="r_ab54b2e902c3070efb2feb5f75699ccef"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ab54b2e902c3070efb2feb5f75699ccef">leave_lobby</a> (<a class="el" href="structLobby.html">Lobby</a> *lobby, <a class="el" href="structUser.html">User</a> *user)</td></tr>
-<tr class="memitem:a70ab64da857b6aa300fbf07629e64ed4" id="r_a70ab64da857b6aa300fbf07629e64ed4"><td class="memItemLeft"><a class="el" href="structLobby.html">Lobby</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a70ab64da857b6aa300fbf07629e64ed4">find_lobby_by_ownerid</a> (<a class="el" href="structLobbyManager.html">LobbyManager</a> *manager, int owner_id)</td></tr>
-<tr class="memitem:ab200dca231db3c7405e5242cd1d580e1" id="r_ab200dca231db3c7405e5242cd1d580e1"><td class="memItemLeft"><a class="el" href="structLobby.html">Lobby</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ab200dca231db3c7405e5242cd1d580e1">find_lobby_by_playerid</a> (<a class="el" href="structLobbyManager.html">LobbyManager</a> *manager, int id)</td></tr>
-<tr class="memitem:a34b870bac73ec966edab28acc4be717a" id="r_a34b870bac73ec966edab28acc4be717a"><td class="memItemLeft"><a class="el" href="structLobby.html">Lobby</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a34b870bac73ec966edab28acc4be717a">find_lobby_by_code</a> (<a class="el" href="structLobbyManager.html">LobbyManager</a> *manager, const char *code)</td></tr>
-<tr class="memitem:a2bb4ca514adcafddefb6759e2b5b69a7" id="r_a2bb4ca514adcafddefb6759e2b5b69a7"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2bb4ca514adcafddefb6759e2b5b69a7">destroy_lobby</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structLobby.html">Lobby</a> *lobby)</td></tr>
-<tr class="memitem:a1e46ad30b12b838c13c44f55629d0fca" id="r_a1e46ad30b12b838c13c44f55629d0fca"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a1e46ad30b12b838c13c44f55629d0fca">request_create_lobby</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client, char *message, <a class="el" href="structArguments.html">Arguments</a> args)</td></tr>
-<tr class="memitem:afaedceed157f9f521ace2eaf1b173bc5" id="r_afaedceed157f9f521ace2eaf1b173bc5"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#afaedceed157f9f521ace2eaf1b173bc5">request_join_lobby</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client, char *message, <a class="el" href="structArguments.html">Arguments</a> args)</td></tr>
-<tr class="memitem:a2db08c1d26473428f71d46b6e87c06f8" id="r_a2db08c1d26473428f71d46b6e87c06f8"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a2db08c1d26473428f71d46b6e87c06f8">request_leave_lobby</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client, char *message, <a class="el" href="structArguments.html">Arguments</a> args)</td></tr>
-<tr class="memitem:a76b3acb0d15109a3dbe5969f25992b26" id="r_a76b3acb0d15109a3dbe5969f25992b26"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a76b3acb0d15109a3dbe5969f25992b26">request_choose_role</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client, char *message, <a class="el" href="structArguments.html">Arguments</a> args)</td></tr>
-<tr class="memitem:acfa6091f39f10c04e90dde2b56214043" id="r_acfa6091f39f10c04e90dde2b56214043"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#acfa6091f39f10c04e90dde2b56214043">request_uuid</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client, char *message, <a class="el" href="structArguments.html">Arguments</a> args)</td></tr>
+<tr class="memitem:a95d0cf6c24388e7600fecdf9207fcb72" id="r_a95d0cf6c24388e7600fecdf9207fcb72"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLobbyManager.html">LobbyManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2lobby_8h.html#a95d0cf6c24388e7600fecdf9207fcb72">create_lobby_manager</a> ()</td></tr>
+<tr class="separator:a95d0cf6c24388e7600fecdf9207fcb72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f8c73963ebfb36ee377a21fe636d1e3" id="r_a1f8c73963ebfb36ee377a21fe636d1e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2lobby_8h.html#a1f8c73963ebfb36ee377a21fe636d1e3">destroy_lobby_manager</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structLobbyManager.html">LobbyManager</a> *manager)</td></tr>
+<tr class="separator:a1f8c73963ebfb36ee377a21fe636d1e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44d2d1f1a9577918a430c3d184438383" id="r_a44d2d1f1a9577918a430c3d184438383"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLobby.html">Lobby</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2lobby_8h.html#a44d2d1f1a9577918a430c3d184438383">create_lobby</a> (<a class="el" href="structLobbyManager.html">LobbyManager</a> *manager)</td></tr>
+<tr class="separator:a44d2d1f1a9577918a430c3d184438383"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f3f826b2ed73b99d1f5b51ff9bb5fd5" id="r_a3f3f826b2ed73b99d1f5b51ff9bb5fd5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2lobby_8h.html#a3f3f826b2ed73b99d1f5b51ff9bb5fd5">join_lobby</a> (<a class="el" href="structLobby.html">Lobby</a> *lobby, <a class="el" href="structUser.html">User</a> *user)</td></tr>
+<tr class="separator:a3f3f826b2ed73b99d1f5b51ff9bb5fd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab54b2e902c3070efb2feb5f75699ccef" id="r_ab54b2e902c3070efb2feb5f75699ccef"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2lobby_8h.html#ab54b2e902c3070efb2feb5f75699ccef">leave_lobby</a> (<a class="el" href="structLobby.html">Lobby</a> *lobby, <a class="el" href="structUser.html">User</a> *user)</td></tr>
+<tr class="separator:ab54b2e902c3070efb2feb5f75699ccef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09e92c0051506ed8b2ab1d8c3de28ac1" id="r_a09e92c0051506ed8b2ab1d8c3de28ac1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUser.html">User</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2lobby_8h.html#a09e92c0051506ed8b2ab1d8c3de28ac1">find_user_by_id</a> (<a class="el" href="structLobby.html">Lobby</a> *lobby, int id)</td></tr>
+<tr class="separator:a09e92c0051506ed8b2ab1d8c3de28ac1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70ab64da857b6aa300fbf07629e64ed4" id="r_a70ab64da857b6aa300fbf07629e64ed4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLobby.html">Lobby</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2lobby_8h.html#a70ab64da857b6aa300fbf07629e64ed4">find_lobby_by_ownerid</a> (<a class="el" href="structLobbyManager.html">LobbyManager</a> *manager, int owner_id)</td></tr>
+<tr class="separator:a70ab64da857b6aa300fbf07629e64ed4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab200dca231db3c7405e5242cd1d580e1" id="r_ab200dca231db3c7405e5242cd1d580e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLobby.html">Lobby</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2lobby_8h.html#ab200dca231db3c7405e5242cd1d580e1">find_lobby_by_playerid</a> (<a class="el" href="structLobbyManager.html">LobbyManager</a> *manager, int id)</td></tr>
+<tr class="separator:ab200dca231db3c7405e5242cd1d580e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34b870bac73ec966edab28acc4be717a" id="r_a34b870bac73ec966edab28acc4be717a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLobby.html">Lobby</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2lobby_8h.html#a34b870bac73ec966edab28acc4be717a">find_lobby_by_code</a> (<a class="el" href="structLobbyManager.html">LobbyManager</a> *manager, const char *code)</td></tr>
+<tr class="separator:a34b870bac73ec966edab28acc4be717a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bb4ca514adcafddefb6759e2b5b69a7" id="r_a2bb4ca514adcafddefb6759e2b5b69a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2lobby_8h.html#a2bb4ca514adcafddefb6759e2b5b69a7">destroy_lobby</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structLobby.html">Lobby</a> *lobby)</td></tr>
+<tr class="separator:a2bb4ca514adcafddefb6759e2b5b69a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e46ad30b12b838c13c44f55629d0fca" id="r_a1e46ad30b12b838c13c44f55629d0fca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2lobby_8h.html#a1e46ad30b12b838c13c44f55629d0fca">request_create_lobby</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client, char *message, <a class="el" href="structArguments.html">Arguments</a> args)</td></tr>
+<tr class="separator:a1e46ad30b12b838c13c44f55629d0fca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaedceed157f9f521ace2eaf1b173bc5" id="r_afaedceed157f9f521ace2eaf1b173bc5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2lobby_8h.html#afaedceed157f9f521ace2eaf1b173bc5">request_join_lobby</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client, char *message, <a class="el" href="structArguments.html">Arguments</a> args)</td></tr>
+<tr class="separator:afaedceed157f9f521ace2eaf1b173bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2db08c1d26473428f71d46b6e87c06f8" id="r_a2db08c1d26473428f71d46b6e87c06f8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2lobby_8h.html#a2db08c1d26473428f71d46b6e87c06f8">request_leave_lobby</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client, char *message, <a class="el" href="structArguments.html">Arguments</a> args)</td></tr>
+<tr class="separator:a2db08c1d26473428f71d46b6e87c06f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76b3acb0d15109a3dbe5969f25992b26" id="r_a76b3acb0d15109a3dbe5969f25992b26"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2lobby_8h.html#a76b3acb0d15109a3dbe5969f25992b26">request_choose_role</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client, char *message, <a class="el" href="structArguments.html">Arguments</a> args)</td></tr>
+<tr class="separator:a76b3acb0d15109a3dbe5969f25992b26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfa6091f39f10c04e90dde2b56214043" id="r_acfa6091f39f10c04e90dde2b56214043"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2lib_2lobby_8h.html#acfa6091f39f10c04e90dde2b56214043">request_uuid</a> (<a class="el" href="structCodenames.html">Codenames</a> *codenames, <a class="el" href="structTcpClient.html">TcpClient</a> *client, char *message, <a class="el" href="structArguments.html">Arguments</a> args)</td></tr>
+<tr class="separator:acfa6091f39f10c04e90dde2b56214043"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentation des macros</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Gestion des lobbies (salles d'attente) côté serveur. </p>
+
+<p class="definition">Définition dans le fichier <a class="el" href="server_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
+</div><h2 class="groupheader">Documentation des macros</h2>
 <a id="a67fee069fc4be0b17f7a3a8d185f4416" name="a67fee069fc4be0b17f7a3a8d185f4416"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a67fee069fc4be0b17f7a3a8d185f4416">&#9670;&#160;</a></span>MAX_LOBBIES</h2>
 
@@ -152,7 +192,7 @@ Fonctions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2lib_2lobby_8h_source.html#l00013">13</a> du fichier <a class="el" href="server_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2lib_2lobby_8h_source.html#l00018">18</a> du fichier <a class="el" href="server_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
 
 </div>
 </div>
@@ -168,11 +208,27 @@ Fonctions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2lib_2lobby_8h_source.html#l00014">14</a> du fichier <a class="el" href="server_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2lib_2lobby_8h_source.html#l00019">19</a> du fichier <a class="el" href="server_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
 
 </div>
 </div>
-<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Documentation des définitions de type</h2>
+<h2 class="groupheader">Documentation des définitions de type</h2>
+<a id="aa44c3a3da81703c57680df8630f4414e" name="aa44c3a3da81703c57680df8630f4414e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa44c3a3da81703c57680df8630f4414e">&#9670;&#160;</a></span>Codenames</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structCodenames.html">Codenames</a> <a class="el" href="structCodenames.html">Codenames</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="server_2lib_2lobby_8h_source.html#l00016">16</a> du fichier <a class="el" href="server_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
+
+</div>
+</div>
 <a id="a229c875e4f4c628685491500cddaae31" name="a229c875e4f4c628685491500cddaae31"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a229c875e4f4c628685491500cddaae31">&#9670;&#160;</a></span>Lobby</h2>
 
@@ -180,7 +236,7 @@ Fonctions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef struct Lobby Lobby</td>
+          <td class="memname">typedef struct <a class="el" href="structLobby.html">Lobby</a> <a class="el" href="structLobby.html">Lobby</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -194,6 +250,7 @@ Fonctions</h2></td></tr>
     <tr><td class="paramname">nb_players</td><td>nombre de joueurs actuellement connectés. </td></tr>
     <tr><td class="paramname">game</td><td>partie associée au lobby (NULL si aucune partie). </td></tr>
     <tr><td class="paramname">chat</td><td>historique du chat du lobby. </td></tr>
+    <tr><td class="paramname">words_difficulty</td><td>niveau de difficulté choisi pour la partie. </td></tr>
   </table>
   </dd>
 </dl>
@@ -207,7 +264,7 @@ Fonctions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef struct LobbyManager LobbyManager</td>
+          <td class="memname">typedef struct <a class="el" href="structLobbyManager.html">LobbyManager</a> <a class="el" href="structLobbyManager.html">LobbyManager</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -233,15 +290,15 @@ Fonctions</h2></td></tr>
 </div><div class="memdoc">
 <p>États possibles d'un lobby. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="client_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83a715a5fc1dd102e417ed4fc5b81477ba4">LB_STATUS_WAITING</a></td><td>lobby en attente (pas encore en partie). </td></tr>
-    <tr><td class="paramname"><a class="el" href="client_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83ac5cf08a357894a8e0f8b340d97ff14b9">LB_STATUS_IN_GAME</a></td><td>lobby actuellement en partie. </td></tr>
+    <tr><td class="paramname">LB_STATUS_WAITING</td><td>lobby en attente (pas encore en partie). </td></tr>
+    <tr><td class="paramname">LB_STATUS_IN_GAME</td><td>lobby actuellement en partie. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Documentation du type de l'énumération</h2>
+<h2 class="groupheader">Documentation du type de l'énumération</h2>
 <a id="a02f4e343ea570764cb2390b12ad37d83" name="a02f4e343ea570764cb2390b12ad37d83"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a02f4e343ea570764cb2390b12ad37d83">&#9670;&#160;</a></span>LobbyStatus</h2>
 
@@ -255,8 +312,8 @@ Fonctions</h2></td></tr>
 </div><div class="memdoc">
 <p>États possibles d'un lobby. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="client_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83a715a5fc1dd102e417ed4fc5b81477ba4">LB_STATUS_WAITING</a></td><td>lobby en attente (pas encore en partie). </td></tr>
-    <tr><td class="paramname"><a class="el" href="client_2lib_2lobby_8h.html#a02f4e343ea570764cb2390b12ad37d83ac5cf08a357894a8e0f8b340d97ff14b9">LB_STATUS_IN_GAME</a></td><td>lobby actuellement en partie. </td></tr>
+    <tr><td class="paramname">LB_STATUS_WAITING</td><td>lobby en attente (pas encore en partie). </td></tr>
+    <tr><td class="paramname">LB_STATUS_IN_GAME</td><td>lobby actuellement en partie. </td></tr>
   </table>
   </dd>
 </dl>
@@ -265,11 +322,11 @@ Fonctions</h2></td></tr>
 <tr><td class="fieldname"><a id="a02f4e343ea570764cb2390b12ad37d83ac5cf08a357894a8e0f8b340d97ff14b9" name="a02f4e343ea570764cb2390b12ad37d83ac5cf08a357894a8e0f8b340d97ff14b9"></a>LB_STATUS_IN_GAME&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2lib_2lobby_8h_source.html#l00021">21</a> du fichier <a class="el" href="server_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2lib_2lobby_8h_source.html#l00026">26</a> du fichier <a class="el" href="server_2lib_2lobby_8h_source.html">lobby.h</a>.</p>
 
 </div>
 </div>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a id="a44d2d1f1a9577918a430c3d184438383" name="a44d2d1f1a9577918a430c3d184438383"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a44d2d1f1a9577918a430c3d184438383">&#9670;&#160;</a></span>create_lobby()</h2>
 
@@ -279,7 +336,8 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structLobby.html">Lobby</a> * create_lobby </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structLobbyManager.html">LobbyManager</a> *</td>          <td class="paramname"><span class="paramname"><em>manager</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structLobbyManager.html">LobbyManager</a> *&#160;</td>
+          <td class="paramname"><em>manager</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -294,9 +352,9 @@ Fonctions</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="server_2src_2lobby_8c_source.html#l00042">42</a> du fichier <a class="el" href="server_2src_2lobby_8c_source.html">lobby.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2lib_2lobby_8h_source.html#l00046">Lobby::chat</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00052">chat_clear()</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00007">chat_init()</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00008">CHAT_MAX_MESSAGES</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00041">Lobby::code</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00045">Lobby::game</a>, <a class="el" href="server_2src_2utils_8c_source.html#l00076">generate_code()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00039">Lobby::id</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00023">LB_STATUS_WAITING</a>, <a class="el" href="client_2src_2list_8c_source.html#l00034">list_add()</a>, <a class="el" href="client_2src_2list_8c_source.html#l00120">list_next_available_id()</a>, <a class="el" href="client_2src_2list_8c_source.html#l00104">list_size()</a>, <a class="el" href="server_2lib_2lobby_8h_source.html#l00053">LobbyManager::lobbies</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00038">lobby_get_id()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00014">MAX_LOBBIES</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00044">Lobby::nb_players</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00040">Lobby::owner_id</a>, et <a class="el" href="client_2lib_2lobby_8h_source.html#l00042">Lobby::status</a>.</p>
+<p class="reference">Références <a class="el" href="client_2lib_2lobby_8h_source.html#l00077">Lobby::chat</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00240">chat_clear()</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00191">chat_init()</a>, <a class="el" href="client_2lib_2chat_8h_source.html#l00015">CHAT_MAX_MESSAGES</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00072">Lobby::code</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00076">Lobby::game</a>, <a class="el" href="server_2src_2utils_8c_source.html#l00076">generate_code()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00070">Lobby::id</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00052">LB_STATUS_WAITING</a>, <a class="el" href="client_2src_2list_8c_source.html#l00034">list_add()</a>, <a class="el" href="client_2src_2list_8c_source.html#l00120">list_next_available_id()</a>, <a class="el" href="client_2src_2list_8c_source.html#l00104">list_size()</a>, <a class="el" href="server_2lib_2lobby_8h_source.html#l00061">LobbyManager::lobbies</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00038">lobby_get_id()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00016">MAX_LOBBIES</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00079">Lobby::nb_assassins</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00075">Lobby::nb_players</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00071">Lobby::owner_id</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00073">Lobby::status</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00078">Lobby::words_difficulty</a>, et <a class="el" href="client_2lib_2lobby_8h_source.html#l00027">WORDS_DIFFICULTY_NORMAL</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00168">request_create_lobby()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00170">request_create_lobby()</a>.</p>
 
 </div>
 </div>
@@ -309,7 +367,7 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structLobbyManager.html">LobbyManager</a> * create_lobby_manager </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -324,7 +382,7 @@ Fonctions</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="server_2src_2lobby_8c_source.html#l00003">3</a> du fichier <a class="el" href="server_2src_2lobby_8c_source.html">lobby.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2src_2list_8c_source.html#l00008">list_create()</a>, et <a class="el" href="server_2lib_2lobby_8h_source.html#l00053">LobbyManager::lobbies</a>.</p>
+<p class="reference">Références <a class="el" href="client_2src_2list_8c_source.html#l00008">list_create()</a>, et <a class="el" href="server_2lib_2lobby_8h_source.html#l00061">LobbyManager::lobbies</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="server_2src_2index_8c_source.html#l00003">main()</a>.</p>
 
@@ -339,12 +397,19 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void destroy_lobby </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *</td>          <td class="paramname"><span class="paramname"><em>codenames</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *&#160;</td>
+          <td class="paramname"><em>codenames</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structLobby.html">Lobby</a> *</td>          <td class="paramname"><span class="paramname"><em>lobby</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structLobby.html">Lobby</a> *&#160;</td>
+          <td class="paramname"><em>lobby</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -356,11 +421,11 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2src_2lobby_8c_source.html#l00154">154</a> du fichier <a class="el" href="server_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2lobby_8c_source.html#l00156">156</a> du fichier <a class="el" href="server_2src_2lobby_8c_source.html">lobby.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2lib_2lobby_8h_source.html#l00046">Lobby::chat</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00052">chat_clear()</a>, <a class="el" href="client_2src_2user_8c_source.html#l00024">destroy_user()</a>, <a class="el" href="client_2src_2list_8c_source.html#l00058">list_remove()</a>, <a class="el" href="server_2lib_2lobby_8h_source.html#l00053">LobbyManager::lobbies</a>, <a class="el" href="codenames_8h_source.html#l00015">Codenames::lobby</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00033">MSG_LOBBYCLOSED</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00044">Lobby::nb_players</a>, <a class="el" href="server_2lib_2user_8h_source.html#l00027">User::socket_fd</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00165">tcp_send_to_client()</a>, et <a class="el" href="client_2lib_2lobby_8h_source.html#l00043">Lobby::users</a>.</p>
+<p class="reference">Références <a class="el" href="client_2lib_2lobby_8h_source.html#l00077">Lobby::chat</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00240">chat_clear()</a>, <a class="el" href="client_2src_2user_8c_source.html#l00024">destroy_user()</a>, <a class="el" href="client_2src_2list_8c_source.html#l00058">list_remove()</a>, <a class="el" href="server_2lib_2lobby_8h_source.html#l00061">LobbyManager::lobbies</a>, <a class="el" href="codenames_8h_source.html#l00020">Codenames::lobby</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00043">MSG_LOBBYCLOSED</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00075">Lobby::nb_players</a>, <a class="el" href="server_2lib_2user_8h_source.html#l00032">User::socket_fd</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00165">tcp_send_to_client()</a>, et <a class="el" href="client_2lib_2lobby_8h_source.html#l00074">Lobby::users</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2message_8c_source.html#l00064">on_leave()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2message_8c_source.html#l00069">on_leave()</a>.</p>
 
 </div>
 </div>
@@ -373,12 +438,19 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void destroy_lobby_manager </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *</td>          <td class="paramname"><span class="paramname"><em>codenames</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *&#160;</td>
+          <td class="paramname"><em>codenames</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structLobbyManager.html">LobbyManager</a> *</td>          <td class="paramname"><span class="paramname"><em>manager</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structLobbyManager.html">LobbyManager</a> *&#160;</td>
+          <td class="paramname"><em>manager</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -392,7 +464,7 @@ Fonctions</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="server_2src_2lobby_8c_source.html#l00029">29</a> du fichier <a class="el" href="server_2src_2lobby_8c_source.html">lobby.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="server_2src_2lobby_8c_source.html#l00015">destroy_lobby_callback()</a>, <a class="el" href="client_2src_2list_8c_source.html#l00020">list_destroy()</a>, <a class="el" href="client_2src_2list_8c_source.html#l00109">list_foreach()</a>, et <a class="el" href="server_2lib_2lobby_8h_source.html#l00053">LobbyManager::lobbies</a>.</p>
+<p class="reference">Références <a class="el" href="server_2src_2lobby_8c_source.html#l00015">destroy_lobby_callback()</a>, <a class="el" href="client_2src_2list_8c_source.html#l00020">list_destroy()</a>, <a class="el" href="client_2src_2list_8c_source.html#l00109">list_foreach()</a>, et <a class="el" href="server_2lib_2lobby_8h_source.html#l00061">LobbyManager::lobbies</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="server_2src_2index_8c_source.html#l00003">main()</a>.</p>
 
@@ -407,12 +479,19 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structLobby.html">Lobby</a> * find_lobby_by_code </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structLobbyManager.html">LobbyManager</a> *</td>          <td class="paramname"><span class="paramname"><em>manager</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structLobbyManager.html">LobbyManager</a> *&#160;</td>
+          <td class="paramname"><em>manager</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>code</em></span>&#160;)</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>code</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -425,11 +504,11 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Pointeur vers le <a class="el" href="structLobby.html">Lobby</a> trouvé, ou NULL si aucun lobby ne correspond. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2src_2lobby_8c_source.html#l00150">150</a> du fichier <a class="el" href="server_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2lobby_8c_source.html#l00152">152</a> du fichier <a class="el" href="server_2src_2lobby_8c_source.html">lobby.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2src_2list_8c_source.html#l00091">list_find()</a>, <a class="el" href="server_2lib_2lobby_8h_source.html#l00053">LobbyManager::lobbies</a>, et <a class="el" href="server_2src_2lobby_8c_source.html#l00127">predicate_code()</a>.</p>
+<p class="reference">Références <a class="el" href="client_2src_2list_8c_source.html#l00091">list_find()</a>, <a class="el" href="server_2lib_2lobby_8h_source.html#l00061">LobbyManager::lobbies</a>, et <a class="el" href="server_2src_2lobby_8c_source.html#l00129">predicate_code()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00200">request_join_lobby()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00202">request_join_lobby()</a>.</p>
 
 </div>
 </div>
@@ -442,12 +521,19 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structLobby.html">Lobby</a> * find_lobby_by_ownerid </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structLobbyManager.html">LobbyManager</a> *</td>          <td class="paramname"><span class="paramname"><em>manager</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structLobbyManager.html">LobbyManager</a> *&#160;</td>
+          <td class="paramname"><em>manager</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>owner_id</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>owner_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -460,11 +546,11 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Pointeur vers le <a class="el" href="structLobby.html">Lobby</a> trouvé, ou NULL si aucun lobby ne correspond. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2src_2lobby_8c_source.html#l00142">142</a> du fichier <a class="el" href="server_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2lobby_8c_source.html#l00144">144</a> du fichier <a class="el" href="server_2src_2lobby_8c_source.html">lobby.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2src_2list_8c_source.html#l00091">list_find()</a>, <a class="el" href="server_2lib_2lobby_8h_source.html#l00053">LobbyManager::lobbies</a>, et <a class="el" href="server_2src_2lobby_8c_source.html#l00112">predicate_owner_id()</a>.</p>
+<p class="reference">Références <a class="el" href="client_2src_2list_8c_source.html#l00091">list_find()</a>, <a class="el" href="server_2lib_2lobby_8h_source.html#l00061">LobbyManager::lobbies</a>, et <a class="el" href="server_2src_2lobby_8c_source.html#l00114">predicate_owner_id()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2message_8c_source.html#l00064">on_leave()</a>, et <a class="el" href="server_2src_2game_8c_source.html#l00110">request_start_game()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2message_8c_source.html#l00069">on_leave()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00551">request_set_nb_assassins()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00496">request_set_words_difficulty()</a>, et <a class="el" href="server_2src_2game_8c_source.html#l00165">request_start_game()</a>.</p>
 
 </div>
 </div>
@@ -477,12 +563,19 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structLobby.html">Lobby</a> * find_lobby_by_playerid </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structLobbyManager.html">LobbyManager</a> *</td>          <td class="paramname"><span class="paramname"><em>manager</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structLobbyManager.html">LobbyManager</a> *&#160;</td>
+          <td class="paramname"><em>manager</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -495,11 +588,52 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Pointeur vers le <a class="el" href="structLobby.html">Lobby</a> trouvé, ou NULL si aucun lobby ne correspond. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2src_2lobby_8c_source.html#l00146">146</a> du fichier <a class="el" href="server_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2lobby_8c_source.html#l00148">148</a> du fichier <a class="el" href="server_2src_2lobby_8c_source.html">lobby.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2src_2list_8c_source.html#l00091">list_find()</a>, <a class="el" href="server_2lib_2lobby_8h_source.html#l00053">LobbyManager::lobbies</a>, et <a class="el" href="server_2src_2lobby_8c_source.html#l00118">predicate_player_id()</a>.</p>
+<p class="reference">Références <a class="el" href="client_2src_2list_8c_source.html#l00091">list_find()</a>, <a class="el" href="server_2lib_2lobby_8h_source.html#l00061">LobbyManager::lobbies</a>, et <a class="el" href="server_2src_2lobby_8c_source.html#l00120">predicate_player_id()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2message_8c_source.html#l00064">on_leave()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00310">request_choose_role()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00252">request_leave_lobby()</a>, et <a class="el" href="server_2src_2chat_8c_source.html#l00060">request_send_chat()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2message_8c_source.html#l00069">on_leave()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00312">request_choose_role()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00348">request_guess_card()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00254">request_leave_lobby()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00312">request_preguess()</a>, <a class="el" href="server_2src_2chat_8c_source.html#l00060">request_send_chat()</a>, et <a class="el" href="server_2src_2game_8c_source.html#l00235">request_submit_hint()</a>.</p>
+
+</div>
+</div>
+<a id="a09e92c0051506ed8b2ab1d8c3de28ac1" name="a09e92c0051506ed8b2ab1d8c3de28ac1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09e92c0051506ed8b2ab1d8c3de28ac1">&#9670;&#160;</a></span>find_user_by_id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structUser.html">User</a> * find_user_by_id </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structLobby.html">Lobby</a> *&#160;</td>
+          <td class="paramname"><em>lobby</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Démarre une partie dans le lobby. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lobby</td><td><a class="el" href="structLobby.html">Lobby</a> dans lequel démarrer la partie. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS si la partie a démarré avec succès, EXIT_FAILURE si une erreur est survenue (ex: nombre de joueurs insuffisant). </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2lobby_8c_source.html#l00135">135</a> du fichier <a class="el" href="server_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="client_2lib_2user_8h_source.html#l00029">User::id</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00075">Lobby::nb_players</a>, et <a class="el" href="client_2lib_2lobby_8h_source.html#l00074">Lobby::users</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00312">request_choose_role()</a>, <a class="el" href="server_2src_2game_8c_source.html#l00348">request_guess_card()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00254">request_leave_lobby()</a>, et <a class="el" href="server_2src_2chat_8c_source.html#l00060">request_send_chat()</a>.</p>
 
 </div>
 </div>
@@ -512,12 +646,19 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int join_lobby </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structLobby.html">Lobby</a> *</td>          <td class="paramname"><span class="paramname"><em>lobby</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structLobby.html">Lobby</a> *&#160;</td>
+          <td class="paramname"><em>lobby</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structUser.html">User</a> *</td>          <td class="paramname"><span class="paramname"><em>user</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structUser.html">User</a> *&#160;</td>
+          <td class="paramname"><em>user</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -530,11 +671,11 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS si l'utilisateur a rejoint avec succès, EXIT_FAILURE si le lobby est plein. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2src_2lobby_8c_source.html#l00070">70</a> du fichier <a class="el" href="server_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2lobby_8c_source.html#l00072">72</a> du fichier <a class="el" href="server_2src_2lobby_8c_source.html">lobby.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2lib_2lobby_8h_source.html#l00015">MAX_USERS</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00044">Lobby::nb_players</a>, et <a class="el" href="client_2lib_2lobby_8h_source.html#l00043">Lobby::users</a>.</p>
+<p class="reference">Références <a class="el" href="client_2lib_2lobby_8h_source.html#l00017">MAX_USERS</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00075">Lobby::nb_players</a>, et <a class="el" href="client_2lib_2lobby_8h_source.html#l00074">Lobby::users</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00168">request_create_lobby()</a>, et <a class="el" href="server_2src_2lobby_8c_source.html#l00200">request_join_lobby()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="server_2src_2lobby_8c_source.html#l00170">request_create_lobby()</a>, et <a class="el" href="server_2src_2lobby_8c_source.html#l00202">request_join_lobby()</a>.</p>
 
 </div>
 </div>
@@ -547,12 +688,19 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int leave_lobby </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structLobby.html">Lobby</a> *</td>          <td class="paramname"><span class="paramname"><em>lobby</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structLobby.html">Lobby</a> *&#160;</td>
+          <td class="paramname"><em>lobby</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structUser.html">User</a> *</td>          <td class="paramname"><span class="paramname"><em>user</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structUser.html">User</a> *&#160;</td>
+          <td class="paramname"><em>user</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -565,9 +713,9 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS si l'utilisateur a quitté avec succès, EXIT_FAILURE si une erreur est survenue (ex: utilisateur non trouvé dans le lobby). </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2src_2lobby_8c_source.html#l00078">78</a> du fichier <a class="el" href="server_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2lobby_8c_source.html#l00080">80</a> du fichier <a class="el" href="server_2src_2lobby_8c_source.html">lobby.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2src_2user_8c_source.html#l00024">destroy_user()</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00024">User::id</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00044">Lobby::nb_players</a>, et <a class="el" href="client_2lib_2lobby_8h_source.html#l00043">Lobby::users</a>.</p>
+<p class="reference">Références <a class="el" href="client_2src_2user_8c_source.html#l00024">destroy_user()</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00029">User::id</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00075">Lobby::nb_players</a>, et <a class="el" href="client_2lib_2lobby_8h_source.html#l00074">Lobby::users</a>.</p>
 
 </div>
 </div>
@@ -580,22 +728,31 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int request_choose_role </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *</td>          <td class="paramname"><span class="paramname"><em>codenames</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *&#160;</td>
+          <td class="paramname"><em>codenames</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structTcpClient.html">TcpClient</a> *</td>          <td class="paramname"><span class="paramname"><em>client</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structTcpClient.html">TcpClient</a> *&#160;</td>
+          <td class="paramname"><em>client</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>message</em></span>, </td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structArguments.html">Arguments</a></td>          <td class="paramname"><span class="paramname"><em>args</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structArguments.html">Arguments</a>&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -610,9 +767,9 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS si la demande est traitée avec succès, EXIT_FAILURE sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2src_2lobby_8c_source.html#l00310">310</a> du fichier <a class="el" href="server_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2lobby_8c_source.html#l00312">312</a> du fichier <a class="el" href="server_2src_2lobby_8c_source.html">lobby.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2lib_2message_8h_source.html#l00052">Arguments::argc</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00053">Arguments::argv</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00099">choose_role()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00146">find_lobby_by_playerid()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00133">find_user_by_id()</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00017">format_to()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00039">Lobby::id</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00020">TcpClient::id</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00024">User::id</a>, <a class="el" href="codenames_8h_source.html#l00015">Codenames::lobby</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00036">MSG_CHOOSE_ROLE</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00025">User::name</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00044">Lobby::nb_players</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00026">User::role</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00165">tcp_send_to_client()</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00027">User::team</a>, et <a class="el" href="client_2lib_2lobby_8h_source.html#l00043">Lobby::users</a>.</p>
+<p class="reference">Références <a class="el" href="client_2lib_2message_8h_source.html#l00067">Arguments::argc</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00068">Arguments::argv</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00101">choose_role()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00148">find_lobby_by_playerid()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00135">find_user_by_id()</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00046">format_to()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00070">Lobby::id</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00029">User::id</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00025">TcpClient::id</a>, <a class="el" href="codenames_8h_source.html#l00020">Codenames::lobby</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00046">MSG_CHOOSE_ROLE</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00030">User::name</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00075">Lobby::nb_players</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00031">User::role</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00165">tcp_send_to_client()</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00032">User::team</a>, et <a class="el" href="client_2lib_2lobby_8h_source.html#l00074">Lobby::users</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="server_2src_2message_8c_source.html#l00024">on_message()</a>.</p>
 
@@ -627,22 +784,31 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int request_create_lobby </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *</td>          <td class="paramname"><span class="paramname"><em>codenames</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *&#160;</td>
+          <td class="paramname"><em>codenames</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structTcpClient.html">TcpClient</a> *</td>          <td class="paramname"><span class="paramname"><em>client</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structTcpClient.html">TcpClient</a> *&#160;</td>
+          <td class="paramname"><em>client</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>message</em></span>, </td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structArguments.html">Arguments</a></td>          <td class="paramname"><span class="paramname"><em>args</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structArguments.html">Arguments</a>&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -657,9 +823,9 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS si la demande est traitée avec succès, EXIT_FAILURE sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2src_2lobby_8c_source.html#l00168">168</a> du fichier <a class="el" href="server_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2lobby_8c_source.html#l00170">170</a> du fichier <a class="el" href="server_2src_2lobby_8c_source.html">lobby.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2lib_2message_8h_source.html#l00052">Arguments::argc</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00053">Arguments::argv</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00041">Lobby::code</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00042">create_lobby()</a>, <a class="el" href="client_2src_2user_8c_source.html#l00003">create_user()</a>, <a class="el" href="client_2src_2user_8c_source.html#l00024">destroy_user()</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00017">format_to()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00039">Lobby::id</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00020">TcpClient::id</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00070">join_lobby()</a>, <a class="el" href="codenames_8h_source.html#l00015">Codenames::lobby</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00030">MSG_CREATELOBBY</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00025">User::name</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00040">Lobby::owner_id</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00021">TcpClient::socket</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00165">tcp_send_to_client()</a>.</p>
+<p class="reference">Références <a class="el" href="client_2lib_2message_8h_source.html#l00067">Arguments::argc</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00068">Arguments::argv</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00072">Lobby::code</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00042">create_lobby()</a>, <a class="el" href="client_2src_2user_8c_source.html#l00003">create_user()</a>, <a class="el" href="client_2src_2user_8c_source.html#l00024">destroy_user()</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00046">format_to()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00070">Lobby::id</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00025">TcpClient::id</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00072">join_lobby()</a>, <a class="el" href="codenames_8h_source.html#l00020">Codenames::lobby</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00040">MSG_CREATELOBBY</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00030">User::name</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00071">Lobby::owner_id</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00026">TcpClient::socket</a>, et <a class="el" href="server_2src_2tcp_8c_source.html#l00165">tcp_send_to_client()</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="server_2src_2message_8c_source.html#l00024">on_message()</a>.</p>
 
@@ -674,22 +840,31 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int request_join_lobby </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *</td>          <td class="paramname"><span class="paramname"><em>codenames</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *&#160;</td>
+          <td class="paramname"><em>codenames</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structTcpClient.html">TcpClient</a> *</td>          <td class="paramname"><span class="paramname"><em>client</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structTcpClient.html">TcpClient</a> *&#160;</td>
+          <td class="paramname"><em>client</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>message</em></span>, </td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structArguments.html">Arguments</a></td>          <td class="paramname"><span class="paramname"><em>args</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structArguments.html">Arguments</a>&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -704,9 +879,9 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS si la demande est traitée avec succès, EXIT_FAILURE sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2src_2lobby_8c_source.html#l00200">200</a> du fichier <a class="el" href="server_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2lobby_8c_source.html#l00202">202</a> du fichier <a class="el" href="server_2src_2lobby_8c_source.html">lobby.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2lib_2message_8h_source.html#l00052">Arguments::argc</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00053">Arguments::argv</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00041">Lobby::code</a>, <a class="el" href="client_2src_2user_8c_source.html#l00003">create_user()</a>, <a class="el" href="client_2src_2user_8c_source.html#l00024">destroy_user()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00150">find_lobby_by_code()</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00017">format_to()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00039">Lobby::id</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00020">TcpClient::id</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00024">User::id</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00070">join_lobby()</a>, <a class="el" href="codenames_8h_source.html#l00015">Codenames::lobby</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00031">MSG_JOINLOBBY</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00034">MSG_PLAYERJOINED</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00025">User::name</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00044">Lobby::nb_players</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00026">User::role</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00165">tcp_send_to_client()</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00027">User::team</a>, et <a class="el" href="client_2lib_2lobby_8h_source.html#l00043">Lobby::users</a>.</p>
+<p class="reference">Références <a class="el" href="client_2lib_2message_8h_source.html#l00067">Arguments::argc</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00068">Arguments::argv</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00072">Lobby::code</a>, <a class="el" href="client_2src_2user_8c_source.html#l00003">create_user()</a>, <a class="el" href="client_2src_2user_8c_source.html#l00024">destroy_user()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00152">find_lobby_by_code()</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00046">format_to()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00070">Lobby::id</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00029">User::id</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00025">TcpClient::id</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00072">join_lobby()</a>, <a class="el" href="codenames_8h_source.html#l00020">Codenames::lobby</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00041">MSG_JOINLOBBY</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00044">MSG_PLAYERJOINED</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00030">User::name</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00075">Lobby::nb_players</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00031">User::role</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00165">tcp_send_to_client()</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00032">User::team</a>, et <a class="el" href="client_2lib_2lobby_8h_source.html#l00074">Lobby::users</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="server_2src_2message_8c_source.html#l00024">on_message()</a>.</p>
 
@@ -721,22 +896,31 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int request_leave_lobby </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *</td>          <td class="paramname"><span class="paramname"><em>codenames</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *&#160;</td>
+          <td class="paramname"><em>codenames</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structTcpClient.html">TcpClient</a> *</td>          <td class="paramname"><span class="paramname"><em>client</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structTcpClient.html">TcpClient</a> *&#160;</td>
+          <td class="paramname"><em>client</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>message</em></span>, </td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structArguments.html">Arguments</a></td>          <td class="paramname"><span class="paramname"><em>args</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structArguments.html">Arguments</a>&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -751,9 +935,9 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS si la demande est traitée avec succès, EXIT_FAILURE sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="server_2src_2lobby_8c_source.html#l00252">252</a> du fichier <a class="el" href="server_2src_2lobby_8c_source.html">lobby.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="server_2src_2lobby_8c_source.html#l00254">254</a> du fichier <a class="el" href="server_2src_2lobby_8c_source.html">lobby.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="client_2lib_2lobby_8h_source.html#l00046">Lobby::chat</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00052">chat_clear()</a>, <a class="el" href="client_2src_2user_8c_source.html#l00024">destroy_user()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00146">find_lobby_by_playerid()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00133">find_user_by_id()</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00017">format_to()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00039">Lobby::id</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00020">TcpClient::id</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00024">User::id</a>, <a class="el" href="client_2src_2list_8c_source.html#l00058">list_remove()</a>, <a class="el" href="server_2lib_2lobby_8h_source.html#l00053">LobbyManager::lobbies</a>, <a class="el" href="codenames_8h_source.html#l00015">Codenames::lobby</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00035">MSG_PLAYERLEFT</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00025">User::name</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00044">Lobby::nb_players</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00040">Lobby::owner_id</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00165">tcp_send_to_client()</a>, et <a class="el" href="client_2lib_2lobby_8h_source.html#l00043">Lobby::users</a>.</p>
+<p class="reference">Références <a class="el" href="client_2lib_2lobby_8h_source.html#l00077">Lobby::chat</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00240">chat_clear()</a>, <a class="el" href="client_2src_2user_8c_source.html#l00024">destroy_user()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00148">find_lobby_by_playerid()</a>, <a class="el" href="server_2src_2lobby_8c_source.html#l00135">find_user_by_id()</a>, <a class="el" href="client_2src_2utils_8c_source.html#l00046">format_to()</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00070">Lobby::id</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00029">User::id</a>, <a class="el" href="server_2lib_2tcp_8h_source.html#l00025">TcpClient::id</a>, <a class="el" href="client_2src_2list_8c_source.html#l00058">list_remove()</a>, <a class="el" href="server_2lib_2lobby_8h_source.html#l00061">LobbyManager::lobbies</a>, <a class="el" href="codenames_8h_source.html#l00020">Codenames::lobby</a>, <a class="el" href="client_2lib_2message_8h_source.html#l00045">MSG_PLAYERLEFT</a>, <a class="el" href="client_2lib_2user_8h_source.html#l00030">User::name</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00075">Lobby::nb_players</a>, <a class="el" href="client_2lib_2lobby_8h_source.html#l00071">Lobby::owner_id</a>, <a class="el" href="server_2src_2tcp_8c_source.html#l00165">tcp_send_to_client()</a>, et <a class="el" href="client_2lib_2lobby_8h_source.html#l00074">Lobby::users</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="server_2src_2message_8c_source.html#l00024">on_message()</a>.</p>
 
@@ -768,22 +952,31 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int request_uuid </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *</td>          <td class="paramname"><span class="paramname"><em>codenames</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structCodenames.html">Codenames</a> *&#160;</td>
+          <td class="paramname"><em>codenames</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structTcpClient.html">TcpClient</a> *</td>          <td class="paramname"><span class="paramname"><em>client</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structTcpClient.html">TcpClient</a> *&#160;</td>
+          <td class="paramname"><em>client</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>message</em></span>, </td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structArguments.html">Arguments</a></td>          <td class="paramname"><span class="paramname"><em>args</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structArguments.html">Arguments</a>&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -804,19 +997,11 @@ Fonctions</h2></td></tr>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div id="page-nav" class="page-nav-panel">
-<div id="page-nav-resize-handle"></div>
-<div id="page-nav-tree">
-<div id="page-nav-contents">
-</div><!-- page-nav-contents -->
-</div><!-- page-nav-tree -->
-</div><!-- page-nav -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a href="dir_00d910b2a486164e1f2e533045ca4778.html">lib</a></li><li class="navelem"><a href="server_2lib_2lobby_8h.html">lobby.h</a></li>
-    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="navelem"><a class="el" href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a class="el" href="dir_00d910b2a486164e1f2e533045ca4778.html">lib</a></li><li class="navelem"><a class="el" href="server_2lib_2lobby_8h.html">lobby.h</a></li>
+    <li class="footer">Généré le Mardi 14 Avril 2026 18:57:16 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

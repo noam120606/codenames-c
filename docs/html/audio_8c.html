@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier client/src/audio.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,20 +34,21 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,9 +63,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('audio_8c.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('audio_8c.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -89,6 +90,11 @@ $(function(){initNavTree('audio_8c.html','',''); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">Référence du fichier audio.c</div></div>
 </div><!--header-->
 <div class="contents">
@@ -96,65 +102,102 @@ $(function(){initNavTree('audio_8c.html','',''); });
 </div>
 <p><a href="audio_8c_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Structures de données</h2></td></tr>
-<tr class="memitem:ChannelFilterState" id="r_ChannelFilterState"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structChannelFilterState.html">ChannelFilterState</a></td></tr>
-<tr class="memitem:ChannelFadeFilterState" id="r_ChannelFadeFilterState"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structChannelFadeFilterState.html">ChannelFadeFilterState</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structChannelFilterState.html">ChannelFilterState</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structChannelFadeFilterState.html">ChannelFadeFilterState</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:af82889eac58da0e00eccecb911532432" id="r_af82889eac58da0e00eccecb911532432"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#af82889eac58da0e00eccecb911532432">AUDIO_PI</a>&#160;&#160;&#160;3.14159265358979323846f</td></tr>
+<tr class="memitem:af82889eac58da0e00eccecb911532432" id="r_af82889eac58da0e00eccecb911532432"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#af82889eac58da0e00eccecb911532432">AUDIO_PI</a>&#160;&#160;&#160;3.14159265358979323846f</td></tr>
+<tr class="separator:af82889eac58da0e00eccecb911532432"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:aca16f856f161aaa151082cea3937fe8e" id="r_aca16f856f161aaa151082cea3937fe8e"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#aca16f856f161aaa151082cea3937fe8e">clamp_volume</a> (int volume)</td></tr>
-<tr class="memitem:aa61a6e34df631d3cd739d2016e6674c7" id="r_aa61a6e34df631d3cd739d2016e6674c7"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#aa61a6e34df631d3cd739d2016e6674c7">is_valid_sound_id</a> (<a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id)</td></tr>
-<tr class="memitem:a04f51f0ed9bfb85eb0156c6e3fc72ea7" id="r_a04f51f0ed9bfb85eb0156c6e3fc72ea7"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a04f51f0ed9bfb85eb0156c6e3fc72ea7">is_valid_kind</a> (<a class="el" href="audio_8h.html#a3c581a02ffb3d27ef24a44e78b509247">AudioSoundKind</a> kind)</td></tr>
-<tr class="memitem:a2b2d2ffce5df8e1fade27b0cd7254033" id="r_a2b2d2ffce5df8e1fade27b0cd7254033"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a2b2d2ffce5df8e1fade27b0cd7254033">compute_effective_volume</a> (<a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id)</td></tr>
-<tr class="memitem:a3ebf1390e0aa8e2132c5e797da4ec7e7" id="r_a3ebf1390e0aa8e2132c5e797da4ec7e7"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="#a3ebf1390e0aa8e2132c5e797da4ec7e7">compute_low_pass_alpha</a> (float cutoff_hz)</td></tr>
-<tr class="memitem:ab747949675ab207fd216a42f05a0d5f5" id="r_ab747949675ab207fd216a42f05a0d5f5"><td class="memItemLeft">static Mix_Chunk *&#160;</td><td class="memItemRight"><a class="el" href="#ab747949675ab207fd216a42f05a0d5f5">load_wav_safe</a> (const char *path)</td></tr>
-<tr class="memitem:aa90d2f31ca1774a6ea93add6607e9870" id="r_aa90d2f31ca1774a6ea93add6607e9870"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#aa90d2f31ca1774a6ea93add6607e9870">low_pass_effect</a> (int channel, void *stream, int len, void *udata)</td></tr>
-<tr class="memitem:abc5a2810782d664639b4cb871e39169e" id="r_abc5a2810782d664639b4cb871e39169e"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#abc5a2810782d664639b4cb871e39169e">fade_low_pass_effect</a> (int channel, void *stream, int len, void *udata)</td></tr>
-<tr class="memitem:a3c5a6a082cd81527e126c588602c74fe" id="r_a3c5a6a082cd81527e126c588602c74fe"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a3c5a6a082cd81527e126c588602c74fe">reset_channel_state</a> (int channel)</td></tr>
-<tr class="memitem:a40b6263de48d4dfe926b7aa8e5206b8b" id="r_a40b6263de48d4dfe926b7aa8e5206b8b"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a40b6263de48d4dfe926b7aa8e5206b8b">apply_channel_filter</a> (int channel, <a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id)</td></tr>
-<tr class="memitem:a2233dc543f74f3fed163380e5db452c4" id="r_a2233dc543f74f3fed163380e5db452c4"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a2233dc543f74f3fed163380e5db452c4">audio_init</a> ()</td></tr>
+<tr class="memitem:aca16f856f161aaa151082cea3937fe8e" id="r_aca16f856f161aaa151082cea3937fe8e"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#aca16f856f161aaa151082cea3937fe8e">clamp_volume</a> (int volume)</td></tr>
+<tr class="separator:aca16f856f161aaa151082cea3937fe8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa61a6e34df631d3cd739d2016e6674c7" id="r_aa61a6e34df631d3cd739d2016e6674c7"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#aa61a6e34df631d3cd739d2016e6674c7">is_valid_sound_id</a> (<a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id)</td></tr>
+<tr class="separator:aa61a6e34df631d3cd739d2016e6674c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04f51f0ed9bfb85eb0156c6e3fc72ea7" id="r_a04f51f0ed9bfb85eb0156c6e3fc72ea7"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#a04f51f0ed9bfb85eb0156c6e3fc72ea7">is_valid_kind</a> (<a class="el" href="audio_8h.html#a3c581a02ffb3d27ef24a44e78b509247">AudioSoundKind</a> kind)</td></tr>
+<tr class="separator:a04f51f0ed9bfb85eb0156c6e3fc72ea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a728a3bdc43905b750321c139f2df07a8" id="r_a728a3bdc43905b750321c139f2df07a8"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#a728a3bdc43905b750321c139f2df07a8">is_channel_bound_to_sound</a> (int channel, <a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id)</td></tr>
+<tr class="separator:a728a3bdc43905b750321c139f2df07a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b2d2ffce5df8e1fade27b0cd7254033" id="r_a2b2d2ffce5df8e1fade27b0cd7254033"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#a2b2d2ffce5df8e1fade27b0cd7254033">compute_effective_volume</a> (<a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id)</td></tr>
+<tr class="separator:a2b2d2ffce5df8e1fade27b0cd7254033"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc5627d47bfb47a849b3fdee260a29ba" id="r_abc5627d47bfb47a849b3fdee260a29ba"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#abc5627d47bfb47a849b3fdee260a29ba">find_available_channel</a> (void)</td></tr>
+<tr class="separator:abc5627d47bfb47a849b3fdee260a29ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ebf1390e0aa8e2132c5e797da4ec7e7" id="r_a3ebf1390e0aa8e2132c5e797da4ec7e7"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#a3ebf1390e0aa8e2132c5e797da4ec7e7">compute_low_pass_alpha</a> (float cutoff_hz)</td></tr>
+<tr class="separator:a3ebf1390e0aa8e2132c5e797da4ec7e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab747949675ab207fd216a42f05a0d5f5" id="r_ab747949675ab207fd216a42f05a0d5f5"><td class="memItemLeft" align="right" valign="top">static Mix_Chunk *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#ab747949675ab207fd216a42f05a0d5f5">load_wav_safe</a> (const char *path)</td></tr>
+<tr class="separator:ab747949675ab207fd216a42f05a0d5f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa90d2f31ca1774a6ea93add6607e9870" id="r_aa90d2f31ca1774a6ea93add6607e9870"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#aa90d2f31ca1774a6ea93add6607e9870">low_pass_effect</a> (int channel, void *stream, int len, void *udata)</td></tr>
+<tr class="separator:aa90d2f31ca1774a6ea93add6607e9870"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc5a2810782d664639b4cb871e39169e" id="r_abc5a2810782d664639b4cb871e39169e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#abc5a2810782d664639b4cb871e39169e">fade_low_pass_effect</a> (int channel, void *stream, int len, void *udata)</td></tr>
+<tr class="separator:abc5a2810782d664639b4cb871e39169e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c5a6a082cd81527e126c588602c74fe" id="r_a3c5a6a082cd81527e126c588602c74fe"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#a3c5a6a082cd81527e126c588602c74fe">reset_channel_state</a> (int channel)</td></tr>
+<tr class="separator:a3c5a6a082cd81527e126c588602c74fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40b6263de48d4dfe926b7aa8e5206b8b" id="r_a40b6263de48d4dfe926b7aa8e5206b8b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#a40b6263de48d4dfe926b7aa8e5206b8b">apply_channel_filter</a> (int channel, <a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id)</td></tr>
+<tr class="separator:a40b6263de48d4dfe926b7aa8e5206b8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2233dc543f74f3fed163380e5db452c4" id="r_a2233dc543f74f3fed163380e5db452c4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#a2233dc543f74f3fed163380e5db452c4">audio_init</a> ()</td></tr>
 <tr class="memdesc:a2233dc543f74f3fed163380e5db452c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le sous-système audio.  <br /></td></tr>
-<tr class="memitem:a97e9fa110ff07708d494e62f7e781da1" id="r_a97e9fa110ff07708d494e62f7e781da1"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a97e9fa110ff07708d494e62f7e781da1">audio_play</a> (<a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id, int loops)</td></tr>
+<tr class="separator:a2233dc543f74f3fed163380e5db452c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97e9fa110ff07708d494e62f7e781da1" id="r_a97e9fa110ff07708d494e62f7e781da1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#a97e9fa110ff07708d494e62f7e781da1">audio_play</a> (<a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id, int loops)</td></tr>
 <tr class="memdesc:a97e9fa110ff07708d494e62f7e781da1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lance la lecture d'un son sans fade-in explicite.  <br /></td></tr>
-<tr class="memitem:ac6363965cdfd56e08f19d5db48b5e8ea" id="r_ac6363965cdfd56e08f19d5db48b5e8ea"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ac6363965cdfd56e08f19d5db48b5e8ea">audio_play_with_fade</a> (<a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id, int loops, int fade_in_ms, <a class="el" href="audio_8h.html#a288bb1a7d2488a454e994d91f54fe7c4">AudioFadeInType</a> fade_type, const <a class="el" href="structAudioFadeInFilterParams.html">AudioFadeInFilterParams</a> *filter_params)</td></tr>
+<tr class="separator:a97e9fa110ff07708d494e62f7e781da1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6363965cdfd56e08f19d5db48b5e8ea" id="r_ac6363965cdfd56e08f19d5db48b5e8ea"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#ac6363965cdfd56e08f19d5db48b5e8ea">audio_play_with_fade</a> (<a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id, int loops, int fade_in_ms, <a class="el" href="audio_8h.html#a288bb1a7d2488a454e994d91f54fe7c4">AudioFadeInType</a> fade_type, const <a class="el" href="structAudioFadeInFilterParams.html">AudioFadeInFilterParams</a> *filter_params)</td></tr>
 <tr class="memdesc:ac6363965cdfd56e08f19d5db48b5e8ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lance la lecture d'un son avec fade-in configurable.  <br /></td></tr>
-<tr class="memitem:a8470c6483de0288e190e5ad2158ef2dc" id="r_a8470c6483de0288e190e5ad2158ef2dc"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a8470c6483de0288e190e5ad2158ef2dc">audio_set_sound_config</a> (<a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id, const <a class="el" href="structSoundConfig.html">SoundConfig</a> *cfg)</td></tr>
+<tr class="separator:ac6363965cdfd56e08f19d5db48b5e8ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8470c6483de0288e190e5ad2158ef2dc" id="r_a8470c6483de0288e190e5ad2158ef2dc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#a8470c6483de0288e190e5ad2158ef2dc">audio_set_sound_config</a> (<a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id, const <a class="el" href="structSoundConfig.html">SoundConfig</a> *cfg)</td></tr>
 <tr class="memdesc:a8470c6483de0288e190e5ad2158ef2dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Définit toute la configuration d'un son.  <br /></td></tr>
-<tr class="memitem:ae26a7777cde75442916c821a8851139c" id="r_ae26a7777cde75442916c821a8851139c"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ae26a7777cde75442916c821a8851139c">audio_get_sound_config</a> (<a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id, <a class="el" href="structSoundConfig.html">SoundConfig</a> *out_cfg)</td></tr>
+<tr class="separator:a8470c6483de0288e190e5ad2158ef2dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae26a7777cde75442916c821a8851139c" id="r_ae26a7777cde75442916c821a8851139c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#ae26a7777cde75442916c821a8851139c">audio_get_sound_config</a> (<a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id, <a class="el" href="structSoundConfig.html">SoundConfig</a> *out_cfg)</td></tr>
 <tr class="memdesc:ae26a7777cde75442916c821a8851139c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère toute la configuration d'un son.  <br /></td></tr>
-<tr class="memitem:a44b09a8d66c2b37dd13c812b8048d0b0" id="r_a44b09a8d66c2b37dd13c812b8048d0b0"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a44b09a8d66c2b37dd13c812b8048d0b0">audio_set_sound_volume</a> (<a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id, int volume)</td></tr>
+<tr class="separator:ae26a7777cde75442916c821a8851139c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44b09a8d66c2b37dd13c812b8048d0b0" id="r_a44b09a8d66c2b37dd13c812b8048d0b0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#a44b09a8d66c2b37dd13c812b8048d0b0">audio_set_sound_volume</a> (<a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id, int volume)</td></tr>
 <tr class="memdesc:a44b09a8d66c2b37dd13c812b8048d0b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Définit le volume de base d'un son.  <br /></td></tr>
-<tr class="memitem:a05cee87ebc622c09645cabbecc7f15e6" id="r_a05cee87ebc622c09645cabbecc7f15e6"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a05cee87ebc622c09645cabbecc7f15e6">audio_set_filter</a> (<a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id, <a class="el" href="audio_8h.html#a4f0ea6c16f8ab9c2139452afe4730952">AudioFilterType</a> filter_type, float cutoff_frequency)</td></tr>
+<tr class="separator:a44b09a8d66c2b37dd13c812b8048d0b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05cee87ebc622c09645cabbecc7f15e6" id="r_a05cee87ebc622c09645cabbecc7f15e6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#a05cee87ebc622c09645cabbecc7f15e6">audio_set_filter</a> (<a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id, <a class="el" href="audio_8h.html#a4f0ea6c16f8ab9c2139452afe4730952">AudioFilterType</a> filter_type, float cutoff_frequency)</td></tr>
 <tr class="memdesc:a05cee87ebc622c09645cabbecc7f15e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure le filtre d'un son.  <br /></td></tr>
-<tr class="memitem:adcb913b2d300cbf2417910b66625d07b" id="r_adcb913b2d300cbf2417910b66625d07b"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#adcb913b2d300cbf2417910b66625d07b">audio_get_filter</a> (<a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id, <a class="el" href="audio_8h.html#a4f0ea6c16f8ab9c2139452afe4730952">AudioFilterType</a> *out_filter_type, float *out_cutoff_frequency)</td></tr>
+<tr class="separator:a05cee87ebc622c09645cabbecc7f15e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcb913b2d300cbf2417910b66625d07b" id="r_adcb913b2d300cbf2417910b66625d07b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#adcb913b2d300cbf2417910b66625d07b">audio_get_filter</a> (<a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id, <a class="el" href="audio_8h.html#a4f0ea6c16f8ab9c2139452afe4730952">AudioFilterType</a> *out_filter_type, float *out_cutoff_frequency)</td></tr>
 <tr class="memdesc:adcb913b2d300cbf2417910b66625d07b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère le filtre actuellement configuré pour un son.  <br /></td></tr>
-<tr class="memitem:aa2d8928da1f54c12f57b29efd9ae7520" id="r_aa2d8928da1f54c12f57b29efd9ae7520"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa2d8928da1f54c12f57b29efd9ae7520">audio_set_type_volume</a> (<a class="el" href="audio_8h.html#a3c581a02ffb3d27ef24a44e78b509247">AudioSoundKind</a> kind, int volume)</td></tr>
+<tr class="separator:adcb913b2d300cbf2417910b66625d07b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2d8928da1f54c12f57b29efd9ae7520" id="r_aa2d8928da1f54c12f57b29efd9ae7520"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#aa2d8928da1f54c12f57b29efd9ae7520">audio_set_type_volume</a> (<a class="el" href="audio_8h.html#a3c581a02ffb3d27ef24a44e78b509247">AudioSoundKind</a> kind, int volume)</td></tr>
 <tr class="memdesc:aa2d8928da1f54c12f57b29efd9ae7520"><td class="mdescLeft">&#160;</td><td class="mdescRight">Définit le volume global d'une catégorie de sons.  <br /></td></tr>
-<tr class="memitem:a4cbc909b00ae5092bbf100bcaf0d5235" id="r_a4cbc909b00ae5092bbf100bcaf0d5235"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a4cbc909b00ae5092bbf100bcaf0d5235">audio_stop</a> (<a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id)</td></tr>
+<tr class="separator:aa2d8928da1f54c12f57b29efd9ae7520"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cbc909b00ae5092bbf100bcaf0d5235" id="r_a4cbc909b00ae5092bbf100bcaf0d5235"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#a4cbc909b00ae5092bbf100bcaf0d5235">audio_stop</a> (<a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id)</td></tr>
 <tr class="memdesc:a4cbc909b00ae5092bbf100bcaf0d5235"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arrête un son sans fade-out explicite.  <br /></td></tr>
-<tr class="memitem:a1994098e8d51ff70d2eb0e90b8aa7722" id="r_a1994098e8d51ff70d2eb0e90b8aa7722"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a1994098e8d51ff70d2eb0e90b8aa7722">audio_stop_with_fade</a> (<a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id, int fade_out_ms, <a class="el" href="audio_8h.html#a9dec9b3783dd756ce46688c18f529169">AudioFadeOutType</a> fade_type, const <a class="el" href="structAudioFadeOutFilterParams.html">AudioFadeOutFilterParams</a> *filter_params)</td></tr>
+<tr class="separator:a4cbc909b00ae5092bbf100bcaf0d5235"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1994098e8d51ff70d2eb0e90b8aa7722" id="r_a1994098e8d51ff70d2eb0e90b8aa7722"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#a1994098e8d51ff70d2eb0e90b8aa7722">audio_stop_with_fade</a> (<a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id, int fade_out_ms, <a class="el" href="audio_8h.html#a9dec9b3783dd756ce46688c18f529169">AudioFadeOutType</a> fade_type, const <a class="el" href="structAudioFadeOutFilterParams.html">AudioFadeOutFilterParams</a> *filter_params)</td></tr>
 <tr class="memdesc:a1994098e8d51ff70d2eb0e90b8aa7722"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arrête un son avec fade-out configurable.  <br /></td></tr>
-<tr class="memitem:ac95cac4af7996aadd432f07726678c92" id="r_ac95cac4af7996aadd432f07726678c92"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ac95cac4af7996aadd432f07726678c92">audio_is_playing</a> (<a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id)</td></tr>
+<tr class="separator:a1994098e8d51ff70d2eb0e90b8aa7722"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac95cac4af7996aadd432f07726678c92" id="r_ac95cac4af7996aadd432f07726678c92"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#ac95cac4af7996aadd432f07726678c92">audio_is_playing</a> (<a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a> id)</td></tr>
 <tr class="memdesc:ac95cac4af7996aadd432f07726678c92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si un son est actuellement en lecture.  <br /></td></tr>
-<tr class="memitem:a00514b261c2898c90d7faaabf3a33543" id="r_a00514b261c2898c90d7faaabf3a33543"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a00514b261c2898c90d7faaabf3a33543">audio_cleanup</a> ()</td></tr>
+<tr class="separator:ac95cac4af7996aadd432f07726678c92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00514b261c2898c90d7faaabf3a33543" id="r_a00514b261c2898c90d7faaabf3a33543"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#a00514b261c2898c90d7faaabf3a33543">audio_cleanup</a> ()</td></tr>
 <tr class="memdesc:a00514b261c2898c90d7faaabf3a33543"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libère les ressources audio et ferme le sous-système audio.  <br /></td></tr>
+<tr class="separator:a00514b261c2898c90d7faaabf3a33543"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a6219ed6e0fee9ae23980d9672f4048e2" id="r_a6219ed6e0fee9ae23980d9672f4048e2"><td class="memItemLeft">static Mix_Chunk *&#160;</td><td class="memItemRight"><a class="el" href="#a6219ed6e0fee9ae23980d9672f4048e2">sounds</a> [<a class="el" href="audio_8h.html#a7bbdbdcfece918fba0f794f7419cd6ac">MAX_SOUNDS</a>]</td></tr>
-<tr class="memitem:afe65fb0260cef970c83d9992c85143bc" id="r_afe65fb0260cef970c83d9992c85143bc"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#afe65fb0260cef970c83d9992c85143bc">sound_channels</a> [<a class="el" href="audio_8h.html#a7bbdbdcfece918fba0f794f7419cd6ac">MAX_SOUNDS</a>]</td></tr>
-<tr class="memitem:a9136cebfebf9bcfc0a7e440bfc4b2280" id="r_a9136cebfebf9bcfc0a7e440bfc4b2280"><td class="memItemLeft">static <a class="el" href="structSoundConfig.html">SoundConfig</a>&#160;</td><td class="memItemRight"><a class="el" href="#a9136cebfebf9bcfc0a7e440bfc4b2280">sound_cfgs</a> [<a class="el" href="audio_8h.html#a7bbdbdcfece918fba0f794f7419cd6ac">MAX_SOUNDS</a>]</td></tr>
-<tr class="memitem:adeb20f7aeb6743520d75d3a8301ef162" id="r_adeb20f7aeb6743520d75d3a8301ef162"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#adeb20f7aeb6743520d75d3a8301ef162">type_volumes</a> [2] = {MIX_MAX_VOLUME, MIX_MAX_VOLUME}</td></tr>
-<tr class="memitem:ad3f14a7658faa417a3ebc8a32fd3d595" id="r_ad3f14a7658faa417a3ebc8a32fd3d595"><td class="memItemLeft">static <a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a>&#160;</td><td class="memItemRight"><a class="el" href="#ad3f14a7658faa417a3ebc8a32fd3d595">channel_sound_ids</a> [<a class="el" href="audio_8h.html#a7bbdbdcfece918fba0f794f7419cd6ac">MAX_SOUNDS</a>]</td></tr>
-<tr class="memitem:ac7c4b5419b4a281f48f015dff88c690f" id="r_ac7c4b5419b4a281f48f015dff88c690f"><td class="memItemLeft">static <a class="el" href="structChannelFilterState.html">ChannelFilterState</a>&#160;</td><td class="memItemRight"><a class="el" href="#ac7c4b5419b4a281f48f015dff88c690f">channel_filters</a> [<a class="el" href="audio_8h.html#a7bbdbdcfece918fba0f794f7419cd6ac">MAX_SOUNDS</a>]</td></tr>
-<tr class="memitem:aa36180ab189fb2bd6a6cbdf2078db13e" id="r_aa36180ab189fb2bd6a6cbdf2078db13e"><td class="memItemLeft">static <a class="el" href="structChannelFadeFilterState.html">ChannelFadeFilterState</a>&#160;</td><td class="memItemRight"><a class="el" href="#aa36180ab189fb2bd6a6cbdf2078db13e">channel_fade_filters</a> [<a class="el" href="audio_8h.html#a7bbdbdcfece918fba0f794f7419cd6ac">MAX_SOUNDS</a>]</td></tr>
+<tr class="memitem:a6219ed6e0fee9ae23980d9672f4048e2" id="r_a6219ed6e0fee9ae23980d9672f4048e2"><td class="memItemLeft" align="right" valign="top">static Mix_Chunk *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#a6219ed6e0fee9ae23980d9672f4048e2">sounds</a> [<a class="el" href="audio_8h.html#a7bbdbdcfece918fba0f794f7419cd6ac">MAX_SOUNDS</a>]</td></tr>
+<tr class="separator:a6219ed6e0fee9ae23980d9672f4048e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe65fb0260cef970c83d9992c85143bc" id="r_afe65fb0260cef970c83d9992c85143bc"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#afe65fb0260cef970c83d9992c85143bc">sound_channels</a> [<a class="el" href="audio_8h.html#a7bbdbdcfece918fba0f794f7419cd6ac">MAX_SOUNDS</a>]</td></tr>
+<tr class="separator:afe65fb0260cef970c83d9992c85143bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9136cebfebf9bcfc0a7e440bfc4b2280" id="r_a9136cebfebf9bcfc0a7e440bfc4b2280"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structSoundConfig.html">SoundConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#a9136cebfebf9bcfc0a7e440bfc4b2280">sound_cfgs</a> [<a class="el" href="audio_8h.html#a7bbdbdcfece918fba0f794f7419cd6ac">MAX_SOUNDS</a>]</td></tr>
+<tr class="separator:a9136cebfebf9bcfc0a7e440bfc4b2280"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeb20f7aeb6743520d75d3a8301ef162" id="r_adeb20f7aeb6743520d75d3a8301ef162"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#adeb20f7aeb6743520d75d3a8301ef162">type_volumes</a> [2] = {MIX_MAX_VOLUME, MIX_MAX_VOLUME}</td></tr>
+<tr class="separator:adeb20f7aeb6743520d75d3a8301ef162"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3f14a7658faa417a3ebc8a32fd3d595" id="r_ad3f14a7658faa417a3ebc8a32fd3d595"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#ad3f14a7658faa417a3ebc8a32fd3d595">channel_sound_ids</a> [<a class="el" href="audio_8h.html#a7bbdbdcfece918fba0f794f7419cd6ac">MAX_SOUNDS</a>]</td></tr>
+<tr class="separator:ad3f14a7658faa417a3ebc8a32fd3d595"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7c4b5419b4a281f48f015dff88c690f" id="r_ac7c4b5419b4a281f48f015dff88c690f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structChannelFilterState.html">ChannelFilterState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#ac7c4b5419b4a281f48f015dff88c690f">channel_filters</a> [<a class="el" href="audio_8h.html#a7bbdbdcfece918fba0f794f7419cd6ac">MAX_SOUNDS</a>]</td></tr>
+<tr class="separator:ac7c4b5419b4a281f48f015dff88c690f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa36180ab189fb2bd6a6cbdf2078db13e" id="r_aa36180ab189fb2bd6a6cbdf2078db13e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structChannelFadeFilterState.html">ChannelFadeFilterState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#aa36180ab189fb2bd6a6cbdf2078db13e">channel_fade_filters</a> [<a class="el" href="audio_8h.html#a7bbdbdcfece918fba0f794f7419cd6ac">MAX_SOUNDS</a>]</td></tr>
+<tr class="separator:aa36180ab189fb2bd6a6cbdf2078db13e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentation des macros</h2>
+<h2 class="groupheader">Documentation des macros</h2>
 <a id="af82889eac58da0e00eccecb911532432" name="af82889eac58da0e00eccecb911532432"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af82889eac58da0e00eccecb911532432">&#9670;&#160;</a></span>AUDIO_PI</h2>
 
@@ -169,11 +212,9 @@ Variables</h2></td></tr>
 
 <p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00004">4</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00060">compute_low_pass_alpha()</a>.</p>
-
 </div>
 </div>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a id="a40b6263de48d4dfe926b7aa8e5206b8b" name="a40b6263de48d4dfe926b7aa8e5206b8b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a40b6263de48d4dfe926b7aa8e5206b8b">&#9670;&#160;</a></span>apply_channel_filter()</h2>
 
@@ -184,28 +225,35 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void apply_channel_filter </td>
+          <td class="memname">static void apply_channel_filter </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>channel</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a></td>          <td class="paramname"><span class="paramname"><em>id</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a>&#160;</td>
+          <td class="paramname"><em>id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00176">176</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00194">194</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8c_source.html#l00032">channel_filters</a>, <a class="el" href="audio_8c_source.html#l00060">compute_low_pass_alpha()</a>, <a class="el" href="audio_8c_source.html#l00043">is_valid_sound_id()</a>, <a class="el" href="audio_8c_source.html#l00089">low_pass_effect()</a>, <a class="el" href="audio_8h_source.html#l00006">MAX_SOUNDS</a>, et <a class="el" href="audio_8c_source.html#l00029">sound_cfgs</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8c_source.html#l00008">ChannelFilterState::active</a>, <a class="el" href="audio_8c_source.html#l00009">ChannelFilterState::alpha</a>, <a class="el" href="audio_8h_source.html#l00095">SoundConfig::bypass_filter</a>, <a class="el" href="audio_8c_source.html#l00032">channel_filters</a>, <a class="el" href="audio_8c_source.html#l00078">compute_low_pass_alpha()</a>, <a class="el" href="audio_8c_source.html#l00043">is_valid_sound_id()</a>, <a class="el" href="audio_8c_source.html#l00107">low_pass_effect()</a>, <a class="el" href="audio_8h_source.html#l00011">MAX_SOUNDS</a>, <a class="el" href="audio_8c_source.html#l00010">ChannelFilterState::previous_left</a>, <a class="el" href="audio_8c_source.html#l00011">ChannelFilterState::previous_right</a>, et <a class="el" href="audio_8c_source.html#l00029">sound_cfgs</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00301">audio_play_with_fade()</a>, et <a class="el" href="audio_8c_source.html#l00397">audio_set_sound_config()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00359">audio_play_with_fade()</a>, et <a class="el" href="audio_8c_source.html#l00480">audio_set_sound_config()</a>.</p>
 
 </div>
 </div>
@@ -218,7 +266,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void audio_cleanup </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -226,11 +274,11 @@ Variables</h2></td></tr>
 
 <p>Libère les ressources audio et ferme le sous-système audio. </p>
 
-<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00601">601</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00711">711</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8h_source.html#l00006">MAX_SOUNDS</a>, <a class="el" href="audio_8c_source.html#l00154">reset_channel_state()</a>, <a class="el" href="audio_8c_source.html#l00028">sound_channels</a>, et <a class="el" href="audio_8c_source.html#l00027">sounds</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8h_source.html#l00011">MAX_SOUNDS</a>, <a class="el" href="audio_8c_source.html#l00172">reset_channel_state()</a>, <a class="el" href="audio_8c_source.html#l00028">sound_channels</a>, et <a class="el" href="audio_8c_source.html#l00027">sounds</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="sdl_8c_source.html#l00256">destroy_context()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="sdl_8c_source.html#l00317">destroy_context()</a>.</p>
 
 </div>
 </div>
@@ -243,17 +291,25 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int audio_get_filter </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a></td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="audio_8h.html#a4f0ea6c16f8ab9c2139452afe4730952">AudioFilterType</a> *</td>          <td class="paramname"><span class="paramname"><em>out_filter_type</em></span>, </td>
+          <td class="paramtype"><a class="el" href="audio_8h.html#a4f0ea6c16f8ab9c2139452afe4730952">AudioFilterType</a> *&#160;</td>
+          <td class="paramname"><em>out_filter_type</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>out_cutoff_frequency</em></span>&#160;)</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>out_cutoff_frequency</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -269,11 +325,11 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS en cas de succès, EXIT_FAILURE sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00455">455</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00542">542</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8h_source.html#l00041">AUDIO_FILTER_LOW_PASS</a>, <a class="el" href="audio_8h_source.html#l00040">AUDIO_FILTER_NONE</a>, <a class="el" href="audio_8c_source.html#l00418">audio_get_sound_config()</a>, <a class="el" href="audio_8h_source.html#l00084">SoundConfig::bypass_filter</a>, et <a class="el" href="audio_8h_source.html#l00085">SoundConfig::filter_cutoff_hz</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8h_source.html#l00052">AUDIO_FILTER_LOW_PASS</a>, <a class="el" href="audio_8h_source.html#l00051">AUDIO_FILTER_NONE</a>, <a class="el" href="audio_8c_source.html#l00505">audio_get_sound_config()</a>, <a class="el" href="audio_8h_source.html#l00095">SoundConfig::bypass_filter</a>, et <a class="el" href="audio_8h_source.html#l00096">SoundConfig::filter_cutoff_hz</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2lobby_8c_source.html#l00257">lobby_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2lobby_8c_source.html#l00776">lobby_display()</a>.</p>
 
 </div>
 </div>
@@ -286,12 +342,19 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int audio_get_sound_config </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a></td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structSoundConfig.html">SoundConfig</a> *</td>          <td class="paramname"><span class="paramname"><em>out_cfg</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structSoundConfig.html">SoundConfig</a> *&#160;</td>
+          <td class="paramname"><em>out_cfg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -306,11 +369,11 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS en cas de succès, EXIT_FAILURE sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00418">418</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00505">505</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
 <p class="reference">Références <a class="el" href="audio_8c_source.html#l00043">is_valid_sound_id()</a>, et <a class="el" href="audio_8c_source.html#l00029">sound_cfgs</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00455">audio_get_filter()</a>, <a class="el" href="audio_8c_source.html#l00437">audio_set_filter()</a>, et <a class="el" href="audio_8c_source.html#l00427">audio_set_sound_volume()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00542">audio_get_filter()</a>, <a class="el" href="audio_8c_source.html#l00524">audio_set_filter()</a>, et <a class="el" href="audio_8c_source.html#l00514">audio_set_sound_volume()</a>.</p>
 
 </div>
 </div>
@@ -323,7 +386,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int audio_init </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -332,9 +395,9 @@ Variables</h2></td></tr>
 <p>Initialise le sous-système audio. </p>
 <dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS si l'initialisation a réussi, EXIT_FAILURE sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00213">213</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00231">231</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8h_source.html#l00007">AUDIO_FILTER_DEFAULT_CUTOFF_HZ</a>, <a class="el" href="audio_8h_source.html#l00032">AUDIO_SOUND_KIND_MUSIC</a>, <a class="el" href="audio_8h_source.html#l00033">AUDIO_SOUND_KIND_SFX</a>, <a class="el" href="audio_8c_source.html#l00033">channel_fade_filters</a>, <a class="el" href="audio_8c_source.html#l00032">channel_filters</a>, <a class="el" href="audio_8c_source.html#l00031">channel_sound_ids</a>, <a class="el" href="audio_8c_source.html#l00079">load_wav_safe()</a>, <a class="el" href="audio_8h_source.html#l00006">MAX_SOUNDS</a>, <a class="el" href="audio_8h_source.html#l00016">MUSIC_GAME</a>, <a class="el" href="audio_8h_source.html#l00015">MUSIC_MENU_LOBBY</a>, <a class="el" href="audio_8h_source.html#l00017">SOUND_BUTTON_CLICKED</a>, <a class="el" href="audio_8c_source.html#l00029">sound_cfgs</a>, <a class="el" href="audio_8c_source.html#l00028">sound_channels</a>, <a class="el" href="audio_8c_source.html#l00027">sounds</a>, et <a class="el" href="audio_8c_source.html#l00030">type_volumes</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8c_source.html#l00008">ChannelFilterState::active</a>, <a class="el" href="audio_8c_source.html#l00016">ChannelFadeFilterState::active</a>, <a class="el" href="audio_8c_source.html#l00009">ChannelFilterState::alpha</a>, <a class="el" href="audio_8h_source.html#l00012">AUDIO_FILTER_DEFAULT_CUTOFF_HZ</a>, <a class="el" href="audio_8h_source.html#l00043">AUDIO_SOUND_KIND_MUSIC</a>, <a class="el" href="audio_8h_source.html#l00044">AUDIO_SOUND_KIND_SFX</a>, <a class="el" href="audio_8h_source.html#l00095">SoundConfig::bypass_filter</a>, <a class="el" href="audio_8c_source.html#l00033">channel_fade_filters</a>, <a class="el" href="audio_8c_source.html#l00032">channel_filters</a>, <a class="el" href="audio_8c_source.html#l00031">channel_sound_ids</a>, <a class="el" href="audio_8c_source.html#l00021">ChannelFadeFilterState::deactivate_on_complete</a>, <a class="el" href="audio_8c_source.html#l00018">ChannelFadeFilterState::duration_ms</a>, <a class="el" href="audio_8c_source.html#l00020">ChannelFadeFilterState::end_alpha</a>, <a class="el" href="audio_8h_source.html#l00096">SoundConfig::filter_cutoff_hz</a>, <a class="el" href="audio_8h_source.html#l00093">SoundConfig::kind</a>, <a class="el" href="audio_8c_source.html#l00097">load_wav_safe()</a>, <a class="el" href="audio_8h_source.html#l00011">MAX_SOUNDS</a>, <a class="el" href="audio_8h_source.html#l00021">MUSIC_GAME</a>, <a class="el" href="audio_8h_source.html#l00020">MUSIC_MENU_LOBBY</a>, <a class="el" href="audio_8c_source.html#l00010">ChannelFilterState::previous_left</a>, <a class="el" href="audio_8c_source.html#l00022">ChannelFadeFilterState::previous_left</a>, <a class="el" href="audio_8c_source.html#l00011">ChannelFilterState::previous_right</a>, <a class="el" href="audio_8c_source.html#l00023">ChannelFadeFilterState::previous_right</a>, <a class="el" href="audio_8h_source.html#l00023">SOUND_BUTTON_CLICKED</a>, <a class="el" href="audio_8h_source.html#l00024">SOUND_BUTTON_HOVER</a>, <a class="el" href="audio_8c_source.html#l00029">sound_cfgs</a>, <a class="el" href="audio_8c_source.html#l00028">sound_channels</a>, <a class="el" href="audio_8h_source.html#l00036">SOUND_INFO_CLOSE</a>, <a class="el" href="audio_8h_source.html#l00035">SOUND_INFO_OPEN</a>, <a class="el" href="audio_8h_source.html#l00022">SOUND_OPENING_CODENAMES</a>, <a class="el" href="audio_8c_source.html#l00027">sounds</a>, <a class="el" href="audio_8c_source.html#l00019">ChannelFadeFilterState::start_alpha</a>, <a class="el" href="audio_8c_source.html#l00017">ChannelFadeFilterState::start_ticks</a>, <a class="el" href="audio_8c_source.html#l00030">type_volumes</a>, et <a class="el" href="audio_8h_source.html#l00094">SoundConfig::volume</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="sdl_8c_source.html#l00052">init_sdl()</a>.</p>
 
@@ -349,7 +412,8 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int audio_is_playing </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a></td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a>&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -364,11 +428,11 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>1 si le son est en cours de lecture, 0 sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00583">583</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00688">688</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8c_source.html#l00043">is_valid_sound_id()</a>, <a class="el" href="audio_8h_source.html#l00006">MAX_SOUNDS</a>, <a class="el" href="audio_8c_source.html#l00154">reset_channel_state()</a>, et <a class="el" href="audio_8c_source.html#l00028">sound_channels</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8c_source.html#l00053">is_channel_bound_to_sound()</a>, <a class="el" href="audio_8c_source.html#l00043">is_valid_sound_id()</a>, <a class="el" href="audio_8h_source.html#l00011">MAX_SOUNDS</a>, <a class="el" href="audio_8c_source.html#l00172">reset_channel_state()</a>, et <a class="el" href="audio_8c_source.html#l00028">sound_channels</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>, <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>, et <a class="el" href="menu_8c_source.html#l00230">menu_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l01130">game_display()</a>, <a class="el" href="client_2src_2index_8c_source.html#l00173">handle_app_state_audio_transition()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00776">lobby_display()</a>, <a class="el" href="menu_8c_source.html#l00908">menu_display()</a>, et <a class="el" href="menu_8c_source.html#l00441">menu_enter_startup_transition()</a>.</p>
 
 </div>
 </div>
@@ -381,12 +445,19 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void audio_play </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a></td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>loops</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>loops</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -401,11 +472,11 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00297">297</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00355">355</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8h_source.html#l00065">AUDIO_FADE_IN_BY_VOLUME</a>, et <a class="el" href="audio_8c_source.html#l00301">audio_play_with_fade()</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8h_source.html#l00076">AUDIO_FADE_IN_BY_VOLUME</a>, et <a class="el" href="audio_8c_source.html#l00359">audio_play_with_fade()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="button_8c_source.html#l00208">button_handle_event()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="button_8c_source.html#l00294">button_handle_event()</a>, <a class="el" href="card_8c_source.html#l00180">card_handle_event()</a>, <a class="el" href="infos_8c_source.html#l00270">infos_display_hide_animation()</a>, et <a class="el" href="infos_8c_source.html#l00260">infos_display_show_animation()</a>.</p>
 
 </div>
 </div>
@@ -418,27 +489,37 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int audio_play_with_fade </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a></td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>loops</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>loops</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>fade_in_ms</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fade_in_ms</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="audio_8h.html#a288bb1a7d2488a454e994d91f54fe7c4">AudioFadeInType</a></td>          <td class="paramname"><span class="paramname"><em>fade_type</em></span>, </td>
+          <td class="paramtype"><a class="el" href="audio_8h.html#a288bb1a7d2488a454e994d91f54fe7c4">AudioFadeInType</a>&#160;</td>
+          <td class="paramname"><em>fade_type</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structAudioFadeInFilterParams.html">AudioFadeInFilterParams</a> *</td>          <td class="paramname"><span class="paramname"><em>filter_params</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="structAudioFadeInFilterParams.html">AudioFadeInFilterParams</a> *&#160;</td>
+          <td class="paramname"><em>filter_params</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -456,11 +537,11 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS en cas de succès, EXIT_FAILURE sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00301">301</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00359">359</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8c_source.html#l00176">apply_channel_filter()</a>, <a class="el" href="audio_8h_source.html#l00066">AUDIO_FADE_IN_BY_FILTER</a>, <a class="el" href="audio_8h_source.html#l00065">AUDIO_FADE_IN_BY_VOLUME</a>, <a class="el" href="audio_8h_source.html#l00007">AUDIO_FILTER_DEFAULT_CUTOFF_HZ</a>, <a class="el" href="audio_8h_source.html#l00041">AUDIO_FILTER_LOW_PASS</a>, <a class="el" href="audio_8h_source.html#l00009">AUDIO_FILTER_MAX_CUTOFF_HZ</a>, <a class="el" href="audio_8h_source.html#l00008">AUDIO_FILTER_MIN_CUTOFF_HZ</a>, <a class="el" href="audio_8c_source.html#l00033">channel_fade_filters</a>, <a class="el" href="audio_8c_source.html#l00031">channel_sound_ids</a>, <a class="el" href="audio_8c_source.html#l00053">compute_effective_volume()</a>, <a class="el" href="audio_8c_source.html#l00060">compute_low_pass_alpha()</a>, <a class="el" href="audio_8h_source.html#l00075">AudioFadeInFilterParams::end_cutoff_hz</a>, <a class="el" href="audio_8c_source.html#l00114">fade_low_pass_effect()</a>, <a class="el" href="audio_8h_source.html#l00073">AudioFadeInFilterParams::filter_type</a>, <a class="el" href="audio_8c_source.html#l00043">is_valid_sound_id()</a>, <a class="el" href="audio_8h_source.html#l00006">MAX_SOUNDS</a>, <a class="el" href="audio_8c_source.html#l00154">reset_channel_state()</a>, <a class="el" href="audio_8c_source.html#l00029">sound_cfgs</a>, <a class="el" href="audio_8c_source.html#l00028">sound_channels</a>, <a class="el" href="audio_8c_source.html#l00027">sounds</a>, et <a class="el" href="audio_8h_source.html#l00074">AudioFadeInFilterParams::start_cutoff_hz</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8c_source.html#l00016">ChannelFadeFilterState::active</a>, <a class="el" href="audio_8c_source.html#l00194">apply_channel_filter()</a>, <a class="el" href="audio_8h_source.html#l00077">AUDIO_FADE_IN_BY_FILTER</a>, <a class="el" href="audio_8h_source.html#l00076">AUDIO_FADE_IN_BY_VOLUME</a>, <a class="el" href="audio_8h_source.html#l00012">AUDIO_FILTER_DEFAULT_CUTOFF_HZ</a>, <a class="el" href="audio_8h_source.html#l00052">AUDIO_FILTER_LOW_PASS</a>, <a class="el" href="audio_8h_source.html#l00014">AUDIO_FILTER_MAX_CUTOFF_HZ</a>, <a class="el" href="audio_8h_source.html#l00013">AUDIO_FILTER_MIN_CUTOFF_HZ</a>, <a class="el" href="audio_8h_source.html#l00095">SoundConfig::bypass_filter</a>, <a class="el" href="audio_8c_source.html#l00033">channel_fade_filters</a>, <a class="el" href="audio_8c_source.html#l00031">channel_sound_ids</a>, <a class="el" href="audio_8c_source.html#l00061">compute_effective_volume()</a>, <a class="el" href="audio_8c_source.html#l00078">compute_low_pass_alpha()</a>, <a class="el" href="audio_8c_source.html#l00021">ChannelFadeFilterState::deactivate_on_complete</a>, <a class="el" href="audio_8c_source.html#l00018">ChannelFadeFilterState::duration_ms</a>, <a class="el" href="audio_8c_source.html#l00020">ChannelFadeFilterState::end_alpha</a>, <a class="el" href="audio_8h_source.html#l00086">AudioFadeInFilterParams::end_cutoff_hz</a>, <a class="el" href="audio_8c_source.html#l00132">fade_low_pass_effect()</a>, <a class="el" href="audio_8h_source.html#l00096">SoundConfig::filter_cutoff_hz</a>, <a class="el" href="audio_8h_source.html#l00084">AudioFadeInFilterParams::filter_type</a>, <a class="el" href="audio_8c_source.html#l00068">find_available_channel()</a>, <a class="el" href="audio_8c_source.html#l00043">is_valid_sound_id()</a>, <a class="el" href="audio_8h_source.html#l00011">MAX_SOUNDS</a>, <a class="el" href="audio_8c_source.html#l00022">ChannelFadeFilterState::previous_left</a>, <a class="el" href="audio_8c_source.html#l00023">ChannelFadeFilterState::previous_right</a>, <a class="el" href="audio_8c_source.html#l00172">reset_channel_state()</a>, <a class="el" href="audio_8c_source.html#l00029">sound_cfgs</a>, <a class="el" href="audio_8c_source.html#l00028">sound_channels</a>, <a class="el" href="audio_8c_source.html#l00027">sounds</a>, <a class="el" href="audio_8c_source.html#l00019">ChannelFadeFilterState::start_alpha</a>, <a class="el" href="audio_8h_source.html#l00085">AudioFadeInFilterParams::start_cutoff_hz</a>, et <a class="el" href="audio_8c_source.html#l00017">ChannelFadeFilterState::start_ticks</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00297">audio_play()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>, et <a class="el" href="menu_8c_source.html#l00230">menu_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00355">audio_play()</a>, <a class="el" href="client_2src_2game_8c_source.html#l01130">game_display()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00776">lobby_display()</a>, <a class="el" href="menu_8c_source.html#l00908">menu_display()</a>, et <a class="el" href="menu_8c_source.html#l00452">menu_update_startup_state()</a>.</p>
 
 </div>
 </div>
@@ -473,17 +554,25 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int audio_set_filter </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a></td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="audio_8h.html#a4f0ea6c16f8ab9c2139452afe4730952">AudioFilterType</a></td>          <td class="paramname"><span class="paramname"><em>filter_type</em></span>, </td>
+          <td class="paramtype"><a class="el" href="audio_8h.html#a4f0ea6c16f8ab9c2139452afe4730952">AudioFilterType</a>&#160;</td>
+          <td class="paramname"><em>filter_type</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>cutoff_frequency</em></span>&#160;)</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>cutoff_frequency</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -499,11 +588,11 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS en cas de succès, EXIT_FAILURE sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00437">437</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00524">524</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8h_source.html#l00007">AUDIO_FILTER_DEFAULT_CUTOFF_HZ</a>, <a class="el" href="audio_8h_source.html#l00041">AUDIO_FILTER_LOW_PASS</a>, <a class="el" href="audio_8h_source.html#l00040">AUDIO_FILTER_NONE</a>, <a class="el" href="audio_8c_source.html#l00418">audio_get_sound_config()</a>, <a class="el" href="audio_8c_source.html#l00397">audio_set_sound_config()</a>, <a class="el" href="audio_8h_source.html#l00084">SoundConfig::bypass_filter</a>, et <a class="el" href="audio_8h_source.html#l00085">SoundConfig::filter_cutoff_hz</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8h_source.html#l00012">AUDIO_FILTER_DEFAULT_CUTOFF_HZ</a>, <a class="el" href="audio_8h_source.html#l00052">AUDIO_FILTER_LOW_PASS</a>, <a class="el" href="audio_8h_source.html#l00051">AUDIO_FILTER_NONE</a>, <a class="el" href="audio_8c_source.html#l00505">audio_get_sound_config()</a>, <a class="el" href="audio_8c_source.html#l00480">audio_set_sound_config()</a>, <a class="el" href="audio_8h_source.html#l00095">SoundConfig::bypass_filter</a>, et <a class="el" href="audio_8h_source.html#l00096">SoundConfig::filter_cutoff_hz</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00068">game_button_click()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00021">lobby_button_click()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00257">lobby_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00345">game_button_click()</a>, <a class="el" href="client_2src_2index_8c_source.html#l00173">handle_app_state_audio_transition()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00373">lobby_button_click()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00776">lobby_display()</a>.</p>
 
 </div>
 </div>
@@ -516,12 +605,19 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int audio_set_sound_config </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a></td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structSoundConfig.html">SoundConfig</a> *</td>          <td class="paramname"><span class="paramname"><em>cfg</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="structSoundConfig.html">SoundConfig</a> *&#160;</td>
+          <td class="paramname"><em>cfg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -536,11 +632,11 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS en cas de succès, EXIT_FAILURE sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00397">397</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00480">480</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8c_source.html#l00176">apply_channel_filter()</a>, <a class="el" href="audio_8h_source.html#l00007">AUDIO_FILTER_DEFAULT_CUTOFF_HZ</a>, <a class="el" href="audio_8c_source.html#l00036">clamp_volume()</a>, <a class="el" href="audio_8c_source.html#l00053">compute_effective_volume()</a>, <a class="el" href="audio_8c_source.html#l00048">is_valid_kind()</a>, <a class="el" href="audio_8c_source.html#l00043">is_valid_sound_id()</a>, <a class="el" href="audio_8h_source.html#l00082">SoundConfig::kind</a>, <a class="el" href="audio_8h_source.html#l00006">MAX_SOUNDS</a>, <a class="el" href="audio_8c_source.html#l00029">sound_cfgs</a>, et <a class="el" href="audio_8c_source.html#l00028">sound_channels</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8c_source.html#l00194">apply_channel_filter()</a>, <a class="el" href="audio_8h_source.html#l00012">AUDIO_FILTER_DEFAULT_CUTOFF_HZ</a>, <a class="el" href="audio_8h_source.html#l00095">SoundConfig::bypass_filter</a>, <a class="el" href="audio_8c_source.html#l00036">clamp_volume()</a>, <a class="el" href="audio_8c_source.html#l00061">compute_effective_volume()</a>, <a class="el" href="audio_8h_source.html#l00096">SoundConfig::filter_cutoff_hz</a>, <a class="el" href="audio_8c_source.html#l00053">is_channel_bound_to_sound()</a>, <a class="el" href="audio_8c_source.html#l00048">is_valid_kind()</a>, <a class="el" href="audio_8c_source.html#l00043">is_valid_sound_id()</a>, <a class="el" href="audio_8h_source.html#l00093">SoundConfig::kind</a>, <a class="el" href="audio_8h_source.html#l00011">MAX_SOUNDS</a>, <a class="el" href="audio_8c_source.html#l00029">sound_cfgs</a>, <a class="el" href="audio_8c_source.html#l00028">sound_channels</a>, et <a class="el" href="audio_8h_source.html#l00094">SoundConfig::volume</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00437">audio_set_filter()</a>, et <a class="el" href="audio_8c_source.html#l00427">audio_set_sound_volume()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00524">audio_set_filter()</a>, et <a class="el" href="audio_8c_source.html#l00514">audio_set_sound_volume()</a>.</p>
 
 </div>
 </div>
@@ -553,12 +649,19 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int audio_set_sound_volume </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a></td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>volume</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>volume</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -573,9 +676,9 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS en cas de succès, EXIT_FAILURE sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00427">427</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00514">514</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8c_source.html#l00418">audio_get_sound_config()</a>, <a class="el" href="audio_8c_source.html#l00397">audio_set_sound_config()</a>, <a class="el" href="audio_8c_source.html#l00036">clamp_volume()</a>, et <a class="el" href="audio_8h_source.html#l00083">SoundConfig::volume</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8c_source.html#l00505">audio_get_sound_config()</a>, <a class="el" href="audio_8c_source.html#l00480">audio_set_sound_config()</a>, <a class="el" href="audio_8c_source.html#l00036">clamp_volume()</a>, et <a class="el" href="audio_8h_source.html#l00094">SoundConfig::volume</a>.</p>
 
 </div>
 </div>
@@ -588,12 +691,19 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void audio_set_type_volume </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="audio_8h.html#a3c581a02ffb3d27ef24a44e78b509247">AudioSoundKind</a></td>          <td class="paramname"><span class="paramname"><em>kind</em></span>, </td>
+          <td class="paramtype"><a class="el" href="audio_8h.html#a3c581a02ffb3d27ef24a44e78b509247">AudioSoundKind</a>&#160;</td>
+          <td class="paramname"><em>kind</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>volume</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>volume</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -607,11 +717,11 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00470">470</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00557">557</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8c_source.html#l00036">clamp_volume()</a>, <a class="el" href="audio_8c_source.html#l00053">compute_effective_volume()</a>, <a class="el" href="audio_8c_source.html#l00048">is_valid_kind()</a>, <a class="el" href="audio_8h_source.html#l00006">MAX_SOUNDS</a>, <a class="el" href="audio_8c_source.html#l00029">sound_cfgs</a>, <a class="el" href="audio_8c_source.html#l00028">sound_channels</a>, et <a class="el" href="audio_8c_source.html#l00030">type_volumes</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8c_source.html#l00036">clamp_volume()</a>, <a class="el" href="audio_8c_source.html#l00061">compute_effective_volume()</a>, <a class="el" href="audio_8c_source.html#l00053">is_channel_bound_to_sound()</a>, <a class="el" href="audio_8c_source.html#l00048">is_valid_kind()</a>, <a class="el" href="audio_8h_source.html#l00011">MAX_SOUNDS</a>, <a class="el" href="audio_8c_source.html#l00029">sound_cfgs</a>, <a class="el" href="audio_8c_source.html#l00028">sound_channels</a>, et <a class="el" href="audio_8c_source.html#l00030">type_volumes</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>, <a class="el" href="infos_8c_source.html#l00043">on_music_volume_change()</a>, et <a class="el" href="infos_8c_source.html#l00049">on_sfx_volume_change()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00173">handle_app_state_audio_transition()</a>, <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>, <a class="el" href="infos_8c_source.html#l00045">on_music_volume_change()</a>, et <a class="el" href="infos_8c_source.html#l00051">on_sfx_volume_change()</a>.</p>
 
 </div>
 </div>
@@ -624,7 +734,8 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void audio_stop </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a></td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a>&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -639,9 +750,11 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00489">489</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00585">585</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8h_source.html#l00048">AUDIO_FADE_OUT_BY_VOLUME</a>, et <a class="el" href="audio_8c_source.html#l00493">audio_stop_with_fade()</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8h_source.html#l00059">AUDIO_FADE_OUT_BY_VOLUME</a>, et <a class="el" href="audio_8c_source.html#l00589">audio_stop_with_fade()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="client_2src_2index_8c_source.html#l00173">handle_app_state_audio_transition()</a>.</p>
 
 </div>
 </div>
@@ -654,22 +767,31 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int audio_stop_with_fade </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a></td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>fade_out_ms</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fade_out_ms</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="audio_8h.html#a9dec9b3783dd756ce46688c18f529169">AudioFadeOutType</a></td>          <td class="paramname"><span class="paramname"><em>fade_type</em></span>, </td>
+          <td class="paramtype"><a class="el" href="audio_8h.html#a9dec9b3783dd756ce46688c18f529169">AudioFadeOutType</a>&#160;</td>
+          <td class="paramname"><em>fade_type</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structAudioFadeOutFilterParams.html">AudioFadeOutFilterParams</a> *</td>          <td class="paramname"><span class="paramname"><em>filter_params</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="structAudioFadeOutFilterParams.html">AudioFadeOutFilterParams</a> *&#160;</td>
+          <td class="paramname"><em>filter_params</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -686,11 +808,11 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>EXIT_SUCCESS en cas de succès, EXIT_FAILURE sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00493">493</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00589">589</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8h_source.html#l00049">AUDIO_FADE_OUT_BY_FILTER</a>, <a class="el" href="audio_8h_source.html#l00048">AUDIO_FADE_OUT_BY_VOLUME</a>, <a class="el" href="audio_8h_source.html#l00007">AUDIO_FILTER_DEFAULT_CUTOFF_HZ</a>, <a class="el" href="audio_8h_source.html#l00041">AUDIO_FILTER_LOW_PASS</a>, <a class="el" href="audio_8h_source.html#l00008">AUDIO_FILTER_MIN_CUTOFF_HZ</a>, <a class="el" href="audio_8c_source.html#l00033">channel_fade_filters</a>, <a class="el" href="audio_8c_source.html#l00060">compute_low_pass_alpha()</a>, <a class="el" href="audio_8h_source.html#l00058">AudioFadeOutFilterParams::end_cutoff_hz</a>, <a class="el" href="audio_8c_source.html#l00114">fade_low_pass_effect()</a>, <a class="el" href="audio_8h_source.html#l00056">AudioFadeOutFilterParams::filter_type</a>, <a class="el" href="audio_8c_source.html#l00043">is_valid_sound_id()</a>, <a class="el" href="audio_8h_source.html#l00006">MAX_SOUNDS</a>, <a class="el" href="audio_8c_source.html#l00154">reset_channel_state()</a>, <a class="el" href="audio_8c_source.html#l00029">sound_cfgs</a>, <a class="el" href="audio_8c_source.html#l00028">sound_channels</a>, et <a class="el" href="audio_8h_source.html#l00057">AudioFadeOutFilterParams::start_cutoff_hz</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8c_source.html#l00016">ChannelFadeFilterState::active</a>, <a class="el" href="audio_8h_source.html#l00060">AUDIO_FADE_OUT_BY_FILTER</a>, <a class="el" href="audio_8h_source.html#l00059">AUDIO_FADE_OUT_BY_VOLUME</a>, <a class="el" href="audio_8h_source.html#l00012">AUDIO_FILTER_DEFAULT_CUTOFF_HZ</a>, <a class="el" href="audio_8h_source.html#l00052">AUDIO_FILTER_LOW_PASS</a>, <a class="el" href="audio_8h_source.html#l00013">AUDIO_FILTER_MIN_CUTOFF_HZ</a>, <a class="el" href="audio_8c_source.html#l00033">channel_fade_filters</a>, <a class="el" href="audio_8c_source.html#l00078">compute_low_pass_alpha()</a>, <a class="el" href="audio_8c_source.html#l00021">ChannelFadeFilterState::deactivate_on_complete</a>, <a class="el" href="audio_8c_source.html#l00018">ChannelFadeFilterState::duration_ms</a>, <a class="el" href="audio_8c_source.html#l00020">ChannelFadeFilterState::end_alpha</a>, <a class="el" href="audio_8h_source.html#l00069">AudioFadeOutFilterParams::end_cutoff_hz</a>, <a class="el" href="audio_8c_source.html#l00132">fade_low_pass_effect()</a>, <a class="el" href="audio_8h_source.html#l00096">SoundConfig::filter_cutoff_hz</a>, <a class="el" href="audio_8h_source.html#l00067">AudioFadeOutFilterParams::filter_type</a>, <a class="el" href="audio_8c_source.html#l00053">is_channel_bound_to_sound()</a>, <a class="el" href="audio_8c_source.html#l00043">is_valid_sound_id()</a>, <a class="el" href="audio_8h_source.html#l00011">MAX_SOUNDS</a>, <a class="el" href="audio_8c_source.html#l00022">ChannelFadeFilterState::previous_left</a>, <a class="el" href="audio_8c_source.html#l00023">ChannelFadeFilterState::previous_right</a>, <a class="el" href="audio_8c_source.html#l00172">reset_channel_state()</a>, <a class="el" href="audio_8c_source.html#l00029">sound_cfgs</a>, <a class="el" href="audio_8c_source.html#l00028">sound_channels</a>, <a class="el" href="audio_8c_source.html#l00019">ChannelFadeFilterState::start_alpha</a>, <a class="el" href="audio_8h_source.html#l00068">AudioFadeOutFilterParams::start_cutoff_hz</a>, et <a class="el" href="audio_8c_source.html#l00017">ChannelFadeFilterState::start_ticks</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00489">audio_stop()</a>, et <a class="el" href="client_2src_2index_8c_source.html#l00008">main()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00585">audio_stop()</a>, <a class="el" href="client_2src_2index_8c_source.html#l00173">handle_app_state_audio_transition()</a>, et <a class="el" href="menu_8c_source.html#l00441">menu_enter_startup_transition()</a>.</p>
 
 </div>
 </div>
@@ -704,22 +826,23 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int clamp_volume </td>
+          <td class="memname">static int clamp_volume </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>volume</em></span></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>volume</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00036">36</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00397">audio_set_sound_config()</a>, <a class="el" href="audio_8c_source.html#l00427">audio_set_sound_volume()</a>, et <a class="el" href="audio_8c_source.html#l00470">audio_set_type_volume()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00480">audio_set_sound_config()</a>, <a class="el" href="audio_8c_source.html#l00514">audio_set_sound_volume()</a>, et <a class="el" href="audio_8c_source.html#l00557">audio_set_type_volume()</a>.</p>
 
 </div>
 </div>
@@ -733,24 +856,25 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int compute_effective_volume </td>
+          <td class="memname">static int compute_effective_volume </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a></td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a>&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00053">53</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00061">61</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8h_source.html#l00082">SoundConfig::kind</a>, <a class="el" href="audio_8c_source.html#l00029">sound_cfgs</a>, <a class="el" href="audio_8c_source.html#l00030">type_volumes</a>, et <a class="el" href="audio_8h_source.html#l00083">SoundConfig::volume</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8h_source.html#l00093">SoundConfig::kind</a>, <a class="el" href="audio_8c_source.html#l00029">sound_cfgs</a>, <a class="el" href="audio_8c_source.html#l00030">type_volumes</a>, et <a class="el" href="audio_8h_source.html#l00094">SoundConfig::volume</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00301">audio_play_with_fade()</a>, <a class="el" href="audio_8c_source.html#l00397">audio_set_sound_config()</a>, et <a class="el" href="audio_8c_source.html#l00470">audio_set_type_volume()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00359">audio_play_with_fade()</a>, <a class="el" href="audio_8c_source.html#l00480">audio_set_sound_config()</a>, et <a class="el" href="audio_8c_source.html#l00557">audio_set_type_volume()</a>.</p>
 
 </div>
 </div>
@@ -764,24 +888,25 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float compute_low_pass_alpha </td>
+          <td class="memname">static float compute_low_pass_alpha </td>
           <td>(</td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>cutoff_hz</em></span></td><td>)</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>cutoff_hz</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00060">60</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00078">78</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8h_source.html#l00007">AUDIO_FILTER_DEFAULT_CUTOFF_HZ</a>, et <a class="el" href="audio_8c_source.html#l00004">AUDIO_PI</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8h_source.html#l00012">AUDIO_FILTER_DEFAULT_CUTOFF_HZ</a>, et <a class="el" href="audio_8c_source.html#l00004">AUDIO_PI</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00176">apply_channel_filter()</a>, <a class="el" href="audio_8c_source.html#l00301">audio_play_with_fade()</a>, et <a class="el" href="audio_8c_source.html#l00493">audio_stop_with_fade()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00194">apply_channel_filter()</a>, <a class="el" href="audio_8c_source.html#l00359">audio_play_with_fade()</a>, et <a class="el" href="audio_8c_source.html#l00589">audio_stop_with_fade()</a>.</p>
 
 </div>
 </div>
@@ -795,38 +920,121 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void fade_low_pass_effect </td>
+          <td class="memname">static void fade_low_pass_effect </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>channel</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>stream</em></span>, </td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>stream</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>len</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>len</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>udata</em></span>&#160;)</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>udata</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00114">114</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00132">132</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
 <p class="reference">Références <a class="el" href="audio_8c_source.html#l00016">ChannelFadeFilterState::active</a>, <a class="el" href="audio_8c_source.html#l00021">ChannelFadeFilterState::deactivate_on_complete</a>, <a class="el" href="audio_8c_source.html#l00018">ChannelFadeFilterState::duration_ms</a>, <a class="el" href="audio_8c_source.html#l00020">ChannelFadeFilterState::end_alpha</a>, <a class="el" href="audio_8c_source.html#l00022">ChannelFadeFilterState::previous_left</a>, <a class="el" href="audio_8c_source.html#l00023">ChannelFadeFilterState::previous_right</a>, <a class="el" href="audio_8c_source.html#l00019">ChannelFadeFilterState::start_alpha</a>, et <a class="el" href="audio_8c_source.html#l00017">ChannelFadeFilterState::start_ticks</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00301">audio_play_with_fade()</a>, et <a class="el" href="audio_8c_source.html#l00493">audio_stop_with_fade()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00359">audio_play_with_fade()</a>, et <a class="el" href="audio_8c_source.html#l00589">audio_stop_with_fade()</a>.</p>
+
+</div>
+</div>
+<a id="abc5627d47bfb47a849b3fdee260a29ba" name="abc5627d47bfb47a849b3fdee260a29ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc5627d47bfb47a849b3fdee260a29ba">&#9670;&#160;</a></span>find_available_channel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int find_available_channel </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00068">68</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="audio_8h_source.html#l00011">MAX_SOUNDS</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00359">audio_play_with_fade()</a>.</p>
+
+</div>
+</div>
+<a id="a728a3bdc43905b750321c139f2df07a8" name="a728a3bdc43905b750321c139f2df07a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a728a3bdc43905b750321c139f2df07a8">&#9670;&#160;</a></span>is_channel_bound_to_sound()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int is_channel_bound_to_sound </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a>&#160;</td>
+          <td class="paramname"><em>id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00053">53</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="audio_8c_source.html#l00031">channel_sound_ids</a>, <a class="el" href="audio_8c_source.html#l00043">is_valid_sound_id()</a>, et <a class="el" href="audio_8h_source.html#l00011">MAX_SOUNDS</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00688">audio_is_playing()</a>, <a class="el" href="audio_8c_source.html#l00480">audio_set_sound_config()</a>, <a class="el" href="audio_8c_source.html#l00557">audio_set_type_volume()</a>, et <a class="el" href="audio_8c_source.html#l00589">audio_stop_with_fade()</a>.</p>
 
 </div>
 </div>
@@ -840,24 +1048,25 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int is_valid_kind </td>
+          <td class="memname">static int is_valid_kind </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="audio_8h.html#a3c581a02ffb3d27ef24a44e78b509247">AudioSoundKind</a></td>          <td class="paramname"><span class="paramname"><em>kind</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="audio_8h.html#a3c581a02ffb3d27ef24a44e78b509247">AudioSoundKind</a>&#160;</td>
+          <td class="paramname"><em>kind</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00048">48</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8h_source.html#l00032">AUDIO_SOUND_KIND_MUSIC</a>, et <a class="el" href="audio_8h_source.html#l00033">AUDIO_SOUND_KIND_SFX</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8h_source.html#l00043">AUDIO_SOUND_KIND_MUSIC</a>, et <a class="el" href="audio_8h_source.html#l00044">AUDIO_SOUND_KIND_SFX</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00397">audio_set_sound_config()</a>, et <a class="el" href="audio_8c_source.html#l00470">audio_set_type_volume()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00480">audio_set_sound_config()</a>, et <a class="el" href="audio_8c_source.html#l00557">audio_set_type_volume()</a>.</p>
 
 </div>
 </div>
@@ -871,24 +1080,25 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int is_valid_sound_id </td>
+          <td class="memname">static int is_valid_sound_id </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a></td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="audio_8h.html#aa4689ee7c9a692044aebd36cb0915e61">SoundID</a>&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00043">43</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8h_source.html#l00006">MAX_SOUNDS</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8h_source.html#l00011">MAX_SOUNDS</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00176">apply_channel_filter()</a>, <a class="el" href="audio_8c_source.html#l00418">audio_get_sound_config()</a>, <a class="el" href="audio_8c_source.html#l00583">audio_is_playing()</a>, <a class="el" href="audio_8c_source.html#l00301">audio_play_with_fade()</a>, <a class="el" href="audio_8c_source.html#l00397">audio_set_sound_config()</a>, et <a class="el" href="audio_8c_source.html#l00493">audio_stop_with_fade()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00194">apply_channel_filter()</a>, <a class="el" href="audio_8c_source.html#l00505">audio_get_sound_config()</a>, <a class="el" href="audio_8c_source.html#l00688">audio_is_playing()</a>, <a class="el" href="audio_8c_source.html#l00359">audio_play_with_fade()</a>, <a class="el" href="audio_8c_source.html#l00480">audio_set_sound_config()</a>, <a class="el" href="audio_8c_source.html#l00589">audio_stop_with_fade()</a>, et <a class="el" href="audio_8c_source.html#l00053">is_channel_bound_to_sound()</a>.</p>
 
 </div>
 </div>
@@ -902,22 +1112,23 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Mix_Chunk * load_wav_safe </td>
+          <td class="memname">static Mix_Chunk * load_wav_safe </td>
           <td>(</td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00079">79</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00097">97</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00213">audio_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00231">audio_init()</a>.</p>
 
 </div>
 </div>
@@ -931,38 +1142,47 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void low_pass_effect </td>
+          <td class="memname">static void low_pass_effect </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>channel</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>stream</em></span>, </td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>stream</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>len</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>len</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>udata</em></span>&#160;)</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>udata</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00089">89</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00107">107</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
 <p class="reference">Références <a class="el" href="audio_8c_source.html#l00008">ChannelFilterState::active</a>, <a class="el" href="audio_8c_source.html#l00009">ChannelFilterState::alpha</a>, <a class="el" href="audio_8c_source.html#l00010">ChannelFilterState::previous_left</a>, et <a class="el" href="audio_8c_source.html#l00011">ChannelFilterState::previous_right</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00176">apply_channel_filter()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00194">apply_channel_filter()</a>.</p>
 
 </div>
 </div>
@@ -976,28 +1196,29 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void reset_channel_state </td>
+          <td class="memname">static void reset_channel_state </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>channel</em></span></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00154">154</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00172">172</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="audio_8c_source.html#l00033">channel_fade_filters</a>, <a class="el" href="audio_8c_source.html#l00032">channel_filters</a>, <a class="el" href="audio_8c_source.html#l00031">channel_sound_ids</a>, et <a class="el" href="audio_8h_source.html#l00006">MAX_SOUNDS</a>.</p>
+<p class="reference">Références <a class="el" href="audio_8c_source.html#l00008">ChannelFilterState::active</a>, <a class="el" href="audio_8c_source.html#l00016">ChannelFadeFilterState::active</a>, <a class="el" href="audio_8c_source.html#l00009">ChannelFilterState::alpha</a>, <a class="el" href="audio_8c_source.html#l00033">channel_fade_filters</a>, <a class="el" href="audio_8c_source.html#l00032">channel_filters</a>, <a class="el" href="audio_8c_source.html#l00031">channel_sound_ids</a>, <a class="el" href="audio_8c_source.html#l00021">ChannelFadeFilterState::deactivate_on_complete</a>, <a class="el" href="audio_8c_source.html#l00018">ChannelFadeFilterState::duration_ms</a>, <a class="el" href="audio_8c_source.html#l00020">ChannelFadeFilterState::end_alpha</a>, <a class="el" href="audio_8h_source.html#l00011">MAX_SOUNDS</a>, <a class="el" href="audio_8c_source.html#l00010">ChannelFilterState::previous_left</a>, <a class="el" href="audio_8c_source.html#l00022">ChannelFadeFilterState::previous_left</a>, <a class="el" href="audio_8c_source.html#l00011">ChannelFilterState::previous_right</a>, <a class="el" href="audio_8c_source.html#l00023">ChannelFadeFilterState::previous_right</a>, <a class="el" href="audio_8c_source.html#l00019">ChannelFadeFilterState::start_alpha</a>, et <a class="el" href="audio_8c_source.html#l00017">ChannelFadeFilterState::start_ticks</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00601">audio_cleanup()</a>, <a class="el" href="audio_8c_source.html#l00583">audio_is_playing()</a>, <a class="el" href="audio_8c_source.html#l00301">audio_play_with_fade()</a>, et <a class="el" href="audio_8c_source.html#l00493">audio_stop_with_fade()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00711">audio_cleanup()</a>, <a class="el" href="audio_8c_source.html#l00688">audio_is_playing()</a>, <a class="el" href="audio_8c_source.html#l00359">audio_play_with_fade()</a>, et <a class="el" href="audio_8c_source.html#l00589">audio_stop_with_fade()</a>.</p>
 
 </div>
 </div>
-<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Documentation des variables</h2>
+<h2 class="groupheader">Documentation des variables</h2>
 <a id="aa36180ab189fb2bd6a6cbdf2078db13e" name="aa36180ab189fb2bd6a6cbdf2078db13e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa36180ab189fb2bd6a6cbdf2078db13e">&#9670;&#160;</a></span>channel_fade_filters</h2>
 
@@ -1013,14 +1234,14 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00033">33</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00213">audio_init()</a>, <a class="el" href="audio_8c_source.html#l00301">audio_play_with_fade()</a>, <a class="el" href="audio_8c_source.html#l00493">audio_stop_with_fade()</a>, et <a class="el" href="audio_8c_source.html#l00154">reset_channel_state()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00231">audio_init()</a>, <a class="el" href="audio_8c_source.html#l00359">audio_play_with_fade()</a>, <a class="el" href="audio_8c_source.html#l00589">audio_stop_with_fade()</a>, et <a class="el" href="audio_8c_source.html#l00172">reset_channel_state()</a>.</p>
 
 </div>
 </div>
@@ -1039,14 +1260,14 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00032">32</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00176">apply_channel_filter()</a>, <a class="el" href="audio_8c_source.html#l00213">audio_init()</a>, et <a class="el" href="audio_8c_source.html#l00154">reset_channel_state()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00194">apply_channel_filter()</a>, <a class="el" href="audio_8c_source.html#l00231">audio_init()</a>, et <a class="el" href="audio_8c_source.html#l00172">reset_channel_state()</a>.</p>
 
 </div>
 </div>
@@ -1065,14 +1286,14 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00031">31</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00213">audio_init()</a>, <a class="el" href="audio_8c_source.html#l00301">audio_play_with_fade()</a>, et <a class="el" href="audio_8c_source.html#l00154">reset_channel_state()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00231">audio_init()</a>, <a class="el" href="audio_8c_source.html#l00359">audio_play_with_fade()</a>, <a class="el" href="audio_8c_source.html#l00053">is_channel_bound_to_sound()</a>, et <a class="el" href="audio_8c_source.html#l00172">reset_channel_state()</a>.</p>
 
 </div>
 </div>
@@ -1091,14 +1312,14 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00029">29</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00176">apply_channel_filter()</a>, <a class="el" href="audio_8c_source.html#l00418">audio_get_sound_config()</a>, <a class="el" href="audio_8c_source.html#l00213">audio_init()</a>, <a class="el" href="audio_8c_source.html#l00301">audio_play_with_fade()</a>, <a class="el" href="audio_8c_source.html#l00397">audio_set_sound_config()</a>, <a class="el" href="audio_8c_source.html#l00470">audio_set_type_volume()</a>, <a class="el" href="audio_8c_source.html#l00493">audio_stop_with_fade()</a>, et <a class="el" href="audio_8c_source.html#l00053">compute_effective_volume()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00194">apply_channel_filter()</a>, <a class="el" href="audio_8c_source.html#l00505">audio_get_sound_config()</a>, <a class="el" href="audio_8c_source.html#l00231">audio_init()</a>, <a class="el" href="audio_8c_source.html#l00359">audio_play_with_fade()</a>, <a class="el" href="audio_8c_source.html#l00480">audio_set_sound_config()</a>, <a class="el" href="audio_8c_source.html#l00557">audio_set_type_volume()</a>, <a class="el" href="audio_8c_source.html#l00589">audio_stop_with_fade()</a>, et <a class="el" href="audio_8c_source.html#l00061">compute_effective_volume()</a>.</p>
 
 </div>
 </div>
@@ -1117,14 +1338,14 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00028">28</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00601">audio_cleanup()</a>, <a class="el" href="audio_8c_source.html#l00213">audio_init()</a>, <a class="el" href="audio_8c_source.html#l00583">audio_is_playing()</a>, <a class="el" href="audio_8c_source.html#l00301">audio_play_with_fade()</a>, <a class="el" href="audio_8c_source.html#l00397">audio_set_sound_config()</a>, <a class="el" href="audio_8c_source.html#l00470">audio_set_type_volume()</a>, et <a class="el" href="audio_8c_source.html#l00493">audio_stop_with_fade()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00711">audio_cleanup()</a>, <a class="el" href="audio_8c_source.html#l00231">audio_init()</a>, <a class="el" href="audio_8c_source.html#l00688">audio_is_playing()</a>, <a class="el" href="audio_8c_source.html#l00359">audio_play_with_fade()</a>, <a class="el" href="audio_8c_source.html#l00480">audio_set_sound_config()</a>, <a class="el" href="audio_8c_source.html#l00557">audio_set_type_volume()</a>, et <a class="el" href="audio_8c_source.html#l00589">audio_stop_with_fade()</a>.</p>
 
 </div>
 </div>
@@ -1143,14 +1364,14 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00027">27</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00601">audio_cleanup()</a>, <a class="el" href="audio_8c_source.html#l00213">audio_init()</a>, et <a class="el" href="audio_8c_source.html#l00301">audio_play_with_fade()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00711">audio_cleanup()</a>, <a class="el" href="audio_8c_source.html#l00231">audio_init()</a>, et <a class="el" href="audio_8c_source.html#l00359">audio_play_with_fade()</a>.</p>
 
 </div>
 </div>
@@ -1169,32 +1390,24 @@ Variables</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p class="definition">Définition à la ligne <a class="el" href="audio_8c_source.html#l00030">30</a> du fichier <a class="el" href="audio_8c_source.html">audio.c</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00213">audio_init()</a>, <a class="el" href="audio_8c_source.html#l00470">audio_set_type_volume()</a>, et <a class="el" href="audio_8c_source.html#l00053">compute_effective_volume()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="audio_8c_source.html#l00231">audio_init()</a>, <a class="el" href="audio_8c_source.html#l00557">audio_set_type_volume()</a>, et <a class="el" href="audio_8c_source.html#l00061">compute_effective_volume()</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div id="page-nav" class="page-nav-panel">
-<div id="page-nav-resize-handle"></div>
-<div id="page-nav-tree">
-<div id="page-nav-contents">
-</div><!-- page-nav-contents -->
-</div><!-- page-nav-tree -->
-</div><!-- page-nav -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a href="audio_8c.html">audio.c</a></li>
-    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a class="el" href="audio_8c.html">audio.c</a></li>
+    <li class="footer">Généré le Mardi 14 Avril 2026 18:57:16 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

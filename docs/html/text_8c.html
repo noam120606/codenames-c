@@ -3,17 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Codenames: Référence du fichier client/src/text.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,20 +34,21 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-</script>
-<script type="text/javascript">
-$(function() { codefold.init(); });
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
+/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -63,9 +63,10 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('text_8c.html','',''); });
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('text_8c.html',''); initResizable(); });
+/* @license-end */
 </script>
-<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -89,6 +90,12 @@ $(function(){initNavTree('text_8c.html','',''); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">Référence du fichier text.c</div></div>
 </div><!--header-->
 <div class="contents">
@@ -96,20 +103,102 @@ $(function(){initNavTree('text_8c.html','',''); });
 </div>
 <p><a href="text_8c_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTextFontCacheEntry.html">TextFontCacheEntry</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a6d3bbd40a0824ffb392b767f0041a469" id="r_a6d3bbd40a0824ffb392b767f0041a469"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8c.html#a6d3bbd40a0824ffb392b767f0041a469">TEXT_FONT_CACHE_SIZE</a>&#160;&#160;&#160;16</td></tr>
+<tr class="separator:a6d3bbd40a0824ffb392b767f0041a469"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0bf8148210fb41552dcd924893efd85" id="r_ae0bf8148210fb41552dcd924893efd85"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8c.html#ae0bf8148210fb41552dcd924893efd85">TEXT_FONT_PATH_MAX</a>&#160;&#160;&#160;260</td></tr>
+<tr class="separator:ae0bf8148210fb41552dcd924893efd85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:a53043c207b0924b5548194b1132fb531" id="r_a53043c207b0924b5548194b1132fb531"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structTextFontCacheEntry.html">TextFontCacheEntry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8c.html#a53043c207b0924b5548194b1132fb531">TextFontCacheEntry</a></td></tr>
+<tr class="separator:a53043c207b0924b5548194b1132fb531"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a2b37a033b9b96ac1e08838447b0a639a" id="r_a2b37a033b9b96ac1e08838447b0a639a"><td class="memItemLeft">TTF_Font *&#160;</td><td class="memItemRight"><a class="el" href="#a2b37a033b9b96ac1e08838447b0a639a">load_font</a> (const char *font_path, int size)</td></tr>
-<tr class="memitem:a5229e53c1df6a3e32e4ca68e7fe8b1ba" id="r_a5229e53c1df6a3e32e4ca68e7fe8b1ba"><td class="memItemLeft"><a class="el" href="structTextConfig.html">TextConfig</a>&#160;</td><td class="memItemRight"><a class="el" href="#a5229e53c1df6a3e32e4ca68e7fe8b1ba">create_text_config</a> (const char *font_path, int size, SDL_Color color, int x, int y, double angle, Uint8 opacity)</td></tr>
-<tr class="memitem:a4f18e0289e818bb799834fa1c6516d87" id="r_a4f18e0289e818bb799834fa1c6516d87"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a4f18e0289e818bb799834fa1c6516d87">reload_text</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structText.html">Text</a> *text)</td></tr>
-<tr class="memitem:ae6c3a92a65ce87de859b5ecd21fb0fbc" id="r_ae6c3a92a65ce87de859b5ecd21fb0fbc"><td class="memItemLeft"><a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ae6c3a92a65ce87de859b5ecd21fb0fbc">create_text</a> (const char *content, <a class="el" href="structTextConfig.html">TextConfig</a> cfg)</td></tr>
-<tr class="memitem:a54fde1217ab65d0085f16d682aaf4c01" id="r_a54fde1217ab65d0085f16d682aaf4c01"><td class="memItemLeft"><a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a54fde1217ab65d0085f16d682aaf4c01">init_text</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, const char *content, <a class="el" href="structTextConfig.html">TextConfig</a> cfg)</td></tr>
-<tr class="memitem:aff56157f4533b61509b91e10ce5974a3" id="r_aff56157f4533b61509b91e10ce5974a3"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aff56157f4533b61509b91e10ce5974a3">update_text</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structText.html">Text</a> *text, const char *new_content)</td></tr>
-<tr class="memitem:a8f6f367deea31a27a31187f7ca09a48a" id="r_a8f6f367deea31a27a31187f7ca09a48a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a8f6f367deea31a27a31187f7ca09a48a">update_text_position</a> (<a class="el" href="structText.html">Text</a> *text, int x, int y)</td></tr>
-<tr class="memitem:a700bc88c96d8062fe4be7b6a65bed36b" id="r_a700bc88c96d8062fe4be7b6a65bed36b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a700bc88c96d8062fe4be7b6a65bed36b">update_text_color</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structText.html">Text</a> *text, SDL_Color color)</td></tr>
-<tr class="memitem:ac29a28bde14db6a483178648e2f9d7b3" id="r_ac29a28bde14db6a483178648e2f9d7b3"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ac29a28bde14db6a483178648e2f9d7b3">display_text</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structText.html">Text</a> *text)</td></tr>
-<tr class="memitem:a3c0376138af2e8dccf312e73f1919971" id="r_a3c0376138af2e8dccf312e73f1919971"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a3c0376138af2e8dccf312e73f1919971">destroy_text</a> (<a class="el" href="structText.html">Text</a> *text)</td></tr>
+<tr class="memitem:a7f678a135831ea264b5b2995d53c3481" id="r_a7f678a135831ea264b5b2995d53c3481"><td class="memItemLeft" align="right" valign="top">static TTF_Font *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8c.html#a7f678a135831ea264b5b2995d53c3481">text_get_cached_font</a> (const char *font_path, int size)</td></tr>
+<tr class="separator:a7f678a135831ea264b5b2995d53c3481"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b37a033b9b96ac1e08838447b0a639a" id="r_a2b37a033b9b96ac1e08838447b0a639a"><td class="memItemLeft" align="right" valign="top">TTF_Font *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8c.html#a2b37a033b9b96ac1e08838447b0a639a">load_font</a> (const char *font_path, int size)</td></tr>
+<tr class="separator:a2b37a033b9b96ac1e08838447b0a639a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5229e53c1df6a3e32e4ca68e7fe8b1ba" id="r_a5229e53c1df6a3e32e4ca68e7fe8b1ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTextConfig.html">TextConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8c.html#a5229e53c1df6a3e32e4ca68e7fe8b1ba">create_text_config</a> (const char *font_path, int size, SDL_Color color, int x, int y, double angle, Uint8 opacity)</td></tr>
+<tr class="separator:a5229e53c1df6a3e32e4ca68e7fe8b1ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f18e0289e818bb799834fa1c6516d87" id="r_a4f18e0289e818bb799834fa1c6516d87"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8c.html#a4f18e0289e818bb799834fa1c6516d87">reload_text</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structText.html">Text</a> *text)</td></tr>
+<tr class="separator:a4f18e0289e818bb799834fa1c6516d87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6c3a92a65ce87de859b5ecd21fb0fbc" id="r_ae6c3a92a65ce87de859b5ecd21fb0fbc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8c.html#ae6c3a92a65ce87de859b5ecd21fb0fbc">create_text</a> (const char *content, <a class="el" href="structTextConfig.html">TextConfig</a> cfg)</td></tr>
+<tr class="separator:ae6c3a92a65ce87de859b5ecd21fb0fbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54fde1217ab65d0085f16d682aaf4c01" id="r_a54fde1217ab65d0085f16d682aaf4c01"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8c.html#a54fde1217ab65d0085f16d682aaf4c01">init_text</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, const char *content, <a class="el" href="structTextConfig.html">TextConfig</a> cfg)</td></tr>
+<tr class="separator:a54fde1217ab65d0085f16d682aaf4c01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff56157f4533b61509b91e10ce5974a3" id="r_aff56157f4533b61509b91e10ce5974a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8c.html#aff56157f4533b61509b91e10ce5974a3">update_text</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structText.html">Text</a> *text, const char *new_content)</td></tr>
+<tr class="separator:aff56157f4533b61509b91e10ce5974a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f6f367deea31a27a31187f7ca09a48a" id="r_a8f6f367deea31a27a31187f7ca09a48a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8c.html#a8f6f367deea31a27a31187f7ca09a48a">update_text_position</a> (<a class="el" href="structText.html">Text</a> *text, int x, int y)</td></tr>
+<tr class="separator:a8f6f367deea31a27a31187f7ca09a48a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a700bc88c96d8062fe4be7b6a65bed36b" id="r_a700bc88c96d8062fe4be7b6a65bed36b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8c.html#a700bc88c96d8062fe4be7b6a65bed36b">update_text_color</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structText.html">Text</a> *text, SDL_Color color)</td></tr>
+<tr class="separator:a700bc88c96d8062fe4be7b6a65bed36b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac29a28bde14db6a483178648e2f9d7b3" id="r_ac29a28bde14db6a483178648e2f9d7b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8c.html#ac29a28bde14db6a483178648e2f9d7b3">display_text</a> (<a class="el" href="structAppContext.html">AppContext</a> *context, <a class="el" href="structText.html">Text</a> *text)</td></tr>
+<tr class="separator:ac29a28bde14db6a483178648e2f9d7b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c0376138af2e8dccf312e73f1919971" id="r_a3c0376138af2e8dccf312e73f1919971"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8c.html#a3c0376138af2e8dccf312e73f1919971">destroy_text</a> (<a class="el" href="structText.html">Text</a> *text)</td></tr>
+<tr class="separator:a3c0376138af2e8dccf312e73f1919971"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a34cc5b717ce04e441ff91f13f36e8c28" id="r_a34cc5b717ce04e441ff91f13f36e8c28"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structTextFontCacheEntry.html">TextFontCacheEntry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8c.html#a34cc5b717ce04e441ff91f13f36e8c28">text_font_cache</a> [<a class="el" href="text_8c.html#a6d3bbd40a0824ffb392b767f0041a469">TEXT_FONT_CACHE_SIZE</a>] = {0}</td></tr>
+<tr class="separator:a34cc5b717ce04e441ff91f13f36e8c28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<h2 class="groupheader">Documentation des macros</h2>
+<a id="a6d3bbd40a0824ffb392b767f0041a469" name="a6d3bbd40a0824ffb392b767f0041a469"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d3bbd40a0824ffb392b767f0041a469">&#9670;&#160;</a></span>TEXT_FONT_CACHE_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TEXT_FONT_CACHE_SIZE&#160;&#160;&#160;16</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="text_8c_source.html#l00003">3</a> du fichier <a class="el" href="text_8c_source.html">text.c</a>.</p>
+
+</div>
+</div>
+<a id="ae0bf8148210fb41552dcd924893efd85" name="ae0bf8148210fb41552dcd924893efd85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0bf8148210fb41552dcd924893efd85">&#9670;&#160;</a></span>TEXT_FONT_PATH_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TEXT_FONT_PATH_MAX&#160;&#160;&#160;260</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="text_8c_source.html#l00004">4</a> du fichier <a class="el" href="text_8c_source.html">text.c</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des définitions de type</h2>
+<a id="a53043c207b0924b5548194b1132fb531" name="a53043c207b0924b5548194b1132fb531"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53043c207b0924b5548194b1132fb531">&#9670;&#160;</a></span>TextFontCacheEntry</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structTextFontCacheEntry.html">TextFontCacheEntry</a> <a class="el" href="structTextFontCacheEntry.html">TextFontCacheEntry</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
 <a id="ae6c3a92a65ce87de859b5ecd21fb0fbc" name="ae6c3a92a65ce87de859b5ecd21fb0fbc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae6c3a92a65ce87de859b5ecd21fb0fbc">&#9670;&#160;</a></span>create_text()</h2>
 
@@ -119,29 +208,36 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structText.html">Text</a> * create_text </td>
           <td>(</td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>content</em></span>, </td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>content</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structTextConfig.html">TextConfig</a></td>          <td class="paramname"><span class="paramname"><em>cfg</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structTextConfig.html">TextConfig</a>&#160;</td>
+          <td class="paramname"><em>cfg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Create a text object. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Crée un objet texte. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">content</td><td>The string content of the text. </td></tr>
-    <tr><td class="paramname">cfg</td><td>Configuration settings for the text rendering. </td></tr>
+    <tr><td class="paramname">content</td><td>Contenu textuel de la chaîne. </td></tr>
+    <tr><td class="paramname">cfg</td><td>Paramètres de configuration pour le rendu du texte. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>A pointer to the created <a class="el" href="structText.html">Text</a> object, or NULL on failure. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Pointeur vers l'objet <a class="el" href="structText.html">Text</a> créé, ou NULL en cas d'échec. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="text_8c_source.html#l00056">56</a> du fichier <a class="el" href="text_8c_source.html">text.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="text_8c_source.html#l00108">108</a> du fichier <a class="el" href="text_8c_source.html">text.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="text_8h_source.html#l00034">Text::cfg</a>, <a class="el" href="text_8h_source.html#l00033">Text::content</a>, et <a class="el" href="text_8h_source.html#l00035">Text::texture</a>.</p>
+<p class="reference">Références <a class="el" href="text_8h_source.html#l00039">Text::cfg</a>, <a class="el" href="text_8h_source.html#l00038">Text::content</a>, et <a class="el" href="text_8h_source.html#l00040">Text::texture</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="text_8c_source.html#l00068">init_text()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="text_8c_source.html#l00120">init_text()</a>.</p>
 
 </div>
 </div>
@@ -154,59 +250,71 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structTextConfig.html">TextConfig</a> create_text_config </td>
           <td>(</td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>font_path</em></span>, </td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>font_path</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SDL_Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span>, </td>
+          <td class="paramtype">SDL_Color&#160;</td>
+          <td class="paramname"><em>color</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>angle</em></span>, </td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>angle</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Uint8</td>          <td class="paramname"><span class="paramname"><em>opacity</em></span>&#160;)</td>
+          <td class="paramtype">Uint8&#160;</td>
+          <td class="paramname"><em>opacity</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Create a text configuration. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Crée une configuration de texte. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">font_path</td><td>Path to the TTF font file. </td></tr>
-    <tr><td class="paramname">size</td><td>Size of the font. </td></tr>
-    <tr><td class="paramname">color</td><td>Color of the text. </td></tr>
-    <tr><td class="paramname">x</td><td>X position of the text. </td></tr>
-    <tr><td class="paramname">y</td><td>Y position of the text. </td></tr>
-    <tr><td class="paramname">angle</td><td>Rotation angle of the text. </td></tr>
-    <tr><td class="paramname">opacity</td><td>Opacity of the text. </td></tr>
+    <tr><td class="paramname">font_path</td><td>Chemin vers le fichier de police TTF. </td></tr>
+    <tr><td class="paramname">size</td><td>Taille de la police. </td></tr>
+    <tr><td class="paramname">color</td><td>Couleur du texte. </td></tr>
+    <tr><td class="paramname">x</td><td>Position X du texte. </td></tr>
+    <tr><td class="paramname">y</td><td>Position Y du texte. </td></tr>
+    <tr><td class="paramname">angle</td><td>Angle de rotation du texte. </td></tr>
+    <tr><td class="paramname">opacity</td><td>Opacité du texte. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>A <a class="el" href="structTextConfig.html">TextConfig</a> structure initialized with the provided values. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Structure <a class="el" href="structTextConfig.html">TextConfig</a> initialisée avec les valeurs fournies. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="text_8c_source.html#l00012">12</a> du fichier <a class="el" href="text_8c_source.html">text.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="text_8c_source.html#l00064">64</a> du fichier <a class="el" href="text_8c_source.html">text.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="text_8h_source.html#l00022">TextConfig::angle</a>, <a class="el" href="text_8h_source.html#l00019">TextConfig::color</a>, <a class="el" href="text_8h_source.html#l00017">TextConfig::font_path</a>, <a class="el" href="text_8h_source.html#l00018">TextConfig::font_size</a>, <a class="el" href="text_8h_source.html#l00023">TextConfig::opacity</a>, <a class="el" href="text_8h_source.html#l00020">TextConfig::x</a>, et <a class="el" href="text_8h_source.html#l00021">TextConfig::y</a>.</p>
+<p class="reference">Références <a class="el" href="text_8h_source.html#l00027">TextConfig::angle</a>, <a class="el" href="text_8h_source.html#l00024">TextConfig::color</a>, <a class="el" href="text_8h_source.html#l00022">TextConfig::font_path</a>, <a class="el" href="text_8h_source.html#l00023">TextConfig::font_size</a>, <a class="el" href="text_8h_source.html#l00028">TextConfig::opacity</a>, <a class="el" href="text_8h_source.html#l00025">TextConfig::x</a>, et <a class="el" href="text_8h_source.html#l00026">TextConfig::y</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>, <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00094">lobby_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00135">chat_get_colored_prefix_text()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00504">game_init()</a>, <a class="el" href="history_8c_source.html#l00221">history_get_turn_prefix_text()</a>, <a class="el" href="card_8c_source.html#l00040">init_cards()</a>, <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00485">lobby_init()</a>, et <a class="el" href="menu_8c_source.html#l00764">menu_init()</a>.</p>
 
 </div>
 </div>
@@ -219,24 +327,25 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int destroy_text </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structText.html">Text</a> *</td>          <td class="paramname"><span class="paramname"><em>text</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structText.html">Text</a> *&#160;</td>
+          <td class="paramname"><em>text</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Destroy a text object. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Détruit un objet texte et libère ses ressources. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">text</td><td>The text object to destroy. </td></tr>
+    <tr><td class="paramname">text</td><td>Objet texte à détruire. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>0 on success, -1 on failure. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, -1 en cas d'échec. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="text_8c_source.html#l00125">125</a> du fichier <a class="el" href="text_8c_source.html">text.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="text_8c_source.html#l00177">177</a> du fichier <a class="el" href="text_8c_source.html">text.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="text_8h_source.html#l00033">Text::content</a>, et <a class="el" href="text_8h_source.html#l00035">Text::texture</a>.</p>
+<p class="reference">Références <a class="el" href="text_8h_source.html#l00038">Text::content</a>, et <a class="el" href="text_8h_source.html#l00040">Text::texture</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00636">game_free()</a>, <a class="el" href="infos_8c_source.html#l00490">infos_free()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00516">lobby_free()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="card_8c_source.html#l00406">card_free()</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00240">chat_clear()</a>, <a class="el" href="client_2src_2game_8c_source.html#l01364">game_free()</a>, <a class="el" href="history_8c_source.html#l00259">history_destroy_turn_prefix_text()</a>, <a class="el" href="infos_8c_source.html#l00548">infos_free()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00954">lobby_free()</a>, et <a class="el" href="menu_8c_source.html#l00983">menu_free()</a>.</p>
 
 </div>
 </div>
@@ -249,28 +358,35 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void display_text </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structText.html">Text</a> *</td>          <td class="paramname"><span class="paramname"><em>text</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structText.html">Text</a> *&#160;</td>
+          <td class="paramname"><em>text</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Display a text object. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Affiche un objet texte. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">context</td><td>The application context. </td></tr>
-    <tr><td class="paramname">text</td><td>The text object to display. </td></tr>
+    <tr><td class="paramname">context</td><td>Contexte de l'application. </td></tr>
+    <tr><td class="paramname">text</td><td>Objet texte à afficher. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="text_8c_source.html#l00102">102</a> du fichier <a class="el" href="text_8c_source.html">text.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="text_8c_source.html#l00154">154</a> du fichier <a class="el" href="text_8c_source.html">text.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="text_8h_source.html#l00022">TextConfig::angle</a>, <a class="el" href="text_8h_source.html#l00034">Text::cfg</a>, <a class="el" href="text_8h_source.html#l00023">TextConfig::opacity</a>, <a class="el" href="sdl_8h_source.html#l00041">AppContext::renderer</a>, <a class="el" href="text_8h_source.html#l00035">Text::texture</a>, <a class="el" href="sdl_8h_source.html#l00015">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00014">WIN_WIDTH</a>, <a class="el" href="text_8h_source.html#l00020">TextConfig::x</a>, et <a class="el" href="text_8h_source.html#l00021">TextConfig::y</a>.</p>
+<p class="reference">Références <a class="el" href="text_8h_source.html#l00027">TextConfig::angle</a>, <a class="el" href="text_8h_source.html#l00039">Text::cfg</a>, <a class="el" href="text_8h_source.html#l00028">TextConfig::opacity</a>, <a class="el" href="sdl_8h_source.html#l00056">AppContext::renderer</a>, <a class="el" href="text_8h_source.html#l00040">Text::texture</a>, <a class="el" href="sdl_8h_source.html#l00020">WIN_HEIGHT</a>, <a class="el" href="sdl_8h_source.html#l00019">WIN_WIDTH</a>, <a class="el" href="text_8h_source.html#l00025">TextConfig::x</a>, et <a class="el" href="text_8h_source.html#l00026">TextConfig::y</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2lobby_8c_source.html#l00435">display_player_name()</a>, <a class="el" href="infos_8c_source.html#l00440">fps_ping_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00482">game_render_cards()</a>, <a class="el" href="infos_8c_source.html#l00315">infos_display()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00257">lobby_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00413">render_team_member_in_panel()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00434">render_team_panel_content()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="card_8c_source.html#l00285">card_render_word()</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00432">chat_render_messages()</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00155">chat_render_sender_prefix()</a>, <a class="el" href="infos_8c_source.html#l00495">fps_ping_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l01130">game_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l01015">game_render_team_history()</a>, <a class="el" href="history_8c_source.html#l00241">history_render_turn_prefix()</a>, <a class="el" href="infos_8c_source.html#l00367">infos_display()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00776">lobby_display()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00300">lobby_render_owner_game_options()</a>, <a class="el" href="menu_8c_source.html#l00175">menu_render_loading_bar()</a>, <a class="el" href="menu_8c_source.html#l00390">menu_render_opening_credits()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00911">player_icon_pos()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00894">render_team_member_in_panel()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00937">render_team_panel_content()</a>.</p>
 
 </div>
 </div>
@@ -283,35 +399,43 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structText.html">Text</a> * init_text </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>content</em></span>, </td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>content</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structTextConfig.html">TextConfig</a></td>          <td class="paramname"><span class="paramname"><em>cfg</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structTextConfig.html">TextConfig</a>&#160;</td>
+          <td class="paramname"><em>cfg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initialize a text object. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Initialise un objet texte. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">context</td><td>The application context. </td></tr>
-    <tr><td class="paramname">content</td><td>The string content of the text. </td></tr>
-    <tr><td class="paramname">cfg</td><td>Configuration settings for the text rendering. </td></tr>
+    <tr><td class="paramname">context</td><td>Contexte de l'application. </td></tr>
+    <tr><td class="paramname">content</td><td>Contenu textuel de la chaîne. </td></tr>
+    <tr><td class="paramname">cfg</td><td>Paramètres de configuration pour le rendu du texte. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>A pointer to the initialized <a class="el" href="structText.html">Text</a> object, or NULL on failure. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Pointeur vers l'objet <a class="el" href="structText.html">Text</a> initialisé, ou NULL en cas d'échec. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="text_8c_source.html#l00068">68</a> du fichier <a class="el" href="text_8c_source.html">text.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="text_8c_source.html#l00120">120</a> du fichier <a class="el" href="text_8c_source.html">text.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="text_8c_source.html#l00056">create_text()</a>, et <a class="el" href="text_8c_source.html#l00024">reload_text()</a>.</p>
+<p class="reference">Références <a class="el" href="text_8c_source.html#l00108">create_text()</a>, et <a class="el" href="text_8c_source.html#l00076">reload_text()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2game_8c_source.html#l00142">game_init()</a>, <a class="el" href="infos_8c_source.html#l00098">init_infos()</a>, et <a class="el" href="client_2src_2lobby_8c_source.html#l00094">lobby_init()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00135">chat_get_colored_prefix_text()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00504">game_init()</a>, <a class="el" href="history_8c_source.html#l00221">history_get_turn_prefix_text()</a>, <a class="el" href="card_8c_source.html#l00040">init_cards()</a>, <a class="el" href="infos_8c_source.html#l00105">init_infos()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00485">lobby_init()</a>, et <a class="el" href="menu_8c_source.html#l00764">menu_init()</a>.</p>
 
 </div>
 </div>
@@ -324,25 +448,36 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">TTF_Font * load_font </td>
           <td>(</td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>font_path</em></span>, </td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>font_path</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Load a TTF font. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Charge une police TTF. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">font_path</td><td>Path to the TTF font file. </td></tr>
-    <tr><td class="paramname">size</td><td>Size of the font. </td></tr>
+    <tr><td class="paramname">font_path</td><td>Chemin vers le fichier de police TTF. </td></tr>
+    <tr><td class="paramname">size</td><td>Taille de la police. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>Pointer to the loaded TTF_Font, or NULL on failure. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Pointeur vers la police TTF_Font chargée, ou NULL en cas d'échec. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="text_8c_source.html#l00003">3</a> du fichier <a class="el" href="text_8c_source.html">text.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="text_8c_source.html#l00055">55</a> du fichier <a class="el" href="text_8c_source.html">text.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="text_8c_source.html#l00014">text_get_cached_font()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="menu_8c_source.html#l00764">menu_init()</a>.</p>
 
 </div>
 </div>
@@ -355,28 +490,77 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void reload_text </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structText.html">Text</a> *</td>          <td class="paramname"><span class="paramname"><em>text</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structText.html">Text</a> *&#160;</td>
+          <td class="paramname"><em>text</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Reload a text object. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Recharge un objet texte. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">context</td><td>The application context. </td></tr>
-    <tr><td class="paramname">text</td><td>The text object to reload. </td></tr>
+    <tr><td class="paramname">context</td><td>Contexte de l'application. </td></tr>
+    <tr><td class="paramname">text</td><td>Objet texte à recharger. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="text_8c_source.html#l00024">24</a> du fichier <a class="el" href="text_8c_source.html">text.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="text_8c_source.html#l00076">76</a> du fichier <a class="el" href="text_8c_source.html">text.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="text_8h_source.html#l00034">Text::cfg</a>, <a class="el" href="text_8h_source.html#l00019">TextConfig::color</a>, <a class="el" href="text_8h_source.html#l00033">Text::content</a>, <a class="el" href="text_8h_source.html#l00017">TextConfig::font_path</a>, <a class="el" href="text_8h_source.html#l00018">TextConfig::font_size</a>, <a class="el" href="sdl_8h_source.html#l00041">AppContext::renderer</a>, et <a class="el" href="text_8h_source.html#l00035">Text::texture</a>.</p>
+<p class="reference">Références <a class="el" href="text_8h_source.html#l00039">Text::cfg</a>, <a class="el" href="text_8h_source.html#l00024">TextConfig::color</a>, <a class="el" href="text_8h_source.html#l00038">Text::content</a>, <a class="el" href="text_8h_source.html#l00022">TextConfig::font_path</a>, <a class="el" href="text_8h_source.html#l00023">TextConfig::font_size</a>, <a class="el" href="sdl_8h_source.html#l00056">AppContext::renderer</a>, <a class="el" href="text_8c_source.html#l00014">text_get_cached_font()</a>, et <a class="el" href="text_8h_source.html#l00040">Text::texture</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="text_8c_source.html#l00068">init_text()</a>, <a class="el" href="text_8c_source.html#l00076">update_text()</a>, et <a class="el" href="text_8c_source.html#l00092">update_text_color()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00135">chat_get_colored_prefix_text()</a>, <a class="el" href="history_8c_source.html#l00221">history_get_turn_prefix_text()</a>, <a class="el" href="text_8c_source.html#l00120">init_text()</a>, <a class="el" href="text_8c_source.html#l00128">update_text()</a>, et <a class="el" href="text_8c_source.html#l00144">update_text_color()</a>.</p>
+
+</div>
+</div>
+<a id="a7f678a135831ea264b5b2995d53c3481" name="a7f678a135831ea264b5b2995d53c3481"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f678a135831ea264b5b2995d53c3481">&#9670;&#160;</a></span>text_get_cached_font()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static TTF_Font * text_get_cached_font </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>font_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="text_8c_source.html#l00014">14</a> du fichier <a class="el" href="text_8c_source.html">text.c</a>.</p>
+
+<p class="reference">Références <a class="el" href="text_8c_source.html#l00009">TextFontCacheEntry::font</a>, <a class="el" href="text_8c_source.html#l00007">TextFontCacheEntry::path</a>, <a class="el" href="text_8c_source.html#l00008">TextFontCacheEntry::size</a>, <a class="el" href="text_8c_source.html#l00012">text_font_cache</a>, <a class="el" href="text_8c_source.html#l00003">TEXT_FONT_CACHE_SIZE</a>, et <a class="el" href="text_8c_source.html#l00004">TEXT_FONT_PATH_MAX</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="text_8c_source.html#l00055">load_font()</a>, et <a class="el" href="text_8c_source.html#l00076">reload_text()</a>.</p>
 
 </div>
 </div>
@@ -389,34 +573,42 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void update_text </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structText.html">Text</a> *</td>          <td class="paramname"><span class="paramname"><em>text</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structText.html">Text</a> *&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>new_content</em></span>&#160;)</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>new_content</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Update the content of a text object. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Met à jour le contenu d'un objet texte. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">context</td><td>The application context. </td></tr>
-    <tr><td class="paramname">text</td><td>The text object to update. </td></tr>
-    <tr><td class="paramname">new_content</td><td>The new content for the text object. </td></tr>
+    <tr><td class="paramname">context</td><td>Contexte de l'application. </td></tr>
+    <tr><td class="paramname">text</td><td>Objet texte à mettre à jour. </td></tr>
+    <tr><td class="paramname">new_content</td><td>Nouveau contenu pour l'objet texte. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="text_8c_source.html#l00076">76</a> du fichier <a class="el" href="text_8c_source.html">text.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="text_8c_source.html#l00128">128</a> du fichier <a class="el" href="text_8c_source.html">text.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="text_8h_source.html#l00033">Text::content</a>, et <a class="el" href="text_8c_source.html#l00024">reload_text()</a>.</p>
+<p class="reference">Références <a class="el" href="text_8h_source.html#l00038">Text::content</a>, et <a class="el" href="text_8c_source.html#l00076">reload_text()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2lobby_8c_source.html#l00435">display_player_name()</a>, <a class="el" href="infos_8c_source.html#l00440">fps_ping_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00482">game_render_cards()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00257">lobby_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00413">render_team_member_in_panel()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00434">render_team_panel_content()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="card_8c_source.html#l00285">card_render_word()</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00432">chat_render_messages()</a>, <a class="el" href="client_2src_2chat_8c_source.html#l00155">chat_render_sender_prefix()</a>, <a class="el" href="infos_8c_source.html#l00495">fps_ping_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l01130">game_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l01015">game_render_team_history()</a>, <a class="el" href="history_8c_source.html#l00241">history_render_turn_prefix()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00776">lobby_display()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00300">lobby_render_owner_game_options()</a>, <a class="el" href="menu_8c_source.html#l00175">menu_render_loading_bar()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00911">player_icon_pos()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00894">render_team_member_in_panel()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00937">render_team_panel_content()</a>.</p>
 
 </div>
 </div>
@@ -429,34 +621,42 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void update_text_color </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structAppContext.html">AppContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structText.html">Text</a> *</td>          <td class="paramname"><span class="paramname"><em>text</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structText.html">Text</a> *&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SDL_Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span>&#160;)</td>
+          <td class="paramtype">SDL_Color&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Update the color of a text object. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Met à jour la couleur d'un objet texte. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">context</td><td>The application context. </td></tr>
-    <tr><td class="paramname">text</td><td>The text object to update. </td></tr>
-    <tr><td class="paramname">color</td><td>The new color for the text object. </td></tr>
+    <tr><td class="paramname">context</td><td>Contexte de l'application. </td></tr>
+    <tr><td class="paramname">text</td><td>Objet texte à mettre à jour. </td></tr>
+    <tr><td class="paramname">color</td><td>Nouvelle couleur pour l'objet texte. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="text_8c_source.html#l00092">92</a> du fichier <a class="el" href="text_8c_source.html">text.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="text_8c_source.html#l00144">144</a> du fichier <a class="el" href="text_8c_source.html">text.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="text_8h_source.html#l00034">Text::cfg</a>, <a class="el" href="text_8h_source.html#l00019">TextConfig::color</a>, et <a class="el" href="text_8c_source.html#l00024">reload_text()</a>.</p>
+<p class="reference">Références <a class="el" href="text_8h_source.html#l00039">Text::cfg</a>, <a class="el" href="text_8h_source.html#l00024">TextConfig::color</a>, et <a class="el" href="text_8c_source.html#l00076">reload_text()</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="infos_8c_source.html#l00440">fps_ping_display()</a>, et <a class="el" href="client_2src_2game_8c_source.html#l00543">game_display()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="client_2src_2chat_8c_source.html#l00155">chat_render_sender_prefix()</a>, <a class="el" href="infos_8c_source.html#l00495">fps_ping_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l01130">game_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l01015">game_render_team_history()</a>, et <a class="el" href="history_8c_source.html#l00241">history_render_turn_prefix()</a>.</p>
 
 </div>
 </div>
@@ -469,52 +669,79 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void update_text_position </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structText.html">Text</a> *</td>          <td class="paramname"><span class="paramname"><em>text</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structText.html">Text</a> *&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y</em></span>&#160;)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Update the position of a text object. </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Met à jour la position d'un objet texte. </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">text</td><td>The text object to update. </td></tr>
-    <tr><td class="paramname">x</td><td>The new X position of the text. </td></tr>
-    <tr><td class="paramname">y</td><td>The new Y position of the text. </td></tr>
+    <tr><td class="paramname">text</td><td>Objet texte à mettre à jour. </td></tr>
+    <tr><td class="paramname">x</td><td>Nouvelle position X du texte. </td></tr>
+    <tr><td class="paramname">y</td><td>Nouvelle position Y du texte. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="text_8c_source.html#l00086">86</a> du fichier <a class="el" href="text_8c_source.html">text.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="text_8c_source.html#l00138">138</a> du fichier <a class="el" href="text_8c_source.html">text.c</a>.</p>
 
-<p class="reference">Références <a class="el" href="text_8h_source.html#l00034">Text::cfg</a>, <a class="el" href="text_8h_source.html#l00020">TextConfig::x</a>, et <a class="el" href="text_8h_source.html#l00021">TextConfig::y</a>.</p>
+<p class="reference">Références <a class="el" href="text_8h_source.html#l00039">Text::cfg</a>, <a class="el" href="text_8h_source.html#l00025">TextConfig::x</a>, et <a class="el" href="text_8h_source.html#l00026">TextConfig::y</a>.</p>
 
-<p class="reference">Référencé par <a class="el" href="client_2src_2lobby_8c_source.html#l00435">display_player_name()</a>, <a class="el" href="infos_8c_source.html#l00440">fps_ping_display()</a>, <a class="el" href="client_2src_2game_8c_source.html#l00482">game_render_cards()</a>, <a class="el" href="infos_8c_source.html#l00315">infos_display()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00257">lobby_display()</a>, et <a class="el" href="window_8c_source.html#l00350">window_place_text()</a>.</p>
+<p class="reference">Référencé par <a class="el" href="card_8c_source.html#l00285">card_render_word()</a>, <a class="el" href="infos_8c_source.html#l00495">fps_ping_display()</a>, <a class="el" href="infos_8c_source.html#l00367">infos_display()</a>, <a class="el" href="client_2src_2lobby_8c_source.html#l00776">lobby_display()</a>, <a class="el" href="menu_8c_source.html#l00175">menu_render_loading_bar()</a>, <a class="el" href="menu_8c_source.html#l00390">menu_render_opening_credits()</a>, et <a class="el" href="window_8c_source.html#l00524">window_place_text()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a id="a34cc5b717ce04e441ff91f13f36e8c28" name="a34cc5b717ce04e441ff91f13f36e8c28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34cc5b717ce04e441ff91f13f36e8c28">&#9670;&#160;</a></span>text_font_cache</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structTextFontCacheEntry.html">TextFontCacheEntry</a> text_font_cache[<a class="el" href="text_8c.html#a6d3bbd40a0824ffb392b767f0041a469">TEXT_FONT_CACHE_SIZE</a>] = {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="text_8c_source.html#l00012">12</a> du fichier <a class="el" href="text_8c_source.html">text.c</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="text_8c_source.html#l00014">text_get_cached_font()</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div id="page-nav" class="page-nav-panel">
-<div id="page-nav-resize-handle"></div>
-<div id="page-nav-tree">
-<div id="page-nav-contents">
-</div><!-- page-nav-contents -->
-</div><!-- page-nav-tree -->
-</div><!-- page-nav -->
-</div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a href="text_8c.html">text.c</a></li>
-    <li class="footer">Généré le <span class="timestamp"></span> pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_b565d458ba0ce2faccd0ea2cd60c04eb.html">src</a></li><li class="navelem"><a class="el" href="text_8c.html">text.c</a></li>
+    <li class="footer">Généré le Mardi 14 Avril 2026 18:57:16 pour Codenames par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
