@@ -190,17 +190,20 @@ int word_contains(const char* input, const char* card_word) {
 
 int valid_hint(const char* hint, Card card_words[NB_WORDS]) {
     if (!hint) return 0;
-    if (strlen(hint) <= 3) return 1; // On autorise les indices courts, même s'ils sont proches, pour permettre des indices comme "3" ou "2-1"
+    int hint_len = (int)strlen(hint);
+    if (hint_len <= 3) return 1; // On autorise les indices courts, même s'ils sont proches, pour permettre des indices comme "3" ou "2-1"
+
+    int threshold = (hint_len == 4) ? 2 : 3;
 
     for (int i = 0; i < NB_WORDS; i++) {
         if (!card_words[i].word || card_words[i].revealed) continue;
         int distance = levenshtein(hint, card_words[i].word);
         int contain = word_contains(hint, card_words[i].word);
-        if (distance < strlen(hint)==4 ? 2 : 3 || contain) {
+        if (distance >= 0 && (distance < threshold || contain)) {
             printf("Hint '%s' is too close to card word '%s' (distance=%d, contain=%d)\n", hint, card_words[i].word, distance, contain);
             return 0; // Hint trop proche ou contient un mot d'une carte
         }
     }
-    
+
     return 1; // Hint valide
 }

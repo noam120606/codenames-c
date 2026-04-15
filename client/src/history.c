@@ -511,7 +511,7 @@ int history_build_wrapped_lines(const History* history, const char* font_path, i
 
     TTF_Font* history_font = NULL;
     if (font_path && font_path[0] != '\0' && font_size > 0) {
-        history_font = TTF_OpenFont(font_path, font_size);
+        history_font = load_font(font_path, font_size);
     }
 
     int total_lines = 0;
@@ -524,10 +524,6 @@ int history_build_wrapped_lines(const History* history, const char* font_path, i
             max_lines,
             total_lines
         );
-    }
-
-    if (history_font) {
-        TTF_CloseFont(history_font);
     }
 
     if (total_lines <= 0) {
@@ -577,7 +573,7 @@ int history_build_wrapped_lines_cached(const History* history, const char* font_
 
     TTF_Font* history_font = NULL;
     if (font_path && font_path[0] != '\0' && font_size > 0) {
-        history_font = TTF_OpenFont(font_path, font_size);
+        history_font = load_font(font_path, font_size);
     }
 
     for (int i = 0; i < HISTORY_MAX_RENDER_LINES; i++) {
@@ -603,10 +599,6 @@ int history_build_wrapped_lines_cached(const History* history, const char* font_
             cache->line_word_teams[i_wrapped] = raw_line_team;
             cache->line_has_revealed_word_team[i_wrapped] = has_word_team;
         }
-    }
-
-    if (history_font) {
-        TTF_CloseFont(history_font);
     }
 
     if (total_lines <= 0) {

@@ -400,7 +400,7 @@ static int chat_build_wrapped_lines_cached(Chat* chat, const char* font_path, in
 
 	TTF_Font* chat_font = NULL;
 	if (font_path && font_path[0] != '\0' && font_size > 0) {
-		chat_font = TTF_OpenFont(font_path, font_size);
+		chat_font = load_font(font_path, font_size);
 	}
 
 	const int total_messages = chat_size(chat);
@@ -408,10 +408,6 @@ static int chat_build_wrapped_lines_cached(Chat* chat, const char* font_path, in
 	for (int i_msg = 0; i_msg < total_messages && total_lines < CHAT_MAX_RENDER_LINES; i_msg++) {
 		const char* message = chat_get(chat, i_msg);
 		total_lines = chat_append_wrapped_lines(message, chat_font, max_text_width, cache->lines, CHAT_MAX_RENDER_LINES, total_lines);
-	}
-
-	if (chat_font) {
-		TTF_CloseFont(chat_font);
 	}
 
 	if (total_lines <= 0) {
