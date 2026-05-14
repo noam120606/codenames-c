@@ -112,7 +112,7 @@ Le script télécharge les paquets MinGW officiels de SDL2, SDL2_image, SDL2_ttf
 
 1. **Cloner le dépôt**
    ```bash
-   git clone https://github.com/noam120606/codenames-c.git
+   git clone https://github.com/noamroger/codenames-c.git
    cd codenames-c
    ```
 
@@ -307,8 +307,8 @@ Consultez le fichier [TODO.md](TODO.md) pour la liste des fonctionnalités à ve
       <sub>Développeur</sub>
     </td>
     <td align="center">
-      <a href="https://github.com/noam120606">
-        <img src="https://github.com/noam120606.png" width="100px;" alt="Noam"/><br />
+      <a href="https://github.com/noamroger">
+        <img src="https://github.com/noamroger.png" width="100px;" alt="Noam"/><br />
         <sub><b>Noam</b></sub>
       </a><br />
       <sub>Développeur</sub>
